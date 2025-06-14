@@ -53,197 +53,202 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
   <!-- 引入通用游戏卡片样式 -->
   <link rel="stylesheet" href="/styles/game-card.css">
   
-  <main class="game-detail-container">
-    <!-- 1. 游戏标题和基本信息 -->
-    <header class="game-header">
-      <div class="game-title-section">
-        <h1 class="game-title">{game.title}</h1>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- 游戏标题和基本信息 -->
+      <div class="game-header">
+        <div class="game-title-container">
+          <div class="game-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          <h1 class="game-title">{game.title}</h1>
+        </div>
         <div class="game-basic-info">
           <span class="info-badge category-badge">
-            <i class="fas fa-graduation-cap"></i>
-            {game.categoryName}
+            <i class="fas fa-calculator"></i>
+            {game.category}
           </span>
           <span class="info-badge difficulty-badge">
             <i class="fas fa-signal"></i>
-            {game.difficulty}
+            Easy
           </span>
         </div>
       </div>
-    </header>
 
-    <!-- 2. 游戏播放器区域 -->
-    <section class="game-player-section">
-      <div class="game-player-container">
-        <div class="game-loading" id="gameLoading">
-          <div class="loading-spinner"></div>
-          <p>Loading game...</p>
-        </div>
-        <iframe 
-          id="gameFrame"
-          src={game.url} 
-          class="game-iframe"
-          sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-          loading="lazy"
-          onload="handleGameLoad()"
-          onerror="handleGameError()">
-        </iframe>
-      </div>
-      
-      <!-- 游戏控制按钮 -->
-      <div class="game-controls">
-        <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">
-          <i class="fas fa-expand"></i>
-          <span>Fullscreen</span>
-        </button>
-        <button class="control-btn restart-btn" onclick="restartGame()" title="Restart Game">
-          <i class="fas fa-redo"></i>
-          <span>Restart</span>
-        </button>
-        <button class="control-btn favorite-btn" onclick="toggleFavorite()" title="Add to Favorites">
-          <i class="far fa-heart"></i>
-          <span>Favorite</span>
-        </button>
-        <button class="control-btn share-btn" onclick="shareGame()" title="Share Game">
-          <i class="fas fa-share"></i>
-          <span>Share</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- 3. 游戏信息区域 -->
-    <section class="game-info-section">
-      <h2 class="section-title">
-        <i class="fas fa-info-circle"></i>
-        Game Information
-      </h2>
-      
-      <div class="game-info-content">
-        <!-- 游戏介绍 -->
-        <div class="info-text">
-          <p class="game-description">{game.description}</p>
-        </div>
-
-        <!-- 游戏特色和操作说明 -->
-        <div class="info-details">
-          <div class="features-section">
-            <h4>Features</h4>
-            <ul>
-              <li>Interactive gameplay</li>
-              <li>Educational content</li>
-              <li>Progress tracking</li>
-              <li>Kid-friendly interface</li>
-            </ul>
+      <!-- 2. 游戏播放器区域 -->
+      <section class="game-player-section">
+        <div class="game-player-container">
+          <div class="game-loading" id="gameLoading">
+            <div class="loading-spinner"></div>
+            <p>Loading game...</p>
           </div>
-
-          <div class="instructions-section">
-            <h4>How to Play</h4>
-            <ol>
-              <li>Use mouse to click and interact</li>
-              <li>Use keyboard arrow keys to move</li>
-              <li>Follow in-game instructions</li>
-              <li>Complete challenges to progress</li>
-            </ol>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. 开发者信息区域 -->
-    <section class="developer-info-section">
-      <h2 class="section-title">
-        <i class="fas fa-code"></i>
-        Developer Information
-      </h2>
-      <div class="developer-info-grid">
-        <div class="developer-card">
-          <div class="developer-icon">
-            <i class="fas fa-user-tie"></i>
-          </div>
-          <div class="developer-details">
-            <h4 class="developer-title">Developer</h4>
-            <p class="developer-name">{gameSource.label}</p>
-          </div>
+          <iframe 
+            id="gameFrame"
+            src={game.url} 
+            class="game-iframe"
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+            loading="lazy"
+            onload="handleGameLoad()"
+            onerror="handleGameError()">
+          </iframe>
         </div>
         
-        <div class="developer-card">
-          <div class="developer-icon">
-            <i class="fas fa-globe"></i>
-          </div>
-          <div class="developer-details">
-            <h4 class="developer-title">Platform</h4>
-            <p class="developer-name">{gameSource.label}</p>
-          </div>
-        </div>
-        
-        <div class="developer-card">
-          <div class="developer-icon">
-            <i class="fas fa-tag"></i>
-          </div>
-          <div class="developer-details">
-            <h4 class="developer-title">Type</h4>
-            <p class="developer-name">Free</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 相关游戏推荐 -->
-    {relatedGames.length > 0 && (
-      <section class="related-games-section">
-        <h2 class="section-title">
-          <i class="fas fa-gamepad"></i>
-          Related Games
-        </h2>
-        <div class="related-games-grid">
-          {relatedGames.map((relatedGame, index) => {
-            // 计算人气值 (模拟数据)
-            const popularity = Math.floor(Math.random() * 15000) + 1000;
-            
-            // 格式化人气值显示
-            const formatPopularity = (num) => {
-              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-              return num.toString();
-            };
-
-            return (
-              <div class="game-card related-game animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={relatedGame.id}>
-                <div class="game-image-container">
-                  <img 
-                    src={relatedGame.image} 
-                    alt={relatedGame.title} 
-                    class="game-image"
-                    loading="lazy"
-                    onerror="this.onerror=null; this.src='/images/placeholder-game.svg'"
-                  />
-                  <div class="game-overlay">
-                    <div class="popularity-badge">
-                      🔥 {formatPopularity(popularity)}
-                    </div>
-                    <a href={`/games/${relatedGame.slug}`} class="play-button">
-                      <i class="fas fa-play"></i>
-                      <span>Play Now</span>
-                    </a>
-                  </div>
-                </div>
-                <div class="game-info">
-                  <h3 class="game-title">{relatedGame.title}</h3>
-                  <p class="game-description">{relatedGame.description}</p>
-                  <div class="game-tags">
-                    <span class={`category-tag ${relatedGame.category}`}>{relatedGame.categoryName}</span>
-                    <span class={`difficulty-tag ${relatedGame.difficulty?.toLowerCase() || 'medium'}`}>
-                      {relatedGame.difficulty?.toUpperCase() || 'MEDIUM'}
-                    </span>
-                    {relatedGame.featured && <span class="feature-tag featured">FEATURED</span>}
-                    {relatedGame.isNew && <span class="feature-tag new">NEW</span>}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+        <!-- 游戏控制按钮 -->
+        <div class="game-controls">
+          <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">
+            <i class="fas fa-expand"></i>
+            <span>Fullscreen</span>
+          </button>
+          <button class="control-btn restart-btn" onclick="restartGame()" title="Restart Game">
+            <i class="fas fa-redo"></i>
+            <span>Restart</span>
+          </button>
+          <button class="control-btn favorite-btn" onclick="toggleFavorite()" title="Add to Favorites">
+            <i class="far fa-heart"></i>
+            <span>Favorite</span>
+          </button>
+          <button class="control-btn share-btn" onclick="shareGame()" title="Share Game">
+            <i class="fas fa-share"></i>
+            <span>Share</span>
+          </button>
         </div>
       </section>
-    )}
+
+      <!-- 3. 游戏信息区域 -->
+      <section class="game-info-section">
+        <h2 class="section-title">
+          <i class="fas fa-info-circle"></i>
+          Game Information
+        </h2>
+        
+        <div class="game-info-content">
+          <!-- 游戏介绍 -->
+          <div class="info-text">
+            <p class="game-description">{game.description}</p>
+          </div>
+
+          <!-- 游戏特色和操作说明 -->
+          <div class="info-details">
+            <div class="features-section">
+              <h4>Features</h4>
+              <ul>
+                <li>Interactive gameplay</li>
+                <li>Educational content</li>
+                <li>Progress tracking</li>
+                <li>Kid-friendly interface</li>
+              </ul>
+            </div>
+
+            <div class="instructions-section">
+              <h4>How to Play</h4>
+              <ol>
+                <li>Use mouse to click and interact</li>
+                <li>Use keyboard arrow keys to move</li>
+                <li>Follow in-game instructions</li>
+                <li>Complete challenges to progress</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. 开发者信息区域 -->
+      <section class="developer-info-section">
+        <h2 class="section-title">
+          <i class="fas fa-code"></i>
+          Developer Information
+        </h2>
+        <div class="developer-info-grid">
+          <div class="developer-card">
+            <div class="developer-icon">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="developer-details">
+              <h4 class="developer-title">Developer</h4>
+              <p class="developer-name">{gameSource.label}</p>
+            </div>
+          </div>
+          
+          <div class="developer-card">
+            <div class="developer-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="developer-details">
+              <h4 class="developer-title">Platform</h4>
+              <p class="developer-name">{gameSource.label}</p>
+            </div>
+          </div>
+          
+          <div class="developer-card">
+            <div class="developer-icon">
+              <i class="fas fa-tag"></i>
+            </div>
+            <div class="developer-details">
+              <h4 class="developer-title">Type</h4>
+              <p class="developer-name">Free</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关游戏推荐 -->
+      {relatedGames.length > 0 && (
+        <section class="related-games-section">
+          <h2 class="section-title">
+            <i class="fas fa-gamepad"></i>
+            Related Games
+          </h2>
+          <div class="related-games-grid">
+            {relatedGames.map((relatedGame, index) => {
+              // 计算人气值 (模拟数据)
+              const popularity = Math.floor(Math.random() * 15000) + 1000;
+              
+              // 格式化人气值显示
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+
+              return (
+                <div class="game-card related-game animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={relatedGame.id}>
+                  <div class="game-image-container">
+                    <img 
+                      src={relatedGame.image} 
+                      alt={relatedGame.title} 
+                      class="game-image"
+                      loading="lazy"
+                      onerror="this.onerror=null; this.src='/images/placeholder-game.svg'"
+                    />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        🔥 {formatPopularity(popularity)}
+                      </div>
+                      <a href={`/games/${relatedGame.slug}`} class="play-button">
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </a>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{relatedGame.title}</h3>
+                    <p class="game-description">{relatedGame.description}</p>
+                    <div class="game-tags">
+                      <span class={`category-tag ${relatedGame.category}`}>{relatedGame.categoryName}</span>
+                      <span class={`difficulty-tag ${relatedGame.difficulty?.toLowerCase() || 'medium'}`}>
+                        {relatedGame.difficulty?.toUpperCase() || 'MEDIUM'}
+                      </span>
+                      {relatedGame.featured && <span class="feature-tag featured">FEATURED</span>}
+                      {relatedGame.isNew && <span class="feature-tag new">NEW</span>}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+    </div>
   </main>
 
   <style>
@@ -263,13 +268,18 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
     }
 
     /* 主容器 */
-    .game-detail-container {
+    .main-content {
+      width: 100%;
+      background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #F0F9FF 100%);
+      color: #1F2937;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .content-wrapper {
       max-width: 1400px;
       margin: 0 auto;
       padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
     }
 
     /* 游戏标题区域 */
@@ -279,28 +289,37 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       padding: 2rem;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid #F3F4F6;
+      margin-bottom: 2rem;
+    }
+
+    .game-title-container {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .game-icon {
+      background: linear-gradient(135deg, #6366F1, #8B5CF6);
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
     }
 
     .game-title {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 2.5rem;
+      font-size: 3rem;
       font-weight: 700;
       color: #1F2937;
-      margin-bottom: 1rem;
+      margin: 0;
       text-align: left;
       line-height: 1.2;
-      position: relative;
-    }
-
-    .game-title::after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(135deg, #3B82F6, #06B6D4);
-      border-radius: 2px;
     }
 
     .game-basic-info {
@@ -335,6 +354,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       padding: 2rem;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid #F3F4F6;
+      margin-bottom: 2rem;
     }
 
     .game-player-container {
@@ -416,6 +436,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       padding: 2rem;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid #F3F4F6;
+      margin-bottom: 2rem;
     }
 
     .section-title {
@@ -529,6 +550,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       padding: 2rem;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
       border: 1px solid #F3F4F6;
+      margin-bottom: 2rem;
     }
 
     .developer-info-grid {
@@ -829,68 +851,50 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
 
     /* 响应式设计 */
     @media (max-width: 1024px) {
-      .game-detail-container {
+      .content-wrapper {
         max-width: 100%;
         padding: 1.5rem;
-        gap: 1.5rem;
       }
 
-      .game-header,
-      .game-player-section,
-      .game-info-section,
-      .developer-info-section {
-        padding: 1.5rem;
+      .game-title {
+        font-size: 2.5rem;
       }
 
-      .game-info-content {
-        gap: 1.5rem;
-      }
-
-      .info-details {
-        flex-direction: column;
-        gap: 1.5rem;
-      }
-
-      .developer-info-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+      .game-icon {
+        width: 56px;
+        height: 56px;
+        font-size: 1.25rem;
       }
     }
 
     @media (max-width: 768px) {
-      .game-detail-container {
+      .content-wrapper {
         padding: 1rem;
-        gap: 1rem;
       }
 
-      .game-header,
-      .game-player-section,
-      .game-info-section,
-      .developer-info-section {
-        padding: 1rem;
+      .game-title-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
       }
 
       .game-title {
         font-size: 2rem;
       }
 
-      .section-title {
-        font-size: 1.25rem;
+      .game-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1rem;
       }
 
-      .info-details {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .developer-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 1rem;
-      }
-
-      .developer-details {
-        text-align: center;
+      .game-header,
+      .game-player-section,
+      .game-info-section,
+      .developer-info-section,
+      .related-games-section {
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
       }
     }
   </style>
