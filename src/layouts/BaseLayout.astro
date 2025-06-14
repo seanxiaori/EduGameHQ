@@ -170,15 +170,6 @@ const { title, description = "Free educational games for kids and students", bod
             placeholder="Search educational games..." 
             autocomplete="off"
           />
-          <!-- 搜索推荐下拉菜单 -->
-          <div class="search-suggestions" id="searchSuggestions">
-            <div class="search-suggestions-header">
-              <span>Popular Games</span>
-            </div>
-            <div class="search-suggestions-list" id="searchSuggestionsList">
-              <!-- 动态生成的推荐内容 -->
-            </div>
-          </div>
         </div>
         
         <!-- 右侧按钮组 -->
@@ -386,192 +377,32 @@ const { title, description = "Free educational games for kids and students", bod
         });
       }
       
-      // 搜索功能
+      // 搜索功能初始化
       const searchBox = document.querySelector('.search-box') as HTMLInputElement;
-      const searchSuggestions = document.querySelector('#searchSuggestions') as HTMLElement;
-      const searchSuggestionsList = document.querySelector('#searchSuggestionsList') as HTMLElement;
       
       console.log('Search elements found:', {
-        searchBox: !!searchBox,
-        searchSuggestions: !!searchSuggestions,
-        searchSuggestionsList: !!searchSuggestionsList
+        searchBox: !!searchBox
       });
       
       if (searchBox) {
-        console.log('Setting up search box event listeners...');
+        console.log('Initializing simple search...');
         
-        // 简化的Enter键搜索功能
-        searchBox.addEventListener('keydown', function(e) {
-          console.log('Key pressed in search box:', e.key);
+        // 搜索框回车事件
+        searchBox.addEventListener('keypress', function(e) {
           if (e.key === 'Enter') {
-            e.preventDefault();
             const query = this.value.trim();
-            console.log('Enter pressed, search query:', query);
-            if (query) {
-              const searchUrl = `/search?q=${encodeURIComponent(query)}`;
-              console.log('Navigating to:', searchUrl);
-              window.location.href = searchUrl;
-            } else {
-              console.log('Empty query, not searching');
-            }
-          }
-        });
-        
-        // 添加点击事件作为备用
-        searchBox.addEventListener('click', function() {
-          console.log('Search box clicked');
-        });
-        
-        // 添加输入事件用于调试
-        searchBox.addEventListener('input', function() {
-          console.log('Search input changed:', this.value);
-        });
-        
-        console.log('Search box event listeners set up successfully');
-      } else {
-        console.error('Search box not found!');
-      }
-      
-      // 热门游戏数据（基于播放次数）
-      const popularGames = [
-        { title: '2048', category: 'Math', url: '/games/2048' },
-        { title: 'Math Duck', category: 'Math', url: '/games/math-duck' },
-        { title: 'Little Alchemy 2', category: 'Science', url: '/games/little-alchemy-2' },
-        { title: 'Basketball Stars', category: 'Sports', url: '/games/basketball-stars' },
-        { title: 'Learn GDScript', category: 'Coding', url: '/games/learn-gdscript' },
-        { title: 'Typing Game', category: 'Language', url: '/games/typing-game' },
-        { title: 'Sudoku Classic', category: 'Puzzle', url: '/games/sudoku-classic' },
-        { title: 'World Map Quiz', category: 'Geography', url: '/games/world-map-quiz' }
-      ];
-      
-      if (searchBox && searchSuggestions && searchSuggestionsList) {
-        console.log('Initializing search suggestions...');
-        let searchTimeout: any;
-        let isSearchFocused = false;
-        
-        // 生成搜索推荐内容（只显示热门游戏）
-        function generateSuggestions() {
-          let suggestionsHTML = '';
-          
-          // 只添加热门游戏，不添加搜索分类
-          popularGames.forEach(game => {
-            suggestionsHTML += `
-              <a href="${game.url}" class="search-suggestion-item game-item">
-                <i class="fas fa-gamepad"></i>
-                <div class="suggestion-content">
-                  <div class="suggestion-main">
-                    <span class="suggestion-title">${game.title}</span>
-                  </div>
-                  <span class="suggestion-category">${game.category}</span>
-                </div>
-              </a>
-            `;
-          });
-          
-          searchSuggestionsList.innerHTML = suggestionsHTML;
-        }
-        
-        // 显示搜索建议
-        function showSuggestions() {
-          generateSuggestions();
-          searchSuggestions.classList.add('show');
-        }
-        
-        // 隐藏搜索建议
-        function hideSuggestions() {
-          setTimeout(() => {
-            if (!isSearchFocused) {
-              searchSuggestions.classList.remove('show');
-            }
-          }, 200);
-        }
-        
-        // 搜索框获得焦点时显示推荐
-        searchBox.addEventListener('focus', function() {
-          console.log('Search box focused');
-          isSearchFocused = true;
-          showSuggestions();
-        });
-        
-        // 搜索框失去焦点时隐藏推荐
-        searchBox.addEventListener('blur', function() {
-          console.log('Search box blurred');
-          isSearchFocused = false;
-          hideSuggestions();
-        });
-        
-        // 搜索输入事件
-        searchBox.addEventListener('input', function() {
-          const query = this.value.trim();
-          console.log('Search input:', query);
-          
-          clearTimeout(searchTimeout);
-          
-          if (query.length === 0) {
-            showSuggestions(); // 显示默认推荐
-            return;
-          }
-          
-          // 实时搜索建议（只过滤游戏，不显示搜索分类）
-          if (query.length >= 1) {
-            // 过滤相关的游戏
-            const filteredGames = popularGames.filter(game => 
-              game.title.toLowerCase().includes(query.toLowerCase()) ||
-              game.category.toLowerCase().includes(query.toLowerCase())
-            );
+            console.log('Search submitted:', query);
             
-            // 更新建议列表
-            let suggestionsHTML = '';
-            
-            if (filteredGames.length > 0) {
-              filteredGames.forEach(game => {
-                suggestionsHTML += `
-                  <a href="${game.url}" class="search-suggestion-item game-item">
-                    <i class="fas fa-gamepad"></i>
-                    <div class="suggestion-content">
-                      <div class="suggestion-main">
-                        <span class="suggestion-title">${game.title}</span>
-                      </div>
-                      <span class="suggestion-category">${game.category}</span>
-                    </div>
-                  </a>
-                `;
-              });
-            }
-            
-            // 添加"搜索所有结果"选项
             if (query.length > 0) {
-              if (filteredGames.length > 0) {
-                suggestionsHTML += '<div class="search-suggestions-divider"></div>';
-              }
-              suggestionsHTML += `
-                <a href="/search?q=${encodeURIComponent(query)}" class="search-suggestion-item search-all">
-                  <i class="fas fa-search"></i>
-                  <span class="suggestion-title">Search for "${query}"</span>
-                </a>
-              `;
+              // 跳转到搜索页面
+              window.location.href = `/search?q=${encodeURIComponent(query)}`;
             }
-            
-            searchSuggestionsList.innerHTML = suggestionsHTML;
-            searchSuggestions.classList.add('show');
           }
         });
         
-        // 点击页面其他地方隐藏建议
-        document.addEventListener('click', function(e) {
-          if (!searchBox.contains(e.target as Node) && !searchSuggestions.contains(e.target as Node)) {
-            isSearchFocused = false;
-            hideSuggestions();
-          }
-        });
-        
-        console.log('Search suggestions functionality initialized successfully');
+        console.log('Simple search functionality initialized successfully');
       } else {
-        console.error('Search suggestion elements not found:', {
-          searchBox: !!searchBox,
-          searchSuggestions: !!searchSuggestions,
-          searchSuggestionsList: !!searchSuggestionsList
-        });
+        console.error('Search box not found');
       }
     });
     
@@ -787,161 +618,6 @@ const { title, description = "Free educational games for kids and students", bod
     color: #9CA3AF;
     font-size: 1rem;
     z-index: 2;
-  }
-
-  /* 搜索推荐下拉菜单 */
-  .search-suggestions {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: white;
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    margin-top: 8px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-    max-height: 400px;
-    overflow-y: auto;
-  }
-
-  .search-suggestions.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .search-suggestions-header {
-    padding: 12px 16px 8px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: #6B7280;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid #F3F4F6;
-  }
-
-  .search-suggestions-list {
-    padding: 8px 0;
-  }
-
-  .search-suggestion-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 18px;
-    text-decoration: none;
-    color: #374151;
-    transition: all 0.3s ease;
-    border: none;
-    background: none;
-    width: 100%;
-    cursor: pointer;
-    border-radius: 10px;
-    margin: 2px 0;
-  }
-
-  .search-suggestion-item:hover {
-    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
-    color: #1F2937;
-    transform: translateX(4px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .search-suggestion-item.game-item:hover {
-    background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
-    color: #6366F1;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
-  }
-
-  .search-suggestion-item.search-all {
-    background: #F8F9FA;
-    font-weight: 500;
-    border-top: 1px solid #E5E7EB;
-    margin-top: 8px;
-    padding-top: 16px;
-  }
-
-  .search-suggestion-item.search-all:hover {
-    background: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
-  }
-
-  .search-suggestion-item i {
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #9CA3AF;
-    font-size: 0.875rem;
-    background: #F3F4F6;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-  }
-
-  .search-suggestion-item:hover i {
-    color: white;
-    background: currentColor;
-    transform: scale(1.1);
-  }
-
-  .search-suggestion-item.game-item:hover i {
-    background: #6366F1;
-    color: white;
-  }
-
-  .suggestion-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    flex: 1;
-  }
-
-  .suggestion-main {
-    display: flex;
-    align-items: center;
-    gap: 0;
-  }
-
-  .suggestion-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    line-height: 1.3;
-    color: #1F2937;
-    transition: color 0.3s ease;
-  }
-
-  .search-suggestion-item:hover .suggestion-title {
-    color: currentColor;
-  }
-
-  .suggestion-category {
-    font-size: 0.75rem;
-    color: #6B7280;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    opacity: 0.8;
-    transition: all 0.3s ease;
-    margin-left: 30px; /* 与图标对齐 */
-  }
-
-  .search-suggestion-item:hover .suggestion-category {
-    opacity: 1;
-    color: currentColor;
-  }
-
-  .search-suggestions-divider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #E5E7EB 50%, transparent 100%);
-    margin: 12px 0;
   }
 
   .nav-actions {
