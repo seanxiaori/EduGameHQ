@@ -104,20 +104,17 @@ const seoData = {
 
       <!-- 游戏信息区域 -->
       <section class="game-info-section">
-        <div class="module-header">
-          <div class="module-icon info-icon">
+        <div class="section-header">
+          <div class="section-icon">
             <i class="fas fa-info-circle"></i>
           </div>
-          <div class="module-title-group">
-            <h2 class="module-title">Game Information</h2>
-            <p class="module-subtitle">Everything you need to know about this game</p>
-          </div>
+          <h2 class="section-title">Game Information</h2>
         </div>
 
-        <div class="info-grid">
+        <div class="info-content">
           
           <!-- 游戏描述 -->
-          <div class="info-card description-card">
+          <div class="info-block">
             <h3>About This Game</h3>
             <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
             
@@ -142,7 +139,7 @@ const seoData = {
           </div>
 
           <!-- 游戏特色 -->
-          <div class="info-card features-card">
+          <div class="info-block">
             <h3>Features</h3>
             <ul>
               <li>Interactive gameplay</li>
@@ -153,34 +150,50 @@ const seoData = {
           </div>
 
           <!-- 游戏说明 -->
-          <div class="info-card instructions-card">
+          <div class="info-block">
             <h3>How to Play</h3>
             <p>Use your mouse or keyboard to interact with the game.</p>
             <p>Follow the on-screen instructions to complete challenges.</p>
             <p>Take your time to understand each concept before moving forward.</p>
             <p>Don't hesitate to restart if you need more practice!</p>
           </div>
+        </div>
+      </section>
 
-          <!-- 开发者信息 -->
-          <div class="info-card developer-card">
-            <h3>Developer Information</h3>
-            <div class="developer-details">
-              <div class="detail-item">
-                <span class="detail-label">Publisher:</span>
-                <span class="detail-value">{getGameSource(game.url)}</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Platform:</span>
-                <span class="detail-value">HTML5</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Technology:</span>
-                <span class="detail-value">Web Browser</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Release:</span>
-                <span class="detail-value">2024</span>
-              </div>
+      <!-- 开发者信息区域 -->
+      <section class="developer-info-section">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h2 class="section-title">Developer Information</h2>
+        </div>
+
+        <div class="developer-content">
+          <div class="developer-details">
+            <div class="detail-item">
+              <span class="detail-label">Developer:</span>
+              <span class="detail-value">{getGameSource(game.url)} Team</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Source:</span>
+              <span class="detail-value">{getGameSource(game.url)}</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Type:</span>
+              <span class="detail-value">Free</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Platform:</span>
+              <span class="detail-value">HTML5</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Technology:</span>
+              <span class="detail-value">Web Browser</span>
+            </div>
+            <div class="detail-item">
+              <span class="detail-label">Release:</span>
+              <span class="detail-value">2024</span>
             </div>
           </div>
         </div>
@@ -189,14 +202,11 @@ const seoData = {
       <!-- 相关游戏推荐 -->
       {relatedGames.length > 0 && (
         <section class="related-games-section">
-          <div class="module-header">
-            <div class="module-icon related-icon">
+          <div class="section-header">
+            <div class="section-icon">
               <i class="fas fa-gamepad"></i>
             </div>
-            <div class="module-title-group">
-              <h2 class="module-title">More {game.category} Games</h2>
-              <p class="module-subtitle">Discover similar games you might enjoy</p>
-            </div>
+            <h2 class="section-title">More {game.category} Games</h2>
           </div>
           
           <div class="related-games-grid">
@@ -380,18 +390,24 @@ const seoData = {
   .share-btn { background: #10B981; }
   .share-btn:hover { background: #059669; }
 
-  /* 模块标题样式 - 参考数学游戏页面 */
-  .module-header {
+  /* 统一的区域标题样式 - 参考截图的矩形框设计 */
+  .section-header {
     display: flex;
     align-items: center;
     gap: 1rem;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
     margin-bottom: 1.5rem;
   }
 
-  .module-icon {
+  .section-icon {
     width: 48px;
     height: 48px;
     border-radius: 12px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -400,19 +416,7 @@ const seoData = {
     flex-shrink: 0;
   }
 
-  .info-icon {
-    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
-  }
-
-  .related-icon {
-    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-  }
-
-  .module-title-group {
-    flex: 1;
-  }
-
-  .module-title {
+  .section-title {
     font-size: 1.75rem;
     font-weight: 700;
     color: #1F2937;
@@ -421,64 +425,72 @@ const seoData = {
     line-height: 1.2;
   }
 
-  .module-subtitle {
-    font-size: 0.95rem;
-    color: #6B7280;
-    margin: 0.25rem 0 0 0;
-    line-height: 1.4;
-  }
-
   /* 游戏信息区域 */
   .game-info-section {
     margin-bottom: 2rem;
   }
 
-  .info-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-  }
-
-  .info-card {
+  .info-content {
     background: white;
     border-radius: 16px;
-    padding: 1.5rem;
+    padding: 2rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border: 1px solid #F3F4F6;
+    border: 1px solid #E5E7EB;
   }
 
-  .info-card h3 {
+  .info-block {
+    margin-bottom: 2rem;
+  }
+
+  .info-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-block h3 {
     font-size: 1.125rem;
     font-weight: 600;
     color: #1F2937;
     margin: 0 0 1rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #F3F4F6;
   }
 
-  .info-card p {
+  .info-block p {
     color: #4B5563;
     line-height: 1.6;
     margin-bottom: 0.75rem;
   }
 
-  .info-card p:last-child {
+  .info-block p:last-child {
     margin-bottom: 0;
   }
 
-  .info-card ul {
+  .info-block ul {
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .info-card li {
+  .info-block li {
     padding: 0.5rem 0;
     color: #4B5563;
+    position: relative;
+    padding-left: 1.5rem;
   }
 
-  .game-details, .developer-details {
+  .info-block li:before {
+    content: "•";
+    color: #6366F1;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .game-details {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    margin-top: 1rem;
   }
 
   .detail-item {
@@ -503,6 +515,25 @@ const seoData = {
     font-weight: 500;
   }
 
+  /* 开发者信息区域 */
+  .developer-info-section {
+    margin-bottom: 2rem;
+  }
+
+  .developer-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
+  }
+
+  .developer-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
   /* 相关游戏推荐 */
   .related-games-section {
     margin-bottom: 2rem;
@@ -512,11 +543,16 @@ const seoData = {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
   }
 
   /* 游戏卡片样式 */
   .game-card {
-    background: white;
+    background: #F8FAFC;
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
@@ -621,8 +657,12 @@ const seoData = {
       font-size: 2.5rem;
     }
     
-    .info-grid {
-      grid-template-columns: 1fr;
+    .section-header {
+      padding: 1.25rem 1.5rem;
+    }
+    
+    .info-content, .developer-content, .related-games-grid {
+      padding: 1.5rem;
     }
   }
 
@@ -657,9 +697,24 @@ const seoData = {
       height: 400px;
     }
     
+    .section-header {
+      padding: 1rem;
+    }
+    
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
     .related-games-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
+      padding: 1rem;
     }
   }
 
