@@ -19,361 +19,292 @@ try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
   allGamesData = JSON.parse(fileContent) as GameData;
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.error('Error reading games data:', error);
 }
 
-// 模拟游戏添加时间（实际项目中应该从数据库获取）
-const gameAddedDates = {
-  'little-alchemy-2': 0, // 今天
-  'grid-construction': 0, // 今天
-  'learn-gdscript': 1, // 昨天
-  'lightbot': 1, // 昨天
-  '2048': 2, // 2天前
-  'make-ten': 3, // 3天前
-  'factor-crafter': 4, // 4天前
-  'calculator-game': 5, // 5天前
-  'algebraic-reasoning': 6, // 6天前
-  'make-a-number': 8, // 1周前
-  'math-duck': 10, // 1周多前
-  'sudoku-classic': 15, // 2周前
-};
+// 获取所有游戏并按时间分类
+const allGames = Object.values(allGamesData).flat();
 
-// 获取所有游戏并添加时间信息
-const allGames = Object.entries(allGamesData).map(([id, game]: [string, Game]) => ({
-  id: id,
-  title: game.title,
-  description: game.description,
-  image: game.screenshots && game.screenshots.length > 0 
-    ? `/images/games/details/${game.screenshots[0]}` 
-    : `/images/games/${id}.svg`,
-  url: `/games/${id}`,
-  category: game.category,
-  categoryName: game.categoryName,
-  ageRange: game.ageRange,
-  difficulty: game.difficulty,
-  playCount: game.playCount || Math.floor(Math.random() * 50000) + 1000,
-  daysAgo: gameAddedDates[id] || Math.floor(Math.random() * 30) + 7
-}));
+// 模拟时间分类（实际项目中应该基于真实的添加时间）
+const todayGames = allGames.slice(0, 4);
+const thisWeekGames = allGames.slice(4, 8);
+const thisMonthGames = allGames.slice(8, 12);
+const recentlyUpdatedGames = allGames.slice(12, 16);
 
-// 按时间分类游戏
-const todayGames = allGames.filter(game => game.daysAgo === 0).slice(0, 4);
-const thisWeekGames = allGames.filter(game => game.daysAgo >= 1 && game.daysAgo <= 7).slice(0, 8);
-const thisMonthGames = allGames.filter(game => game.daysAgo >= 8 && game.daysAgo <= 30).slice(0, 8);
-const recentlyUpdatedGames = allGames.filter(game => game.daysAgo >= 1 && game.daysAgo <= 14).slice(0, 6);
+// 格式化人气值
+function formatPopularity(popularity: number): string {
+  if (popularity >= 1000000) {
+    return `${(popularity / 1000000).toFixed(1)}M`;
+  } else if (popularity >= 1000) {
+    return `${(popularity / 1000).toFixed(1)}K`;
+  }
+  return popularity.toString();
+}
 
-// 格式化时间显示
-const formatTimeAgo = (daysAgo: number) => {
+// 获取人气图标
+function getPopularityIcon(popularity: number): string {
+  if (popularity > 5000) return '🔥';
+  if (popularity > 1000) return '⭐';
+  return '';
+}
+
+// 获取时间标签
+function getTimeLabel(daysAgo: number): string {
+  if (daysAgo === 0) return 'today';
+  if (daysAgo === 1) return 'yesterday';
+  if (daysAgo <= 7) return 'few-days-ago';
+  return 'weeks-ago';
+}
+
+// 获取时间显示文本
+function getTimeText(daysAgo: number): string {
   if (daysAgo === 0) return 'Today';
   if (daysAgo === 1) return 'Yesterday';
-  if (daysAgo <= 7) return `${daysAgo} days ago`;
-  if (daysAgo <= 14) return '1 week ago';
-  if (daysAgo <= 30) return `${Math.floor(daysAgo / 7)} weeks ago`;
-  return '1 month ago';
-};
+  if (daysAgo <= 7) return 'Few days ago';
+  return 'Weeks ago';
+}
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout seoData={seoData}>
   <!-- 引入统一的游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
-  <main class="main-content">
-    <div class="content-wrapper">
-
-      <!-- 1. 页面顶部区域 -->
-      <section class="page-header">
-        <div class="header-content">
-          <div class="category-icon-container">
-            <div class="category-icon new-games">
-              <div class="icon-background">
-                ⭐
+  <main class="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+      
+      <!-- 页面顶部区域 -->
+      <div class="page-header">
+        <div class="flex items-center gap-8">
+          <!-- 图标区域 -->
+          <div class="icon-container">
+            <i class="fas fa-star"></i>
+          </div>
+          
+          <!-- 文字内容 -->
+          <div class="flex-1">
+            <h1 class="page-title">New Educational Games</h1>
+            <p class="page-description">
+              Discover the latest educational games added to our platform. Fresh learning experiences 
+              across math, science, coding, language arts, and puzzle solving for students of all ages.
+            </p>
+            <div class="page-stats">
+              <div class="stat-item">
+                <i class="fas fa-plus-circle"></i>
+                <span>Latest Additions</span>
+              </div>
+              <div class="stat-item">
+                <i class="fas fa-gift"></i>
+                <span>100% Free</span>
               </div>
             </div>
           </div>
-          
-          <div class="header-text">
-            <h1 class="page-title">New Games</h1>
-            <p class="page-description">
-              Discover the latest educational games added to our collection! Fresh learning experiences and innovative gameplay are constantly being added to keep your educational journey exciting and engaging. Be the first to explore these brand new games.
-            </p>
+        </div>
+      </div>
+
+      <!-- 今日新增游戏模块 -->
+      <section class="module-section">
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fas fa-calendar-day"></i>
           </div>
+          <div>
+            <h2 class="module-title">Today's New Games</h2>
+            <p class="module-subtitle">Fresh games added today</p>
+          </div>
+        </div>
+        
+        <div class="games-grid">
+          {todayGames.map((game, index) => (
+            <a href={`/games/${game.slug}`} class="game-card new-theme">
+              <div class="game-image-container">
+                <img 
+                  src={game.image || '/images/placeholder-game.jpg'} 
+                  alt={game.title}
+                  class="game-image"
+                  loading="lazy"
+                />
+                <div class="game-overlay">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                    <span>Play Now</span>
+                  </div>
+                </div>
+                <div class={`played-badge ${getTimeLabel(0)}`}>
+                  {getTimeText(0)}
+                </div>
+                <div class="popularity-badge">
+                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
+                <div class="game-tags">
+                  <span class={`category-tag ${game.category.toLowerCase()}`}>
+                    {game.category}
+                  </span>
+                  <span class="feature-tag new">NEW</span>
+                </div>
+              </div>
+            </a>
+          ))}
         </div>
       </section>
 
-      <!-- 2. 今日新增游戏模块 -->
-      {todayGames.length > 0 && (
-        <section class="game-module today-module">
-          <div class="module-header">
-            <div class="module-icon today-icon">
-              <i class="fas fa-calendar-day"></i>
-            </div>
-            <div class="module-title-group">
-              <h2 class="module-title">Today's New Games</h2>
-              <p class="module-subtitle">Brand new games added today - be the first to play!</p>
-            </div>
+      <!-- 本周新增游戏模块 -->
+      <section class="module-section">
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fas fa-calendar-week"></i>
           </div>
-          
-          <div class="games-grid">
-            {todayGames.map((game, index) => {
-              const popularity = game.playCount;
-              const formatPopularity = (num) => {
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              return (
-                <div class="game-card new-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <div class="played-badge today">Today</div>
-                      <div class="popularity-badge">⭐ {formatPopularity(popularity)}</div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
-                      <span class={`category-tag ${game.category.toLowerCase()}`}>{game.category}</span>
-                      <span class="feature-tag new">NEW</span>
-                    </div>
+          <div>
+            <h2 class="module-title">This Week's New Games</h2>
+            <p class="module-subtitle">Games added in the past 7 days</p>
+          </div>
+        </div>
+        
+        <div class="games-grid">
+          {thisWeekGames.map((game, index) => (
+            <a href={`/games/${game.slug}`} class="game-card new-theme">
+              <div class="game-image-container">
+                <img 
+                  src={game.image || '/images/placeholder-game.jpg'} 
+                  alt={game.title}
+                  class="game-image"
+                  loading="lazy"
+                />
+                <div class="game-overlay">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                    <span>Play Now</span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
+                <div class={`played-badge ${getTimeLabel(index + 1)}`}>
+                  {getTimeText(index + 1)}
+                </div>
+                <div class="popularity-badge">
+                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
+                <div class="game-tags">
+                  <span class={`category-tag ${game.category.toLowerCase()}`}>
+                    {game.category}
+                  </span>
+                  <span class="feature-tag featured">FEATURED</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
 
-      <!-- 3. 本周新增游戏模块 -->
-      {thisWeekGames.length > 0 && (
-        <section class="game-module week-module">
-          <div class="module-header">
-            <div class="module-icon week-icon">
-              <i class="fas fa-calendar-week"></i>
-            </div>
-            <div class="module-title-group">
-              <h2 class="module-title">This Week's New Games</h2>
-              <p class="module-subtitle">Fresh games added within the past week</p>
-            </div>
+      <!-- 本月新增游戏模块 -->
+      <section class="module-section">
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fas fa-calendar-alt"></i>
           </div>
-          
-          <div class="games-grid">
-            {thisWeekGames.map((game, index) => {
-              const popularity = game.playCount;
-              const formatPopularity = (num) => {
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              const timeAgo = formatTimeAgo(game.daysAgo);
-              const badgeClass = game.daysAgo === 1 ? 'yesterday' : 'few-days-ago';
-              
-              return (
-                <div class="game-card new-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <div class={`played-badge ${badgeClass}`}>{timeAgo}</div>
-                      <div class="popularity-badge">⭐ {formatPopularity(popularity)}</div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
-                      <span class={`category-tag ${game.category.toLowerCase()}`}>{game.category}</span>
-                      <span class="feature-tag new">NEW</span>
-                    </div>
+          <div>
+            <h2 class="module-title">This Month's New Games</h2>
+            <p class="module-subtitle">Games added in the past 30 days</p>
+          </div>
+        </div>
+        
+        <div class="games-grid">
+          {thisMonthGames.map((game, index) => (
+            <a href={`/games/${game.slug}`} class="game-card new-theme">
+              <div class="game-image-container">
+                <img 
+                  src={game.image || '/images/placeholder-game.jpg'} 
+                  alt={game.title}
+                  class="game-image"
+                  loading="lazy"
+                />
+                <div class="game-overlay">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                    <span>Play Now</span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
+                <div class={`played-badge ${getTimeLabel(index + 8)}`}>
+                  {getTimeText(index + 8)}
+                </div>
+                <div class="popularity-badge">
+                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
+                <div class="game-tags">
+                  <span class={`category-tag ${game.category.toLowerCase()}`}>
+                    {game.category}
+                  </span>
+                  <span class="feature-tag updated">UPDATED</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
 
-      <!-- 4. 本月新增游戏模块 -->
-      {thisMonthGames.length > 0 && (
-        <section class="game-module month-module">
-          <div class="module-header">
-            <div class="module-icon month-icon">
-              <i class="fas fa-calendar-alt"></i>
-            </div>
-            <div class="module-title-group">
-              <h2 class="module-title">This Month's New Games</h2>
-              <p class="module-subtitle">Recent additions from the past month</p>
-            </div>
+      <!-- 最近更新游戏模块 -->
+      <section class="module-section">
+        <div class="module-header">
+          <div class="module-icon">
+            <i class="fas fa-sync-alt"></i>
           </div>
-          
-          <div class="games-grid">
-            {thisMonthGames.map((game, index) => {
-              const popularity = game.playCount;
-              const formatPopularity = (num) => {
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              const timeAgo = formatTimeAgo(game.daysAgo);
-              
-              return (
-                <div class="game-card new-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <div class="played-badge weeks-ago">{timeAgo}</div>
-                      <div class="popularity-badge">⭐ {formatPopularity(popularity)}</div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
-                      <span class={`category-tag ${game.category.toLowerCase()}`}>{game.category}</span>
-                      <span class="feature-tag featured">FEATURED</span>
-                    </div>
+          <div>
+            <h2 class="module-title">Recently Updated Games</h2>
+            <p class="module-subtitle">Games with recent improvements and updates</p>
+          </div>
+        </div>
+        
+        <div class="games-grid">
+          {recentlyUpdatedGames.map((game, index) => (
+            <a href={`/games/${game.slug}`} class="game-card new-theme">
+              <div class="game-image-container">
+                <img 
+                  src={game.image || '/images/placeholder-game.jpg'} 
+                  alt={game.title}
+                  class="game-image"
+                  loading="lazy"
+                />
+                <div class="game-overlay">
+                  <div class="play-button">
+                    <i class="fas fa-play"></i>
+                    <span>Play Now</span>
                   </div>
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
-
-      <!-- 5. 最近更新游戏模块 -->
-      {recentlyUpdatedGames.length > 0 && (
-        <section class="game-module updated-module">
-          <div class="module-header">
-            <div class="module-icon updated-icon">
-              <i class="fas fa-sync-alt"></i>
-            </div>
-            <div class="module-title-group">
-              <h2 class="module-title">Recently Updated Games</h2>
-              <p class="module-subtitle">Games with recent improvements and new features</p>
-            </div>
-          </div>
-          
-          <div class="games-grid">
-            {recentlyUpdatedGames.map((game, index) => {
-              const popularity = game.playCount;
-              const formatPopularity = (num) => {
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              const timeAgo = formatTimeAgo(game.daysAgo);
-              const badgeClass = game.daysAgo === 1 ? 'yesterday' : 'few-days-ago';
-              
-              return (
-                <div class="game-card new-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <div class={`played-badge ${badgeClass}`}>{timeAgo}</div>
-                      <div class="popularity-badge">⭐ {formatPopularity(popularity)}</div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
-                      <span class={`category-tag ${game.category.toLowerCase()}`}>{game.category}</span>
-                      <span class="feature-tag updated">UPDATED</span>
-                    </div>
-                  </div>
+                <div class={`played-badge ${getTimeLabel(index + 15)}`}>
+                  {getTimeText(index + 15)}
                 </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
+                <div class="popularity-badge">
+                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
+                <div class="game-tags">
+                  <span class={`category-tag ${game.category.toLowerCase()}`}>
+                    {game.category}
+                  </span>
+                  <span class="feature-tag updated">UPDATED</span>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
 
     </div>
   </main>
-
-  <!-- 游戏卡片管理功能的JavaScript -->
-  <script is:inline>
-    // 游戏卡片管理类
-    class GameCardManager {
-      constructor() {
-        this.initializeCards();
-      }
-
-      // 记录游戏播放
-      recordGamePlay(gameId) {
-        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
-        history[gameId] = Date.now();
-        localStorage.setItem('gameHistory', JSON.stringify(history));
-        
-        // 更新人气值
-        const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
-        popularity[gameId] = (popularity[gameId] || 0) + 1;
-        localStorage.setItem('gamePopularity', JSON.stringify(popularity));
-      }
-
-      // 初始化卡片
-      initializeCards() {
-        const cards = document.querySelectorAll('.game-card');
-        cards.forEach(card => {
-          card.addEventListener('click', (e) => {
-            const gameId = card.dataset.gameId;
-            if (gameId) {
-              this.recordGamePlay(gameId);
-            }
-          });
-        });
-      }
-    }
-
-    // 页面加载完成后的初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('新游戏页面加载完成，游戏卡片管理系统已启用');
-      window.gameCardManager = new GameCardManager();
-      
-      // 添加淡入动画
-      const cards = document.querySelectorAll('.animate-fadeInUp');
-      cards.forEach((card, index) => {
-        setTimeout(() => {
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0)';
-        }, index * 100);
-      });
-    });
-  </script>
 </BaseLayout>
 
 <style>
-  /* 主要内容区域 */
-  .main-content {
-    width: 100%;
-    background: #FEFCFB;
-    min-height: 100vh;
-  }
-
-  .content-wrapper {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  /* 页面头部 */
+  /* 页面特定样式 - 绿色主题 */
   .page-header {
-    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 50%, rgba(34, 197, 94, 0.08) 100%);
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
     border-radius: 20px;
     padding: 2rem;
     margin-bottom: 2.5rem;
@@ -395,79 +326,72 @@ const formatTimeAgo = (daysAgo: number) => {
     background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.3) 50%, transparent 100%);
   }
 
-  .header-content {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-  }
-
-  .category-icon-container {
-    flex-shrink: 0;
-  }
-
-  .category-icon {
+  .icon-container {
     width: 72px;
     height: 72px;
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 50%, #15803D 100%);
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 
-      0 8px 16px rgba(34, 197, 94, 0.2),
-      0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  .category-icon.new-games {
-    background: linear-gradient(135deg, #22C55E 0%, #16A34A 50%, #15803D 100%);
-  }
-
-  .category-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
-  }
-
-  .icon-background {
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: white;
-    position: relative;
-    z-index: 1;
-    animation: starTwinkle 2s ease-in-out infinite;
+    box-shadow: 
+      0 8px 24px rgba(34, 197, 94, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
 
-  .header-text {
-    flex: 1;
+  .icon-container:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 32px rgba(34, 197, 94, 0.4),
+      0 6px 16px rgba(0, 0, 0, 0.15);
   }
 
   .page-title {
-    font-family: 'Space Grotesk', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 1rem;
     background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.75rem;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   .page-description {
     font-size: 1.125rem;
     color: #64748B;
     line-height: 1.6;
-    margin-bottom: 0;
+    margin-bottom: 1.5rem;
   }
 
-  /* 模块头部样式 */
-  .module-header {
+  .page-stats {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .stat-item {
     display: flex;
     align-items: center;
+    gap: 0.5rem;
+    color: #22C55E;
+    font-weight: 600;
+  }
+
+  .stat-item i {
+    font-size: 1.125rem;
+  }
+
+  /* 模块样式 */
+  .module-section {
+    margin-bottom: 3rem;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: flex-start;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
@@ -480,37 +404,15 @@ const formatTimeAgo = (daysAgo: number) => {
   .module-icon {
     width: 48px;
     height: 48px;
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
     color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
     flex-shrink: 0;
-  }
-
-  .today-icon {
-    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
-  }
-
-  .week-icon {
-    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-  }
-
-  .month-icon {
-    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-  }
-
-  .updated-icon {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  }
-
-  .module-title-group {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
   }
 
   .module-title {
@@ -524,83 +426,44 @@ const formatTimeAgo = (daysAgo: number) => {
   .module-subtitle {
     font-size: 0.9rem;
     color: #6B7280;
-    margin: 0;
   }
 
-  /* 游戏模块 */
-  .game-module {
-    margin-bottom: 3rem;
-  }
-
-  /* 游戏网格布局 */
+  /* 游戏网格 - 一行显示4个游戏 */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-  }
-
-  /* 新游戏主题样式 */
-  .game-card.new-theme {
-    border: 2px solid rgba(34, 197, 94, 0.2);
-    background: linear-gradient(135deg, #FEFFFE 0%, #F0FDF4 100%);
-  }
-
-  .game-card.new-theme:hover {
-    border-color: #22C55E;
-    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
-  }
-
-  .game-card.new-theme:hover .game-image::after {
-    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(34, 197, 94, 0.05) 100%);
-  }
-
-  /* 动画效果 */
-  .animate-fadeInUp {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
-  }
-
-  @keyframes starTwinkle {
-    0%, 100% {
-      opacity: 1;
-      transform: scale(1);
-    }
-    50% {
-      opacity: 0.8;
-      transform: scale(1.1);
-    }
+    gap: 2rem;
+    margin-top: 2rem;
   }
 
   /* 响应式设计 */
   @media (max-width: 768px) {
-    .content-wrapper {
-      padding: 1rem;
+    .games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
     }
-
+    
     .page-header {
       padding: 1.5rem;
     }
-
-    .header-content {
+    
+    .page-header .flex {
       flex-direction: column;
       text-align: center;
-      gap: 1rem;
+      gap: 1.5rem;
     }
-
+    
     .page-title {
       font-size: 2rem;
     }
-
+    
+    .page-stats {
+      justify-content: center;
+    }
+    
     .module-header {
       flex-direction: column;
       text-align: center;
-      gap: 1rem;
-      padding: 1rem;
-    }
-
-    .games-grid {
-      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
   }
@@ -608,7 +471,25 @@ const formatTimeAgo = (daysAgo: number) => {
   @media (min-width: 769px) and (max-width: 1024px) {
     .games-grid {
       grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
+  }
+
+  @media (min-width: 1024px) {
+    .games-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  /* 新游戏主题样式 */
+  .game-card.new-theme {
+    border-color: rgba(34, 197, 94, 0.2);
+  }
+
+  .game-card.new-theme:hover {
+    border-color: #22C55E;
+    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
   }
 </style> 
 
