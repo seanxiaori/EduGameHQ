@@ -22,26 +22,49 @@ try {
   console.warn('Unable to read games data file');
 }
 
-// 智能图片路径处理函数
+// 智能图片路径处理函数 - 支持多种游戏来源
 function getGameImagePath(game: Game, gameId: string): string {
-  // 优先使用screenshots
+  // 1. 优先使用screenshots（爬取游戏的截图）
   if (game.screenshots && game.screenshots.length > 0) {
     const screenshot = game.screenshots[0];
-    // 检查是否是默认占位图
-    if (screenshot !== 'default-intro.jpg') {
+    // 检查是否是有效的截图文件
+    if (screenshot && screenshot !== 'default-intro.jpg' && screenshot !== 'placeholder-game.jpg') {
       return `/images/games/details/${screenshot}`;
     }
   }
   
-  // 其次使用images
+  // 2. 其次使用images（游戏封面图）
   if (game.images && game.images.length > 0) {
     const image = game.images[0];
-    if (image !== 'default-intro.jpg') {
+    if (image && image !== 'default-intro.jpg' && image !== 'placeholder-game.jpg') {
       return `/images/games/${image}`;
     }
   }
   
-  // 最后使用占位图
+  // 3. 检查是否是GitHub开源游戏（为未来做准备）
+  if (game.source === 'github' && game.repository) {
+    // GitHub游戏可能有README中的图片或者仓库封面
+    return `/images/games/github/${gameId}.jpg`;
+  }
+  
+  // 4. 根据游戏分类使用分类占位图
+  const categoryPlaceholders = {
+    'math': '/images/placeholders/math-placeholder.jpg',
+    'science': '/images/placeholders/science-placeholder.jpg',
+    'coding': '/images/placeholders/coding-placeholder.jpg',
+    'language': '/images/placeholders/language-placeholder.jpg',
+    'puzzle': '/images/placeholders/puzzle-placeholder.jpg',
+    'sports': '/images/placeholders/sports-placeholder.jpg',
+    'art': '/images/placeholders/art-placeholder.jpg',
+    'geography': '/images/placeholders/geography-placeholder.jpg'
+  };
+  
+  // 5. 使用分类特定的占位图
+  if (game.category && categoryPlaceholders[game.category]) {
+    return categoryPlaceholders[game.category];
+  }
+  
+  // 6. 最后使用通用占位图
   return `/images/placeholder-game.jpg`;
 }
 
@@ -161,7 +184,7 @@ const recentGames = Object.entries(allGamesData)
             const popularity = game.playCount || 1500;
             
             return (
-              <div class={`game-card recent-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+              <div class={`game-card recent-theme crawled-game animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
@@ -176,7 +199,10 @@ const recentGames = Object.entries(allGamesData)
                     <div class="popularity-badge">
                       {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
                     </div>
-                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                    <div class="source-badge crawled">
+                      <i class="fas fa-globe"></i> Web Game
+                    </div>
+                    <button class="play-button continue-btn" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Continue</span>
                     </button>
@@ -722,44 +748,46 @@ const recentGames = Object.entries(allGamesData)
 
   /* 学习提示区域 */
   .learning-tips {
-    margin-bottom: 3rem;
+    margin-top: 3rem;
   }
 
   .tips-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
+    margin-top: 2rem;
   }
 
   .tip-card {
     background: white;
+    border-radius: 16px;
     padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     border: 1px solid #E5E7EB;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
     transition: all 0.3s ease;
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
   }
 
   .tip-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    border-color: rgba(14, 165, 233, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    border-color: #0EA5E9;
   }
 
   .tip-icon {
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border-radius: 12px;
     background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1rem;
+    font-size: 1.25rem;
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
   }
 
   .tip-content {
@@ -767,6 +795,7 @@ const recentGames = Object.entries(allGamesData)
   }
 
   .tip-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.125rem;
     font-weight: 700;
     color: #1F2937;
@@ -775,31 +804,20 @@ const recentGames = Object.entries(allGamesData)
 
   .tip-description {
     color: #6B7280;
+    line-height: 1.6;
     font-size: 0.9rem;
-    line-height: 1.5;
   }
 
-  /* 动画效果 */
-  .animate-fadeInUp {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
-  }
-
-  /* 响应式设计 */
+  /* 响应式设计优化 */
   @media (max-width: 768px) {
     .content-wrapper {
       padding: 1rem;
     }
 
-    .page-header {
-      padding: 1.5rem;
-    }
-
     .header-content {
       flex-direction: column;
       text-align: center;
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .page-title {
@@ -807,13 +825,11 @@ const recentGames = Object.entries(allGamesData)
     }
 
     .header-stats {
-      flex-direction: row;
       gap: 1rem;
     }
 
     .stat-item {
       padding: 0.75rem;
-      flex: 1;
     }
 
     .action-buttons {
@@ -824,27 +840,52 @@ const recentGames = Object.entries(allGamesData)
     .action-btn {
       width: 100%;
       max-width: 200px;
-      justify-content: center;
     }
 
     .tips-container {
       grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
-    .section-title {
-      font-size: 1.5rem;
+    .tip-card {
+      padding: 1rem;
+    }
+
+    .tip-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
     }
   }
 
-  @media (max-width: 640px) {
+  @media (min-width: 769px) and (max-width: 1024px) {
     .header-stats {
-      flex-direction: column;
-      gap: 0.5rem;
+      gap: 1.5rem;
     }
 
-    .games-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    .tips-container {
+      grid-template-columns: repeat(2, 1fr);
     }
+  }
+
+  /* 动画增强 */
+  .animate-fadeInUp {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* 加载状态 */
+  .loading-placeholder {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+  }
+
+  @keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
   }
 </style> 
+
 

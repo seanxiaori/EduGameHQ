@@ -564,3 +564,139 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
+
+/* 游戏来源标识 */
+.source-badge {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-card:hover .source-badge {
+  opacity: 1;
+}
+
+/* 不同来源的标识颜色 */
+.source-badge.crawled {
+  background: rgba(34, 197, 94, 0.9);
+  color: white;
+}
+
+.source-badge.github {
+  background: rgba(36, 41, 47, 0.9);
+  color: white;
+}
+
+.source-badge.curated {
+  background: rgba(168, 85, 247, 0.9);
+  color: white;
+}
+
+/* GitHub开源游戏特殊样式 */
+.game-card.github-game {
+  border-left: 4px solid #24292f;
+}
+
+.game-card.github-game:hover {
+  border-left-color: #0969da;
+  box-shadow: 0 20px 40px rgba(9, 105, 218, 0.15);
+}
+
+/* 爬取游戏特殊样式 */
+.game-card.crawled-game {
+  border-left: 4px solid #22c55e;
+}
+
+.game-card.crawled-game:hover {
+  border-left-color: #16a34a;
+  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+}
+
+/* 精选游戏特殊样式 */
+.game-card.curated-game {
+  border-left: 4px solid #a855f7;
+}
+
+.game-card.curated-game:hover {
+  border-left-color: #9333ea;
+  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
+}
+
+/* 图片加载失败处理 */
+.game-image {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  position: relative;
+}
+
+.game-image::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 48px;
+  height: 48px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%236b7280' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") no-repeat center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.game-image[src=""], .game-image[src*="placeholder"] {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+}
+
+.game-image[src=""]:before, .game-image[src*="placeholder"]:before {
+  opacity: 0.3;
+}
+
+/* 最近游戏页面特殊主题 */
+.game-card.recent-theme {
+  border: 2px solid #e0f2fe;
+}
+
+.game-card.recent-theme:hover {
+  border-color: #0ea5e9;
+  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
+}
+
+/* 继续游戏按钮特殊样式 */
+.play-button.continue-btn {
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+  color: white;
+}
+
+.play-button.continue-btn:hover {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  transform: scale(1.08);
+}
+
+/* 游戏统计信息 */
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.stat i {
+  font-size: 0.75rem;
+  opacity: 0.7;
+}
