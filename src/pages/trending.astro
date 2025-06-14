@@ -60,6 +60,11 @@ const trendingGames = Object.entries(allGamesData)
       <!-- 页面头部 -->
       <section class="page-header">
         <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon trending">
+              <i class="fas fa-fire"></i>
+            </div>
+          </div>
           <div class="header-text">
             <h1 class="page-title">Trending Games</h1>
             <p class="page-description">Discover the hottest educational games right now</p>
@@ -100,10 +105,8 @@ const trendingGames = Object.entries(allGamesData)
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
-                    <div class="ranking-badge">#{game.ranking}</div>
-                    <div class="popularity-badge">
-                      🔥 {formatPopularity(game.popularity)}
-                    </div>
+                    <div class="played-badge">Today</div>
+                    <div class="popularity-badge">🔥 {formatPopularity(game.popularity)}</div>
                     <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>
@@ -114,7 +117,7 @@ const trendingGames = Object.entries(allGamesData)
                   <h3 class="game-title">{game.title}</h3>
                   <div class="game-tags">
                     <span class={`category-tag ${game.category.toLowerCase()}`}>{game.category}</span>
-                    {game.trendingTag && <span class={`feature-tag ${game.trendingTag.toLowerCase()}`}>{game.trendingTag}</span>}
+                    <span class={`feature-tag ${trendingBadge.toLowerCase()}`}>{trendingBadge}</span>
                   </div>
                 </div>
               </div>
@@ -388,6 +391,9 @@ const trendingGames = Object.entries(allGamesData)
 
   .module-title-group {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .module-title {
@@ -448,21 +454,11 @@ const trendingGames = Object.entries(allGamesData)
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
     font-size: 0.875rem;
+    color: white;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3);
     flex-shrink: 0;
-  }
-
-  .trend-icon.math {
-    background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
-  }
-
-  .trend-icon.science {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  }
-
-  .trend-icon.coding {
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
   }
 
   .trend-content {
@@ -470,7 +466,6 @@ const trendingGames = Object.entries(allGamesData)
     display: flex;
     flex-direction: column;
     justify-content: center;
-    min-height: 32px;
   }
 
   .trend-title {
