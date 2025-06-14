@@ -244,7 +244,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
                     alt={relatedGame.title} 
                     class="game-image"
                     loading="lazy"
-                    onerror="this.src='/images/games/placeholder.jpg'"
+                    onerror="this.onerror=null; this.src='/images/placeholder-game.svg'"
                   />
                   <div class="game-overlay">
                     <div class="popularity-badge">
