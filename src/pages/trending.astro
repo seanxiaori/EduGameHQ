@@ -60,27 +60,9 @@ const trendingGames = Object.entries(allGamesData)
       <!-- 页面头部 -->
       <section class="page-header">
         <div class="header-content">
-          <div class="header-icon">
-            <div class="section-icon trending">
-              <i class="fas fa-fire"></i>
-            </div>
-          </div>
           <div class="header-text">
             <h1 class="page-title">Trending Games</h1>
-            <p class="page-description">
-              Discover the hottest educational games trending right now. These are the most popular games loved by students worldwide.
-            </p>
-          </div>
-        </div>
-        
-        <div class="header-stats">
-          <div class="stat-item">
-            <div class="stat-number">🔥</div>
-            <div class="stat-label">Hot Now</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Free</div>
+            <p class="page-description">Discover the hottest educational games right now</p>
           </div>
         </div>
       </section>
@@ -131,9 +113,8 @@ const trendingGames = Object.entries(allGamesData)
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
                   <div class="game-tags">
-                    <span class={`category-tag ${game.category}`}>{game.categoryName}</span>
-                    <span class="game-tag age">Ages {game.ageRange}</span>
-                    <span class={`feature-tag ${trendingBadge.toLowerCase()}`}>{trendingBadge}</span>
+                    <span class={`category-tag ${game.category.toLowerCase()}`}>{game.category}</span>
+                    {game.trendingTag && <span class={`feature-tag ${game.trendingTag.toLowerCase()}`}>{game.trendingTag}</span>}
                   </div>
                 </div>
               </div>
@@ -486,19 +467,25 @@ const trendingGames = Object.entries(allGamesData)
 
   .trend-content {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 32px;
   }
 
   .trend-title {
-    font-size: 1.125rem;
-    font-weight: 700;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #1F2937;
-    margin-bottom: 0.5rem;
+    margin: 0;
+    line-height: 1.2;
   }
 
   .trend-description {
+    font-size: 0.8rem;
     color: #6B7280;
-    font-size: 0.9rem;
-    line-height: 1.5;
+    margin: 0.25rem 0 0 0;
+    line-height: 1.3;
   }
 
   /* 动画效果 */
