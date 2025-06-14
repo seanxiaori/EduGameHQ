@@ -289,23 +289,22 @@ const pageDescription = 'Search through our collection of 240+ educational games
       const gameUrl = `/games/${game.slug}`;
       
       return `
-        <div class="game-card">
+        <div class="game-card" onclick="window.location.href='${gameUrl}'">
           <div class="game-image-container">
             <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy">
             <div class="game-overlay">
-              <a href="${gameUrl}" class="play-button">
+              <div class="play-button">
                 <i class="fas fa-play"></i>
                 Play Now
-              </a>
+              </div>
             </div>
           </div>
           <div class="game-info">
             <h3 class="game-title">${game.title}</h3>
-            <p class="game-description">${game.description}</p>
             <div class="game-tags">
               <span class="category-tag" data-category="${game.category}">${game.categoryName}</span>
-              <span class="age-tag">${game.ageRange}</span>
-              <span class="difficulty-tag" data-difficulty="${game.difficulty}">${game.difficulty}</span>
+              ${game.ageRange ? `<span class="age-tag">${game.ageRange}</span>` : ''}
+              ${game.difficulty ? `<span class="difficulty-tag" data-difficulty="${game.difficulty.toLowerCase()}">${game.difficulty}</span>` : ''}
             </div>
           </div>
         </div>
@@ -358,8 +357,8 @@ const pageDescription = 'Search through our collection of 240+ educational games
   /* 游戏网格样式 */
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
     margin-top: 2rem;
   }
 
@@ -367,20 +366,21 @@ const pageDescription = 'Search through our collection of 240+ educational games
     background: white;
     border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border: 1px solid #E5E7EB;
-    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
   }
 
   .game-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
   }
 
   .game-image-container {
     position: relative;
     width: 100%;
-    height: 200px;
+    height: 180px;
     overflow: hidden;
   }
 
@@ -401,7 +401,7 @@ const pageDescription = 'Search through our collection of 240+ educational games
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: rgba(0, 0, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -418,35 +418,40 @@ const pageDescription = 'Search through our collection of 240+ educational games
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    background: #F59E0B;
-    color: white;
+    background: white;
+    color: #2563EB;
     text-decoration: none;
     border-radius: 25px;
     font-weight: 600;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
   .play-button:hover {
-    background: #D97706;
+    background: #F0F9FF;
     transform: scale(1.05);
   }
 
   .game-info {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .game-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 700;
     color: #1F2937;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.3;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .game-description {
     color: #6B7280;
-    font-size: 0.9rem;
+    font-size: 0.875rem;
     line-height: 1.5;
     margin: 0 0 1rem 0;
     display: -webkit-box;
@@ -653,41 +658,44 @@ const pageDescription = 'Search through our collection of 240+ educational games
   }
 
   /* 响应式设计 */
+  @media (max-width: 1200px) {
+    .games-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+  }
+
   @media (max-width: 768px) {
-    .content-wrapper {
+    .games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    
+    .game-image-container {
+      height: 150px;
+    }
+    
+    .game-info {
       padding: 1rem;
     }
-
-    .search-title {
-      font-size: 2rem;
+    
+    .game-title {
+      font-size: 1rem;
     }
-
-    .search-prompt-title {
-      font-size: 2rem;
-    }
-
-    .games-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .popular-tags, .suggestion-tags {
-      flex-direction: column;
-      align-items: center;
+    
+    .game-description {
+      font-size: 0.8rem;
     }
   }
 
   @media (max-width: 480px) {
-    .search-title {
-      font-size: 1.75rem;
-    }
-
-    .search-prompt-title {
-      font-size: 1.75rem;
-    }
-
     .games-grid {
       grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    
+    .content-wrapper {
+      padding: 1rem;
     }
   }
 </style> 
