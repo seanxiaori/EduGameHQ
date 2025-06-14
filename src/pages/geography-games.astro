@@ -74,129 +74,155 @@ function getGameImagePath(game) {
       </header>
 
       <!-- 2. 特色游戏模块 -->
-      <section class="game-module">
-        <div class="module-header">
-          <div class="module-icon featured-icon">
-            <i class="fas fa-star"></i>
+      {gamesByDifficulty.Featured.length > 0 && (
+        <section class="game-module featured-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Geography & History Games</h2>
+              <p class="module-subtitle">Handpicked games for exploring the world</p>
+            </div>
           </div>
-          <div class="module-title-group">
-            <h2 class="module-title">Featured Geography & History Games</h2>
-            <p class="module-subtitle">Explore our most popular world learning adventures</p>
-          </div>
-        </div>
-        <div class="games-grid">
-          {featuredGames.map((game, index) => (
-            <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
-              <div class="game-image-container">
-                <img 
-                  src={getGameImagePath(game)}
-                  alt={game.title} 
-                  class="game-image" 
-                  loading="lazy"
-                />
-                <div class="game-overlay">
-                  <div class="play-button">
-                    <i class="fas fa-play"></i>
+          <div class="games-grid">
+            {gamesByDifficulty.Featured.map((game, index) => {
+              const popularity = game.playCount || 1500;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='/games/${game.id}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag geography">Geography</span>
+                      <span class="difficulty-tag featured">FEATURED</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="game-info">
-                <h3 class="game-title">{game.title}</h3>
-                <div class="game-tags">
-                  <span class="category-tag geography">Geography</span>
-                  <span class="feature-tag featured">FEATURED</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <!-- 3. 容易难度游戏模块 -->
       {gamesByDifficulty.Easy.length > 0 && (
-        <section class="game-module">
+        <section class="game-module difficulty-module easy-module">
           <div class="module-header">
             <div class="module-icon easy-icon">
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
               <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners to start exploring the world</p>
+              <p class="module-subtitle">Perfect starting point for young explorers</p>
             </div>
           </div>
           <div class="games-grid">
-            {gamesByDifficulty.Easy.map((game, index) => (
-              <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
-                <div class="game-image-container">
-                  <img 
-                    src={getGameImagePath(game)}
-                    alt={game.title} 
-                    class="game-image" 
-                    loading="lazy"
-                  />
-                  <div class="game-overlay">
-                    <div class="play-button">
-                      <i class="fas fa-play"></i>
+            {gamesByDifficulty.Easy.map((game, index) => {
+              const popularity = game.playCount || 1200;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='/games/${game.id}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag geography">Geography</span>
+                      <span class="difficulty-tag easy">EASY</span>
                     </div>
                   </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class="category-tag geography">Geography</span>
-                    <span class="difficulty-tag easy">EASY</span>
-                  </div>
-                </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
 
       <!-- 4. 中等难度游戏模块 -->
       {gamesByDifficulty.Medium.length > 0 && (
-        <section class="game-module">
+        <section class="game-module difficulty-module medium-module">
           <div class="module-header">
             <div class="module-icon medium-icon">
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
               <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Challenge yourself with intermediate world knowledge</p>
+              <p class="module-subtitle">Intermediate challenges for growing knowledge</p>
             </div>
           </div>
           <div class="games-grid">
-            {gamesByDifficulty.Medium.map((game, index) => (
-              <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
-                <div class="game-image-container">
-                  <img 
-                    src={getGameImagePath(game)}
-                    alt={game.title} 
-                    class="game-image" 
-                    loading="lazy"
-                  />
-                  <div class="game-overlay">
-                    <div class="play-button">
-                      <i class="fas fa-play"></i>
+            {gamesByDifficulty.Medium.map((game, index) => {
+              const popularity = game.playCount || 1800;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='/games/${game.id}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag geography">Geography</span>
+                      <span class="difficulty-tag medium">MEDIUM</span>
                     </div>
                   </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class="category-tag geography">Geography</span>
-                    <span class="difficulty-tag medium">MEDIUM</span>
-                  </div>
-                </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
 
       <!-- 5. 困难游戏模块 -->
       {gamesByDifficulty.Hard.length > 0 && (
-        <section class="game-module">
+        <section class="game-module difficulty-module hard-module">
           <div class="module-header">
             <div class="module-icon hard-icon">
               <i class="fas fa-frown"></i>
@@ -207,30 +233,38 @@ function getGameImagePath(game) {
             </div>
           </div>
           <div class="games-grid">
-            {gamesByDifficulty.Hard.map((game, index) => (
-              <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
-                <div class="game-image-container">
-                  <img 
-                    src={getGameImagePath(game)}
-                    alt={game.title} 
-                    class="game-image" 
-                    loading="lazy"
-                  />
-                  <div class="game-overlay">
-                    <div class="play-button">
-                      <i class="fas fa-play"></i>
+            {gamesByDifficulty.Hard.map((game, index) => {
+              const popularity = game.playCount || 2500;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        🔥 {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='/games/${game.id}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag geography">Geography</span>
+                      <span class="difficulty-tag hard">HARD</span>
                     </div>
                   </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class="category-tag geography">Geography</span>
-                    <span class="difficulty-tag hard">HARD</span>
-                  </div>
-                </div>
-              </a>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}
@@ -360,6 +394,9 @@ function getGameImagePath(game) {
 </BaseLayout>
 
 <style>
+  /* 导入通用游戏卡片样式 */
+  @import '../styles/game-card.css';
+
   /* 主要内容区域 */
   .main-content {
     width: 100%;
