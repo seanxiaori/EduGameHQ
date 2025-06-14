@@ -79,8 +79,8 @@ function getTimeText(daysAgo: number): string {
   <!-- 引入统一的游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
-  <main class="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
-    <div class="container mx-auto px-4 py-8 max-w-[1400px]">
+  <main class="main-content">
+    <div class="content-wrapper">
       
       <!-- 页面顶部区域 -->
       <div class="page-header">
@@ -302,6 +302,19 @@ function getTimeText(daysAgo: number): string {
 </BaseLayout>
 
 <style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
   /* 页面特定样式 - 绿色主题 */
   .page-header {
     background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
