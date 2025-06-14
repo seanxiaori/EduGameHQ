@@ -108,12 +108,12 @@ const recentGames = Object.entries(allGamesData)
           </div>
         </div>
         
-        <!-- 简化的统计信息 - 只显示游戏数量 -->
-        <div class="header-stats">
-          <div class="stat-item">
-            <div class="stat-number">{recentGames.length}</div>
-            <div class="stat-label">Recent Games</div>
-          </div>
+        <!-- 清除历史记录按钮 -->
+        <div class="header-actions">
+          <button id="clearHistoryBtn" class="clear-history-btn">
+            <i class="fas fa-trash-alt"></i>
+            <span>Clear History</span>
+          </button>
         </div>
       </section>
 
@@ -326,6 +326,22 @@ const recentGames = Object.entries(allGamesData)
             });
           }
         });
+        
+        // 初始化清除历史按钮
+        const clearBtn = document.getElementById('clearHistoryBtn');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => this.clearHistory());
+        }
+      }
+
+      // 清除游戏历史
+      clearHistory() {
+        if (confirm('Are you sure you want to clear your game history? This action cannot be undone.')) {
+          localStorage.removeItem('gameHistory');
+          localStorage.removeItem('gamePopularity');
+          console.log('游戏历史已清除');
+          location.reload();
+        }
       }
     }
 
@@ -347,9 +363,9 @@ const recentGames = Object.entries(allGamesData)
     }
 
     .content-wrapper {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 0 1rem;
+      padding: 0 2rem;
     }
 
     /* 页面头部 */
@@ -436,33 +452,35 @@ const recentGames = Object.entries(allGamesData)
       line-height: 1.6;
     }
 
-    /* 统计信息 */
-    .header-stats {
+    /* 清除历史按钮 */
+    .header-actions {
+      flex-shrink: 0;
+    }
+
+    .clear-history-btn {
       display: flex;
-      gap: 1rem;
-    }
-
-    .stat-item {
-      text-align: center;
-      background: white;
-      padding: 1rem 1.5rem;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+      color: white;
+      border: none;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      border: 1px solid #F3F4F6;
-      min-width: 80px;
-    }
-
-    .stat-number {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #0EA5E9;
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
+      font-weight: 600;
       font-size: 0.875rem;
-      color: #6B7280;
-      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    }
+
+    .clear-history-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
+      background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    }
+
+    .clear-history-btn i {
+      font-size: 0.875rem;
     }
 
     /* 游戏区域 */
@@ -553,6 +571,10 @@ const recentGames = Object.entries(allGamesData)
 
     /* 响应式设计 */
     @media (max-width: 768px) {
+      .content-wrapper {
+        padding: 0 1rem;
+      }
+
       .page-header {
         flex-direction: column;
         text-align: center;
@@ -578,8 +600,20 @@ const recentGames = Object.entries(allGamesData)
         font-size: 1.5rem;
       }
 
+      .clear-history-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
       .tips-container {
         grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .content-wrapper {
+        max-width: 1200px;
+        padding: 0 1.5rem;
       }
     }
 
