@@ -1,0 +1,44 @@
+{
+  "id": "make-ten",
+  "name": "Make Ten",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Itch.io",
+  "url": "https://pancelor.itch.io/make-ten",
+  "embedUrl": "https://pancelor.itch.io/make-ten",
+  "ageRange": "8-12",
+  "difficulty": "Easy",
+  "crawledAt": "2025-06-12T17:05:42.310Z",
+  "info": {
+    "title": "Make Ten",
+    "description": "The Deluxe Edition is out! Including no-timer mode, daily mode, gravity modes, and 35+ wild others.\nSelect numbers that add to ten, to remove them from the board. How high can you score in just 2 minutes? Try again by pressing Enter!\nAn homage to Fruit Box. A FruitBox-like? There are some big differences in this version, the most obvious being the lack of music -- the music in the original is incredible.\n> how to play\nDrag your mouse to select groups of numbers that add up to 10.Press Enter to pause. (restart / change volume)Click the bottom-right icon to play in fullscreen. (it's easier to click on larger numbers)\nIn the original game, you're awarded one point per number removed,Get the highest score you can within 2 minutes. Good luck!\n\n> code\nThis was made for a jam with a code-size restriction: 500 characters or less. Here's the entire source code:\nz={}c=-8s=0g='⁶!5f58⁵d8\"'::_::?\"⁶1⁶c0⁶!5f2d3\"\ne=1x=stat(32)y=stat(33)if btn(5)do f=mid(16,96,y)if(p==a)p=x q=f?\"⁷i6v1c1\"\n😐=c&min(x,p)⌂=c&min(f,q)♪=c&max(x,p)♥=c&max(f,q)else if(p)p=a if(n==c)e=0?\"⁷i7f1a\"\nend?g,d\nn=2for i=32,207do w=z[i]or rnd(9)\\1+1u=i%16*8v=c&i\\2if(u-😐|♪-u|v-⌂|♥-v>0)w*=e n-=w ⬅️+=➡️&~e\nz[i]=w?w,u,v,w\nend?\"⁶jc1score \"..s,-🅾️\nif(btnp(6))🅾️=⬇️\nif(p)rect(😐,⌂,♪+9,♥+8)\nd=-t()?\"⁶x2¹b█\",d-5,106\nif(d==-128)➡️=0g=\"⁶j8rtime up!\"⬇️=🅾️?\"⁷v3fg\"\nif(s<⬅️)s+=1?\"⁷x5v3c0\"\n?\"⁶.¹³⁷ᶠ³⁴\\0\\0\",x-2,y-2,7\ngoto _\nSome highlights:\ncheck if a number is inside the selection region with if(x-cx0|cx1-x|y-cy0|cy1-y>0)(checking that each term isn't negative)draw the timer using cursed P8SCII ?\"⁶x2¹b█\"instead of rectfill(), saving 3 charsinstead of counting up from 0 to 10, count down from 2 to -8, saving 1 charactersome tricky whole-program structure that sums numbers using the same line of code that removes them (one frame later)",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "make-ten-intro-1.jpg",
+    "make-ten-intro-2.jpg",
+    "make-ten-intro-3.jpg",
+    "make-ten-intro-4.jpg",
+    "make-ten-intro-5.jpg"
+  ],
+  "screenshots": [
+    "make-ten-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

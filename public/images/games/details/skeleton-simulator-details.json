@@ -1,0 +1,40 @@
+{
+  "id": "skeleton-simulator",
+  "name": "Skeleton Simulator",
+  "category": "science",
+  "categoryName": "Science",
+  "source": "CrazyGames",
+  "url": "https://www.crazygames.com/game/skeleton-simulator",
+  "embedUrl": "https://www.crazygames.com/embed/skeleton-simulator",
+  "ageRange": "12-18",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:20:34.926Z",
+  "info": {
+    "title": "Skeleton Simulator",
+    "description": "Skeleton Simulator is a simulation game created and developed by Andres Adendaal of Wireframe. In this little science experiment, take control of the skeleton&#39;s different points of articulation and see how it changes the way a human walks with those changes. You can even add another skeleton to see their funny interactions!",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "skeleton-simulator-intro-1.jpg"
+  ],
+  "screenshots": [
+    "skeleton-simulator-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

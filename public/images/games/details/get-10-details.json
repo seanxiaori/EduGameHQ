@@ -1,0 +1,40 @@
+{
+  "id": "get-10",
+  "name": "Get 10",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/get-10",
+  "embedUrl": "https://www.miniplay.com/embed/get-10",
+  "ageRange": "6-12",
+  "difficulty": "Easy",
+  "crawledAt": "2025-06-12T17:09:38.541Z",
+  "info": {
+    "title": "Get 10",
+    "description": "Get 20,000 points",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "get-10-intro-1.jpg"
+  ],
+  "screenshots": [
+    "get-10-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

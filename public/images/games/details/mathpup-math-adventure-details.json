@@ -1,0 +1,40 @@
+{
+  "id": "mathpup-math-adventure",
+  "name": "Mathpup Math Adventure",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/mathpup-math-adventure",
+  "embedUrl": "https://www.miniplay.com/embed/mathpup-math-adventure",
+  "ageRange": "6-12",
+  "difficulty": "Easy",
+  "crawledAt": "2025-06-12T17:03:47.138Z",
+  "info": {
+    "title": "Mathpup Math Adventure",
+    "description": "Reach level 6",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "mathpup-math-adventure-intro-1.jpg"
+  ],
+  "screenshots": [
+    "mathpup-math-adventure-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "freaking-math-online",
+  "name": "Freaking Math Online",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/freaking-math-online",
+  "embedUrl": "https://www.miniplay.com/embed/freaking-math-online",
+  "ageRange": "10-16",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:08:54.495Z",
+  "info": {
+    "title": "Freaking Math Online",
+    "description": "Enjoy the new hit, Freaking Math, online. Solve all kinds of math operations and select 'true' or 'false' before running out of time. Have... fun?",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "freaking-math-online-intro-1.jpg"
+  ],
+  "screenshots": [
+    "freaking-math-online-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

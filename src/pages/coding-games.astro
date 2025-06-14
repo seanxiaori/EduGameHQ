@@ -1,0 +1,495 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Game, GameData } from '../types/game';
+import fs from 'fs';
+import path from 'path';
+
+const seoData = {
+  title: "Coding Games for Kids | Learn Programming Through Play",
+  description: "Learn programming fundamentals with fun coding games for kids aged 8-18. Master JavaScript, Python, and more through interactive challenges.",
+  keywords: ["coding games", "programming games", "learn coding", "kids programming", "JavaScript games", "Python games", "coding for beginners"],
+  ogImage: "/images/coding-games-og.jpg"
+};
+
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
+let allGamesData: GameData = {};
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as GameData;
+} catch (error) {
+  console.warn('Unable to read games data file');
+}
+
+// 筛选编程游戏
+const codingGames = Object.entries(allGamesData)
+  .filter(([id, game]: [string, Game]) => game.category === 'coding')
+  .map(([id, game]: [string, Game]) => ({
+    id: id,
+    title: game.title,
+    description: game.description,
+    image: game.screenshots && game.screenshots.length > 0 
+      ? `/images/games/details/${game.screenshots[0]}` 
+      : `/images/games/${id}.svg`,
+    url: `/games/${id}`,
+    category: game.category,
+    categoryName: game.categoryName,
+    ageRange: game.ageRange,
+    difficulty: game.difficulty || 'medium',
+    skills: game.skills || [],
+    isFeatured: Math.random() > 0.7
+  }));
+---
+
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一的游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+
+  <!-- 主要内容 -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- 页面头部 -->
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon coding">
+              <i class="fas fa-code"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">Coding Games</h1>
+            <p class="page-description">
+              Learn programming fundamentals through interactive games and challenges. Perfect for beginners and young coders to master coding concepts.
+            </p>
+          </div>
+        </div>
+        
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="stat-number">{codingGames.length}</div>
+            <div class="stat-label">Coding Games</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">8-18</div>
+            <div class="stat-label">Age Range</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Free</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 游戏网格 -->
+      <section class="games-section">
+        <div class="games-grid">
+          {codingGames.map((game, index) => {
+            // 模拟人气值数据
+            const popularity = Math.floor(Math.random() * 15000) + 500;
+            const formatPopularity = (num) => {
+              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+              return num.toString();
+            };
+            
+            // 模拟游戏历史
+            const playHistory = ['Today', 'Yesterday', 'A few days ago', 'A few weeks ago', null];
+            const randomHistory = playHistory[Math.floor(Math.random() * playHistory.length)];
+            
+            // 确定特色标签
+            const isNew = Math.random() > 0.8;
+            const isHot = popularity > 10000;
+            const isFeatured = game.isFeatured;
+            const isUpdated = Math.random() > 0.9;
+            
+            let featureTag = null;
+            if (isNew) featureTag = 'NEW';
+            else if (isHot) featureTag = 'HOT';
+            else if (isFeatured) featureTag = 'FEATURED';
+            else if (isUpdated) featureTag = 'UPDATED';
+            
+            return (
+              <a href={game.url} class={`game-card coding-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
+                <div class="game-image-container">
+                  <img src={game.image} alt={game.title} class="game-image" />
+                  <div class="game-overlay">
+                    {randomHistory && (
+                      <div class={`played-badge ${
+                        randomHistory === 'Today' ? 'today' : 
+                        randomHistory === 'Yesterday' ? 'yesterday' : 
+                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
+                        'weeks-ago'
+                      }`}>
+                        {randomHistory}
+                      </div>
+                    )}
+                    <div class="popularity-badge">
+                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
+                    </div>
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                      <span>Play Now</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="game-info">
+                  <h3 class="game-title">{game.title}</h3>
+                  <p class="game-description">{game.description}</p>
+                  <div class="game-tags">
+                    <span class="category-tag coding">Coding</span>
+                    <span class="game-tag age">Ages {game.ageRange}</span>
+                    <span class={`game-tag difficulty ${game.difficulty}`}>{game.difficulty.charAt(0).toUpperCase() + game.difficulty.slice(1)}</span>
+                    {featureTag && (
+                      <span class={`feature-tag ${featureTag.toLowerCase()}`}>{featureTag}</span>
+                    )}
+                  </div>
+                  {game.skills && game.skills.length > 0 && (
+                    <div class="game-stats">
+                      <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span>{game.skills.slice(0, 2).join(', ')}</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- 侧边栏信息 -->
+      <section class="sidebar-section">
+        <div class="sidebar-card">
+          <div class="sidebar-title">
+            <div class="sidebar-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            Coding Learning Tips
+          </div>
+          <ul class="tips-list">
+            <li>Start with visual programming languages like Scratch</li>
+            <li>Practice coding for 20-30 minutes daily</li>
+            <li>Break down complex problems into smaller steps</li>
+            <li>Don't be afraid to experiment and make mistakes</li>
+            <li>Join coding communities and share your projects</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-card">
+          <div class="sidebar-title">
+            <div class="sidebar-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            Skills Developed
+          </div>
+          <div class="skills-list">
+            <span class="skill-tag">Logical Thinking</span>
+            <span class="skill-tag">Problem Solving</span>
+            <span class="skill-tag">Algorithm Design</span>
+            <span class="skill-tag">Debugging</span>
+            <span class="skill-tag">Creativity</span>
+            <span class="skill-tag">Persistence</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 游戏卡片管理功能的JavaScript -->
+  <script is:inline>
+    // 游戏卡片管理类
+    class GameCardManager {
+      constructor() {
+        this.initializeCards();
+      }
+
+      // 记录游戏播放
+      recordGamePlay(gameId) {
+        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+        history[gameId] = Date.now();
+        localStorage.setItem('gameHistory', JSON.stringify(history));
+        
+        // 更新人气值
+        const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
+        popularity[gameId] = (popularity[gameId] || 0) + 1;
+        localStorage.setItem('gamePopularity', JSON.stringify(popularity));
+      }
+
+      // 初始化卡片
+      initializeCards() {
+        const cards = document.querySelectorAll('.game-card');
+        cards.forEach(card => {
+          card.addEventListener('click', (e) => {
+            const gameId = card.href.split('/').pop();
+            if (gameId) {
+              this.recordGamePlay(gameId);
+            }
+          });
+        });
+      }
+    }
+
+    // 页面加载完成后的初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('编程游戏页面加载完成，游戏卡片管理系统已启用');
+      window.gameCardManager = new GameCardManager();
+      
+      // 添加淡入动画
+      const cards = document.querySelectorAll('.animate-fadeInUp');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 页面头部 */
+  .page-header {
+    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #BFDBFE 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-icon.coding {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  }
+
+  .section-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #2563EB;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #2563EB;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6B7280;
+    font-weight: 500;
+  }
+
+  /* 游戏区域 */
+  .games-section {
+    margin-bottom: 3rem;
+  }
+
+  /* 侧边栏样式 */
+  .sidebar-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .sidebar-card {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .sidebar-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 1rem;
+  }
+
+  .sidebar-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+  }
+
+  .tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .tips-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #F3F4F6;
+    color: #6B7280;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+
+  .tips-list li:last-child {
+    border-bottom: none;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .skill-tag {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563EB;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+
+  /* 动画效果 */
+  .animate-fadeInUp {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .sidebar-section {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .header-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      padding: 0.75rem;
+    }
+  }
+</style> 
+

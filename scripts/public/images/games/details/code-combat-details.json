@@ -1,0 +1,30 @@
+{
+  "info": {
+    "title": "扣哒世界 - 在场景化编程中学习Python，JavaScript和C++",
+    "description": "Learn typed code through a programming game. Learn Python, JavaScript, and HTML as you solve puzzles and learn to make your own coding games and websites.",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "code-combat-intro-1.jpg"
+  ],
+  "screenshots": [
+    "code-combat-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "Use mouse to click and interact",
+      "Use keyboard arrow keys to move"
+    ],
+    "howToPlay": "Follow the in-game instructions to play and complete various challenges.",
+    "objectives": [
+      "Complete game objectives",
+      "Improve relevant skills"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

@@ -1,0 +1,677 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import gamesData from '../data/games/games.json';
+
+// 从games.json中获取所有地理游戏
+const allGames = Object.entries(gamesData).map(([id, game]) => ({
+  id,
+  ...game
+}));
+
+const geographyGames = allGames.filter(game => game.category === 'geography');
+
+const seoData = {
+  title: "Geography Games for Kids | Free Online World Learning Games | EduGameHQ",
+  description: `Play ${geographyGames.length}+ free geography games for kids aged 8-18. Learn about countries, capitals, maps, and cultures through interactive world exploration.`,
+  keywords: ["geography games", "world map games", "countries games", "capitals games", "geography for kids", "educational geography games", "free geography games"],
+  ogImage: "/images/geography-games-og.jpg"
+};
+
+// 按难度分组
+const gamesByDifficulty = {
+  'Easy': geographyGames.filter(game => game.difficulty === 'Easy'),
+  'Medium': geographyGames.filter(game => game.difficulty === 'Medium'),
+  'Hard': geographyGames.filter(game => game.difficulty === 'Hard')
+};
+
+// 获取特色游戏（播放次数最高的前3个）
+const featuredGames = geographyGames
+  .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
+  .slice(0, 3);
+---
+
+<BaseLayout {...seoData}>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- 页面标题 -->
+      <header class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <i class="fas fa-globe-americas"></i>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">Geography & History Games</h1>
+            <p class="page-subtitle">
+              Discover the world and its history! Journey through different countries, cultures, and time periods while learning geography, historical events, and cultural awareness.
+            </p>
+          </div>
+        </div>
+        <div class="header-stats">
+          <div class="stat-item">
+            <span class="stat-number">{geographyGames.length}</span>
+            <span class="stat-label">Games</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">8-18</span>
+            <span class="stat-label">Ages</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-number">Free</span>
+            <span class="stat-label">Cost</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="page-layout">
+        <!-- 主要内容区域 -->
+        <div class="main-section">
+          <!-- 特色游戏 -->
+          <section class="featured-games">
+            <h2 class="section-title">
+              <div class="section-icon featured">
+                <i class="fas fa-star"></i>
+              </div>
+              Featured Geography Games
+            </h2>
+            <div class="games-grid">
+              {featuredGames.map((game, index) => (
+                <a href={`/games/${game.id}`} class="game-card featured animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+                  <div class="game-thumbnail">
+                    <img 
+                      src={game.screenshots && game.screenshots.length > 0 
+                        ? `/images/games/details/${game.screenshots[0]}` 
+                        : `/images/games/details/default-screenshot.jpg`} 
+                      alt={game.title} 
+                      class="game-image" 
+                      loading="lazy"
+                    />
+                    <div class="featured-badge">Featured</div>
+                    <div class="play-overlay">
+                      <div class="play-btn">
+                        <i class="fas fa-play"></i> Explore Now
+                      </div>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <p class="game-description">{game.description}</p>
+                    <div class="game-meta">
+                      <div class="game-tags">
+                        <span class="game-tag age">{game.ageRange}</span>
+                        <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
+                      </div>
+                      <div class="game-stats">
+                        <span class="play-count">
+                          <i class="fas fa-play-circle"></i>
+                          {game.playCount ? game.playCount.toLocaleString() : '0'} plays
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+
+          <!-- 按难度分类的游戏 -->
+          {Object.entries(gamesByDifficulty).map(([difficulty, games]) => (
+            games.length > 0 && (
+              <section class="difficulty-section">
+                <h2 class="section-title">
+                  <div class={`section-icon difficulty-${difficulty.toLowerCase()}`}>
+                    {difficulty === 'Easy' && <i class="fas fa-smile"></i>}
+                    {difficulty === 'Medium' && <i class="fas fa-meh"></i>}
+                    {difficulty === 'Hard' && <i class="fas fa-frown"></i>}
+                  </div>
+                  {difficulty} Level Games ({games.length})
+                </h2>
+                <div class="games-grid">
+                  {games.map((game, index) => (
+                    <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+                      <div class="game-thumbnail">
+                        <img 
+                          src={game.screenshots && game.screenshots.length > 0 
+                            ? `/images/games/details/${game.screenshots[0]}` 
+                            : `/images/games/details/default-screenshot.jpg`} 
+                          alt={game.title} 
+                          class="game-image" 
+                          loading="lazy"
+                        />
+                        <div class="play-overlay">
+                          <div class="play-btn">
+                            <i class="fas fa-play"></i> Explore Now
+                          </div>
+                        </div>
+                      </div>
+                      <div class="game-info">
+                        <h3 class="game-title">{game.title}</h3>
+                        <p class="game-description">{game.description}</p>
+                        <div class="game-meta">
+                          <div class="game-tags">
+                            <span class="game-tag age">{game.ageRange}</span>
+                            <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
+                          </div>
+                          <div class="game-stats">
+                            <span class="play-count">
+                              <i class="fas fa-play-circle"></i>
+                              {game.playCount ? game.playCount.toLocaleString() : '0'} plays
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </section>
+            )
+          ))}
+
+          <!-- 所有地理游戏 -->
+          <section class="all-games-section">
+            <h2 class="section-title">
+              <div class="section-icon all-games">
+                <i class="fas fa-th-large"></i>
+              </div>
+              All Geography Games ({geographyGames.length})
+            </h2>
+            <div class="games-grid">
+              {geographyGames.map((game, index) => (
+                <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${(index % 12) * 0.05}s`}>
+                  <div class="game-thumbnail">
+                    <img 
+                      src={game.screenshots && game.screenshots.length > 0 
+                        ? `/images/games/details/${game.screenshots[0]}` 
+                        : `/images/games/details/default-screenshot.jpg`} 
+                      alt={game.title} 
+                      class="game-image" 
+                      loading="lazy"
+                    />
+                    <div class="play-overlay">
+                      <div class="play-btn">
+                        <i class="fas fa-play"></i> Explore Now
+                      </div>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <p class="game-description">{game.description}</p>
+                    <div class="game-meta">
+                      <div class="game-tags">
+                        <span class="game-tag age">{game.ageRange}</span>
+                        <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
+                      </div>
+                      <div class="game-stats">
+                        <span class="play-count">
+                          <i class="fas fa-play-circle"></i>
+                          {game.playCount ? game.playCount.toLocaleString() : '0'} plays
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="sidebar">
+          <!-- 学习提示 -->
+          <div class="sidebar-card">
+            <h3 class="sidebar-title">
+              <div class="sidebar-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              Geography Learning Tips
+            </h3>
+            <ul class="tips-list">
+              <li>Use maps and globes to visualize locations</li>
+              <li>Connect geography to current events and history</li>
+              <li>Learn about different cultures and traditions</li>
+              <li>Practice identifying countries, capitals, and landmarks</li>
+              <li>Explore how geography affects climate and lifestyle</li>
+            </ul>
+          </div>
+
+          <!-- 地理技能 -->
+          <div class="sidebar-card">
+            <h3 class="sidebar-title">
+              <div class="sidebar-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              Skills You'll Develop
+            </h3>
+            <div class="skills-list">
+              <span class="skill-tag">Map Reading</span>
+              <span class="skill-tag">Cultural Awareness</span>
+              <span class="skill-tag">Historical Knowledge</span>
+              <span class="skill-tag">Spatial Thinking</span>
+              <span class="skill-tag">Global Perspective</span>
+              <span class="skill-tag">Research Skills</span>
+              <span class="skill-tag">Critical Analysis</span>
+              <span class="skill-tag">Environmental Awareness</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  
+  
+
+  
+
+  
+
+  /* 页面头部 */
+  .page-header {
+    background: linear-gradient(135deg, #2563EB 0%, #3B82F6 50%, #60A5FA 100%);
+    border-radius: 20px;
+    padding: 4rem 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+    font-size: 2.5rem;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-icon.geography {
+    background: #2563EB;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .page-description {
+    font-size: 1.25rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .page-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  /* 章节标题 */
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1F2937;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .difficulty-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .difficulty-icon.easy {
+    background: #10B981;
+  }
+
+  .difficulty-icon.medium {
+    background: #F59E0B;
+  }
+
+  .difficulty-icon.hard {
+    background: #EF4444;
+  }
+
+  /* 游戏网格 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .game-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid #E5E7EB;
+  }
+
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .game-card.featured {
+    border: 2px solid #2563EB;
+    position: relative;
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #2563EB;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 2;
+  }
+
+  .game-thumbnail {
+    height: 200px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .game-card:hover .game-image {
+    transform: scale(1.05);
+  }
+
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(37, 99, 235, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .game-card:hover .play-overlay {
+    opacity: 1;
+  }
+
+  .play-btn {
+    background: white;
+    color: #2563EB;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    color: #2563EB;
+    text-decoration: none;
+  }
+
+  .game-info {
+    padding: 1.5rem;
+  }
+
+  .game-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .game-description {
+    color: #6B7280;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .game-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .game-tags {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .game-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .game-tag.age {
+    background: #F3F4F6;
+    color: #6B7280;
+  }
+
+  .game-tag.difficulty.easy {
+    background: #10B981;
+    color: white;
+  }
+
+  .game-tag.difficulty.medium {
+    background: #F59E0B;
+    color: white;
+  }
+
+  .game-tag.difficulty.hard {
+    background: #EF4444;
+    color: white;
+  }
+
+  .game-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .skill-tag {
+    background: rgba(37, 99, 235, 0.1);
+    color: #2563EB;
+    padding: 0.125rem 0.5rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 500;
+  }
+
+  /* 学习目标 */
+  .learning-objectives {
+    margin-bottom: 3rem;
+  }
+
+  .objectives-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .objective-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    transition: all 0.3s ease;
+  }
+
+  .objective-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .objective-icon {
+    width: 60px;
+    height: 60px;
+    background: #2563EB;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .objective-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .objective-card p {
+    color: #6B7280;
+    line-height: 1.5;
+  }
+
+  /* 动画 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .objectives-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
+

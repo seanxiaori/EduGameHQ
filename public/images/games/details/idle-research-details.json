@@ -1,0 +1,40 @@
+{
+  "id": "idle-research",
+  "name": "Idle Research",
+  "category": "science",
+  "categoryName": "Science",
+  "source": "CrazyGames",
+  "url": "https://www.crazygames.com/game/idle-research",
+  "embedUrl": "https://www.crazygames.com/embed/idle-research",
+  "ageRange": "12-18",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:19:16.310Z",
+  "info": {
+    "title": "Idle Research",
+    "description": "Idle Research is an incremental game with both idle and active playstyles. Do some research and craft colorful flasks, tubes, and cylinders to earn energy.",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "idle-research-intro-1.jpg"
+  ],
+  "screenshots": [
+    "idle-research-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

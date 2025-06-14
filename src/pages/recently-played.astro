@@ -1,0 +1,522 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Game, GameData } from '../types/game';
+import fs from 'fs';
+import path from 'path';
+
+const seoData = {
+  title: "Recently Played Games | Continue Your Learning Journey",
+  description: "Continue where you left off! Access your recently played educational games and pick up your learning journey from where you stopped.",
+  keywords: ["recently played games", "continue learning", "game history", "educational progress", "learning journey"],
+  ogImage: "/images/recently-played-og.jpg"
+};
+
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
+let allGamesData: GameData = {};
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as GameData;
+} catch (error) {
+  console.warn('Unable to read games data file');
+}
+
+// 获取一些示例游戏作为最近游戏
+const recentGames = Object.entries(allGamesData)
+  .slice(0, 8)
+  .map(([id, game]: [string, Game]) => ({
+    id: id,
+    title: game.title,
+    description: game.description,
+    image: game.screenshots && game.screenshots.length > 0 
+      ? `/images/games/details/${game.screenshots[0]}` 
+      : `/images/games/${id}.svg`,
+    url: `/games/${id}`,
+    category: game.category,
+    categoryName: game.categoryName,
+    ageRange: game.ageRange,
+    lastPlayed: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000), // 随机过去7天内
+    playTime: Math.floor(Math.random() * 120) + 5 // 5-125分钟
+  }))
+  .sort((a, b) => b.lastPlayed.getTime() - a.lastPlayed.getTime());
+---
+
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一的游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+
+  <!-- 主要内容 -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- 页面头部 -->
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon recent">
+              <i class="fas fa-history"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">Recently Played</h1>
+            <p class="page-description">
+              Continue your learning journey! Pick up where you left off with your recently played educational games.
+            </p>
+          </div>
+        </div>
+        
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="stat-number">{recentGames.length}</div>
+            <div class="stat-label">Recent Games</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">📚</div>
+            <div class="stat-label">Learning</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">⏰</div>
+            <div class="stat-label">Continue</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 游戏网格 -->
+      <section class="games-section">
+        <div class="games-grid">
+          {recentGames.map((game, index) => {
+            // 格式化最后游戏时间
+            const formatLastPlayed = (date) => {
+              const now = new Date();
+              const diffMs = now.getTime() - date.getTime();
+              const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+              const diffDays = Math.floor(diffHours / 24);
+              
+              if (diffHours < 1) return 'Just now';
+              if (diffHours < 24) return `${diffHours}h ago`;
+              if (diffDays === 1) return 'Yesterday';
+              if (diffDays < 7) return `${diffDays} days ago`;
+              return 'A week ago';
+            };
+            
+            // 格式化游戏时间
+            const formatPlayTime = (minutes) => {
+              if (minutes < 60) return `${minutes}m`;
+              const hours = Math.floor(minutes / 60);
+              const mins = minutes % 60;
+              return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
+            };
+            
+            const lastPlayedText = formatLastPlayed(game.lastPlayed);
+            
+            return (
+              <a href={game.url} class={`game-card recent-game animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
+                <div class="game-image-container">
+                  <img src={game.image} alt={game.title} class="game-image" />
+                  <div class="game-overlay">
+                    <div class={`played-badge ${
+                      lastPlayedText === 'Just now' || lastPlayedText.includes('h ago') ? 'today' : 
+                      lastPlayedText === 'Yesterday' ? 'yesterday' : 
+                      lastPlayedText.includes('days ago') ? 'few-days-ago' : 
+                      'weeks-ago'
+                    }`}>
+                      {lastPlayedText}
+                    </div>
+                    <div class="play-time-badge">
+                      ⏱️ {formatPlayTime(game.playTime)}
+                    </div>
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                      <span>Continue</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="game-info">
+                  <h3 class="game-title">{game.title}</h3>
+                  <p class="game-description">{game.description}</p>
+                  <div class="game-tags">
+                    <span class={`category-tag ${game.category}`}>{game.categoryName}</span>
+                    <span class="game-tag age">Ages {game.ageRange}</span>
+                    <span class="feature-tag continue">CONTINUE</span>
+                  </div>
+                  <div class="game-stats">
+                    <div class="stat">
+                      <i class="fas fa-clock"></i>
+                      <span>Last played {lastPlayedText}</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- 学习进度提示 -->
+      <section class="learning-tips">
+        <div class="tips-container">
+          <div class="tip-card">
+            <div class="tip-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Keep Learning!</h3>
+              <p class="tip-description">
+                Regular practice helps reinforce learning. Try to play educational games for 15-20 minutes daily for best results.
+              </p>
+            </div>
+          </div>
+          
+          <div class="tip-card">
+            <div class="tip-icon">
+              <i class="fas fa-target"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Set Goals</h3>
+              <p class="tip-description">
+                Challenge yourself to complete one game per day or master a specific skill through repeated practice.
+              </p>
+            </div>
+          </div>
+          
+          <div class="tip-card">
+            <div class="tip-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Track Progress</h3>
+              <p class="tip-description">
+                Your game history helps you see your learning journey and identify areas where you've improved.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 游戏历史管理的JavaScript -->
+  <script is:inline>
+    // 游戏历史管理类
+    class GameHistoryManager {
+      constructor() {
+        this.loadRecentGames();
+        this.initializeCards();
+      }
+
+      // 加载最近游戏
+      loadRecentGames() {
+        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+        const gameCards = document.querySelectorAll('.recent-game');
+        
+        // 如果有真实的游戏历史，更新显示
+        if (Object.keys(history).length > 0) {
+          console.log('发现游戏历史记录:', Object.keys(history).length, '个游戏');
+        }
+      }
+
+      // 记录游戏播放
+      recordGamePlay(gameId) {
+        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+        history[gameId] = Date.now();
+        localStorage.setItem('gameHistory', JSON.stringify(history));
+        
+        // 更新人气值
+        const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
+        popularity[gameId] = (popularity[gameId] || 0) + 1;
+        localStorage.setItem('gamePopularity', JSON.stringify(popularity));
+      }
+
+      // 初始化卡片
+      initializeCards() {
+        const cards = document.querySelectorAll('.game-card');
+        cards.forEach(card => {
+          card.addEventListener('click', (e) => {
+            const gameId = card.href.split('/').pop();
+            if (gameId) {
+              this.recordGamePlay(gameId);
+            }
+          });
+        });
+      }
+
+      // 清除游戏历史
+      clearHistory() {
+        if (confirm('Are you sure you want to clear your game history?')) {
+          localStorage.removeItem('gameHistory');
+          location.reload();
+        }
+      }
+    }
+
+    // 页面加载完成后的初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('最近游戏页面加载完成，游戏历史管理系统已启用');
+      window.gameHistoryManager = new GameHistoryManager();
+      
+      // 添加淡入动画
+      const cards = document.querySelectorAll('.animate-fadeInUp');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 页面头部 */
+  .page-header {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #BAE6FD 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-icon.recent {
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  }
+
+  .section-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #0EA5E9;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #0EA5E9;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6B7280;
+    font-weight: 500;
+  }
+
+  /* 游戏区域 */
+  .games-section {
+    margin-bottom: 3rem;
+  }
+
+  /* 特殊的最近游戏卡片样式 */
+  .game-card.recent-game {
+    border: 2px solid #0EA5E9;
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+  }
+
+  .play-time-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(14, 165, 233, 0.9);
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+  }
+
+  .feature-tag.continue {
+    background: #0EA5E9;
+  }
+
+  /* 学习提示区域 */
+  .learning-tips {
+    margin-bottom: 3rem;
+  }
+
+  .tips-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .tip-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .tip-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .tip-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .tip-content {
+    flex: 1;
+  }
+
+  .tip-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .tip-description {
+    color: #6B7280;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* 动画效果 */
+  .animate-fadeInUp {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .header-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      padding: 0.75rem;
+    }
+
+    .tips-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
+

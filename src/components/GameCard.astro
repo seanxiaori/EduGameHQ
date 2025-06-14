@@ -1,0 +1,264 @@
+---
+interface Props {
+  game: {
+    slug: string;
+    title: string;
+    category: string;
+    categoryName: string;
+    url: string;
+    image: string;
+    imageFallback: string;
+    description: string;
+    ageRange: string;
+    difficulty: string;
+    playCount: number;
+    tags: string[];
+    featured: boolean;
+    trending: boolean;
+    isNew: boolean;
+    learningObjectives: string[];
+  };
+}
+
+const { game } = Astro.props;
+---
+
+<div class="game-card">
+  <div class="game-image-container">
+    <img 
+      src={game.image} 
+      alt={game.title}
+      class="game-image"
+      loading="lazy"
+      onerror={`this.src='${game.imageFallback}'`}
+    />
+    <div class="game-overlay">
+      <a href={game.url} target="_blank" rel="noopener noreferrer" class="play-button">
+        <i class="fas fa-play"></i>
+        Play Now
+      </a>
+    </div>
+    {game.isNew && <div class="game-badge new">New</div>}
+    {game.trending && <div class="game-badge trending">Trending</div>}
+    {game.featured && <div class="game-badge featured">Featured</div>}
+  </div>
+  
+  <div class="game-content">
+    <h3 class="game-title">{game.title}</h3>
+    <p class="game-description">{game.description}</p>
+    
+    <div class="game-meta">
+      <div class="game-stats">
+        <div class="stat">
+          <i class="fas fa-signal"></i>
+          <span>{game.difficulty}</span>
+        </div>
+      </div>
+      
+      <div class="game-age">
+        <i class="fas fa-child"></i>
+        <span>{game.ageRange}</span>
+      </div>
+    </div>
+    
+    <div class="game-tags">
+      {game.tags.slice(0, 3).map(tag => (
+        <span class="tag">{tag}</span>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .game-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+  
+  .game-image-container {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+  
+  .game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    transition: transform 0.3s ease;
+  }
+  
+  .game-image-container::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    z-index: -1;
+  }
+  
+  .game-card:hover .game-image {
+    transform: scale(1.05);
+  }
+  
+  .game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .game-card:hover .game-overlay {
+    opacity: 1;
+  }
+  
+  .play-button {
+    background: #3B82F6;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    transform: translateY(10px);
+  }
+  
+  .game-card:hover .play-button {
+    transform: translateY(0);
+    background: #2563EB;
+  }
+  
+  .game-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .game-badge.new {
+    background: #10B981;
+    color: white;
+  }
+  
+  .game-badge.trending {
+    background: #F59E0B;
+    color: white;
+  }
+  
+  .game-badge.featured {
+    background: #8B5CF6;
+    color: white;
+  }
+  
+  .game-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .game-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 8px;
+    line-height: 1.3;
+  }
+  
+  .game-description {
+    color: #6B7280;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  
+  .game-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 0.75rem;
+    color: #6B7280;
+  }
+  
+  .game-stats {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  
+  .stat i {
+    color: #F59E0B;
+  }
+  
+  .game-age {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: #F3F4F6;
+    padding: 4px 8px;
+    border-radius: 12px;
+  }
+  
+  .game-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .tag {
+    background: #EFF6FF;
+    color: #2563EB;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+  
+  @media (max-width: 768px) {
+    .game-content {
+      padding: 16px;
+    }
+    
+    .game-stats {
+      gap: 12px;
+    }
+    
+    .game-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+  }
+</style> 

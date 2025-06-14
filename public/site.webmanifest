@@ -1,0 +1,16 @@
+{
+  "name": "EduGameHQ - Educational Games Platform",
+  "short_name": "EduGameHQ",
+  "description": "Free educational games for kids aged 6-18",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FEFCFB",
+  "theme_color": "#8B5CF6",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+} 

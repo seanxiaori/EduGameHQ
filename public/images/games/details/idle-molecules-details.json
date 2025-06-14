@@ -1,0 +1,40 @@
+{
+  "id": "idle-molecules",
+  "name": "IDLE Molecules",
+  "category": "science",
+  "categoryName": "Science",
+  "source": "CrazyGames",
+  "url": "https://www.crazygames.com/game/idle-molecules",
+  "embedUrl": "https://www.crazygames.com/embed/idle-molecules",
+  "ageRange": "10-16",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:20:17.280Z",
+  "info": {
+    "title": "IDLE Molecules",
+    "description": "IDLE Molecules is a clicker game in which you need to multiply a new kind of molecule that generates unique atoms. Collect atoms and sell them to earn money. Improve the structure of molecules in the laboratory. Find new molecules. Open an atom recycling factory.",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "idle-molecules-intro-1.jpg"
+  ],
+  "screenshots": [
+    "idle-molecules-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

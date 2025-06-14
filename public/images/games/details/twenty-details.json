@@ -1,0 +1,40 @@
+{
+  "id": "twenty",
+  "name": "Twenty",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/twenty",
+  "embedUrl": "https://www.miniplay.com/embed/twenty",
+  "ageRange": "8-14",
+  "difficulty": "Easy",
+  "crawledAt": "2025-06-12T17:09:56.764Z",
+  "info": {
+    "title": "Twenty",
+    "description": "Solve a complex math puzzle as fast as you can! Add up the pieces of the same color and number by placing them on top of each other. Enjoy!",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "twenty-intro-1.jpg"
+  ],
+  "screenshots": [
+    "twenty-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

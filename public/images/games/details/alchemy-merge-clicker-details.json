@@ -1,0 +1,40 @@
+{
+  "id": "alchemy-merge-clicker",
+  "name": "Alchemy Merge Clicker",
+  "category": "science",
+  "categoryName": "Science",
+  "source": "CrazyGames",
+  "url": "https://www.crazygames.com/game/alchemy-merge-clicker",
+  "embedUrl": "https://www.crazygames.com/embed/alchemy-merge-clicker",
+  "ageRange": "10-16",
+  "difficulty": "Easy",
+  "crawledAt": "2025-06-12T17:21:27.721Z",
+  "info": {
+    "title": "Alchemy Merge Clicker",
+    "description": "Alchemy Merge Clicker is a clicker game where you become a master alchemist by combining fire, water, earth, and air. Tap to create basic elements and merge them to discover hundreds of unique combinations. Utilize upgrades and the prestige system to enhance your alchemy, collect achievements, and fill your collection with endless possibilities. Embark on your alchemical journey today!",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "alchemy-merge-clicker-intro-1.jpg"
+  ],
+  "screenshots": [
+    "alchemy-merge-clicker-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "id": "alchemy",
+  "name": "Alchemy",
+  "category": "science",
+  "categoryName": "Science",
+  "source": "CrazyGames",
+  "url": "https://www.crazygames.com/game/alchemy",
+  "embedUrl": "https://www.crazygames.com/embed/alchemy",
+  "ageRange": "8-16",
+  "difficulty": "Easy",
+  "crawledAt": "2025-06-12T17:20:50.353Z",
+  "info": {
+    "title": "Alchemy",
+    "description": "Alchemy is a puzzle game where you combine two elements to make the third one. Do some experiments to discover them all.",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "alchemy-intro-1.jpg"
+  ],
+  "screenshots": [
+    "alchemy-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

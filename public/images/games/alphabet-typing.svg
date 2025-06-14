@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="languageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D946EF"/>
+      <stop offset="100%" style="stop-color:#C026D3"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#languageGradient)" rx="12"/>
+  
+  <!-- Keyboard -->
+  <g transform="translate(50, 80)">
+    <!-- First row -->
+    <rect x="0" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="12" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Q</text>
+    
+    <rect x="30" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="42" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">W</text>
+    
+    <rect x="60" y="0" width="25" height="25" fill="#10B981" rx="4"/>
+    <text x="72" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="white" text-anchor="middle">E</text>
+    
+    <rect x="90" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="102" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">R</text>
+    
+    <rect x="120" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="132" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">T</text>
+    
+    <rect x="150" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="162" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Y</text>
+    
+    <rect x="180" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="192" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">U</text>
+    
+    <rect x="210" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="222" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">I</text>
+    
+    <rect x="240" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="252" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">O</text>
+    
+    <rect x="270" y="0" width="25" height="25" fill="white" rx="4"/>
+    <text x="282" y="16" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">P</text>
+    
+    <!-- Second row -->
+    <rect x="15" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="27" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">A</text>
+    
+    <rect x="45" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="57" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">S</text>
+    
+    <rect x="75" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="87" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">D</text>
+    
+    <rect x="105" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="117" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">F</text>
+    
+    <rect x="135" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="147" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">G</text>
+    
+    <rect x="165" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="177" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">H</text>
+    
+    <rect x="195" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="207" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">J</text>
+    
+    <rect x="225" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="237" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">K</text>
+    
+    <rect x="255" y="35" width="25" height="25" fill="white" rx="4"/>
+    <text x="267" y="51" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">L</text>
+    
+    <!-- Third row -->
+    <rect x="30" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="42" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Z</text>
+    
+    <rect x="60" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="72" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">X</text>
+    
+    <rect x="90" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="102" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">C</text>
+    
+    <rect x="120" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="132" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">V</text>
+    
+    <rect x="150" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="162" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">B</text>
+    
+    <rect x="180" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="192" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">N</text>
+    
+    <rect x="210" y="70" width="25" height="25" fill="white" rx="4"/>
+    <text x="222" y="86" font-family="Arial" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">M</text>
+  </g>
+  
+  <!-- Type indicator -->
+  <text x="200" y="200" font-family="Arial" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Type: E</text>
+  <rect x="160" y="205" width="80" height="4" fill="rgba(255,255,255,0.3)" rx="2"/>
+  <rect x="160" y="205" width="40" height="4" fill="white" rx="2"/>
+  
+  <!-- Game title -->
+  <text x="200" y="240" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">Alphabet Typing</text>
+</svg>

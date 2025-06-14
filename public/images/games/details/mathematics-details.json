@@ -1,0 +1,40 @@
+{
+  "id": "mathematics",
+  "name": "Mathematics",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/mathematics",
+  "embedUrl": "https://www.miniplay.com/embed/mathematics",
+  "ageRange": "10-16",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:05:21.710Z",
+  "info": {
+    "title": "Mathematics",
+    "description": "Are you good at difficult additions and substractions? Prove it in this math game. Choose the right result before time's up.",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "mathematics-intro-1.jpg"
+  ],
+  "screenshots": [
+    "mathematics-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

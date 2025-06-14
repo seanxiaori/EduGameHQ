@@ -1,0 +1,485 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Game, GameData } from '../types/game';
+import fs from 'fs';
+import path from 'path';
+
+const seoData = {
+  title: "Trending Educational Games | Most Popular Learning Games",
+  description: "Discover the most popular educational games trending now. Play the hottest math, science, coding, and puzzle games loved by students worldwide.",
+  keywords: ["trending games", "popular educational games", "hot learning games", "most played games", "trending now", "popular kids games"],
+  ogImage: "/images/trending-games-og.jpg"
+};
+
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
+let allGamesData: GameData = {};
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as GameData;
+} catch (error) {
+  console.warn('Unable to read games data file');
+}
+
+// 获取所有游戏并模拟趋势数据
+const trendingGames = Object.entries(allGamesData)
+  .map(([id, game]: [string, Game]) => {
+    const popularity = Math.floor(Math.random() * 20000) + 1000;
+    return {
+      id: id,
+      title: game.title,
+      description: game.description,
+      image: game.screenshots && game.screenshots.length > 0 
+        ? `/images/games/details/${game.screenshots[0]}` 
+        : `/images/games/${id}.svg`,
+      url: `/games/${id}`,
+      category: game.category,
+      categoryName: game.categoryName,
+      ageRange: game.ageRange,
+      popularity: popularity,
+      playCount: popularity * 10,
+      ranking: 0 // 将在排序后设置
+    };
+  })
+  .sort((a, b) => b.popularity - a.popularity)
+  .slice(0, 12)
+  .map((game, index) => ({
+    ...game,
+    ranking: index + 1
+  }));
+---
+
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一的游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+
+  <!-- 主要内容 -->
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- 页面头部 -->
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon trending">
+              <i class="fas fa-fire"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">Trending Games</h1>
+            <p class="page-description">
+              Discover the hottest educational games trending right now. These are the most popular games loved by students worldwide.
+            </p>
+          </div>
+        </div>
+        
+        <div class="header-stats">
+          <div class="stat-item">
+            <div class="stat-number">{trendingGames.length}</div>
+            <div class="stat-label">Trending Games</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">🔥</div>
+            <div class="stat-label">Hot Now</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Free</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 游戏网格 -->
+      <section class="games-section">
+        <div class="games-grid">
+          {trendingGames.map((game, index) => {
+            // 格式化人气值
+            const formatPopularity = (num) => {
+              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+              return num.toString();
+            };
+            
+            // 确定趋势标签
+            let trendingBadge = 'HOT';
+            if (game.ranking === 1) trendingBadge = 'FIRE';
+            else if (game.ranking <= 3) trendingBadge = 'HOT';
+            else if (game.ranking <= 6) trendingBadge = 'TOP';
+            else trendingBadge = 'RISING';
+            
+            return (
+              <a href={game.url} class={`game-card trending animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
+                <div class="game-image-container">
+                  <img src={game.image} alt={game.title} class="game-image" />
+                  <div class="game-overlay">
+                    <div class="ranking-badge">#{game.ranking}</div>
+                    <div class="popularity-badge">
+                      🔥 {formatPopularity(game.popularity)}
+                    </div>
+                    <div class="play-button">
+                      <i class="fas fa-play"></i>
+                      <span>Play Now</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="game-info">
+                  <h3 class="game-title">{game.title}</h3>
+                  <p class="game-description">{game.description}</p>
+                  <div class="game-tags">
+                    <span class={`category-tag ${game.category}`}>{game.categoryName}</span>
+                    <span class="game-tag age">Ages {game.ageRange}</span>
+                    <span class={`feature-tag ${trendingBadge.toLowerCase()}`}>{trendingBadge}</span>
+                  </div>
+                  <div class="game-stats">
+                    <div class="stat">
+                      <i class="fas fa-play"></i>
+                      <span class="play-count">{formatPopularity(game.playCount)} plays</span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- 趋势分析 -->
+      <section class="trend-analysis">
+        <h2 class="section-title">Trending Categories</h2>
+        <div class="trend-grid">
+          <div class="trend-card">
+            <div class="trend-icon math">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <div class="trend-content">
+              <h3 class="trend-title">Math Games</h3>
+              <p class="trend-description">Problem-solving games are trending up 25% this week</p>
+            </div>
+          </div>
+          
+          <div class="trend-card">
+            <div class="trend-icon science">
+              <i class="fas fa-flask"></i>
+            </div>
+            <div class="trend-content">
+              <h3 class="trend-title">Science Games</h3>
+              <p class="trend-description">Physics simulations gaining popularity among students</p>
+            </div>
+          </div>
+          
+          <div class="trend-card">
+            <div class="trend-icon coding">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="trend-content">
+              <h3 class="trend-title">Coding Games</h3>
+              <p class="trend-description">Programming challenges seeing 40% increase in plays</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 游戏卡片管理功能的JavaScript -->
+  <script is:inline>
+    // 游戏卡片管理类
+    class GameCardManager {
+      constructor() {
+        this.initializeCards();
+      }
+
+      // 记录游戏播放
+      recordGamePlay(gameId) {
+        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+        history[gameId] = Date.now();
+        localStorage.setItem('gameHistory', JSON.stringify(history));
+        
+        // 更新人气值
+        const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
+        popularity[gameId] = (popularity[gameId] || 0) + 1;
+        localStorage.setItem('gamePopularity', JSON.stringify(popularity));
+      }
+
+      // 初始化卡片
+      initializeCards() {
+        const cards = document.querySelectorAll('.game-card');
+        cards.forEach(card => {
+          card.addEventListener('click', (e) => {
+            const gameId = card.href.split('/').pop();
+            if (gameId) {
+              this.recordGamePlay(gameId);
+            }
+          });
+        });
+      }
+    }
+
+    // 页面加载完成后的初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('趋势游戏页面加载完成，游戏卡片管理系统已启用');
+      window.gameCardManager = new GameCardManager();
+      
+      // 添加淡入动画
+      const cards = document.querySelectorAll('.animate-fadeInUp');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 页面头部 */
+  .page-header {
+    background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 50%, #FCA5A5 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(239, 68, 68, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-icon.trending {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  }
+
+  .section-icon::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #EF4444;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 0;
+  }
+
+  .header-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #EF4444;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6B7280;
+    font-weight: 500;
+  }
+
+  /* 游戏区域 */
+  .games-section {
+    margin-bottom: 3rem;
+  }
+
+  /* 趋势分析 */
+  .trend-analysis {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #1F2937;
+    text-align: center;
+  }
+
+  .trend-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .trend-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .trend-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .trend-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .trend-icon.math {
+    background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
+  }
+
+  .trend-icon.science {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+
+  .trend-icon.coding {
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+  }
+
+  .trend-content {
+    flex: 1;
+  }
+
+  .trend-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .trend-description {
+    color: #6B7280;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  /* 动画效果 */
+  .animate-fadeInUp {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .header-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .stat-item {
+      padding: 0.75rem;
+    }
+
+    .trend-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style> 
+

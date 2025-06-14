@@ -1,0 +1,40 @@
+{
+  "id": "algebraic-reasoning",
+  "name": "Algebraic Reasoning",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Math Playground",
+  "url": "https://www.mathplayground.com/algebraic_reasoning.html",
+  "embedUrl": "https://www.mathplayground.com/algebraic_reasoning.html",
+  "ageRange": "10-16",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:02:23.609Z",
+  "info": {
+    "title": "Algebraic Reasoning",
+    "description": "Follow the clues and solve the puzzles. Only at MathPlayground.com!",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "algebraic-reasoning-intro-1.jpg"
+  ],
+  "screenshots": [
+    "algebraic-reasoning-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

@@ -1,0 +1,36 @@
+<svg width="400" height="300" viewBox="0 0 400 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 渐变背景 -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#006336;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 装饰图案 -->
+    <pattern id="dots" patternUnits="userSpaceOnUse" width="20" height="20">
+      <circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.1)"/>
+    </pattern>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="url(#bg-gradient)" rx="12"/>
+  <rect width="400" height="300" fill="url(#dots)" rx="12"/>
+  
+  <!-- 装饰元素 -->
+  <circle cx="350" cy="50" r="30" fill="rgba(255,255,255,0.1)"/>
+  <circle cx="50" cy="250" r="20" fill="rgba(255,255,255,0.1)"/>
+  
+  <!-- 游戏图标 -->
+  <circle cx="200" cy="120" r="35" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <text x="200" y="135" font-family="Arial, sans-serif" font-size="32" fill="white" text-anchor="middle">🧬</text>
+  
+  <!-- 游戏标题 -->
+  <text x="200" y="190" font-family="Inter, sans-serif" font-weight="700" font-size="18" fill="white" text-anchor="middle">Conway's Game of Life</text>
+  
+  <!-- 分类标签 -->
+  <rect x="160" y="210" width="80" height="24" rx="12" fill="rgba(255,255,255,0.2)"/>
+  <text x="200" y="226" font-family="Inter, sans-serif" font-weight="500" font-size="12" fill="white" text-anchor="middle">Science</text>
+  
+  <!-- 底部装饰线 -->
+  <rect x="0" y="280" width="400" height="4" fill="rgba(255,255,255,0.2)" rx="2"/>
+</svg>

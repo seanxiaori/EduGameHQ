@@ -1,0 +1,26 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="400" height="300" fill="#f8fafc"/>
+  
+  <!-- 游戏窗口 -->
+  <rect x="50" y="50" width="300" height="200" fill="#ffffff" rx="10" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- 播放按钮 -->
+  <circle cx="200" cy="120" r="30" fill="#6366f1"/>
+  <polygon points="185,105 185,135 210,120" fill="white"/>
+  
+  <!-- 标题 -->
+  <text x="200" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1f2937">Educational Game</text>
+  
+  <!-- 副标题 -->
+  <text x="200" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#6b7280">Click to Play</text>
+  
+  <!-- 装饰元素 -->
+  <circle cx="80" cy="80" r="8" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="320" cy="80" r="6" fill="#34d399" opacity="0.6"/>
+  <circle cx="80" cy="220" r="5" fill="#f87171" opacity="0.6"/>
+  <circle cx="320" cy="220" r="7" fill="#a78bfa" opacity="0.6"/>
+  
+  <!-- 边框装饰 -->
+  <rect x="48" y="48" width="304" height="204" fill="none" stroke="#6366f1" stroke-width="1" stroke-dasharray="5,5" opacity="0.3" rx="12"/>
+</svg> 

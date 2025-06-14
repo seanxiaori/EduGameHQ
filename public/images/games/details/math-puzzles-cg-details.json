@@ -1,0 +1,40 @@
+{
+  "id": "math-puzzles-cg",
+  "name": "Math Puzzles CG",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/math-puzzles-cg",
+  "embedUrl": "https://www.miniplay.com/embed/math-puzzles-cg",
+  "ageRange": "10-16",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:03:31.012Z",
+  "info": {
+    "title": "Math Puzzles CG",
+    "description": "Put your math knowledge to test and enjoy squeezing your brain! Pay attention to the stages and apply the right formulas. Good luck!",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "math-puzzles-cg-intro-1.jpg"
+  ],
+  "screenshots": [
+    "math-puzzles-cg-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

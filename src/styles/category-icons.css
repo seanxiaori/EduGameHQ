@@ -1,0 +1,389 @@
+/* 
+ * EduGameHQ - 游戏分类图标样式系统
+ * 统一的图标设计规范，适用于所有游戏分类页面
+ */
+
+/* 主分类图标系统 */
+.category-icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-background {
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: white;
+  position: relative;
+  z-index: 2;
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.15),
+    0 4px 10px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.icon-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* 数学分类图标 */
+.category-icon.math .icon-background {
+  background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
+}
+
+.category-icon.math .icon-glow {
+  background: radial-gradient(circle, #EA580C 0%, transparent 70%);
+}
+
+/* 科学分类图标 */
+.category-icon.science .icon-background {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.category-icon.science .icon-glow {
+  background: radial-gradient(circle, #059669 0%, transparent 70%);
+}
+
+/* 编程分类图标 */
+.category-icon.coding .icon-background {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+}
+
+.category-icon.coding .icon-glow {
+  background: radial-gradient(circle, #2563EB 0%, transparent 70%);
+}
+
+/* 语言分类图标 */
+.category-icon.language .icon-background {
+  background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
+}
+
+.category-icon.language .icon-glow {
+  background: radial-gradient(circle, #C026D3 0%, transparent 70%);
+}
+
+/* 益智分类图标 */
+.category-icon.puzzle .icon-background {
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+}
+
+.category-icon.puzzle .icon-glow {
+  background: radial-gradient(circle, #7C3AED 0%, transparent 70%);
+}
+
+/* 体育分类图标 */
+.category-icon.sports .icon-background {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+}
+
+.category-icon.sports .icon-glow {
+  background: radial-gradient(circle, #F97316 0%, transparent 70%);
+}
+
+/* 艺术创意分类图标 */
+.category-icon.art .icon-background {
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+}
+
+.category-icon.art .icon-glow {
+  background: radial-gradient(circle, #EC4899 0%, transparent 70%);
+}
+
+/* 历史地理分类图标 */
+.category-icon.geography .icon-background {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+.category-icon.geography .icon-glow {
+  background: radial-gradient(circle, #8B5CF6 0%, transparent 70%);
+}
+
+/* 区域标题图标系统 */
+.section-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+}
+
+/* 特色游戏图标 */
+.section-icon.featured {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+/* 难度等级图标 */
+.section-icon.difficulty-easy {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.section-icon.difficulty-medium {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.section-icon.difficulty-hard {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+
+/* 分类特定的区域图标 */
+.section-icon.math {
+  background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
+}
+
+.section-icon.science {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.section-icon.coding {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+}
+
+.section-icon.language {
+  background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
+}
+
+.section-icon.puzzle {
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+}
+
+.section-icon.sports {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+}
+
+.section-icon.art {
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+}
+
+.section-icon.geography {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+/* 侧边栏图标系统 */
+.sidebar-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+}
+
+/* 侧边栏图标按分类着色 */
+.sidebar-icon.math {
+  background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
+}
+
+.sidebar-icon.science {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.sidebar-icon.coding {
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+}
+
+.sidebar-icon.language {
+  background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
+}
+
+.sidebar-icon.puzzle {
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+}
+
+.sidebar-icon.sports {
+  background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+}
+
+.sidebar-icon.art {
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+}
+
+.sidebar-icon.geography {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+/* 动画效果 */
+@keyframes pulse {
+  0%, 100% { 
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 悬停效果 */
+.category-icon:hover .icon-background {
+  transform: scale(1.05);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.2),
+    0 6px 15px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.section-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .category-icon {
+    width: 80px;
+    height: 80px;
+  }
+
+  .icon-background {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .icon-glow {
+    width: 80px;
+    height: 80px;
+  }
+
+  .section-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .sidebar-icon {
+    width: 28px;
+    height: 28px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .icon-background {
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
+  .icon-glow {
+    width: 70px;
+    height: 70px;
+  }
+
+  .section-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 0.9rem;
+  }
+}
+
+/* 图标映射指南 */
+/*
+分类图标建议：
+- Math (数学): fas fa-calculator, fas fa-plus, fas fa-divide
+- Science (科学): fas fa-flask, fas fa-atom, fas fa-microscope
+- Coding (编程): fas fa-code, fas fa-laptop-code, fas fa-terminal
+- Language (语言): fas fa-language, fas fa-book, fas fa-spell-check
+- Puzzle (益智): fas fa-puzzle-piece, fas fa-brain, fas fa-lightbulb
+- Sports (体育): fas fa-running, fas fa-football-ball, fas fa-medal
+- Art (艺术): fas fa-palette, fas fa-paint-brush, fas fa-music
+- Geography (地理): fas fa-globe, fas fa-map, fas fa-mountain
+
+区域图标建议：
+- Featured: fas fa-star, fas fa-crown, fas fa-fire
+
+难度等级图标建议 (更直观的选择)：
+方案1 - 表情图标 (推荐):
+- Easy: fas fa-smile (笑脸 - 轻松愉快)
+- Medium: fas fa-meh (平静脸 - 适中难度)  
+- Hard: fas fa-frown (皱眉脸 - 有挑战性)
+
+方案2 - 等级图标:
+- Easy: fas fa-battery-quarter (一格电量)
+- Medium: fas fa-battery-half (半格电量)
+- Hard: fas fa-battery-full (满格电量)
+
+方案3 - 星级图标:
+- Easy: fas fa-star (一颗星)
+- Medium: fas fa-star-half-alt (一星半)
+- Hard: fas fa-certificate (证书/奖章)
+
+方案4 - 进度图标:
+- Easy: fas fa-circle (一个圆点)
+- Medium: fas fa-adjust (半圆)
+- Hard: fas fa-dot-circle (实心圆)
+
+方案5 - 温度计图标:
+- Easy: fas fa-thermometer-quarter (低温)
+- Medium: fas fa-thermometer-half (中温)
+- Hard: fas fa-thermometer-full (高温)
+
+侧边栏图标建议：
+- Tips: fas fa-lightbulb, fas fa-info-circle, fas fa-question-circle
+- Skills: fas fa-chart-line, fas fa-graduation-cap, fas fa-target
+- Progress: fas fa-chart-bar, fas fa-trophy, fas fa-medal
+*/ 

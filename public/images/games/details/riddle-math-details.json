@@ -1,0 +1,40 @@
+{
+  "id": "riddle-math",
+  "name": "Riddle Math",
+  "category": "math",
+  "categoryName": "Math",
+  "source": "Miniplay",
+  "url": "https://www.miniplay.com/game/riddle-math",
+  "embedUrl": "https://www.miniplay.com/embed/riddle-math",
+  "ageRange": "10-16",
+  "difficulty": "Medium",
+  "crawledAt": "2025-06-12T17:04:16.003Z",
+  "info": {
+    "title": "Riddle Math",
+    "description": "Play 3 different levels",
+    "tags": [],
+    "rating": null,
+    "plays": null,
+    "features": [],
+    "objectives": []
+  },
+  "images": [
+    "riddle-math-intro-1.jpg"
+  ],
+  "screenshots": [
+    "riddle-math-main.jpg"
+  ],
+  "instructions": {
+    "controls": [
+      "使用鼠标点击进行操作",
+      "使用键盘方向键移动"
+    ],
+    "howToPlay": "按照游戏内提示进行游戏，完成各种挑战任务。",
+    "objectives": [
+      "完成游戏目标",
+      "提升相关技能"
+    ],
+    "tips": [],
+    "rules": []
+  }
+}

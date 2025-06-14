@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="puzzleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#7C3AED"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#puzzleGradient)" rx="12"/>
+  
+  <!-- Memory cards grid -->
+  <g transform="translate(100, 50)">
+    <!-- Row 1 -->
+    <rect x="0" y="0" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="50" y="0" width="40" height="50" fill="#3B82F6" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="100" y="0" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="150" y="0" width="40" height="50" fill="#10B981" stroke="#333" stroke-width="2" rx="4"/>
+    
+    <!-- Row 2 -->
+    <rect x="0" y="60" width="40" height="50" fill="#F59E0B" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="50" y="60" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="100" y="60" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="150" y="60" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    
+    <!-- Row 3 -->
+    <rect x="0" y="120" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="50" y="120" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="100" y="120" width="40" height="50" fill="#EF4444" stroke="#333" stroke-width="2" rx="4"/>
+    <rect x="150" y="120" width="40" height="50" fill="white" stroke="#333" stroke-width="2" rx="4"/>
+    
+    <!-- Symbols on revealed cards -->
+    <text x="70" y="30" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">★</text>
+    <text x="170" y="30" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">♠</text>
+    <text x="20" y="90" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">♥</text>
+    <text x="120" y="150" font-family="Arial" font-size="20" font-weight="bold" fill="white" text-anchor="middle">♦</text>
+    
+    <!-- Question marks on hidden cards -->
+    <text x="20" y="30" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="120" y="30" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="70" y="90" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="120" y="90" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="170" y="90" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="20" y="150" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="70" y="150" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+    <text x="170" y="150" font-family="Arial" font-size="20" font-weight="bold" fill="#666" text-anchor="middle">?</text>
+  </g>
+  
+  <!-- Game title -->
+  <text x="200" y="240" font-family="Arial Black, sans-serif" font-size="28" font-weight="bold" fill="white" text-anchor="middle">Memory Game</text>
+</svg> 

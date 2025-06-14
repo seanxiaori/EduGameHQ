@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="languageGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#D946EF"/>
+      <stop offset="100%" style="stop-color:#C026D3"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#languageGradient)" rx="12"/>
+  
+  <!-- Timer -->
+  <circle cx="200" cy="80" r="40" fill="white" stroke="#C026D3" stroke-width="4"/>
+  <text x="200" y="88" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="#C026D3" text-anchor="middle">20</text>
+  
+  <!-- Words grid -->
+  <g transform="translate(80, 130)">
+    <!-- Word boxes -->
+    <rect x="0" y="0" width="60" height="25" fill="white" rx="4"/>
+    <text x="30" y="16" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">QUICK</text>
+    
+    <rect x="70" y="0" width="60" height="25" fill="white" rx="4"/>
+    <text x="100" y="16" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">SMART</text>
+    
+    <rect x="140" y="0" width="60" height="25" fill="white" rx="4"/>
+    <text x="170" y="16" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">LEARN</text>
+    
+    <rect x="210" y="0" width="60" height="25" fill="white" rx="4"/>
+    <text x="240" y="16" font-family="Arial" font-size="12" font-weight="bold" fill="#333" text-anchor="middle">BRAIN</text>
+    
+    <!-- Second row -->
+    <rect x="0" y="35" width="60" height="25" fill="rgba(255,255,255,0.5)" rx="4"/>
+    <text x="30" y="51" font-family="Arial" font-size="12" font-weight="bold" fill="#666" text-anchor="middle">THINK</text>
+    
+    <rect x="70" y="35" width="60" height="25" fill="rgba(255,255,255,0.5)" rx="4"/>
+    <text x="100" y="51" font-family="Arial" font-size="12" font-weight="bold" fill="#666" text-anchor="middle">WRITE</text>
+    
+    <rect x="140" y="35" width="60" height="25" fill="rgba(255,255,255,0.5)" rx="4"/>
+    <text x="170" y="51" font-family="Arial" font-size="12" font-weight="bold" fill="#666" text-anchor="middle">FOCUS</text>
+    
+    <rect x="210" y="35" width="60" height="25" fill="rgba(255,255,255,0.5)" rx="4"/>
+    <text x="240" y="51" font-family="Arial" font-size="12" font-weight="bold" fill="#666" text-anchor="middle">SPEED</text>
+  </g>
+  
+  <!-- Game title -->
+  <text x="200" y="240" font-family="Arial Black, sans-serif" font-size="24" font-weight="bold" fill="white" text-anchor="middle">20 Words // 20 Seconds</text>
+</svg>

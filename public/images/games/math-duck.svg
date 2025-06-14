@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="grad-math-duck" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff8b3f;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#grad-math-duck)" rx="20"/>
+  
+  <!-- Icon -->
+  <text x="200" y="150" text-anchor="middle" dominant-baseline="middle" 
+        font-size="80" fill="white" opacity="0.9">🦆</text>
+  
+  <!-- Title -->
+  <text x="200" y="220" text-anchor="middle" dominant-baseline="middle" 
+        font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+        fill="white" opacity="0.8">Math Duck</text>
+  
+  <!-- Decorative elements -->
+  <circle cx="50" cy="50" r="20" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="50" r="15" fill="white" opacity="0.1"/>
+  <circle cx="50" cy="250" r="15" fill="white" opacity="0.1"/>
+  <circle cx="350" cy="250" r="20" fill="white" opacity="0.1"/>
+</svg>

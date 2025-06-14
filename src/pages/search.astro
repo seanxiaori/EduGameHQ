@@ -1,0 +1,516 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import type { Game } from '../types/game';
+import gamesData from '../data/games/games.json';
+
+// 获取搜索查询参数
+const url = new URL(Astro.request.url);
+const query = url.searchParams.get('q') || '';
+const searchQuery = query.toLowerCase().trim();
+
+// 调试信息
+console.log('=== SEARCH PAGE DEBUG ===');
+console.log('Full URL:', url.toString());
+console.log('Search params:', Object.fromEntries(url.searchParams.entries()));
+console.log('Query param "q":', url.searchParams.get('q'));
+console.log('Processed query:', query);
+console.log('Query length:', query.length);
+
+// 将游戏对象转换为数组，并添加slug属性
+const games: Game[] = Object.entries(gamesData).map(([slug, game]) => ({
+  ...game,
+  slug
+})) as Game[];
+
+// 搜索逻辑
+let searchResults: Game[] = [];
+let hasResults = false;
+
+if (searchQuery) {
+  searchResults = games.filter(game => {
+    const titleMatch = game.title.toLowerCase().includes(searchQuery);
+    const descriptionMatch = game.description?.toLowerCase().includes(searchQuery);
+    const categoryMatch = game.categoryName.toLowerCase().includes(searchQuery);
+    const tagsMatch = game.tags?.some(tag => tag.toLowerCase().includes(searchQuery));
+    
+    return titleMatch || descriptionMatch || categoryMatch || tagsMatch;
+  });
+  
+  hasResults = searchResults.length > 0;
+}
+
+// 页面标题和描述
+const pageTitle = searchQuery 
+  ? `Search Results for "${query}" | EduGameHQ`
+  : 'Search Educational Games | EduGameHQ';
+
+const pageDescription = searchQuery
+  ? `Found ${searchResults.length} educational games matching "${query}". Play free learning games for kids aged 6-18.`
+  : 'Search through our collection of 240+ free educational games. Find math, science, coding, language, sports, art and geography games.';
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <div class="search-page">
+    <div class="container mx-auto px-4 py-8">
+      
+      {searchQuery ? (
+        hasResults ? (
+          <!-- 搜索结果 -->
+          <div class="search-results">
+            <div class="search-header mb-8">
+              <h1 class="text-3xl font-bold text-gray-900 mb-2">
+                Search Results for "{query}"
+              </h1>
+              <p class="text-gray-600">
+                Found {searchResults.length} games matching your search
+              </p>
+            </div>
+            
+            <!-- 游戏网格 -->
+            <div class="games-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {searchResults.map((game) => (
+                <div class="game-card bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden group">
+                  <div class="game-image-container relative">
+                    <img 
+                      src={game.images?.[0] ? `/images/games/intro/${game.images[0]}` : '/images/game-placeholder.jpg'} 
+                      alt={game.title}
+                      class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                    <div class="play-overlay absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <a 
+                        href={`/games/${game.slug}`}
+                        class="play-btn bg-white text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors duration-200 flex items-center gap-2"
+                      >
+                        <i class="fas fa-play"></i>
+                        Play Now
+                      </a>
+                    </div>
+                  </div>
+                  
+                  <div class="game-info p-4">
+                    <h3 class="game-title text-lg font-semibold text-gray-900 mb-2 line-clamp-1">
+                      {game.title}
+                    </h3>
+                    <p class="game-description text-gray-600 text-sm mb-3 line-clamp-2">
+                      {game.description.length > 100 ? game.description.substring(0, 100) + '...' : game.description}
+                    </p>
+                    <div class="game-meta flex items-center justify-between">
+                      <span class="category-badge px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        {game.categoryName}
+                      </span>
+                      <div class="game-stats text-xs text-gray-500">
+                        <i class="fas fa-users mr-1"></i>
+                        {game.playCount || Math.floor(Math.random() * 1000) + 100}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <!-- 无搜索结果 -->
+          <div class="no-results text-center py-12">
+            <div class="no-results-icon mb-6">
+              <i class="fas fa-search text-6xl text-gray-300"></i>
+            </div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">
+              No games found for "{query}"
+            </h1>
+            <p class="text-gray-600 mb-8 max-w-md mx-auto">
+              We couldn't find any games matching your search. Try different keywords or browse our categories below.
+            </p>
+            
+            <!-- 推荐分类 -->
+            <div class="recommended-categories">
+              <h2 class="text-xl font-semibold text-gray-900 mb-6">Browse by Category</h2>
+              <div class="categories-grid grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <a href="/math-games" class="category-card bg-orange-50 hover:bg-orange-100 p-4 rounded-lg transition-colors duration-200">
+                  <i class="fas fa-calculator text-2xl text-orange-600 mb-2"></i>
+                  <h3 class="font-semibold text-gray-900">Math Games</h3>
+                </a>
+                <a href="/science-games" class="category-card bg-green-50 hover:bg-green-100 p-4 rounded-lg transition-colors duration-200">
+                  <i class="fas fa-flask text-2xl text-green-600 mb-2"></i>
+                  <h3 class="font-semibold text-gray-900">Science Games</h3>
+                </a>
+                <a href="/coding-games" class="category-card bg-blue-50 hover:bg-blue-100 p-4 rounded-lg transition-colors duration-200">
+                  <i class="fas fa-code text-2xl text-blue-600 mb-2"></i>
+                  <h3 class="font-semibold text-gray-900">Coding Games</h3>
+                </a>
+                <a href="/language-games" class="category-card bg-purple-50 hover:bg-purple-100 p-4 rounded-lg transition-colors duration-200">
+                  <i class="fas fa-book-open text-2xl text-purple-600 mb-2"></i>
+                  <h3 class="font-semibold text-gray-900">Language Games</h3>
+                </a>
+              </div>
+            </div>
+          </div>
+        )
+      ) : (
+        <!-- 空搜索状态 -->
+        <div class="empty-search text-center py-12">
+          <div class="search-icon mb-6">
+            <i class="fas fa-search text-6xl text-gray-300"></i>
+          </div>
+          <h1 class="text-3xl font-bold text-gray-900 mb-4">
+            Search Educational Games
+          </h1>
+          <p class="text-gray-600 mb-8 max-w-md mx-auto">
+            Enter keywords to search through our collection of 240+ educational games for kids aged 6-18.
+          </p>
+          
+          <!-- 分类链接 -->
+          <div class="categories-showcase">
+            <h2 class="text-xl font-semibold text-gray-900 mb-6">Popular Categories</h2>
+            <div class="categories-grid grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+              <a href="/math-games" class="category-card bg-orange-50 hover:bg-orange-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-calculator text-3xl text-orange-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Math Games</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/science-games" class="category-card bg-green-50 hover:bg-green-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-flask text-3xl text-green-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Science Games</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/coding-games" class="category-card bg-blue-50 hover:bg-blue-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-code text-3xl text-blue-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Coding Games</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/language-games" class="category-card bg-purple-50 hover:bg-purple-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-book-open text-3xl text-purple-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Language Games</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/sports-games" class="category-card bg-red-50 hover:bg-red-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-running text-3xl text-red-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Sports Games</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/art-games" class="category-card bg-pink-50 hover:bg-pink-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-palette text-3xl text-pink-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Art & Creativity</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/geography-games" class="category-card bg-teal-50 hover:bg-teal-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-globe text-3xl text-teal-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Geography</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+              <a href="/puzzle-games" class="category-card bg-indigo-50 hover:bg-indigo-100 p-6 rounded-lg transition-colors duration-200">
+                <i class="fas fa-puzzle-piece text-3xl text-indigo-600 mb-3"></i>
+                <h3 class="font-semibold text-gray-900 mb-1">Puzzle Games</h3>
+                <p class="text-sm text-gray-600">30+ games</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .search-page {
+    min-height: calc(100vh - 140px);
+    padding: 2rem 0;
+    background: #FEFCFB;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .search-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .search-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .search-query {
+    color: #F59E0B;
+  }
+
+  .search-subtitle {
+    font-size: 1.125rem;
+    color: #6B7280;
+  }
+
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .game-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  .game-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .game-image {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+  }
+
+  .game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .game-card:hover .game-image img {
+    transform: scale(1.05);
+  }
+
+  .play-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+  }
+
+  .game-card:hover .play-overlay {
+    opacity: 1;
+  }
+
+  .game-info {
+    padding: 1.5rem;
+  }
+
+  .game-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+  }
+
+  .game-category {
+    font-size: 0.875rem;
+    color: #F59E0B;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .game-description {
+    font-size: 0.875rem;
+    color: #6B7280;
+    line-height: 1.5;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .no-results-icon {
+    font-size: 4rem;
+    color: #D1D5DB;
+    margin-bottom: 1.5rem;
+  }
+
+  .no-results h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+  }
+
+  .no-results p {
+    font-size: 1.125rem;
+    color: #6B7280;
+    margin-bottom: 2rem;
+  }
+
+  .search-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .suggestion-tag {
+    padding: 0.75rem 1.5rem;
+    background: #F3F4F6;
+    color: #4B5563;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .suggestion-tag:hover {
+    background: #F59E0B;
+    color: white;
+    transform: translateY(-2px);
+  }
+
+  .recommended-section {
+    margin-top: 3rem;
+  }
+
+  .recommended-section h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1F2937;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .empty-search {
+    text-align: center;
+    padding: 3rem 0;
+  }
+
+  .empty-search-icon {
+    font-size: 4rem;
+    color: #F59E0B;
+    margin-bottom: 1.5rem;
+  }
+
+  .empty-search h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 1rem;
+  }
+
+  .empty-search p {
+    font-size: 1.125rem;
+    color: #6B7280;
+    margin-bottom: 3rem;
+  }
+
+  .category-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .category-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: white;
+    color: #4B5563;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .category-link.math:hover { background: #EA580C; color: white; }
+  .category-link.science:hover { background: #059669; color: white; }
+  .category-link.coding:hover { background: #2563EB; color: white; }
+  .category-link.language:hover { background: #C026D3; color: white; }
+  .category-link.puzzle:hover { background: #7C3AED; color: white; }
+  .category-link.sports:hover { background: #DC2626; color: white; }
+  .category-link.art:hover { background: #EC4899; color: white; }
+  .category-link.geography:hover { background: #0891B2; color: white; }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .search-title {
+      font-size: 2rem;
+    }
+
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .category-links {
+      grid-template-columns: 1fr;
+    }
+
+    .search-suggestions {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 1rem;
+    }
+
+    .search-title {
+      font-size: 1.75rem;
+    }
+
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .category-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+</style> 
+

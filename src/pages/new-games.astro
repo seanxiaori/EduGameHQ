@@ -1,0 +1,855 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const seoData = {
+  title: "New Educational Games | EduGameHQ",
+  description: "Discover the latest educational games added to EduGameHQ. Fresh learning experiences for math, science, coding, language and puzzle games.",
+  keywords: ["new games", "latest educational games", "fresh learning games", "recently added games"],
+  ogImage: "/images/new-games-og.jpg"
+};
+
+// 新游戏数据
+const newGames = [
+  {
+    id: 'conways-life',
+    title: "Conway's Game of Life",
+    description: 'Explore the fascinating world of cellular automata with this classic mathematical simulation game.',
+    icon: 'fas fa-circle',
+    addedDate: 'Today',
+    badge: 'NEW',
+    badgeClass: 'badge-new',
+    subject: 'Science',
+    age: 'Ages 14-18',
+    category: 'science'
+  },
+  {
+    id: 'car-drawing',
+    title: 'Car Drawing Game',
+    description: 'Draw a line to create a car and reach the finish line in this creative physics-based puzzle game.',
+    icon: 'fas fa-car',
+    addedDate: 'Today',
+    badge: 'NEW',
+    badgeClass: 'badge-new',
+    subject: 'Creative',
+    age: 'Ages 8-16',
+    category: 'puzzle'
+  },
+  {
+    id: 'grid-construction',
+    title: 'Grid Construction Game',
+    description: 'Learn about electrical systems and smart grids through this interactive construction game. Explore renewable energy concepts.',
+    icon: 'fas fa-bolt',
+    addedDate: 'Yesterday',
+    badge: 'FEATURED',
+    badgeClass: 'badge-featured',
+    subject: 'Science',
+    age: 'Ages 12-18',
+    category: 'science'
+  },
+  {
+    id: 'make-ten',
+    title: 'Make Ten',
+    description: 'Fast-paced math arcade game where you combine numbers to make ten. Perfect for improving mental arithmetic skills.',
+    icon: 'fas fa-plus',
+    addedDate: '2 days ago',
+    badge: 'NEW',
+    badgeClass: 'badge-new',
+    subject: 'Math',
+    age: 'Ages 8-14',
+    category: 'math'
+  },
+  {
+    id: 'typing-game',
+    title: 'Relaxing Typing Game',
+    description: 'Practice typing skills with this relaxing and engaging typing game featuring beautiful poetry and stories.',
+    icon: 'fas fa-keyboard',
+    addedDate: '3 days ago',
+    badge: 'NEW',
+    badgeClass: 'badge-new',
+    subject: 'Language',
+    age: 'Ages 10-18',
+    category: 'language'
+  },
+  {
+    id: 'learn-gdscript',
+    title: 'Learn GDScript From Zero',
+    description: 'Learn programming fundamentals in your browser with this free interactive application. Start your coding journey with beginner-friendly lessons.',
+    icon: 'fas fa-code',
+    addedDate: '5 days ago',
+    badge: 'FEATURED',
+    badgeClass: 'badge-featured',
+    subject: 'Programming',
+    age: 'Ages 12-18',
+    category: 'coding'
+  },
+  {
+    id: 'sudoku',
+    title: 'Sudoku Classic',
+    description: 'Challenge your logic with this classic number puzzle game. Perfect for developing critical thinking and problem-solving skills.',
+    icon: 'fas fa-puzzle-piece',
+    addedDate: '1 week ago',
+    badge: 'NEW',
+    badgeClass: 'badge-new',
+    subject: 'Logic',
+    age: 'Ages 10-18',
+    category: 'puzzle'
+  },
+  {
+    id: 'math-duck',
+    title: 'Math Duck',
+    description: 'Help the cute duck solve math problems in this adorable educational game. Perfect introduction to basic arithmetic for young learners.',
+    icon: 'fas fa-calculator',
+    addedDate: '1 week ago',
+    badge: 'FEATURED',
+    badgeClass: 'badge-featured',
+    subject: 'Math',
+    age: 'Ages 6-12',
+    category: 'math'
+  },
+  {
+    id: '2048',
+    title: '2048',
+    description: 'Classic number merging puzzle game to reach 2048 by combining identical numbers. Develops strategic thinking and planning skills.',
+    icon: 'fas fa-th',
+    addedDate: '2 weeks ago',
+    badge: 'NEW',
+    badgeClass: 'badge-new',
+    subject: 'Math',
+    age: 'Ages 10-18',
+    category: 'math'
+  }
+];
+---
+
+<BaseLayout {...seoData}>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <!-- 页面标题 -->
+      <header class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">New Games</h1>
+            <p class="page-subtitle">
+              Explore the latest additions to our educational games collection. Fresh content added regularly to keep learning exciting!
+            </p>
+          </div>
+        </div>
+      </header>
+
+      <!-- 页面头部 -->
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon new-games">
+            <i class="fas fa-star"></i>
+          </div>
+          <h1 class="page-title">New Games</h1>
+          <p class="page-description">
+            Discover the latest educational games added to our collection. 
+            Fresh learning experiences and innovative gameplay await you!
+          </p>
+          <div class="page-stats">
+            <div class="stat-item">
+              <span class="stat-number">{newGames.length}</span>
+              <span class="stat-label">New Games</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">5</span>
+              <span class="stat-label">This Week</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Free to Play</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 最新游戏 -->
+      <section class="new-games-section">
+        <h2 class="section-title">
+          <span class="star-icon">⭐</span>
+          Fresh Arrivals
+        </h2>
+        <p class="section-subtitle">
+          Brand new educational games added to our collection - be the first to play!
+        </p>
+        
+        <div class="games-grid">
+          {newGames.map((game, index) => (
+            <div class="game-card new animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+              <div class="game-thumbnail">
+                <img src={`/images/games/${game.id}.svg`} alt={game.title} class="game-image" />
+                <div class={`new-badge ${game.badgeClass}`}>
+                  {game.badge}
+                </div>
+                <div class="added-date">{game.addedDate}</div>
+                <div class="play-overlay">
+                  <a href={`/games/${game.id}`} class="play-btn">
+                    <i class="fas fa-play"></i> Play Now
+                  </a>
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
+                <p class="game-description">{game.description}</p>
+                <div class="game-meta">
+                  <div class="game-tags">
+                    <span class="game-tag age">{game.age}</span>
+                    <span class={`game-tag subject ${game.category}`}>{game.subject}</span>
+                  </div>
+                  <div class="new-indicator">
+                    <i class="fas fa-sparkles"></i>
+                    <span>New</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 新游戏统计 -->
+      <section class="new-stats">
+        <h2 class="section-title">What's Coming</h2>
+        <div class="stats-grid">
+          <div class="stat-card math">
+            <div class="stat-icon">
+              <i class="fas fa-calculator"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Math Games</h3>
+              <div class="coming-count">3 new games</div>
+              <p>Advanced algebra and geometry puzzles coming soon</p>
+            </div>
+          </div>
+          <div class="stat-card science">
+            <div class="stat-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Science Games</h3>
+              <div class="coming-count">2 new games</div>
+              <p>Chemistry lab simulations and physics experiments</p>
+            </div>
+          </div>
+          <div class="stat-card coding">
+            <div class="stat-icon">
+              <i class="fas fa-code"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Coding Games</h3>
+              <div class="coming-count">4 new games</div>
+              <p>Python tutorials and JavaScript challenges</p>
+            </div>
+          </div>
+          <div class="stat-card language">
+            <div class="stat-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <div class="stat-content">
+              <h3>Language Games</h3>
+              <div class="coming-count">2 new games</div>
+              <p>Vocabulary builders and grammar adventures</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 订阅通知 -->
+      <section class="notification-signup">
+        <div class="signup-card">
+          <div class="signup-icon">
+            <i class="fas fa-bell"></i>
+          </div>
+          <h3>Stay Updated</h3>
+          <p>Get notified when new educational games are added to our collection!</p>
+          <div class="signup-form">
+            <input type="email" placeholder="Enter your email address" class="email-input">
+            <button class="signup-btn">
+              <i class="fas fa-paper-plane"></i>
+              Subscribe
+            </button>
+          </div>
+          <div class="signup-note">
+            <i class="fas fa-shield-alt"></i>
+            We respect your privacy. Unsubscribe anytime.
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  
+  
+
+  
+
+  
+
+  /* 页面头部 */
+  .page-header {
+    background: linear-gradient(135deg, #F0FDF4 0%, rgba(34, 197, 94, 0.1) 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+  }
+
+  .header-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .header-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 auto 1.5rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+
+  .header-icon.new-games {
+    background: #22C55E;
+    animation: starGlow 2s ease-in-out infinite alternate;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #22C55E;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .page-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #22C55E;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: #6B7280;
+    font-weight: 500;
+  }
+
+  /* 区域标题 */
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #1F2937;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .star-icon {
+    font-size: 2rem;
+    animation: starTwinkle 2s ease-in-out infinite;
+  }
+
+  .section-subtitle {
+    color: #6B7280;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  /* 游戏网格 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .game-card {
+    background: white;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    border: 1px solid #E5E7EB;
+    position: relative;
+  }
+
+  .game-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .game-card.new {
+    border: 2px solid #22C55E;
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.2);
+  }
+
+  .game-thumbnail {
+    height: 160px;
+    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .game-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .new-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white;
+    animation: pulse 2s infinite;
+  }
+
+  .badge-new {
+    background: linear-gradient(45deg, #22C55E, #16A34A);
+    animation: newBadgeGlow 2s ease-in-out infinite alternate;
+  }
+
+  .badge-featured {
+    background: linear-gradient(45deg, #F59E0B, #D97706);
+    animation: featuredBadgeGlow 2s ease-in-out infinite alternate;
+  }
+
+  .added-date {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .play-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(34, 197, 94, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .game-card:hover .play-overlay {
+    opacity: 1;
+  }
+
+  .play-btn {
+    background: white;
+    color: #22C55E;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+  }
+
+  .play-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .game-info {
+    padding: 1.5rem;
+  }
+
+  .game-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .game-description {
+    color: #6B7280;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .game-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .game-tags {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .game-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .game-tag.age {
+    background: #F3F4F6;
+    color: #6B7280;
+  }
+
+  .game-tag.subject {
+    color: white;
+  }
+
+  .game-tag.subject.math { background: #EA580C; }
+  .game-tag.subject.science { background: #059669; }
+  .game-tag.subject.coding { background: #2563EB; }
+  .game-tag.subject.language { background: #C026D3; }
+  .game-tag.subject.puzzle { background: #7C3AED; }
+
+  .new-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    color: #22C55E;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  /* 新游戏统计 */
+  .new-stats {
+    margin-bottom: 3rem;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+
+  .stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .stat-card.math .stat-icon { background: #EA580C; }
+  .stat-card.science .stat-icon { background: #059669; }
+  .stat-card.coding .stat-icon { background: #2563EB; }
+  .stat-card.language .stat-icon { background: #C026D3; }
+
+  .stat-content {
+    flex: 1;
+  }
+
+  .stat-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-bottom: 0.25rem;
+  }
+
+  .coming-count {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #22C55E;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-content p {
+    font-size: 0.8rem;
+    color: #6B7280;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 订阅通知 */
+  .notification-signup {
+    margin-bottom: 3rem;
+  }
+
+  .signup-card {
+    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 1.5rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .signup-icon {
+    width: 60px;
+    height: 60px;
+    background: #22C55E;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    color: white;
+    font-size: 1.5rem;
+    animation: bellRing 3s ease-in-out infinite;
+  }
+
+  .signup-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .signup-card p {
+    color: #6B7280;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+  }
+
+  .signup-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto 1rem;
+  }
+
+  .email-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .email-input:focus {
+    outline: none;
+    border-color: #22C55E;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+  }
+
+  .signup-btn {
+    background: #22C55E;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .signup-btn:hover {
+    background: #16A34A;
+    transform: translateY(-1px);
+  }
+
+  .signup-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #6B7280;
+    font-size: 0.875rem;
+  }
+
+  /* 动画 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes starGlow {
+    from {
+      box-shadow: 0 10px 15px -3px rgba(34, 197, 94, 0.3);
+    }
+    to {
+      box-shadow: 0 10px 25px -3px rgba(34, 197, 94, 0.6);
+    }
+  }
+
+  @keyframes starTwinkle {
+    0%, 100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes newBadgeGlow {
+    from {
+      box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.8);
+    }
+  }
+
+  @keyframes featuredBadgeGlow {
+    from {
+      box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+    }
+    to {
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.8);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @keyframes bellRing {
+    0%, 90%, 100% {
+      transform: rotate(0deg);
+    }
+    5%, 15% {
+      transform: rotate(15deg);
+    }
+    10%, 20% {
+      transform: rotate(-15deg);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .main-content {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 2rem 1rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-stats {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .signup-form {
+      flex-direction: column;
+    }
+
+    .signup-card {
+      padding: 2rem 1rem;
+    }
+  }
+</style> 
+
