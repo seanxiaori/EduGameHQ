@@ -104,17 +104,22 @@ const seoData = {
 
       <!-- 游戏信息区域 -->
       <section class="game-info-section">
+        <div class="module-header">
+          <div class="module-icon info-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Game Information</h2>
+            <p class="module-subtitle">Everything you need to know about this game</p>
+          </div>
+        </div>
+
         <div class="info-grid">
           
           <!-- 游戏描述 -->
           <div class="info-card description-card">
-            <h2 class="info-title">
-              <i class="fas fa-info-circle"></i>
-              About This Game
-            </h2>
-            <p class="game-description">
-              {game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
-            </p>
+            <h3>About This Game</h3>
+            <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
             
             <div class="game-details">
               <div class="detail-item">
@@ -136,21 +141,10 @@ const seoData = {
             </div>
           </div>
 
-          <!-- 学习目标 -->
-          <div class="info-card objectives-card">
-            <h2 class="info-title">Learning Objectives</h2>
-            <ul class="objectives-list">
-              <li>Develop problem-solving skills</li>
-              <li>Enhance critical thinking abilities</li>
-              <li>Improve subject knowledge</li>
-              <li>Build confidence through practice</li>
-            </ul>
-          </div>
-
           <!-- 游戏特色 -->
           <div class="info-card features-card">
-            <h2 class="info-title">Features</h2>
-            <ul class="features-list">
+            <h3>Features</h3>
+            <ul>
               <li>Interactive gameplay</li>
               <li>Educational content</li>
               <li>Progress tracking</li>
@@ -160,12 +154,33 @@ const seoData = {
 
           <!-- 游戏说明 -->
           <div class="info-card instructions-card">
-            <h2 class="info-title">How to Play</h2>
-            <div class="instructions-content">
-              <p>Use your mouse or keyboard to interact with the game.</p>
-              <p>Follow the on-screen instructions to complete challenges.</p>
-              <p>Take your time to understand each concept before moving forward.</p>
-              <p>Don't hesitate to restart if you need more practice!</p>
+            <h3>How to Play</h3>
+            <p>Use your mouse or keyboard to interact with the game.</p>
+            <p>Follow the on-screen instructions to complete challenges.</p>
+            <p>Take your time to understand each concept before moving forward.</p>
+            <p>Don't hesitate to restart if you need more practice!</p>
+          </div>
+
+          <!-- 开发者信息 -->
+          <div class="info-card developer-card">
+            <h3>Developer Information</h3>
+            <div class="developer-details">
+              <div class="detail-item">
+                <span class="detail-label">Publisher:</span>
+                <span class="detail-value">{getGameSource(game.url)}</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Platform:</span>
+                <span class="detail-value">HTML5</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Technology:</span>
+                <span class="detail-value">Web Browser</span>
+              </div>
+              <div class="detail-item">
+                <span class="detail-label">Release:</span>
+                <span class="detail-value">2024</span>
+              </div>
             </div>
           </div>
         </div>
@@ -174,10 +189,15 @@ const seoData = {
       <!-- 相关游戏推荐 -->
       {relatedGames.length > 0 && (
         <section class="related-games-section">
-          <h2 class="section-title">
-            <i class="fas fa-gamepad"></i>
-            More {game.category} Games
-          </h2>
+          <div class="module-header">
+            <div class="module-icon related-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">More {game.category} Games</h2>
+              <p class="module-subtitle">Discover similar games you might enjoy</p>
+            </div>
+          </div>
           
           <div class="related-games-grid">
             {relatedGames.map((relatedGame: any) => (
@@ -360,6 +380,54 @@ const seoData = {
   .share-btn { background: #10B981; }
   .share-btn:hover { background: #059669; }
 
+  /* 模块标题样式 - 参考数学游戏页面 */
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .info-icon {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  }
+
+  .related-icon {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.2;
+  }
+
+  .module-subtitle {
+    font-size: 0.95rem;
+    color: #6B7280;
+    margin: 0.25rem 0 0 0;
+    line-height: 1.4;
+  }
+
   /* 游戏信息区域 */
   .game-info-section {
     margin-bottom: 2rem;
@@ -379,21 +447,35 @@ const seoData = {
     border: 1px solid #F3F4F6;
   }
 
-  .info-title {
-    font-size: 1.25rem;
-    font-weight: 700;
+  .info-card h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
     color: #1F2937;
     margin: 0 0 1rem 0;
-    font-family: 'Space Grotesk', sans-serif;
   }
 
-  .game-description {
+  .info-card p {
     color: #4B5563;
     line-height: 1.6;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
   }
 
-  .game-details {
+  .info-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-card li {
+    padding: 0.5rem 0;
+    color: #4B5563;
+  }
+
+  .game-details, .developer-details {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -421,45 +503,9 @@ const seoData = {
     font-weight: 500;
   }
 
-  .objectives-list, .features-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .objectives-list li, .features-list li {
-    padding: 0.5rem 0;
-    color: #4B5563;
-  }
-
-  .instructions-content p {
-    color: #4B5563;
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-  }
-
-  .instructions-content p:last-child {
-    margin-bottom: 0;
-  }
-
   /* 相关游戏推荐 */
   .related-games-section {
     margin-bottom: 2rem;
-  }
-
-  .section-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin: 0 0 1.5rem 0;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .section-title i {
-    color: #6366F1;
   }
 
   .related-games-grid {
