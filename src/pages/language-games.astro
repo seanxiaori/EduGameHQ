@@ -7,7 +7,7 @@ import path from 'path';
 const seoData = {
   title: "Language Games for Kids | Free Online Learning Games | EduGameHQ",
   description: "Play 12+ free language games for kids aged 6-18. Improve your language skills with interactive vocabulary, grammar, and communication games.",
-  keywords: ["language games", "arithmetic games", "algebra games", "geometry games", "math for kids", "educational language games", "free language games"],
+  keywords: ["language games", "vocabulary games", "grammar games", "reading games", "language for kids", "educational language games", "free language games"],
   ogImage: "/images/language-games-og.jpg"
 };
 
@@ -22,197 +22,373 @@ try {
   console.warn('Unable to read games data file');
 }
 
-// 筛选语言游戏并添加真实图片
-const mathGames = Object.entries(allGamesData)
+// 筛选语言游戏
+const languageGames = Object.entries(allGamesData)
   .filter(([_id, game]: [string, Game]) => game.category === 'language')
   .map(([id, game]: [string, Game]) => ({
     id: id,
     title: game.title,
     description: game.description,
     icon: 'fas fa-language',
-    // 使用爬取的真实游戏截图
     image: game.screenshots && game.screenshots.length > 0 
       ? `/images/games/details/${game.screenshots[0]}` 
       : `/images/games/${id}.svg`,
     difficulty: game.difficulty,
     age: `Ages ${game.ageRange}`,
-    skills: game.tags && game.tags.length > 0 ? game.tags : ['Language', 'Problem Solving'],
+    skills: game.tags && game.tags.length > 0 ? game.tags : ['Language', 'Communication'],
     url: `/games/${id}`,
     playCount: game.playCount || 0,
-    featured: ['2048', 'make-ten', 'factor-crafter', 'math-duck'].includes(id)
+    isFeatured: game.isFeatured || false
   }));
 
-// 按难度分组
-const gamesByDifficulty = {
-  'Easy': mathGames.filter(game => game.difficulty === 'Easy'),
-  'Medium': mathGames.filter(game => game.difficulty === 'Medium'),
-  'Hard': mathGames.filter(game => game.difficulty === 'Hard')
-};
+// 按难度分组游戏
+const featuredGames = languageGames.filter(game => game.isFeatured).slice(0, 4);
+const easyGames = languageGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = languageGames.filter(game => game.difficulty === 'Medium');
+const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
   <main class="main-content">
     <div class="content-wrapper">
-      <!-- 页面标题 -->
-      <header class="page-header">
+      
+      <!-- 1. 页面顶部区域 -->
+      <section class="page-header">
         <div class="header-content">
-          <div class="header-icon">
-            <i class="fas fa-book-open"></i>
+          <div class="category-icon-container">
+            <div class="category-icon language">
+              <div class="icon-background">
+                📝
+              </div>
+            </div>
           </div>
+          
           <div class="header-text">
             <h1 class="page-title">Language Games</h1>
-            <p class="page-subtitle">
-              Improve reading, writing, vocabulary, and communication skills with our engaging language games designed for English learners worldwide.
+            <p class="page-description">
+              Improve reading, writing, vocabulary, and communication skills with our engaging language games designed for English learners worldwide. Perfect for building strong language foundations.
             </p>
           </div>
         </div>
-        <div class="header-stats">
-          <div class="stat-item">
-            <span class="stat-number">{languageGames.length}</span>
-            <span class="stat-label">Games</span>
+      </section>
+
+      <!-- 2. 特色游戏模块 -->
+      <section class="game-module featured-module">
+        <div class="module-header">
+          <div class="module-icon featured-icon">
+            <i class="fas fa-star"></i>
           </div>
-          <div class="stat-item">
-            <span class="stat-number">6-18</span>
-            <span class="stat-label">Ages</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">Free</span>
-            <span class="stat-label">Cost</span>
+          <div class="module-title-group">
+            <h2 class="module-title">Featured Language Games</h2>
+            <p class="module-subtitle">Hand-picked language games to enhance your communication skills</p>
           </div>
         </div>
-      </header>
+        
+        <div class="games-grid">
+          {featuredGames.map((game, index) => {
+            const popularity = Math.floor(Math.random() * 15000) + 500;
+            const formatPopularity = (num) => {
+              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+              return num.toString();
+            };
+            
+            return (
+              <a href={game.url} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+                <div class="game-image-container">
+                  <img src={game.image} alt={game.title} class="game-image" loading="lazy" />
+                  <div class="game-overlay">
+                    <div class="popularity-badge">🔥 {formatPopularity(popularity)}</div>
+                    <button class="play-button">
+                      <i class="fas fa-play"></i>
+                    </button>
+                  </div>
+                </div>
+                <div class="game-info">
+                  <h3 class="game-title">{game.title}</h3>
+                  <div class="game-tags">
+                    <span class="age-tag">{game.age}</span>
+                    <span class="category-tag language">Language</span>
+                    <span class="feature-tag featured">FEATURED</span>
+                  </div>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </section>
 
-      <div class="page-layout">
-        <!-- 主要内容区域 -->
-        <div class="main-section">
-          <!-- 特色游戏 -->
-          <section class="featured-games">
-            <h2 class="section-title">
-              <div class="section-icon featured">
-                <i class="fas fa-star"></i>
-              </div>
-              Featured Language Games
-            </h2>
-            <div class="games-grid">
-              {mathGames.filter(game => game.featured).map(game => (
-                <a href={game.url} class="game-card featured">
-                  <div class="game-thumbnail">
+      <!-- 3. 容易难度游戏模块 -->
+      {easyGames.length > 0 && (
+        <section class="game-module easy-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon">
+              <i class="fas fa-smile"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Easy Language Games</h2>
+              <p class="module-subtitle">Perfect for beginners and young language learners</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {easyGames.slice(0, 4).map((game, index) => {
+              const popularity = Math.floor(Math.random() * 8000) + 200;
+              const formatPopularity = (num) => {
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <a href={game.url} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+                  <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" loading="lazy" />
-                    <div class="featured-badge">FEATURED</div>
-                    <div class="play-overlay">
-                      <div class="play-btn">
-                        <i class="fas fa-play"></i> Play Now
-                      </div>
+                    <div class="game-overlay">
+                      <div class="popularity-badge">⭐ {formatPopularity(popularity)}</div>
+                      <button class="play-button">
+                        <i class="fas fa-play"></i>
+                      </button>
                     </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
-                    <p class="game-description">{game.description}</p>
-                    <div class="game-meta">
-                      <div class="game-tags">
-                        <span class="game-tag age">{game.age}</span>
-                        <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
-                      </div>
-                      <div class="game-stats">
-                        <div class="stat">
-                          <i class="fas fa-play"></i>
-                          <span>{(game.playCount || 0).toLocaleString()}</span>
-                        </div>
-                      </div>
+                    <div class="game-tags">
+                      <span class="age-tag">{game.age}</span>
+                      <span class="category-tag language">Language</span>
+                      <span class="difficulty-tag easy">EASY</span>
                     </div>
                   </div>
                 </a>
-              ))}
-            </div>
-          </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
-          <!-- 按难度分组的游戏 -->
-          {Object.entries(gamesByDifficulty).map(([difficulty, games]) => (
-            games.length > 0 && (
-              <section class="difficulty-section">
-                <h2 class="section-title">
-                  <div class={`section-icon difficulty-${difficulty.toLowerCase()}`}>
-                    {difficulty === 'Easy' && <i class="fas fa-smile"></i>}
-                    {difficulty === 'Medium' && <i class="fas fa-meh"></i>}
-                    {difficulty === 'Hard' && <i class="fas fa-frown"></i>}
+      <!-- 4. 中等难度游戏模块 -->
+      {mediumGames.length > 0 && (
+        <section class="game-module medium-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon">
+              <i class="fas fa-meh"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Medium Language Games</h2>
+              <p class="module-subtitle">Intermediate challenges for developing language skills</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {mediumGames.slice(0, 4).map((game, index) => {
+              const popularity = Math.floor(Math.random() * 12000) + 300;
+              const formatPopularity = (num) => {
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <a href={game.url} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" loading="lazy" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">⭐ {formatPopularity(popularity)}</div>
+                      <button class="play-button">
+                        <i class="fas fa-play"></i>
+                      </button>
+                    </div>
                   </div>
-                  {difficulty} Level Games
-                </h2>
-                <div class="games-grid">
-                  {games.map(game => (
-                    <a href={game.url} class="game-card">
-                      <div class="game-thumbnail">
-                        <img src={game.image} alt={game.title} class="game-image" loading="lazy" />
-                        <div class="play-overlay">
-                          <div class="play-btn">
-                            <i class="fas fa-play"></i> Play Now
-                          </div>
-                        </div>
-                      </div>
-                      <div class="game-info">
-                        <h3 class="game-title">{game.title}</h3>
-                        <p class="game-description">{game.description}</p>
-                        <div class="game-meta">
-                          <div class="game-tags">
-                            <span class="game-tag age">{game.age}</span>
-                            <span class={`game-tag difficulty ${difficulty.toLowerCase()}`}>{difficulty}</span>
-                          </div>
-                          <div class="game-stats">
-                            <div class="stat">
-                              <i class="fas fa-play"></i>
-                              <span>{(game.playCount || 0).toLocaleString()}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  ))}
-                </div>
-              </section>
-            )
-          ))}
-        </div>
-
-        <!-- 侧边栏 -->
-        <aside class="sidebar">
-          <!-- 学习提示 -->
-          <div class="sidebar-card">
-            <h3 class="sidebar-title">
-              <div class="sidebar-icon">
-                <i class="fas fa-lightbulb"></i>
-              </div>
-              Language Learning Tips
-            </h3>
-            <ul class="tips-list">
-              <li>Read regularly to expand vocabulary</li>
-              <li>Practice speaking and writing daily</li>
-              <li>Use context clues to understand new words</li>
-              <li>Play word games to make learning fun</li>
-              <li>Listen to stories and audiobooks</li>
-            </ul>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="age-tag">{game.age}</span>
+                      <span class="category-tag language">Language</span>
+                      <span class="difficulty-tag medium">MEDIUM</span>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
           </div>
+        </section>
+      )}
 
-          <!-- 语言技能 -->
-          <div class="sidebar-card">
-            <h3 class="sidebar-title">
-              <div class="sidebar-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              Skills You'll Develop
-            </h3>
-            <div class="skills-list">
-              <span class="skill-tag">Reading Comprehension</span>
-              <span class="skill-tag">Vocabulary Building</span>
-              <span class="skill-tag">Grammar & Syntax</span>
-              <span class="skill-tag">Writing Skills</span>
-              <span class="skill-tag">Spelling</span>
-              <span class="skill-tag">Communication</span>
-              <span class="skill-tag">Critical Thinking</span>
-              <span class="skill-tag">Creative Expression</span>
+      <!-- 5. 困难游戏模块 -->
+      {hardGames.length > 0 && (
+        <section class="game-module hard-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon">
+              <i class="fas fa-frown"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Advanced Language Games</h2>
+              <p class="module-subtitle">Complex language challenges for advanced learners</p>
             </div>
           </div>
-        </aside>
-      </div>
+          
+          <div class="games-grid">
+            {hardGames.slice(0, 4).map((game, index) => {
+              const popularity = Math.floor(Math.random() * 6000) + 100;
+              const formatPopularity = (num) => {
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <a href={game.url} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" loading="lazy" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">{formatPopularity(popularity)}</div>
+                      <button class="play-button">
+                        <i class="fas fa-play"></i>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="age-tag">{game.age}</span>
+                      <span class="category-tag language">Language</span>
+                      <span class="difficulty-tag hard">HARD</span>
+                    </div>
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <!-- 6. 学习建议模块 -->
+      <section class="game-module tips-module">
+        <div class="module-header">
+          <div class="module-icon tips-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Language Learning Tips</h2>
+            <p class="module-subtitle">Expert advice to improve your language skills</p>
+          </div>
+        </div>
+        
+        <div class="tips-grid">
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Practice Daily</h3>
+              <p class="tip-text">Spend 15-20 minutes daily practicing language concepts through games</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Read Regularly</h3>
+              <p class="tip-text">Expand vocabulary and comprehension by reading diverse materials</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Practice Speaking</h3>
+              <p class="tip-text">Improve pronunciation and fluency through regular conversation practice</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Use Context Clues</h3>
+              <p class="tip-text">Learn to understand new words through surrounding context</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. 核心技能模块 -->
+      <section class="game-module skills-module">
+        <div class="module-header">
+          <div class="module-icon skills-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Core Skills You'll Develop</h2>
+            <p class="module-subtitle">Essential language abilities gained through gameplay</p>
+          </div>
+        </div>
+        
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-book-open"></i>
+            </div>
+            <div class="skill-content">
+              <h3 class="skill-title">Reading Comprehension</h3>
+              <p class="skill-description">Understand and analyze written texts effectively</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-spell-check"></i>
+            </div>
+            <div class="skill-content">
+              <h3 class="skill-title">Vocabulary Building</h3>
+              <p class="skill-description">Expand word knowledge and usage skills</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-pen"></i>
+            </div>
+            <div class="skill-content">
+              <h3 class="skill-title">Writing Skills</h3>
+              <p class="skill-description">Develop clear and effective written communication</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-language"></i>
+            </div>
+            <div class="skill-content">
+              <h3 class="skill-title">Grammar Mastery</h3>
+              <p class="skill-description">Master language rules and sentence structure</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-microphone"></i>
+            </div>
+            <div class="skill-content">
+              <h3 class="skill-title">Communication</h3>
+              <p class="skill-description">Express ideas clearly and confidently</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <div class="skill-content">
+              <h3 class="skill-title">Critical Thinking</h3>
+              <p class="skill-description">Analyze and evaluate language use and meaning</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 </BaseLayout>
@@ -231,41 +407,16 @@ const gamesByDifficulty = {
     padding: 2rem;
   }
 
-  /* 页面布局 */
-  .page-layout {
-    display: grid;
-    grid-template-columns: 1fr 320px;
-    gap: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  .main-section {
-    min-width: 0;
-  }
-
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  
-  
-
-  
-
-  
-
-  
-
-  /* 页面头部 */
+  /* 1. 页面头部区域 */
   .page-header {
-    background: linear-gradient(135deg, #FFF7ED 0%, rgba(234, 88, 12, 0.1) 100%);
+    background: linear-gradient(135deg, #FFFBF5 0%, #FFF7ED 50%, rgba(192, 38, 211, 0.08) 100%);
     border-radius: 20px;
-    padding: 3rem 2rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    border: 1px solid rgba(234, 88, 12, 0.2);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(192, 38, 211, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(192, 38, 211, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
   }
@@ -273,159 +424,97 @@ const gamesByDifficulty = {
   .page-header::before {
     content: '';
     position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(234, 88, 12, 0.05) 0%, transparent 70%);
-    animation: float 6s ease-in-out infinite;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(192, 38, 211, 0.3) 50%, transparent 100%);
   }
 
   .header-content {
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
-  }
-
-  /* 统一的分类图标系统 */
-  .category-icon {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto 2rem;
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 2rem;
   }
 
-  .icon-background {
-    width: 80px;
-    height: 80px;
+  .category-icon-container {
+    flex-shrink: 0;
+  }
+
+  .category-icon {
+    width: 72px;
+    height: 72px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
-    color: white;
     position: relative;
-    z-index: 2;
-    box-shadow: 
-      0 10px 25px rgba(0, 0, 0, 0.15),
-      0 4px 10px rgba(0, 0, 0, 0.1),
-      inset 0 1px 0 rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
   }
 
-  .icon-glow {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    opacity: 0.3;
-    animation: pulse 2s ease-in-out infinite;
+  .category-icon.language {
+    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 50%, #86198F 100%);
+    box-shadow: 
+      0 8px 32px rgba(192, 38, 211, 0.3),
+      0 4px 16px rgba(192, 38, 211, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
-  /* 数学分类图标 */
-  .category-icon.math .icon-background {
-    background: linear-gradient(135deg, #C026D3 0%, #DC2626 100%);
+  .category-icon:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 40px rgba(192, 38, 211, 0.4),
+      0 6px 20px rgba(192, 38, 211, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
-  .category-icon.math .icon-glow {
-    background: radial-gradient(circle, #C026D3 0%, transparent 70%);
+  .icon-background {
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
   }
 
-  /* 科学分类图标 */
-  .category-icon.science .icon-background {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-  }
-
-  .category-icon.science .icon-glow {
-    background: radial-gradient(circle, #059669 0%, transparent 70%);
-  }
-
-  /* 编程分类图标 */
-  .category-icon.coding .icon-background {
-    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
-  }
-
-  .category-icon.coding .icon-glow {
-    background: radial-gradient(circle, #2563EB 0%, transparent 70%);
-  }
-
-  /* 语言分类图标 */
-  .category-icon.language .icon-background {
-    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
-  }
-
-  .category-icon.language .icon-glow {
-    background: radial-gradient(circle, #C026D3 0%, transparent 70%);
-  }
-
-  /* 益智分类图标 */
-  .category-icon.puzzle .icon-background {
-    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
-  }
-
-  .category-icon.puzzle .icon-glow {
-    background: radial-gradient(circle, #7C3AED 0%, transparent 70%);
+  .header-text {
+    flex: 1;
   }
 
   .page-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    margin-bottom: 1rem;
-    color: #C026D3;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 50%, #86198F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.2;
   }
 
   .page-description {
     font-size: 1.125rem;
-    color: #6B7280;
+    color: #64748B;
     line-height: 1.6;
-    margin-bottom: 2rem;
+    margin: 0;
+    max-width: 600px;
   }
 
-  .page-stats {
+  /* 2-5. 游戏模块样式 */
+  .game-module {
+    margin-bottom: 3rem;
+  }
+
+  .module-header {
     display: flex;
-    justify-content: center;
-    gap: 2rem;
-  }
-
-  .stat-item {
-    text-align: center;
-  }
-
-  .stat-number {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 800;
-    color: #C026D3;
-  }
-
-  .stat-label {
-    font-size: 0.875rem;
-    color: #6B7280;
-    font-weight: 500;
-  }
-
-  /* 统一的区域标题图标系统 */
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: #1F2937;
-    display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
   }
 
-  .section-icon {
+  .module-icon {
     width: 48px;
     height: 48px;
     border-radius: 12px;
@@ -433,105 +522,75 @@ const gamesByDifficulty = {
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    position: relative;
-    overflow: hidden;
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
-  .section-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
+  .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .medium-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .hard-icon { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+  .tips-icon { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+  .skills-icon { background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%); }
+
+  .module-title-group {
+    flex: 1;
   }
 
-  .section-icon.featured {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  }
-
-  .section-icon.difficulty-easy {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  }
-
-  .section-icon.difficulty-medium {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  }
-
-  .section-icon.difficulty-hard {
-    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-  }
-
-  /* 侧边栏图标 */
-  .sidebar-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-size: 1.1rem;
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #1F2937;
-    margin-bottom: 1rem;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
   }
 
-  .sidebar-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, #C026D3 0%, #DC2626 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+  .module-subtitle {
+    color: #6B7280;
     font-size: 0.9rem;
-    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
+    margin: 0;
+    line-height: 1.4;
   }
 
   /* 游戏网格 */
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 3rem;
   }
 
   .game-card {
     background: white;
-    border-radius: 1rem;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid #F3F4F6;
     transition: all 0.3s ease;
-    border: 1px solid #E5E7EB;
     text-decoration: none;
     color: inherit;
+    display: block;
   }
 
   .game-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    text-decoration: none;
-    color: inherit;
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: rgba(192, 38, 211, 0.2);
   }
 
-  .game-card.featured {
-    border: 2px solid #C026D3;
-    box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
-  }
-
-  .game-thumbnail {
-    height: 200px;
+  .game-image-container {
     position: relative;
+    width: 100%;
+    height: 200px;
     overflow: hidden;
-    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
   }
 
   .game-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    object-position: center;
+    object-fit: cover;
     transition: transform 0.3s ease;
   }
 
@@ -539,24 +598,13 @@ const gamesByDifficulty = {
     transform: scale(1.05);
   }
 
-  .featured-badge {
+  .game-overlay {
     position: absolute;
-    top: 12px;
-    right: 12px;
-    background: #C026D3;
-    color: white;
-    padding: 4px 12px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    z-index: 2;
-  }
-
-  .play-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(234, 88, 12, 0.9);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -564,55 +612,54 @@ const gamesByDifficulty = {
     transition: opacity 0.3s ease;
   }
 
-  .game-card:hover .play-overlay {
+  .game-card:hover .game-overlay {
     opacity: 1;
   }
 
-  .play-btn {
-    background: white;
-    color: #C026D3;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
+  .popularity-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
     font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
   }
 
-  .play-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  .play-button {
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: #C026D3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .play-button:hover {
+    background: white;
+    transform: scale(1.1);
   }
 
   .game-info {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .game-title {
-    font-size: 1.25rem;
-    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
     color: #1F2937;
-    margin-bottom: 0.5rem;
-  }
-
-  .game-description {
-    color: #6B7280;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-    font-size: 0.9rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .game-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.3;
   }
 
   .game-tags {
@@ -621,117 +668,194 @@ const gamesByDifficulty = {
     flex-wrap: wrap;
   }
 
-  .game-tag {
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
+  .age-tag, .category-tag, .difficulty-tag, .feature-tag {
+    padding: 0.25rem 0.5rem;
+    border-radius: 6px;
     font-size: 0.75rem;
     font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
   }
 
-  .game-tag.age {
+  .age-tag {
     background: #F3F4F6;
     color: #6B7280;
   }
 
-  .game-tag.difficulty.easy {
-    background: #10B981;
+  .category-tag.language {
+    background: linear-gradient(135deg, #C026D3, #A21CAF);
     color: white;
   }
 
-  .game-tag.difficulty.medium {
-    background: #F59E0B;
+  .difficulty-tag.easy {
+    background: linear-gradient(135deg, #10B981, #059669);
     color: white;
   }
 
-  .game-tag.difficulty.hard {
-    background: #EF4444;
+  .difficulty-tag.medium {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
     color: white;
   }
 
-  .game-stats {
-    display: flex;
+  .difficulty-tag.hard {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+  }
+
+  .feature-tag.featured {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    color: white;
+  }
+
+  /* 6. 学习建议模块样式 */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
-  .stat {
+  .tip-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .tip-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .tip-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
     display: flex;
     align-items: center;
-    gap: 0.25rem;
-    font-size: 0.8rem;
-    color: #6B7280;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 1px;
   }
 
-  .stat i {
-    color: #F59E0B;
+  .tip-content {
+    flex: 1;
   }
 
-  /* 侧边栏样式 */
-  .sidebar-card {
-    background: white;
-    border-radius: 16px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-
-  .tips-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .tips-list li {
-    padding: 0.5rem 0;
-    border-bottom: 1px solid #F3F4F6;
-    color: #6B7280;
+  .tip-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .tip-text {
+    color: #6B7280;
     line-height: 1.4;
-  }
-
-  .tips-list li:last-child {
-    border-bottom: none;
-  }
-
-  .skills-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .skill-tag {
-    background: rgba(234, 88, 12, 0.1);
-    color: #C026D3;
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
+    margin: 0;
     font-size: 0.8rem;
-    font-weight: 500;
+  }
+
+  /* 7. 核心技能模块样式 */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .skill-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
+  }
+
+  .skill-content {
+    flex: 1;
+  }
+
+  .skill-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .skill-description {
+    color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
   }
 
   /* 动画效果 */
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  @keyframes pulse {
-    0%, 100% { 
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0.3;
-    }
-    50% { 
-      transform: translate(-50%, -50%) scale(1.1);
-      opacity: 0.5;
-    }
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out;
   }
 
   /* 响应式设计 */
   @media (max-width: 1024px) {
-    .page-layout {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+    .content-wrapper {
+      padding: 1.5rem;
     }
     
     .games-grid {
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 
@@ -739,48 +863,74 @@ const gamesByDifficulty = {
     .content-wrapper {
       padding: 1rem;
     }
-
-    .page-header {
-      padding: 2rem 1rem;
+    
+    .header-content {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1.5rem;
     }
-
-    .category-icon {
-      width: 80px;
-      height: 80px;
-    }
-
-    .icon-background {
-      width: 60px;
-      height: 60px;
-      font-size: 2rem;
-    }
-
-    .icon-glow {
-      width: 80px;
-      height: 80px;
-    }
-
+    
     .page-title {
       font-size: 2rem;
     }
-
-    .page-stats {
+    
+    .page-description {
+      font-size: 1rem;
+    }
+    
+    .module-header {
       flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 1rem;
+      padding: 1.25rem;
+    }
+    
+    .games-grid {
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
+    
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .tip-icon, .skill-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
+    }
+    
+    .tip-title, .skill-title {
+      font-size: 0.875rem;
+    }
+    
+    .tip-text, .skill-description {
+      font-size: 0.75rem;
+    }
+  }
 
+  @media (max-width: 640px) {
     .games-grid {
       grid-template-columns: 1fr;
     }
-
-    .section-title {
+    
+    .category-icon {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .icon-background {
       font-size: 1.5rem;
     }
-
-    .section-icon {
-      width: 40px;
-      height: 40px;
-      font-size: 1rem;
+    
+    .page-title {
+      font-size: 1.75rem;
     }
   }
 </style> 
