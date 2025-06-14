@@ -23,7 +23,7 @@ const gamesByDifficulty = {
     .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
     .slice(0, 6),
   'Easy': geographyGames.filter(game => game.difficulty === 'Easy'),
-  'Medium': geographyGames.filter(game => game.difficulty === 'Medium'), 
+  'Medium': geographyGames.filter(game => game.difficulty === 'Medium'),
   'Hard': geographyGames.filter(game => game.difficulty === 'Hard')
 };
 
@@ -62,24 +62,24 @@ function getGameImagePath(game) {
 <BaseLayout {...seoData}>
   <main class="main-content">
     <div class="content-wrapper">
-      
+
       <!-- 1. 页面顶部区域 -->
       <header class="page-header">
         <div class="header-content">
           <div class="category-icon-container">
             <div class="category-icon">
               <div class="icon-background">
-                <i class="fas fa-globe-americas"></i>
+            <i class="fas fa-globe-americas"></i>
               </div>
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Geography & History Games</h1>
-            <p class="page-description">
+          <h1 class="page-title">Geography & History Games</h1>
+          <p class="page-description">
               Discover the world and its history! Journey through different countries, cultures, and time periods while learning geography, historical events, and cultural awareness.
-            </p>
+          </p>
           </div>
-        </div>
+            </div>
       </header>
 
       <!-- 2. 特色游戏模块 -->
@@ -110,19 +110,19 @@ function getGameImagePath(game) {
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         ⭐ {formatPopularity(popularity)}
-                      </div>
+        </div>
                       <button class="play-button" onclick={`window.location.href='/games/${game.id}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
                       </button>
-                    </div>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
+                </div>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
+                  <div class="game-tags">
                       <span class="category-tag geography">Geography</span>
                       <span class="difficulty-tag featured">FEATURED</span>
-                    </div>
+                  </div>
                   </div>
                 </div>
               );
@@ -137,12 +137,12 @@ function getGameImagePath(game) {
           <div class="module-header">
             <div class="module-icon easy-icon">
               <i class="fas fa-smile"></i>
-            </div>
+              </div>
             <div class="module-title-group">
               <h2 class="module-title">Easy Level Games</h2>
               <p class="module-subtitle">Perfect starting point for young explorers</p>
             </div>
-          </div>
+        </div>
           <div class="games-grid">
             {gamesByDifficulty.Easy.map((game, index) => {
               const popularity = game.playCount || 1200;
@@ -168,7 +168,7 @@ function getGameImagePath(game) {
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
+                      <div class="game-tags">
                       <span class="category-tag geography">Geography</span>
                       <span class="difficulty-tag easy">EASY</span>
                     </div>
@@ -274,8 +274,8 @@ function getGameImagePath(game) {
                 </div>
               );
             })}
-          </div>
-        </section>
+            </div>
+          </section>
       )}
 
       <!-- 6. 学习建议模块 -->
@@ -935,5 +935,5 @@ function getGameImagePath(game) {
       padding: 0.875rem;
     }
   }
-</style>
+</style> 
 

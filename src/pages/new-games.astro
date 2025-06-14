@@ -32,7 +32,12 @@ const thisMonthGames = allGames.slice(8, 12);
 const recentlyUpdatedGames = allGames.slice(12, 16);
 
 // 格式化人气值
-function formatPopularity(popularity: number): string {
+function formatPopularity(popularity: number | undefined): string {
+  // 如果popularity为undefined或null，返回默认值
+  if (!popularity || popularity === undefined || popularity === null) {
+    return '0';
+  }
+  
   if (popularity >= 1000000) {
     return `${(popularity / 1000000).toFixed(1)}M`;
   } else if (popularity >= 1000) {
@@ -42,7 +47,12 @@ function formatPopularity(popularity: number): string {
 }
 
 // 获取人气图标
-function getPopularityIcon(popularity: number): string {
+function getPopularityIcon(popularity: number | undefined): string {
+  // 如果popularity为undefined或null，返回空字符串
+  if (!popularity || popularity === undefined || popularity === null) {
+    return '';
+  }
+  
   if (popularity > 5000) return '🔥';
   if (popularity > 1000) return '⭐';
   return '';
@@ -70,7 +80,7 @@ function getTimeText(daysAgo: number): string {
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
   <main class="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
-    <div class="container mx-auto px-4 py-8 max-w-7xl">
+    <div class="container mx-auto px-4 py-8 max-w-[1400px]">
       
       <!-- 页面顶部区域 -->
       <div class="page-header">
@@ -87,16 +97,6 @@ function getTimeText(daysAgo: number): string {
               Discover the latest educational games added to our platform. Fresh learning experiences 
               across math, science, coding, language arts, and puzzle solving for students of all ages.
             </p>
-            <div class="page-stats">
-              <div class="stat-item">
-                <i class="fas fa-plus-circle"></i>
-                <span>Latest Additions</span>
-              </div>
-              <div class="stat-item">
-                <i class="fas fa-gift"></i>
-                <span>100% Free</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -364,24 +364,7 @@ function getTimeText(daysAgo: number): string {
     font-size: 1.125rem;
     color: #64748B;
     line-height: 1.6;
-    margin-bottom: 1.5rem;
-  }
-
-  .page-stats {
-    display: flex;
-    gap: 2rem;
-  }
-
-  .stat-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #22C55E;
-    font-weight: 600;
-  }
-
-  .stat-item i {
-    font-size: 1.125rem;
+    margin-bottom: 0;
   }
 
   /* 模块样式 */
@@ -391,7 +374,7 @@ function getTimeText(daysAgo: number): string {
 
   .module-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
@@ -421,11 +404,13 @@ function getTimeText(daysAgo: number): string {
     color: #1F2937;
     margin-bottom: 0.25rem;
     font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.2;
   }
 
   .module-subtitle {
     font-size: 0.9rem;
     color: #6B7280;
+    line-height: 1.3;
   }
 
   /* 游戏网格 - 一行显示4个游戏 */
@@ -455,10 +440,6 @@ function getTimeText(daysAgo: number): string {
     
     .page-title {
       font-size: 2rem;
-    }
-    
-    .page-stats {
-      justify-content: center;
     }
     
     .module-header {

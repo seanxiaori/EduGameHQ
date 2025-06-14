@@ -60,7 +60,7 @@ if (featuredGames.length < 4) {
 
   <main class="main-content">
     <div class="content-wrapper">
-      
+
       <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
@@ -73,8 +73,8 @@ if (featuredGames.length < 4) {
           </div>
           
           <div class="header-text">
-            <h1 class="page-title">Coding Games</h1>
-            <p class="page-description">
+          <h1 class="page-title">Coding Games</h1>
+          <p class="page-description">
               Learn programming fundamentals through interactive games and challenges. Master coding concepts, algorithms, and problem-solving skills while having fun. Perfect for beginners and young coders to start their programming journey.
             </p>
           </div>
@@ -126,10 +126,10 @@ if (featuredGames.length < 4) {
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>
                     </button>
-                  </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
+              </div>
+              <div class="game-info">
+                <h3 class="game-title">{game.title}</h3>
                   <div class="game-tags">
                     <span class="category-tag coding">Coding</span>
                     <span class="feature-tag featured">FEATURED</span>
@@ -154,7 +154,7 @@ if (featuredGames.length < 4) {
             </div>
           </div>
           
-          <div class="games-grid">
+            <div class="games-grid">
             {easyGames.map((game, index) => {
               const popularity = Math.floor(Math.random() * 8000) + 300;
               const formatPopularity = (num) => {
@@ -179,7 +179,7 @@ if (featuredGames.length < 4) {
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
+                      <div class="game-tags">
                       <span class="category-tag coding">Coding</span>
                       <span class="difficulty-tag easy">EASY</span>
                     </div>
@@ -424,45 +424,45 @@ if (featuredGames.length < 4) {
     </div>
   </main>
 
-  <style>
-    /* 主要内容区域 */
-    .main-content {
-      width: 100%;
-      background: #FEFCFB;
-      min-height: 100vh;
-    }
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
 
-    .content-wrapper {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
 
     /* 1. 页面头部区域 */
-    .page-header {
+  .page-header {
       background: linear-gradient(135deg, #FFFBF5 0%, #FFF7ED 50%, rgba(37, 99, 235, 0.08) 100%);
-      border-radius: 20px;
+    border-radius: 20px;
       padding: 2rem;
       margin-bottom: 2.5rem;
       border: 1px solid rgba(37, 99, 235, 0.15);
       box-shadow: 
         0 8px 32px rgba(37, 99, 235, 0.08),
         0 2px 8px rgba(0, 0, 0, 0.04);
-      position: relative;
-      overflow: hidden;
-    }
+    position: relative;
+    overflow: hidden;
+  }
 
-    .page-header::before {
+  .page-header::before {
       content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
       height: 1px;
       background: linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.3) 50%, transparent 100%);
-    }
+  }
 
-    .header-content {
+  .header-content {
       display: flex;
       align-items: center;
       gap: 2rem;
@@ -470,16 +470,16 @@ if (featuredGames.length < 4) {
 
     .category-icon-container {
       flex-shrink: 0;
-    }
+  }
 
     .category-icon {
       width: 72px;
       height: 72px;
-      border-radius: 20px;
+    border-radius: 20px;
       background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
       box-shadow: 
         0 8px 24px rgba(37, 99, 235, 0.25),
         0 4px 12px rgba(37, 99, 235, 0.15),
@@ -494,7 +494,7 @@ if (featuredGames.length < 4) {
         0 12px 32px rgba(37, 99, 235, 0.3),
         0 6px 16px rgba(37, 99, 235, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
-    }
+  }
 
     .icon-background {
       font-size: 1.75rem;
@@ -503,57 +503,57 @@ if (featuredGames.length < 4) {
 
     .header-text {
       flex: 1;
-    }
+  }
 
-    .page-title {
+  .page-title {
       font-size: 2.5rem;
       font-weight: 800;
-      font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
       background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       margin-bottom: 0.75rem;
       line-height: 1.2;
-    }
+  }
 
-    .page-description {
+  .page-description {
       font-size: 1.125rem;
       color: #64748B;
-      line-height: 1.6;
+    line-height: 1.6;
       margin: 0;
-    }
+  }
 
     /* 2-5. 游戏模块样式 */
     .game-module {
       margin-bottom: 3rem;
-    }
+  }
 
     .module-header {
-      display: flex;
+    display: flex;
       align-items: flex-start;
-      gap: 1rem;
+    gap: 1rem;
       margin-bottom: 1.5rem;
       padding: 1.5rem;
       background: white;
       border-radius: 16px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       border: 1px solid #F3F4F6;
-    }
+  }
 
     .module-icon {
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
       font-size: 1.25rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       flex-shrink: 0;
       margin-top: 2px;
-    }
+  }
 
     .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
     .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
@@ -564,7 +564,7 @@ if (featuredGames.length < 4) {
 
     .module-title-group {
       flex: 1;
-    }
+  }
 
     .module-title {
       font-family: 'Space Grotesk', sans-serif;
@@ -580,29 +580,29 @@ if (featuredGames.length < 4) {
       font-size: 0.9rem;
       margin: 0;
       line-height: 1.4;
-    }
+  }
 
     /* 游戏网格样式 */
-    .games-grid {
-      display: grid;
+  .games-grid {
+    display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
+    gap: 1.5rem;
     }
 
     /* 6. 学习建议模块样式 */
     .info-module {
-      margin-bottom: 3rem;
-    }
+    margin-bottom: 3rem;
+  }
 
     .tips-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-    }
+  }
 
     .tip-item {
       background: white;
-      border-radius: 12px;
+    border-radius: 12px;
       padding: 1.25rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       border: 1px solid #F3F4F6;
@@ -616,37 +616,37 @@ if (featuredGames.length < 4) {
       transform: translateY(-2px);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       border-color: rgba(139, 92, 246, 0.2);
-    }
+  }
 
     .tip-icon {
       width: 32px;
       height: 32px;
       border-radius: 8px;
       background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
       color: white;
       font-size: 0.875rem;
       flex-shrink: 0;
       margin-top: 1px;
-    }
+  }
 
     .tip-content {
       flex: 1;
-    }
+  }
 
     .tip-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.9rem;
-      font-weight: 600;
-      color: #1F2937;
+    font-weight: 600;
+    color: #1F2937;
       margin: 0 0 0.25rem 0;
       line-height: 1.3;
-    }
+  }
 
     .tip-text {
-      color: #6B7280;
+    color: #6B7280;
       line-height: 1.4;
       margin: 0;
       font-size: 0.8rem;
@@ -654,18 +654,18 @@ if (featuredGames.length < 4) {
 
     /* 7. 核心技能模块样式 */
     .skills-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-    }
+  }
 
     .skill-item {
-      background: white;
+    background: white;
       border-radius: 12px;
       padding: 1.25rem;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
       border: 1px solid #F3F4F6;
-      transition: all 0.3s ease;
+    transition: all 0.3s ease;
       text-align: left;
       display: flex;
       gap: 0.875rem;
@@ -676,22 +676,22 @@ if (featuredGames.length < 4) {
       transform: translateY(-2px);
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       border-color: rgba(236, 72, 153, 0.2);
-    }
+  }
 
     .skill-icon {
       width: 32px;
       height: 32px;
       border-radius: 8px;
       background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
       font-size: 0.875rem;
       flex-shrink: 0;
       margin-top: 1px;
       box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
-    }
+  }
 
     .skill-content {
       flex: 1;
@@ -701,72 +701,72 @@ if (featuredGames.length < 4) {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 0.9rem;
       font-weight: 600;
-      color: #1F2937;
+    color: #1F2937;
       margin: 0 0 0.25rem 0;
       line-height: 1.3;
-    }
+  }
 
     .skill-description {
-      color: #6B7280;
+    color: #6B7280;
       line-height: 1.4;
       margin: 0;
       font-size: 0.8rem;
-    }
+  }
 
     /* 动画效果 */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
         transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-    .animate-fadeInUp {
+  .animate-fadeInUp {
       animation: fadeInUp 0.6s ease-out;
-    }
+  }
 
-    /* 响应式设计 */
-    @media (max-width: 1024px) {
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
       .content-wrapper {
         padding: 1.5rem;
       }
       
-      .games-grid {
+    .games-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 1.25rem;
       }
       
       .skills-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
     }
 
-    @media (max-width: 768px) {
-      .content-wrapper {
-        padding: 1rem;
-      }
-      
       .header-content {
         flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 1.5rem;
-      }
-      
-      .page-title {
-        font-size: 2rem;
-      }
-      
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
       .page-description {
         font-size: 1rem;
       }
       
       .module-header {
-        flex-direction: column;
+      flex-direction: column;
         align-items: center;
         text-align: center;
         gap: 1rem;
@@ -775,9 +775,9 @@ if (featuredGames.length < 4) {
       
       .games-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-      }
-      
+      gap: 1rem;
+    }
+
       .tips-grid {
         grid-template-columns: 1fr;
       }
@@ -802,23 +802,23 @@ if (featuredGames.length < 4) {
     }
 
     @media (max-width: 640px) {
-      .games-grid {
-        grid-template-columns: 1fr;
-      }
-      
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+
       .category-icon {
         width: 60px;
         height: 60px;
       }
       
       .icon-background {
-        font-size: 1.5rem;
-      }
-      
+      font-size: 1.5rem;
+    }
+
       .page-title {
         font-size: 1.75rem;
-      }
     }
-  </style>
+  }
+</style> 
 </BaseLayout>
 

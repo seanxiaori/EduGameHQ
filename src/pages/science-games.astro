@@ -53,21 +53,21 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
   
   <main class="main-content">
     <div class="content-wrapper">
-      
+
       <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="category-icon-container">
-            <div class="category-icon science">
-              <div class="icon-background">
+          <div class="category-icon science">
+            <div class="icon-background">
                 🧪
               </div>
             </div>
           </div>
           
           <div class="header-text">
-            <h1 class="page-title">Science Games</h1>
-            <p class="page-description">
+          <h1 class="page-title">Science Games</h1>
+          <p class="page-description">
               Explore the wonders of science with interactive games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists who want to discover how the world works through hands-on experimentation and observation.
             </p>
           </div>
@@ -78,7 +78,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
       <section class="game-module featured-module">
         <div class="module-header">
           <div class="module-icon featured-icon">
-            <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
           </div>
           <div class="module-title-group">
             <h2 class="module-title">Featured Science Games</h2>
@@ -147,7 +147,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           
-          <div class="games-grid">
+            <div class="games-grid">
             {easyGames.map((game, index) => {
               const popularity = game.playCount;
               const formatPopularity = (num) => {
@@ -172,7 +172,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
+                      <div class="game-tags">
                       <span class="category-tag science">Science</span>
                       <span class="difficulty-tag easy">EASY</span>
                     </div>
@@ -195,7 +195,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
               <h2 class="module-title">Medium Level Games</h2>
               <p class="module-subtitle">Challenge yourself with intermediate scientific concepts</p>
             </div>
-          </div>
+                      </div>
           
           <div class="games-grid">
             {mediumGames.map((game, index) => {
@@ -225,7 +225,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
                     <div class="game-tags">
                       <span class="category-tag science">Science</span>
                       <span class="difficulty-tag medium">MEDIUM</span>
-                    </div>
+            </div>
                   </div>
                 </div>
               );
@@ -244,7 +244,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
             <div class="module-title-group">
               <h2 class="module-title">Hard Level Games</h2>
               <p class="module-subtitle">Advanced challenges for science experts</p>
-            </div>
+                          </div>
           </div>
           
           <div class="games-grid">
@@ -268,15 +268,15 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
                       </button>
-                    </div>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <div class="game-tags">
+                        </div>
+                      </div>
+                      <div class="game-info">
+                        <h3 class="game-title">{game.title}</h3>
+                          <div class="game-tags">
                       <span class="category-tag science">Science</span>
                       <span class="difficulty-tag hard">HARD</span>
-                    </div>
-                  </div>
+                        </div>
+                      </div>
                 </div>
               );
             })}
@@ -336,8 +336,8 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
               <p class="tip-text">Relate scientific concepts to everyday phenomena and experiences</p>
             </div>
           </div>
-        </div>
-      </section>
+                </div>
+              </section>
 
       <!-- 7. 核心技能模块 -->
       <section class="info-module skills-module">
@@ -350,7 +350,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
             <p class="module-subtitle">Essential scientific abilities gained through gameplay</p>
           </div>
         </div>
-        
+
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-icon">
@@ -361,7 +361,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
               <p class="skill-description">Learn observation and experimentation</p>
             </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-atom"></i>
@@ -369,19 +369,19 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
             <div class="skill-content">
               <h4 class="skill-title">Physics Concepts</h4>
               <p class="skill-description">Understand forces and motion</p>
-            </div>
+              </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-dna"></i>
-            </div>
+              </div>
             <div class="skill-content">
               <h4 class="skill-title">Biology Basics</h4>
               <p class="skill-description">Explore living organisms</p>
             </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-vial"></i>
@@ -400,8 +400,8 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
               <h4 class="skill-title">Earth Science</h4>
               <p class="skill-description">Study our planet and environment</p>
             </div>
-          </div>
-          
+      </div>
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-microscope"></i>
@@ -411,7 +411,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
               <p class="skill-description">Develop research skills</p>
             </div>
           </div>
-        </div>
+      </div>
       </section>
 
     </div>
@@ -751,9 +751,9 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
   /* 动画效果 */
   @keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
+    opacity: 0;
+    transform: translateY(20px);
+  }
     to {
       opacity: 1;
       transform: translateY(0);
@@ -769,7 +769,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
     .tips-grid {
       grid-template-columns: 1fr;
     }
-
+    
     .skills-grid {
       grid-template-columns: repeat(2, 1fr);
     }
