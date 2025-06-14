@@ -57,21 +57,21 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
     <div class="content-wrapper">
       <!-- 游戏标题和基本信息 -->
       <div class="game-header">
-        <div class="game-title-container">
+        <div class="game-title-section">
           <div class="game-icon">
             <i class="fas fa-gamepad"></i>
           </div>
           <h1 class="game-title">{game.title}</h1>
-        </div>
-        <div class="game-basic-info">
-          <span class="info-badge category-badge">
-            <i class="fas fa-calculator"></i>
-            {game.category}
-          </span>
-          <span class="info-badge difficulty-badge">
-            <i class="fas fa-signal"></i>
-            Easy
-          </span>
+          <div class="game-tags">
+            <span class="category-badge">
+              <i class="fas fa-calculator"></i>
+              {game.category}
+            </span>
+            <span class="difficulty-badge">
+              <i class="fas fa-signal"></i>
+              Easy
+            </span>
+          </div>
         </div>
       </div>
 
@@ -267,7 +267,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       min-height: 100vh;
     }
 
-    /* 主容器 */
+    /* 主容器 - 与其他页面保持一致 */
     .main-content {
       width: 100%;
       background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #F0F9FF 100%);
@@ -282,7 +282,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       padding: 2rem;
     }
 
-    /* 游戏标题区域 */
+    /* 游戏标题区域 - 重新设计 */
     .game-header {
       background: white;
       border-radius: 16px;
@@ -292,11 +292,11 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       margin-bottom: 2rem;
     }
 
-    .game-title-container {
+    .game-title-section {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .game-icon {
@@ -310,25 +310,33 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       color: white;
       font-size: 1.5rem;
       box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+      flex-shrink: 0;
     }
 
     .game-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 3rem;
-      font-weight: 700;
-      color: #1F2937;
+      font-weight: 800;
+      background: linear-gradient(135deg, #1F2937, #4B5563);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       margin: 0;
-      text-align: left;
       line-height: 1.2;
+      letter-spacing: -0.02em;
+      flex: 1;
+      min-width: 300px;
     }
 
-    .game-basic-info {
+    .game-tags {
       display: flex;
       gap: 1rem;
+      align-items: center;
       flex-wrap: wrap;
     }
 
-    .info-badge {
+    .category-badge,
+    .difficulty-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
@@ -493,54 +501,6 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
 
     .features-section li, .instructions-section li {
       margin-bottom: 0.5rem;
-    }
-
-    .detail-title {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.125rem;
-      font-weight: 600;
-      color: #1F2937;
-      margin-bottom: 1rem;
-    }
-
-    .detail-title i {
-      color: #6366F1;
-      font-size: 1rem;
-    }
-
-    .feature-list, .instruction-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 0.75rem;
-    }
-
-    .feature-item, .instruction-item {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      color: #4B5563;
-    }
-
-    .feature-item i {
-      color: #10B981;
-      font-size: 1rem;
-    }
-
-    .step-number {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 24px;
-      height: 24px;
-      background: linear-gradient(135deg, #6366F1, #4F46E5);
-      color: white;
-      border-radius: 50%;
-      font-size: 0.875rem;
-      font-weight: 600;
-      flex-shrink: 0;
     }
 
     /* 开发者信息区域 */
@@ -738,7 +698,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       flex-direction: column;
     }
 
-    .game-title {
+    .game-info .game-title {
       font-size: 1.125rem;
       font-weight: 700;
       color: #1F2937;
@@ -748,9 +708,11 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
+      background: none;
+      -webkit-text-fill-color: #1F2937;
     }
 
-    .game-description {
+    .game-info .game-description {
       color: #6B7280;
       line-height: 1.5;
       margin-bottom: 1rem;
@@ -762,7 +724,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       flex: 1;
     }
 
-    .game-tags {
+    .game-info .game-tags {
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
@@ -872,7 +834,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
         padding: 1rem;
       }
 
-      .game-title-container {
+      .game-title-section {
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
@@ -880,6 +842,7 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
 
       .game-title {
         font-size: 2rem;
+        min-width: auto;
       }
 
       .game-icon {
@@ -895,6 +858,11 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
       .related-games-section {
         padding: 1.5rem;
         margin-bottom: 1.5rem;
+      }
+
+      .info-details {
+        flex-direction: column;
+        gap: 1.5rem;
       }
     }
   </style>
