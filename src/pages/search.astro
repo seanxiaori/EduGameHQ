@@ -170,10 +170,48 @@ const pageDescription = 'Search through our collection of 240+ educational games
       const categoryClass = game.category ? game.category.toLowerCase() : 'puzzle';
       
       // 获取难度标签
-      const difficultyTag = game.difficulty || 'medium';
+      const difficultyTag = game.difficulty || 'Medium';
       
-      // 获取年龄标签
-      const ageTag = game.ageRange || 'Ages 8-14';
+      // 计算人气值 (模拟数据)
+      const popularity = Math.floor(Math.random() * 15000) + 500;
+      let popularityDisplay = '';
+      let popularityIcon = '';
+      
+      if (popularity >= 5000) {
+        popularityDisplay = `🔥 ${(popularity / 1000).toFixed(1)}K`;
+      } else if (popularity >= 1000) {
+        popularityDisplay = `⭐ ${(popularity / 1000).toFixed(1)}K`;
+      } else {
+        popularityDisplay = popularity.toString();
+      }
+      
+      // 检查最近游戏时间 (从localStorage)
+      const gameHistory = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+      const lastPlayed = gameHistory[game.slug];
+      let playedBadge = '';
+      
+      if (lastPlayed) {
+        const daysDiff = Math.floor((Date.now() - lastPlayed) / (1000 * 60 * 60 * 24));
+        if (daysDiff === 0) {
+          playedBadge = '<div class="played-badge">Today</div>';
+        } else if (daysDiff === 1) {
+          playedBadge = '<div class="played-badge">Yesterday</div>';
+        } else if (daysDiff <= 7) {
+          playedBadge = '<div class="played-badge">A few days ago</div>';
+        } else if (daysDiff <= 30) {
+          playedBadge = '<div class="played-badge">A few weeks ago</div>';
+        }
+      }
+      
+      // 获取特色标签
+      let featureTag = '';
+      if (game.isNew) {
+        featureTag = '<span class="feature-tag new">NEW</span>';
+      } else if (popularity > 10000) {
+        featureTag = '<span class="feature-tag hot">HOT</span>';
+      } else if (game.isFeatured) {
+        featureTag = '<span class="feature-tag featured">FEATURED</span>';
+      }
       
       return `
         <div class="game-card ${categoryClass}-theme" onclick="window.location.href='${gameUrl}'">
@@ -181,6 +219,8 @@ const pageDescription = 'Search through our collection of 240+ educational games
             <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy" 
                  onerror="this.onerror=null; this.src='/images/placeholder-game.jpg';">
             <div class="game-overlay">
+              ${playedBadge}
+              <div class="popularity-badge">${popularityDisplay}</div>
               <a href="${gameUrl}" class="play-button">
                 <i class="fas fa-play"></i>
                 Play Now
@@ -191,8 +231,8 @@ const pageDescription = 'Search through our collection of 240+ educational games
             <h3 class="game-title">${game.title}</h3>
             <div class="game-tags">
               <span class="category-tag ${categoryClass}">${game.categoryName || game.category}</span>
-              <span class="difficulty-tag ${difficultyTag}">${difficultyTag}</span>
-              <span class="game-tag age">${ageTag}</span>
+              <span class="difficulty-tag ${difficultyTag.toLowerCase()}">${difficultyTag}</span>
+              ${featureTag}
             </div>
           </div>
         </div>
@@ -368,6 +408,41 @@ const pageDescription = 'Search through our collection of 240+ educational games
     opacity: 1;
   }
 
+  /* 游戏过标签 (左上角) */
+  .played-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+  }
+
+  /* 人气值标签 (右上角) */
+  .popularity-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.95);
+    color: #1F2937;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
   .play-button {
     display: flex;
     align-items: center;
@@ -421,7 +496,7 @@ const pageDescription = 'Search through our collection of 240+ educational games
     gap: 0.5rem;
   }
 
-  .category-tag, .age-tag, .difficulty-tag {
+  .category-tag, .difficulty-tag, .feature-tag {
     padding: 0.25rem 0.75rem;
     border-radius: 20px;
     font-size: 0.75rem;
@@ -430,61 +505,88 @@ const pageDescription = 'Search through our collection of 240+ educational games
     letter-spacing: 0.05em;
   }
 
+  /* 分类标签样式 */
   .category-tag {
     background: linear-gradient(135deg, #F59E0B, #D97706);
     color: white;
   }
 
-  .category-tag[data-category="math"] {
+  .category-tag.math {
     background: linear-gradient(135deg, #EA580C, #DC2626);
   }
 
-  .category-tag[data-category="science"] {
+  .category-tag.science {
     background: linear-gradient(135deg, #059669, #047857);
   }
 
-  .category-tag[data-category="coding"] {
+  .category-tag.coding {
     background: linear-gradient(135deg, #2563EB, #1D4ED8);
   }
 
-  .category-tag[data-category="language"] {
+  .category-tag.language {
     background: linear-gradient(135deg, #C026D3, #A21CAF);
   }
 
-  .category-tag[data-category="puzzle"] {
+  .category-tag.puzzle {
     background: linear-gradient(135deg, #7C3AED, #6D28D9);
   }
 
-  .category-tag[data-category="sports"] {
+  .category-tag.sports {
     background: linear-gradient(135deg, #DC2626, #B91C1C);
   }
 
-  .category-tag[data-category="art"] {
+  .category-tag.art {
     background: linear-gradient(135deg, #EC4899, #DB2777);
   }
 
-  .category-tag[data-category="geography"] {
+  .category-tag.geography {
     background: linear-gradient(135deg, #0891B2, #0E7490);
   }
 
-  .age-tag {
-    background: #F3F4F6;
-    color: #374151;
-  }
-
+  /* 难度标签样式 */
   .difficulty-tag {
     background: #EFF6FF;
     color: #1E40AF;
   }
 
-  .difficulty-tag[data-difficulty="easy"] {
+  .difficulty-tag.easy {
     background: #F0FDF4;
     color: #166534;
   }
 
-  .difficulty-tag[data-difficulty="hard"] {
+  .difficulty-tag.medium {
+    background: #FEF3C7;
+    color: #92400E;
+  }
+
+  .difficulty-tag.hard {
     background: #FEF2F2;
     color: #991B1B;
+  }
+
+  /* 特色标签样式 */
+  .feature-tag {
+    font-weight: 700;
+  }
+
+  .feature-tag.new {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+  }
+
+  .feature-tag.hot {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+  }
+
+  .feature-tag.featured {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    color: white;
+  }
+
+  .feature-tag.updated {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: white;
   }
 
   /* 无结果样式 */

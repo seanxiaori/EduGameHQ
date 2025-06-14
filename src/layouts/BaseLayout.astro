@@ -394,11 +394,21 @@ const { title, description = "Free educational games for kids and students", bod
       
       // 搜索功能初始化
       const searchBox = document.querySelector('.search-box');
+      const searchWrapper = document.querySelector('.search-wrapper');
       console.log('Search box found:', !!searchBox);
       console.log('Search box element:', searchBox);
       
-      if (searchBox) {
+      if (searchBox && searchWrapper) {
         console.log('Search box placeholder:', searchBox.placeholder);
+        
+        // 监听输入变化，控制搜索按钮显示
+        searchBox.addEventListener('input', function() {
+          if (this.value.trim().length > 0) {
+            searchWrapper.classList.add('has-content');
+          } else {
+            searchWrapper.classList.remove('has-content');
+          }
+        });
         
         // 搜索框回车事件
         searchBox.addEventListener('keypress', function(e) {
@@ -679,6 +689,16 @@ const { title, description = "Free educational games for kids and students", bod
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%) scale(0.8);
+  }
+
+  .search-wrapper:focus-within .search-button,
+  .search-wrapper.has-content .search-button {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) scale(1);
   }
 
   .search-button:hover {
