@@ -81,18 +81,18 @@ function getTimeText(daysAgo: number): string {
   
   <main class="main-content">
     <div class="content-wrapper">
-      
+
       <!-- 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
             <div class="section-icon new">
-              <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
             </div>
           </div>
           <div class="header-text">
             <h1 class="page-title">New Educational Games</h1>
-            <p class="page-description">
+          <p class="page-description">
               Discover the latest educational games added to our platform. Fresh learning experiences 
               across math, science, coding, language arts, and puzzle solving for students of all ages.
             </p>
@@ -137,7 +137,7 @@ function getTimeText(daysAgo: number): string {
               </div>
               <div class="game-info">
                 <h3 class="game-title">{game.title}</h3>
-                <div class="game-tags">
+                  <div class="game-tags">
                   <span class={`category-tag ${game.category.toLowerCase()}`}>
                     {game.category}
                   </span>
@@ -159,7 +159,7 @@ function getTimeText(daysAgo: number): string {
             <h2 class="module-title">This Week's New Games</h2>
             <p class="module-subtitle">Games added in the past 7 days</p>
           </div>
-        </div>
+                  </div>
         
         <div class="games-grid">
           {thisWeekGames.map((game, index) => (
@@ -191,8 +191,8 @@ function getTimeText(daysAgo: number): string {
                     {game.category}
                   </span>
                   <span class="feature-tag featured">FEATURED</span>
-                </div>
               </div>
+            </div>
             </a>
           ))}
         </div>
@@ -203,12 +203,12 @@ function getTimeText(daysAgo: number): string {
         <div class="module-header">
           <div class="module-icon">
             <i class="fas fa-calendar-alt"></i>
-          </div>
+            </div>
           <div>
             <h2 class="module-title">This Month's New Games</h2>
             <p class="module-subtitle">Games added in the past 30 days</p>
           </div>
-        </div>
+            </div>
         
         <div class="games-grid">
           {thisMonthGames.map((game, index) => (
@@ -224,15 +224,15 @@ function getTimeText(daysAgo: number): string {
                   <div class="play-button">
                     <i class="fas fa-play"></i>
                     <span>Play Now</span>
-                  </div>
-                </div>
+            </div>
+          </div>
                 <div class={`played-badge ${getTimeLabel(index + 8)}`}>
                   {getTimeText(index + 8)}
-                </div>
+            </div>
                 <div class="popularity-badge">
                   {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
-                </div>
-              </div>
+            </div>
+          </div>
               <div class="game-info">
                 <h3 class="game-title">{game.title}</h3>
                 <div class="game-tags">
@@ -240,8 +240,8 @@ function getTimeText(daysAgo: number): string {
                     {game.category}
                   </span>
                   <span class="feature-tag updated">UPDATED</span>
-                </div>
-              </div>
+            </div>
+          </div>
             </a>
           ))}
         </div>
@@ -454,7 +454,7 @@ function getTimeText(daysAgo: number): string {
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
     }
-    
+
     .page-header {
       padding: 1.5rem;
     }
@@ -464,17 +464,17 @@ function getTimeText(daysAgo: number): string {
       text-align: center;
       gap: 1.5rem;
     }
-    
+
     .page-title {
       font-size: 2rem;
     }
-    
+
     .module-header {
       flex-direction: column;
       text-align: center;
       gap: 1rem;
     }
-  }
+    }
 
   @media (min-width: 769px) and (max-width: 1024px) {
     .games-grid {
@@ -493,7 +493,7 @@ function getTimeText(daysAgo: number): string {
   /* 新游戏主题样式 */
   .game-card.new-theme {
     border-color: rgba(34, 197, 94, 0.2);
-  }
+    }
 
   .game-card.new-theme:hover {
     border-color: #22C55E;
