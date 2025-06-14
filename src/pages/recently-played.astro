@@ -5,7 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 const seoData = {
-  title: "Recently Played Games | Continue Your Learning Journey",
+  title: "Recently Played Games | Continue Your Learning Journey | EduGameHQ",
   description: "Continue where you left off! Access your recently played educational games and pick up your learning journey from where you stopped.",
   keywords: ["recently played games", "continue learning", "game history", "educational progress", "learning journey"],
   ogImage: "/images/recently-played-og.jpg"
@@ -22,20 +22,43 @@ try {
   console.warn('Unable to read games data file');
 }
 
-// 获取一些示例游戏作为最近游戏
+// 智能图片路径处理函数
+function getGameImagePath(game: Game, gameId: string): string {
+  // 优先使用screenshots
+  if (game.screenshots && game.screenshots.length > 0) {
+    const screenshot = game.screenshots[0];
+    // 检查是否是默认占位图
+    if (screenshot !== 'default-intro.jpg') {
+      return `/images/games/details/${screenshot}`;
+    }
+  }
+  
+  // 其次使用images
+  if (game.images && game.images.length > 0) {
+    const image = game.images[0];
+    if (image !== 'default-intro.jpg') {
+      return `/images/games/${image}`;
+    }
+  }
+  
+  // 最后使用占位图
+  return `/images/placeholder-game.jpg`;
+}
+
+// 获取一些示例游戏作为最近游戏（实际应该从localStorage读取）
 const recentGames = Object.entries(allGamesData)
-  .slice(0, 8)
+  .slice(0, 12) // 显示更多游戏
   .map(([id, game]: [string, Game]) => ({
     id: id,
     title: game.title,
     description: game.description,
-    image: game.screenshots && game.screenshots.length > 0 
-      ? `/images/games/details/${game.screenshots[0]}` 
-      : `/images/games/${id}.svg`,
+    image: getGameImagePath(game, id),
     url: `/games/${id}`,
     category: game.category,
     categoryName: game.categoryName,
     ageRange: game.ageRange,
+    difficulty: game.difficulty,
+    playCount: game.playCount || 1000,
     lastPlayed: new Date(Date.now() - Math.random() * 7 * 24 * 60 * 60 * 1000), // 随机过去7天内
     playTime: Math.floor(Math.random() * 120) + 5 // 5-125分钟
   }))
@@ -43,9 +66,6 @@ const recentGames = Object.entries(allGamesData)
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
-  <!-- 引入统一的游戏卡片样式 -->
-  <link rel="stylesheet" href="/src/styles/game-card.css">
-
   <!-- 主要内容 -->
   <main class="main-content">
     <div class="content-wrapper">
@@ -81,8 +101,31 @@ const recentGames = Object.entries(allGamesData)
         </div>
       </section>
 
+      <!-- 快速操作区域 -->
+      <section class="quick-actions">
+        <div class="action-buttons">
+          <button id="clearHistoryBtn" class="action-btn clear-btn">
+            <i class="fas fa-trash-alt"></i>
+            <span>Clear History</span>
+          </button>
+          <button id="refreshBtn" class="action-btn refresh-btn">
+            <i class="fas fa-sync-alt"></i>
+            <span>Refresh</span>
+          </button>
+          <button id="exportBtn" class="action-btn export-btn">
+            <i class="fas fa-download"></i>
+            <span>Export Progress</span>
+          </button>
+        </div>
+      </section>
+
       <!-- 游戏网格 -->
       <section class="games-section">
+        <div class="section-header">
+          <h2 class="section-title">Your Recent Games</h2>
+          <p class="section-subtitle">Continue where you left off</p>
+        </div>
+        
         <div class="games-grid">
           {recentGames.map((game, index) => {
             // 格式化最后游戏时间
@@ -107,10 +150,18 @@ const recentGames = Object.entries(allGamesData)
               return mins > 0 ? `${hours}h ${mins}m` : `${hours}h`;
             };
             
+            // 格式化人气值
+            const formatPopularity = (num) => {
+              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+              return num.toString();
+            };
+            
             const lastPlayedText = formatLastPlayed(game.lastPlayed);
+            const popularity = game.playCount || 1500;
             
             return (
-              <a href={game.url} class={`game-card recent-game animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
+              <div class={`game-card recent-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
@@ -122,31 +173,34 @@ const recentGames = Object.entries(allGamesData)
                     }`}>
                       {lastPlayedText}
                     </div>
-                    <div class="play-time-badge">
-                      ⏱️ {formatPlayTime(game.playTime)}
+                    <div class="popularity-badge">
+                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
                     </div>
-                    <div class="play-button">
+                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Continue</span>
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
-                  <p class="game-description">{game.description}</p>
                   <div class="game-tags">
-                    <span class={`category-tag ${game.category}`}>{game.categoryName}</span>
-                    <span class="game-tag age">Ages {game.ageRange}</span>
+                    <span class={`category-tag ${game.category}-theme`}>{game.categoryName}</span>
+                    <span class="difficulty-tag">{game.difficulty}</span>
                     <span class="feature-tag continue">CONTINUE</span>
                   </div>
                   <div class="game-stats">
                     <div class="stat">
                       <i class="fas fa-clock"></i>
-                      <span>Last played {lastPlayedText}</span>
+                      <span>Played {formatPlayTime(game.playTime)}</span>
+                    </div>
+                    <div class="stat">
+                      <i class="fas fa-calendar-alt"></i>
+                      <span>{lastPlayedText}</span>
                     </div>
                   </div>
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>
@@ -154,6 +208,11 @@ const recentGames = Object.entries(allGamesData)
 
       <!-- 学习进度提示 -->
       <section class="learning-tips">
+        <div class="section-header">
+          <h2 class="section-title">Learning Tips</h2>
+          <p class="section-subtitle">Maximize your educational gaming experience</p>
+        </div>
+        
         <div class="tips-container">
           <div class="tip-card">
             <div class="tip-icon">
@@ -202,17 +261,58 @@ const recentGames = Object.entries(allGamesData)
       constructor() {
         this.loadRecentGames();
         this.initializeCards();
+        this.initializeActions();
       }
 
       // 加载最近游戏
       loadRecentGames() {
         const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
-        const gameCards = document.querySelectorAll('.recent-game');
+        const gameCards = document.querySelectorAll('.game-card[data-game-id]');
         
         // 如果有真实的游戏历史，更新显示
         if (Object.keys(history).length > 0) {
           console.log('发现游戏历史记录:', Object.keys(history).length, '个游戏');
+          
+          // 更新游戏卡片的最后游戏时间
+          gameCards.forEach(card => {
+            const gameId = card.dataset.gameId;
+            if (history[gameId]) {
+              const lastPlayed = new Date(history[gameId]);
+              const playedBadge = card.querySelector('.played-badge');
+              if (playedBadge) {
+                playedBadge.textContent = this.formatLastPlayed(lastPlayed);
+                playedBadge.className = `played-badge ${this.getPlayedBadgeClass(lastPlayed)}`;
+              }
+            }
+          });
         }
+      }
+
+      // 格式化最后游戏时间
+      formatLastPlayed(date) {
+        const now = new Date();
+        const diffMs = now.getTime() - date.getTime();
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffDays = Math.floor(diffHours / 24);
+        
+        if (diffHours < 1) return 'Just now';
+        if (diffHours < 24) return `${diffHours}h ago`;
+        if (diffDays === 1) return 'Yesterday';
+        if (diffDays < 7) return `${diffDays} days ago`;
+        return 'A week ago';
+      }
+
+      // 获取游戏时间标记样式类
+      getPlayedBadgeClass(date) {
+        const now = new Date();
+        const diffMs = now.getTime() - date.getTime();
+        const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+        const diffDays = Math.floor(diffHours / 24);
+        
+        if (diffHours < 24) return 'today';
+        if (diffDays === 1) return 'yesterday';
+        if (diffDays < 7) return 'few-days-ago';
+        return 'weeks-ago';
       }
 
       // 记录游戏播放
@@ -225,27 +325,96 @@ const recentGames = Object.entries(allGamesData)
         const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
         popularity[gameId] = (popularity[gameId] || 0) + 1;
         localStorage.setItem('gamePopularity', JSON.stringify(popularity));
+        
+        console.log(`记录游戏 ${gameId} 的播放历史`);
       }
 
       // 初始化卡片
       initializeCards() {
         const cards = document.querySelectorAll('.game-card');
         cards.forEach(card => {
-          card.addEventListener('click', (e) => {
-            const gameId = card.href.split('/').pop();
-            if (gameId) {
-              this.recordGamePlay(gameId);
-            }
-          });
+          const playButton = card.querySelector('.play-button');
+          if (playButton) {
+            playButton.addEventListener('click', (e) => {
+              e.preventDefault();
+              const gameId = card.dataset.gameId;
+              if (gameId) {
+                this.recordGamePlay(gameId);
+                // 延迟跳转，确保数据保存
+                setTimeout(() => {
+                  window.location.href = `/games/${gameId}`;
+                }, 100);
+              }
+            });
+          }
         });
+      }
+
+      // 初始化操作按钮
+      initializeActions() {
+        // 清除历史按钮
+        const clearBtn = document.getElementById('clearHistoryBtn');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => this.clearHistory());
+        }
+
+        // 刷新按钮
+        const refreshBtn = document.getElementById('refreshBtn');
+        if (refreshBtn) {
+          refreshBtn.addEventListener('click', () => this.refreshPage());
+        }
+
+        // 导出按钮
+        const exportBtn = document.getElementById('exportBtn');
+        if (exportBtn) {
+          exportBtn.addEventListener('click', () => this.exportProgress());
+        }
       }
 
       // 清除游戏历史
       clearHistory() {
-        if (confirm('Are you sure you want to clear your game history?')) {
+        if (confirm('Are you sure you want to clear your game history? This action cannot be undone.')) {
           localStorage.removeItem('gameHistory');
+          localStorage.removeItem('gamePopularity');
           location.reload();
         }
+      }
+
+      // 刷新页面
+      refreshPage() {
+        const refreshIcon = document.querySelector('#refreshBtn i');
+        if (refreshIcon) {
+          refreshIcon.style.animation = 'spin 1s linear';
+          setTimeout(() => {
+            refreshIcon.style.animation = '';
+            location.reload();
+          }, 1000);
+        }
+      }
+
+      // 导出学习进度
+      exportProgress() {
+        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+        const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
+        
+        const data = {
+          exportDate: new Date().toISOString(),
+          gameHistory: history,
+          gamePopularity: popularity,
+          totalGamesPlayed: Object.keys(history).length
+        };
+        
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `edugamehq-progress-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        console.log('学习进度已导出');
       }
     }
 
@@ -263,10 +432,23 @@ const recentGames = Object.entries(allGamesData)
         }, index * 100);
       });
     });
+
+    // 添加旋转动画
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </BaseLayout>
 
 <style>
+  /* 导入通用游戏卡片样式 */
+  @import '../styles/game-card.css';
+
   /* 主要内容区域 */
   .main-content {
     width: 100%;
@@ -282,11 +464,14 @@ const recentGames = Object.entries(allGamesData)
 
   /* 页面头部 */
   .page-header {
-    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #BAE6FD 100%);
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, rgba(14, 165, 233, 0.08) 100%);
     border-radius: 20px;
-    padding: 3rem;
-    margin-bottom: 3rem;
-    box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.2);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(14, 165, 233, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
   }
@@ -297,8 +482,8 @@ const recentGames = Object.entries(allGamesData)
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(14, 165, 233, 0.3) 50%, transparent 100%);
   }
 
   .header-content {
@@ -306,8 +491,6 @@ const recentGames = Object.entries(allGamesData)
     align-items: center;
     gap: 2rem;
     margin-bottom: 2rem;
-    position: relative;
-    z-index: 1;
   }
 
   .header-icon {
@@ -315,21 +498,28 @@ const recentGames = Object.entries(allGamesData)
   }
 
   .section-icon {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
+    font-size: 1.75rem;
     color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 
+      0 8px 16px rgba(14, 165, 233, 0.3),
+      0 4px 8px rgba(14, 165, 233, 0.2);
     position: relative;
     overflow: hidden;
+    transition: all 0.3s ease;
   }
 
   .section-icon.recent {
-    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%);
+  }
+
+  .section-icon:hover {
+    transform: translateY(-2px) scale(1.02);
   }
 
   .section-icon::before {
@@ -348,16 +538,18 @@ const recentGames = Object.entries(allGamesData)
 
   .page-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
     margin-bottom: 1rem;
-    color: #0EA5E9;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
   .page-description {
     font-size: 1.125rem;
-    color: #6B7280;
+    color: #64748B;
     line-height: 1.6;
     margin-bottom: 0;
   }
@@ -366,8 +558,6 @@ const recentGames = Object.entries(allGamesData)
     display: flex;
     justify-content: center;
     gap: 2rem;
-    position: relative;
-    z-index: 1;
   }
 
   .stat-item {
@@ -376,6 +566,7 @@ const recentGames = Object.entries(allGamesData)
     padding: 1rem;
     border-radius: 12px;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(14, 165, 233, 0.1);
   }
 
   .stat-number {
@@ -392,32 +583,141 @@ const recentGames = Object.entries(allGamesData)
     font-weight: 500;
   }
 
+  /* 快速操作区域 */
+  .quick-actions {
+    margin-bottom: 2rem;
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .clear-btn {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    color: white;
+  }
+
+  .refresh-btn {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    color: white;
+  }
+
+  .export-btn {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
+  }
+
+  /* 区域标题 */
+  .section-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-subtitle {
+    color: #6B7280;
+    font-size: 1rem;
+  }
+
   /* 游戏区域 */
   .games-section {
     margin-bottom: 3rem;
   }
 
-  /* 特殊的最近游戏卡片样式 */
-  .game-card.recent-game {
+  /* 最近游戏主题样式 */
+  .game-card.recent-theme {
     border: 2px solid #0EA5E9;
     box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
   }
 
-  .play-time-badge {
+  .game-card.recent-theme:hover {
+    border-color: #0284C7;
+    box-shadow: 0 8px 25px rgba(14, 165, 233, 0.3);
+  }
+
+  /* 游戏时间标记样式 */
+  .played-badge {
     position: absolute;
     top: 10px;
-    right: 10px;
-    background: rgba(14, 165, 233, 0.9);
-    color: white;
+    left: 10px;
     padding: 0.25rem 0.5rem;
     border-radius: 12px;
     font-size: 0.75rem;
     font-weight: 600;
     backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .played-badge.today {
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+  }
+
+  .played-badge.yesterday {
+    background: rgba(245, 158, 11, 0.9);
+    color: white;
+  }
+
+  .played-badge.few-days-ago {
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+  }
+
+  .played-badge.weeks-ago {
+    background: rgba(107, 114, 128, 0.9);
+    color: white;
   }
 
   .feature-tag.continue {
-    background: #0EA5E9;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+  }
+
+  /* 游戏统计信息 */
+  .game-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: #6B7280;
+  }
+
+  .game-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .game-stats i {
+    font-size: 0.7rem;
   }
 
   /* 学习提示区域 */
@@ -446,18 +746,19 @@ const recentGames = Object.entries(allGamesData)
   .tip-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    border-color: rgba(14, 165, 233, 0.2);
   }
 
   .tip-icon {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 12px;
     background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.25rem;
+    font-size: 1rem;
     flex-shrink: 0;
   }
 
@@ -492,7 +793,7 @@ const recentGames = Object.entries(allGamesData)
     }
 
     .page-header {
-      padding: 2rem 1rem;
+      padding: 1.5rem;
     }
 
     .header-content {
@@ -506,16 +807,43 @@ const recentGames = Object.entries(allGamesData)
     }
 
     .header-stats {
-      flex-direction: column;
+      flex-direction: row;
       gap: 1rem;
     }
 
     .stat-item {
       padding: 0.75rem;
+      flex: 1;
+    }
+
+    .action-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .action-btn {
+      width: 100%;
+      max-width: 200px;
+      justify-content: center;
     }
 
     .tips-container {
       grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .header-stats {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .games-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     }
   }
 </style> 
