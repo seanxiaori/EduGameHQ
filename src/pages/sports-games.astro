@@ -117,6 +117,9 @@ const sportsCoreSkills = [
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
   <main class="main-content">
     <div class="content-wrapper">
       
@@ -410,9 +413,6 @@ const sportsCoreSkills = [
 </BaseLayout>
 
 <style>
-  /* 引入统一的游戏卡片样式 */
-  @import '/src/styles/game-card.css';
-
   /* 体育主题色变量 */
   :root {
     --sports-primary: #DC2626;
