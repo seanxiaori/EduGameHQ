@@ -197,23 +197,18 @@ const seoData = {
       </h2>
       
       <div class="game-info-content">
-        <!-- 游戏介绍 - 独占一行 -->
-        <div class="info-block full-width">
-          <h3 class="info-subtitle">
-            <i class="fas fa-book-open"></i>
-            About This Game
-          </h3>
+        <!-- 游戏介绍 -->
+        <div class="info-text">
           <p class="game-description">{game.description}</p>
         </div>
 
-        <!-- 游戏特色和操作说明 - 并排显示 -->
-        <div class="info-row">
-          <!-- 游戏特色 -->
-          <div class="info-block half-width">
-            <h3 class="info-subtitle">
+        <!-- 游戏特色和操作说明 -->
+        <div class="info-details">
+          <div class="features-section">
+            <h4 class="detail-title">
               <i class="fas fa-star"></i>
-              Game Features
-            </h3>
+              Features
+            </h4>
             <ul class="feature-list">
               <li class="feature-item">
                 <i class="fas fa-check-circle"></i>
@@ -234,12 +229,11 @@ const seoData = {
             </ul>
           </div>
 
-          <!-- 操作说明 -->
-          <div class="info-block half-width">
-            <h3 class="info-subtitle">
+          <div class="instructions-section">
+            <h4 class="detail-title">
               <i class="fas fa-gamepad"></i>
               How to Play
-            </h3>
+            </h4>
             <ol class="instruction-list">
               <li class="instruction-item">
                 <span class="step-number">1</span>
@@ -510,45 +504,39 @@ const seoData = {
       gap: 2rem;
     }
 
-    .info-row {
-      display: flex;
-      gap: 2rem;
-    }
-
-    .info-block {
-      background: #F9FAFB;
-      border-radius: 12px;
-      padding: 1.5rem;
-      border: 1px solid #E5E7EB;
-    }
-
-    .info-block.full-width {
-      width: 100%;
-    }
-
-    .info-block.half-width {
-      flex: 1;
-      min-width: 0; /* 防止内容溢出 */
-    }
-
-    .info-subtitle {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #1F2937;
+    .info-text {
       margin-bottom: 1rem;
-    }
-
-    .info-subtitle i {
-      color: #6366F1;
     }
 
     .game-description {
       color: #6B7280;
       line-height: 1.6;
       margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .info-details {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .features-section, .instructions-section {
+      flex: 1;
+    }
+
+    .detail-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 1rem;
+    }
+
+    .detail-title i {
+      color: #6366F1;
+      font-size: 1rem;
     }
 
     .feature-list, .instruction-list {
@@ -744,7 +732,8 @@ const seoData = {
         gap: 1.5rem;
       }
 
-      .info-row {
+      .info-details {
+        flex-direction: column;
         gap: 1.5rem;
       }
 
@@ -775,7 +764,7 @@ const seoData = {
         font-size: 1.25rem;
       }
 
-      .info-row {
+      .info-details {
         flex-direction: column;
         gap: 1rem;
       }
