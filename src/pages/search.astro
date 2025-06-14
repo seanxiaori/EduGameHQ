@@ -93,8 +93,17 @@ const pageDescription = 'Search through our collection of 240+ educational games
           throw new Error(`Failed to load games data: ${response.status}`);
         }
         
-        const games = await response.json();
-        console.log('Games loaded successfully:', games.length);
+        const rawData = await response.json();
+        console.log('Raw games data loaded:', Object.keys(rawData).length, 'games');
+        
+        // 将游戏对象转换为数组，并添加slug属性
+        const games = Object.entries(rawData).map(([slug, game]) => ({
+          ...game,
+          slug
+        }));
+        
+        console.log('Games data processed:', games.length, 'games');
+        console.log('Sample game:', games[0]);
         
         // 获取URL参数
         const urlParams = new URLSearchParams(window.location.search);
