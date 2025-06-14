@@ -72,18 +72,6 @@ const trendingGames = Object.entries(allGamesData)
               and are perfect for engaging learning experiences across all subjects.
           </p>
           </div>
-            </div>
-        
-        <!-- 热门标识 -->
-        <div class="header-stats">
-            <div class="stat-item">
-            <i class="fas fa-fire"></i>
-            <span>Hot Now</span>
-            </div>
-            <div class="stat-item">
-            <i class="fas fa-gift"></i>
-            <span>100% Free</span>
-          </div>
         </div>
       </section>
 
@@ -243,7 +231,7 @@ const trendingGames = Object.entries(allGamesData)
   /* 主要内容区域 */
   .main-content {
     width: 100%;
-    background: #FEFCFB;
+    background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 50%, #FEE2E2 100%);
     min-height: 100vh;
   }
 
@@ -265,9 +253,6 @@ const trendingGames = Object.entries(allGamesData)
       0 2px 8px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
   }
 
   .page-header::before {
@@ -284,7 +269,8 @@ const trendingGames = Object.entries(allGamesData)
     display: flex;
     align-items: center;
     gap: 2rem;
-    flex: 1;
+    position: relative;
+    z-index: 2;
   }
 
   .header-icon {
@@ -335,33 +321,6 @@ const trendingGames = Object.entries(allGamesData)
     color: #64748B;
     margin: 0;
     line-height: 1.6;
-  }
-
-  /* 头部统计信息 */
-  .header-stats {
-    display: flex;
-    gap: 1rem;
-    flex-shrink: 0;
-  }
-
-  .stat-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1rem;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 0.875rem;
-    color: #374151;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .stat-item i {
-    color: #EF4444;
-    font-size: 1rem;
   }
 
   /* 游戏区域 */
@@ -522,22 +481,6 @@ const trendingGames = Object.entries(allGamesData)
 
     .page-title {
       font-size: 2rem;
-    }
-
-    .header-stats {
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .stat-item {
-      padding: 0.75rem;
-    }
-
-    .module-header {
-      flex-direction: column;
-      text-align: center;
-      gap: 1rem;
-      padding: 1rem;
     }
 
     .games-grid {
