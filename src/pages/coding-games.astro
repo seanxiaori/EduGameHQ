@@ -82,18 +82,18 @@ if (featuredGames.length < 4) {
       </section>
 
       <!-- 2. 特色游戏模块 -->
-      <section class="games-module">
+      <section class="game-module featured-module">
         <div class="module-header">
-          <div class="module-icon featured">
+          <div class="module-icon featured-icon">
             <i class="fas fa-star"></i>
           </div>
-          <div class="module-text">
+          <div class="module-title-group">
             <h2 class="module-title">Featured Coding Games</h2>
             <p class="module-subtitle">Hand-picked programming games to start your coding adventure</p>
           </div>
         </div>
         
-        <div class="games-grid featured-grid">
+        <div class="games-grid">
           {featuredGames.map((game, index) => {
             const popularity = Math.floor(Math.random() * 15000) + 500;
             const formatPopularity = (num) => {
@@ -102,17 +102,30 @@ if (featuredGames.length < 4) {
               return num.toString();
             };
             
+            const playHistory = ['Today', 'Yesterday', 'A few days ago', null];
+            const randomHistory = playHistory[Math.floor(Math.random() * playHistory.length)];
+            
             return (
-              <a href={game.url} class={`game-card coding-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
+              <div class="game-card coding-theme featured animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
+                    {randomHistory && (
+                      <div class={`played-badge ${
+                        randomHistory === 'Today' ? 'today' : 
+                        randomHistory === 'Yesterday' ? 'yesterday' : 
+                        'few-days-ago'
+                      }`}>
+                        {randomHistory}
+                      </div>
+                    )}
                     <div class="popularity-badge">
-                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
+                      🔥 {formatPopularity(popularity)}
                     </div>
-                    <div class="play-button">
+                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
-                    </div>
+                      <span>Play Now</span>
+                    </button>
                   </div>
                 </div>
                 <div class="game-info">
@@ -122,159 +135,171 @@ if (featuredGames.length < 4) {
                     <span class="feature-tag featured">FEATURED</span>
                   </div>
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>
       </section>
 
       <!-- 3. 容易难度游戏模块 -->
-      <section class="games-module">
-        <div class="module-header">
-          <div class="module-icon easy">
-            <i class="fas fa-smile"></i>
+      {easyGames.length > 0 && (
+        <section class="game-module difficulty-module easy-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon">
+              <i class="fas fa-smile"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Beginner Friendly</h2>
+              <p class="module-subtitle">Perfect for coding newcomers and young learners</p>
+            </div>
           </div>
-          <div class="module-text">
-            <h2 class="module-title">Beginner Friendly</h2>
-            <p class="module-subtitle">Perfect for coding newcomers and young learners</p>
-          </div>
-        </div>
-        
-        <div class="games-grid">
-          {easyGames.map((game, index) => {
-            const popularity = Math.floor(Math.random() * 8000) + 300;
-            const formatPopularity = (num) => {
-              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-              return num.toString();
-            };
-            
-            return (
-              <a href={game.url} class={`game-card coding-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
-                <div class="game-image-container">
-                  <img src={game.image} alt={game.title} class="game-image" />
-                  <div class="game-overlay">
-                    <div class="popularity-badge">
-                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
+          
+          <div class="games-grid">
+            {easyGames.map((game, index) => {
+              const popularity = Math.floor(Math.random() * 8000) + 300;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card coding-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
                     </div>
-                    <div class="play-button">
-                      <i class="fas fa-play"></i>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag coding">Coding</span>
+                      <span class="difficulty-tag easy">EASY</span>
                     </div>
                   </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class="category-tag coding">Coding</span>
-                    <span class="difficulty-tag easy">Easy</span>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <!-- 4. 中等难度游戏模块 -->
-      <section class="games-module">
-        <div class="module-header">
-          <div class="module-icon medium">
-            <i class="fas fa-meh"></i>
+      {mediumGames.length > 0 && (
+        <section class="game-module difficulty-module medium-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon">
+              <i class="fas fa-meh"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Intermediate Challenges</h2>
+              <p class="module-subtitle">Build on your coding foundation with more complex problems</p>
+            </div>
           </div>
-          <div class="module-text">
-            <h2 class="module-title">Intermediate Challenges</h2>
-            <p class="module-subtitle">Build on your coding foundation with more complex problems</p>
-          </div>
-        </div>
-        
-        <div class="games-grid">
-          {mediumGames.map((game, index) => {
-            const popularity = Math.floor(Math.random() * 12000) + 800;
-            const formatPopularity = (num) => {
-              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-              return num.toString();
-            };
-            
-            return (
-              <a href={game.url} class={`game-card coding-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
-                <div class="game-image-container">
-                  <img src={game.image} alt={game.title} class="game-image" />
-                  <div class="game-overlay">
-                    <div class="popularity-badge">
-                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
+          
+          <div class="games-grid">
+            {mediumGames.map((game, index) => {
+              const popularity = Math.floor(Math.random() * 12000) + 800;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card coding-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
                     </div>
-                    <div class="play-button">
-                      <i class="fas fa-play"></i>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag coding">Coding</span>
+                      <span class="difficulty-tag medium">MEDIUM</span>
                     </div>
                   </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class="category-tag coding">Coding</span>
-                    <span class="difficulty-tag medium">Medium</span>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <!-- 5. 困难游戏模块 -->
-      <section class="games-module">
-        <div class="module-header">
-          <div class="module-icon hard">
-            <i class="fas fa-frown"></i>
+      {hardGames.length > 0 && (
+        <section class="game-module difficulty-module hard-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon">
+              <i class="fas fa-frown"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Advanced Programming</h2>
+              <p class="module-subtitle">Master complex algorithms and advanced coding concepts</p>
+            </div>
           </div>
-          <div class="module-text">
-            <h2 class="module-title">Advanced Programming</h2>
-            <p class="module-subtitle">Master complex algorithms and advanced coding concepts</p>
-          </div>
-        </div>
-        
-        <div class="games-grid">
-          {hardGames.map((game, index) => {
-            const popularity = Math.floor(Math.random() * 20000) + 1000;
-            const formatPopularity = (num) => {
-              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-              return num.toString();
-            };
-            
-            return (
-              <a href={game.url} class={`game-card coding-theme animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
-                <div class="game-image-container">
-                  <img src={game.image} alt={game.title} class="game-image" />
-                  <div class="game-overlay">
-                    <div class="popularity-badge">
-                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
+          
+          <div class="games-grid">
+            {hardGames.map((game, index) => {
+              const popularity = Math.floor(Math.random() * 20000) + 1000;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card coding-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        🔥 {formatPopularity(popularity)}
+                      </div>
+                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </button>
                     </div>
-                    <div class="play-button">
-                      <i class="fas fa-play"></i>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag coding">Coding</span>
+                      <span class="difficulty-tag hard">HARD</span>
                     </div>
                   </div>
                 </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class="category-tag coding">Coding</span>
-                    <span class="difficulty-tag hard">Hard</span>
-                  </div>
-                </div>
-              </a>
-            );
-          })}
-        </div>
-      </section>
+              );
+            })}
+          </div>
+        </section>
+      )}
 
       <!-- 6. 学习建议模块 -->
-      <section class="learning-tips-module">
+      <section class="info-module tips-module">
         <div class="module-header">
-          <div class="module-icon tips">
+          <div class="module-icon tips-icon">
             <i class="fas fa-lightbulb"></i>
           </div>
-          <div class="module-text">
+          <div class="module-title-group">
             <h2 class="module-title">Coding Learning Tips</h2>
-            <p class="module-subtitle">Expert advice to accelerate your programming journey</p>
+            <p class="module-subtitle">Expert advice to improve your programming skills</p>
           </div>
         </div>
         
@@ -284,8 +309,8 @@ if (featuredGames.length < 4) {
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h3 class="tip-title">Practice Daily</h3>
-              <p class="tip-text">Spend 20-30 minutes daily coding to build muscle memory and reinforce concepts</p>
+              <h4 class="tip-title">Practice Daily</h4>
+              <p class="tip-text">Spend 15-20 minutes daily practicing coding concepts through games</p>
             </div>
           </div>
           
@@ -294,103 +319,103 @@ if (featuredGames.length < 4) {
               <i class="fas fa-chart-line"></i>
             </div>
             <div class="tip-content">
-              <h3 class="tip-title">Start Simple</h3>
-              <p class="tip-text">Begin with visual programming languages like Scratch before moving to text-based coding</p>
+              <h4 class="tip-title">Start Simple</h4>
+              <p class="tip-text">Begin with basic concepts and gradually move to more complex programming challenges</p>
             </div>
           </div>
           
           <div class="tip-item">
             <div class="tip-icon">
-              <i class="fas fa-heart"></i>
+              <i class="fas fa-bug"></i>
             </div>
             <div class="tip-content">
-              <h3 class="tip-title">Embrace Debugging</h3>
-              <p class="tip-text">Bugs are learning opportunities - they teach you how programs really work</p>
+              <h4 class="tip-title">Embrace Debugging</h4>
+              <p class="tip-text">Learn to debug code - it's an essential skill for every programmer</p>
             </div>
           </div>
           
           <div class="tip-item">
             <div class="tip-icon">
-              <i class="fas fa-question-circle"></i>
+              <i class="fas fa-puzzle-piece"></i>
             </div>
             <div class="tip-content">
-              <h3 class="tip-title">Break Down Problems</h3>
-              <p class="tip-text">Divide complex problems into smaller, manageable pieces to solve step by step</p>
+              <h4 class="tip-title">Break Down Problems</h4>
+              <p class="tip-text">Divide complex problems into smaller, manageable pieces</p>
             </div>
           </div>
         </div>
       </section>
 
       <!-- 7. 核心技能模块 -->
-      <section class="core-skills-module">
+      <section class="info-module skills-module">
         <div class="module-header">
-          <div class="module-icon skills">
+          <div class="module-icon skills-icon">
             <i class="fas fa-brain"></i>
           </div>
-          <div class="module-text">
-            <h2 class="module-title">Core Programming Skills</h2>
-            <p class="module-subtitle">Essential abilities developed through coding games</p>
+          <div class="module-title-group">
+            <h2 class="module-title">Core Skills You'll Develop</h2>
+            <p class="module-subtitle">Essential programming abilities gained through gameplay</p>
           </div>
         </div>
-        
+
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-cogs"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Logical Thinking</h3>
-              <p class="skill-description">Develop systematic problem-solving approaches</p>
+              <h4 class="skill-title">Logical Thinking</h4>
+              <p class="skill-description">Develop step-by-step problem-solving approaches</p>
             </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-sitemap"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Algorithm Design</h3>
-              <p class="skill-description">Create efficient step-by-step solutions</p>
+              <h4 class="skill-title">Algorithm Design</h4>
+              <p class="skill-description">Learn to create efficient solutions to problems</p>
             </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-bug"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Debugging Skills</h3>
-              <p class="skill-description">Find and fix errors in code effectively</p>
+              <h4 class="skill-title">Debugging Skills</h4>
+              <p class="skill-description">Master the art of finding and fixing code errors</p>
             </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-code"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Syntax Mastery</h3>
-              <p class="skill-description">Learn programming language structures</p>
+              <h4 class="skill-title">Syntax Mastery</h4>
+              <p class="skill-description">Learn programming language rules and structures</p>
             </div>
           </div>
-          
+
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Creative Problem Solving</h3>
-              <p class="skill-description">Think outside the box for innovative solutions</p>
+              <h4 class="skill-title">Creative Problem Solving</h4>
+              <p class="skill-description">Think outside the box to find innovative solutions</p>
             </div>
           </div>
           
           <div class="skill-item">
             <div class="skill-icon">
-              <i class="fas fa-users"></i>
+              <i class="fas fa-calculator"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Computational Thinking</h3>
-              <p class="skill-description">Break down complex problems systematically</p>
+              <h4 class="skill-title">Computational Thinking</h4>
+              <p class="skill-description">Break down complex problems into manageable parts</p>
             </div>
           </div>
         </div>
@@ -400,15 +425,20 @@ if (featuredGames.length < 4) {
   </main>
 
   <style>
-    /* 编程主题色配置 */
-    :root {
-      --coding-primary: #2563EB;
-      --coding-secondary: #1D4ED8;
-      --coding-light: rgba(37, 99, 235, 0.1);
-      --coding-gradient: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
+    /* 主要内容区域 */
+    .main-content {
+      width: 100%;
+      background: #FEFCFB;
+      min-height: 100vh;
     }
 
-    /* 页面顶部区域样式 */
+    .content-wrapper {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* 1. 页面头部区域 */
     .page-header {
       background: linear-gradient(135deg, #FFFBF5 0%, #FFF7ED 50%, rgba(37, 99, 235, 0.08) 100%);
       border-radius: 20px;
@@ -446,7 +476,7 @@ if (featuredGames.length < 4) {
       width: 72px;
       height: 72px;
       border-radius: 20px;
-      background: var(--coding-gradient);
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 50%, #1E40AF 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -479,7 +509,7 @@ if (featuredGames.length < 4) {
       font-size: 2.5rem;
       font-weight: 800;
       font-family: 'Space Grotesk', sans-serif;
-      background: var(--coding-gradient);
+      background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -494,8 +524,8 @@ if (featuredGames.length < 4) {
       margin: 0;
     }
 
-    /* 游戏模块样式 */
-    .games-module {
+    /* 2-5. 游戏模块样式 */
+    .game-module {
       margin-bottom: 3rem;
     }
 
@@ -524,14 +554,14 @@ if (featuredGames.length < 4) {
       flex-shrink: 0;
     }
 
-    .module-icon.featured { background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .module-icon.easy { background: linear-gradient(135deg, #10B981, #059669); }
-    .module-icon.medium { background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .module-icon.hard { background: linear-gradient(135deg, #EF4444, #DC2626); }
-    .module-icon.tips { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
-    .module-icon.skills { background: linear-gradient(135deg, #EC4899, #DB2777); }
+    .featured-icon { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .easy-icon { background: linear-gradient(135deg, #10B981, #059669); }
+    .medium-icon { background: linear-gradient(135deg, #F59E0B, #D97706); }
+    .hard-icon { background: linear-gradient(135deg, #EF4444, #DC2626); }
+    .tips-icon { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+    .skills-icon { background: linear-gradient(135deg, #EC4899, #DB2777); }
 
-    .module-text {
+    .module-title-group {
       flex: 1;
     }
 
@@ -556,12 +586,8 @@ if (featuredGames.length < 4) {
       gap: 1.5rem;
     }
 
-    .featured-grid {
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-
-    /* 学习建议模块样式 */
-    .learning-tips-module {
+    /* 6. 学习建议模块样式 */
+    .info-module {
       margin-bottom: 3rem;
     }
 
@@ -621,11 +647,7 @@ if (featuredGames.length < 4) {
       margin: 0;
     }
 
-    /* 核心技能模块样式 */
-    .core-skills-module {
-      margin-bottom: 3rem;
-    }
-
+    /* 7. 核心技能模块样式 */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -684,10 +706,31 @@ if (featuredGames.length < 4) {
       margin: 0;
     }
 
+    /* 动画效果 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out;
+    }
+
     /* 响应式设计 */
     @media (max-width: 1024px) {
-      .tips-grid {
-        grid-template-columns: 1fr;
+      .content-wrapper {
+        padding: 1.5rem;
+      }
+      
+      .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 1.25rem;
       }
       
       .skills-grid {
@@ -696,8 +739,13 @@ if (featuredGames.length < 4) {
     }
 
     @media (max-width: 768px) {
+      .content-wrapper {
+        padding: 1rem;
+      }
+      
       .header-content {
         flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: 1.5rem;
       }
@@ -706,10 +754,25 @@ if (featuredGames.length < 4) {
         font-size: 2rem;
       }
       
+      .page-description {
+        font-size: 1rem;
+      }
+      
       .module-header {
         flex-direction: column;
+        align-items: center;
         text-align: center;
         gap: 1rem;
+        padding: 1.25rem;
+      }
+      
+      .games-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+      }
+      
+      .tips-grid {
+        grid-template-columns: 1fr;
       }
       
       .skills-grid {
@@ -731,28 +794,23 @@ if (featuredGames.length < 4) {
       }
     }
 
-    /* 动画效果 */
-    .animate-fadeInUp {
-      animation: fadeInUp 0.6s ease-out forwards;
-      opacity: 0;
-      transform: translateY(30px);
-    }
-
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
+    @media (max-width: 640px) {
+      .games-grid {
+        grid-template-columns: 1fr;
       }
-    }
-
-    /* 游戏卡片编程主题 */
-    .game-card.coding-theme .category-tag.coding {
-      background: var(--coding-gradient);
-    }
-
-    .game-card.coding-theme:hover {
-      border-color: var(--coding-primary);
-      box-shadow: 0 8px 32px rgba(37, 99, 235, 0.15);
+      
+      .category-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .icon-background {
+        font-size: 1.5rem;
+      }
+      
+      .page-title {
+        font-size: 1.75rem;
+      }
     }
   </style>
 </BaseLayout>
