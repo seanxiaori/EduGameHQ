@@ -74,18 +74,15 @@ const displayHardGames = hardGames.length > 0 ? hardGames : languageGames.slice(
       <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
-          <div class="category-icon-container">
-            <div class="category-icon">
-              <div class="icon-background">
-                📝
-              </div>
+          <div class="header-icon">
+            <div class="section-icon language">
+              <i class="fas fa-book"></i>
             </div>
           </div>
-          
           <div class="header-text">
             <h1 class="page-title">Language Games</h1>
             <p class="page-description">
-              Improve reading, writing, vocabulary, and communication skills with our engaging language games designed for English learners worldwide. Perfect for building strong language foundations.
+              Improve reading, writing, vocabulary, and communication skills with our engaging language games designed for English learners worldwide. From basic phonics to advanced grammar, master language arts through interactive gameplay.
             </p>
           </div>
         </div>
@@ -484,60 +481,8 @@ const displayHardGames = hardGames.length > 0 ? hardGames : languageGames.slice(
     z-index: 2;
   }
 
-  .category-icon-container {
+  .header-icon {
     flex-shrink: 0;
-  }
-
-  .category-icon {
-    width: 72px;
-    height: 72px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .icon-background {
-    width: 72px;
-    height: 72px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 25%, #86198F 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: white;
-    box-shadow: 
-      0 12px 28px rgba(192, 38, 211, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.1),
-      inset 0 2px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-  }
-
-  .icon-background::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
-  }
-
-  .icon-background::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-    pointer-events: none;
-  }
-
-  .category-icon:hover .icon-background {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 
-      0 16px 36px rgba(192, 38, 211, 0.35),
-      0 6px 16px rgba(0, 0, 0, 0.12);
   }
 
   .header-text {
@@ -857,15 +802,9 @@ const displayHardGames = hardGames.length > 0 ? hardGames : languageGames.slice(
   }
 
   @media (max-width: 640px) {
-    .category-icon {
+    .header-icon {
       width: 60px;
       height: 60px;
-    }
-
-    .icon-background {
-      width: 60px;
-      height: 60px;
-      font-size: 1.75rem;
     }
 
     .page-title {

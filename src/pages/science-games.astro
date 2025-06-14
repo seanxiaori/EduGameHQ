@@ -57,17 +57,14 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
       <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
-          <div class="category-icon-container">
-          <div class="category-icon science">
-            <div class="icon-background">
-                🧪
-              </div>
+          <div class="header-icon">
+            <div class="section-icon science">
+              <i class="fas fa-flask"></i>
             </div>
           </div>
-          
           <div class="header-text">
-          <h1 class="page-title">Science Games</h1>
-          <p class="page-description">
+            <h1 class="page-title">Science Games</h1>
+            <p class="page-description">
               Explore the wonders of science with interactive games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists who want to discover how the world works through hands-on experimentation and observation.
             </p>
           </div>
@@ -434,7 +431,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
 
   /* 1. 页面头部区域 */
   .page-header {
-    background: linear-gradient(135deg, #FFFBF5 0%, #F0FDF4 50%, rgba(5, 150, 105, 0.08) 100%);
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(5, 150, 105, 0.08) 100%);
     border-radius: 20px;
     padding: 2rem;
     margin-bottom: 2.5rem;
@@ -466,90 +463,54 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
     z-index: 2;
   }
 
-  .category-icon-container {
+  .header-icon {
     flex-shrink: 0;
   }
 
-  .category-icon {
-    width: 72px;
-    height: 72px;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .icon-background {
+  .section-icon {
     width: 72px;
     height: 72px;
     border-radius: 20px;
-    background: linear-gradient(135deg, #059669 0%, #047857 25%, #065F46 100%);
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065F46 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2rem;
     color: white;
+    font-size: 1.75rem;
     box-shadow: 
-      0 12px 28px rgba(5, 150, 105, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.1),
-      inset 0 2px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
+      0 8px 24px rgba(5, 150, 105, 0.3),
+      0 4px 12px rgba(5, 150, 105, 0.2);
+    transition: all 0.3s ease;
   }
 
-  .icon-background::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
-  }
-
-  .icon-background::after {
-    content: '';
-    position: absolute;
-    inset: 2px;
-    border-radius: 18px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
-    pointer-events: none;
-  }
-
-  .category-icon:hover .icon-background {
+  .section-icon:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 
-      0 16px 36px rgba(5, 150, 105, 0.35),
-      0 6px 16px rgba(0, 0, 0, 0.12);
+      0 12px 32px rgba(5, 150, 105, 0.4),
+      0 6px 16px rgba(5, 150, 105, 0.3);
   }
 
   .header-text {
     flex: 1;
-    text-align: left;
   }
 
   .page-title {
-    font-family: 'Space Grotesk', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    margin: 0 0 0.75rem 0;
-    color: #059669;
-    text-shadow: 0 2px 4px rgba(5, 150, 105, 0.1);
-    letter-spacing: -0.025em;
-    line-height: 1.1;
-    background: linear-gradient(135deg, #059669 0%, #065F46 100%);
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065F46 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
   }
 
   .page-description {
     font-size: 1.125rem;
     color: #64748B;
-    line-height: 1.6;
     margin: 0;
-    max-width: none;
-    font-weight: 400;
-    letter-spacing: 0.01em;
+    line-height: 1.6;
   }
 
   /* 通用模块样式 */
@@ -808,7 +769,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
       text-align: center;
     }
 
-    .category-icon {
+    .section-icon {
       width: 64px;
       height: 64px;
     }
@@ -906,7 +867,7 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
       font-size: 1.75rem;
     }
     
-    .category-icon {
+    .section-icon {
       width: 56px;
       height: 56px;
     }

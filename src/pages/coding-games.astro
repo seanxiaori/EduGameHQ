@@ -64,18 +64,15 @@ if (featuredGames.length < 4) {
       <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
-          <div class="category-icon-container">
-            <div class="category-icon coding">
-              <div class="icon-background">
-                💻
-              </div>
+          <div class="header-icon">
+            <div class="section-icon coding">
+              <i class="fas fa-code"></i>
             </div>
           </div>
-          
           <div class="header-text">
-          <h1 class="page-title">Coding Games</h1>
-          <p class="page-description">
-              Learn programming fundamentals through interactive games and challenges. Master coding concepts, algorithms, and problem-solving skills while having fun. Perfect for beginners and young coders to start their programming journey.
+            <h1 class="page-title">Coding Games</h1>
+            <p class="page-description">
+              Learn programming fundamentals through gamification. From basic logic to advanced coding concepts, start your journey into computer science today with interactive coding challenges and programming puzzles designed for all skill levels.
             </p>
           </div>
         </div>
@@ -468,11 +465,11 @@ if (featuredGames.length < 4) {
       gap: 2rem;
     }
 
-    .category-icon-container {
+    .header-icon {
       flex-shrink: 0;
   }
 
-    .category-icon {
+    .section-icon {
       width: 72px;
       height: 72px;
     border-radius: 20px;
@@ -488,18 +485,13 @@ if (featuredGames.length < 4) {
       position: relative;
     }
 
-    .category-icon:hover {
+    .section-icon:hover {
       transform: translateY(-2px) scale(1.02);
       box-shadow: 
         0 12px 32px rgba(37, 99, 235, 0.3),
         0 6px 16px rgba(37, 99, 235, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
-
-    .icon-background {
-      font-size: 1.75rem;
-      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-    }
 
     .header-text {
       flex: 1;
@@ -806,15 +798,11 @@ if (featuredGames.length < 4) {
       grid-template-columns: 1fr;
     }
 
-      .category-icon {
+      .section-icon {
         width: 60px;
         height: 60px;
       }
       
-      .icon-background {
-      font-size: 1.5rem;
-    }
-
       .page-title {
         font-size: 1.75rem;
     }

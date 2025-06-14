@@ -64,23 +64,21 @@ function getGameImagePath(game) {
     <div class="content-wrapper">
 
       <!-- 1. 页面顶部区域 -->
-      <header class="page-header">
+      <section class="page-header">
         <div class="header-content">
-          <div class="category-icon-container">
-            <div class="category-icon">
-              <div class="icon-background">
-            <i class="fas fa-globe-americas"></i>
-              </div>
+          <div class="header-icon">
+            <div class="section-icon geography">
+              <i class="fas fa-globe"></i>
             </div>
           </div>
           <div class="header-text">
-          <h1 class="page-title">Geography & History Games</h1>
-          <p class="page-description">
-              Discover the world and its history! Journey through different countries, cultures, and time periods while learning geography, historical events, and cultural awareness.
-          </p>
+            <h1 class="page-title">Geography & History Games</h1>
+            <p class="page-description">
+              Discover the world and its history! Journey through different countries, cultures, and time periods while learning geography, historical events, and cultural awareness through engaging interactive experiences.
+            </p>
           </div>
-            </div>
-      </header>
+        </div>
+      </section>
 
       <!-- 2. 特色游戏模块 -->
       {gamesByDifficulty.Featured && gamesByDifficulty.Featured.length > 0 && (

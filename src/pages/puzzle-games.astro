@@ -74,18 +74,15 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
       <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
-          <div class="category-icon-container">
-            <div class="category-icon">
-              <div class="icon-background">
-                🧩
-              </div>
+          <div class="header-icon">
+            <div class="section-icon puzzle">
+              <i class="fas fa-puzzle-piece"></i>
             </div>
           </div>
-          
           <div class="header-text">
             <h1 class="page-title">Puzzle Games</h1>
             <p class="page-description">
-              Challenge your mind with engaging puzzle games that develop critical thinking, logic, and problem-solving skills. Perfect brain training for all ages.
+              Challenge your mind with brain-training puzzles and logic games. Develop critical thinking, problem-solving skills, and cognitive abilities through engaging puzzle challenges designed for all ages and skill levels.
             </p>
           </div>
         </div>
@@ -484,11 +481,11 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
     z-index: 2;
   }
 
-  .category-icon-container {
+  .header-icon {
     flex-shrink: 0;
   }
 
-  .category-icon {
+  .section-icon {
     width: 72px;
     height: 72px;
     position: relative;
@@ -533,7 +530,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
     pointer-events: none;
   }
 
-  .category-icon:hover .icon-background {
+  .section-icon:hover .icon-background {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 
       0 16px 36px rgba(124, 58, 237, 0.35),
@@ -865,7 +862,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
   }
 
   @media (max-width: 640px) {
-    .category-icon {
+    .section-icon {
       width: 60px;
       height: 60px;
     }

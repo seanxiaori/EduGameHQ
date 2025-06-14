@@ -83,15 +83,14 @@ function getTimeText(daysAgo: number): string {
     <div class="content-wrapper">
       
       <!-- 页面顶部区域 -->
-      <div class="page-header">
+      <section class="page-header">
         <div class="header-content">
-          <!-- 图标区域 -->
-          <div class="icon-container">
-            <i class="fas fa-star"></i>
+          <div class="header-icon">
+            <div class="section-icon new">
+              <i class="fas fa-star"></i>
+            </div>
           </div>
-          
-          <!-- 文字内容 -->
-          <div class="text-content">
+          <div class="header-text">
             <h1 class="page-title">New Educational Games</h1>
             <p class="page-description">
               Discover the latest educational games added to our platform. Fresh learning experiences 
@@ -99,7 +98,7 @@ function getTimeText(daysAgo: number): string {
             </p>
           </div>
         </div>
-      </div>
+      </section>
 
       <!-- 今日新增游戏模块 -->
       <section class="module-section">
@@ -315,11 +314,11 @@ function getTimeText(daysAgo: number): string {
     padding: 2rem;
   }
 
-  /* 页面特定样式 - 绿色主题 */
+  /* 页面头部 */
   .page-header {
     background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
     border-radius: 20px;
-    padding: 1.5rem;
+    padding: 2rem;
     margin-bottom: 2.5rem;
     border: 1px solid rgba(34, 197, 94, 0.15);
     box-shadow: 
@@ -345,49 +344,54 @@ function getTimeText(daysAgo: number): string {
     gap: 2rem;
   }
 
-  .text-content {
-    flex: 1;
+  .header-icon {
+    flex-shrink: 0;
   }
 
-  .icon-container {
+  .section-icon {
     width: 72px;
     height: 72px;
-    background: linear-gradient(135deg, #22C55E 0%, #16A34A 50%, #15803D 100%);
     border-radius: 20px;
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 50%, #15803D 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.75rem;
     color: white;
+    font-size: 1.75rem;
     box-shadow: 
       0 8px 24px rgba(34, 197, 94, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.1);
+      0 4px 12px rgba(34, 197, 94, 0.2);
     transition: all 0.3s ease;
   }
 
-  .icon-container:hover {
+  .section-icon:hover {
     transform: translateY(-2px) scale(1.02);
     box-shadow: 
       0 12px 32px rgba(34, 197, 94, 0.4),
-      0 6px 16px rgba(0, 0, 0, 0.15);
+      0 6px 16px rgba(34, 197, 94, 0.3);
+  }
+
+  .header-text {
+    flex: 1;
   }
 
   .page-title {
     font-size: 2.5rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 50%, #15803D 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 0.75rem;
-    font-family: 'Space Grotesk', sans-serif;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
   }
 
   .page-description {
     font-size: 1.125rem;
     color: #64748B;
+    margin: 0;
     line-height: 1.6;
-    margin-bottom: 0;
   }
 
   /* 模块样式 */
