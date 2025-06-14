@@ -84,14 +84,14 @@ function getTimeText(daysAgo: number): string {
       
       <!-- 页面顶部区域 -->
       <div class="page-header">
-        <div class="flex items-center gap-8">
+        <div class="header-content">
           <!-- 图标区域 -->
           <div class="icon-container">
             <i class="fas fa-star"></i>
           </div>
           
           <!-- 文字内容 -->
-          <div class="flex-1">
+          <div class="text-content">
             <h1 class="page-title">New Educational Games</h1>
             <p class="page-description">
               Discover the latest educational games added to our platform. Fresh learning experiences 
@@ -319,7 +319,7 @@ function getTimeText(daysAgo: number): string {
   .page-header {
     background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
     border-radius: 20px;
-    padding: 2rem;
+    padding: 1.5rem;
     margin-bottom: 2.5rem;
     border: 1px solid rgba(34, 197, 94, 0.15);
     box-shadow: 
@@ -337,6 +337,16 @@ function getTimeText(daysAgo: number): string {
     right: 0;
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, rgba(34, 197, 94, 0.3) 50%, transparent 100%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .text-content {
+    flex: 1;
   }
 
   .icon-container {
@@ -445,7 +455,7 @@ function getTimeText(daysAgo: number): string {
       padding: 1.5rem;
     }
     
-    .page-header .flex {
+    .header-content {
       flex-direction: column;
       text-align: center;
       gap: 1.5rem;
