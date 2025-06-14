@@ -19,10 +19,19 @@ const seoData = {
 
 // 按难度分组游戏
 const gamesByDifficulty = {
+  'Featured': geographyGames
+    .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
+    .slice(0, 6),
   'Easy': geographyGames.filter(game => game.difficulty === 'Easy'),
   'Medium': geographyGames.filter(game => game.difficulty === 'Medium'), 
   'Hard': geographyGames.filter(game => game.difficulty === 'Hard')
 };
+
+// 确保所有数组都有默认值
+gamesByDifficulty.Featured = gamesByDifficulty.Featured || [];
+gamesByDifficulty.Easy = gamesByDifficulty.Easy || [];
+gamesByDifficulty.Medium = gamesByDifficulty.Medium || [];
+gamesByDifficulty.Hard = gamesByDifficulty.Hard || [];
 
 // 获取特色游戏（播放次数最高的前6个）
 const featuredGames = geographyGames
@@ -74,7 +83,7 @@ function getGameImagePath(game) {
       </header>
 
       <!-- 2. 特色游戏模块 -->
-      {gamesByDifficulty.Featured.length > 0 && (
+      {gamesByDifficulty.Featured && gamesByDifficulty.Featured.length > 0 && (
         <section class="game-module featured-module">
           <div class="module-header">
             <div class="module-icon featured-icon">
@@ -123,7 +132,7 @@ function getGameImagePath(game) {
       )}
 
       <!-- 3. 容易难度游戏模块 -->
-      {gamesByDifficulty.Easy.length > 0 && (
+      {gamesByDifficulty.Easy && gamesByDifficulty.Easy.length > 0 && (
         <section class="game-module difficulty-module easy-module">
           <div class="module-header">
             <div class="module-icon easy-icon">
@@ -172,7 +181,7 @@ function getGameImagePath(game) {
       )}
 
       <!-- 4. 中等难度游戏模块 -->
-      {gamesByDifficulty.Medium.length > 0 && (
+      {gamesByDifficulty.Medium && gamesByDifficulty.Medium.length > 0 && (
         <section class="game-module difficulty-module medium-module">
           <div class="module-header">
             <div class="module-icon medium-icon">
@@ -221,7 +230,7 @@ function getGameImagePath(game) {
       )}
 
       <!-- 5. 困难游戏模块 -->
-      {gamesByDifficulty.Hard.length > 0 && (
+      {gamesByDifficulty.Hard && gamesByDifficulty.Hard.length > 0 && (
         <section class="game-module difficulty-module hard-module">
           <div class="module-header">
             <div class="module-icon hard-icon">
