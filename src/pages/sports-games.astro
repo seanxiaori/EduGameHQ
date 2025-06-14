@@ -468,9 +468,29 @@ const sportsCoreSkills = [
   }
 
   .section-icon {
-    width: 80px;
-    height: 80px;
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 50%, #991B1B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 
+      0 8px 24px rgba(220, 38, 38, 0.25),
+      0 4px 12px rgba(220, 38, 38, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
     position: relative;
+  }
+
+  .section-icon:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 32px rgba(220, 38, 38, 0.3),
+      0 6px 16px rgba(220, 38, 38, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 
   .header-text {
