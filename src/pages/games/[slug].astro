@@ -167,49 +167,39 @@ const seoData = {
       <div class="game-main-content">
         <!-- 游戏播放器区域 -->
         <div class="game-player-section">
-          <div class="game-iframe-container">
-            <!-- 加载状态 -->
-            <div class="loading-overlay">
-              <div class="loading-spinner">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Loading game...</p>
-              </div>
+          <div class="game-player-container">
+            <div class="game-loading" id="gameLoading">
+              <div class="loading-spinner"></div>
+              <p>Loading game...</p>
             </div>
-            
-            <!-- 游戏iframe -->
             <iframe 
-              src={game.url}
-              title={game.title}
+              id="gameFrame"
+              src={game.url} 
               class="game-iframe"
-              allowfullscreen
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
               loading="lazy"
-            ></iframe>
-            
-            <!-- 安全提示覆盖层 -->
-            <div class="security-notice">
-              <i class="fas fa-shield-alt"></i>
-              <span>Secure sandbox environment</span>
-            </div>
+              onload="handleGameLoad()"
+              onerror="handleGameError()">
+            </iframe>
           </div>
           
           <!-- 游戏控制按钮 -->
           <div class="game-controls">
-            <button class="control-btn primary-btn fullscreen-btn">
+            <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()" title="Fullscreen">
               <i class="fas fa-expand"></i>
-              Fullscreen
+              <span>Fullscreen</span>
             </button>
-            <button class="control-btn secondary-btn refresh-btn">
+            <button class="control-btn restart-btn" onclick="restartGame()" title="Restart Game">
               <i class="fas fa-redo"></i>
-              Restart
+              <span>Restart</span>
             </button>
-            <button class="control-btn secondary-btn favorite-btn">
+            <button class="control-btn favorite-btn" onclick="toggleFavorite()" title="Add to Favorites">
               <i class="far fa-heart"></i>
-              Favorite
+              <span>Favorite</span>
             </button>
-            <button class="control-btn secondary-btn share-btn">
+            <button class="control-btn share-btn" onclick="shareGame()" title="Share Game">
               <i class="fas fa-share"></i>
-              Share
+              <span>Share</span>
             </button>
           </div>
         </div>
@@ -429,7 +419,7 @@ const seoData = {
       border: 1px solid #F3F4F6;
     }
 
-    .game-iframe-container {
+    .game-player-container {
       position: relative;
       width: 100%;
       height: 600px;
@@ -446,7 +436,7 @@ const seoData = {
       border-radius: 12px;
     }
 
-    .loading-overlay {
+    .game-loading {
       position: absolute;
       top: 0;
       left: 0;
@@ -460,28 +450,20 @@ const seoData = {
       z-index: 2;
     }
 
-    .loading-spinner i {
-      font-size: 2rem;
-      color: #6366F1;
-      margin-bottom: 1rem;
+    .loading-spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid #6366F1;
+      border-top: 4px solid transparent;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
     }
 
-    .security-notice {
-      position: absolute;
-      bottom: 1rem;
-      right: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: rgba(16, 185, 129, 0.9);
-      color: white;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    /* 游戏控制按钮 */
     .game-controls {
       display: flex;
       gap: 1rem;
@@ -804,7 +786,7 @@ const seoData = {
         align-items: flex-start;
       }
       
-      .game-iframe-container {
+      .game-player-container {
         height: 400px;
       }
       
@@ -826,7 +808,7 @@ const seoData = {
         font-size: 1.75rem;
       }
       
-      .game-iframe-container {
+      .game-player-container {
         height: 300px;
       }
       
@@ -841,7 +823,7 @@ const seoData = {
     // 游戏加载处理
     document.addEventListener('DOMContentLoaded', function() {
       const iframe = document.querySelector('.game-iframe');
-      const loadingOverlay = document.querySelector('.loading-overlay');
+      const loadingOverlay = document.querySelector('.game-loading');
       
       if (iframe && loadingOverlay) {
         iframe.addEventListener('load', function() {
@@ -858,7 +840,7 @@ const seoData = {
       const fullscreenBtn = document.querySelector('.fullscreen-btn');
       if (fullscreenBtn) {
         fullscreenBtn.addEventListener('click', function() {
-          const container = document.querySelector('.game-iframe-container');
+          const container = document.querySelector('.game-player-container');
           if (container.requestFullscreen) {
             container.requestFullscreen();
           }
@@ -866,9 +848,9 @@ const seoData = {
       }
 
       // 重启游戏
-      const refreshBtn = document.querySelector('.refresh-btn');
-      if (refreshBtn && iframe) {
-        refreshBtn.addEventListener('click', function() {
+      const restartBtn = document.querySelector('.restart-btn');
+      if (restartBtn && iframe) {
+        restartBtn.addEventListener('click', function() {
           iframe.src = iframe.src;
         });
       }
