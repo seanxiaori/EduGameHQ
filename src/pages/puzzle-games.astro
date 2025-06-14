@@ -117,7 +117,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
             const randomHistory = histories[Math.floor(Math.random() * histories.length)];
             
             return (
-              <div class="game-card puzzle-theme featured animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+              <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
@@ -133,10 +133,10 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
                     <div class="popularity-badge">
                       🔥 {formatPopularity(popularity)}
                     </div>
-                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                    <div class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>
-                    </button>
+                    </div>
                   </div>
                 </div>
                 <div class="game-info">
@@ -175,17 +175,17 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               };
               
               return (
-                <div class="game-card puzzle-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         ⭐ {formatPopularity(popularity)}
                       </div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                      <div class="play-button" onclick={`window.location.href='${game.url}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
-                      </button>
+                      </div>
                     </div>
                   </div>
                   <div class="game-info">
@@ -225,17 +225,17 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               };
               
               return (
-                <div class="game-card puzzle-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         ⭐ {formatPopularity(popularity)}
                       </div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                      <div class="play-button" onclick={`window.location.href='${game.url}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
-                      </button>
+                      </div>
                     </div>
                   </div>
                   <div class="game-info">
@@ -275,17 +275,17 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               };
               
               return (
-                <div class="game-card puzzle-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         🔥 {formatPopularity(popularity)}
                       </div>
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
+                      <div class="play-button" onclick={`window.location.href='${game.url}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
-                      </button>
+                      </div>
                     </div>
                   </div>
                   <div class="game-info">
@@ -375,7 +375,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Critical Thinking</h3>
+              <h4 class="skill-title">Critical Thinking</h4>
               <p class="skill-description">Analyze problems and evaluate solutions systematically</p>
             </div>
           </div>
@@ -385,7 +385,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-cogs"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Logic Reasoning</h3>
+              <h4 class="skill-title">Logic Reasoning</h4>
               <p class="skill-description">Apply logical principles to solve complex problems</p>
             </div>
           </div>
@@ -395,7 +395,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-search"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Pattern Recognition</h3>
+              <h4 class="skill-title">Pattern Recognition</h4>
               <p class="skill-description">Identify recurring themes and structures</p>
             </div>
           </div>
@@ -405,7 +405,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-cube"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Spatial Awareness</h3>
+              <h4 class="skill-title">Spatial Awareness</h4>
               <p class="skill-description">Understand relationships between objects in space</p>
             </div>
           </div>
@@ -415,7 +415,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-bullseye"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Focus & Concentration</h3>
+              <h4 class="skill-title">Focus & Concentration</h4>
               <p class="skill-description">Maintain attention on complex tasks for extended periods</p>
             </div>
           </div>
@@ -425,7 +425,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-mountain"></i>
             </div>
             <div class="skill-content">
-              <h3 class="skill-title">Persistence</h3>
+              <h4 class="skill-title">Persistence</h4>
               <p class="skill-description">Develop resilience when facing challenging problems</p>
             </div>
           </div>
@@ -646,6 +646,14 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
     line-height: 1.4;
   }
 
+  /* 游戏网格 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 0;
+  }
+
   /* 学习建议模块 */
   .tips-grid {
     display: grid;
@@ -682,7 +690,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
     color: white;
     font-size: 0.875rem;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
   .tip-content {
@@ -742,7 +750,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
     color: white;
     font-size: 0.875rem;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
     box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
   }
 
