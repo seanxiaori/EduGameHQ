@@ -126,52 +126,22 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
         <!-- 游戏特色和操作说明 -->
         <div class="info-details">
           <div class="features-section">
-            <h4 class="detail-title">
-              <i class="fas fa-star"></i>
-              Features
-            </h4>
-            <ul class="feature-list">
-              <li class="feature-item">
-                <i class="fas fa-check-circle"></i>
-                Interactive gameplay
-              </li>
-              <li class="feature-item">
-                <i class="fas fa-check-circle"></i>
-                Educational content
-              </li>
-              <li class="feature-item">
-                <i class="fas fa-check-circle"></i>
-                Progress tracking
-              </li>
-              <li class="feature-item">
-                <i class="fas fa-check-circle"></i>
-                Kid-friendly interface
-              </li>
+            <h4>Features</h4>
+            <ul>
+              <li>Interactive gameplay</li>
+              <li>Educational content</li>
+              <li>Progress tracking</li>
+              <li>Kid-friendly interface</li>
             </ul>
           </div>
 
           <div class="instructions-section">
-            <h4 class="detail-title">
-              <i class="fas fa-gamepad"></i>
-              How to Play
-            </h4>
-            <ol class="instruction-list">
-              <li class="instruction-item">
-                <span class="step-number">1</span>
-                Use mouse to click and interact
-              </li>
-              <li class="instruction-item">
-                <span class="step-number">2</span>
-                Use keyboard arrow keys to move
-              </li>
-              <li class="instruction-item">
-                <span class="step-number">3</span>
-                Follow in-game instructions
-              </li>
-              <li class="instruction-item">
-                <span class="step-number">4</span>
-                Complete challenges to progress
-              </li>
+            <h4>How to Play</h4>
+            <ol>
+              <li>Use mouse to click and interact</li>
+              <li>Use keyboard arrow keys to move</li>
+              <li>Follow in-game instructions</li>
+              <li>Complete challenges to progress</li>
             </ol>
           </div>
         </div>
@@ -471,6 +441,22 @@ const pageDescription = `Play ${game.title} online for free. ${game.description}
 
     .features-section, .instructions-section {
       flex: 1;
+    }
+
+    .features-section h4, .instructions-section h4 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      color: #1F2937;
+      margin-bottom: 1rem;
+    }
+
+    .features-section ul, .instructions-section ol {
+      margin-left: 1.5rem;
+      color: #4B5563;
+    }
+
+    .features-section li, .instructions-section li {
+      margin-bottom: 0.5rem;
     }
 
     .detail-title {
