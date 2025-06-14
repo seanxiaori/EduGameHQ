@@ -89,8 +89,18 @@ const trendingGames = Object.entries(allGamesData)
         </div>
       </section>
 
-      <!-- 游戏网格 -->
+      <!-- 游戏区域 -->
       <section class="games-section">
+        <div class="module-header">
+          <div class="module-icon trending-icon">
+            <i class="fas fa-fire"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Trending Games</h2>
+            <p class="module-subtitle">The hottest educational games right now</p>
+          </div>
+        </div>
+        
         <div class="games-grid">
           {trendingGames.map((game, index) => {
             // 格式化人气值
@@ -145,7 +155,16 @@ const trendingGames = Object.entries(allGamesData)
 
       <!-- 趋势分析 -->
       <section class="trend-analysis">
-        <h2 class="section-title">Trending Categories</h2>
+        <div class="module-header">
+          <div class="module-icon analytics-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Trending Categories</h2>
+            <p class="module-subtitle">Popular subjects and learning trends</p>
+          </div>
+        </div>
+        
         <div class="trend-grid">
           <div class="trend-card">
             <div class="trend-icon math">
@@ -363,32 +382,83 @@ const trendingGames = Object.entries(allGamesData)
     margin-bottom: 3rem;
   }
 
+  /* 模块头部样式 */
+  .module-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+  }
+
+  .trending-icon {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  }
+
+  .analytics-icon {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin-bottom: 0.25rem;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .module-subtitle {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin: 0;
+  }
+
+  /* 游戏网格布局 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+  }
+
   /* 趋势分析 */
   .trend-analysis {
     margin-bottom: 3rem;
   }
 
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: #1F2937;
-    text-align: center;
-  }
-
   .trend-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
+    margin-top: 0;
   }
 
   .trend-card {
     background: white;
     padding: 1.5rem;
-    border-radius: 1rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
@@ -397,18 +467,19 @@ const trendingGames = Object.entries(allGamesData)
 
   .trend-card:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
   }
 
   .trend-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.25rem;
+    font-size: 0.875rem;
     flex-shrink: 0;
   }
 
@@ -477,8 +548,31 @@ const trendingGames = Object.entries(allGamesData)
       padding: 0.75rem;
     }
 
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    .games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
     .trend-grid {
       grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .games-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .trend-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style> 
