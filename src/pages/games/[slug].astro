@@ -1,137 +1,58 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
 // 导出getStaticPaths函数用于动态路由
 export async function getStaticPaths() {
-  // 从JSON文件读取游戏数据
-  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-  let gamesData: Game[] = [];
+  // 读取游戏数据
+  const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+  const gamesData = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
   
-  try {
-    const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-    gamesData = JSON.parse(fileContent) as Game[];
-  } catch (error) {
-    console.warn('Unable to read games data file, using default data');
-  }
-
-  // 生成路径参数
-  const paths = gamesData.map(game => ({
-    params: { slug: game.slug }
+  return gamesData.map((game: any) => ({
+    params: { slug: game.slug },
+    props: { game }
   }));
-
-  return paths;
 }
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-let gamesData: Game[] = [];
+// 获取当前游戏数据
+const { game } = Astro.props;
 
-try {
-  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  gamesData = JSON.parse(fileContent) as Game[];
-} catch (error) {
-  console.warn('Unable to read games data file');
-}
+// 读取所有游戏数据用于相关游戏推荐
+const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+const gamesData = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
-const { slug } = Astro.params;
-const game = gamesData.find(g => g.slug === slug);
-
-if (!game) {
-  return Astro.redirect('/404');
-}
-
-// 获取相关游戏（同分类的其他游戏，增加到4个）
+// 获取相关游戏（同分类的其他游戏，最多4个）
 const relatedGames = gamesData
-  .filter((gameData: Game) => gameData.slug !== slug && gameData.category === game.category)
-  .slice(0, 4)
-  .map((gameData: Game) => ({
-    slug: gameData.slug,
-    title: gameData.title,
-    description: gameData.description,
-    image: gameData.image || `/images/games/${gameData.slug}.svg`,
-    category: gameData.category,
-    categoryName: gameData.categoryName,
-    difficulty: gameData.difficulty,
-    rating: gameData.rating || 4.5,
-    playCount: gameData.playCount || 1000
-  }));
+  .filter((gameData: any) => gameData.slug !== game.slug && gameData.category === game.category)
+  .slice(0, 4);
 
-// 游戏来源检测和标识
-function getGameSource(url: string | undefined) {
-  // 添加空值检查
-  if (!url || typeof url !== 'string') {
-    return {
-      type: 'unknown',
-      name: 'Unknown Source',
-      icon: 'fas fa-question-circle',
-      color: '#6B7280',
-      description: 'Game source information not available',
-      developer: 'Unknown Developer'
-    };
-  }
+// 游戏来源检测函数
+function getGameSource(url: string) {
+  if (!url) return { type: 'unknown', label: 'Unknown', color: '#6B7280' };
   
   if (url.includes('github.io') || url.includes('itch.io')) {
-    return {
-      type: 'opensource',
-      name: 'Open Source',
-      icon: 'fab fa-github',
-      color: '#10B981',
-      description: 'This game is from an open source project',
-      developer: 'Independent Developer'
-    };
+    return { type: 'github', label: 'Open Source', color: '#10B981' };
   } else if (url.includes('crazygames.com')) {
-    return {
-      type: 'thirdparty',
-      name: 'CrazyGames',
-      icon: 'fas fa-external-link-alt',
-      color: '#F59E0B',
-      description: 'This game is hosted by CrazyGames platform',
-      developer: 'CrazyGames Studio'
-    };
+    return { type: 'external', label: 'External', color: '#6B7280' };
   } else if (url.includes('miniplay.com')) {
-    return {
-      type: 'thirdparty',
-      name: 'Miniplay',
-      icon: 'fas fa-external-link-alt',
-      color: '#F59E0B',
-      description: 'This game is hosted by Miniplay platform',
-      developer: 'Miniplay Studio'
-    };
+    return { type: 'external', label: 'External', color: '#6B7280' };
   } else {
-    return {
-      type: 'thirdparty',
-      name: 'External Source',
-      icon: 'fas fa-external-link-alt',
-      color: '#6B7280',
-      description: 'This game is hosted by a third-party provider',
-      developer: 'Third-party Developer'
-    };
+    return { type: 'external', label: 'External', color: '#6B7280' };
   }
 }
 
 const gameSource = getGameSource(game.url);
 
-// 操作说明
-const howToPlaySteps = game.howToPlay || [
-  'Use mouse to click and interact',
-  'Use keyboard arrow keys to move',
-  'Follow in-game instructions',
-  'Complete challenges to progress'
-];
-
-// SEO数据
-const seoData = {
-  title: `${game.title} - Educational Game | EduGameHQ`,
-  description: game.description || `Play ${game.title} online for free. Educational game perfect for learning.`,
-  keywords: [game.title.toLowerCase(), `${game.category} games`, "educational games", "free online games"],
-  ogImage: game.image || "/images/logo.svg"
-};
+// 页面元数据
+const pageTitle = `${game.title} - Free Educational Game | EduGameHQ`;
+const pageDescription = `Play ${game.title} online for free. ${game.description} Perfect for students aged ${game.ageRange}. No downloads required!`;
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- 引入通用游戏卡片样式 -->
+  <link rel="stylesheet" href="/styles/game-card.css">
+  
   <main class="game-detail-container">
     <!-- 1. 游戏标题和基本信息 -->
     <header class="game-header">
@@ -270,7 +191,7 @@ const seoData = {
           </div>
           <div class="developer-details">
             <h4 class="developer-title">Developer</h4>
-            <p class="developer-name">{gameSource.developer}</p>
+            <p class="developer-name">{gameSource.label}</p>
           </div>
         </div>
         
@@ -280,7 +201,7 @@ const seoData = {
           </div>
           <div class="developer-details">
             <h4 class="developer-title">Platform</h4>
-            <p class="developer-name">{gameSource.name}</p>
+            <p class="developer-name">{gameSource.label}</p>
           </div>
         </div>
         
@@ -304,24 +225,52 @@ const seoData = {
           Related Games
         </h2>
         <div class="related-games-grid">
-          {relatedGames.map((relatedGame) => (
-            <a href={`/games/${relatedGame.slug}`} class="related-game-card">
-              <div class="related-game-image">
-                <img 
-                  src={relatedGame.image} 
-                  alt={relatedGame.title}
-                  loading="lazy"
-                />
-                <div class="play-overlay">
-                  <i class="fas fa-play"></i>
+          {relatedGames.map((relatedGame, index) => {
+            // 计算人气值 (模拟数据)
+            const popularity = Math.floor(Math.random() * 15000) + 1000;
+            
+            // 格式化人气值显示
+            const formatPopularity = (num) => {
+              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+              return num.toString();
+            };
+
+            return (
+              <div class="game-card related-game animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={relatedGame.id}>
+                <div class="game-image-container">
+                  <img 
+                    src={relatedGame.image} 
+                    alt={relatedGame.title} 
+                    class="game-image"
+                    loading="lazy"
+                    onerror="this.src='/images/games/placeholder.jpg'"
+                  />
+                  <div class="game-overlay">
+                    <div class="popularity-badge">
+                      🔥 {formatPopularity(popularity)}
+                    </div>
+                    <a href={`/games/${relatedGame.slug}`} class="play-button">
+                      <i class="fas fa-play"></i>
+                      <span>Play Now</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="game-info">
+                  <h3 class="game-title">{relatedGame.title}</h3>
+                  <p class="game-description">{relatedGame.description}</p>
+                  <div class="game-tags">
+                    <span class={`category-tag ${relatedGame.category}`}>{relatedGame.categoryName}</span>
+                    <span class={`difficulty-tag ${relatedGame.difficulty?.toLowerCase() || 'medium'}`}>
+                      {relatedGame.difficulty?.toUpperCase() || 'MEDIUM'}
+                    </span>
+                    {relatedGame.featured && <span class="feature-tag featured">FEATURED</span>}
+                    {relatedGame.isNew && <span class="feature-tag new">NEW</span>}
+                  </div>
                 </div>
               </div>
-              <div class="related-game-info">
-                <h3 class="related-game-title">{relatedGame.title}</h3>
-                <p class="related-game-description">{relatedGame.description}</p>
-              </div>
-            </a>
-          ))}
+            );
+          })}
         </div>
       </section>
     )}
@@ -647,70 +596,234 @@ const seoData = {
       gap: 1.5rem;
     }
 
-    .related-game-card {
-      display: block;
-      background: #F9FAFB;
-      border-radius: 12px;
+    .game-card {
+      background: white;
+      border-radius: 16px;
       overflow: hidden;
-      border: 1px solid #E5E7EB;
-      transition: all 0.3s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
       text-decoration: none;
       color: inherit;
+      display: block;
+      border: 2px solid #E5E7EB;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
-    .related-game-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    .game-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      text-decoration: none;
+      color: inherit;
+      border-color: #F59E0B;
     }
 
-    .related-game-image {
+    .game-image-container {
       position: relative;
-      height: 160px;
+      height: 200px;
       overflow: hidden;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     }
 
-    .related-game-image img {
+    .game-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.3s ease;
+      position: relative;
     }
 
-    .play-overlay {
+    .game-card:hover .game-image {
+      transform: scale(1.05);
+    }
+
+    .game-overlay {
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 48px;
-      height: 48px;
-      background: rgba(99, 102, 241, 0.9);
-      border-radius: 50%;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       opacity: 0;
       transition: opacity 0.3s ease;
     }
 
-    .related-game-card:hover .play-overlay {
+    .game-card:hover .game-overlay {
       opacity: 1;
     }
 
-    .related-game-info {
-      padding: 1rem;
-    }
-
-    .related-game-title {
-      font-size: 1rem;
+    .popularity-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
       font-weight: 600;
-      color: #1F2937;
-      margin-bottom: 0.5rem;
+      backdrop-filter: blur(10px);
+      animation: pulse 2s infinite;
     }
 
-    .related-game-description {
-      font-size: 0.875rem;
-      color: #6B7280;
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .play-button {
+      background: white;
+      color: #6366F1;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      white-space: nowrap;
+      min-width: 140px;
+      text-decoration: none;
+      transform: translateY(10px);
+    }
+
+    .game-card:hover .play-button {
+      transform: translateY(0);
+    }
+
+    .play-button:hover {
+      transform: scale(1.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      background: white;
+      color: #6366F1;
+      text-decoration: none;
+    }
+
+    .game-info {
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
+      border-top: 1px solid #E5E7EB;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .game-title {
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: #1F2937;
+      margin-bottom: 1rem;
       line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .game-description {
+      color: #6B7280;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .game-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .category-tag,
+    .difficulty-tag,
+    .feature-tag {
+      padding: 0.25rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0;
+      border: none;
+      transition: all 0.2s ease;
+      color: white;
+    }
+
+    /* 分类标签颜色 */
+    .category-tag.math { 
+      background: #EA580C;
+    }
+    .category-tag.science { 
+      background: #059669;
+    }
+    .category-tag.coding { 
+      background: #2563EB;
+    }
+    .category-tag.language { 
+      background: #C026D3;
+    }
+    .category-tag.puzzle { 
+      background: #7C3AED;
+    }
+    .category-tag.sports { 
+      background: #DC2626;
+    }
+    .category-tag.art { 
+      background: #EC4899;
+    }
+    .category-tag.geography { 
+      background: #0891B2;
+    }
+
+    /* 难度标签颜色 */
+    .difficulty-tag.easy { 
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    }
+    .difficulty-tag.medium { 
+      background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    }
+    .difficulty-tag.hard { 
+      background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    }
+
+    /* 特色标签颜色 */
+    .feature-tag.new { 
+      background: #10B981;
+    }
+    .feature-tag.hot { 
+      background: #EF4444;
+    }
+    .feature-tag.featured { 
+      background: #8B5CF6;
+    }
+    .feature-tag.updated { 
+      background: #F59E0B;
+    }
+
+    /* 动画效果 */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.6s ease-out forwards;
     }
 
     /* 响应式设计 */
