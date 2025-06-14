@@ -548,36 +548,38 @@ if (featuredGames.length < 4) {
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
       color: white;
+      font-size: 1.25rem;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       flex-shrink: 0;
       margin-top: 2px;
     }
 
-    .featured-icon { background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .easy-icon { background: linear-gradient(135deg, #10B981, #059669); }
-    .medium-icon { background: linear-gradient(135deg, #F59E0B, #D97706); }
-    .hard-icon { background: linear-gradient(135deg, #EF4444, #DC2626); }
-    .tips-icon { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
-    .skills-icon { background: linear-gradient(135deg, #EC4899, #DB2777); }
+    .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+    .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+    .medium-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+    .hard-icon { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+    .tips-icon { background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); }
+    .skills-icon { background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%); }
 
     .module-title-group {
       flex: 1;
     }
 
     .module-title {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 1.5rem;
       font-weight: 700;
-      font-family: 'Space Grotesk', sans-serif;
       color: #1F2937;
-      margin-bottom: 0.25rem;
+      margin: 0 0 0.25rem 0;
+      line-height: 1.3;
     }
 
     .module-subtitle {
-      font-size: 0.9rem;
       color: #6B7280;
+      font-size: 0.9rem;
       margin: 0;
+      line-height: 1.4;
     }
 
     /* 游戏网格样式 */
@@ -627,6 +629,7 @@ if (featuredGames.length < 4) {
       color: white;
       font-size: 0.875rem;
       flex-shrink: 0;
+      margin-top: 1px;
     }
 
     .tip-content {
@@ -684,8 +687,9 @@ if (featuredGames.length < 4) {
       justify-content: center;
       color: white;
       font-size: 0.875rem;
-      box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
       flex-shrink: 0;
+      margin-top: 1px;
+      box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
     }
 
     .skill-content {
