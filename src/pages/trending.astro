@@ -105,7 +105,7 @@ const trendingGames = Object.entries(allGamesData)
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
-                    <div class="played-badge">Today</div>
+                    <div class="played-badge today">Today</div>
                     <div class="popularity-badge">🔥 {formatPopularity(game.popularity)}</div>
                     <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
