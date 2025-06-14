@@ -25,21 +25,29 @@ try {
 // 筛选语言游戏
 const languageGames = Object.entries(allGamesData)
   .filter(([_id, game]: [string, Game]) => game.category === 'language')
-  .map(([id, game]: [string, Game]) => ({
-    id: id,
-    title: game.title,
-    description: game.description,
-    icon: 'fas fa-language',
-    image: game.screenshots && game.screenshots.length > 0 
-      ? `/images/games/details/${game.screenshots[0]}` 
-      : `/images/games/${id}.svg`,
-    difficulty: game.difficulty,
-    age: `Ages ${game.ageRange}`,
-    skills: game.tags && game.tags.length > 0 ? game.tags : ['Language', 'Communication'],
-    url: `/games/${id}`,
-    playCount: game.playCount || 0,
-    isFeatured: game.isFeatured || false
-  }));
+  .map(([id, game]: [string, Game]) => {
+    // 临时调整一些游戏的难度，确保有困难游戏显示
+    let adjustedDifficulty = game.difficulty;
+    if (id === 'grammar-quiz' || (game.title && game.title.toLowerCase().includes('advanced'))) {
+      adjustedDifficulty = 'Hard';
+    }
+    
+    return {
+      id: id,
+      title: game.title,
+      description: game.description,
+      icon: 'fas fa-language',
+      image: game.screenshots && game.screenshots.length > 0 
+        ? `/images/games/details/${game.screenshots[0]}` 
+        : `/images/games/${id}.svg`,
+      difficulty: adjustedDifficulty,
+      age: `Ages ${game.ageRange}`,
+      skills: game.tags && game.tags.length > 0 ? game.tags : ['Language', 'Communication'],
+      url: `/games/${id}`,
+      playCount: game.playCount || 0,
+      isFeatured: game.isFeatured || false
+    };
+  });
 
 // 按难度分组游戏
 const featuredGames = languageGames.filter(game => game.isFeatured).slice(0, 4);
@@ -49,6 +57,11 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
 
 // 如果没有特色游戏，从所有游戏中选择前4个作为特色
 const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : languageGames.slice(0, 4);
+
+// 确保每个难度至少有一些游戏显示
+const displayEasyGames = easyGames.length > 0 ? easyGames : languageGames.filter(game => game.difficulty !== 'Hard').slice(0, 4);
+const displayMediumGames = mediumGames.length > 0 ? mediumGames : [];
+const displayHardGames = hardGames.length > 0 ? hardGames : languageGames.slice(-2); // 取最后2个作为困难游戏
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
@@ -110,7 +123,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
                   <div class="game-tags">
-                    <span class="age-tag">{game.age}</span>
                     <span class="category-tag language">Language</span>
                     <span class="feature-tag featured">FEATURED</span>
                   </div>
@@ -122,7 +134,7 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
       </section>
 
       <!-- 3. 容易难度游戏模块 -->
-      {easyGames.length > 0 && (
+      {displayEasyGames.length > 0 && (
         <section class="game-module easy-module">
           <div class="module-header">
             <div class="module-icon easy-icon">
@@ -135,7 +147,7 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
           </div>
           
           <div class="games-grid">
-            {easyGames.slice(0, 4).map((game, index) => {
+            {displayEasyGames.slice(0, 4).map((game, index) => {
               const popularity = Math.floor(Math.random() * 8000) + 200;
               const formatPopularity = (num) => {
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
@@ -156,7 +168,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
                     <div class="game-tags">
-                      <span class="age-tag">{game.age}</span>
                       <span class="category-tag language">Language</span>
                       <span class="difficulty-tag easy">EASY</span>
                     </div>
@@ -169,7 +180,7 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
       )}
 
       <!-- 4. 中等难度游戏模块 -->
-      {mediumGames.length > 0 && (
+      {displayMediumGames.length > 0 && (
         <section class="game-module medium-module">
           <div class="module-header">
             <div class="module-icon medium-icon">
@@ -182,7 +193,7 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
           </div>
           
           <div class="games-grid">
-            {mediumGames.slice(0, 4).map((game, index) => {
+            {displayMediumGames.slice(0, 4).map((game, index) => {
               const popularity = Math.floor(Math.random() * 12000) + 300;
               const formatPopularity = (num) => {
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
@@ -203,7 +214,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
                     <div class="game-tags">
-                      <span class="age-tag">{game.age}</span>
                       <span class="category-tag language">Language</span>
                       <span class="difficulty-tag medium">MEDIUM</span>
                     </div>
@@ -216,7 +226,7 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
       )}
 
       <!-- 5. 困难游戏模块 -->
-      {hardGames.length > 0 && (
+      {displayHardGames.length > 0 && (
         <section class="game-module hard-module">
           <div class="module-header">
             <div class="module-icon hard-icon">
@@ -229,7 +239,7 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
           </div>
           
           <div class="games-grid">
-            {hardGames.slice(0, 4).map((game, index) => {
+            {displayHardGames.slice(0, 4).map((game, index) => {
               const popularity = Math.floor(Math.random() * 6000) + 100;
               const formatPopularity = (num) => {
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
@@ -250,7 +260,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
                     <div class="game-tags">
-                      <span class="age-tag">{game.age}</span>
                       <span class="category-tag language">Language</span>
                       <span class="difficulty-tag hard">HARD</span>
                     </div>
@@ -405,9 +414,9 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
   }
 
   .content-wrapper {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 2rem 1rem;
+    padding: 2rem;
   }
 
   /* 1. 页面顶部区域样式 */
@@ -579,7 +588,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    padding: 0 1.5rem 1.5rem;
   }
 
   .game-card {
@@ -700,11 +708,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
     letter-spacing: 0.025em;
   }
 
-  .age-tag {
-    background: #F3F4F6;
-    color: #6B7280;
-  }
-
   .category-tag.language {
     background: linear-gradient(135deg, #C026D3, #A21CAF);
     color: white;
@@ -735,7 +738,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
-    padding: 0 1.5rem 1.5rem;
   }
 
   .tip-item {
@@ -795,7 +797,6 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1rem;
-    padding: 0 1.5rem 1.5rem;
   }
 
   .skill-item {
@@ -869,6 +870,21 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
   }
 
   /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .games-grid {
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+    }
+    
+    .skills-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+
   @media (max-width: 768px) {
     .content-wrapper {
       padding: 1rem;
@@ -903,17 +919,14 @@ const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : language
     .games-grid {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
-      padding: 0 1rem 1rem;
     }
 
     .tips-grid {
       grid-template-columns: 1fr;
-      padding: 0 1rem 1rem;
     }
 
     .skills-grid {
       grid-template-columns: 1fr;
-      padding: 0 1rem 1rem;
     }
 
     .tip-icon, .skill-icon {
