@@ -1,18 +1,25 @@
 export interface Game {
+  slug: string;
   title: string;
   description: string;
   category: string;
   categoryName: string;
+  url: string;
+  image: string;
+  imageFallback?: string;
   ageRange: string;
   difficulty: 'Easy' | 'Medium' | 'Hard';
-  tags: string[];
-  iframeUrl: string;
-  howToPlay: string[];
-  images: string[];
-  screenshots: string[];
+  rating?: number;
   playCount?: number;
+  tags: string[];
+  featured?: boolean;
+  trending?: boolean;
+  isNew?: boolean;
   learningObjectives?: string[];
   gameFeatures?: string[];
+  duration?: string;
+  howToPlay?: string[];
+  screenshots?: string[];
 }
 
 export interface GameData {

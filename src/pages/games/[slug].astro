@@ -7,53 +7,51 @@ import path from 'path';
 // 导出getStaticPaths函数用于动态路由
 export async function getStaticPaths() {
   // 从JSON文件读取游戏数据
-  const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-  let gamesData: GameData = {};
+  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+  let gamesData: Game[] = [];
   
   try {
     const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-    gamesData = JSON.parse(fileContent) as GameData;
+    gamesData = JSON.parse(fileContent) as Game[];
   } catch (error) {
     console.warn('Unable to read games data file, using default data');
   }
 
   // 生成路径参数
-  const paths = Object.keys(gamesData).map(slug => ({
-    params: { slug }
+  const paths = gamesData.map(game => ({
+    params: { slug: game.slug }
   }));
 
   return paths;
 }
 
 // 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let gamesData: GameData = {};
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let gamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  gamesData = JSON.parse(fileContent) as GameData;
+  gamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
   console.warn('Unable to read games data file');
 }
 
 const { slug } = Astro.params;
-const game = gamesData[slug as string];
+const game = gamesData.find(g => g.slug === slug);
 
 if (!game) {
   return Astro.redirect('/404');
 }
 
 // 获取相关游戏（同分类的其他游戏）
-const relatedGames = Object.entries(gamesData)
-  .filter(([id, gameData]: [string, Game]) => id !== slug && gameData.category === game.category)
+const relatedGames = gamesData
+  .filter((gameData: Game) => gameData.slug !== slug && gameData.category === game.category)
   .slice(0, 3)
-  .map(([id, gameData]: [string, Game]) => ({
-    slug: id,
+  .map((gameData: Game) => ({
+    slug: gameData.slug,
     title: gameData.title,
     description: gameData.description,
-    image: gameData.screenshots && gameData.screenshots.length > 0 
-      ? `/images/games/details/${gameData.screenshots[0]}` 
-      : `/images/games/${id}.svg`
+    image: gameData.image || `/images/games/${gameData.slug}.svg`
   }));
 
 // 学习目标图标映射
@@ -84,7 +82,18 @@ const learningObjectivesWithIcons = game.learningObjectives ? game.learningObjec
 ];
 
 // 游戏来源检测和标识
-function getGameSource(url: string) {
+function getGameSource(url: string | undefined) {
+  // 添加空值检查
+  if (!url || typeof url !== 'string') {
+    return {
+      type: 'unknown',
+      name: 'Unknown Source',
+      icon: 'fas fa-question-circle',
+      color: '#6B7280',
+      description: 'Game source information not available'
+    };
+  }
+  
   if (url.includes('github.io') || url.includes('itch.io')) {
     return {
       type: 'opensource',
