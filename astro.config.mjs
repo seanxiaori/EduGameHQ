@@ -45,13 +45,13 @@ export default defineConfig({
 
   // 开发服务器配置
   server: {
-    port: 4321,
+    port: 3000,
     host: true
   },
 
   // 预览服务器配置
   preview: {
-    port: 4322,
+    port: 3001,
     host: true
   },
 
