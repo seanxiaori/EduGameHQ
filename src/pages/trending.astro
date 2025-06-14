@@ -75,10 +75,6 @@ const trendingGames = Object.entries(allGamesData)
         
         <div class="header-stats">
           <div class="stat-item">
-            <div class="stat-number">{trendingGames.length}</div>
-            <div class="stat-label">Trending Games</div>
-          </div>
-          <div class="stat-item">
             <div class="stat-number">🔥</div>
             <div class="stat-label">Hot Now</div>
           </div>
@@ -118,7 +114,7 @@ const trendingGames = Object.entries(allGamesData)
             else trendingBadge = 'RISING';
             
             return (
-              <a href={game.url} class={`game-card trending animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`}>
+              <div class={`game-card animate-fadeInUp`} style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
@@ -126,28 +122,21 @@ const trendingGames = Object.entries(allGamesData)
                     <div class="popularity-badge">
                       🔥 {formatPopularity(game.popularity)}
                     </div>
-                    <div class="play-button">
+                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
-                  <p class="game-description">{game.description}</p>
                   <div class="game-tags">
                     <span class={`category-tag ${game.category}`}>{game.categoryName}</span>
                     <span class="game-tag age">Ages {game.ageRange}</span>
                     <span class={`feature-tag ${trendingBadge.toLowerCase()}`}>{trendingBadge}</span>
                   </div>
-                  <div class="game-stats">
-                    <div class="stat">
-                      <i class="fas fa-play"></i>
-                      <span class="play-count">{formatPopularity(game.playCount)} plays</span>
-                    </div>
-                  </div>
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>
@@ -225,7 +214,7 @@ const trendingGames = Object.entries(allGamesData)
         const cards = document.querySelectorAll('.game-card');
         cards.forEach(card => {
           card.addEventListener('click', (e) => {
-            const gameId = card.href.split('/').pop();
+            const gameId = card.dataset.gameId;
             if (gameId) {
               this.recordGamePlay(gameId);
             }
@@ -385,7 +374,7 @@ const trendingGames = Object.entries(allGamesData)
   /* 模块头部样式 */
   .module-header {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
@@ -460,7 +449,7 @@ const trendingGames = Object.entries(allGamesData)
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     border: 1px solid #F3F4F6;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 1rem;
     transition: all 0.3s ease;
   }
