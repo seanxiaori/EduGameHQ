@@ -161,15 +161,20 @@ const { title, description = "Free educational games for kids and students", bod
           </div>
         </nav>
         
-        <!-- 搜索框 -->
+        <!-- 搜索区域 -->
         <div class="search-container">
-          <i class="fas fa-search search-icon"></i>
-          <input 
-            type="text" 
-            class="search-box" 
-            placeholder="Search educational games..." 
-            autocomplete="off"
-          />
+          <div class="search-wrapper">
+            <i class="fas fa-search search-icon"></i>
+            <input 
+              type="text" 
+              class="search-box" 
+              placeholder="Search educational games..."
+              autocomplete="off"
+            />
+            <button type="button" class="search-button" onclick="performSearch()">
+              <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
         </div>
         
         <!-- 右侧按钮组 -->
@@ -336,73 +341,107 @@ const { title, description = "Free educational games for kids and students", bod
   
   <!-- JavaScript -->
   <script>
-    // 下拉菜单功能
-    document.addEventListener('DOMContentLoaded', function() {
-      const dropdown = document.getElementById('categoriesDropdown');
-      const menu = document.getElementById('categoriesMenu');
-      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-      const mobileMenu = document.getElementById('mobileMenu');
+    // 全局搜索函数
+    function performSearch() {
+      console.log('=== PERFORM SEARCH CALLED ===');
+      const searchBox = document.querySelector('.search-box');
+      console.log('Search box element:', searchBox);
       
-      // 桌面端下拉菜单
-      if (dropdown && menu) {
-        dropdown.addEventListener('click', function(e: Event) {
-          e.preventDefault();
-          e.stopPropagation();
-          
-          // 切换菜单显示状态
-          menu.classList.toggle('show');
-          dropdown.parentElement?.classList.toggle('show');
-        });
+      if (searchBox) {
+        const query = searchBox.value.trim();
+        console.log('Search query:', query);
         
-        // 点击外部关闭下拉菜单
-        document.addEventListener('click', function(e: Event) {
-          const target = e.target as Node;
-          if (!dropdown.contains(target) && !menu.contains(target)) {
-            menu.classList.remove('show');
-            dropdown.parentElement?.classList.remove('show');
-          }
-        });
-        
-        // 阻止菜单内部点击事件冒泡
-        menu.addEventListener('click', function(e: Event) {
-          e.stopPropagation();
-        });
+        if (query.length > 0) {
+          const searchUrl = `/search?q=${encodeURIComponent(query)}`;
+          console.log('Redirecting to:', searchUrl);
+          window.location.href = searchUrl;
+        } else {
+          console.log('Empty query, redirecting to search page');
+          window.location.href = '/search';
+        }
+      } else {
+        console.error('Search box not found in performSearch!');
       }
+    }
+
+    // 将函数绑定到全局window对象
+    window.performSearch = performSearch;
+
+    // DOM加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('=== SEARCH INITIALIZATION DEBUG ===');
       
-      // 移动端菜单
-      if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
-          mobileMenu.classList.toggle('show');
-          mobileMenuBtn.classList.toggle('active');
-        });
+      // 下拉菜单功能
+      const dropdown = document.querySelector('.dropdown');
+      if (dropdown) {
+        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        
+        if (dropdownToggle && dropdownMenu) {
+          dropdownToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('show');
+          });
+          
+          // 点击外部关闭下拉菜单
+          document.addEventListener('click', function(e) {
+            if (!dropdown.contains(e.target)) {
+              dropdownMenu.classList.remove('show');
+            }
+          });
+        }
       }
       
       // 搜索功能初始化
-      const searchBox = document.querySelector('.search-box') as HTMLInputElement;
-      
-      console.log('Search elements found:', {
-        searchBox: !!searchBox
-      });
+      const searchBox = document.querySelector('.search-box');
+      console.log('Search box found:', !!searchBox);
+      console.log('Search box element:', searchBox);
       
       if (searchBox) {
-        console.log('Initializing simple search...');
+        console.log('Search box placeholder:', searchBox.placeholder);
         
         // 搜索框回车事件
         searchBox.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') {
-            const query = this.value.trim();
-            console.log('Search submitted:', query);
-            
-            if (query.length > 0) {
-              // 跳转到搜索页面
-              window.location.href = `/search?q=${encodeURIComponent(query)}`;
-            }
+          console.log('=== SEARCH KEYPRESS EVENT ===');
+          console.log('Key pressed:', e.key);
+          console.log('Key code:', e.keyCode);
+          console.log('Current value:', this.value);
+          
+          if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('ENTER KEY DETECTED - CALLING performSearch()');
+            performSearch();
           }
         });
         
-        console.log('Simple search functionality initialized successfully');
+        // 备用keydown事件
+        searchBox.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('KEYDOWN ENTER - CALLING performSearch()');
+            performSearch();
+          }
+        });
+        
+        console.log('Search functionality initialized successfully');
       } else {
-        console.error('Search box not found');
+        console.error('Search box not found during initialization!');
+      }
+      
+      // 搜索按钮事件
+      const searchButton = document.querySelector('.search-button');
+      if (searchButton) {
+        console.log('Search button found:', searchButton);
+        searchButton.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          console.log('SEARCH BUTTON CLICKED - CALLING performSearch()');
+          performSearch();
+        });
+      } else {
+        console.log('Search button not found');
       }
     });
     
@@ -588,6 +627,10 @@ const { title, description = "Free educational games for kids and students", bod
     margin: 0 1rem;
   }
 
+  .search-wrapper {
+    position: relative;
+  }
+
   .search-box {
     width: 100%;
     padding: 12px 20px 12px 45px;
@@ -618,6 +661,29 @@ const { title, description = "Free educational games for kids and students", bod
     color: #9CA3AF;
     font-size: 1rem;
     z-index: 2;
+  }
+
+  .search-button {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #F59E0B;
+    border: none;
+    color: white;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-button:hover {
+    background: #D97706;
+    transform: translateY(-50%) scale(1.05);
   }
 
   .nav-actions {
