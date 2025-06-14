@@ -1,6 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import type { Game } from '../types/game';
+// 引入通用游戏卡片样式
+import '../styles/game-card.css';
 
 // 页面元数据 - 使用默认值，客户端会动态更新
 const pageTitle = 'Search Educational Games | EduGameHQ';
@@ -81,13 +83,8 @@ const pageDescription = 'Search through our collection of 240+ educational games
 
   <!-- 客户端搜索脚本 -->
   <script>
-    // 游戏数据 - 从JSON文件加载
-    let gamesData = null;
-    
-    // 页面加载完成后初始化搜索功能
+    // 客户端搜索功能 - 使用通用游戏卡片样式
     document.addEventListener('DOMContentLoaded', async function() {
-      console.log('=== CLIENT-SIDE SEARCH INITIALIZATION ===');
-      
       try {
         // 加载游戏数据
         console.log('Loading games data...');
@@ -96,223 +93,172 @@ const pageDescription = 'Search through our collection of 240+ educational games
           throw new Error(`Failed to load games data: ${response.status}`);
         }
         
-        const rawData = await response.json();
-        console.log('Raw games data loaded:', Object.keys(rawData).length, 'games');
+        const games = await response.json();
+        console.log('Games loaded successfully:', games.length);
         
-        // 将游戏对象转换为数组，并添加slug属性
-        gamesData = Object.entries(rawData).map(([slug, game]) => ({
-          ...game,
-          slug
-        }));
-        
-        console.log('Games data processed:', gamesData.length, 'games');
-        console.log('Sample game:', gamesData[0]);
-        
-        // 获取URL参数并执行搜索
+        // 获取URL参数
         const urlParams = new URLSearchParams(window.location.search);
-        const query = urlParams.get('q');
-        
-        console.log('URL search params:', window.location.search);
+        const query = urlParams.get('q') || '';
         console.log('Search query from URL:', query);
         
-        if (query && query.trim().length > 0) {
-          performClientSearch(query.trim());
+        if (query.length > 0) {
+          // 执行搜索
+          const searchResults = performSearch(games, query);
+          displaySearchResults(searchResults, query);
         } else {
-          showSearchPrompt();
+          // 显示搜索提示
+          displaySearchPrompt();
         }
-        
       } catch (error) {
-        console.error('Error loading games data:', error);
-        showError('Failed to load games data. Please try again later.');
+        console.error('Error loading games:', error);
+        displayError();
       }
     });
-    
-    // 执行客户端搜索
-    function performClientSearch(query) {
-      console.log('=== PERFORMING CLIENT SEARCH ===');
-      console.log('Search query:', query);
+
+    // 搜索函数
+    function performSearch(games, query) {
+      const searchTerm = query.toLowerCase().trim();
       
-      if (!gamesData) {
-        console.error('Games data not loaded yet');
-        return;
-      }
-      
-      const searchQuery = query.toLowerCase();
-      console.log('Normalized search query:', searchQuery);
-      
-      // 搜索逻辑
-      const searchResults = gamesData.filter(game => {
+      return games.filter(game => {
         // 搜索游戏标题
-        const titleMatch = game.title.toLowerCase().includes(searchQuery);
+        if (game.title && game.title.toLowerCase().includes(searchTerm)) {
+          return true;
+        }
         
         // 搜索游戏描述
-        const descriptionMatch = game.description.toLowerCase().includes(searchQuery);
-        
-        // 搜索分类
-        const categoryMatch = game.category.toLowerCase().includes(searchQuery) ||
-                             game.categoryName.toLowerCase().includes(searchQuery);
-        
-        // 搜索标签
-        const tagsMatch = game.tags && game.tags.some(tag => 
-          tag.toLowerCase().includes(searchQuery)
-        );
-        
-        const isMatch = titleMatch || descriptionMatch || categoryMatch || tagsMatch;
-        
-        if (isMatch) {
-          console.log('Match found:', game.title, {
-            titleMatch,
-            descriptionMatch,
-            categoryMatch,
-            tagsMatch
-          });
+        if (game.description && game.description.toLowerCase().includes(searchTerm)) {
+          return true;
         }
         
-        return isMatch;
+        // 搜索游戏分类
+        if (game.category && game.category.toLowerCase().includes(searchTerm)) {
+          return true;
+        }
+        
+        // 搜索游戏标签
+        if (game.tags && Array.isArray(game.tags)) {
+          return game.tags.some(tag => tag.toLowerCase().includes(searchTerm));
+        }
+        
+        return false;
       });
-      
-      console.log('Search results count:', searchResults.length);
-      console.log('Search results:', searchResults.map(g => g.title));
-      
-      // 更新页面标题和描述
-      updatePageTitle(query, searchResults.length);
-      
-      // 显示搜索结果
-      if (searchResults.length > 0) {
-        showSearchResults(searchResults, query);
-      } else {
-        showNoResults(query);
-      }
     }
-    
-    // 更新页面标题和描述
-    function updatePageTitle(query, resultCount) {
-      const titleElement = document.getElementById('searchTitle');
-      const descriptionElement = document.getElementById('searchDescription');
-      
-      if (titleElement) {
-        titleElement.textContent = `Search Results for "${query}"`;
-      }
-      
-      if (descriptionElement) {
-        if (resultCount > 0) {
-          descriptionElement.textContent = `Found ${resultCount} educational game${resultCount === 1 ? '' : 's'} matching "${query}"`;
-        } else {
-          descriptionElement.textContent = `No games found for "${query}". Try different keywords.`;
-        }
-      }
-      
-      // 更新页面标题
-      document.title = `Search Results for "${query}" | EduGameHQ`;
-    }
-    
-    // 显示搜索结果
-    function showSearchResults(results, query) {
-      console.log('Showing search results:', results.length);
-      
-      const searchPrompt = document.getElementById('searchPrompt');
-      const gamesGrid = document.getElementById('gamesGrid');
-      const noResults = document.getElementById('noResults');
-      
-      // 隐藏其他部分
-      if (searchPrompt) searchPrompt.style.display = 'none';
-      if (noResults) noResults.style.display = 'none';
-      
-      // 显示游戏网格
-      if (gamesGrid) {
-        gamesGrid.style.display = 'grid';
-        gamesGrid.innerHTML = results.map(game => createGameCard(game)).join('');
-      }
-    }
-    
-    // 显示无结果页面
-    function showNoResults(query) {
-      console.log('Showing no results for:', query);
-      
-      const searchPrompt = document.getElementById('searchPrompt');
-      const gamesGrid = document.getElementById('gamesGrid');
-      const noResults = document.getElementById('noResults');
-      const noResultsText = document.getElementById('noResultsText');
-      
-      // 隐藏其他部分
-      if (searchPrompt) searchPrompt.style.display = 'none';
-      if (gamesGrid) gamesGrid.style.display = 'none';
-      
-      // 显示无结果页面
-      if (noResults) {
-        noResults.style.display = 'block';
-        if (noResultsText) {
-          noResultsText.textContent = `We couldn't find any games matching "${query}". Try different keywords or browse our categories.`;
-        }
-      }
-    }
-    
-    // 显示搜索提示页面
-    function showSearchPrompt() {
-      console.log('Showing search prompt');
-      
-      const searchPrompt = document.getElementById('searchPrompt');
-      const gamesGrid = document.getElementById('gamesGrid');
-      const noResults = document.getElementById('noResults');
-      
-      // 隐藏其他部分
-      if (gamesGrid) gamesGrid.style.display = 'none';
-      if (noResults) noResults.style.display = 'none';
-      
-      // 显示搜索提示
-      if (searchPrompt) searchPrompt.style.display = 'block';
-    }
-    
-    // 显示错误信息
-    function showError(message) {
-      console.error('Search error:', message);
-      
-      const searchResults = document.getElementById('searchResults');
-      if (searchResults) {
-        searchResults.innerHTML = `
-          <div class="no-results">
-            <div class="no-results-content">
-              <div class="no-results-icon">
-                <i class="fas fa-exclamation-triangle"></i>
-              </div>
-              <h2 class="no-results-title">Error</h2>
-              <p class="no-results-text">${message}</p>
-            </div>
-          </div>
-        `;
-      }
-    }
-    
-    // 创建游戏卡片HTML
+
+    // 创建游戏卡片HTML - 使用通用样式结构
     function createGameCard(game) {
-      const imageUrl = game.previewImage || '/images/game-placeholder.jpg';
+      // 获取游戏图片 - 使用游戏slug作为图片名称
+      let imageUrl = '/images/placeholder-game.jpg'; // 默认占位符
+      
+      // 尝试使用游戏slug对应的图片文件
+      if (game.slug) {
+        // 首先尝试JPG格式
+        imageUrl = `/images/games/${game.slug}.jpg`;
+      }
+      
       const gameUrl = `/games/${game.slug}`;
       
+      // 获取分类标签样式
+      const categoryClass = game.category ? game.category.toLowerCase() : 'puzzle';
+      
+      // 获取难度标签
+      const difficultyTag = game.difficulty || 'medium';
+      
+      // 获取年龄标签
+      const ageTag = game.ageRange || 'Ages 8-14';
+      
       return `
-        <div class="game-card" onclick="window.location.href='${gameUrl}'">
+        <div class="game-card ${categoryClass}-theme" onclick="window.location.href='${gameUrl}'">
           <div class="game-image-container">
-            <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy">
+            <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy" 
+                 onerror="this.onerror=null; this.src='/images/placeholder-game.jpg';">
             <div class="game-overlay">
-              <div class="play-button">
+              <a href="${gameUrl}" class="play-button">
                 <i class="fas fa-play"></i>
                 Play Now
-              </div>
+              </a>
             </div>
           </div>
           <div class="game-info">
             <h3 class="game-title">${game.title}</h3>
             <div class="game-tags">
-              <span class="category-tag" data-category="${game.category}">${game.categoryName}</span>
-              ${game.ageRange ? `<span class="age-tag">${game.ageRange}</span>` : ''}
-              ${game.difficulty ? `<span class="difficulty-tag" data-difficulty="${game.difficulty.toLowerCase()}">${game.difficulty}</span>` : ''}
+              <span class="category-tag ${categoryClass}">${game.categoryName || game.category}</span>
+              <span class="difficulty-tag ${difficultyTag}">${difficultyTag}</span>
+              <span class="game-tag age">${ageTag}</span>
             </div>
           </div>
         </div>
       `;
     }
-    
-    // 全局搜索函数 - 供导航栏调用
-    window.performClientSearch = performClientSearch;
+
+    // 显示搜索结果
+    function displaySearchResults(results, query) {
+      const searchPrompt = document.getElementById('searchPrompt');
+      const gamesGrid = document.getElementById('gamesGrid');
+      const noResults = document.getElementById('noResults');
+      const searchTitle = document.getElementById('searchTitle');
+      const searchDescription = document.getElementById('searchDescription');
+      
+      // 隐藏搜索提示和无结果页面
+      searchPrompt.style.display = 'none';
+      noResults.style.display = 'none';
+      
+      if (results.length > 0) {
+        // 显示搜索结果
+        gamesGrid.style.display = 'grid';
+        gamesGrid.innerHTML = results.map(game => createGameCard(game)).join('');
+        
+        // 更新页面标题和描述
+        searchTitle.textContent = `Search Results for "${query}"`;
+        searchDescription.textContent = `Found ${results.length} educational games matching your search.`;
+        
+        // 更新页面元数据
+        document.title = `Search Results for "${query}" | EduGameHQ`;
+        
+        console.log(`Displaying ${results.length} search results for "${query}"`);
+      } else {
+        // 显示无结果页面
+        gamesGrid.style.display = 'none';
+        noResults.style.display = 'block';
+        
+        const noResultsText = document.getElementById('noResultsText');
+        noResultsText.textContent = `We couldn't find any games matching "${query}". Try different keywords or browse our categories.`;
+        
+        // 更新页面标题和描述
+        searchTitle.textContent = `No Results for "${query}"`;
+        searchDescription.textContent = 'Try different keywords or explore our game categories.';
+        
+        console.log(`No results found for "${query}"`);
+      }
+    }
+
+    // 显示搜索提示
+    function displaySearchPrompt() {
+      const searchPrompt = document.getElementById('searchPrompt');
+      const gamesGrid = document.getElementById('gamesGrid');
+      const noResults = document.getElementById('noResults');
+      
+      searchPrompt.style.display = 'block';
+      gamesGrid.style.display = 'none';
+      noResults.style.display = 'none';
+      
+      console.log('Displaying search prompt');
+    }
+
+    // 显示错误信息
+    function displayError() {
+      const searchPrompt = document.getElementById('searchPrompt');
+      const gamesGrid = document.getElementById('gamesGrid');
+      const noResults = document.getElementById('noResults');
+      
+      searchPrompt.style.display = 'none';
+      gamesGrid.style.display = 'none';
+      noResults.style.display = 'block';
+      
+      const noResultsText = document.getElementById('noResultsText');
+      noResultsText.textContent = 'Sorry, there was an error loading the games. Please try again later.';
+      
+      console.log('Displaying error message');
+    }
   </script>
 </BaseLayout>
 
