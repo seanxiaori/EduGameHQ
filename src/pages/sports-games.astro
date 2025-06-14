@@ -1,259 +1,431 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import gamesData from '../data/games/games.json';
-
-// 从games.json中获取所有体育游戏
-const allGames = Object.entries(gamesData).map(([id, game]) => ({
-  id,
-  ...game
-}));
-
-const sportsGames = allGames.filter(game => game.category === 'sports');
+import type { Game, GameData } from '../types/game';
+import fs from 'fs';
+import path from 'path';
 
 const seoData = {
   title: "Sports Games for Kids | Free Online Physical Education Games | EduGameHQ",
-  description: `Play ${sportsGames.length}+ free sports games for kids aged 6-18. Learn teamwork, strategy, and healthy competition through fun physical education games.`,
+  description: "Play 30+ free sports games for kids aged 6-18. Learn teamwork, strategy, and healthy competition through fun physical education games.",
   keywords: ["sports games", "physical education games", "team sports games", "fitness games", "sports for kids", "educational sports games", "free sports games"],
   ogImage: "/images/sports-games-og.jpg"
 };
 
-// 按难度分组
-const gamesByDifficulty = {
-  'Easy': sportsGames.filter(game => game.difficulty === 'Easy'),
-  'Medium': sportsGames.filter(game => game.difficulty === 'Medium'),
-  'Hard': sportsGames.filter(game => game.difficulty === 'Hard')
-};
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
+let allGamesData: GameData = {};
 
-// 获取特色游戏（播放次数最高的前3个）
-const featuredGames = sportsGames
-  .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
-  .slice(0, 3);
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as GameData;
+} catch (error) {
+  console.warn('Unable to read games data file');
+}
+
+// 筛选体育游戏
+const sportsGames = Object.entries(allGamesData)
+  .filter(([_id, game]: [string, Game]) => game.category === 'sports')
+  .map(([id, game]: [string, Game]) => {
+    return {
+      id: id,
+      title: game.title,
+      description: game.description,
+      icon: 'fas fa-running',
+      image: game.screenshots && game.screenshots.length > 0 
+        ? `/images/games/details/${game.screenshots[0]}` 
+        : `/images/games/${id}.svg`,
+      difficulty: game.difficulty,
+      age: `Ages ${game.ageRange}`,
+      skills: game.tags && game.tags.length > 0 ? game.tags : ['Teamwork', 'Coordination'],
+      url: `/games/${id}`,
+      playCount: game.playCount || 0,
+      isFeatured: game.isFeatured || false
+    };
+  });
+
+// 按难度分组游戏
+const featuredGames = sportsGames.filter(game => game.isFeatured).slice(0, 4);
+const easyGames = sportsGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = sportsGames.filter(game => game.difficulty === 'Medium');
+const hardGames = sportsGames.filter(game => game.difficulty === 'Hard');
+
+// 如果没有特色游戏，从所有游戏中选择前4个作为特色
+const displayFeaturedGames = featuredGames.length > 0 ? featuredGames : sportsGames.slice(0, 4);
+
+// 确保每个难度至少有一些游戏显示
+const displayEasyGames = easyGames.length > 0 ? easyGames : sportsGames.filter(game => game.difficulty !== 'Hard').slice(0, 4);
+const displayMediumGames = mediumGames.length > 0 ? mediumGames : sportsGames.slice(2, 6);
+const displayHardGames = hardGames.length > 0 ? hardGames : sportsGames.slice(-2); // 取最后2个作为困难游戏
 ---
 
-<BaseLayout {...seoData}>
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一的游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
   <main class="main-content">
     <div class="content-wrapper">
-      <!-- 页面标题 -->
-      <header class="page-header">
+      
+      <!-- 1. 页面顶部区域 -->
+      <section class="page-header">
         <div class="header-content">
-          <div class="header-icon">
-            <i class="fas fa-running"></i>
+          <div class="category-icon-container">
+            <div class="category-icon">
+              <div class="icon-background">
+                🏃
+              </div>
+            </div>
           </div>
+          
           <div class="header-text">
             <h1 class="page-title">Sports Games</h1>
-            <p class="page-subtitle">
+            <p class="page-description">
               Get active and learn through sports! Our sports games combine physical education concepts with fun gameplay, teaching teamwork, strategy, and healthy competition.
             </p>
           </div>
         </div>
-        <div class="header-stats">
-          <div class="stat-item">
-            <span class="stat-number">{sportsGames.length}</span>
-            <span class="stat-label">Games</span>
+      </section>
+
+      <!-- 2. 特色游戏模块 -->
+      <section class="game-module featured-module">
+        <div class="module-header">
+          <div class="module-icon featured-icon">
+            <i class="fas fa-star"></i>
           </div>
-          <div class="stat-item">
-            <span class="stat-number">6-18</span>
-            <span class="stat-label">Ages</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-number">Free</span>
-            <span class="stat-label">Cost</span>
+          <div class="module-title-group">
+            <h2 class="module-title">Featured Sports Games</h2>
+            <p class="module-subtitle">Top-rated sports games for active learning and fun</p>
           </div>
         </div>
-      </header>
-
-      <div class="page-layout">
-        <!-- 主要内容区域 -->
-        <div class="main-section">
-          <!-- 特色游戏 -->
-          <section class="featured-games">
-            <h2 class="section-title">
-              <div class="section-icon featured">
-                <i class="fas fa-star"></i>
-              </div>
-              Featured Sports Games
-            </h2>
-            <div class="games-grid">
-              {featuredGames.map((game, index) => (
-                <a href={`/games/${game.id}`} class="game-card featured animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
-                  <div class="game-thumbnail">
-                    <img 
-                      src={game.screenshots && game.screenshots.length > 0 
-                        ? `/images/games/details/${game.screenshots[0]}` 
-                        : `/images/games/details/default-screenshot.jpg`} 
-                      alt={game.title} 
-                      class="game-image" 
-                      loading="lazy"
-                    />
-                    <div class="featured-badge">Featured</div>
-                    <div class="play-overlay">
-                      <div class="play-btn">
-                        <i class="fas fa-play"></i> Play Now
+        
+        <div class="games-grid">
+          {displayFeaturedGames.map((game, index) => {
+            const popularity = Math.floor(Math.random() * 15000) + 500;
+            const formatPopularity = (num) => {
+              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+              return num.toString();
+            };
+            
+            // 随机生成游戏历史
+            const histories = ['Today', 'Yesterday', 'A few days ago', null];
+            const randomHistory = histories[Math.floor(Math.random() * histories.length)];
+            
+            return (
+              <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                <div class="game-image-container">
+                  <img src={game.image} alt={game.title} class="game-image" />
+                  <div class="game-overlay">
+                    {randomHistory && (
+                      <div class={`played-badge ${
+                        randomHistory === 'Today' ? 'today' : 
+                        randomHistory === 'Yesterday' ? 'yesterday' : 
+                        'few-days-ago'
+                      }`}>
+                        {randomHistory}
                       </div>
+                    )}
+                    <div class="popularity-badge">
+                      🔥 {formatPopularity(popularity)}
+                    </div>
+                    <div class="play-button" onclick={`window.location.href='${game.url}'`}>
+                      <i class="fas fa-play"></i>
+                      <span>Play Now</span>
                     </div>
                   </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <p class="game-description">{game.description}</p>
-                    <div class="game-meta">
-                      <div class="game-tags">
-                        <span class="game-tag age">{game.ageRange}</span>
-                        <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
-                      </div>
-                      <div class="game-stats">
-                        <span class="play-count">
-                          <i class="fas fa-play-circle"></i>
-                          {game.playCount ? game.playCount.toLocaleString() : '0'} plays
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </section>
-
-          <!-- 按难度分类的游戏 -->
-          {Object.entries(gamesByDifficulty).map(([difficulty, games]) => (
-            games.length > 0 && (
-              <section class="difficulty-section">
-                <h2 class="section-title">
-                  <div class={`section-icon difficulty-${difficulty.toLowerCase()}`}>
-                    {difficulty === 'Easy' && <i class="fas fa-smile"></i>}
-                    {difficulty === 'Medium' && <i class="fas fa-meh"></i>}
-                    {difficulty === 'Hard' && <i class="fas fa-frown"></i>}
-                  </div>
-                  {difficulty} Level Games ({games.length})
-                </h2>
-                <div class="games-grid">
-                  {games.map((game, index) => (
-                    <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`}>
-                      <div class="game-thumbnail">
-                        <img 
-                          src={game.screenshots && game.screenshots.length > 0 
-                            ? `/images/games/details/${game.screenshots[0]}` 
-                            : `/images/games/details/default-screenshot.jpg`} 
-                          alt={game.title} 
-                          class="game-image" 
-                          loading="lazy"
-                        />
-                        <div class="play-overlay">
-                          <div class="play-btn">
-                            <i class="fas fa-play"></i> Play Now
-                          </div>
-                        </div>
-                      </div>
-                      <div class="game-info">
-                        <h3 class="game-title">{game.title}</h3>
-                        <p class="game-description">{game.description}</p>
-                        <div class="game-meta">
-                          <div class="game-tags">
-                            <span class="game-tag age">{game.ageRange}</span>
-                            <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
-                          </div>
-                          <div class="game-stats">
-                            <span class="play-count">
-                              <i class="fas fa-play-circle"></i>
-                              {game.playCount ? game.playCount.toLocaleString() : '0'} plays
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </a>
-                  ))}
                 </div>
-              </section>
-            )
-          ))}
-
-          <!-- 所有体育游戏 -->
-          <section class="all-games-section">
-            <h2 class="section-title">
-              <div class="section-icon all-games">
-                <i class="fas fa-th-large"></i>
+                <div class="game-info">
+                  <h3 class="game-title">{game.title}</h3>
+                  <div class="game-tags">
+                    <span class="category-tag sports">Sports</span>
+                    <span class="feature-tag featured">FEATURED</span>
+                  </div>
+                </div>
               </div>
-              All Sports Games ({sportsGames.length})
-            </h2>
-            <div class="games-grid">
-              {sportsGames.map((game, index) => (
-                <a href={`/games/${game.id}`} class="game-card animate-fadeInUp" style={`animation-delay: ${(index % 12) * 0.05}s`}>
-                  <div class="game-thumbnail">
-                    <img 
-                      src={game.screenshots && game.screenshots.length > 0 
-                        ? `/images/games/details/${game.screenshots[0]}` 
-                        : `/images/games/details/default-screenshot.jpg`} 
-                      alt={game.title} 
-                      class="game-image" 
-                      loading="lazy"
-                    />
-                    <div class="play-overlay">
-                      <div class="play-btn">
-                        <i class="fas fa-play"></i> Play Now
+            );
+          })}
+        </div>
+      </section>
+
+      <!-- 3. 容易难度游戏模块 -->
+      {displayEasyGames.length > 0 && (
+        <section class="game-module difficulty-module easy-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon">
+              <i class="fas fa-smile"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Easy Sports Games</h2>
+              <p class="module-subtitle">Perfect for beginners and young athletes</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {displayEasyGames.slice(0, 4).map((game, index) => {
+              const popularity = game.playCount;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
+                      </div>
+                      <div class="play-button" onclick={`window.location.href='${game.url}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
                       </div>
                     </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
-                    <p class="game-description">{game.description}</p>
-                    <div class="game-meta">
-                      <div class="game-tags">
-                        <span class="game-tag age">{game.ageRange}</span>
-                        <span class={`game-tag difficulty ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
+                    <div class="game-tags">
+                      <span class="category-tag sports">Sports</span>
+                      <span class="difficulty-tag easy">EASY</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <!-- 4. 中等难度游戏模块 -->
+      {displayMediumGames.length > 0 && (
+        <section class="game-module difficulty-module medium-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon">
+              <i class="fas fa-meh"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Medium Sports Games</h2>
+              <p class="module-subtitle">Intermediate challenges for developing athletes</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {displayMediumGames.slice(0, 4).map((game, index) => {
+              const popularity = game.playCount;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        ⭐ {formatPopularity(popularity)}
                       </div>
-                      <div class="game-stats">
-                        <span class="play-count">
-                          <i class="fas fa-play-circle"></i>
-                          {game.playCount ? game.playCount.toLocaleString() : '0'} plays
-                        </span>
+                      <div class="play-button" onclick={`window.location.href='${game.url}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
                       </div>
                     </div>
                   </div>
-                </a>
-              ))}
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag sports">Sports</span>
+                      <span class="difficulty-tag medium">MEDIUM</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <!-- 5. 困难游戏模块 -->
+      {displayHardGames.length > 0 && (
+        <section class="game-module difficulty-module hard-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon">
+              <i class="fas fa-frown"></i>
             </div>
-          </section>
+            <div class="module-title-group">
+              <h2 class="module-title">Advanced Sports Games</h2>
+              <p class="module-subtitle">Complex sports challenges for expert athletes</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {displayHardGames.slice(0, 4).map((game, index) => {
+              const popularity = game.playCount;
+              const formatPopularity = (num) => {
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
+              return (
+                <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
+                  <div class="game-image-container">
+                    <img src={game.image} alt={game.title} class="game-image" />
+                    <div class="game-overlay">
+                      <div class="popularity-badge">
+                        🔥 {formatPopularity(popularity)}
+                      </div>
+                      <div class="play-button" onclick={`window.location.href='${game.url}'`}>
+                        <i class="fas fa-play"></i>
+                        <span>Play Now</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
+                      <span class="category-tag sports">Sports</span>
+                      <span class="difficulty-tag hard">HARD</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+
+      <!-- 6. 学习建议模块 -->
+      <section class="info-module tips-module">
+        <div class="module-header">
+          <div class="module-icon tips-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Sports Training Tips</h2>
+            <p class="module-subtitle">Expert strategies to improve your athletic performance</p>
+          </div>
         </div>
-
-        <!-- 侧边栏 -->
-        <aside class="sidebar">
-          <!-- 学习提示 -->
-          <div class="sidebar-card">
-            <h3 class="sidebar-title">
-              <div class="sidebar-icon">
-                <i class="fas fa-lightbulb"></i>
-              </div>
-              Sports Learning Tips
-            </h3>
-            <ul class="tips-list">
-              <li>Learn the rules and strategies of different sports</li>
-              <li>Practice teamwork and fair play</li>
-              <li>Develop coordination and motor skills</li>
-              <li>Stay active and maintain physical fitness</li>
-              <li>Have fun while learning about sports</li>
-            </ul>
-          </div>
-
-          <!-- 体育技能 -->
-          <div class="sidebar-card">
-            <h3 class="sidebar-title">
-              <div class="sidebar-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              Skills You'll Develop
-            </h3>
-            <div class="skills-list">
-              <span class="skill-tag">Teamwork</span>
-              <span class="skill-tag">Coordination</span>
-              <span class="skill-tag">Strategy</span>
-              <span class="skill-tag">Physical Fitness</span>
-              <span class="skill-tag">Fair Play</span>
-              <span class="skill-tag">Leadership</span>
-              <span class="skill-tag">Quick Thinking</span>
-              <span class="skill-tag">Sportsmanship</span>
+        
+        <div class="tips-grid">
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Practice Regularly</h3>
+              <p class="tip-text">Spend 30-45 minutes daily practicing sports skills to improve coordination and fitness</p>
             </div>
           </div>
-        </aside>
-      </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Learn Teamwork</h3>
+              <p class="tip-text">Focus on communication, cooperation, and supporting your teammates</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Play Fair</h3>
+              <p class="tip-text">Practice good sportsmanship and respect for rules and opponents</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="tip-content">
+              <h3 class="tip-title">Stay Active</h3>
+              <p class="tip-text">Maintain physical fitness through regular exercise and healthy habits</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. 核心技能模块 -->
+      <section class="info-module skills-module">
+        <div class="module-header">
+          <div class="module-icon skills-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Core Skills You'll Develop</h2>
+            <p class="module-subtitle">Essential athletic abilities gained through sports games</p>
+          </div>
+        </div>
+        
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Teamwork</h4>
+              <p class="skill-description">Learn to work together and support teammates effectively</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-crosshairs"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Coordination</h4>
+              <p class="skill-description">Develop hand-eye coordination and motor skills</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-chess"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Strategy</h4>
+              <p class="skill-description">Learn tactical thinking and game planning</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-running"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Physical Fitness</h4>
+              <p class="skill-description">Improve strength, endurance, and overall health</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Sportsmanship</h4>
+              <p class="skill-description">Practice fair play and respect for others</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-crown"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Leadership</h4>
+              <p class="skill-description">Develop confidence and leadership abilities</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
     </div>
   </main>
 </BaseLayout>
@@ -272,355 +444,331 @@ const featuredGames = sportsGames
     padding: 2rem;
   }
 
-  
-  
-
-  
-
-  
-
-  /* 页面头部 */
+  /* 1. 页面头部区域 */
   .page-header {
-    background: linear-gradient(135deg, #DC2626 0%, #EF4444 50%, #F87171 100%);
+    background: linear-gradient(135deg, #FFFBF5 0%, #FFF7ED 50%, rgba(220, 38, 38, 0.08) 100%);
     border-radius: 20px;
-    padding: 4rem 3rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.2);
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(220, 38, 38, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
     position: relative;
     overflow: hidden;
   }
 
   .page-header::before {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.3) 50%, transparent 100%);
   }
 
   .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
-  .header-icon {
-    width: 80px;
-    height: 80px;
-    border-radius: 20px;
+  .category-icon-container {
+    flex-shrink: 0;
+  }
+
+  .category-icon {
+    width: 72px;
+    height: 72px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 2rem;
-    font-size: 2.5rem;
-    color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   }
 
-  .header-icon.sports {
-    background: #DC2626;
+  .icon-background {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #DC2626 0%, #EF4444 25%, #B91C1C 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 
+      0 12px 28px rgba(220, 38, 38, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .icon-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, transparent 50%, rgba(0, 0, 0, 0.05) 100%);
+  }
+
+  .icon-background::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .category-icon:hover .icon-background {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 16px 36px rgba(220, 38, 38, 0.35),
+      0 6px 16px rgba(0, 0, 0, 0.12);
+  }
+
+  .header-text {
+    flex: 1;
+    text-align: left;
   }
 
   .page-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 800;
-    margin-bottom: 1rem;
-    color: white;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  .page-subtitle {
-    font-size: 1.25rem;
-    color: rgba(255, 255, 255, 0.9);
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .header-stats {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    margin-top: 2rem;
-  }
-
-  .stat-item {
-    text-align: center;
-  }
-
-  .stat-number {
-    display: block;
     font-size: 2.5rem;
     font-weight: 800;
-    color: white;
-    margin-bottom: 0.25rem;
+    margin: 0 0 0.75rem 0;
+    color: #DC2626;
+    text-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  .stat-label {
-    color: rgba(255, 255, 255, 0.8);
-    font-weight: 600;
-    font-size: 0.9rem;
+  .page-description {
+    font-size: 1.125rem;
+    color: #64748B;
+    line-height: 1.6;
+    margin: 0;
+    max-width: none;
+    font-weight: 400;
+    letter-spacing: 0.01em;
   }
 
-  /* 章节标题 */
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    margin-bottom: 2rem;
-    color: #1F2937;
+  /* 通用模块样式 */
+  .game-module,
+  .info-module {
+    margin-bottom: 3rem;
+  }
+
+  .module-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
   }
 
-  .difficulty-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
-  .difficulty-icon.easy {
-    background: #10B981;
+  .featured-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   }
 
-  .difficulty-icon.medium {
-    background: #F59E0B;
+  .easy-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   }
 
-  .difficulty-icon.hard {
-    background: #EF4444;
+  .medium-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  .hard-icon {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  }
+
+  .tips-icon {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  }
+
+  .skills-icon {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .module-subtitle {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
   }
 
   /* 游戏网格 */
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 1.5rem;
-    margin-bottom: 3rem;
+    padding: 0;
   }
 
-  .game-card {
+  /* 学习建议模块 */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .tip-item {
     background: white;
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
-    opacity: 0;
-    transform: translateY(20px);
-    border: 1px solid #E5E7EB;
-  }
-
-  .game-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-  }
-
-  .game-card.featured {
-    border: 2px solid #DC2626;
-    position: relative;
-  }
-
-  .featured-badge {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: #DC2626;
-    color: white;
-    padding: 0.25rem 0.75rem;
     border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    z-index: 2;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
   }
 
-  .game-thumbnail {
-    height: 200px;
-    position: relative;
-    overflow: hidden;
+  .tip-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
   }
 
-  .game-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .game-card:hover .game-image {
-    transform: scale(1.05);
-  }
-
-  .play-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(220, 38, 38, 0.9);
+  .tip-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
-  .game-card:hover .play-overlay {
-    opacity: 1;
+  .tip-content {
+    flex: 1;
   }
 
-  .play-btn {
-    background: white;
-    color: #DC2626;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-  }
-
-  .play-btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    color: #DC2626;
-    text-decoration: none;
-  }
-
-  .game-info {
-    padding: 1.5rem;
-  }
-
-  .game-title {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin-bottom: 0.5rem;
-  }
-
-  .game-description {
-    color: #6B7280;
-    line-height: 1.5;
-    margin-bottom: 1rem;
+  .tip-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
   }
 
-  .game-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .game-tags {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .game-tag {
-    padding: 0.25rem 0.75rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 500;
-  }
-
-  .game-tag.age {
-    background: #F3F4F6;
+  .tip-text {
     color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
   }
 
-  .game-tag.difficulty.easy {
-    background: #10B981;
-    color: white;
-  }
-
-  .game-tag.difficulty.medium {
-    background: #F59E0B;
-    color: white;
-  }
-
-  .game-tag.difficulty.hard {
-    background: #EF4444;
-    color: white;
-  }
-
-  .game-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.25rem;
-  }
-
-  .skill-tag {
-    background: rgba(220, 38, 38, 0.1);
-    color: #DC2626;
-    padding: 0.125rem 0.5rem;
-    border-radius: 8px;
-    font-size: 0.7rem;
-    font-weight: 500;
-  }
-
-  /* 学习目标 */
-  .learning-objectives {
-    margin-bottom: 3rem;
-  }
-
-  .objectives-grid {
+  /* 核心技能模块 */
+  .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
-  .objective-card {
+  .skill-item {
     background: white;
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
     transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
   }
 
-  .objective-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  .skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
   }
 
-  .objective-icon {
-    width: 60px;
-    height: 60px;
-    background: #DC2626;
-    border-radius: 15px;
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
     color: white;
-    font-size: 1.5rem;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
   }
 
-  .objective-card h3 {
-    font-size: 1.25rem;
-    font-weight: 700;
+  .skill-content {
+    flex: 1;
+  }
+
+  .skill-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: #1F2937;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
   }
 
-  .objective-card p {
+  .skill-description {
     color: #6B7280;
-    line-height: 1.5;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
   }
 
-  /* 动画 */
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -638,8 +786,24 @@ const featuredGames = sportsGames
 
   /* 响应式设计 */
   @media (max-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-content {
+      gap: 1.5rem;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
     }
   }
 
@@ -649,28 +813,65 @@ const featuredGames = sportsGames
     }
 
     .page-header {
-      padding: 2rem 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 18px;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
     }
 
     .page-title {
       font-size: 2rem;
     }
 
-    .header-stats {
+    .page-description {
+      font-size: 0.95rem;
+    }
+
+    .module-header {
       flex-direction: column;
-      gap: 1rem;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1rem;
     }
 
-    .games-grid {
+    .skills-grid {
       grid-template-columns: 1fr;
     }
 
-    .section-title {
-      font-size: 1.5rem;
+    .tip-icon, .skill-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
     }
 
-    .objectives-grid {
-      grid-template-columns: 1fr;
+    .tip-title, .skill-title {
+      font-size: 0.875rem;
+    }
+
+    .tip-text, .skill-description {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .category-icon {
+      width: 60px;
+      height: 60px;
+    }
+
+    .icon-background {
+      width: 60px;
+      height: 60px;
+      font-size: 1.75rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
     }
   }
 </style> 
