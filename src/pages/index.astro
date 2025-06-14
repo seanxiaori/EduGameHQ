@@ -113,7 +113,15 @@ const allGames = Object.entries(allGamesData).map(([id, game]: [string, Game]) =
 
       <!-- 游戏分类 -->
       <section id="categories" class="categories-section">
-        <h2 class="section-title">Explore by Category</h2>
+        <div class="module-header">
+          <div class="module-icon categories">
+            <i class="fas fa-th-large"></i>
+          </div>
+          <div class="module-text">
+            <h2 class="module-title">Explore by Category</h2>
+            <p class="module-description">Discover educational games organized by subject areas</p>
+          </div>
+        </div>
         
         <div class="categories-grid">
           <!-- 数学游戏 -->
@@ -256,10 +264,15 @@ const allGames = Object.entries(allGamesData).map(([id, game]: [string, Game]) =
 
       <!-- 特色游戏 -->
       <section class="featured-section">
-        <h2 class="section-title">Featured Games</h2>
-        <p class="section-subtitle">
-          Handpicked educational games that students love most
-        </p>
+        <div class="module-header">
+          <div class="module-icon featured">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="module-text">
+            <h2 class="module-title">Featured Games</h2>
+            <p class="module-description">Handpicked educational games that students love most</p>
+          </div>
+        </div>
         
         <div class="games-grid">
           {featuredGames.map((game, index) => {
@@ -1241,6 +1254,28 @@ const allGames = Object.entries(allGamesData).map(([id, game]: [string, Game]) =
     .game-image-container {
       height: 160px;
     }
+
+    /* 移动端模块头部样式 */
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+
+    .module-icon {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+
+    .module-title {
+      font-size: 2rem;
+    }
+
+    .module-description {
+      font-size: 1rem;
+    }
   }
 
   /* 分类卡片颜色主题 */
@@ -1323,6 +1358,92 @@ const allGames = Object.entries(allGamesData).map(([id, game]: [string, Game]) =
   .category-card.art:hover {
     background: linear-gradient(135deg, #FCE7F3, #FBCFE8);
     border-color: #EC4899;
+  }
+
+  /* 模块头部样式 */
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    border: 1px solid #E5E7EB;
+  }
+
+  .module-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 
+      0 12px 28px rgba(0, 0, 0, 0.15),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+  }
+
+  .module-icon::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
+    pointer-events: none;
+  }
+
+  .module-icon:hover {
+    transform: translateY(-2px) scale(1.02);
+  }
+
+  .module-icon.categories {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 25%, #6D28D9 100%);
+    box-shadow: 
+      0 12px 28px rgba(139, 92, 246, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .module-icon.featured {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 25%, #B45309 100%);
+    box-shadow: 
+      0 12px 28px rgba(245, 158, 11, 0.3),
+      0 4px 12px rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 rgba(255, 255, 255, 0.25),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .module-text {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+  }
+
+  .module-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.5;
   }
 </style> 
 
