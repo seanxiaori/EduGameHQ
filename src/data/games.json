@@ -47,7 +47,8 @@
         "Find all hidden words to complete each level",
         "Discover bonus words for extra points",
         "Progress through different world landmarks and monuments",
-        "Use hints if you get stuck on difficult words"
+        "Use hints if you get stuck on difficult words",
+        "If connection issues appear, click 'Continue offline' to play without internet features"
       ],
       "controls": {
         "mouse": "Click and drag to connect letters and form words",
@@ -59,7 +60,8 @@
         "Look for common prefixes and suffixes",
         "Try different letter combinations systematically",
         "Use the shuffle button to rearrange letters for new perspectives",
-        "Save hints for the most challenging levels"
+        "Save hints for the most challenging levels",
+        "Offline mode works perfectly for learning vocabulary"
       ]
     },
     "introduction": "Words of Wonders combines word puzzle gameplay with educational content about world landmarks. Players build vocabulary while learning about famous monuments and cultural sites from around the globe.",
@@ -71,7 +73,8 @@
       "Educational content about world monuments",
       "Smooth touch and mouse controls",
       "Multiple levels with varied themes",
-      "Vocabulary building through gameplay"
+      "Vocabulary building through gameplay",
+      "Offline mode support for uninterrupted learning"
     ],
     "learningObjectives": [
       "Expand English vocabulary and word recognition",
@@ -96,7 +99,8 @@
       "geography",
       "education",
       "puzzle",
-      "language-learning"
+      "language-learning",
+      "offline-capable"
     ],
     "gradeLevel": "3rd-12th Grade",
     "subjects": [
@@ -128,6 +132,19 @@
       "Safari",
       "Edge"
     ],
+    "requiresConnection": true,
+    "offlineMode": true,
+    "connectionIssues": {
+      "common": true,
+      "solution": "Click 'Continue offline' to play without internet features",
+      "impact": "Progress may not be saved, but core gameplay works perfectly"
+    },
+    "iframeConfig": {
+      "sandbox": "allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox",
+      "allowFullscreen": true,
+      "loading": "lazy",
+      "referrerPolicy": "strict-origin-when-cross-origin"
+    },
     "lastUpdated": "2024-12-15",
     "lastChecked": "2024-12-15"
   }
