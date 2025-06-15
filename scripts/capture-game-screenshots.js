@@ -5,18 +5,18 @@ import path from 'path';
 // 游戏截图配置 - 专门针对CrazyGames优化
 const SCREENSHOT_CONFIG = {
     // 基础等待时间
-    INITIAL_WAIT: 3000,        // 页面加载后等待3秒
-    PLAY_BUTTON_WAIT: 5000,    // 点击Play按钮后等待5秒
-    GAME_LOAD_WAIT: 6000,     // 游戏加载等待6秒
-    GAMEPLAY_WAIT: 3000,      // 游戏开始后等待3秒再截图
+    INITIAL_WAIT: 5000,        // 页面加载后等待5秒
+    PLAY_BUTTON_WAIT: 8000,    // 点击Play按钮后等待8秒
+    GAME_LOAD_WAIT: 12000,     // 游戏加载等待12秒
+    GAMEPLAY_WAIT: 8000,       // 游戏开始后等待8秒再截图
     
     // 截图设置
     VIEWPORT: { width: 1280, height: 720 },
     SCREENSHOT_QUALITY: 95,
     
     // 重试设置
-    MAX_RETRIES: 2,
-    RETRY_DELAY: 3000
+    MAX_RETRIES: 3,
+    RETRY_DELAY: 5000
 };
 
 /**
@@ -76,7 +76,7 @@ async function waitAndEnterGameIframe(page) {
     try {
         // 等待iframe出现
         await page.waitForSelector('iframe', { 
-            timeout: 20000,
+            timeout: 25000,
             visible: true
         });
         
@@ -134,14 +134,19 @@ async function waitForGameFullyLoaded(pageOrFrame) {
             '[id*="game"]',
             '[class*="game"]',
             '[id*="unity"]',
-            '[class*="unity"]'
+            '[class*="unity"]',
+            // Words of Wonders 特定选择器
+            '.game-board',
+            '.word-game',
+            '.puzzle-container',
+            '.crossword-container'
         ];
         
         let gameElement = null;
         for (const selector of gameSelectors) {
             try {
                 gameElement = await pageOrFrame.waitForSelector(selector, { 
-                    timeout: 8000,
+                    timeout: 10000,
                     visible: true 
                 });
                 if (gameElement) {
@@ -154,7 +159,7 @@ async function waitForGameFullyLoaded(pageOrFrame) {
         }
         
         // 额外等待游戏资源加载
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 8000));
         
         console.log('  游戏加载完成');
         return gameElement;
@@ -207,7 +212,7 @@ async function startGame(pageOrFrame) {
     }
     
     // 等待游戏响应
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    await new Promise(resolve => setTimeout(resolve, 5000));
     return true;
 }
 
@@ -220,6 +225,16 @@ async function simulateGameplay(pageOrFrame, gameCategory = 'general') {
     try {
         // 根据游戏类型进行不同操作
         switch (gameCategory) {
+            case 'language':
+                // 语言游戏：点击和拖拽操作
+                await pageOrFrame.mouse.click(400, 300);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                await pageOrFrame.mouse.click(600, 400);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                await pageOrFrame.mouse.click(500, 350);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                break;
+                
             case 'math':
             case 'puzzle':
                 // 数学/益智游戏：方向键操作
@@ -275,7 +290,7 @@ async function simulateGameplay(pageOrFrame, gameCategory = 'general') {
         
     } catch (error) {
         console.log('  游戏操作失败，直接截图');
-        await new Promise(resolve => setTimeout(resolve, 5000));
+        await new Promise(resolve => setTimeout(resolve, 8000));
     }
 }
 
@@ -288,20 +303,18 @@ async function captureGameAreaOnly(page, gameContext) {
     try {
         // 尝试找到游戏的核心区域
         const gameAreaSelectors = [
-            // 2048游戏特定
-            '.game-container',
-            '.grid-container',
-            '.tile-container',
+            // Words of Wonders 特定选择器
+            '.game-board',
+            '.word-game',
+            '.puzzle-container',
+            '.crossword-container',
+            '.game-wrapper',
             // 通用游戏区域
             'canvas',
             '#game',
             '#gameContainer',
             '.unity-container',
             '.game-canvas',
-            // 音乐游戏特定
-            '.music-container',
-            '.sound-container',
-            '.audio-game',
             // 更广泛的游戏选择器
             '[id*="game"]',
             '[class*="game"]',
@@ -310,7 +323,6 @@ async function captureGameAreaOnly(page, gameContext) {
             // HTML5游戏容器
             '.html5-game',
             '.webgl-content',
-            '.game-wrapper',
             '.game-frame'
         ];
         
@@ -333,7 +345,7 @@ async function captureGameAreaOnly(page, gameContext) {
         if (gameElement) {
             // 获取游戏元素的边界框
             const boundingBox = await gameElement.boundingBox();
-            if (boundingBox) {
+            if (boundingBox && boundingBox.width > 0 && boundingBox.height > 0) {
                 console.log(`  游戏区域位置: x=${boundingBox.x}, y=${boundingBox.y}, width=${boundingBox.width}, height=${boundingBox.height}`);
                 
                 // 检查是否是全屏游戏（占据大部分视口）
@@ -363,6 +375,8 @@ async function captureGameAreaOnly(page, gameContext) {
                 
                 console.log(`  裁剪区域: x=${clip.x}, y=${clip.y}, width=${clip.width}, height=${clip.height}`);
                 return clip;
+            } else {
+                console.log('  游戏元素边界框无效，使用默认区域');
             }
         }
         
@@ -372,7 +386,7 @@ async function captureGameAreaOnly(page, gameContext) {
             const iframeElement = await page.$('iframe');
             if (iframeElement) {
                 const boundingBox = await iframeElement.boundingBox();
-                if (boundingBox) {
+                if (boundingBox && boundingBox.width > 0 && boundingBox.height > 0) {
                     // 为iframe添加小边距，去掉边框
                     const padding = 10;
                     return {
