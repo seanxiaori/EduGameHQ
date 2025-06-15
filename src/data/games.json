@@ -1,1 +1,64 @@
-[]
+[
+  {
+    "slug": "2048",
+    "title": "2048",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/2048",
+    "description": "A classic number puzzle game where you slide tiles to combine numbers and reach the 2048 tile. Perfect for developing logical thinking and strategic planning skills.",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys or swipe to move tiles in any direction",
+        "When two tiles with the same number touch, they merge into one",
+        "Try to reach the 2048 tile to win the game",
+        "Keep playing to achieve even higher scores"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move tiles in four directions",
+        "mouse": "Click and drag to swipe tiles",
+        "touch": "Swipe in any direction to move tiles"
+      },
+      "tips": [
+        "Keep your highest number in one corner",
+        "Build numbers in ascending order along edges",
+        "Don't move your highest tile unless necessary"
+      ]
+    },
+    "introduction": "2048 is the addictive number puzzle game that challenges players to combine tiles and reach the elusive 2048 tile. This mathematical brain teaser improves logical thinking, pattern recognition, and strategic planning skills.",
+    "features": [
+      "Simple yet addictive gameplay mechanics",
+      "Smooth animations and responsive controls",
+      "Score tracking and personal best records",
+      "Unlimited gameplay with increasing difficulty",
+      "Clean, minimalist design interface",
+      "Works perfectly on all devices"
+    ],
+    "learningObjectives": [
+      "Develop strategic thinking and planning skills",
+      "Improve pattern recognition abilities",
+      "Practice mental math and number relationships",
+      "Enhance problem-solving and logical reasoning"
+    ],
+    "thumbnailUrl": "/images/games/math/2048.svg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": ["numbers", "puzzle", "strategy", "logic", "math", "brain-training"],
+    "gradeLevel": "5th-12th Grade",
+    "subjects": ["Mathematics", "Logic", "Problem Solving"],
+    "skills": ["Strategic thinking", "Pattern recognition", "Mental math"],
+    "source": "CrazyGames",
+    "sourceUrl": "https://www.crazygames.com/game/2048",
+    "iframeCompatible": true,
+    "verified": true,
+    "responsive": true,
+    "mobileSupport": true,
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "lastUpdated": "2024-12-15",
+    "lastChecked": "2024-12-15"
+  }
+]
