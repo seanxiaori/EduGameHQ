@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct React Test</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .info {
+            background: #f0f0f0;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+        .redirect-info {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 React游戏直接访问测试</h1>
+        
+        <div class="info">
+            <h3>测试说明</h3>
+            <p>这个页面会直接跳转到React游戏，不使用iframe嵌入</p>
+            <p><strong>如果游戏正常工作：</strong> 说明React应用本身没问题，问题在于iframe嵌入</p>
+            <p><strong>如果游戏不工作：</strong> 说明React应用部署有问题</p>
+        </div>
+
+        <div class="redirect-info">
+            <h3>🎮 点击下面链接测试游戏</h3>
+            <p><a href="/games/math-challenge-game/index.html" target="_blank" style="font-size: 18px; color: #1976d2; text-decoration: none; font-weight: bold;">
+                🚀 打开Math Challenge Game
+            </a></p>
+        </div>
+
+        <div class="info">
+            <h3>🔍 调试检查清单</h3>
+            <ol>
+                <li>点击上面链接，游戏是否在新窗口正常加载？</li>
+                <li>打开开发者工具，Console是否有错误？</li>
+                <li>Network标签页，所有资源是否成功加载？</li>
+                <li>如果看到白屏，检查React应用是否正确挂载到#root元素</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        console.log('🧪 React直接测试页面已加载');
+        console.log('📍 游戏路径: /games/math-challenge-game/index.html');
+        
+        // 检查当前页面的基础信息
+        console.log('🌐 当前域名:', window.location.origin);
+        console.log('📂 当前路径:', window.location.pathname);
+    </script>
+</body>
+</html> 
