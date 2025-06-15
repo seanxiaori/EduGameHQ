@@ -171,29 +171,17 @@ const seoData = {
 
         <div class="developer-content">
           <div class="developer-details">
-            <div class="detail-item">
+            <div class="developer-item">
               <span class="detail-label">Developer:</span>
               <span class="detail-value">{getGameSource(game.url)} Team</span>
             </div>
-            <div class="detail-item">
+            <div class="developer-item">
               <span class="detail-label">Source:</span>
               <span class="detail-value">{getGameSource(game.url)}</span>
             </div>
-            <div class="detail-item">
+            <div class="developer-item">
               <span class="detail-label">Type:</span>
               <span class="detail-value">Free</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Platform:</span>
-              <span class="detail-value">HTML5</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Technology:</span>
-              <span class="detail-value">Web Browser</span>
-            </div>
-            <div class="detail-item">
-              <span class="detail-label">Release:</span>
-              <span class="detail-value">2024</span>
             </div>
           </div>
         </div>
@@ -530,8 +518,20 @@ const seoData = {
 
   .developer-details {
     display: flex;
-    flex-direction: column;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .developer-item {
+    display: flex;
+    align-items: center;
     gap: 0.5rem;
+    padding: 0.5rem 0;
+    border-bottom: none;
+  }
+
+  .developer-item:last-child {
+    border-bottom: none;
   }
 
   /* 相关游戏推荐 */
