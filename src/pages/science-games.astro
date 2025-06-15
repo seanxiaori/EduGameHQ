@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import type { Game, GameData } from '../types/game';
+import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,37 +11,35 @@ const seoData = {
   ogImage: "/images/science-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 使用新的数据格式
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.warn('Unable to read games data file:', error);
 }
 
 // 筛选科学游戏
-const scienceGames = Object.entries(allGamesData)
-  .filter(([_id, game]: [string, Game]) => game.category === 'science')
-  .map(([id, game]: [string, Game]) => ({
-    id: id,
+const scienceGames = allGamesData
+  .filter(game => game.category === 'science')
+  .map(game => ({
+    id: game.slug,
     title: game.title,
     description: game.description,
-    image: game.screenshots && game.screenshots.length > 0 
-      ? `/images/games/details/${game.screenshots[0]}` 
-      : `/images/games/${id}.svg`,
+    image: game.image || `/images/games/${game.category}/${game.slug}.webp`,
     difficulty: game.difficulty || 'Medium',
     age: `Ages ${game.ageRange}`,
-    url: `/games/${id}`,
+    url: `/games/${game.slug}`,
     playCount: game.playCount || Math.floor(Math.random() * 15000) + 500,
     category: 'science',
     categoryName: 'Science'
   }));
 
 // 按难度分组游戏
-const featuredGames = scienceGames.filter(game => ['grid-construction', 'conways-game-of-life', 'attractor-explorer'].includes(game.id));
+const featuredGames = scienceGames.filter(game => game.difficulty && ['beetle-rush'].includes(game.id));
 const easyGames = scienceGames.filter(game => game.difficulty === 'Easy');
 const mediumGames = scienceGames.filter(game => game.difficulty === 'Medium');
 const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
