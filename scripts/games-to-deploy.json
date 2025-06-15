@@ -37,9 +37,10 @@
       "source": "GitHub"
     },
     {
-      "slug": "html5-games-tetris",
+      "slug": "tetris-game",
       "title": "Tetris Game",
       "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "subPath": "08-Tetris-Game",
       "category": "puzzle",
       "categoryName": "Puzzle",
       "description": "Classic Tetris game built with HTML5, CSS and JavaScript. Perfect for developing spatial reasoning and quick thinking skills.",
@@ -54,9 +55,10 @@
       "source": "GitHub"
     },
     {
-      "slug": "html5-games-snake",
+      "slug": "snake-game",
       "title": "Snake Game",
       "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "subPath": "14-Snake-Game",
       "category": "puzzle",
       "categoryName": "Puzzle",
       "description": "Classic Snake game that helps develop hand-eye coordination and strategic planning skills.",
@@ -71,9 +73,10 @@
       "source": "GitHub"
     },
     {
-      "slug": "html5-games-memory",
+      "slug": "memory-card-game",
       "title": "Memory Card Game",
       "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "subPath": "10-Memory-Card-Game",
       "category": "puzzle",
       "categoryName": "Puzzle",
       "description": "Memory card matching game that enhances cognitive abilities and concentration skills.",

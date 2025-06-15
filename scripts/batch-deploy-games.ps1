@@ -89,9 +89,23 @@ function Clone-Repository {
 
 # 检查项目结构
 function Test-ProjectStructure {
-    param([string]$ProjectPath)
+    param([string]$ProjectPath, [string]$SubPath = "")
     
     Write-Log "检查项目结构: $ProjectPath"
+    
+    # 如果指定了子路径，使用子路径
+    if ($SubPath) {
+        $actualPath = "$ProjectPath/$SubPath"
+        Write-Log "使用子路径: $SubPath"
+        
+        if (Test-Path "$actualPath/index.html") {
+            Write-Log "发现子目录index.html" "SUCCESS"
+            return @{ Type = "subdir"; Path = $actualPath }
+        } else {
+            Write-Log "子路径中未找到index.html" "WARNING"
+            return $null
+        }
+    }
     
     # 检查是否有构建好的文件
     $distPath = "$ProjectPath/dist"
@@ -344,13 +358,17 @@ function Deploy-SingleGame {
         return $false
     }
     
-    # 2. 检查项目结构
-    $projectInfo = Test-ProjectStructure -ProjectPath $tempPath
+    # 2. 检查项目结构（支持子路径）
+    $subPath = if ($GameConfig.PSObject.Properties.Name -contains "subPath") { $GameConfig.subPath } else { "" }
+    $projectInfo = Test-ProjectStructure -ProjectPath $tempPath -SubPath $subPath
+    
     if (-not $projectInfo) {
-        # 尝试构建
-        $buildSuccess = Build-Project -ProjectPath $tempPath
-        if ($buildSuccess) {
-            $projectInfo = Test-ProjectStructure -ProjectPath $tempPath
+        # 只有在没有子路径时才尝试构建
+        if (-not $subPath) {
+            $buildSuccess = Build-Project -ProjectPath $tempPath
+            if ($buildSuccess) {
+                $projectInfo = Test-ProjectStructure -ProjectPath $tempPath -SubPath $subPath
+            }
         }
     }
     
