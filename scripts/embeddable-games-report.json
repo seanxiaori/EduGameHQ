@@ -1,0 +1,354 @@
+{
+  "summary": {
+    "totalGames": 6,
+    "categoryCounts": {
+      "math": 0,
+      "science": 2,
+      "coding": 0,
+      "language": 1,
+      "puzzle": 0,
+      "sports": 2,
+      "creative": 0,
+      "geography": 1
+    },
+    "timestamp": "2025-06-15T16:04:06.292Z"
+  },
+  "games": {
+    "math": [],
+    "science": [
+      {
+        "url": "https://www.crazygames.com/game/space-waves",
+        "title": "Space Waves",
+        "slug": "space-waves",
+        "hasEmbedButton": true,
+        "hasShareButton": true,
+        "embedButton": {
+          "text": "Embed",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "shareButton": {
+          "text": "Share",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "embedCode": null,
+        "hasGameContent": true,
+        "hasCanvas": false,
+        "hasGameContainer": false,
+        "hasIframe": true,
+        "embedUrl": "https://www.crazygames.com/embed/space-waves",
+        "canEmbed": true,
+        "embedVerified": true,
+        "embedStatus": 200,
+        "embedPageInfo": {
+          "hasCanvas": false,
+          "hasGameContainer": false,
+          "hasIframe": true,
+          "hasLoaderOptions": true,
+          "isGameFilesPage": true,
+          "title": "Space Waves Game Files - Crazy Games",
+          "hasGameContent": true
+        },
+        "educationalScore": 2,
+        "educationalReasons": [
+          "包含关键词: space"
+        ],
+        "isEducational": true
+      },
+      {
+        "url": "https://www.crazygames.com/game/italian-brainrot-clicker-usp",
+        "title": "Italian Brainrot Clicker Game",
+        "slug": "italian-brainrot-clicker-usp",
+        "hasEmbedButton": true,
+        "hasShareButton": true,
+        "embedButton": {
+          "text": "Embed",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "shareButton": {
+          "text": "Share",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "embedCode": null,
+        "hasGameContent": true,
+        "hasCanvas": false,
+        "hasGameContainer": false,
+        "hasIframe": true,
+        "embedUrl": "https://www.crazygames.com/embed/italian-brainrot-clicker-usp",
+        "canEmbed": true,
+        "embedVerified": true,
+        "embedStatus": 200,
+        "embedPageInfo": {
+          "hasCanvas": false,
+          "hasGameContainer": false,
+          "hasIframe": true,
+          "hasLoaderOptions": true,
+          "isGameFilesPage": true,
+          "title": "Italian Brainrot Clicker Game Game Files - Crazy Games",
+          "hasGameContent": true
+        },
+        "educationalScore": 1,
+        "educationalReasons": [
+          "教育关键词: brain"
+        ],
+        "isEducational": true
+      }
+    ],
+    "coding": [],
+    "language": [
+      {
+        "url": "https://www.crazygames.com/game/words-of-wonders",
+        "title": "Words of Wonders",
+        "slug": "words-of-wonders",
+        "hasEmbedButton": true,
+        "hasShareButton": true,
+        "embedButton": {
+          "text": "Embed",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "shareButton": {
+          "text": "Share",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "embedCode": null,
+        "hasGameContent": true,
+        "hasCanvas": false,
+        "hasGameContainer": false,
+        "hasIframe": true,
+        "embedUrl": "https://www.crazygames.com/embed/words-of-wonders",
+        "canEmbed": true,
+        "embedVerified": true,
+        "embedStatus": 200,
+        "embedPageInfo": {
+          "hasCanvas": false,
+          "hasGameContainer": false,
+          "hasIframe": true,
+          "hasLoaderOptions": true,
+          "isGameFilesPage": true,
+          "title": "Words of Wonders Game Files - Crazy Games",
+          "hasGameContent": true
+        },
+        "educationalScore": 2,
+        "educationalReasons": [
+          "包含关键词: word"
+        ],
+        "isEducational": true
+      }
+    ],
+    "puzzle": [],
+    "sports": [
+      {
+        "url": "https://www.crazygames.com/game/basketball-superstars",
+        "title": "Basketball Superstars",
+        "slug": "basketball-superstars",
+        "hasEmbedButton": true,
+        "hasShareButton": true,
+        "embedButton": {
+          "text": "Embed",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "shareButton": {
+          "text": "Share",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "embedCode": null,
+        "hasGameContent": true,
+        "hasCanvas": false,
+        "hasGameContainer": false,
+        "hasIframe": true,
+        "embedUrl": "https://www.crazygames.com/embed/basketball-superstars",
+        "canEmbed": true,
+        "embedVerified": true,
+        "embedStatus": 200,
+        "embedPageInfo": {
+          "hasCanvas": false,
+          "hasGameContainer": false,
+          "hasIframe": true,
+          "hasLoaderOptions": true,
+          "isGameFilesPage": true,
+          "title": "Basketball Superstars Game Files - Crazy Games",
+          "hasGameContent": true
+        },
+        "educationalScore": 2,
+        "educationalReasons": [
+          "包含关键词: basketball"
+        ],
+        "isEducational": true
+      },
+      {
+        "url": "https://www.crazygames.com/game/basketball-orbit",
+        "title": "Basketball Orbit",
+        "slug": "basketball-orbit",
+        "hasEmbedButton": true,
+        "hasShareButton": true,
+        "embedButton": {
+          "text": "Embed",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "shareButton": {
+          "text": "Share",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "embedCode": null,
+        "hasGameContent": true,
+        "hasCanvas": false,
+        "hasGameContainer": false,
+        "hasIframe": true,
+        "embedUrl": "https://www.crazygames.com/embed/basketball-orbit",
+        "canEmbed": true,
+        "embedVerified": true,
+        "embedStatus": 200,
+        "embedPageInfo": {
+          "hasCanvas": false,
+          "hasGameContainer": false,
+          "hasIframe": true,
+          "hasLoaderOptions": true,
+          "isGameFilesPage": true,
+          "title": "Basketball Orbit Game Files - Crazy Games",
+          "hasGameContent": true
+        },
+        "educationalScore": 2,
+        "educationalReasons": [
+          "包含关键词: basketball"
+        ],
+        "isEducational": true
+      }
+    ],
+    "creative": [],
+    "geography": [
+      {
+        "url": "https://www.crazygames.com/game/italian-brainrot-clicker-usp",
+        "title": "Italian Brainrot Clicker Game",
+        "slug": "italian-brainrot-clicker-usp",
+        "hasEmbedButton": true,
+        "hasShareButton": true,
+        "embedButton": {
+          "text": "Embed",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "shareButton": {
+          "text": "Share",
+          "className": "Button_czyButton__y8IRs Button_czyButton--contained--grey__sz05o Button_czyButton--height34__0zFYJ",
+          "id": ""
+        },
+        "embedCode": null,
+        "hasGameContent": true,
+        "hasCanvas": false,
+        "hasGameContainer": false,
+        "hasIframe": true,
+        "embedUrl": "https://www.crazygames.com/embed/italian-brainrot-clicker-usp",
+        "canEmbed": true,
+        "embedVerified": true,
+        "embedStatus": 200,
+        "embedPageInfo": {
+          "hasCanvas": false,
+          "hasGameContainer": false,
+          "hasIframe": true,
+          "hasLoaderOptions": true,
+          "isGameFilesPage": true,
+          "title": "Italian Brainrot Clicker Game Game Files - Crazy Games",
+          "hasGameContent": true
+        },
+        "educationalScore": 1,
+        "educationalReasons": [
+          "教育关键词: brain"
+        ],
+        "isEducational": true
+      }
+    ]
+  },
+  "searchConfig": {
+    "math": {
+      "name": "数学游戏",
+      "searchTerms": [
+        "math",
+        "numbers",
+        "calculation",
+        "arithmetic",
+        "puzzle"
+      ],
+      "crazyGamesCategory": "puzzle"
+    },
+    "science": {
+      "name": "科学游戏",
+      "searchTerms": [
+        "science",
+        "physics",
+        "chemistry",
+        "biology",
+        "space"
+      ],
+      "crazyGamesCategory": "educational"
+    },
+    "coding": {
+      "name": "编程游戏",
+      "searchTerms": [
+        "coding",
+        "programming",
+        "logic",
+        "algorithm"
+      ],
+      "crazyGamesCategory": "puzzle"
+    },
+    "language": {
+      "name": "语言游戏",
+      "searchTerms": [
+        "word",
+        "spelling",
+        "vocabulary",
+        "trivia"
+      ],
+      "crazyGamesCategory": "puzzle"
+    },
+    "puzzle": {
+      "name": "益智游戏",
+      "searchTerms": [
+        "puzzle",
+        "brain",
+        "logic",
+        "strategy"
+      ],
+      "crazyGamesCategory": "puzzle"
+    },
+    "sports": {
+      "name": "体育游戏",
+      "searchTerms": [
+        "sports",
+        "basketball",
+        "football",
+        "soccer"
+      ],
+      "crazyGamesCategory": "sports"
+    },
+    "creative": {
+      "name": "创意游戏",
+      "searchTerms": [
+        "creative",
+        "art",
+        "music",
+        "drawing"
+      ],
+      "crazyGamesCategory": "casual"
+    },
+    "geography": {
+      "name": "地理历史",
+      "searchTerms": [
+        "geography",
+        "history",
+        "world",
+        "countries"
+      ],
+      "crazyGamesCategory": "educational"
+    }
+  }
+}
