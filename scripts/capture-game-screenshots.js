@@ -7,8 +7,8 @@ const SCREENSHOT_CONFIG = {
     // 基础等待时间
     INITIAL_WAIT: 3000,        // 页面加载后等待3秒
     PLAY_BUTTON_WAIT: 5000,    // 点击Play按钮后等待5秒
-    GAME_LOAD_WAIT: 15000,     // 游戏加载等待15秒
-    GAMEPLAY_WAIT: 10000,      // 游戏开始后等待10秒再截图
+    GAME_LOAD_WAIT: 6000,     // 游戏加载等待6秒
+    GAMEPLAY_WAIT: 3000,      // 游戏开始后等待3秒再截图
     
     // 截图设置
     VIEWPORT: { width: 1280, height: 720 },

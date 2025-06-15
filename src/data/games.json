@@ -40,7 +40,7 @@
     "category": "language",
     "categoryName": "Language",
     "iframeUrl": "https://www.crazygames.com/embed/words-of-wonders",
-    "description": "Explore world wonders while building words from letters. Perfect for vocabulary building and spelling practice.",
+    "description": "Explore world wonders while building words from letters. Perfect for vocabulary building and spelling practice with beautiful landmark backgrounds.",
     "gameGuide": {
       "howToPlay": [
         "Connect letters to form words by dragging your finger or mouse",
@@ -80,7 +80,10 @@
       "Develop problem-solving and analytical thinking",
       "Enhance visual-spatial processing skills"
     ],
-    "thumbnailUrl": "/images/games/language/words-of-wonders-placeholder.svg",
+    "thumbnailUrl": "/images/games/language/words-of-wonders-placeholder.png",
+    "screenshotUrls": [
+      "/images/games/language/words-of-wonders-placeholder.png"
+    ],
     "difficulty": "Medium",
     "ageRange": "8-18",
     "minAge": 8,
@@ -110,6 +113,10 @@
       "Problem solving"
     ],
     "source": "CrazyGames",
+    "sourceUrl": "https://www.crazygames.com/game/words-of-wonders",
+    "developer": "Famobi",
+    "rating": 8.7,
+    "playCount": 336607,
     "iframeCompatible": true,
     "verified": true,
     "responsive": true,
