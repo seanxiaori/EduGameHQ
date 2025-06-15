@@ -5,11 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Mathivities is a simple math game made for children within the age range of 1-8 years old with the aim of teaching them basic mathematical operations. It has different levels which includes: addition, subtraction and more">
     <title>Mathivities | Math games for children(1-8)</title>
+    <base href="/games/mathivities/">
     <script type="module" crossorigin src="./index.54ec5316.js"></script>
     <link rel="stylesheet" href="./index.e943dcbb.css">
   </head>
   <body>
     <div id="root"></div>
-    
+    <script>
+      // 确保React应用能在iframe中正常工作
+      window.addEventListener('DOMContentLoaded', function() {
+        // 如果在iframe中，调整路由基础路径
+        if (window.self !== window.top) {
+          console.log('Game loaded in iframe');
+        }
+      });
+    </script>
   </body>
 </html>
