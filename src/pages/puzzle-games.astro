@@ -28,7 +28,7 @@ const puzzleGames = allGamesData
   .map(game => {
     // 临时调整一些游戏的难度，确保有困难游戏显示
     let adjustedDifficulty = game.difficulty;
-    if (game.slug === 'sudoku-classic' || (game.title && game.title.toLowerCase().includes('advanced'))) {
+    if (game.slug === 'sudoku-classic' || (game.title && typeof game.title === 'string' && game.title.toLowerCase().includes('advanced'))) {
       adjustedDifficulty = 'Hard';
     }
     
@@ -126,7 +126,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
                       </div>
                     )}
                     <div class="popularity-badge">
-                      🔥 {formatPopularity(popularity)}
+                      �� {formatPopularity(popularity)}
                     </div>
                     <div class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
