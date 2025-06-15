@@ -395,19 +395,18 @@ const seoData = {
     margin-bottom: 0;
   }
 
-  .info-block h3 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #1F2937;
-    margin: 0 0 1rem 0;
-    padding-bottom: 0.5rem;
-    border-bottom: 2px solid #F3F4F6;
-  }
-
   .info-block p {
-    color: #4B5563;
-    line-height: 1.6;
+    color: #374151;
+    line-height: 1.7;
     margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-align: left;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    border-left: 4px solid #6366F1;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   }
 
   .info-block p:last-child {
@@ -481,18 +480,41 @@ const seoData = {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
   }
 
   .developer-item {
     display: flex;
-    align-items: center;
+    flex-direction: column;
     gap: 0.5rem;
-    padding: 0.5rem 0;
-    border-bottom: none;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #F1F5F9;
+    min-width: 140px;
+    flex: 1;
   }
 
   .developer-item:last-child {
     border-bottom: none;
+  }
+
+  .detail-label {
+    font-weight: 600;
+    color: #6B7280;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .detail-value {
+    color: #1F2937;
+    font-weight: 600;
+    font-size: 1rem;
   }
 
   /* 相关游戏推荐 */
@@ -670,6 +692,25 @@ const seoData = {
     
     .section-title {
       font-size: 1.5rem;
+    }
+    
+    .info-content, .developer-content {
+      padding: 1rem;
+    }
+    
+    .info-block p {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+    
+    .developer-details {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    
+    .developer-item {
+      min-width: auto;
     }
     
     .related-games-grid {
