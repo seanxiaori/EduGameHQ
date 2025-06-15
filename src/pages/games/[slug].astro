@@ -117,25 +117,6 @@ const seoData = {
           <div class="info-block">
             <h3>About This Game</h3>
             <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
-            
-            <div class="game-details">
-              <div class="detail-item">
-                <span class="detail-label">Category:</span>
-                <span class="detail-value">{game.category}</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Difficulty:</span>
-                <span class="detail-value">{game.difficulty || 'Easy'}</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Age Range:</span>
-                <span class="detail-value">6-14</span>
-              </div>
-              <div class="detail-item">
-                <span class="detail-label">Source:</span>
-                <span class="detail-value">{getGameSource(game.url)}</span>
-              </div>
-            </div>
           </div>
 
           <!-- 游戏特色 -->
