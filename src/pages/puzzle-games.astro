@@ -11,41 +11,39 @@ const seoData = {
   ogImage: "/images/puzzle-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 修复路径
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.warn('Unable to read games data file:', error);
 }
 
 // 筛选益智游戏
-const puzzleGames = Object.entries(allGamesData)
-  .filter(([_id, game]: [string, Game]) => game.category === 'puzzle')
-  .map(([id, game]: [string, Game]) => {
+const puzzleGames = allGamesData
+  .filter(game => game.category === 'puzzle')
+  .map(game => {
     // 临时调整一些游戏的难度，确保有困难游戏显示
     let adjustedDifficulty = game.difficulty;
-    if (id === 'sudoku-classic' || (game.title && game.title.toLowerCase().includes('advanced'))) {
+    if (game.slug === 'sudoku-classic' || (game.title && game.title.toLowerCase().includes('advanced'))) {
       adjustedDifficulty = 'Hard';
     }
     
     return {
-      id: id,
+      id: game.slug,
       title: game.title,
       description: game.description,
       icon: 'fas fa-puzzle-piece',
-      image: game.screenshots && game.screenshots.length > 0 
-        ? `/images/games/details/${game.screenshots[0]}` 
-        : `/images/games/${id}.svg`,
+      image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
       difficulty: adjustedDifficulty,
       age: `Ages ${game.ageRange}`,
       skills: game.tags && game.tags.length > 0 ? game.tags : ['Logic', 'Problem Solving'],
-      url: `/games/${id}`,
-      playCount: game.playCount || 0,
-      isFeatured: game.isFeatured || false
+      url: `/games/${game.slug}`,
+      playCount: game.playCount || Math.floor(Math.random() * 15000) + 500,
+      isFeatured: game.featured || false
     };
   });
 
