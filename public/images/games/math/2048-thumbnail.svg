@@ -1,0 +1,56 @@
+<svg width="200" height="150" viewBox="0 0 200 150" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="200" height="150" fill="#faf8ef"/>
+  
+  <!-- 游戏标题 -->
+  <text x="100" y="25" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#776e65">2048</text>
+  
+  <!-- 游戏网格背景 -->
+  <rect x="50" y="40" width="100" height="100" rx="6" fill="#bbada0"/>
+  
+  <!-- 网格单元格 -->
+  <rect x="55" y="45" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="80" y="45" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="105" y="45" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="130" y="45" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  
+  <rect x="55" y="70" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="80" y="70" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="105" y="70" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="130" y="70" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  
+  <rect x="55" y="95" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="80" y="95" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="105" y="95" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="130" y="95" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  
+  <rect x="55" y="120" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="80" y="120" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="105" y="120" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  <rect x="130" y="120" width="20" height="20" rx="3" fill="#cdc1b4"/>
+  
+  <!-- 数字瓦片 -->
+  <!-- 2 -->
+  <rect x="55" y="45" width="20" height="20" rx="3" fill="#eee4da"/>
+  <text x="65" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#776e65">2</text>
+  
+  <!-- 4 -->
+  <rect x="105" y="45" width="20" height="20" rx="3" fill="#ede0c8"/>
+  <text x="115" y="58" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#776e65">4</text>
+  
+  <!-- 8 -->
+  <rect x="80" y="70" width="20" height="20" rx="3" fill="#f2b179"/>
+  <text x="90" y="83" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#f9f6f2">8</text>
+  
+  <!-- 16 -->
+  <rect x="130" y="95" width="20" height="20" rx="3" fill="#f59563"/>
+  <text x="140" y="108" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#f9f6f2">16</text>
+  
+  <!-- 32 -->
+  <rect x="55" y="120" width="20" height="20" rx="3" fill="#f67c5f"/>
+  <text x="65" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#f9f6f2">32</text>
+  
+  <!-- 64 -->
+  <rect x="105" y="120" width="20" height="20" rx="3" fill="#f65e3b"/>
+  <text x="115" y="133" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#f9f6f2">64</text>
+</svg> 
