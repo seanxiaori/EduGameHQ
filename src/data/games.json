@@ -1,1 +1,24 @@
-[]
+[
+  {
+    "slug": "beetle-rush",
+    "title": "Beetle Rush",
+    "category": "science",
+    "categoryName": "Science",
+    "url": "/games/beetle-rush/index.html",
+    "image": "/images/games/science/beetle-rush.jpg",
+    "imageFallback": "/images/games/science/beetle-rush.jpg",
+    "description": "An endless runner game that teaches about dung beetles and their important role in forest ecosystems. Learn about recycling organic matter while having fun!",
+    "difficulty": "Easy",
+    "ageRange": "8-14",
+    "minAge": 8,
+    "maxAge": 14,
+    "playCount": 0,
+    "tags": ["science", "ecology", "environment", "biology", "educational", "runner"],
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "developer": "Alicia Rojas",
+    "source": "GitHub",
+    "type": "Free"
+  }
+]
