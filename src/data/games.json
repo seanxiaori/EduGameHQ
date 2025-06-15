@@ -39,7 +39,11 @@
       "Practice mental math and number relationships",
       "Enhance problem-solving and logical reasoning"
     ],
-    "thumbnailUrl": "/images/games/math/2048.svg",
+    "thumbnailUrl": "https://www.crazygames.com/images/games/2048/2048-cover?auto=webp&width=512&height=384&fit=crop&q=75",
+    "screenshotUrls": [
+      "https://www.crazygames.com/images/games/2048/2048-cover?auto=webp&width=512&height=384&fit=crop&q=75",
+      "https://www.crazygames.com/images/games/2048/2048-thumb?auto=webp&width=200&height=150&fit=crop&q=75"
+    ],
     "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
@@ -49,6 +53,8 @@
     "subjects": ["Mathematics", "Logic", "Problem Solving"],
     "skills": ["Strategic thinking", "Pattern recognition", "Mental math"],
     "source": "CrazyGames",
+    "developer": "Gabriele Cirulli",
+    "releaseDate": "March 2014",
     "sourceUrl": "https://www.crazygames.com/game/2048",
     "iframeCompatible": true,
     "verified": true,

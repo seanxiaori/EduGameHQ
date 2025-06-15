@@ -135,16 +135,22 @@ const seoData = {
           <div class="developer-details">
             <div class="developer-item">
               <span class="detail-label">Developer:</span>
-              <span class="detail-value">{getGameSource(game.iframeUrl)} Team</span>
+              <span class="detail-value">{game.developer || getGameSource(game.iframeUrl) + ' Team'}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Source:</span>
-              <span class="detail-value">{getGameSource(game.iframeUrl)}</span>
+              <span class="detail-value">{game.source || getGameSource(game.iframeUrl)}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Type:</span>
               <span class="detail-value">Free</span>
             </div>
+            {game.releaseDate && (
+              <div class="developer-item">
+                <span class="detail-label">Release Date:</span>
+                <span class="detail-value">{game.releaseDate}</span>
+              </div>
+            )}
           </div>
         </div>
       </section>
