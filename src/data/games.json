@@ -13,11 +13,46 @@
     "minAge": 8,
     "maxAge": 14,
     "playCount": 0,
-    "tags": ["science", "ecology", "environment", "biology", "educational", "runner"],
+    "tags": [
+      "science",
+      "ecology",
+      "environment",
+      "biology",
+      "educational",
+      "runner"
+    ],
     "featured": true,
     "trending": true,
     "isNew": true,
     "developer": "Alicia Rojas",
+    "source": "GitHub",
+    "type": "Free"
+  },
+  {
+    "slug": "math-challenge-game",
+    "title": "Math Challenge Game",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "/games/math-challenge-game/index.html",
+    "image": "/images/games/math/math-challenge-game.svg",
+    "imageFallback": "/images/games/math/math-challenge-game.svg",
+    "description": "A React-based math challenge game with addition, subtraction, multiplication and division exercises for students.",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "playCount": 0,
+    "tags": [
+      "math",
+      "arithmetic",
+      "educational",
+      "react",
+      "challenge"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": true,
+    "developer": "David Dix",
     "source": "GitHub",
     "type": "Free"
   }
