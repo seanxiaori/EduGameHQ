@@ -64,5 +64,27 @@
     "developer": "EduGameHQ",
     "source": "EduGameHQ",
     "type": "Free"
+  },
+  {
+    "slug": "mathivities",
+    "title": "Mathivities",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "/games/mathivities/",
+    "description": "A comprehensive math game for children aged 1-8 featuring addition, subtraction, multiplication, and division with colorful themes and progressive difficulty levels.",
+    "difficulty": "Easy",
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
+    "image": "/images/games/math/mathivities.webp",
+    "imageFallback": "/images/games/math/mathivities.jpg",
+    "tags": ["math", "children", "addition", "subtraction", "multiplication", "division", "colorful", "progressive"],
+    "playCount": 4280,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Daviddix",
+    "source": "GitHub",
+    "type": "Free"
   }
 ]
