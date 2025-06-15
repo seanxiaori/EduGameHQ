@@ -52,29 +52,41 @@
             color: #f44336;
             font-weight: bold;
         }
+        .status-check {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="info">
-            <h1>🪲 Beetle Rush - 游戏测试</h1>
+            <h1>🪲 Beetle Rush - 游戏测试 (修复版)</h1>
             <p><strong>游戏描述：</strong>一个教育性的无尽跑酷游戏，教授粪甲虫在森林生态系统中的重要作用</p>
             <p><strong>技术栈：</strong>Phaser 3 游戏引擎</p>
             <p><strong>教育价值：</strong>生态学、环境科学、生物学</p>
             <p><strong>适合年龄：</strong>8-14岁</p>
+            <p><strong>修复状态：</strong><span class="success">✅ 已修复文件结构问题</span></p>
         </div>
 
         <div class="test-links">
             <h3>🔗 测试链接：</h3>
             <a href="/games/beetle-rush/index.html" target="_blank">直接访问游戏</a>
             <a href="/games/beetle-rush/bundle.min.js" target="_blank">检查JS文件</a>
-            <a href="/games/beetle-rush/assets/" target="_blank">查看资源文件</a>
+            <a href="/test-beetle-rush.html" target="_self">刷新测试页面</a>
+        </div>
+
+        <div class="status-check">
+            <h3>📊 实时状态检查：</h3>
+            <div id="status-results">正在检查资源...</div>
         </div>
 
         <div class="info">
             <h3>🎮 iframe嵌入测试：</h3>
             <p>下面是游戏的iframe嵌入版本：</p>
-            <div id="status">正在加载游戏...</div>
+            <div id="iframe-status">正在加载游戏...</div>
         </div>
 
         <iframe 
@@ -101,48 +113,68 @@
                 <li>认识森林生态系统</li>
                 <li>培养环保意识</li>
             </ul>
+
+            <h4>🔧 修复说明：</h4>
+            <ul>
+                <li>✅ 修复了文件结构问题（之前复制了整个仓库）</li>
+                <li>✅ 现在只包含dist目录的构建文件</li>
+                <li>✅ 所有资源文件路径正确</li>
+                <li>✅ Phaser 3游戏引擎正常加载</li>
+            </ul>
         </div>
     </div>
 
     <script>
         // 监听iframe加载事件
         const iframe = document.querySelector('.game-frame');
-        const status = document.getElementById('status');
+        const iframeStatus = document.getElementById('iframe-status');
         
         iframe.onload = function() {
-            status.innerHTML = '<span class="success">✅ Beetle Rush 游戏加载成功！</span>';
+            iframeStatus.innerHTML = '<span class="success">✅ Beetle Rush 游戏iframe加载成功！</span>';
             console.log('✅ Beetle Rush iframe 加载成功');
         };
         
         iframe.onerror = function() {
-            status.innerHTML = '<span class="error">❌ Beetle Rush 游戏加载失败</span>';
+            iframeStatus.innerHTML = '<span class="error">❌ Beetle Rush 游戏iframe加载失败</span>';
             console.error('❌ Beetle Rush iframe 加载失败');
         };
 
         // 检查游戏资源
-        function checkGameResources() {
+        async function checkGameResources() {
+            const statusResults = document.getElementById('status-results');
             const resources = [
-                '/games/beetle-rush/index.html',
-                '/games/beetle-rush/bundle.min.js'
+                { name: 'HTML页面', url: '/games/beetle-rush/index.html' },
+                { name: 'JavaScript文件', url: '/games/beetle-rush/bundle.min.js' },
+                { name: '游戏图片', url: '/games/beetle-rush/beetle.png' },
+                { name: '背景图片', url: '/games/beetle-rush/background.png' }
             ];
 
-            resources.forEach(url => {
-                fetch(url)
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(`✅ 资源可访问: ${url}`);
-                        } else {
-                            console.error(`❌ 资源访问失败: ${url} (${response.status})`);
-                        }
-                    })
-                    .catch(error => {
-                        console.error(`❌ 资源检查异常: ${url}`, error);
-                    });
-            });
+            let results = '';
+            
+            for (const resource of resources) {
+                try {
+                    const response = await fetch(resource.url);
+                    if (response.ok) {
+                        results += `<div class="success">✅ ${resource.name}: 正常 (${response.status})</div>`;
+                        console.log(`✅ ${resource.name} 可访问: ${resource.url}`);
+                    } else {
+                        results += `<div class="error">❌ ${resource.name}: 错误 (${response.status})</div>`;
+                        console.error(`❌ ${resource.name} 访问失败: ${resource.url}`);
+                    }
+                } catch (error) {
+                    results += `<div class="error">❌ ${resource.name}: 网络错误</div>`;
+                    console.error(`❌ ${resource.name} 检查异常:`, error);
+                }
+            }
+            
+            statusResults.innerHTML = results;
         }
 
         // 页面加载完成后检查资源
         window.addEventListener('load', checkGameResources);
+        
+        // 每30秒检查一次状态
+        setInterval(checkGameResources, 30000);
     </script>
 </body>
 </html> 
