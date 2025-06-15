@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import type { Game, GameData } from '../types/game';
+import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,29 +11,23 @@ const seoData = {
   ogImage: "/images/edugamehq-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 使用新的数据格式
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.warn('Unable to read games data file:', error);
 }
 
-// 特色游戏数据 - 使用真实的游戏数据，增加到12个游戏
-const featuredGameIds = [
-  '2048', 'make-ten', 'little-alchemy-2', 'factor-crafter', 
-  'grid-construction', 'learn-gdscript', 'lightbot', 'algebraic-reasoning',
-  'make-a-number', 'calculator-game', 'scale-of-universe', 'animal-dna-run'
-];
-const featuredGames = featuredGameIds.map(id => {
-  const game = allGamesData[id];
-  if (!game) return null;
-  
-  return {
-    id: id,
+// 特色游戏数据 - 使用新的数据格式
+const featuredGames = allGamesData
+  .filter(game => game.featured)
+  .slice(0, 12)
+  .map(game => ({
+    id: game.slug,
     title: game.title,
     description: game.description.substring(0, 100) + '...',
     icon: game.category === 'math' ? 'fas fa-calculator' : 
@@ -41,22 +35,19 @@ const featuredGames = featuredGameIds.map(id => {
           game.category === 'coding' ? 'fas fa-code' :
           game.category === 'language' ? 'fas fa-keyboard' :
           'fas fa-puzzle-piece',
-    image: game.screenshots && game.screenshots.length > 0 
-      ? `/images/games/details/${game.screenshots[0]}` 
-      : `/images/games/${id}.svg`,
+    image: game.image || `/images/games/${game.category}/${game.slug}.webp`,
     subject: game.categoryName,
     age: `Ages ${game.ageRange}`,
     category: game.category,
     difficulty: game.difficulty || 'Medium',
-    url: `/games/${id}`
-  };
-}).filter(Boolean);
+    url: `/games/${game.slug}`
+  }));
 
 // 所有游戏列表（用于随机功能）
-const allGames = Object.entries(allGamesData).map(([id, game]: [string, Game]) => ({
-  id: id,
+const allGames = allGamesData.map(game => ({
+  id: game.slug,
   title: game.title,
-  url: `/games/${id}`
+  url: `/games/${game.slug}`
 }));
 ---
 
