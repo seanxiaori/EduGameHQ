@@ -34,6 +34,7 @@ function getGameSource(url: string): string {
   if (url.includes('gamedistribution.com')) return 'GameDistribution';
   if (url.includes('scratch.mit.edu')) return 'Scratch MIT';
   if (url.includes('itch.io')) return 'itch.io';
+  if (url.includes('github')) return 'GitHub Open Source';
   return 'External';
 }
 
@@ -72,7 +73,7 @@ const seoData = {
       <section class="game-player-section">
         <div class="game-player-container">
           <iframe 
-            src={game.url} 
+            src={game.iframeUrl} 
             class="game-iframe"
             title={game.title}
             allowfullscreen
@@ -134,11 +135,11 @@ const seoData = {
           <div class="developer-details">
             <div class="developer-item">
               <span class="detail-label">Developer:</span>
-              <span class="detail-value">{getGameSource(game.url)} Team</span>
+              <span class="detail-value">{getGameSource(game.iframeUrl)} Team</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Source:</span>
-              <span class="detail-value">{getGameSource(game.url)}</span>
+              <span class="detail-value">{getGameSource(game.iframeUrl)}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Type:</span>
@@ -163,7 +164,7 @@ const seoData = {
               <div class="game-card">
                 <div class="game-image-container">
                   <img 
-                    src={relatedGame.image} 
+                    src={relatedGame.thumbnailUrl || `/images/games/${relatedGame.category}/${relatedGame.slug}.svg`} 
                     alt={relatedGame.title} 
                     class="game-image"
                     onerror="this.onerror=null; this.src='/images/placeholder-game.svg';"
