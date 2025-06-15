@@ -31,7 +31,7 @@
     "introduction": "2048 is the addictive number puzzle game that challenges players to combine tiles and reach the elusive 2048 tile. This mathematical brain teaser improves logical thinking, pattern recognition, and strategic planning skills while providing endless entertainment.",
     "features": [
       "Simple yet addictive gameplay mechanics",
-      "Smooth animations and responsive controls", 
+      "Smooth animations and responsive controls",
       "Score tracking and personal best records",
       "Unlimited gameplay with increasing difficulty",
       "Clean, minimalist design interface",
@@ -41,12 +41,12 @@
     ],
     "learningObjectives": [
       "Develop strategic thinking and long-term planning skills",
-      "Improve pattern recognition and spatial reasoning abilities", 
+      "Improve pattern recognition and spatial reasoning abilities",
       "Practice mental math and number relationships understanding",
       "Enhance problem-solving and logical reasoning abilities",
       "Cultivate patience and sustained focus"
     ],
-    "thumbnailUrl": "/images/games/math/2048-thumbnail.svg",
+    "thumbnailUrl": "/images/games/math/2048-gameplay.png",
     "screenshotUrls": [
       "/images/games/math/2048-thumbnail.svg"
     ],
@@ -54,11 +54,35 @@
     "ageRange": "10-18",
     "minAge": 10,
     "maxAge": 18,
-    "tags": ["numbers", "puzzle", "strategy", "logic", "math", "brain-training", "educational", "thinking"],
+    "tags": [
+      "numbers",
+      "puzzle",
+      "strategy",
+      "logic",
+      "math",
+      "brain-training",
+      "educational",
+      "thinking"
+    ],
     "gradeLevel": "5th-12th Grade",
-    "subjects": ["Mathematics", "Logic", "Problem Solving", "Computational Thinking"],
-    "skills": ["Strategic thinking", "Pattern recognition", "Mental math", "Spatial reasoning", "Decision making"],
-    "cognitiveSkills": ["Working memory", "Executive function", "Visual-spatial processing"],
+    "subjects": [
+      "Mathematics",
+      "Logic",
+      "Problem Solving",
+      "Computational Thinking"
+    ],
+    "skills": [
+      "Strategic thinking",
+      "Pattern recognition",
+      "Mental math",
+      "Spatial reasoning",
+      "Decision making"
+    ],
+    "cognitiveSkills": [
+      "Working memory",
+      "Executive function",
+      "Visual-spatial processing"
+    ],
     "source": "CrazyGames",
     "developer": "Gabriele Cirulli",
     "releaseDate": "March 2014 (Original) / December 2019 (CrazyGames Version)",
@@ -74,7 +98,12 @@
     "fileSize": "~500KB",
     "loadTime": "<3 seconds",
     "technology": "HTML5",
-    "browserSupport": ["Chrome", "Firefox", "Safari", "Edge"],
+    "browserSupport": [
+      "Chrome",
+      "Firefox",
+      "Safari",
+      "Edge"
+    ],
     "dataCollection": "Minimal - game statistics only",
     "ageAppropriate": "All ages",
     "contentSafety": "100% educational-friendly content",
