@@ -35,7 +35,7 @@ const featuredGames = allGamesData
           game.category === 'coding' ? 'fas fa-code' :
           game.category === 'language' ? 'fas fa-keyboard' :
           'fas fa-puzzle-piece',
-    image: game.image || `/images/games/${game.category}/${game.slug}.webp`,
+    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
     subject: game.categoryName,
     age: `Ages ${game.ageRange}`,
     category: game.category,
