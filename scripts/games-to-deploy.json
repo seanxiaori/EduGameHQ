@@ -1,0 +1,60 @@
+{
+  "description": "EduGameHQ 批量部署游戏配置文件",
+  "version": "1.0",
+  "games": [
+    {
+      "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "category": "puzzle",
+      "config": {
+        "title": "HTML5 Games Collection",
+        "description": "A collection of 30 different HTML5 games including Tetris, Snake, Memory Card Game and more.",
+        "difficulty": "Easy",
+        "developer": "Talha",
+        "tags": ["puzzle", "educational", "collection", "html5"],
+        "featured": true
+      }
+    },
+    {
+      "repoUrl": "https://github.com/Daviddix/math-game.git",
+      "category": "math",
+      "config": {
+        "title": "Math Challenge Game",
+        "description": "Interactive math game with addition, subtraction, multiplication and division challenges.",
+        "difficulty": "Medium",
+        "developer": "David Dix",
+        "tags": ["math", "arithmetic", "educational", "react"],
+        "trending": true
+      }
+    },
+    {
+      "repoUrl": "https://github.com/ivancraddock/Web-CodeDefense.git",
+      "category": "coding",
+      "config": {
+        "title": "Code Defense",
+        "description": "Tower defense game that teaches basic JavaScript programming skills through interactive gameplay.",
+        "difficulty": "Hard",
+        "developer": "Ivan Craddock",
+        "tags": ["coding", "javascript", "programming", "tower-defense"],
+        "featured": true
+      }
+    },
+    {
+      "repoUrl": "https://github.com/githubschool/github-games-n-brock.git",
+      "category": "coding",
+      "config": {
+        "title": "GitHub Games",
+        "description": "Learn Git and GitHub through an interactive Tetris game. Perfect for understanding version control.",
+        "difficulty": "Medium",
+        "developer": "GitHub School",
+        "tags": ["coding", "git", "github", "tetris", "version-control"],
+        "trending": true
+      }
+    }
+  ],
+  "settings": {
+    "autoCleanup": true,
+    "generateImages": true,
+    "updateDatabase": true,
+    "deployDelay": 1000
+  }
+} 
