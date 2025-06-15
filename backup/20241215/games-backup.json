@@ -1,0 +1,1277 @@
+[
+  {
+    "slug": "math-duck",
+    "title": "Math Duck",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://www.miniplay.com/embed/math-duck",
+    "image": "/images/games/math-duck.webp",
+    "imageFallback": "/images/games/math-duck.jpg",
+    "description": "Play Math Duck online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.1,
+    "playCount": 15148,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "2048",
+    "title": "2048",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://www.crazygames.com/embed/2048",
+    "image": "/images/games/2048.webp",
+    "imageFallback": "/images/games/2048.jpg",
+    "description": "Play 2048 online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.9,
+    "playCount": 7352,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "make-ten",
+    "title": "Make Ten",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://pancelor.itch.io/make-ten",
+    "image": "/images/games/make-ten.webp",
+    "imageFallback": "/images/games/make-ten.jpg",
+    "description": "Play Make Ten online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.3,
+    "playCount": 4873,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "factor-crafter",
+    "title": "Factor Crafter",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://playcebo.itch.io/factor-crafter",
+    "image": "/images/games/factor-crafter.webp",
+    "imageFallback": "/images/games/factor-crafter.jpg",
+    "description": "Play Factor Crafter online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.3,
+    "playCount": 17815,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "aritmazetic",
+    "title": "AritMazeTic",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://www.crazygames.com/embed/aritmazetic",
+    "image": "/images/games/aritmazetic.webp",
+    "imageFallback": "/images/games/aritmazetic.jpg",
+    "description": "Play AritMazeTic online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 5,
+    "playCount": 11070,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "calculator-game",
+    "title": "Calculator: The Game",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://www.miniplay.com/embed/calculator-the-game",
+    "image": "/images/games/calculator-game.webp",
+    "imageFallback": "/images/games/calculator-game.jpg",
+    "description": "Play Calculator: The Game online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.5,
+    "playCount": 13810,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "number-drop",
+    "title": "Number Drop",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://ben-james.itch.io/number-drop",
+    "image": "/images/games/number-drop.webp",
+    "imageFallback": "/images/games/number-drop.jpg",
+    "description": "Play Number Drop online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.7,
+    "playCount": 12477,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "math-push",
+    "title": "Math Push",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://rob1221.itch.io/math-push",
+    "image": "/images/games/math-push.webp",
+    "imageFallback": "/images/games/math-push.jpg",
+    "description": "Play Math Push online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.1,
+    "playCount": 10790,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "cubes-2048",
+    "title": "Cubes 2048.io",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://www.miniplay.com/embed/cubes-2048-io",
+    "image": "/images/games/cubes-2048.webp",
+    "imageFallback": "/images/games/cubes-2048.jpg",
+    "description": "Play Cubes 2048.io online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.4,
+    "playCount": 3148,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "master-of-numbers",
+    "title": "Master of Numbers",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://www.miniplay.com/embed/master-of-numbers",
+    "image": "/images/games/master-of-numbers.webp",
+    "imageFallback": "/images/games/master-of-numbers.jpg",
+    "description": "Play Master of Numbers online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.9,
+    "playCount": 3142,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": true,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "trigo-chick",
+    "title": "Trigo Chick",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://romainsalha.itch.io/trigo-chick",
+    "image": "/images/games/trigo-chick.webp",
+    "imageFallback": "/images/games/trigo-chick.jpg",
+    "description": "Play Trigo Chick online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.2,
+    "playCount": 3304,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": true,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "planetary-defense",
+    "title": "Planetary Defense: Prime Wars",
+    "category": "math",
+    "categoryName": "Math",
+    "url": "https://quenut.itch.io/planetary-defense-prime-wars",
+    "image": "/images/games/planetary-defense.webp",
+    "imageFallback": "/images/games/planetary-defense.jpg",
+    "description": "Play Planetary Defense: Prime Wars online for free. Educational math game perfect for learning.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4,
+    "playCount": 4231,
+    "tags": [
+      "math",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master math skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "grid-construction",
+    "title": "Grid Construction Game",
+    "category": "science",
+    "categoryName": "Science",
+    "url": "https://gridconstruction.smartgridforall.org/",
+    "image": "/images/games/grid-construction.webp",
+    "imageFallback": "/images/games/grid-construction.jpg",
+    "description": "Play Grid Construction Game online for free. Educational science game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Medium",
+    "rating": 4.2,
+    "playCount": 6413,
+    "tags": [
+      "science",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master science skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "conways-life",
+    "title": "Conway's Game of Life",
+    "category": "science",
+    "categoryName": "Science",
+    "url": "https://golang.itch.io/conways-game-of-life",
+    "image": "/images/games/conways-life.webp",
+    "imageFallback": "/images/games/conways-life.jpg",
+    "description": "Play Conway's Game of Life online for free. Educational science game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Medium",
+    "rating": 4.1,
+    "playCount": 16536,
+    "tags": [
+      "science",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master science skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "attractor-explorer",
+    "title": "Attractor Explorer",
+    "category": "science",
+    "categoryName": "Science",
+    "url": "https://owenmdvd.itch.io/attractor-explorer",
+    "image": "/images/games/attractor-explorer.webp",
+    "imageFallback": "/images/games/attractor-explorer.jpg",
+    "description": "Play Attractor Explorer online for free. Educational science game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Medium",
+    "rating": 4.8,
+    "playCount": 12911,
+    "tags": [
+      "science",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master science skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "learn-gdscript",
+    "title": "Learn Godot's GDScript From Zero",
+    "category": "coding",
+    "categoryName": "Coding",
+    "url": "https://gdquest.itch.io/learn-godots-gdscript-from-zero",
+    "image": "/images/games/learn-gdscript.webp",
+    "imageFallback": "/images/games/learn-gdscript.jpg",
+    "description": "Play Learn Godot's GDScript From Zero online for free. Educational coding game perfect for learning.",
+    "ageRange": "12-18",
+    "difficulty": "Medium",
+    "rating": 4.4,
+    "playCount": 5960,
+    "tags": [
+      "coding",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master coding skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "net-attack",
+    "title": "Net.Attack()",
+    "category": "coding",
+    "categoryName": "Coding",
+    "url": "https://byterockers.itch.io/net-attack",
+    "image": "/images/games/net-attack.webp",
+    "imageFallback": "/images/games/net-attack.jpg",
+    "description": "Play Net.Attack() online for free. Educational coding game perfect for learning.",
+    "ageRange": "12-18",
+    "difficulty": "Medium",
+    "rating": 4.1,
+    "playCount": 12326,
+    "tags": [
+      "coding",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": true,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master coding skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "scratch-project",
+    "title": "Scratch Programming",
+    "category": "coding",
+    "categoryName": "Coding",
+    "url": "https://scratch.mit.edu/projects/703413868/embed",
+    "image": "/images/games/scratch-project.webp",
+    "imageFallback": "/images/games/scratch-project.jpg",
+    "description": "Play Scratch Programming online for free. Educational coding game perfect for learning.",
+    "ageRange": "12-18",
+    "difficulty": "Medium",
+    "rating": 4.2,
+    "playCount": 11169,
+    "tags": [
+      "coding",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": true,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master coding skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "blockerzz",
+    "title": "Blockerzz",
+    "category": "coding",
+    "categoryName": "Coding",
+    "url": "https://blockerzz.quizalize.com/",
+    "image": "/images/games/blockerzz.webp",
+    "imageFallback": "/images/games/blockerzz.jpg",
+    "description": "Play Blockerzz online for free. Educational coding game perfect for learning.",
+    "ageRange": "12-18",
+    "difficulty": "Medium",
+    "rating": 5,
+    "playCount": 10716,
+    "tags": [
+      "coding",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master coding skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "typing-game",
+    "title": "A Relaxing Typing Game",
+    "category": "language",
+    "categoryName": "Language",
+    "url": "https://eatkin.itch.io/a-relaxing-typing-game",
+    "image": "/images/games/typing-game.webp",
+    "imageFallback": "/images/games/typing-game.jpg",
+    "description": "Play A Relaxing Typing Game online for free. Educational language game perfect for learning.",
+    "ageRange": "8-16",
+    "difficulty": "Easy",
+    "rating": 4.3,
+    "playCount": 1828,
+    "tags": [
+      "language",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master language skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "20-words",
+    "title": "20 Words // 20 Seconds",
+    "category": "language",
+    "categoryName": "Language",
+    "url": "https://kevinhutchins.itch.io/20-words-20-seconds",
+    "image": "/images/games/20-words.webp",
+    "imageFallback": "/images/games/20-words.jpg",
+    "description": "Play 20 Words // 20 Seconds online for free. Educational language game perfect for learning.",
+    "ageRange": "8-16",
+    "difficulty": "Easy",
+    "rating": 4.6,
+    "playCount": 15540,
+    "tags": [
+      "language",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master language skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "alphabet-typing",
+    "title": "Alphabet Typing Game",
+    "category": "language",
+    "categoryName": "Language",
+    "url": "https://braska.itch.io/alphabet-typing-game",
+    "image": "/images/games/alphabet-typing.webp",
+    "imageFallback": "/images/games/alphabet-typing.jpg",
+    "description": "Play Alphabet Typing Game online for free. Educational language game perfect for learning.",
+    "ageRange": "8-16",
+    "difficulty": "Easy",
+    "rating": 4,
+    "playCount": 12619,
+    "tags": [
+      "language",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": true,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master language skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "car-drawing",
+    "title": "Car Drawing Game",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "url": "https://www.crazygames.com/embed/car-drawing",
+    "image": "/images/games/car-drawing.webp",
+    "imageFallback": "/images/games/car-drawing.jpg",
+    "description": "Play Car Drawing Game online for free. Educational puzzle game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Easy",
+    "rating": 4.4,
+    "playCount": 1118,
+    "tags": [
+      "puzzle",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Master puzzle skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "sudoku",
+    "title": "Sudoku Classic",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "url": "https://www.miniplay.com/embed/sudoku-classic",
+    "image": "/images/games/sudoku.webp",
+    "imageFallback": "/images/games/sudoku.jpg",
+    "description": "Play Sudoku Classic online for free. Educational puzzle game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Easy",
+    "rating": 5,
+    "playCount": 10335,
+    "tags": [
+      "puzzle",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Master puzzle skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "supernode",
+    "title": "Supernode",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "url": "https://dustyroom.itch.io/supernode",
+    "image": "/images/games/supernode.webp",
+    "imageFallback": "/images/games/supernode.jpg",
+    "description": "Play Supernode online for free. Educational puzzle game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Easy",
+    "rating": 5,
+    "playCount": 15971,
+    "tags": [
+      "puzzle",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master puzzle skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "coming-home",
+    "title": "Coming Home",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "url": "https://samuraipunk.itch.io/coming-home",
+    "image": "/images/games/coming-home.webp",
+    "imageFallback": "/images/games/coming-home.jpg",
+    "description": "Play Coming Home online for free. Educational puzzle game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Easy",
+    "rating": 4.1,
+    "playCount": 10321,
+    "tags": [
+      "puzzle",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master puzzle skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "jeopardy-science",
+    "title": "Jeopardy 6th Grade Science",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "url": "https://jeopardylabs.com/play/jeopardy-6th-grade-science2?embed=1",
+    "image": "/images/games/jeopardy-science.webp",
+    "imageFallback": "/images/games/jeopardy-science.jpg",
+    "description": "Play Jeopardy 6th Grade Science online for free. Educational puzzle game perfect for learning.",
+    "ageRange": "10-18",
+    "difficulty": "Easy",
+    "rating": 4.7,
+    "playCount": 18964,
+    "tags": [
+      "puzzle",
+      "educational",
+      "free",
+      "online"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Master puzzle skills",
+      "Develop problem-solving abilities",
+      "Improve critical thinking",
+      "Build confidence through practice"
+    ],
+    "gameFeatures": [
+      "Interactive gameplay",
+      "Educational content",
+      "Progress tracking",
+      "Kid-friendly interface"
+    ]
+  },
+  {
+    "slug": "soccer-physics",
+    "title": "Soccer Physics",
+    "category": "sports",
+    "categoryName": "Sports",
+    "url": "https://www.crazygames.com/embed/soccer-physics",
+    "image": "/images/games/soccer-physics.webp",
+    "imageFallback": "/images/games/soccer-physics.jpg",
+    "description": "Learn soccer fundamentals through physics-based gameplay. Master ball control and scoring techniques.",
+    "ageRange": "8-16",
+    "difficulty": "Medium",
+    "rating": 4.6,
+    "playCount": 25847,
+    "tags": [
+      "sports",
+      "soccer",
+      "physics",
+      "teamwork",
+      "free"
+    ],
+    "featured": true,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Understand soccer rules and strategies",
+      "Develop hand-eye coordination",
+      "Learn teamwork concepts",
+      "Practice problem-solving skills"
+    ],
+    "gameFeatures": [
+      "Physics-based gameplay",
+      "Team strategy elements",
+      "Skill development",
+      "Competitive play"
+    ]
+  },
+  {
+    "slug": "basketball-legends",
+    "title": "Basketball Legends",
+    "category": "sports",
+    "categoryName": "Sports",
+    "url": "https://www.crazygames.com/embed/basketball-legends",
+    "image": "/images/games/basketball-legends.webp",
+    "imageFallback": "/images/games/basketball-legends.jpg",
+    "description": "Experience basketball action while learning game strategies and player positions.",
+    "ageRange": "10-18",
+    "difficulty": "Medium",
+    "rating": 4.8,
+    "playCount": 31205,
+    "tags": [
+      "sports",
+      "basketball",
+      "strategy",
+      "competition",
+      "free"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Learn basketball fundamentals",
+      "Understand team strategies",
+      "Develop quick decision-making",
+      "Practice competitive sportsmanship"
+    ],
+    "gameFeatures": [
+      "Realistic basketball gameplay",
+      "Multiple game modes",
+      "Player customization",
+      "Tournament system"
+    ]
+  },
+  {
+    "slug": "fitness-challenge",
+    "title": "Fitness Challenge",
+    "category": "sports",
+    "categoryName": "Sports",
+    "url": "https://www.miniplay.com/embed/fitness-challenge",
+    "image": "/images/games/fitness-challenge.webp",
+    "imageFallback": "/images/games/fitness-challenge.jpg",
+    "description": "Interactive fitness game teaching healthy exercise habits and body awareness.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.4,
+    "playCount": 18392,
+    "tags": [
+      "sports",
+      "fitness",
+      "health",
+      "exercise",
+      "free"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "learningObjectives": [
+      "Learn about physical fitness",
+      "Understand healthy lifestyle choices",
+      "Develop body awareness",
+      "Practice goal-setting skills"
+    ],
+    "gameFeatures": [
+      "Exercise routines",
+      "Health tracking",
+      "Goal setting",
+      "Progress monitoring"
+    ]
+  },
+  {
+    "slug": "scratch-art-studio",
+    "title": "Scratch Art Studio",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "url": "https://scratch.mit.edu/projects/editor/",
+    "image": "/images/games/scratch-art-studio.webp",
+    "imageFallback": "/images/games/scratch-art-studio.jpg",
+    "description": "Create interactive art projects and animations using MIT's Scratch programming platform.",
+    "ageRange": "8-16",
+    "difficulty": "Medium",
+    "rating": 4.5,
+    "playCount": 19847,
+    "tags": [
+      "art",
+      "animation",
+      "interactive art",
+      "programming",
+      "creativity",
+      "free"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Combine art with programming",
+      "Create interactive animations",
+      "Learn storytelling through art",
+      "Develop computational thinking"
+    ],
+    "gameFeatures": [
+      "Visual programming",
+      "Animation tools",
+      "Interactive elements",
+      "Project sharing"
+    ]
+  },
+  {
+    "slug": "color-theory-game",
+    "title": "Color Theory Explorer",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "url": "https://www.sessions.edu/color-calculator/",
+    "image": "/images/games/color-theory-game.webp",
+    "imageFallback": "/images/games/color-theory-game.jpg",
+    "description": "Learn about color relationships, harmony, and theory through interactive color mixing.",
+    "ageRange": "6-14",
+    "difficulty": "Easy",
+    "rating": 4.3,
+    "playCount": 16523,
+    "tags": [
+      "art",
+      "color theory",
+      "art education",
+      "design",
+      "visual arts",
+      "free"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Understand color relationships",
+      "Learn about color harmony",
+      "Develop visual design skills",
+      "Explore artistic composition"
+    ],
+    "gameFeatures": [
+      "Color wheel tools",
+      "Harmony examples",
+      "Interactive mixing",
+      "Design principles"
+    ]
+  },
+  {
+    "slug": "pottery-wheel",
+    "title": "Virtual Pottery Wheel",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "url": "https://www.crazygames.com/embed/pottery",
+    "image": "/images/games/pottery-wheel.webp",
+    "imageFallback": "/images/games/pottery-wheel.jpg",
+    "description": "Experience the art of pottery making through realistic virtual clay shaping and decoration.",
+    "ageRange": "6-16",
+    "difficulty": "Easy",
+    "rating": 4.4,
+    "playCount": 22891,
+    "tags": [
+      "art",
+      "pottery",
+      "crafts",
+      "traditional art",
+      "creativity",
+      "free"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Learn about traditional crafts",
+      "Develop patience and focus",
+      "Understand form and function",
+      "Appreciate cultural art forms"
+    ],
+    "gameFeatures": [
+      "Realistic pottery wheel",
+      "Clay shaping tools",
+      "Decoration options",
+      "Firing simulation"
+    ]
+  },
+  {
+    "slug": "ancient-civilizations",
+    "title": "Ancient Civilizations Explorer",
+    "category": "geography",
+    "categoryName": "Geography & History",
+    "url": "https://www.bbc.co.uk/bitesize/topics/z9jxhyc",
+    "image": "/images/games/ancient-civilizations.webp",
+    "imageFallback": "/images/games/ancient-civilizations.jpg",
+    "description": "Journey through ancient Egypt, Greece, Rome, and other civilizations to learn about their cultures.",
+    "ageRange": "8-14",
+    "difficulty": "Medium",
+    "rating": 4.6,
+    "playCount": 19834,
+    "tags": [
+      "geography",
+      "ancient history",
+      "civilizations",
+      "culture",
+      "archaeology",
+      "free"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Learn about ancient civilizations",
+      "Understand historical development",
+      "Explore cultural achievements",
+      "Develop historical thinking"
+    ],
+    "gameFeatures": [
+      "Interactive timelines",
+      "Cultural exploration",
+      "Archaeological discoveries",
+      "Historical comparisons"
+    ]
+  },
+  {
+    "slug": "map-skills-adventure",
+    "title": "Map Skills Adventure",
+    "category": "geography",
+    "categoryName": "Geography & History",
+    "url": "https://www.nationalgeographic.org/education/mapping/",
+    "image": "/images/games/map-skills-adventure.webp",
+    "imageFallback": "/images/games/map-skills-adventure.jpg",
+    "description": "Master essential map reading skills including coordinates, scale, and compass directions.",
+    "ageRange": "8-14",
+    "difficulty": "Easy",
+    "rating": 4.3,
+    "playCount": 16729,
+    "tags": [
+      "geography",
+      "maps",
+      "navigation",
+      "coordinates",
+      "geography skills",
+      "free"
+    ],
+    "featured": false,
+    "trending": false,
+    "isNew": false,
+    "learningObjectives": [
+      "Learn map reading skills",
+      "Understand coordinates and scale",
+      "Practice navigation techniques",
+      "Develop spatial awareness"
+    ],
+    "gameFeatures": [
+      "Interactive maps",
+      "Coordinate practice",
+      "Scale exercises",
+      "Navigation challenges"
+    ]
+  },
+  {
+    "slug": "cultural-explorer",
+    "title": "World Cultural Explorer",
+    "category": "geography",
+    "categoryName": "Geography & History",
+    "url": "https://www.nationalgeographic.org/education/",
+    "image": "/images/games/cultural-explorer.webp",
+    "imageFallback": "/images/games/cultural-explorer.jpg",
+    "description": "Discover diverse cultures, traditions, and customs from around the world through interactive experiences.",
+    "ageRange": "6-16",
+    "difficulty": "Easy",
+    "rating": 4.5,
+    "playCount": 22156,
+    "tags": [
+      "geography",
+      "culture",
+      "traditions",
+      "diversity",
+      "global awareness",
+      "free"
+    ],
+    "featured": false,
+    "trending": true,
+    "isNew": false,
+    "learningObjectives": [
+      "Explore world cultures and traditions",
+      "Develop cultural sensitivity",
+      "Learn about diversity and inclusion",
+      "Build global citizenship skills"
+    ],
+    "gameFeatures": [
+      "Cultural immersion",
+      "Interactive experiences",
+      "Tradition exploration",
+      "Global perspectives"
+    ]
+  }
+]
