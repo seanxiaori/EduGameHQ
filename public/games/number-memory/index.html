@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Memory Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-container {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .game-title {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .game-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            font-size: 1.2em;
+            color: #666;
+        }
+
+        .sequence-display {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 30px;
+            border: 3px solid #e9ecef;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sequence-numbers {
+            font-size: 3em;
+            color: #333;
+            font-weight: bold;
+            letter-spacing: 10px;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .number-input {
+            font-size: 2em;
+            padding: 15px;
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+            max-width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .number-input:focus {
+            outline: none;
+            border-color: #74b9ff;
+        }
+
+        .btn {
+            background: #74b9ff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 1.3em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            margin: 5px;
+        }
+
+        .btn:hover {
+            background: #0984e3;
+            transform: translateY(-2px);
+        }
+
+        .btn.start {
+            background: #00b894;
+        }
+
+        .btn.start:hover {
+            background: #00a085;
+        }
+
+        .btn.submit {
+            background: #e17055;
+        }
+
+        .btn.submit:hover {
+            background: #d63031;
+        }
+
+        .feedback {
+            font-size: 1.5em;
+            margin: 20px 0;
+            font-weight: bold;
+            min-height: 30px;
+        }
+
+        .feedback.correct {
+            color: #00b894;
+        }
+
+        .feedback.wrong {
+            color: #d63031;
+        }
+
+        .game-over {
+            display: none;
+        }
+
+        .final-level {
+            font-size: 2em;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .instructions {
+            background: #e8f4fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .countdown {
+            font-size: 4em;
+            color: #e17055;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .level-progress {
+            background: #f1f2f6;
+            border-radius: 10px;
+            height: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, #00b894, #74b9ff);
+            height: 100%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .number-btn {
+            background: #ddd;
+            border: none;
+            border-radius: 10px;
+            padding: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .number-btn:hover {
+            background: #74b9ff;
+            color: white;
+        }
+
+        .number-btn.active {
+            background: #00b894;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="game-container">
+        <h1 class="game-title">🧠 Number Memory</h1>
+        
+        <div id="start-screen">
+            <div class="instructions">
+                <h3>How to Play:</h3>
+                <p>1. Watch the sequence of numbers carefully</p>
+                <p>2. Remember the order</p>
+                <p>3. Type the sequence back correctly</p>
+                <p>4. Each level adds one more number!</p>
+            </div>
+            <button class="btn start" onclick="startGame()">Start Game</button>
+        </div>
+
+        <div id="game-screen" class="hidden">
+            <div class="game-info">
+                <div>Level: <span id="level">1</span></div>
+                <div>Best: <span id="best-score">0</span></div>
+            </div>
+
+            <div class="level-progress">
+                <div class="progress-bar" id="progress-bar" style="width: 10%"></div>
+            </div>
+
+            <div class="sequence-display" id="sequence-display">
+                <div class="sequence-numbers" id="sequence-numbers">Ready?</div>
+            </div>
+
+            <div id="input-section" class="input-section hidden">
+                <input type="text" class="number-input" id="number-input" placeholder="Enter the sequence..." maxlength="20">
+                <br>
+                <button class="btn submit" onclick="checkAnswer()">Submit</button>
+                <button class="btn" onclick="showSequence()">Show Again</button>
+            </div>
+
+            <div class="number-grid hidden" id="number-grid">
+                <button class="number-btn" onclick="addNumber(1)">1</button>
+                <button class="number-btn" onclick="addNumber(2)">2</button>
+                <button class="number-btn" onclick="addNumber(3)">3</button>
+                <button class="number-btn" onclick="addNumber(4)">4</button>
+                <button class="number-btn" onclick="addNumber(5)">5</button>
+                <button class="number-btn" onclick="addNumber(6)">6</button>
+                <button class="number-btn" onclick="addNumber(7)">7</button>
+                <button class="number-btn" onclick="addNumber(8)">8</button>
+                <button class="number-btn" onclick="addNumber(9)">9</button>
+            </div>
+
+            <div class="feedback" id="feedback"></div>
+
+            <button class="btn hidden" id="next-btn" onclick="nextLevel()">Next Level</button>
+        </div>
+
+        <div id="game-over" class="game-over">
+            <h2>🎯 Game Over!</h2>
+            <div class="final-level">
+                You reached level: <span id="final-level">1</span>
+            </div>
+            <div id="performance-message"></div>
+            <button class="btn start" onclick="restartGame()">Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        let currentLevel = 1;
+        let currentSequence = [];
+        let playerInput = '';
+        let bestScore = localStorage.getItem('numberMemoryBest') || 0;
+        let showingSequence = false;
+
+        document.getElementById('best-score').textContent = bestScore;
+
+        function startGame() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            currentLevel = 1;
+            nextLevel();
+        }
+
+        function generateSequence(length) {
+            const sequence = [];
+            for (let i = 0; i < length; i++) {
+                sequence.push(Math.floor(Math.random() * 9) + 1);
+            }
+            return sequence;
+        }
+
+        function nextLevel() {
+            document.getElementById('level').textContent = currentLevel;
+            document.getElementById('feedback').textContent = '';
+            document.getElementById('feedback').className = 'feedback';
+            document.getElementById('next-btn').classList.add('hidden');
+            document.getElementById('input-section').classList.add('hidden');
+            document.getElementById('number-grid').classList.add('hidden');
+            document.getElementById('number-input').value = '';
+            
+            // 更新进度条
+            const progress = Math.min((currentLevel / 10) * 100, 100);
+            document.getElementById('progress-bar').style.width = progress + '%';
+            
+            currentSequence = generateSequence(currentLevel + 2); // 从3个数字开始
+            showSequence();
+        }
+
+        function showSequence() {
+            showingSequence = true;
+            document.getElementById('input-section').classList.add('hidden');
+            document.getElementById('number-grid').classList.add('hidden');
+            
+            let index = 0;
+            const display = document.getElementById('sequence-numbers');
+            
+            // 倒计时
+            display.textContent = '3';
+            display.className = 'sequence-numbers countdown';
+            
+            setTimeout(() => {
+                display.textContent = '2';
+            }, 1000);
+            
+            setTimeout(() => {
+                display.textContent = '1';
+            }, 2000);
+            
+            setTimeout(() => {
+                display.textContent = 'Watch!';
+                display.className = 'sequence-numbers';
+            }, 3000);
+            
+            setTimeout(() => {
+                showNextNumber();
+            }, 4000);
+            
+            function showNextNumber() {
+                if (index < currentSequence.length) {
+                    display.textContent = currentSequence[index];
+                    display.style.color = '#e17055';
+                    
+                    setTimeout(() => {
+                        display.textContent = '•';
+                        display.style.color = '#ddd';
+                        index++;
+                        setTimeout(showNextNumber, 500);
+                    }, 800);
+                } else {
+                    display.textContent = 'Your turn!';
+                    display.style.color = '#333';
+                    showingSequence = false;
+                    document.getElementById('input-section').classList.remove('hidden');
+                    document.getElementById('number-grid').classList.remove('hidden');
+                    document.getElementById('number-input').focus();
+                }
+            }
+        }
+
+        function addNumber(num) {
+            if (!showingSequence) {
+                const input = document.getElementById('number-input');
+                input.value += num;
+            }
+        }
+
+        function checkAnswer() {
+            const input = document.getElementById('number-input').value;
+            const correctSequence = currentSequence.join('');
+            
+            if (input === correctSequence) {
+                // 正确答案
+                document.getElementById('feedback').textContent = '🎉 Correct! Well done!';
+                document.getElementById('feedback').className = 'feedback correct';
+                document.getElementById('next-btn').classList.remove('hidden');
+                
+                // 更新最佳成绩
+                if (currentLevel > bestScore) {
+                    bestScore = currentLevel;
+                    localStorage.setItem('numberMemoryBest', bestScore);
+                    document.getElementById('best-score').textContent = bestScore;
+                }
+                
+                currentLevel++;
+            } else {
+                // 错误答案
+                document.getElementById('feedback').textContent = `❌ Wrong! The correct sequence was: ${correctSequence}`;
+                document.getElementById('feedback').className = 'feedback wrong';
+                
+                setTimeout(() => {
+                    endGame();
+                }, 2000);
+            }
+        }
+
+        function endGame() {
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('game-over').classList.remove('hidden');
+            document.getElementById('final-level').textContent = currentLevel - 1;
+            
+            let message = '';
+            const finalLevel = currentLevel - 1;
+            
+            if (finalLevel >= 10) {
+                message = '🧠 Incredible memory! You\'re a genius!';
+            } else if (finalLevel >= 7) {
+                message = '🌟 Excellent memory skills!';
+            } else if (finalLevel >= 5) {
+                message = '👍 Good memory! Keep practicing!';
+            } else if (finalLevel >= 3) {
+                message = '😊 Not bad! Try to focus more!';
+            } else {
+                message = '💪 Keep practicing to improve your memory!';
+            }
+            
+            document.getElementById('performance-message').textContent = message;
+        }
+
+        function restartGame() {
+            document.getElementById('game-over').classList.add('hidden');
+            document.getElementById('start-screen').classList.remove('hidden');
+        }
+
+        // 键盘支持
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !document.getElementById('input-section').classList.contains('hidden')) {
+                checkAnswer();
+            }
+            
+            // 数字键支持
+            if (event.key >= '1' && event.key <= '9' && !showingSequence) {
+                addNumber(parseInt(event.key));
+            }
+        });
+    </script>
+</body>
+</html> 
