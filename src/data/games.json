@@ -55,5 +55,33 @@
     "developer": "David Dix",
     "source": "GitHub",
     "type": "Free"
+  },
+  {
+    "slug": "tetris-game",
+    "title": "Tetris Game",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "url": "/games/tetris-game/index.html",
+    "image": "/images/games/puzzle/tetris-game.svg",
+    "imageFallback": "/images/games/puzzle/tetris-game.svg",
+    "description": "Classic Tetris game built with HTML5, CSS and JavaScript. Perfect for developing spatial reasoning and quick thinking skills.",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "playCount": 0,
+    "tags": [
+      "puzzle",
+      "tetris",
+      "html5",
+      "javascript",
+      "spatial-reasoning"
+    ],
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "developer": "Talha",
+    "source": "GitHub",
+    "type": "Free"
   }
 ]
