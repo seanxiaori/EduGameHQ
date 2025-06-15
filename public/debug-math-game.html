@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Math Challenge Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 600px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+        .test-links a {
+            display: inline-block;
+            margin: 5px 10px;
+            padding: 8px 16px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .test-links a:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Math Challenge Game 调试页面</h1>
+        
+        <div class="test-section">
+            <h2>📋 基本信息</h2>
+            <div class="info status">
+                <strong>游戏路径：</strong>/games/math-challenge-game/index.html<br>
+                <strong>技术栈：</strong>React + Vite (构建后)<br>
+                <strong>预期行为：</strong>显示数学挑战游戏界面
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔗 快速测试链接</h2>
+            <div class="test-links">
+                <a href="/games/math-challenge-game/index.html" target="_blank">直接打开游戏</a>
+                <a href="/games/math-challenge-game/assets/index.54ec5316.js" target="_blank">检查JS文件</a>
+                <a href="/games/math-challenge-game/assets/index.e943dcbb.css" target="_blank">检查CSS文件</a>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🎮 iframe嵌入测试</h2>
+            <p>下面是游戏的iframe嵌入版本（这是网站中使用的方式）：</p>
+            <div class="iframe-container">
+                <iframe 
+                    src="/games/math-challenge-game/index.html" 
+                    title="Math Challenge Game"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2>🔍 实时状态检查</h2>
+            <div id="status-container">
+                <div class="info status">正在检查资源状态...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 检查资源状态
+        async function checkResources() {
+            const statusContainer = document.getElementById('status-container');
+            const resources = [
+                { name: 'HTML页面', url: '/games/math-challenge-game/index.html' },
+                { name: 'JavaScript文件', url: '/games/math-challenge-game/assets/index.54ec5316.js' },
+                { name: 'CSS文件', url: '/games/math-challenge-game/assets/index.e943dcbb.css' },
+                { name: '字体文件', url: '/games/math-challenge-game/assets/Poppins-Regular.707fdc5c.ttf' }
+            ];
+
+            statusContainer.innerHTML = '';
+
+            for (const resource of resources) {
+                try {
+                    const response = await fetch(resource.url);
+                    const status = response.ok ? 'success' : 'error';
+                    const message = response.ok 
+                        ? `✅ ${resource.name} - 状态: ${response.status} (${response.statusText})`
+                        : `❌ ${resource.name} - 错误: ${response.status} (${response.statusText})`;
+                    
+                    const div = document.createElement('div');
+                    div.className = `${status} status`;
+                    div.textContent = message;
+                    statusContainer.appendChild(div);
+                } catch (error) {
+                    const div = document.createElement('div');
+                    div.className = 'error status';
+                    div.textContent = `❌ ${resource.name} - 网络错误: ${error.message}`;
+                    statusContainer.appendChild(div);
+                }
+            }
+
+            // 检查iframe加载状态
+            const iframe = document.querySelector('iframe');
+            iframe.onload = function() {
+                const div = document.createElement('div');
+                div.className = 'success status';
+                div.textContent = '✅ iframe加载成功';
+                statusContainer.appendChild(div);
+            };
+
+            iframe.onerror = function() {
+                const div = document.createElement('div');
+                div.className = 'error status';
+                div.textContent = '❌ iframe加载失败';
+                statusContainer.appendChild(div);
+            };
+        }
+
+        // 页面加载完成后检查资源
+        window.addEventListener('load', checkResources);
+
+        // 监听iframe内的错误（如果可能的话）
+        window.addEventListener('message', function(event) {
+            console.log('收到iframe消息:', event.data);
+        });
+    </script>
+</body>
+</html> 
