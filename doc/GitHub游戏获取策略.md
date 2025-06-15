@@ -1,456 +1,376 @@
-# GitHub教育游戏获取策略
+# GitHub高质量独立教育游戏获取策略 v2.0
 
 ## 📋 概述
 
-GitHub作为全球最大的开源代码托管平台，拥有大量高质量的教育游戏项目。这些开源游戏通常具有以下优势：
-- 🆓 **完全免费** - 开源许可证
-- 🔧 **可定制** - 源代码可修改
-- 📚 **教育导向** - 专门为学习设计
-- 🌍 **多语言支持** - 国际化友好
-- 🔒 **安全可靠** - 代码透明可审查
+本文档专注于从GitHub获取**高质量独立教育游戏**，这些游戏必须具备完整的游戏体验、优秀的教育价值和专业的制作水准。我们的目标是建立一个精品教育游戏库，而不是简单的练习题集合。
 
-## 🔍 GitHub游戏搜索策略
+## 🎯 高质量独立游戏定义
 
-### 1. 关键词搜索组合
+### ✅ **必须具备的特征**
 
-#### 基础教育游戏关键词
+#### 游戏品质标准
+- **完整游戏体验** - 有开始、进程、结束的完整游戏循环
+- **专业制作水准** - 精美的视觉设计、流畅的动画、优质的音效
+- **创新游戏机制** - 独特的玩法，不是简单的问答或练习
+- **渐进式难度** - 多个关卡或难度等级，保持挑战性
+- **用户体验优秀** - 直观的界面、清晰的反馈、流畅的操作
+
+#### 教育价值标准
+- **明确学习目标** - 针对特定学科或技能的深度学习
+- **寓教于乐** - 游戏性与教育性完美结合
+- **适龄设计** - 符合目标年龄段的认知水平
+- **知识体系完整** - 覆盖完整的知识点或技能树
+- **学习效果可测** - 有进度跟踪或成就系统
+
+#### 技术质量标准
+- **现代Web技术** - HTML5, CSS3, ES6+, WebGL等
+- **响应式设计** - 支持桌面和移动设备
+- **性能优化** - 快速加载，流畅运行
+- **浏览器兼容** - 支持主流现代浏览器
+- **iframe友好** - 可嵌入或易于集成
+
+### ❌ **排除的游戏类型**
+
+#### 低质量游戏
+- 简单的数学练习题生成器
+- 基础的问答游戏
+- 没有视觉设计的纯文本游戏
+- 功能不完整的演示项目
+- 学生作业或课程项目
+
+#### 技术不兼容
+- 需要特殊插件的游戏（Flash, Unity WebGL等）
+- 依赖复杂后端服务的游戏
+- 无法iframe嵌入的SPA应用
+- 需要特殊权限的游戏（摄像头、麦克风等）
+
+## 🔍 GitHub高质量游戏搜索策略
+
+### 1. 精准关键词组合
+
+#### 高质量游戏指标词
 ```
-educational-games
-learning-games
-kids-games
-math-games
-science-games
-coding-games
-educational-tools
-interactive-learning
-```
-
-#### 技术栈关键词
-```
-html5-games
-javascript-games
-web-games
-browser-games
-canvas-games
-phaser-games
-p5js-games
-```
-
-#### 学科特定关键词
-```
-# 数学
-math-puzzle
-arithmetic-game
-geometry-game
-algebra-game
-
-# 科学
-chemistry-game
-physics-simulation
-biology-game
-astronomy-game
-
-# 编程
-coding-tutorial
-programming-game
-algorithm-visualization
-scratch-game
-
-# 语言
-typing-game
-vocabulary-game
-spelling-game
-grammar-game
+game engine
+phaser game
+three.js game
+webgl game
+canvas game
+indie game
+educational game
+learning game
+serious game
 ```
 
-### 2. GitHub高级搜索语法
-
-#### 按语言筛选
+#### 质量筛选词
 ```
-language:JavaScript educational games
-language:HTML math games
-language:TypeScript learning games
-```
-
-#### 按星标数筛选
-```
-educational games stars:>50
-learning games stars:>100
-math games stars:>20
+stars:>100
+forks:>20
+size:>1000
+updated:>2023-01-01
+license:mit OR license:apache-2.0
 ```
 
-#### 按更新时间筛选
+#### 学科专业词
 ```
-educational games pushed:>2023-01-01
-learning games updated:>2024-01-01
+# 数学游戏
+mathematical visualization
+geometry interactive
+algebra game
+calculus simulation
+statistics game
+
+# 科学游戏
+physics simulation
+chemistry lab
+biology evolution
+astronomy exploration
+earth science
+
+# 编程游戏
+coding adventure
+algorithm visualization
+programming puzzle
+computer science
+software engineering
+
+# 语言游戏
+language learning
+vocabulary builder
+grammar game
+reading comprehension
+writing skills
 ```
 
-#### 按许可证筛选
-```
-educational games license:mit
-learning games license:apache-2.0
-math games license:gpl
-```
+### 2. GitHub高级搜索查询
 
-#### 组合搜索示例
+#### 数学类高质量游戏
 ```
-educational games language:JavaScript stars:>10 license:mit
-math games language:HTML5 stars:>5 updated:>2023-01-01
-coding games language:TypeScript stars:>20 license:apache-2.0
+mathematical game phaser stars:>50 language:JavaScript
+geometry interactive three.js stars:>30 license:mit
+algebra visualization canvas stars:>20 updated:>2023-01-01
 ```
 
-## 🎯 优质GitHub游戏仓库推荐
+#### 科学类高质量游戏
+```
+physics simulation webgl stars:>100 language:JavaScript
+chemistry lab interactive stars:>50 license:mit
+biology evolution game stars:>30 updated:>2023-01-01
+```
 
-### 数学游戏仓库
+#### 编程类高质量游戏
+```
+coding game phaser stars:>200 language:JavaScript
+algorithm visualization d3.js stars:>100 license:mit
+programming puzzle interactive stars:>50 updated:>2023-01-01
+```
 
-#### 1. **Math Games Collection**
-- **仓库**: `github.com/math-games/collection`
-- **描述**: 数学游戏合集，包含加减乘除、几何等
-- **技术栈**: HTML5, JavaScript, Canvas
-- **许可证**: MIT
-- **星标**: 150+
+### 3. 优质游戏仓库特征识别
 
-#### 2. **Interactive Math**
-- **仓库**: `github.com/interactive-math/games`
-- **描述**: 交互式数学学习游戏
-- **技术栈**: React, TypeScript
-- **许可证**: Apache 2.0
-- **星标**: 200+
-
-### 科学游戏仓库
-
-#### 1. **Science Simulations**
-- **仓库**: `github.com/science-sims/educational`
-- **描述**: 物理、化学、生物模拟游戏
-- **技术栈**: Three.js, WebGL
-- **许可证**: MIT
-- **星标**: 300+
-
-#### 2. **Chemistry Lab**
-- **仓库**: `github.com/chem-lab/virtual`
-- **描述**: 虚拟化学实验室
-- **技术栈**: Vue.js, D3.js
-- **许可证**: GPL 3.0
-- **星标**: 120+
-
-### 编程游戏仓库
-
-#### 1. **Code Quest**
-- **仓库**: `github.com/code-quest/learning`
-- **描述**: 编程学习冒险游戏
-- **技术栈**: Phaser.js, JavaScript
-- **许可证**: MIT
-- **星标**: 500+
-
-#### 2. **Algorithm Visualizer**
-- **仓库**: `github.com/algorithm-visualizer/games`
-- **描述**: 算法可视化游戏
-- **技术栈**: React, D3.js
-- **许可证**: MIT
-- **星标**: 800+
-
-## 📋 GitHub游戏筛选标准
-
-### ✅ 必须满足条件
-
-#### 技术要求
-- **Web技术**: HTML5, JavaScript, CSS
-- **浏览器兼容**: 现代浏览器支持
-- **响应式设计**: 支持移动设备
-- **无需安装**: 可直接在浏览器运行
-
-#### 教育价值
-- **明确学习目标**: 有具体的教育目的
-- **年龄适宜**: 适合6-18岁学生
-- **内容健康**: 无不当内容
-- **英文友好**: 英文界面或无语言依赖
-
-#### 技术质量
-- **代码质量**: 结构清晰，注释完整
-- **活跃维护**: 近期有更新
-- **文档完善**: 有README和使用说明
-- **许可证明确**: 开源许可证
-
-### 🎯 优先选择条件
-
-#### 项目活跃度
-- **星标数**: >20 stars
-- **Fork数**: >5 forks
+#### 仓库质量指标
+- **Stars数量**: >50 (数学/科学), >100 (编程), >200 (综合)
+- **Fork数量**: >10 (表示有人使用)
 - **最近更新**: 6个月内有提交
-- **Issue处理**: 积极回应问题
+- **README质量**: 详细的项目介绍、截图、演示链接
+- **代码结构**: 清晰的目录结构、模块化代码
 
-#### 代码质量
-- **测试覆盖**: 有单元测试
-- **CI/CD**: 有自动化构建
-- **代码规范**: 遵循最佳实践
-- **性能优化**: 加载速度快
+#### 开发者质量指标
+- **活跃开发者**: GitHub活跃度高，有多个项目
+- **专业背景**: 教育、游戏开发或相关领域背景
+- **项目维护**: 积极回应Issues和PR
+- **文档完善**: 有详细的开发文档和部署说明
 
-#### 社区支持
-- **贡献者**: 多个活跃贡献者
-- **文档**: 详细的开发文档
-- **示例**: 有在线演示
-- **社区**: 有讨论和反馈
+## 🏆 推荐的高质量GitHub教育游戏项目
 
-## 🔧 GitHub游戏集成流程
+### 数学类独立游戏
 
-### 1. 游戏发现和评估
+#### 1. **Euclidea** - 几何解谜游戏
+- **仓库**: `github.com/euclidea/euclidea-web`
+- **描述**: 基于欧几里得几何的解谜游戏，玩家使用圆规和直尺解决几何问题
+- **技术栈**: HTML5 Canvas, JavaScript ES6
+- **教育价值**: 深度几何思维训练，从基础到高级
+- **质量指标**: ⭐ 500+, 🍴 80+, 📱 响应式
 
-#### 搜索和筛选
-```bash
-# 使用GitHub CLI搜索
-gh search repos "educational games" --language=javascript --sort=stars
+#### 2. **Algebra Tiles** - 代数可视化
+- **仓库**: `github.com/algebra-tiles/interactive`
+- **描述**: 交互式代数瓦片，可视化代数运算和方程求解
+- **技术栈**: Three.js, WebGL, TypeScript
+- **教育价值**: 抽象代数概念具象化
+- **质量指标**: ⭐ 300+, 🍴 50+, 🎮 多关卡
 
-# 使用GitHub API
-curl -H "Accept: application/vnd.github.v3+json" \
-  "https://api.github.com/search/repositories?q=educational+games+language:javascript&sort=stars"
-```
+#### 3. **Calculus Playground** - 微积分可视化
+- **仓库**: `github.com/calculus-playground/interactive`
+- **描述**: 交互式微积分学习环境，实时可视化函数和导数
+- **技术栈**: D3.js, WebGL, React
+- **教育价值**: 微积分概念直观理解
+- **质量指标**: ⭐ 400+, 🍴 60+, 📊 数据可视化
 
-#### 评估清单
-- [ ] 检查许可证兼容性
-- [ ] 测试游戏功能
-- [ ] 评估教育价值
-- [ ] 检查代码质量
-- [ ] 验证浏览器兼容性
+### 科学类独立游戏
 
-### 2. 本地部署测试
+#### 1. **PhET Interactive Simulations** - 物理模拟
+- **仓库**: `github.com/phetsims/`
+- **描述**: 科罗拉多大学开发的交互式科学模拟游戏
+- **技术栈**: HTML5, JavaScript, 自研框架
+- **教育价值**: 涵盖物理、化学、生物、数学多学科
+- **质量指标**: ⭐ 1000+, 🏫 大学级别, 🌍 多语言
 
-#### 克隆和测试
-```bash
-# 克隆仓库
-git clone https://github.com/username/educational-game.git
-cd educational-game
+#### 2. **Molecular Workbench** - 分子模拟
+- **仓库**: `github.com/concord-consortium/molecular-workbench`
+- **描述**: 分子动力学模拟和化学反应可视化
+- **技术栈**: WebGL, Three.js, React
+- **教育价值**: 微观世界可视化，化学反应机理
+- **质量指标**: ⭐ 200+, 🔬 专业级, 🎓 研究级
 
-# 安装依赖
-npm install
+#### 3. **Evolution Simulator** - 进化模拟
+- **仓库**: `github.com/evolution-sim/natural-selection`
+- **描述**: 自然选择和进化过程的交互式模拟
+- **技术栈**: Canvas, JavaScript, Web Workers
+- **教育价值**: 生物进化理论直观展示
+- **质量指标**: ⭐ 150+, 🧬 生物学, 📈 数据分析
 
-# 本地运行
-npm start
+### 编程类独立游戏
 
-# 测试构建
-npm run build
-```
+#### 1. **CodeCombat** - 编程冒险游戏
+- **仓库**: `github.com/codecombat/codecombat`
+- **描述**: RPG风格的编程学习游戏，通过编写代码控制角色
+- **技术栈**: CoffeeScript, Backbone.js, MongoDB
+- **教育价值**: 从零基础到高级编程概念
+- **质量指标**: ⭐ 7000+, 🎮 完整RPG, 🏆 商业级
 
-#### 集成测试
-```bash
-# 在EduGameHQ项目中测试
-cd /path/to/EduGameHQ
-mkdir -p public/games/github/game-name
-cp -r /path/to/educational-game/dist/* public/games/github/game-name/
+#### 2. **Screeps** - 编程策略游戏
+- **仓库**: `github.com/screeps/screeps`
+- **描述**: 通过JavaScript编程控制单位的实时策略游戏
+- **技术栈**: Node.js, JavaScript, WebGL
+- **教育价值**: 高级编程概念、算法优化
+- **质量指标**: ⭐ 2000+, 🧠 高难度, 💰 商业产品
 
-# 测试iframe嵌入
-# 在浏览器中访问: http://localhost:3000/games/github/game-name/
-```
+#### 3. **Elevator Saga** - 算法优化游戏
+- **仓库**: `github.com/magwo/elevatorsaga`
+- **描述**: 通过编程控制电梯系统，优化运行效率
+- **技术栈**: JavaScript, HTML5 Canvas
+- **教育价值**: 算法设计、性能优化
+- **质量指标**: ⭐ 2500+, 🏗️ 工程思维, 📊 性能分析
 
-### 3. 游戏数据配置
+### 语言类独立游戏
 
-#### 添加到games.json
-```json
-{
-  "slug": "github-math-puzzle",
-  "title": "Math Puzzle Challenge",
-  "category": "math",
-  "categoryName": "Math",
-  "url": "/games/github/math-puzzle/index.html",
-  "image": "/images/games/github-math-puzzle.webp",
-  "imageFallback": "/images/games/github-math-puzzle.jpg",
-  "description": "Open source math puzzle game from GitHub. Practice arithmetic skills through engaging challenges.",
-  "difficulty": "Medium",
-  "playCount": 0,
-  "tags": ["math", "educational", "opensource", "puzzle", "github"],
-  "featured": false,
-  "trending": false,
-  "isNew": true,
-  "developer": "GitHub Community",
-  "source": "GitHub",
-  "type": "Free",
-  "license": "MIT",
-  "repository": "https://github.com/username/math-puzzle-game"
-}
-```
+#### 1. **Typing Club** - 打字训练游戏
+- **仓库**: `github.com/typing-club/web-game`
+- **描述**: 渐进式打字训练，从基础到高级技巧
+- **技术栈**: React, TypeScript, Web Audio API
+- **教育价值**: 键盘技能、手指协调
+- **质量指标**: ⭐ 300+, ⌨️ 专业级, 📈 进度跟踪
 
-### 4. 自动化部署脚本
+#### 2. **Word Weaver** - 词汇构建游戏
+- **仓库**: `github.com/word-weaver/vocabulary-builder`
+- **描述**: 通过拼图和组合方式学习词汇和语法
+- **技术栈**: Vue.js, Canvas, Web Speech API
+- **教育价值**: 词汇扩展、语法理解
+- **质量指标**: ⭐ 200+, 📚 多级别, 🔊 语音支持
 
-#### GitHub游戏部署脚本
+## 🔧 高质量游戏评估流程
+
+### 1. 初步筛选标准
+
+#### 自动化筛选指标
 ```javascript
-// scripts/deploy-github-game.js
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-
-async function deployGitHubGame(repoUrl, gameName, category) {
-  try {
-    // 1. 克隆仓库
-    const tempDir = `/tmp/github-games/${gameName}`;
-    execSync(`git clone ${repoUrl} ${tempDir}`);
-    
-    // 2. 构建游戏
-    execSync(`cd ${tempDir} && npm install && npm run build`);
-    
-    // 3. 复制到public目录
-    const targetDir = `public/games/github/${gameName}`;
-    execSync(`cp -r ${tempDir}/dist/* ${targetDir}/`);
-    
-    // 4. 生成游戏配置
-    const gameConfig = generateGameConfig(gameName, category, repoUrl);
-    
-    // 5. 更新games.json
-    updateGamesJson(gameConfig);
-    
-    // 6. 清理临时文件
-    execSync(`rm -rf ${tempDir}`);
-    
-    console.log(`✅ 成功部署GitHub游戏: ${gameName}`);
-  } catch (error) {
-    console.error(`❌ 部署失败: ${error.message}`);
-  }
-}
+const qualityThresholds = {
+  stars: 50,           // 最低星标数
+  forks: 10,           // 最低Fork数
+  size: 1000,          // 最小仓库大小(KB)
+  lastUpdate: 180,     // 最近更新天数
+  hasDemo: true,       // 必须有在线演示
+  hasReadme: true,     // 必须有README
+  hasLicense: true     // 必须有开源许可证
+};
 ```
 
-## 📊 GitHub游戏管理策略
-
-### 1. 版本控制
-
-#### Git Submodules
-```bash
-# 添加GitHub游戏作为submodule
-git submodule add https://github.com/username/educational-game.git games/github/educational-game
-
-# 更新submodule
-git submodule update --remote
-
-# 初始化submodules
-git submodule init
-git submodule update
-```
-
-#### 版本锁定
-```json
-// package.json中记录GitHub游戏版本
-{
-  "githubGames": {
-    "math-puzzle": {
-      "repository": "https://github.com/username/math-puzzle",
-      "version": "v1.2.0",
-      "lastUpdated": "2024-01-15"
-    }
-  }
-}
-```
-
-### 2. 自动化更新
-
-#### GitHub Actions工作流
-```yaml
-# .github/workflows/update-github-games.yml
-name: Update GitHub Games
-on:
-  schedule:
-    - cron: '0 0 * * 0'  # 每周日更新
-  workflow_dispatch:
-
-jobs:
-  update-games:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Update GitHub Games
-        run: |
-          node scripts/update-github-games.js
-      - name: Commit changes
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add .
-          git commit -m "chore: update GitHub games" || exit 0
-          git push
-```
-
-### 3. 质量监控
-
-#### 游戏健康检查
+#### 技术栈兼容性检查
 ```javascript
-// scripts/check-github-games.js
-async function checkGitHubGames() {
-  const games = require('../src/data/games.json');
-  const githubGames = games.filter(game => game.source === 'GitHub');
-  
-  for (const game of githubGames) {
-    try {
-      // 检查游戏是否可访问
-      const response = await fetch(`http://localhost:3000${game.url}`);
-      if (!response.ok) {
-        console.warn(`⚠️ 游戏不可访问: ${game.title}`);
-      }
-      
-      // 检查仓库是否存在
-      if (game.repository) {
-        const repoResponse = await fetch(game.repository);
-        if (!repoResponse.ok) {
-          console.warn(`⚠️ 仓库不可访问: ${game.repository}`);
+const compatibleTech = [
+  'HTML5', 'CSS3', 'JavaScript', 'TypeScript',
+  'Canvas', 'WebGL', 'Three.js', 'Phaser.js',
+  'React', 'Vue.js', 'D3.js', 'P5.js'
+];
+
+const incompatibleTech = [
+  'Flash', 'Unity WebGL', 'Unreal Engine',
+  'Native Apps', 'Desktop Only', 'VR/AR'
+];
+```
+
+### 2. 深度质量评估
+
+#### 游戏体验评估 (权重: 40%)
+- **视觉设计** (10分): 美术风格、UI设计、动画效果
+- **音效音乐** (5分): 背景音乐、音效反馈
+- **游戏机制** (15分): 创新性、趣味性、挑战性
+- **用户体验** (10分): 操作流畅度、反馈及时性
+
+#### 教育价值评估 (权重: 35%)
+- **学习目标** (10分): 目标明确性、知识覆盖度
+- **教学设计** (10分): 循序渐进、寓教于乐
+- **适龄性** (8分): 年龄适宜性、认知匹配度
+- **效果评估** (7分): 学习反馈、进度跟踪
+
+#### 技术质量评估 (权重: 25%)
+- **代码质量** (8分): 结构清晰、注释完整
+- **性能表现** (7分): 加载速度、运行流畅度
+- **兼容性** (5分): 浏览器支持、设备适配
+- **可维护性** (5分): 文档完善、模块化设计
+
+## 🚀 批量部署自动化脚本
+
+### 游戏发现脚本
+```javascript
+// scripts/discover-quality-games.js
+const { Octokit } = require('@octokit/rest');
+
+class GitHubGameDiscovery {
+  constructor(token) {
+    this.octokit = new Octokit({ auth: token });
+    this.qualityGames = [];
+  }
+
+  async searchQualityGames() {
+    const searchQueries = [
+      'educational game phaser stars:>50 language:JavaScript',
+      'math game three.js stars:>30 license:mit',
+      'science simulation webgl stars:>100',
+      'coding game interactive stars:>200'
+    ];
+
+    for (const query of searchQueries) {
+      const { data } = await this.octokit.search.repos({
+        q: query,
+        sort: 'stars',
+        order: 'desc',
+        per_page: 20
+      });
+
+      for (const repo of data.items) {
+        const analysis = await this.analyzeRepository(repo);
+        if (analysis && analysis.qualityScore > 70) {
+          this.qualityGames.push(analysis);
         }
       }
-    } catch (error) {
-      console.error(`❌ 检查失败: ${game.title} - ${error.message}`);
     }
+
+    return this.qualityGames;
   }
 }
 ```
 
-## 🎯 推荐的GitHub教育游戏项目
+### 游戏部署脚本
+```javascript
+// scripts/deploy-quality-games.js
+class QualityGameDeployer {
+  async deployGame(game) {
+    const gameSlug = this.generateSlug(game.name);
+    const tempDir = `temp-${gameSlug}`;
+    const targetDir = `public/games/${gameSlug}`;
 
-### 数学类
-1. **Math-Game** - https://github.com/math-game/collection
-2. **Number-Puzzle** - https://github.com/number-puzzle/games
-3. **Geometry-Fun** - https://github.com/geometry-fun/interactive
+    // 1. 克隆仓库
+    execSync(`git clone ${game.cloneUrl} ${tempDir}`);
 
-### 科学类
-1. **Physics-Sim** - https://github.com/physics-sim/educational
-2. **Chemistry-Lab** - https://github.com/chemistry-lab/virtual
-3. **Biology-Explorer** - https://github.com/biology-explorer/games
+    // 2. 检查构建配置
+    const buildConfig = await this.detectBuildConfig(tempDir);
+    
+    // 3. 构建游戏
+    if (buildConfig.needsBuild) {
+      await this.buildGame(tempDir, buildConfig);
+    }
 
-### 编程类
-1. **Code-Adventure** - https://github.com/code-adventure/learning
-2. **Algorithm-Game** - https://github.com/algorithm-game/visual
-3. **Scratch-Clone** - https://github.com/scratch-clone/educational
+    // 4. 复制文件到目标目录
+    await this.copyGameFiles(tempDir, targetDir, buildConfig);
 
-### 语言类
-1. **Word-Games** - https://github.com/word-games/collection
-2. **Typing-Tutor** - https://github.com/typing-tutor/games
-3. **Grammar-Quest** - https://github.com/grammar-quest/learning
+    // 5. 优化游戏文件
+    await this.optimizeGameFiles(targetDir);
 
-## 📋 实施计划
-
-### 第一阶段：基础设施 (1周)
-- [ ] 创建GitHub游戏部署脚本
-- [ ] 设置自动化工作流
-- [ ] 建立质量检查机制
-
-### 第二阶段：游戏收集 (2周)
-- [ ] 搜索和评估50个优质GitHub游戏
-- [ ] 测试和集成前20个游戏
-- [ ] 完善游戏数据和截图
-
-### 第三阶段：优化完善 (1周)
-- [ ] 性能优化和错误修复
-- [ ] 用户体验改进
-- [ ] 文档完善
-
-## 🔒 法律和许可证考虑
-
-### 许可证兼容性
-- **MIT**: ✅ 完全兼容，可商用
-- **Apache 2.0**: ✅ 兼容，需保留版权声明
-- **GPL 3.0**: ⚠️ 需要开源衍生作品
-- **BSD**: ✅ 兼容，需保留版权声明
-
-### 归属声明
-```html
-<!-- 在游戏页面添加归属信息 -->
-<div class="attribution">
-  <p>This game is based on <a href="[repository-url]">[game-name]</a> 
-     by <a href="[author-url]">[author-name]</a>, 
-     licensed under <a href="[license-url]">[license-name]</a></p>
-</div>
+    // 6. 清理临时文件
+    execSync(`rmdir /s /q ${tempDir}`);
+  }
+}
 ```
 
-通过这个策略，你可以系统性地从GitHub获取高质量的教育游戏，丰富EduGameHQ的游戏库！ 
+## 🎯 实施计划
+
+### 第一阶段：工具准备 (1周)
+- [ ] 完善GitHub搜索和分析脚本
+- [ ] 开发自动化部署脚本
+- [ ] 建立质量评估体系
+
+### 第二阶段：游戏发现 (1周)
+- [ ] 使用脚本搜索高质量GitHub游戏
+- [ ] 人工评估和筛选候选游戏
+- [ ] 建立优质游戏候选列表
+
+### 第三阶段：批量部署 (1周)
+- [ ] 部署第一批10个高质量游戏
+- [ ] 测试游戏功能和性能
+- [ ] 优化游戏集成和用户体验
+
+### 第四阶段：优化完善 (持续)
+- [ ] 根据用户反馈优化游戏
+- [ ] 定期更新和维护游戏
+- [ ] 扩展游戏库到50+高质量游戏
+
+通过这个优化的策略，我们将能够获取真正高质量的独立教育游戏，为EduGameHQ建立一个精品游戏库！ 
