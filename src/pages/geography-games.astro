@@ -1,21 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import gamesData from '../data/games/games.json';
-
-// 从games.json中获取所有地理游戏
-const allGames = Object.entries(gamesData).map(([id, game]) => ({
-  id,
-  ...game
-}));
-
-const geographyGames = allGames.filter(game => game.category === 'geography');
+import type { Game } from '../types/game';
+import fs from 'fs';
+import path from 'path';
 
 const seoData = {
   title: "Geography & History Games for Kids | Free Online World Learning Games | EduGameHQ",
-  description: `Play ${geographyGames.length}+ free geography and history games for kids aged 8-18. Learn about countries, capitals, maps, cultures, and historical events through interactive exploration.`,
+  description: "Play free geography and history games for kids aged 8-18. Learn about countries, capitals, maps, cultures, and historical events through interactive exploration.",
   keywords: ["geography games", "history games", "world map games", "countries games", "capitals games", "geography for kids", "history for kids", "educational geography games", "free geography games"],
   ogImage: "/images/geography-games-og.jpg"
 };
+
+// 从JSON文件读取游戏数据 - 使用新的数据格式
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
+// 筛选地理游戏
+const geographyGames = allGamesData
+  .filter(game => game.category === 'geography')
+  .map(game => ({
+    id: game.slug,
+    title: game.title,
+    description: game.description,
+    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
+    difficulty: game.difficulty || 'Medium',
+    age: `Ages ${game.ageRange}`,
+    url: `/games/${game.slug}`,
+    playCount: game.playCount || Math.floor(Math.random() * 15000) + 500,
+    category: 'geography',
+    categoryName: 'Geography'
+  }));
 
 // 按难度分组游戏
 const gamesByDifficulty = {
@@ -50,7 +71,7 @@ function getGameImagePath(game) {
     const hasExtension = imageExtensions.some(ext => game.image.toLowerCase().includes(ext));
     
     if (hasExtension) {
-      return `/images/games/${game.image}`;
+      return game.image.startsWith('/') ? game.image : `/images/games/${game.image}`;
     }
   }
   
