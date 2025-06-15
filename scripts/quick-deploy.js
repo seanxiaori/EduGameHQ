@@ -12,9 +12,14 @@
  * node scripts/quick-deploy.js https://github.com/user/game.git math
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+import { fileURLToPath } from 'url';
+
+// 获取当前文件的目录路径（ES模块中的__dirname替代）
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // 简化配置
 const CATEGORIES = {
@@ -315,8 +320,9 @@ EduGameHQ 快速游戏部署脚本
 }
 
 // 运行主程序
-if (require.main === module) {
-  main();
-}
+main().catch(error => {
+  log(`程序执行失败: ${error.message}`, 'error');
+  process.exit(1);
+});
 
-module.exports = { deployGame }; 
+export { deployGame }; 

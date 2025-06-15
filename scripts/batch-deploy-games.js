@@ -16,10 +16,15 @@
  * node scripts/batch-deploy-games.js --single "owner/repo" --category math
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync, spawn } = require('child_process');
-const https = require('https');
+import fs from 'fs';
+import path from 'path';
+import { execSync, spawn } from 'child_process';
+import https from 'https';
+import { fileURLToPath } from 'url';
+
+// 获取当前文件的目录路径（ES模块中的__dirname替代）
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // 配置常量
 const CONFIG = {
@@ -618,14 +623,12 @@ EduGameHQ 批量游戏部署脚本
 }
 
 // 运行主程序
-if (require.main === module) {
-  main().catch(error => {
-    Logger.error(`程序执行失败: ${error.message}`);
-    process.exit(1);
-  });
-}
+main().catch(error => {
+  Logger.error(`程序执行失败: ${error.message}`);
+  process.exit(1);
+});
 
-module.exports = {
+export {
   GameDeployer,
   Logger,
   FileUtils,
