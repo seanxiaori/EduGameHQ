@@ -1,0 +1,256 @@
+
+@media (max-width: 767px) {
+  #start-window {
+  padding-left: 10px;
+  padding-right: 10px;
+  }
+  #start-window-categories {
+      display: none;
+      
+  }
+}
+#start-window {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-right: 30px;
+}
+
+.start-window__title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 50px;
+}
+
+@media (min-width: 768px) {
+  .start-window__title {
+    text-align: end;
+    font-size: 60px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .start-window__title {
+    font-size: 70px;
+    margin-bottom: 50px;
+  }
+
+  #start-window-categories {
+    display: flex;
+    gap: 30px;
+  }
+}
+
+.start-window__category-block {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  text-align: center;
+
+}
+
+@media (min-width: 768px) {
+  .start-window__category-block {
+    align-items: end;
+  }
+}
+
+@media (min-width: 1200px) {
+  .start-window__category-block {
+    align-items: center;
+  }
+ 
+}
+
+.topics {
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+}
+
+@media (min-width: 768px) {
+  .topics {
+    width: 600px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .topics {
+    width: 300px;
+  }
+}
+
+.start-window__category-blocks-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+@media (max-width: 1199px) {
+  .start-window__category-blocks-wrapper {
+    margin-top: 30px;
+  }
+}
+
+.category-block__container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .category-block__container {
+    justify-content: end;
+  }
+}
+
+@media (min-width: 1200px) {
+  .category-block__container {
+    justify-content: center;
+  }
+}
+
+
+.topic,
+.level,
+#game-with-timer,
+#game-without-timer {
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  font-size: 0;
+}
+
+@media (max-width: 767px) {
+.topic,
+   #game-with-timer,
+  #game-without-timer  {
+    width: 80px;
+    height: 80px;
+  }
+
+  .level  {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+
+
+#game-without-timer {
+  background: url('../images/without-timer.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#game-with-timer {
+  background: url('../images/with-timer.gif') no-repeat center center;
+  background-size: cover;
+}
+
+#theme1 {
+  background: url('../images/theme1/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme2 {
+  background: url('../images/theme2/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme3 {
+  background: url('../images/theme3/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme4 {
+  background: url('../images/theme4/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme5 {
+  background: url('../images/theme5/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme6 {
+  background: url('../images/theme6/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme7 {
+  background: url('../images/theme7/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#theme8 {
+  background: url('../images/theme8/back.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#level1 {
+  background: url('../images/level1.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#level2 {
+  background: url('../images/level2.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+#level3 {
+  background: url('../images/level3.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+
+
+.statistics-icon {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.stat-icon-wrapper {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #fff;
+  border: 3px solid black;
+  transition: 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.stat-info-block {
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
+  cursor: pointer;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  gap:10px;
+}
+
+.stat-icon-wrapper:hover {
+background-color: rgb(217, 0, 51);
+}
+
+.stat-info-block p {
+    transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.stat-info-block p:hover {
+  color: rgb(217, 0, 51);
+}
+
+
+
+

@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+
+html
+ {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+} 
+
+p {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: url('../images/start-background.jpg') no-repeat center center;
+  background-size: cover;
+  font-family: 'Rubik Bubbles', cursive;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  height: 100%;
+  overflow: auto;
+}
+
+@media (max-width: 767px){
+  body{
+    justify-content: stretch;
+  }
+}
+@media (min-width: 1200px){
+  body{
+    display: flex;
+    justify-content: end;
+  }
+}
+
+.game-wrapper {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 30px;
+
+}
+
+button {
+  font-family: 'Rubik Bubbles', cursive;
+}
+
+ul,
+li,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+ label {
+   overflow: hidden;
+ }
+
+.btn {
+  font-family: 'Rubik Bubbles', cursive;
+  width: 100%;
+  height: auto;
+  background-color: rgb(245, 186, 187);
+  border-radius: 10px;
+  border: 3px solid rgb(238, 119, 139);
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 100;
+  color: black;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms transform cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.btn.active,
+.btn:hover,
+.btn:focus {
+  color: white;
+  background-color: rgb(217, 0, 51);
+  border: 5px solid rgb(217, 0, 51);
+  transform: scale(1.1);
+}
+
+.btn.active {
+  color: white;
+  background-color: rgb(217, 0, 51);
+  border: 5px solid rgb(217, 0, 51);
+  transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+  .parameters-btn {
+    display: block;
+    width: 270px;
+    margin: 0 auto;
+  margin-top: 120px;
+  }
+}
+@media (min-width: 768px) {
+  .parameters-btn {
+    display: none;
+    
+  }
+}
+
+
+@media (max-width: 767px) {
+  .back-to-rules-btn {
+    display: none;
+    width: 270px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 768px) {
+  .back-to-rules-btn {
+    display: none;
+    
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+
+::-webkit-scrollbar-thumb {
+  background: #f1f1f1;
+  border-radius: 5px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: black;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-track:hover {
+  background: #ddd;
+}

@@ -1,0 +1,94 @@
+.cat-rules {
+  position: absolute;
+  bottom: -3px;
+  left: 30px;
+  width: 200px;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+  filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+}
+
+@media (max-width: 767px) {
+  .cat-rules {
+    width: 150px;
+  }
+  .cloud-rules {
+      bottom: 180px;
+        left: 120px;
+        width: 150px;
+    }
+  #rules-window {
+    bottom: 260px;
+    left: 135px;         }  
+
+}
+
+
+.cloud-rules {
+  position: absolute;
+  cursor: pointer;
+  -webkit-filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+  filter: drop-shadow(1px 1px 0 rgb(217, 0, 51)) drop-shadow(-1px -1px 0 rgb(217, 0, 51));
+}
+
+@media (min-width: 768px) {
+  .cloud-rules {
+      bottom: 220px;
+      left: 140px;
+      width: 250px;
+    }
+}
+
+@media (min-width: 1200px) {
+  .cloud-rules {
+    bottom: 240px;
+    left: 170px;
+    width: 250px;
+  }
+}
+
+#rules-window {
+  position: absolute;
+}
+
+@media (min-width: 768px) {
+  #rules-window {
+      bottom: 370px;
+      left: 180px;
+  }
+}
+
+@media (min-width: 1200px) {
+  #rules-window {
+    bottom: 390px;
+    left: 220px;
+  }
+}
+
+#rules {
+  font-family: 'Rubik Bubbles', cursive;
+  width: 100%;
+  height: auto;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: 100;
+  color: black;
+  cursor: pointer;
+  transition: 300ms color cubic-bezier(0.075, 0.82, 0.165, 1), 300ms background-color cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+@media (max-width: 767px) {
+  #rules {
+   font-size: 14px;
+ }
+}
+ 
+
+#rules:hover,
+#rules:focus {
+  color: rgb(217, 0, 51);
+}
