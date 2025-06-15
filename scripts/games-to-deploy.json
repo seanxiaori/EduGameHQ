@@ -1,60 +1,91 @@
 {
-  "description": "EduGameHQ 批量部署游戏配置文件",
   "version": "1.0",
+  "description": "EduGameHQ 批量游戏部署配置文件 - 第一批高质量游戏",
   "games": [
     {
-      "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
-      "category": "puzzle",
-      "config": {
-        "title": "HTML5 Games Collection",
-        "description": "A collection of 30 different HTML5 games including Tetris, Snake, Memory Card Game and more.",
-        "difficulty": "Easy",
-        "developer": "Talha",
-        "tags": ["puzzle", "educational", "collection", "html5"],
-        "featured": true
-      }
-    },
-    {
+      "slug": "math-challenge-game",
+      "title": "Math Challenge Game",
       "repoUrl": "https://github.com/Daviddix/math-game.git",
       "category": "math",
-      "config": {
-        "title": "Math Challenge Game",
-        "description": "Interactive math game with addition, subtraction, multiplication and division challenges.",
-        "difficulty": "Medium",
-        "developer": "David Dix",
-        "tags": ["math", "arithmetic", "educational", "react"],
-        "trending": true
-      }
+      "categoryName": "Math",
+      "description": "A React-based math challenge game with addition, subtraction, multiplication and division exercises for students.",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "minAge": 8,
+      "maxAge": 16,
+      "tags": ["math", "arithmetic", "educational", "react", "challenge"],
+      "featured": false,
+      "trending": true,
+      "developer": "David Dix",
+      "source": "GitHub"
     },
     {
+      "slug": "code-defense",
+      "title": "Code Defense",
       "repoUrl": "https://github.com/ivancraddock/Web-CodeDefense.git",
       "category": "coding",
-      "config": {
-        "title": "Code Defense",
-        "description": "Tower defense game that teaches basic JavaScript programming skills through interactive gameplay.",
-        "difficulty": "Hard",
-        "developer": "Ivan Craddock",
-        "tags": ["coding", "javascript", "programming", "tower-defense"],
-        "featured": true
-      }
+      "categoryName": "Programming",
+      "description": "A tower defense game that teaches basic JavaScript programming skills. Learn coding concepts while defending your base!",
+      "difficulty": "Hard",
+      "ageRange": "12-18",
+      "minAge": 12,
+      "maxAge": 18,
+      "tags": ["coding", "javascript", "programming", "tower-defense", "educational"],
+      "featured": true,
+      "trending": false,
+      "developer": "Ivan Craddock",
+      "source": "GitHub"
     },
     {
-      "repoUrl": "https://github.com/githubschool/github-games-n-brock.git",
-      "category": "coding",
-      "config": {
-        "title": "GitHub Games",
-        "description": "Learn Git and GitHub through an interactive Tetris game. Perfect for understanding version control.",
-        "difficulty": "Medium",
-        "developer": "GitHub School",
-        "tags": ["coding", "git", "github", "tetris", "version-control"],
-        "trending": true
-      }
+      "slug": "html5-games-tetris",
+      "title": "Tetris Game",
+      "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "category": "puzzle",
+      "categoryName": "Puzzle",
+      "description": "Classic Tetris game built with HTML5, CSS and JavaScript. Perfect for developing spatial reasoning and quick thinking skills.",
+      "difficulty": "Medium",
+      "ageRange": "8-18",
+      "minAge": 8,
+      "maxAge": 18,
+      "tags": ["puzzle", "tetris", "html5", "javascript", "spatial-reasoning"],
+      "featured": true,
+      "trending": true,
+      "developer": "Talha",
+      "source": "GitHub"
+    },
+    {
+      "slug": "html5-games-snake",
+      "title": "Snake Game",
+      "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "category": "puzzle",
+      "categoryName": "Puzzle",
+      "description": "Classic Snake game that helps develop hand-eye coordination and strategic planning skills.",
+      "difficulty": "Easy",
+      "ageRange": "6-16",
+      "minAge": 6,
+      "maxAge": 16,
+      "tags": ["puzzle", "snake", "coordination", "strategy", "classic"],
+      "featured": false,
+      "trending": false,
+      "developer": "Talha",
+      "source": "GitHub"
+    },
+    {
+      "slug": "html5-games-memory",
+      "title": "Memory Card Game",
+      "repoUrl": "https://github.com/he-is-talha/html-css-javascript-games.git",
+      "category": "puzzle",
+      "categoryName": "Puzzle",
+      "description": "Memory card matching game that enhances cognitive abilities and concentration skills.",
+      "difficulty": "Easy",
+      "ageRange": "6-14",
+      "minAge": 6,
+      "maxAge": 14,
+      "tags": ["puzzle", "memory", "cognitive", "concentration", "matching"],
+      "featured": false,
+      "trending": true,
+      "developer": "Talha",
+      "source": "GitHub"
     }
-  ],
-  "settings": {
-    "autoCleanup": true,
-    "generateImages": true,
-    "updateDatabase": true,
-    "deployDelay": 1000
-  }
+  ]
 } 
