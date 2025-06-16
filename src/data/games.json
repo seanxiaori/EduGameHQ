@@ -46,7 +46,8 @@
     "playCount": 0,
     "featured": true,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "count-masters-stickman-games",
@@ -95,7 +96,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "CrazyGames Team"
   },
   {
     "slug": "five-o",
@@ -143,7 +145,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "merge-the-numbers",
@@ -192,7 +195,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "numbers-arena",
@@ -240,7 +244,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "stone-puzzle-games",
@@ -289,7 +294,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "cypher---code-breaker",
@@ -436,7 +442,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "stack-it",
@@ -485,7 +492,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "math-push",
@@ -534,7 +542,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "number-digger",
@@ -583,7 +592,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "gravity-crowd",
@@ -632,7 +642,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "math-duck",
@@ -681,7 +692,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "bff-math-class",
@@ -730,7 +742,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "100-doors-puzzle-box",
@@ -779,7 +792,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "aritmazetic",
@@ -828,7 +842,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "super-number-defense",
@@ -877,7 +892,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "puzzle-survivor",
@@ -926,7 +942,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "the-last-light-of-lyra",
@@ -975,7 +992,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "nullify",
@@ -1024,7 +1042,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "number-masters",
@@ -1073,7 +1092,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "math-expressions",
@@ -1122,7 +1142,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "snake-blockade",
@@ -1171,7 +1192,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "xor",
@@ -1220,7 +1242,8 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   },
   {
     "slug": "dicetris",
@@ -1269,6 +1292,7 @@
     "playCount": 0,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "developer": "Kids site"
   }
 ]
