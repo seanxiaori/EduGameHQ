@@ -7,21 +7,11 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
-// 需要更新缩略图的游戏列表 (重点关注失败的9个)
+// 需要更新缩略图的游戏列表 (重点关注遗漏的游戏)
 const GAMES_TO_UPDATE = [
-  // 之前失败的游戏
-  'math-push',
-  'math-duck', 
-  'aritmazetic',
-  'super-number-defense',
-  'nullify',
-  'number-masters',
-  'math-expressions',
-  'snake-blockade',
-  'xor',
-  // 已成功的游戏 (用于验证)
-  'number-line-match',
-  'stack-it'
+  // 遗漏的游戏 - 需要修正缩略图
+  'dicetris',
+  'the-last-light-of-lyra'
 ];
 
 /**
