@@ -1,5 +1,5 @@
 /**
- * CrazyGames游戏信息获取脚本 (缩略图 + 开发者信息)
+ * CrazyGames游戏信息获取脚本 (缩略图 + 开发者信息) - 修正版
  * 专注于META标签获取，提供详细的调试信息
  */
 
@@ -96,7 +96,11 @@ async function getGameInfo(page, gameSlug) {
         const info = {
           metaTags: {},
           developer: null,
-          allImageMetas: []
+          allImageMetas: [],
+          debugInfo: {
+            allDeveloperTexts: [],
+            pageStructure: []
+          }
         };
         
         // 获取META标签
@@ -109,74 +113,74 @@ async function getGameInfo(page, gameSlug) {
         const imageUrl = document.querySelector('meta[name="image"]');
         if (imageUrl) info.metaTags.imageUrl = imageUrl.getAttribute('content');
         
-        // 获取开发者信息 - 多种方法尝试
-        // 方法1: 查找包含"Developer"文本的元素
-        const developerElements = Array.from(document.querySelectorAll('*')).filter(el => {
-          const text = el.textContent || '';
-          return text.toLowerCase().includes('developer') && 
-                 text.length < 100 && // 避免获取到长文本
-                 !text.toLowerCase().includes('web developer'); // 排除无关内容
-        });
+        // 获取开发者信息 - 更精确的方法
         
-        if (developerElements.length > 0) {
-          // 查找紧邻的元素或同一元素中的开发者名称
-          for (const element of developerElements) {
-            const parent = element.parentElement;
-            const siblings = parent ? Array.from(parent.children) : [];
-            const currentIndex = siblings.indexOf(element);
-            
-            // 检查下一个兄弟元素
-            if (currentIndex >= 0 && currentIndex < siblings.length - 1) {
-              const nextSibling = siblings[currentIndex + 1];
-              const nextText = nextSibling.textContent.trim();
-              if (nextText && nextText.length < 50 && !nextText.toLowerCase().includes('developer')) {
-                info.developer = nextText;
+        // 方法1: 查找包含"Developer:"的文本，然后获取紧邻的文本
+        const allElements = Array.from(document.querySelectorAll('*'));
+        
+        for (const element of allElements) {
+          const text = element.textContent || '';
+          
+          // 查找包含"Developer:"的元素
+          if (text.trim() === 'Developer:') {
+            // 查找下一个兄弟元素
+            let nextElement = element.nextElementSibling;
+            if (nextElement && nextElement.textContent.trim()) {
+              const developerName = nextElement.textContent.trim();
+              // 排除一些无关的文本
+              if (developerName && 
+                  !developerName.toLowerCase().includes('rating') &&
+                  !developerName.toLowerCase().includes('released') &&
+                  !developerName.toLowerCase().includes('technology') &&
+                  !developerName.toLowerCase().includes('platform') &&
+                  !developerName.toLowerCase().includes('kids site') &&
+                  developerName.length < 100) {
+                info.developer = developerName;
                 break;
               }
             }
             
-            // 检查同一元素内的文本
-            const fullText = element.textContent;
-            const match = fullText.match(/Developer[:\s]+([^,\n\r]+)/i);
-            if (match && match[1]) {
-              info.developer = match[1].trim();
+            // 如果没有下一个兄弟元素，查找父元素的下一个兄弟
+            if (!info.developer && element.parentElement) {
+              let parentNext = element.parentElement.nextElementSibling;
+              if (parentNext && parentNext.textContent.trim()) {
+                const developerName = parentNext.textContent.trim();
+                if (developerName && 
+                    !developerName.toLowerCase().includes('rating') &&
+                    !developerName.toLowerCase().includes('released') &&
+                    !developerName.toLowerCase().includes('technology') &&
+                    !developerName.toLowerCase().includes('platform') &&
+                    !developerName.toLowerCase().includes('kids site') &&
+                    developerName.length < 100) {
+                  info.developer = developerName;
+                  break;
+                }
+              }
+            }
+          }
+          
+          // 方法2: 查找"Developer: [名称]"格式的文本
+          const developerMatch = text.match(/Developer:\s*([^\n\r]+)/i);
+          if (developerMatch && developerMatch[1]) {
+            const developerName = developerMatch[1].trim();
+            if (developerName && 
+                !developerName.toLowerCase().includes('kids site') &&
+                developerName.length < 100) {
+              info.developer = developerName;
               break;
             }
           }
         }
         
-        // 方法2: 查找特定的CSS选择器
-        const possibleSelectors = [
-          '.developer-name',
-          '.game-developer',
-          '.developer-info',
-          '[data-developer]',
-          '.game-info .developer'
-        ];
-        
-        for (const selector of possibleSelectors) {
-          const element = document.querySelector(selector);
-          if (element && element.textContent.trim()) {
-            info.developer = element.textContent.trim();
-            break;
-          }
-        }
-        
-        // 方法3: 查找JSON-LD结构化数据
-        const jsonLdScripts = document.querySelectorAll('script[type="application/ld+json"]');
-        for (const script of jsonLdScripts) {
-          try {
-            const data = JSON.parse(script.textContent);
-            if (data.author && data.author.name) {
-              info.developer = data.author.name;
-              break;
-            }
-            if (data.creator && data.creator.name) {
-              info.developer = data.creator.name;
-              break;
-            }
-          } catch (e) {
-            // 忽略JSON解析错误
+        // 调试信息：收集所有包含"developer"的文本
+        for (const element of allElements) {
+          const text = element.textContent || '';
+          if (text.toLowerCase().includes('developer') && text.length < 200) {
+            info.debugInfo.allDeveloperTexts.push({
+              text: text.trim(),
+              tagName: element.tagName,
+              className: element.className
+            });
           }
         }
         
@@ -215,6 +219,9 @@ async function getGameInfo(page, gameSlug) {
       if (gameInfo.developer) {
         developer = gameInfo.developer;
         console.log(`✅ 找到开发者信息: ${developer}`);
+      } else {
+        console.log(`⚠ 未找到开发者信息`);
+        console.log(`调试信息 - 所有包含developer的文本:`, gameInfo.debugInfo.allDeveloperTexts);
       }
       
     } catch (e) {
@@ -288,10 +295,9 @@ async function getGameInfo(page, gameSlug) {
       }
     }
     
-    // 如果还没找到开发者信息，使用默认值
+    // 如果还没找到开发者信息，不使用默认值，保持为null
     if (!developer) {
-      developer = 'CrazyGames Team'; // 默认值
-      console.log(`⚠ 未找到开发者信息，使用默认值: ${developer}`);
+      console.log(`⚠ 未找到开发者信息，该游戏可能没有明确的开发者`);
     }
     
     const success = thumbnailUrl !== null;
@@ -299,7 +305,7 @@ async function getGameInfo(page, gameSlug) {
     if (success) {
       console.log(`✅ ${gameSlug} 信息获取成功:`);
       console.log(`   缩略图: ${thumbnailUrl}`);
-      console.log(`   开发者: ${developer}`);
+      console.log(`   开发者: ${developer || '未找到'}`);
     } else {
       console.log(`❌ ${gameSlug} 缩略图获取失败`);
     }
@@ -317,7 +323,7 @@ async function getGameInfo(page, gameSlug) {
     return {
       slug: gameSlug,
       thumbnailUrl: null,
-      developer: 'CrazyGames Team',
+      developer: null,
       success: false,
       error: error.message
     };
@@ -353,7 +359,7 @@ function updateGamesJson(results) {
           hasUpdates = true;
         }
         
-        // 更新开发者信息
+        // 更新开发者信息 - 只有当找到真实开发者信息时才更新
         if (result.developer && result.developer !== gamesData[gameIndex].developer) {
           const oldDeveloper = gamesData[gameIndex].developer || '未设置';
           gamesData[gameIndex].developer = result.developer;
@@ -361,6 +367,8 @@ function updateGamesJson(results) {
           console.log(`   旧开发者: ${oldDeveloper}`);
           console.log(`   新开发者: ${result.developer}`);
           hasUpdates = true;
+        } else if (!result.developer) {
+          console.log(`ℹ ${result.slug} 没有找到开发者信息，保持原状`);
         }
         
         if (hasUpdates) {
@@ -387,7 +395,7 @@ function updateGamesJson(results) {
  * 主函数
  */
 async function main() {
-  console.log('🚀 开始获取CrazyGames游戏信息 (缩略图 + 开发者)...\n');
+  console.log('🚀 开始获取CrazyGames游戏信息 (缩略图 + 开发者) - 修正版...\n');
   
   let browser;
   try {
@@ -429,16 +437,25 @@ async function main() {
     
     const successful = results.filter(r => r.success);
     const failed = results.filter(r => !r.success);
+    const withDeveloper = results.filter(r => r.developer);
+    const withoutDeveloper = results.filter(r => r.success && !r.developer);
     
-    console.log(`✅ 成功获取: ${successful.length} 个`);
+    console.log(`✅ 成功获取缩略图: ${successful.length} 个`);
     console.log(`❌ 获取失败: ${failed.length} 个`);
+    console.log(`👨‍💻 找到开发者信息: ${withDeveloper.length} 个`);
+    console.log(`❓ 没有开发者信息: ${withoutDeveloper.length} 个`);
     
-    if (successful.length > 0) {
-      console.log('\n✅ 成功获取的游戏:');
-      successful.forEach(result => {
-        console.log(`  - ${result.slug}:`);
-        console.log(`    缩略图: ${result.thumbnailUrl}`);
-        console.log(`    开发者: ${result.developer}`);
+    if (withDeveloper.length > 0) {
+      console.log('\n✅ 找到开发者信息的游戏:');
+      withDeveloper.forEach(result => {
+        console.log(`  - ${result.slug}: ${result.developer}`);
+      });
+    }
+    
+    if (withoutDeveloper.length > 0) {
+      console.log('\n❓ 没有开发者信息的游戏:');
+      withoutDeveloper.forEach(result => {
+        console.log(`  - ${result.slug}`);
       });
     }
     
