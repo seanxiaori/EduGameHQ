@@ -35,11 +35,14 @@ const mathGames = allGamesData
     url: `/games/${game.slug}`,
     playCount: game.playCount || Math.floor(Math.random() * 15000) + 500,
     category: 'math',
-    categoryName: 'Math'
+    categoryName: 'Math',
+    featured: game.featured || false
   }));
 
 // 按难度分组游戏
-const featuredGames = mathGames.filter(game => game.difficulty && ['math-matrix', 'math-fluency-challenges', 'fraction-matcher'].includes(game.id));
+const featuredGames = mathGames.filter(game => game.featured).length > 0 
+  ? mathGames.filter(game => game.featured).slice(0, 6)
+  : mathGames.slice(0, 3);
 const easyGames = mathGames.filter(game => game.difficulty === 'Easy');
 const mediumGames = mathGames.filter(game => game.difficulty === 'Medium');
 const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
