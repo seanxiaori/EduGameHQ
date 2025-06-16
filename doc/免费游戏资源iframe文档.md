@@ -22,6 +22,10 @@
 - **技术信息**: iframe代码、平台支持、控制方式
 - **教育价值**: 学习目标、技能培养、适用年级
 
+https://www.crazygames.com/game/count-masters-stickman-games
+<iframe src="https://www.crazygames.com/embed/count-masters-stickman-games" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+
 ---
 
 ## 📊 数学游戏 (Math Games)

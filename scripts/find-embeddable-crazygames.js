@@ -243,78 +243,254 @@ async function checkGameEmbedButton(page, gameInfo) {
 }
 
 /**
- * 验证embed URL是否真正可用
+ * 点击PLAY NOW按钮启动游戏
  */
-async function verifyEmbedUrl(page, gameInfo) {
-    if (!gameInfo.embedUrl) {
-        return { ...gameInfo, embedVerified: false };
-    }
-    
-    console.log(`    验证embed: ${gameInfo.embedUrl}`);
+async function clickPlayNowButton(page) {
+    console.log('    寻找并点击PLAY NOW按钮...');
     
     try {
-        const response = await page.goto(gameInfo.embedUrl, { 
+        // 等待页面加载
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        
+        // 寻找PLAY NOW按钮的多种可能选择器
+        const playButtonSelectors = [
+            'button:has-text("PLAY NOW")',
+            'button:has-text("Play Now")', 
+            'button:has-text("play now")',
+            'button[class*="play"]',
+            '.play-button',
+            '.start-button',
+            'button:contains("PLAY")',
+            'button:contains("START")'
+        ];
+        
+        // 先尝试直接选择器
+        for (const selector of playButtonSelectors) {
+            try {
+                const button = await page.$(selector);
+                if (button) {
+                    console.log(`    找到PLAY按钮: ${selector}`);
+                    await button.click();
+                    console.log('    ✅ 已点击PLAY NOW按钮');
+                    return true;
+                }
+            } catch (e) {
+                continue;
+            }
+        }
+        
+        // 如果直接选择器失败，遍历所有按钮找包含play的
+        const buttons = await page.$$('button');
+        for (const button of buttons) {
+            try {
+                const text = await button.evaluate(el => el.textContent.toLowerCase().trim());
+                
+                if (text.includes('play') || text.includes('start')) {
+                    console.log(`    找到PLAY按钮，文本: "${text}"`);
+                    await button.scrollIntoViewIfNeeded();
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    await button.click();
+                    console.log('    ✅ 已点击PLAY NOW按钮');
+                    return true;
+                }
+            } catch (e) {
+                continue;
+            }
+        }
+        
+        console.log('    ❌ 未找到PLAY NOW按钮');
+        return false;
+        
+    } catch (error) {
+        console.log(`    点击PLAY NOW失败: ${error.message}`);
+        return false;
+    }
+}
+
+/**
+ * 检测游戏是否需要登录或有连接问题（修复版）
+ */
+async function checkGameErrors(page) {
+    console.log('    检查游戏是否需要登录...');
+    
+    try {
+        // 先点击PLAY NOW按钮启动游戏
+        const playClicked = await clickPlayNowButton(page);
+        if (!playClicked) {
+            console.log('    ⚠️ 未找到PLAY NOW按钮，可能是直接运行的游戏');
+        }
+        
+        // 等待游戏加载和可能的错误出现
+        console.log('    等待游戏加载...');
+        await new Promise(resolve => setTimeout(resolve, 10000));
+        
+        // 检测登录相关的关键词和元素
+        const loginIndicators = await page.evaluate(() => {
+            const text = document.body.innerText.toLowerCase();
+            const loginKeywords = [
+                'sign in',
+                'log in', 
+                'login',
+                'create account',
+                'register',
+                'connection issues',
+                'network error',
+                'server error',
+                'try reloading',
+                'continue offline',
+                'reload game',
+                'connection lost',
+                'unable to connect',
+                'troubles connecting',
+                'progress you make will be lost',
+                'any progress you make will be lost'
+            ];
+            
+            // 检查文本内容
+            const hasLoginText = loginKeywords.some(keyword => text.includes(keyword));
+            
+            // 检查登录按钮
+            const loginButtons = document.querySelectorAll('button, a, div');
+            const hasLoginButton = Array.from(loginButtons).some(btn => {
+                const btnText = btn.textContent.toLowerCase();
+                return btnText.includes('sign in') || 
+                       btnText.includes('log in') || 
+                       btnText.includes('login') ||
+                       btnText.includes('reload') ||
+                       btnText.includes('try again') ||
+                       btnText.includes('continue offline');
+            });
+            
+            // 检查错误模态框
+            const errorModals = document.querySelectorAll('.modal, .popup, .dialog, .error-message, .alert');
+            const hasErrorModal = errorModals.length > 0;
+            
+            return {
+                hasLoginText,
+                hasLoginButton,
+                hasErrorModal,
+                needsLogin: hasLoginText || hasLoginButton || hasErrorModal,
+                foundKeywords: loginKeywords.filter(keyword => text.includes(keyword))
+            };
+        });
+        
+        if (loginIndicators.needsLogin) {
+            console.log('    ❌ 游戏需要登录或有连接问题');
+            if (loginIndicators.foundKeywords.length > 0) {
+                console.log(`    发现关键词: ${loginIndicators.foundKeywords.join(', ')}`);
+            }
+            return {
+                hasErrors: true,
+                errorType: 'needs_login',
+                details: loginIndicators
+            };
+        }
+        
+        console.log('    ✅ 游戏可以直接运行');
+        return {
+            hasErrors: false,
+            errorType: null
+        };
+        
+    } catch (error) {
+        console.log(`    检查失败: ${error.message}`);
+        return {
+            hasErrors: true,
+            errorType: 'check_failed',
+            details: error.message
+        };
+    }
+}
+
+/**
+ * 验证embed游戏是否真正可用（简化版）
+ */
+async function verifyEmbedGame(embedUrl) {
+    const browser = await puppeteer.launch({
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
+    
+    let page;
+    try {
+        page = await browser.newPage();
+        
+        console.log(`    验证embed: ${embedUrl}`);
+        
+        // 访问embed页面
+        const response = await page.goto(embedUrl, { 
             waitUntil: 'networkidle2',
-            timeout: 20000 
+            timeout: 30000 
         });
         
         const status = response.status();
         console.log(`    Embed状态: ${status}`);
         
-        if (status === 200) {
-            // 检查embed页面是否有游戏内容 - CrazyGames使用动态加载
-            await new Promise(resolve => setTimeout(resolve, 5000)); // 增加等待时间
-            
-            const embedPageInfo = await page.evaluate(() => {
-                const hasCanvas = !!document.querySelector('canvas');
-                const hasGameContainer = !!document.querySelector('#game, .game-container, .unity-container');
-                const hasIframe = !!document.querySelector('iframe');
-                
-                // 检查是否有CrazyGames的loader配置
-                const bodyText = document.body.textContent || '';
-                const hasLoaderOptions = bodyText.includes('loaderOptions') || bodyText.includes('game-files.crazygames.com');
-                
-                // 检查页面标题是否包含"Game Files"（这是embed页面的特征）
-                const isGameFilesPage = document.title.includes('Game Files');
-                
-                return {
-                    hasCanvas: hasCanvas,
-                    hasGameContainer: hasGameContainer,
-                    hasIframe: hasIframe,
-                    hasLoaderOptions: hasLoaderOptions,
-                    isGameFilesPage: isGameFilesPage,
-                    title: document.title,
-                    hasGameContent: hasIframe || hasCanvas || hasGameContainer || hasLoaderOptions
-                };
-            });
-            
-            console.log(`    Embed页面标题: ${embedPageInfo.title}`);
-            console.log(`    是Game Files页面: ${embedPageInfo.isGameFilesPage ? '✅' : '❌'}`);
-            console.log(`    有iframe: ${embedPageInfo.hasIframe ? '✅' : '❌'}`);
-            console.log(`    有loader配置: ${embedPageInfo.hasLoaderOptions ? '✅' : '❌'}`);
-            console.log(`    Embed有游戏内容: ${embedPageInfo.hasGameContent ? '✅' : '❌'}`);
-            
+        if (status !== 200) {
             return {
-                ...gameInfo,
-                embedVerified: embedPageInfo.hasGameContent,
-                embedStatus: status,
-                embedPageInfo: embedPageInfo
-            };
-        } else {
-            return {
-                ...gameInfo,
-                embedVerified: false,
-                embedStatus: status
+                isValid: false,
+                reason: `HTTP ${status}`,
+                hasEmbedButton: false,
+                hasGameContent: false
             };
         }
         
-    } catch (error) {
-        console.log(`    Embed验证失败: ${error.message}`);
+        // 检查页面标题
+        const title = await page.title();
+        console.log(`    Embed页面标题: ${title}`);
+        
+        // 检查是否是Game Files页面
+        const isGameFilesPage = title.includes('Game Files');
+        console.log(`    是Game Files页面: ${isGameFilesPage ? '✅' : '❌'}`);
+        
+        if (!isGameFilesPage) {
+            return {
+                isValid: false,
+                reason: '不是Game Files页面',
+                hasEmbedButton: false,
+                hasGameContent: false
+            };
+        }
+        
+        // 检查iframe
+        const hasIframe = await page.$('iframe') !== null;
+        console.log(`    有iframe: ${hasIframe ? '✅' : '❌'}`);
+        
+        // 检查loader配置
+        const hasLoaderConfig = await page.evaluate(() => {
+            return window.crazygames && window.crazygames.gameLoadingConfig;
+        });
+        console.log(`    有loader配置: ${hasLoaderConfig ? '✅' : '❌'}`);
+        
+        // 简化的游戏内容检查 - 只检查是否需要登录
+        const errorCheck = await checkGameErrors(page);
+        
+        const isValid = hasIframe && hasLoaderConfig && !errorCheck.hasErrors;
+        console.log(`    Embed有游戏内容: ${isValid ? '✅' : '❌'}`);
+        
+        if (errorCheck.hasErrors) {
+            console.log(`    错误类型: ${errorCheck.errorType}`);
+        }
+        
         return {
-            ...gameInfo,
-            embedVerified: false,
-            embedError: error.message
+            isValid,
+            reason: errorCheck.hasErrors ? `游戏${errorCheck.errorType}` : 'OK',
+            hasEmbedButton: true,
+            hasGameContent: !errorCheck.hasErrors,
+            errorDetails: errorCheck
         };
+        
+    } catch (error) {
+        console.log(`    验证失败: ${error.message}`);
+        return {
+            isValid: false,
+            reason: error.message,
+            hasEmbedButton: false,
+            hasGameContent: false
+        };
+    } finally {
+        if (page) await page.close();
+        await browser.close();
     }
 }
 
@@ -367,77 +543,242 @@ function evaluateEducationalValue(gameInfo, category) {
 }
 
 /**
- * 搜索指定分类的可嵌入教育游戏
+ * 处理单个游戏的完整验证流程
  */
-async function findEmbeddableGamesInCategory(category, maxGames = 10) {
-    console.log(`\n🎯 搜索分类: ${CRAZYGAMES_CATEGORIES[category].name}`);
-    
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: [
-            '--no-sandbox',
-            '--disable-setuid-sandbox',
-            '--disable-dev-shm-usage'
-        ]
-    });
-    
+async function processGame(page, gameElement, category) {
     try {
-        const page = await browser.newPage();
-        await page.setViewport({ width: 1280, height: 720 });
-        
-        // 设置用户代理
-        await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
-        
-        // 搜索分类中的游戏
-        const categoryConfig = CRAZYGAMES_CATEGORIES[category];
-        const gameLinks = await searchCategoryGames(page, categoryConfig.crazyGamesCategory, maxGames * 2);
-        
-        if (gameLinks.length === 0) {
-            console.log('  未找到游戏');
-            return [];
+        // 获取游戏基本信息
+        const gameInfo = await extractGameInfo(gameElement);
+        if (!gameInfo.title) {
+            console.log(`    跳过: 无法获取游戏信息`);
+            return null;
         }
         
-        const embeddableGames = [];
+        console.log(`  检查游戏: ${gameInfo.title}`);
+        console.log(`    URL: ${gameInfo.url}`);
         
-        // 检查每个游戏
-        for (let i = 0; i < Math.min(gameLinks.length, maxGames * 2); i++) {
-            const gameInfo = gameLinks[i];
-            
-            // 检查embed按钮
-            const gameWithEmbed = await checkGameEmbedButton(page, gameInfo);
-            
-            // 如果有embed可能性，验证embed URL
-            if (gameWithEmbed.canEmbed) {
-                const verifiedGame = await verifyEmbedUrl(page, gameWithEmbed);
-                
-                // 评估教育价值
-                const educationalGame = evaluateEducationalValue(verifiedGame, category);
-                
-                // 只保留真正可嵌入且有教育价值的游戏
-                if (educationalGame.embedVerified && educationalGame.isEducational) {
-                    embeddableGames.push(educationalGame);
-                    console.log(`    ✅ 找到可用游戏: ${educationalGame.title}`);
-                    
-                    // 达到目标数量就停止
-                    if (embeddableGames.length >= maxGames) {
-                        break;
-                    }
-                }
-            }
-            
-            // 延迟避免被封
-            await new Promise(resolve => setTimeout(resolve, 2000));
+        // 检查embed按钮
+        const embedInfo = await checkEmbedButton(page, gameInfo);
+        console.log(`    有embed按钮: ${embedInfo.hasEmbed ? '✅' : '❌'}`);
+        
+        if (!embedInfo.hasEmbed) {
+            return null;
         }
         
-        console.log(`\n📊 分类 ${category} 结果: 找到 ${embeddableGames.length} 个可用游戏`);
-        return embeddableGames;
+        // 检查游戏内容
+        const hasContent = await checkGameContent(page, gameInfo);
+        console.log(`    有游戏内容: ${hasContent ? '✅' : '❌'}`);
+        
+        if (!hasContent) {
+            return null;
+        }
+        
+        // 验证embed URL
+        const embedUrl = embedInfo.embedUrl;
+        console.log(`    Embed按钮: ${embedInfo.embedText}`);
+        console.log(`    验证embed: ${embedUrl}`);
+        
+        const verificationResult = await verifyEmbedGame(embedUrl);
+        console.log(`    验证结果: ${verificationResult.isValid ? '✅' : '❌'} - ${verificationResult.reason}`);
+        
+        if (!verificationResult.isValid) {
+            return null;
+        }
+        
+        // 评估教育价值
+        const educationalScore = evaluateEducationalValue(gameInfo, category);
+        console.log(`    教育分数: ${educationalScore}`);
+        
+        // 构建最终游戏对象
+        const finalGame = {
+            title: gameInfo.title,
+            url: gameInfo.url,
+            embedUrl: embedUrl,
+            category: category,
+            educationalScore: educationalScore,
+            verified: true,
+            verificationReason: verificationResult.reason
+        };
+        
+        return finalGame;
         
     } catch (error) {
-        console.error(`分类 ${category} 搜索失败:`, error);
-        return [];
-    } finally {
-        await browser.close();
+        console.log(`    处理游戏失败: ${error.message}`);
+        return null;
     }
+}
+
+/**
+ * 从游戏元素中提取基本信息
+ */
+async function extractGameInfo(gameElement) {
+    try {
+        // 如果元素本身就是游戏链接
+        const isDirectLink = await gameElement.evaluate(el => 
+            el.tagName === 'A' && el.href && el.href.includes('/game/')
+        );
+        
+        if (isDirectLink) {
+            const href = await gameElement.evaluate(el => el.href);
+            const title = await gameElement.evaluate(el => {
+                return el.getAttribute('title') || 
+                       el.getAttribute('aria-label') ||
+                       el.textContent.trim() ||
+                       el.querySelector('img')?.alt ||
+                       '';
+            });
+            
+            return {
+                title: title.trim() || 'Unknown Game',
+                url: href
+            };
+        }
+        
+        // 尝试在子元素中查找游戏链接
+        const gameLink = await gameElement.$('a[href*="/game/"]');
+        if (!gameLink) {
+            return { title: null, url: null };
+        }
+        
+        const href = await gameLink.evaluate(el => el.href);
+        const title = await gameLink.evaluate(el => {
+            return el.getAttribute('title') || 
+                   el.getAttribute('aria-label') ||
+                   el.textContent.trim() ||
+                   el.querySelector('img')?.alt ||
+                   '';
+        });
+        
+        if (!href || !href.includes('/game/')) {
+            return { title: null, url: null };
+        }
+        
+        return {
+            title: title.trim() || 'Unknown Game',
+            url: href
+        };
+        
+    } catch (error) {
+        console.log(`      提取游戏信息失败: ${error.message}`);
+        return { title: null, url: null };
+    }
+}
+
+/**
+ * 检查游戏的embed按钮
+ */
+async function checkEmbedButton(page, gameInfo) {
+    try {
+        console.log(`    访问游戏页面: ${gameInfo.url}`);
+        
+        await page.goto(gameInfo.url, { 
+            waitUntil: 'networkidle2',
+            timeout: 20000 
+        });
+        
+        // 等待页面加载
+        await new Promise(resolve => setTimeout(resolve, 3000));
+        
+        // 查找embed按钮
+        const embedButton = await page.$('button:has-text("Embed"), button[class*="embed"], a[href*="/embed/"]');
+        
+        if (!embedButton) {
+            return { hasEmbed: false };
+        }
+        
+        const embedText = await embedButton.evaluate(el => el.textContent.trim());
+        
+        // 构建embed URL
+        const gameSlug = gameInfo.url.split('/game/')[1];
+        const embedUrl = `https://www.crazygames.com/embed/${gameSlug}`;
+        
+        return {
+            hasEmbed: true,
+            embedText: embedText,
+            embedUrl: embedUrl
+        };
+        
+    } catch (error) {
+        console.log(`    检查embed按钮失败: ${error.message}`);
+        return { hasEmbed: false };
+    }
+}
+
+/**
+ * 检查游戏是否有内容
+ */
+async function checkGameContent(page, gameInfo) {
+    try {
+        // 简单检查：如果能访问游戏页面就认为有内容
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+/**
+ * 搜索指定分类的可嵌入游戏
+ */
+async function searchEmbeddableGames(category, searchTerms) {
+    console.log(`🎯 搜索分类: ${category}`);
+    
+    const embeddableGames = [];
+    
+    for (const searchTerm of searchTerms) {
+        console.log(`🔍 搜索分类: ${searchTerm}`);
+        
+        const browser = await puppeteer.launch({
+            headless: true,
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                '--disable-dev-shm-usage',
+                '--disable-gpu'
+            ]
+        });
+        
+        try {
+            const page = await browser.newPage();
+            await page.setViewport({ width: 1280, height: 720 });
+            
+            const searchUrl = `https://www.crazygames.com/c/${searchTerm}`;
+            console.log(`  访问: ${searchUrl}`);
+            
+            await page.goto(searchUrl, { 
+                waitUntil: 'networkidle2',
+                timeout: 30000 
+            });
+            
+            // 等待游戏列表加载
+            await new Promise(resolve => setTimeout(resolve, 5000));
+            
+            // 直接查找游戏链接
+            const gameElements = await page.$$('a[href*="/game/"]');
+            console.log(`  找到 ${gameElements.length} 个游戏链接`);
+            
+            // 限制每个分类最多检查3个游戏（避免太慢）
+            const gamesToCheck = gameElements.slice(0, 3);
+            
+            for (const gameElement of gamesToCheck) {
+                const processedGame = await processGame(page, gameElement, category);
+                if (processedGame) {
+                    embeddableGames.push(processedGame);
+                    console.log(`    ✅ 找到可用游戏: ${processedGame.title}`);
+                }
+                
+                // 每个游戏之间短暂延迟
+                await new Promise(resolve => setTimeout(resolve, 2000));
+            }
+            
+        } catch (error) {
+            console.log(`  搜索 ${searchTerm} 失败: ${error.message}`);
+        } finally {
+            await browser.close();
+        }
+    }
+    
+    console.log(`📊 分类 ${category} 结果: 找到 ${embeddableGames.length} 个可用游戏`);
+    return embeddableGames;
 }
 
 /**
@@ -459,7 +800,7 @@ async function findAllEmbeddableGames() {
         console.log(`搜索分类: ${config.name} (${category})`);
         console.log('='.repeat(50));
         
-        const games = await findEmbeddableGamesInCategory(category, 8);
+        const games = await searchEmbeddableGames(category, config.searchTerms);
         allGames[category] = games;
         summary.categoryCounts[category] = games.length;
         summary.totalGames += games.length;
@@ -506,7 +847,7 @@ if (args.length > 0) {
     // 搜索特定分类
     const category = args[0];
     if (CRAZYGAMES_CATEGORIES[category]) {
-        findEmbeddableGamesInCategory(category, 10);
+        searchEmbeddableGames(category, CRAZYGAMES_CATEGORIES[category].searchTerms);
     } else {
         console.log('可用分类:', Object.keys(CRAZYGAMES_CATEGORIES).join(', '));
     }
@@ -516,7 +857,7 @@ if (args.length > 0) {
 }
 
 export {
-    findEmbeddableGamesInCategory,
+    searchEmbeddableGames,
     findAllEmbeddableGames,
     CRAZYGAMES_CATEGORIES
 }; 

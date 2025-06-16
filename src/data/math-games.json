@@ -1,151 +1,5 @@
 [
   {
-    "slug": "2048",
-    "title": "2048",
-    "category": "math",
-    "categoryName": "Math",
-    "iframeUrl": "https://www.crazygames.com/embed/2048",
-    "description": "2048 is a single-player sliding tile puzzle game developed by Gabriele Cirulli. Merge tiles with the same power of 2 to get the total sum. The goal is to keep merging tiles this way until you reach 2048!",
-    "gameGuide": {
-      "howToPlay": [
-        "使用方向键移动所有数字方块",
-        "相同数字碰撞时会合并翻倍",
-        "目标是创造出2048方块",
-        "方块填满且无法移动时游戏结束"
-      ],
-      "controls": {
-        "keyboard": "方向键控制移动方向",
-        "touch": "滑动屏幕移动方块"
-      },
-      "tips": [
-        "将最大数字保持在角落",
-        "沿边缘构建数字序列"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
-    "tags": [
-      "math",
-      "numbers",
-      "logic",
-      "problem-solving",
-      "strategy"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/2048",
-    "lastUpdated": "2025-06-16",
-    "lastChecked": "2025-06-16",
-    "playCount": 0,
-    "featured": true,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "words-of-wonders",
-    "title": "Words of Wonders",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/words-of-wonders",
-    "description": "Explore world wonders while building words from letters. Perfect for vocabulary building and spelling practice with beautiful landmark backgrounds.",
-    "gameGuide": {
-      "howToPlay": [
-        "Connect letters to form words by dragging your finger or mouse",
-        "Find all hidden words to complete each level",
-        "Discover bonus words for extra points",
-        "Progress through different world landmarks and monuments",
-        "Use hints if you get stuck on difficult words"
-      ],
-      "controls": {
-        "mouse": "Click and drag to connect letters and form words",
-        "touch": "Tap and swipe to connect letters on mobile devices",
-        "keyboard": "Use mouse to select letters, no keyboard input needed"
-      },
-      "tips": [
-        "Start with shorter words to get familiar with available letters",
-        "Look for common prefixes and suffixes",
-        "Try different letter combinations systematically",
-        "Use the shuffle button to rearrange letters for new perspectives",
-        "Save hints for the most challenging levels"
-      ]
-    },
-    "introduction": "Words of Wonders combines word puzzle gameplay with educational content about world landmarks. Players build vocabulary while learning about famous monuments and cultural sites from around the globe.",
-    "features": [
-      "Beautiful graphics featuring world landmarks",
-      "Progressive difficulty with increasing word complexity",
-      "Hint system for challenging puzzles",
-      "Bonus words for extra points and learning",
-      "Educational content about world monuments",
-      "Smooth touch and mouse controls",
-      "Multiple levels with varied themes",
-      "Vocabulary building through gameplay"
-    ],
-    "learningObjectives": [
-      "Expand English vocabulary and word recognition",
-      "Improve spelling and letter pattern recognition",
-      "Learn about world landmarks and cultural heritage",
-      "Develop problem-solving and analytical thinking",
-      "Enhance visual-spatial processing skills"
-    ],
-    "thumbnailUrl": "/images/games/language/words-of-wonders-gameplay.png",
-    "screenshotUrls": [
-      "/images/games/language/words-of-wonders-gameplay.png"
-    ],
-    "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
-    "tags": [
-      "vocabulary",
-      "spelling",
-      "words",
-      "landmarks",
-      "geography",
-      "education",
-      "puzzle",
-      "language-learning"
-    ],
-    "gradeLevel": "3rd-12th Grade",
-    "subjects": [
-      "English Language Arts",
-      "Vocabulary",
-      "Geography",
-      "Cultural Studies"
-    ],
-    "skills": [
-      "Vocabulary building",
-      "Spelling accuracy",
-      "Pattern recognition",
-      "Cultural awareness",
-      "Problem solving"
-    ],
-    "source": "CrazyGames",
-    "sourceUrl": "https://www.crazygames.com/game/words-of-wonders",
-    "developer": "Famobi",
-    "rating": 8.7,
-    "playCount": 336607,
-    "iframeCompatible": true,
-    "verified": true,
-    "responsive": true,
-    "mobileSupport": true,
-    "technology": "HTML5",
-    "browserSupport": [
-      "Chrome",
-      "Firefox",
-      "Safari",
-      "Edge"
-    ],
-    "lastUpdated": "2024-12-15",
-    "lastChecked": "2024-12-15"
-  },
-  {
     "slug": "count-masters-stickman-games",
     "title": "Count Masters: Stickman Games",
     "category": "math",
@@ -288,6 +142,55 @@
     "lastChecked": "2025-06-16",
     "playCount": 0,
     "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "2048",
+    "title": "2048",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/2048",
+    "description": "2048 is a single-player sliding tile puzzle game developed by Gabriele Cirulli. Merge tiles with the same power of 2 to get the total sum. The goal is to keep merging tiles this way until you reach 2048!",
+    "gameGuide": {
+      "howToPlay": [
+        "使用方向键移动所有数字方块",
+        "相同数字碰撞时会合并翻倍",
+        "目标是创造出2048方块",
+        "方块填满且无法移动时游戏结束"
+      ],
+      "controls": {
+        "keyboard": "方向键控制移动方向",
+        "touch": "滑动屏幕移动方块"
+      },
+      "tips": [
+        "将最大数字保持在角落",
+        "沿边缘构建数字序列"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "numbers",
+      "logic",
+      "problem-solving",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/2048",
+    "lastUpdated": "2025-06-16",
+    "lastChecked": "2025-06-16",
+    "playCount": 0,
+    "featured": true,
     "trending": false,
     "isNew": true
   },
