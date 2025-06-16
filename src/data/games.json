@@ -8,18 +8,18 @@
     "description": "2048 is a single-player sliding tile puzzle game developed by Gabriele Cirulli. Merge tiles with the same power of 2 to get the total sum. The goal is to keep merging tiles this way until you reach 2048!",
     "gameGuide": {
       "howToPlay": [
-        "使用方向键移动所有数字方块",
-        "相同数字碰撞时会合并翻倍",
-        "目标是创造出2048方块",
-        "方块填满且无法移动时游戏结束"
+        "Use arrow keys to move all number tiles",
+        "When two tiles with the same number touch, they merge into one",
+        "The goal is to create a tile with the number 2048",
+        "The game ends when the board fills up and no more moves are possible"
       ],
       "controls": {
-        "keyboard": "方向键控制移动方向",
-        "touch": "滑动屏幕移动方块"
+        "keyboard": "Arrow keys control movement direction",
+        "touch": "Swipe to move tiles"
       },
       "tips": [
-        "将最大数字保持在角落",
-        "沿边缘构建数字序列"
+        "Keep the largest number in a corner",
+        "Build number sequences along the edges"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -57,18 +57,21 @@
     "description": "Count Masters: Stickman Games is a fast-paced running game where you gather a growing army of stickmen to clash against rival crowds. Navigate through obstacles, choose the best paths to multiply your numbers, and lead your team to victory. Battle fierce opponents, defeat the King-stickman, and claim the castle in an action-packed race filled with strategy and excitement!",
     "gameGuide": {
       "howToPlay": [
-        "点击屏幕控制火柴人移动",
-        "收集更多火柴人增加队伍数量",
-        "避开障碍物和陷阱",
-        "到达终点时拥有最多的火柴人"
+        "Fast-paced 3D runner with epic crowd battles",
+        "Fun strategy and math choices with every gate",
+        "Boss fights and challenging traps",
+        "Colorful, satisfying visuals and smooth controls"
       ],
       "controls": {
-        "mouse": "点击屏幕控制移动方向",
-        "touch": "触摸屏幕引导火柴人前进"
+        "mouse": "Mouse = Move the character by moving the mouse left or right. Left-click to select buttons.",
+        "keyboard": "Keyboard = Use the left and right arrow keys to move. Press space to select actions."
       },
       "tips": [
-        "优先收集数字较大的火柴人",
-        "小心避开减少数量的障碍物"
+        "Don't just rush forward—choose gates that give you the best numbers, even if they're not directly in your path.",
+        "Avoid red gates and dangerous traps that shrink your army.",
+        "Upgrade your starting crowd and gate bonuses early to grow faster in each run.",
+        "Watch enemy movements and time your attacks—charging in blindly can cost your entire team.",
+        "Save coins between runs to boost your strength and make harder levels easier."
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/count-masters-stickman-games_16x9/20250220041115/count-masters-stickman-games_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -107,18 +110,20 @@
     "description": "Five-O puts a numerical twist on the classic crossword board game! Instead of letters, you place number tiles, forming sequences that must add up to multiples of five, with no more than five tiles per sequence. Think strategically, maximize your bonuses, and outscore your opponent in Five-O!",
     "gameGuide": {
       "howToPlay": [
-        "将数字方块放置在网格中",
-        "创建横向或纵向的数字序列",
-        "每行或每列的数字总和必须是5的倍数",
-        "完成所有序列获得高分"
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Use mouse or touch controls to interact",
+        "Complete objectives to progress"
       ],
       "controls": {
-        "mouse": "拖拽数字方块到目标位置",
-        "touch": "触摸并拖动方块"
+        "mouse": "Drag the left mouse button to place the numbered tile."
       },
       "tips": [
-        "先规划整体布局",
-        "注意数字组合的可能性"
+        "Take turns placing intersecting number sequences that sum to a multiple of five.",
+        "The first sequence must start on the center square, and each new sequence must connect to existing tiles.",
+        "Earn points based on the sum of your sequence, plus bonuses from special board squares.",
+        "Draw new tiles at the end of your turn, and play continues until no more tiles remain.",
+        "The player with the highest score at the end wins, while the opponent loses five points per unplayed tile."
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/five-o_16x9/20250206063438/five-o_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -156,18 +161,15 @@
     "description": "Merge the Numbers is a logic game based on connecting numbers. Merge the numbers and reach the highest score!",
     "gameGuide": {
       "howToPlay": [
-        "点击游戏区域开始游戏",
-        "根据屏幕提示进行操作",
-        "使用鼠标或触摸控制游戏",
-        "完成目标获得高分"
+        "Merge the Numbers is a logic game based on connecting numbers. Merge the numbers and reach the highest score!"
       ],
       "controls": {
-        "mouse": "点击和拖拽进行交互",
-        "touch": "触摸屏幕进行操作"
+        "mouse": "Click and drag to interact",
+        "touch": "Tap and swipe to control"
       },
       "tips": [
-        "仔细阅读游戏说明",
-        "多练习提高技能"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/merge-the-numbers/cover_16x9-1707829510642.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -205,18 +207,14 @@
     "description": "Numbers Arena is a math, snake, and merge game altogether in one game. The green number means pluses, the red number means minus, and the yellow x2 is to multiply your number. If your number is higher than your enemies, then you can run up to it to break it. Collect gray numbers enemies drop to grow even more! You will win when you reach the right number. Collect numbers to be the biggest in the arena and smash the rest of your enemies!",
     "gameGuide": {
       "howToPlay": [
-        "点击游戏区域开始游戏",
-        "根据屏幕提示进行操作",
-        "使用鼠标或触摸控制游戏",
-        "完成目标获得高分"
+        "Numbers Arena is a math, snake, and merge game altogether in one game. The green number means pluses, the red number means minus, and the yellow x2 is to multiply your number. If your number is higher than your enemies, then you can run up to it to break it. Collect gray numbers enemies drop to grow even more! You will win when you reach the right number. Collect numbers to be the biggest in the arena and smash the rest of your enemies!"
       ],
       "controls": {
-        "mouse": "点击和拖拽进行交互",
-        "touch": "触摸屏幕进行操作"
+        "mouse": "Use the WASD / arrow keys / drag the left mouse button to move around."
       },
       "tips": [
-        "仔细阅读游戏说明",
-        "多练习提高技能"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/numbers-arena_16x9/20231006022522/numbers-arena_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -254,18 +252,14 @@
     "description": "Stone Puzzle Game is a brain-teasing experience that blends three unique puzzle styles into one captivating game. Challenge yourself with \"Stone Shoot\" by merging number stones, connect colorful stones in \"Stone Connect,\" and test your math skills in \"Stone Merge\" by combining numbers to form higher values. Engage in a variety of challenges to train your mind and master each puzzle type!",
     "gameGuide": {
       "howToPlay": [
-        "点击游戏区域开始游戏",
-        "根据屏幕提示进行操作",
-        "使用鼠标或触摸控制游戏",
-        "完成目标获得高分"
+        "Stone Puzzle Game is a brain-teasing experience that blends three unique puzzle styles into one captivating game. Challenge yourself with "Stone Shoot" by merging number stones, connect colorful stones in "Stone Connect," and test your math skills in "Stone Merge" by combining numbers to form higher values. Engage in a variety of challenges to train your mind and master each puzzle type!"
       ],
       "controls": {
-        "mouse": "点击和拖拽进行交互",
-        "touch": "触摸屏幕进行操作"
+        "mouse": "Use the Left Mouse Button to drag, drop, shoot, and connect."
       },
       "tips": [
-        "仔细阅读游戏说明",
-        "多练习提高技能"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/stone-puzzle-games_16x9/20250421102225/stone-puzzle-games_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -304,18 +298,14 @@
     "description": "Cypher - Code Breaker is a brain-teasing logic game where you decipher hidden digits using clever clues and formulas. Each symbol masks a number, and your job is to reveal the correct combination without guessing. Inspired by classics like Sudoku and Mastermind, this puzzle challenges you to think critically and find the one true solution.",
     "gameGuide": {
       "howToPlay": [
-        "点击游戏区域开始游戏",
-        "根据屏幕提示进行操作",
-        "使用鼠标或触摸控制游戏",
-        "完成目标获得高分"
+        "Cypher - Code Breaker is a brain-teasing logic game where you decipher hidden digits using clever clues and formulas. Each symbol masks a number, and your job is to reveal the correct combination without guessing. Inspired by classics like Sudoku and Mastermind, this puzzle challenges you to think critically and find the one true solution."
       ],
       "controls": {
-        "mouse": "点击和拖拽进行交互",
-        "touch": "触摸屏幕进行操作"
+        "general": "Left-click to interact with the UI. Details are explained in-game. Do the Tutorial first!"
       },
       "tips": [
-        "仔细阅读游戏说明",
-        "多练习提高技能"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/cypher---code-breaker_16x9/20250506102332/cypher---code-breaker_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -354,18 +344,16 @@
     "description": "Hero Castle War: Tower Attack is a 2D action game where you play as Hiro, a ninja trained by master Daiki and his daughter Hana in a secret ninja village. When the vampire king Dakura discovers the village, he kidnaps Hana and leaves his army of corrupted ninjas, giants, dragons, and witches to guard her. Despite the formidable foes, Hiro is determined to rescue Hana. Why did Dakura take Hana? No one knows. Help Hiro reach the highest tower and rescue his beloved now!",
     "gameGuide": {
       "howToPlay": [
-        "点击游戏区域开始游戏",
-        "根据屏幕提示进行操作",
-        "使用鼠标或触摸控制游戏",
-        "完成目标获得高分"
+        "Secret ninja skill that can absorb enemy powers",
+        "Transform into a higher form of a ninja when having enough powers",
+        "All kinds of evil villains: Vampire, Skeleton, Werewolf, Spider, Dragons,..."
       ],
       "controls": {
-        "mouse": "点击和拖拽进行交互",
-        "touch": "触摸屏幕进行操作"
+        "mouse": "Use the left mouse button to play the game."
       },
       "tips": [
-        "仔细阅读游戏说明",
-        "多练习提高技能"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/hero-castle-war-tower-attack_16x9/20240710062647/hero-castle-war-tower-attack_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -402,18 +390,14 @@
     "description": "Number Line Match is an educational math game that helps students understand number sequences and patterns. Match numbers to their correct positions on the number line to improve your mathematical skills!",
     "gameGuide": {
       "howToPlay": [
-        "观察数字线上的空白位置",
-        "从选项中选择正确的数字",
-        "将数字拖拽到正确的位置",
-        "完成所有匹配获得高分"
+        "Number Line Match is a puzzle game where you link identical numbers or numbers that add up to 10, forming connections vertically, horizontally, and diagonally to clear them. As you deplete moves, Lines are added, removable only when all their numbers vanish. Be cautious, for a Line on the top row ends the game. Strategic thinking and number pairing are your keys to success."
       ],
       "controls": {
-        "mouse": "拖拽数字到目标位置",
-        "touch": "触摸并拖动数字"
+        "mouse": "Use the left mouse button to drag the number."
       },
       "tips": [
-        "仔细观察数字的规律",
-        "从简单的序列开始练习"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/number-line-match_16x9/20240118133658/number-line-match_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -452,18 +436,14 @@
     "description": "Stack It is a fun physics-based puzzle game where you need to stack objects carefully while solving mathematical challenges. Test your spatial reasoning and math skills in this engaging game!",
     "gameGuide": {
       "howToPlay": [
-        "点击屏幕放置物体",
-        "计算正确的堆叠顺序",
-        "保持平衡避免倒塌",
-        "完成所有关卡挑战"
+        "STACK.it is a mesmerizing merging game where you swipe or use arrow keys to create stacks. Watch as smaller stacks leap onto larger ones, triggering explosive-size upgrades when they match. Can you reach the coveted 2048 piece or aim for a colossal 32K? Challenge yourself to orchestrate jaw-dropping 10-stack combos and aim for an astounding 15 merges in a single move. Prepare for an addictive, easy-to-learn, hard-to-master experience that'll keep you stacking for hours on end!"
       ],
       "controls": {
-        "mouse": "点击放置物体",
-        "touch": "触摸屏幕放置"
+        "mouse": "Drag the left mouse button or use arrow keys to swipe the tiles."
       },
       "tips": [
-        "注意物体的重心",
-        "先计算再行动"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/stack-it_16x9/20230921032106/stack-it_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -502,18 +482,14 @@
     "description": "Math Push is an exciting puzzle game that combines mathematical calculations with strategic pushing mechanics. Solve equations while navigating through challenging levels!",
     "gameGuide": {
       "howToPlay": [
-        "推动数字方块到正确位置",
-        "解决数学方程式",
-        "使用策略规划移动路径",
-        "完成所有数学挑战"
+        "Math Push is a puzzle game where you move blocks to solve math expressions. Clear the exit by solving the problem and moving on to the next level!"
       ],
       "controls": {
-        "keyboard": "方向键控制移动",
-        "touch": "滑动屏幕推动方块"
+        "keyboard": "Move: WASD or Arrow Keys"
       },
       "tips": [
-        "先观察整个关卡布局",
-        "计算最优移动路径"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/math-push/20220103160234/math-push-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -552,18 +528,14 @@
     "description": "Number Digger is an adventure math game where you dig through levels while solving numerical puzzles. Collect numbers, solve equations, and discover hidden mathematical treasures!",
     "gameGuide": {
       "howToPlay": [
-        "挖掘地下寻找数字",
-        "收集数字解决方程",
-        "避开障碍物和陷阱",
-        "完成所有挖掘任务"
+        "Number Digger is a casual game in which you merge numbers and hit the right path to get your reward! Buy and upgrade your numbers and do the calculation or just use your luck to complete the level. Allocate resources wisely to reach the treasure chests. Beat the monster at the boss level, and don't forget to count the damage!"
       ],
       "controls": {
-        "mouse": "点击挖掘方向",
-        "keyboard": "方向键移动角色"
+        "mouse": "Drag the left mouse button to merge the numbers and use the left mouse button to interact with the in-game buttons."
       },
       "tips": [
-        "优先收集需要的数字",
-        "注意挖掘路径的安全性"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/number-digger_16x9/20240404085417/number-digger_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -602,18 +574,14 @@
     "description": "Gravity Crowd is a physics-based math game where you control gravity to guide crowds of numbers. Use mathematical thinking to solve puzzles and reach the target!",
     "gameGuide": {
       "howToPlay": [
-        "控制重力方向",
-        "引导数字人群移动",
-        "解决数学谜题",
-        "达到目标数量"
+        "Gravity Crowd is a thrilling platformer where you guide a stickman that transforms into a growing crowd. Flip gravity with a tap to dodge tricky obstacles, navigate challenging paths, and strategically pass through gates. Every decision shapes the size of your crowd, keeping you on your toes in this fast-paced, dynamic adventure!"
       ],
       "controls": {
-        "mouse": "点击改变重力方向",
-        "touch": "触摸屏幕控制重力"
+        "mouse": "Use the left mouse button or space to change the gravity."
       },
       "tips": [
-        "观察数字的移动规律",
-        "合理利用重力效果"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/gravity-crowd_16x9/20250303172759/gravity-crowd_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -652,18 +620,14 @@
     "description": "Math Duck is a fun educational game featuring a cute duck that helps children learn mathematics. Solve math problems while enjoying adorable duck animations!",
     "gameGuide": {
       "howToPlay": [
-        "帮助小鸭子解决数学题",
-        "选择正确的答案",
-        "收集奖励和分数",
-        "完成所有数学挑战"
+        "Math Duck is a unique and addicting math-puzzle platformer game where you must help the duck to answer the math quiz correctly in the right order. Take the key to the exit door that appears after you answer all the math quizzes, and go to the exit door fast! You only got 10 seconds on each level, so take the quickest route possible."
       ],
       "controls": {
-        "mouse": "点击选择答案",
-        "touch": "触摸屏幕选择"
+        "keyboard": "WASD / arrow keys = move"
       },
       "tips": [
-        "仔细计算每道题目",
-        "不要急于选择答案"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/math-duck/20220915192455/math-duck-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -702,18 +666,14 @@
     "description": "BFF Math Class is a social learning game where best friends help each other solve mathematical problems. Work together to complete math challenges and strengthen your friendship!",
     "gameGuide": {
       "howToPlay": [
-        "与好朋友一起解决数学题",
-        "互相帮助完成挑战",
-        "分享解题思路",
-        "一起获得高分"
+        "BFF Math Class is a dress-up game, your task is to assist the girl in getting ready for her math class. You'll need to prepare her bag and create the perfect look. There's a wide selection of hairstyles, outfits, and accessories to choose from, allowing you to create a fashionable and stylish appearance for her. Your goal is to make sure she looks cool at school by selecting the trendiest outfits available. Additionally, you'll need to help her complete all her math exercises, combining your fashion stylist skills with some math problem-solving to ensure she's fully prepared for class. Enjoy the game and have fun dressing up the character while sharpening your math skills!"
       ],
       "controls": {
-        "mouse": "点击选择和交互",
-        "touch": "触摸屏幕进行操作"
+        "mouse": "Use the left mouse button to interact with in-game UI."
       },
       "tips": [
-        "团队合作很重要",
-        "分享你的解题方法"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/bff-math-class_16x9/20230906073023/bff-math-class_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -752,18 +712,14 @@
     "description": "100 Doors Puzzle Box is a challenging escape game with mathematical puzzles. Solve numerical riddles and unlock doors to progress through 100 unique levels!",
     "gameGuide": {
       "howToPlay": [
-        "观察每扇门的数学谜题",
-        "计算正确的答案",
-        "输入密码解锁门",
-        "逐步通过100个关卡"
+        "100 Doors Puzzle Box is a point-and-click game packed with intriguing puzzles and hidden object challenges. Test your skills as you navigate through nine captivating, animated levels. Engage in unique mechanics like time travel, object combination, and creative problem-solving as you unlock each door and collect achievements. Dive into beautifully detailed locations and unravel the mysteries behind each level!"
       ],
       "controls": {
-        "mouse": "点击物品和输入答案",
-        "touch": "触摸屏幕交互"
+        "mouse": "Use the left mouse button to play."
       },
       "tips": [
-        "仔细观察门上的线索",
-        "有些谜题需要创造性思维"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/100-doors-puzzle-box_16x9/20241113080605/100-doors-puzzle-box_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -802,18 +758,15 @@
     "description": "Aritmazetic is a fast-paced arithmetic game that tests your mental math skills. Solve addition, subtraction, multiplication, and division problems as quickly as possible!",
     "gameGuide": {
       "howToPlay": [
-        "快速解决算术题目",
-        "选择正确的答案",
-        "在时间限制内完成",
-        "获得最高分数"
+        "AritMazeTic is a puzzle game in which you need to move from block to block through mazes by doing some basic mathematical operations. How fast can you reach 1,000,000 points? Will you move 500 times before getting down to 0?"
       ],
       "controls": {
-        "mouse": "点击选择答案",
-        "keyboard": "使用数字键输入答案"
+        "mouse": "Click and drag to interact",
+        "touch": "Tap and swipe to control"
       },
       "tips": [
-        "练习心算技巧",
-        "保持冷静和专注"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/aritmazetic/20210405093902/aritmazetic-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -852,18 +805,14 @@
     "description": "Super Number Defense is a tower defense game with mathematical elements. Use numbers and calculations to defend your base against waves of enemies!",
     "gameGuide": {
       "howToPlay": [
-        "放置数字防御塔",
-        "计算攻击力和防御力",
-        "升级你的数字武器",
-        "抵御所有敌人波次"
+        "Super Number Defense is a tower defense game where you can put your calculation skills to the test! Strategically defeat waves of enemies by harnessing the power of math. Choose your turrets wisely, as their strength and effectiveness depend on your ability to solve simple math problems. Allocate your resources wisely to maximize your defense capabilities. With its innovative blend of tower defense and math gameplay, this game offers a thrilling and educational gaming experience. Can you protect your base? It's time to unleash the power of numbers!"
       ],
       "controls": {
-        "mouse": "点击放置和升级防御塔",
-        "touch": "触摸屏幕进行操作"
+        "mouse": "Use the left mouse button to place and upgrade the turrets."
       },
       "tips": [
-        "合理分配数字资源",
-        "优先升级关键防御塔"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/super-number-defense/20230520084327/super-number-defense-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -902,18 +851,14 @@
     "description": "Puzzle Survivor combines survival gameplay with mathematical puzzles. Solve math problems to gather resources and survive in a challenging environment!",
     "gameGuide": {
       "howToPlay": [
-        "解决数学谜题获取资源",
-        "建造和升级避难所",
-        "管理食物和水源",
-        "在恶劣环境中生存"
+        "Puzzle Survivor is a competitive puzzle game that puts your logic and strategy to the test. Solve word and number challenges across multiple game modes, compete in real-time or turn-based battles, and climb the leaderboards. Take on daily challenges, unlock achievements, and sharpen your mind in fast-paced, brain-training duels!"
       ],
       "controls": {
-        "mouse": "点击交互和选择",
-        "keyboard": "使用快捷键操作"
+        "mouse": "Use the Left Mouse Button to interact."
       },
       "tips": [
-        "优先解决基础需求",
-        "合理规划资源使用"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/puzzle-survivor_16x9/20250616040010/puzzle-survivor_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -952,18 +897,14 @@
     "description": "The Last Light of Lyra is an adventure game with mathematical puzzles. Help Lyra solve numerical challenges to restore light to her world in this epic quest!",
     "gameGuide": {
       "howToPlay": [
-        "探索神秘的世界",
-        "解决数学谜题推进剧情",
-        "收集光之碎片",
-        "恢复世界的光明"
+        "The Last Light of Lyra is a serene cosmic puzzle adventure where you guide mining ships through a collapsing universe. Traverse fading planets, solve clever number-based puzzles using addition and subtraction, and restore harmony among the stars. With gentle storytelling and dreamlike visuals, it's a peaceful, brain-teasing journey through a beautifully unraveling cosmos."
       ],
       "controls": {
-        "keyboard": "WASD键移动角色",
-        "mouse": "点击交互和解谜"
+        "general": "Drag and drop to create a line to move ships between planets."
       },
       "tips": [
-        "仔细探索每个区域",
-        "记录重要的数字线索"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/the-last-light-of-lyra_16x9/20250515051614/the-last-light-of-lyra_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -1002,18 +943,18 @@
     "description": "Nullify is a mathematical puzzle game where you need to make numbers equal zero. Use addition, subtraction, and strategic thinking to nullify all numbers on the board!",
     "gameGuide": {
       "howToPlay": [
-        "选择数字进行运算",
-        "使用加法和减法",
-        "让所有数字变为零",
-        "用最少步数完成挑战"
+        "56 Levels to complete",
+        "4 Infinite game modes",
+        "Black and white theme that can be inverted",
+        "Simple and easy controls by dragging elements",
+        "13 math symbols"
       ],
       "controls": {
-        "mouse": "点击选择数字",
-        "touch": "触摸屏幕选择"
+        "mouse": "Drag the left mouse button to move objects."
       },
       "tips": [
-        "先观察数字的分布",
-        "计划最优的运算顺序"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/nullify/20221028191850/nullify-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -1052,18 +993,14 @@
     "description": "Number Masters is a competitive math game where you race against other players to solve numerical challenges. Become the ultimate number master by solving problems faster than your opponents!",
     "gameGuide": {
       "howToPlay": [
-        "快速解决数学题目",
-        "与其他玩家竞争",
-        "获得最高分数",
-        "成为数字大师"
+        "Number Masters is a math game where you can challenge yourself to beat everyone in the game. Answer the questions right and quickly so you can climb up the stairs to avoid the sea monster!"
       ],
       "controls": {
-        "mouse": "点击选择答案",
-        "keyboard": "输入数字答案"
+        "mouse": "Use the left mouse button to press the right number."
       },
       "tips": [
-        "提高计算速度",
-        "保持准确性"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/number-masters/20220913162838/number-masters-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -1102,18 +1039,14 @@
     "description": "Math Expressions is an educational game that teaches students how to solve mathematical expressions and equations. Practice order of operations and algebraic thinking!",
     "gameGuide": {
       "howToPlay": [
-        "阅读数学表达式",
-        "按照运算顺序计算",
-        "输入正确答案",
-        "掌握代数思维"
+        "MATH EXPRESSions is a WORDLE-inspired game, but instead of finding a word, you need to find a math equation. It's a perfect daily warm-up routine for your brain. On each try, you will get notified if the digit is correct, if the digit is present in the expression but in the wrong place, or if the digit is not present at all. Can you guess the Math Expression in 6 tries?"
       ],
       "controls": {
-        "keyboard": "输入数字和符号",
-        "mouse": "点击选择选项"
+        "mouse": "Type the math expression on your keyboard or use the left mouse button to interact with the in-game buttons"
       },
       "tips": [
-        "记住运算优先级",
-        "仔细检查计算过程"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/math-expressions/20220916215659/math-expressions-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -1152,18 +1085,14 @@
     "description": "Snake Blockade combines the classic snake game with mathematical challenges. Guide your snake through numerical obstacles while solving math problems!",
     "gameGuide": {
       "howToPlay": [
-        "控制蛇的移动方向",
-        "解决数学题目通过障碍",
-        "收集数字增长身体",
-        "避免撞到墙壁或自己"
+        "Snake Blockade is a casual snake game where you collect points to grow your snake. Use points to crush the blockade. Don't lose all your snake points, or the game will be over!"
       ],
       "controls": {
-        "keyboard": "方向键控制蛇的移动",
-        "touch": "滑动屏幕改变方向"
+        "mouse": "Drag the left mouse button to control the snake."
       },
       "tips": [
-        "提前规划移动路径",
-        "快速解决数学题目"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/snake-blockade/20230118111336/snake-blockade-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -1202,18 +1131,15 @@
     "description": "XOR is a logic-based math game that teaches binary operations and logical thinking. Master the XOR operation through challenging puzzles and brain teasers!",
     "gameGuide": {
       "howToPlay": [
-        "学习XOR逻辑运算",
-        "解决二进制谜题",
-        "应用逻辑思维",
-        "完成所有挑战"
+        "xor is a mind-bending, minimalist puzzle game. There are three flat figures (triangle, square and rhombus) that must be folded in a certain way to get another, more complex, figure."
       ],
       "controls": {
-        "mouse": "点击选择和操作",
-        "keyboard": "使用数字键输入"
+        "mouse": "Click and drag to interact",
+        "touch": "Tap and swipe to control"
       },
       "tips": [
-        "理解XOR运算规则",
-        "练习二进制转换"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/xor/20210106085429/xor-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
@@ -1252,18 +1178,14 @@
     "description": "Dicetris combines Tetris gameplay with dice mathematics. Stack dice blocks while calculating sums and creating mathematical combinations in this unique puzzle game!",
     "gameGuide": {
       "howToPlay": [
-        "旋转和放置骰子方块",
-        "计算骰子点数总和",
-        "创建数学组合",
-        "清除完整的行"
+        "Dicetris is a clever block-stacking puzzle game that challenges your math and strategy skills. Align falling dice to match the target sums at the bottom, using color combinations and stacking techniques to maximize your score. With each move, you'll sharpen your thinking while chasing high scores in this engaging and unique puzzle experience."
       ],
       "controls": {
-        "keyboard": "方向键移动，空格键旋转",
-        "touch": "滑动和点击操作"
+        "keyboard": "You can also play with the WASD keys."
       },
       "tips": [
-        "计算最佳放置位置",
-        "利用骰子数字组合"
+        "Read the game instructions carefully",
+        "Practice to improve your skills"
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/dicetris_16x9/20241223111901/dicetris_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
