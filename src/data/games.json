@@ -818,22 +818,31 @@
   },
   {
     "slug": "world-geography-quiz",
-    "title": "GAME",
+    "title": "World Geography Quiz",
     "category": "geography",
     "categoryName": "Geography",
     "iframeUrl": "https://www.crazygames.com/embed/world-geography-quiz",
     "source": "CrazyGames",
     "iframeCompatible": true,
     "verified": true,
-    "description": "An educational geography game that helps develop learning skills.",
+    "description": "Test your knowledge of world geography with this interactive quiz game. Learn about countries, capitals, landmarks, and geographical features while having fun.",
     "gameGuide": {
       "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete challenges to progress"
+        "选择一个地理主题开始游戏",
+        "阅读问题并选择正确答案",
+        "使用地图和提示帮助回答",
+        "完成所有问题获得高分"
+      ],
+      "controls": {
+        "mouse": "点击选择答案",
+        "touch": "触摸屏幕选择选项"
+      },
+      "tips": [
+        "仔细观察地图细节",
+        "利用已知地理知识推理"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/world-geography-quiz.png",
+    "thumbnailUrl": "https://imgs.crazygames.com/games/world-geography-quiz/cover_16x9.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
