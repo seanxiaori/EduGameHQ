@@ -1,0 +1,22 @@
+{
+  "name": "crazygames-thumbnail-fetcher",
+  "version": "1.0.0",
+  "description": "自动获取CrazyGames游戏缩略图的脚本",
+  "type": "module",
+  "main": "fetch-crazygames-thumbnails.js",
+  "scripts": {
+    "start": "node fetch-crazygames-thumbnails.js",
+    "fetch": "node fetch-crazygames-thumbnails.js"
+  },
+  "dependencies": {
+    "puppeteer": "^21.0.0"
+  },
+  "keywords": [
+    "crazygames",
+    "thumbnail",
+    "scraping",
+    "automation"
+  ],
+  "author": "Sean",
+  "license": "MIT"
+} 
