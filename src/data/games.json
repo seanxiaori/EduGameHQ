@@ -388,5 +388,887 @@
     "featured": false,
     "trending": false,
     "isNew": true
+  },
+  {
+    "slug": "number-line-match",
+    "title": "Number Line Match",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/number-line-match",
+    "description": "Number Line Match is an educational math game that helps students understand number sequences and patterns. Match numbers to their correct positions on the number line to improve your mathematical skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "观察数字线上的空白位置",
+        "从选项中选择正确的数字",
+        "将数字拖拽到正确的位置",
+        "完成所有匹配获得高分"
+      ],
+      "controls": {
+        "mouse": "拖拽数字到目标位置",
+        "touch": "触摸并拖动数字"
+      },
+      "tips": [
+        "仔细观察数字的规律",
+        "从简单的序列开始练习"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/number-line-match_16x9/20240101000000/number-line-match_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
+    "tags": [
+      "math",
+      "numbers",
+      "logic",
+      "educational",
+      "sequence"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/number-line-match",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "stack-it",
+    "title": "Stack It",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/stack-it",
+    "description": "Stack It is a fun physics-based puzzle game where you need to stack objects carefully while solving mathematical challenges. Test your spatial reasoning and math skills in this engaging game!",
+    "gameGuide": {
+      "howToPlay": [
+        "点击屏幕放置物体",
+        "计算正确的堆叠顺序",
+        "保持平衡避免倒塌",
+        "完成所有关卡挑战"
+      ],
+      "controls": {
+        "mouse": "点击放置物体",
+        "touch": "触摸屏幕放置"
+      },
+      "tips": [
+        "注意物体的重心",
+        "先计算再行动"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/stack-it_16x9/20240101000000/stack-it_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "physics",
+      "logic",
+      "puzzle",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/stack-it",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-push",
+    "title": "Math Push",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/math-push",
+    "description": "Math Push is an exciting puzzle game that combines mathematical calculations with strategic pushing mechanics. Solve equations while navigating through challenging levels!",
+    "gameGuide": {
+      "howToPlay": [
+        "推动数字方块到正确位置",
+        "解决数学方程式",
+        "使用策略规划移动路径",
+        "完成所有数学挑战"
+      ],
+      "controls": {
+        "keyboard": "方向键控制移动",
+        "touch": "滑动屏幕推动方块"
+      },
+      "tips": [
+        "先观察整个关卡布局",
+        "计算最优移动路径"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/math-push_16x9/20240101000000/math-push_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "puzzle",
+      "logic",
+      "strategy",
+      "problem-solving"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/math-push",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "number-digger",
+    "title": "Number Digger",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/number-digger",
+    "description": "Number Digger is an adventure math game where you dig through levels while solving numerical puzzles. Collect numbers, solve equations, and discover hidden mathematical treasures!",
+    "gameGuide": {
+      "howToPlay": [
+        "挖掘地下寻找数字",
+        "收集数字解决方程",
+        "避开障碍物和陷阱",
+        "完成所有挖掘任务"
+      ],
+      "controls": {
+        "mouse": "点击挖掘方向",
+        "keyboard": "方向键移动角色"
+      },
+      "tips": [
+        "优先收集需要的数字",
+        "注意挖掘路径的安全性"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/number-digger_16x9/20240101000000/number-digger_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "math",
+      "adventure",
+      "numbers",
+      "puzzle",
+      "exploration"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/number-digger",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "gravity-crowd",
+    "title": "Gravity Crowd",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/gravity-crowd",
+    "description": "Gravity Crowd is a physics-based math game where you control gravity to guide crowds of numbers. Use mathematical thinking to solve puzzles and reach the target!",
+    "gameGuide": {
+      "howToPlay": [
+        "控制重力方向",
+        "引导数字人群移动",
+        "解决数学谜题",
+        "达到目标数量"
+      ],
+      "controls": {
+        "mouse": "点击改变重力方向",
+        "touch": "触摸屏幕控制重力"
+      },
+      "tips": [
+        "观察数字的移动规律",
+        "合理利用重力效果"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/gravity-crowd_16x9/20240101000000/gravity-crowd_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "physics",
+      "puzzle",
+      "logic",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/gravity-crowd",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-duck",
+    "title": "Math Duck",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/math-duck",
+    "description": "Math Duck is a fun educational game featuring a cute duck that helps children learn mathematics. Solve math problems while enjoying adorable duck animations!",
+    "gameGuide": {
+      "howToPlay": [
+        "帮助小鸭子解决数学题",
+        "选择正确的答案",
+        "收集奖励和分数",
+        "完成所有数学挑战"
+      ],
+      "controls": {
+        "mouse": "点击选择答案",
+        "touch": "触摸屏幕选择"
+      },
+      "tips": [
+        "仔细计算每道题目",
+        "不要急于选择答案"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/math-duck_16x9/20240101000000/math-duck_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "4-10",
+    "minAge": 4,
+    "maxAge": 10,
+    "tags": [
+      "math",
+      "educational",
+      "kids",
+      "animals",
+      "learning"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/math-duck",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "bff-math-class",
+    "title": "BFF Math Class",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/bff-math-class",
+    "description": "BFF Math Class is a social learning game where best friends help each other solve mathematical problems. Work together to complete math challenges and strengthen your friendship!",
+    "gameGuide": {
+      "howToPlay": [
+        "与好朋友一起解决数学题",
+        "互相帮助完成挑战",
+        "分享解题思路",
+        "一起获得高分"
+      ],
+      "controls": {
+        "mouse": "点击选择和交互",
+        "touch": "触摸屏幕进行操作"
+      },
+      "tips": [
+        "团队合作很重要",
+        "分享你的解题方法"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/bff-math-class_16x9/20240101000000/bff-math-class_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "math",
+      "social",
+      "educational",
+      "friendship",
+      "cooperation"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/bff-math-class",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "100-doors-puzzle-box",
+    "title": "100 Doors Puzzle Box",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/100-doors-puzzle-box",
+    "description": "100 Doors Puzzle Box is a challenging escape game with mathematical puzzles. Solve numerical riddles and unlock doors to progress through 100 unique levels!",
+    "gameGuide": {
+      "howToPlay": [
+        "观察每扇门的数学谜题",
+        "计算正确的答案",
+        "输入密码解锁门",
+        "逐步通过100个关卡"
+      ],
+      "controls": {
+        "mouse": "点击物品和输入答案",
+        "touch": "触摸屏幕交互"
+      },
+      "tips": [
+        "仔细观察门上的线索",
+        "有些谜题需要创造性思维"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/100-doors-puzzle-box_16x9/20240101000000/100-doors-puzzle-box_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "math",
+      "puzzle",
+      "escape",
+      "logic",
+      "challenge"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/100-doors-puzzle-box",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "aritmazetic",
+    "title": "Aritmazetic",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/aritmazetic",
+    "description": "Aritmazetic is a fast-paced arithmetic game that tests your mental math skills. Solve addition, subtraction, multiplication, and division problems as quickly as possible!",
+    "gameGuide": {
+      "howToPlay": [
+        "快速解决算术题目",
+        "选择正确的答案",
+        "在时间限制内完成",
+        "获得最高分数"
+      ],
+      "controls": {
+        "mouse": "点击选择答案",
+        "keyboard": "使用数字键输入答案"
+      },
+      "tips": [
+        "练习心算技巧",
+        "保持冷静和专注"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/aritmazetic_16x9/20240101000000/aritmazetic_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "arithmetic",
+      "speed",
+      "mental-math",
+      "challenge"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/aritmazetic",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "super-number-defense",
+    "title": "Super Number Defense",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/super-number-defense",
+    "description": "Super Number Defense is a tower defense game with mathematical elements. Use numbers and calculations to defend your base against waves of enemies!",
+    "gameGuide": {
+      "howToPlay": [
+        "放置数字防御塔",
+        "计算攻击力和防御力",
+        "升级你的数字武器",
+        "抵御所有敌人波次"
+      ],
+      "controls": {
+        "mouse": "点击放置和升级防御塔",
+        "touch": "触摸屏幕进行操作"
+      },
+      "tips": [
+        "合理分配数字资源",
+        "优先升级关键防御塔"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/super-number-defense_16x9/20240101000000/super-number-defense_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "tower-defense",
+      "strategy",
+      "numbers",
+      "action"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/super-number-defense",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "puzzle-survivor",
+    "title": "Puzzle Survivor",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/puzzle-survivor",
+    "description": "Puzzle Survivor combines survival gameplay with mathematical puzzles. Solve math problems to gather resources and survive in a challenging environment!",
+    "gameGuide": {
+      "howToPlay": [
+        "解决数学谜题获取资源",
+        "建造和升级避难所",
+        "管理食物和水源",
+        "在恶劣环境中生存"
+      ],
+      "controls": {
+        "mouse": "点击交互和选择",
+        "keyboard": "使用快捷键操作"
+      },
+      "tips": [
+        "优先解决基础需求",
+        "合理规划资源使用"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/puzzle-survivor_16x9/20240101000000/puzzle-survivor_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "math",
+      "survival",
+      "puzzle",
+      "strategy",
+      "resource-management"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/puzzle-survivor",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "the-last-light-of-lyra",
+    "title": "The Last Light of Lyra",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/the-last-light-of-lyra",
+    "description": "The Last Light of Lyra is an adventure game with mathematical puzzles. Help Lyra solve numerical challenges to restore light to her world in this epic quest!",
+    "gameGuide": {
+      "howToPlay": [
+        "探索神秘的世界",
+        "解决数学谜题推进剧情",
+        "收集光之碎片",
+        "恢复世界的光明"
+      ],
+      "controls": {
+        "keyboard": "WASD键移动角色",
+        "mouse": "点击交互和解谜"
+      },
+      "tips": [
+        "仔细探索每个区域",
+        "记录重要的数字线索"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/the-last-light-of-lyra_16x9/20240101000000/the-last-light-of-lyra_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "adventure",
+      "puzzle",
+      "story",
+      "exploration"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/the-last-light-of-lyra",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "nullify",
+    "title": "Nullify",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/nullify",
+    "description": "Nullify is a mathematical puzzle game where you need to make numbers equal zero. Use addition, subtraction, and strategic thinking to nullify all numbers on the board!",
+    "gameGuide": {
+      "howToPlay": [
+        "选择数字进行运算",
+        "使用加法和减法",
+        "让所有数字变为零",
+        "用最少步数完成挑战"
+      ],
+      "controls": {
+        "mouse": "点击选择数字",
+        "touch": "触摸屏幕选择"
+      },
+      "tips": [
+        "先观察数字的分布",
+        "计划最优的运算顺序"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/nullify_16x9/20240101000000/nullify_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "puzzle",
+      "logic",
+      "strategy",
+      "numbers"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/nullify",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "number-masters",
+    "title": "Number Masters",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/number-masters",
+    "description": "Number Masters is a competitive math game where you race against other players to solve numerical challenges. Become the ultimate number master by solving problems faster than your opponents!",
+    "gameGuide": {
+      "howToPlay": [
+        "快速解决数学题目",
+        "与其他玩家竞争",
+        "获得最高分数",
+        "成为数字大师"
+      ],
+      "controls": {
+        "mouse": "点击选择答案",
+        "keyboard": "输入数字答案"
+      },
+      "tips": [
+        "提高计算速度",
+        "保持准确性"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/number-masters_16x9/20240101000000/number-masters_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "competitive",
+      "speed",
+      "numbers",
+      "challenge"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/number-masters",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-expressions",
+    "title": "Math Expressions",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/math-expressions",
+    "description": "Math Expressions is an educational game that teaches students how to solve mathematical expressions and equations. Practice order of operations and algebraic thinking!",
+    "gameGuide": {
+      "howToPlay": [
+        "阅读数学表达式",
+        "按照运算顺序计算",
+        "输入正确答案",
+        "掌握代数思维"
+      ],
+      "controls": {
+        "keyboard": "输入数字和符号",
+        "mouse": "点击选择选项"
+      },
+      "tips": [
+        "记住运算优先级",
+        "仔细检查计算过程"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/math-expressions_16x9/20240101000000/math-expressions_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-16",
+    "minAge": 10,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "algebra",
+      "expressions",
+      "educational",
+      "logic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/math-expressions",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "snake-blockade",
+    "title": "Snake Blockade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/snake-blockade",
+    "description": "Snake Blockade combines the classic snake game with mathematical challenges. Guide your snake through numerical obstacles while solving math problems!",
+    "gameGuide": {
+      "howToPlay": [
+        "控制蛇的移动方向",
+        "解决数学题目通过障碍",
+        "收集数字增长身体",
+        "避免撞到墙壁或自己"
+      ],
+      "controls": {
+        "keyboard": "方向键控制蛇的移动",
+        "touch": "滑动屏幕改变方向"
+      },
+      "tips": [
+        "提前规划移动路径",
+        "快速解决数学题目"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/snake-blockade_16x9/20240101000000/snake-blockade_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "snake",
+      "arcade",
+      "puzzle",
+      "classic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/snake-blockade",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "xor",
+    "title": "XOR",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/xor",
+    "description": "XOR is a logic-based math game that teaches binary operations and logical thinking. Master the XOR operation through challenging puzzles and brain teasers!",
+    "gameGuide": {
+      "howToPlay": [
+        "学习XOR逻辑运算",
+        "解决二进制谜题",
+        "应用逻辑思维",
+        "完成所有挑战"
+      ],
+      "controls": {
+        "mouse": "点击选择和操作",
+        "keyboard": "使用数字键输入"
+      },
+      "tips": [
+        "理解XOR运算规则",
+        "练习二进制转换"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/xor_16x9/20240101000000/xor_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "math",
+      "logic",
+      "binary",
+      "programming",
+      "advanced"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/xor",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "dicetris",
+    "title": "Dicetris",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/dicetris",
+    "description": "Dicetris combines Tetris gameplay with dice mathematics. Stack dice blocks while calculating sums and creating mathematical combinations in this unique puzzle game!",
+    "gameGuide": {
+      "howToPlay": [
+        "旋转和放置骰子方块",
+        "计算骰子点数总和",
+        "创建数学组合",
+        "清除完整的行"
+      ],
+      "controls": {
+        "keyboard": "方向键移动，空格键旋转",
+        "touch": "滑动和点击操作"
+      },
+      "tips": [
+        "计算最佳放置位置",
+        "利用骰子数字组合"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/dicetris_16x9/20240101000000/dicetris_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "tetris",
+      "dice",
+      "puzzle",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/dicetris",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true
   }
 ]
