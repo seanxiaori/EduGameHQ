@@ -1,0 +1,36 @@
+{
+  "category": "language",
+  "categoryName": "Language",
+  "description": "Educational language games for children and students",
+  "games": [
+    {
+      "slug": "trivia-crack",
+      "title": "Trivia Crack",
+      "description": "Trivia Crack is a fun quiz game where you can test your general knowledge and learn amazing facts about the world. Know more by playing the worldwide #1 hit trivia game. It’s showtime!",
+      "thumbnailUrl": "https://imgs.crazygames.com/trivia-crack/20230313103519/trivia-crack-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "language",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/trivia-crack"
+    },
+    {
+      "slug": "google-feud",
+      "title": "Google Feud",
+      "description": "Google Feud is a casual game where you must guess part of a Google query. There are 10 answers for each question, presented in a quiz format similar to Family Feud. Like the hit quiz show, you have 3 guesses, so use them wisely!",
+      "thumbnailUrl": "https://imgs.crazygames.com/games/google-feud/thumb-1557498552743.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "language",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/google-feud"
+    }
+  ],
+  "totalGames": 2
+}

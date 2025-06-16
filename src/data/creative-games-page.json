@@ -1,0 +1,22 @@
+{
+  "category": "creative",
+  "categoryName": "Creative",
+  "description": "Educational creative games for children and students",
+  "games": [
+    {
+      "slug": "draw-climber",
+      "title": "Draw Climber",
+      "description": "Draw Climber is a quirky racing casual game where you control your characters by sketching their legs. Create any shape to keep moving, and if you get stuck, simply redraw to overcome obstacles. Experiment with different designs to find the fastest way to the finish line. Can you outdraw and outrun the competition?",
+      "thumbnailUrl": "https://imgs.crazygames.com/draw-climber_16x9/20250327042947/draw-climber_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "creative",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/draw-climber"
+    }
+  ],
+  "totalGames": 1
+}

@@ -1,0 +1,14 @@
+{
+  "totalGames": 12,
+  "successfulGames": 12,
+  "failedGames": 0,
+  "gamesByCategory": {
+    "science": 3,
+    "puzzle": 3,
+    "language": 2,
+    "physics": 2,
+    "creative": 1,
+    "geography": 1
+  },
+  "timestamp": "2025-06-16T09:01:49.094Z"
+}

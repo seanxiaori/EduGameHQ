@@ -1,0 +1,22 @@
+{
+  "category": "geography",
+  "categoryName": "Geography",
+  "description": "Educational geography games for children and students",
+  "games": [
+    {
+      "slug": "world-geography-quiz",
+      "title": "GAME",
+      "description": "An educational geography game that helps develop learning skills.",
+      "thumbnailUrl": "https://imgs.crazygames.com/world-geography-quiz.png",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "geography",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/world-geography-quiz"
+    }
+  ],
+  "totalGames": 1
+}

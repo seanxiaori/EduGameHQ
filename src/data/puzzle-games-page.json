@@ -1,0 +1,50 @@
+{
+  "category": "puzzle",
+  "categoryName": "Puzzle",
+  "description": "Educational puzzle games for children and students",
+  "games": [
+    {
+      "slug": "thief-puzzle",
+      "title": "Thief Puzzle",
+      "description": "Thief Puzzle is a clever 2D puzzle logic game that puts your problem-solving and strategy to the test. You control a sneaky thief’s hand as it reaches for valuable treasures, but the path is filled with complex traps, laser security systems, and tricky obstacles. Do you have what it takes to outsmart each trap that comes your way?",
+      "thumbnailUrl": "https://imgs.crazygames.com/thief-puzzle_16x9/20240919050737/thief-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "puzzle",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/thief-puzzle"
+    },
+    {
+      "slug": "mahjongg-solitaire",
+      "title": "Mahjongg Solitaire",
+      "description": "Mahjongg Solitaire is an online mahjong puzzle board game featuring traditional rules and modern visuals. There are no shuffles, and the game is timed, but the game&#39;s pace is relaxed.",
+      "thumbnailUrl": "https://imgs.crazygames.com/games/mahjongg-solitaire/cover_16x9-1707829450935.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "puzzle",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/mahjongg-solitaire"
+    },
+    {
+      "slug": "nonogram",
+      "title": "Nonogram",
+      "description": "Nonogram is a captivating logic game where you fill in spaces on a numerical grid to reveal an image. Think carefully to avoid hitting a cross, and fill in the correct squares to complete the picture.",
+      "thumbnailUrl": "https://imgs.crazygames.com/games/nonogram/cover-1635351946352.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+      "difficulty": "Medium",
+      "ageRange": "8-16",
+      "tags": [
+        "puzzle",
+        "educational",
+        "interactive"
+      ],
+      "iframeUrl": "https://www.crazygames.com/embed/nonogram"
+    }
+  ],
+  "totalGames": 3
+}
