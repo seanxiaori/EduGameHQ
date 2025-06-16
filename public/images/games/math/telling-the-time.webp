@@ -1,0 +1,29 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#3498db"/>
+  
+  <!-- Clock face -->
+  <circle cx="200" cy="150" r="80" fill="white" stroke="#2c3e50" stroke-width="4"/>
+  
+  <!-- Clock numbers -->
+  <text x="200" y="85" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="16" font-weight="bold">12</text>
+  <text x="265" y="160" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="16" font-weight="bold">3</text>
+  <text x="200" y="225" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="16" font-weight="bold">6</text>
+  <text x="135" y="160" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="16" font-weight="bold">9</text>
+  
+  <!-- Clock hands showing 3:15 -->
+  <!-- Hour hand -->
+  <line x1="200" y1="150" x2="230" y2="130" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>
+  <!-- Minute hand -->
+  <line x1="200" y1="150" x2="200" y2="90" stroke="#2c3e50" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- Center dot -->
+  <circle cx="200" cy="150" r="6" fill="#2c3e50"/>
+  
+  <!-- Digital time display -->
+  <rect x="150" y="250" width="100" height="30" fill="#2c3e50" rx="5"/>
+  <text x="200" y="270" text-anchor="middle" fill="#00ff00" font-family="monospace" font-size="18" font-weight="bold">3:15</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">Telling the Time</text>
+  <text x="200" y="50" text-anchor="middle" fill="#ecf0f1" font-family="Arial" font-size="14">Learn to Read Clocks</text>
+</svg> 

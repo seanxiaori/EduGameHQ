@@ -1,0 +1,51 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#27ae60"/>
+  
+  <!-- Grid background -->
+  <rect x="50" y="50" width="300" height="200" fill="white" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Grid lines and numbers -->
+  <!-- Row 1 -->
+  <rect x="50" y="50" width="30" height="20" fill="#3498db" stroke="#2c3e50" stroke-width="1"/>
+  <text x="65" y="63" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">1</text>
+  <rect x="80" y="50" width="30" height="20" fill="white" stroke="#2c3e50" stroke-width="1"/>
+  <text x="95" y="63" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">2</text>
+  <rect x="110" y="50" width="30" height="20" fill="#3498db" stroke="#2c3e50" stroke-width="1"/>
+  <text x="125" y="63" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">3</text>
+  <rect x="140" y="50" width="30" height="20" fill="white" stroke="#2c3e50" stroke-width="1"/>
+  <text x="155" y="63" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">4</text>
+  <rect x="170" y="50" width="30" height="20" fill="#3498db" stroke="#2c3e50" stroke-width="1"/>
+  <text x="185" y="63" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">5</text>
+  
+  <!-- Row 2 -->
+  <rect x="50" y="70" width="30" height="20" fill="white" stroke="#2c3e50" stroke-width="1"/>
+  <text x="65" y="83" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">6</text>
+  <rect x="80" y="70" width="30" height="20" fill="#3498db" stroke="#2c3e50" stroke-width="1"/>
+  <text x="95" y="83" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">7</text>
+  <rect x="110" y="70" width="30" height="20" fill="white" stroke="#2c3e50" stroke-width="1"/>
+  <text x="125" y="83" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">8</text>
+  <rect x="140" y="70" width="30" height="20" fill="#3498db" stroke="#2c3e50" stroke-width="1"/>
+  <text x="155" y="83" text-anchor="middle" fill="white" font-family="Arial" font-size="12" font-weight="bold">9</text>
+  <rect x="170" y="70" width="30" height="20" fill="white" stroke="#2c3e50" stroke-width="1"/>
+  <text x="185" y="83" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">10</text>
+  
+  <!-- More rows with dots to indicate continuation -->
+  <text x="65" y="110" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">11</text>
+  <text x="95" y="110" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">12</text>
+  <text x="125" y="110" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="12">13</text>
+  
+  <!-- Dots to show continuation -->
+  <text x="200" y="150" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="20">⋮</text>
+  
+  <!-- Bottom row showing 91-100 -->
+  <text x="65" y="220" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="10">91</text>
+  <text x="95" y="220" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="10">92</text>
+  <text x="125" y="220" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="10">93</text>
+  <text x="155" y="220" text-anchor="middle" fill="#2c3e50" font-family="Arial" font-size="10">...</text>
+  <rect x="290" y="210" width="30" height="20" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+  <text x="305" y="223" text-anchor="middle" fill="white" font-family="Arial" font-size="10" font-weight="bold">100</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">Hundred Square</text>
+  <text x="200" y="280" text-anchor="middle" fill="white" font-family="Arial" font-size="14">Number Patterns & Multiples</text>
+</svg> 

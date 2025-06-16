@@ -1,0 +1,33 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="url(#bg)"/>
+  
+  <!-- Game container -->
+  <rect x="50" y="50" width="300" height="200" rx="20" fill="white" opacity="0.95"/>
+  
+  <!-- Title -->
+  <text x="200" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#333">🧮 Math Quiz</text>
+  
+  <!-- Question -->
+  <text x="200" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#333">15 + 8 = ?</text>
+  
+  <!-- Answer options -->
+  <rect x="80" y="150" width="60" height="40" rx="8" fill="#3498db"/>
+  <text x="110" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">23</text>
+  
+  <rect x="170" y="150" width="60" height="40" rx="8" fill="#27ae60"/>
+  <text x="200" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">23</text>
+  
+  <rect x="260" y="150" width="60" height="40" rx="8" fill="#3498db"/>
+  <text x="290" y="175" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="white">22</text>
+  
+  <!-- Score -->
+  <text x="200" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#666">Score: 850 | Question: 5/10</text>
+</svg> 

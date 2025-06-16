@@ -1,0 +1,13 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#dc2626"/>
+  <rect x="100" y="100" width="80" height="20" fill="white"/>
+  <rect x="100" y="100" width="40" height="20" fill="#fca5a5"/>
+  <text x="140" y="135" text-anchor="middle" fill="white" font-family="Arial" font-size="16">1/2</text>
+  
+  <rect x="220" y="100" width="80" height="20" fill="white"/>
+  <rect x="220" y="100" width="60" height="20" fill="#fca5a5"/>
+  <text x="260" y="135" text-anchor="middle" fill="white" font-family="Arial" font-size="16">3/4</text>
+  
+  <text x="200" y="180" text-anchor="middle" fill="white" font-family="Arial" font-size="20" font-weight="bold">Fraction Matcher</text>
+  <text x="200" y="205" text-anchor="middle" fill="#fecaca" font-family="Arial" font-size="14">PhET Interactive</text>
+</svg> 

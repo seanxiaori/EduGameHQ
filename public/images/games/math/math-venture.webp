@@ -1,0 +1,14 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="spaceGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#312e81;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#spaceGradient)"/>
+  <circle cx="350" cy="50" r="3" fill="#fbbf24"/>
+  <circle cx="320" cy="80" r="2" fill="#f59e0b"/>
+  <circle cx="370" cy="90" r="1" fill="#fbbf24"/>
+  <text x="200" y="140" text-anchor="middle" fill="white" font-family="Arial" font-size="24" font-weight="bold">Math Venture</text>
+  <text x="200" y="170" text-anchor="middle" fill="#c7d2fe" font-family="Arial" font-size="14">Space Shooter + Math</text>
+</svg> 
