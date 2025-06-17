@@ -22,50 +22,21 @@ try {
   console.warn('Unable to read games data file');
 }
 
-// 智能图片路径处理函数 - 支持多种游戏来源
-function getGameImagePath(game: Game, gameId: string): string {
-  // 1. 优先使用screenshots（爬取游戏的截图）
-  if (game.screenshots && game.screenshots.length > 0) {
-    const screenshot = game.screenshots[0];
-    // 检查是否是有效的截图文件
-    if (screenshot && screenshot !== 'default-intro.jpg' && screenshot !== 'placeholder-game.jpg') {
-      return `/images/games/details/${screenshot}`;
-    }
+// 获取游戏图片URL - 优先使用游戏数据中的thumbnailUrl
+function getGameImageUrl(game) {
+  // 首先检查游戏数据中的thumbnailUrl
+  if (game.thumbnailUrl) {
+    return game.thumbnailUrl;
   }
   
-  // 2. 其次使用images（游戏封面图）
-  if (game.images && game.images.length > 0) {
-    const image = game.images[0];
-    if (image && image !== 'default-intro.jpg' && image !== 'placeholder-game.jpg') {
-      return `/images/games/${image}`;
-    }
-  }
-  
-  // 3. 检查是否是GitHub开源游戏（为未来做准备）
-  if (game.source === 'github' && game.repository) {
-    // GitHub游戏可能有README中的图片或者仓库封面
-    return `/images/games/github/${gameId}.jpg`;
-  }
-  
-  // 4. 根据游戏分类使用分类占位图
-  const categoryPlaceholders = {
-    'math': '/images/placeholders/math-placeholder.jpg',
-    'science': '/images/placeholders/science-placeholder.jpg',
-    'coding': '/images/placeholders/coding-placeholder.jpg',
-    'language': '/images/placeholders/language-placeholder.jpg',
-    'puzzle': '/images/placeholders/puzzle-placeholder.jpg',
-    'sports': '/images/placeholders/sports-placeholder.jpg',
-    'art': '/images/placeholders/art-placeholder.jpg',
-    'geography': '/images/placeholders/geography-placeholder.jpg'
-  };
-  
-  // 5. 使用分类特定的占位图
-  if (game.category && categoryPlaceholders[game.category]) {
-    return categoryPlaceholders[game.category];
-  }
-  
-  // 6. 最后使用通用占位图
-  return `/images/placeholder-game.jpg`;
+  // 如果没有thumbnailUrl，使用logo作为备用
+  return '/images/logo.svg';
+}
+
+// 智能图片路径处理函数 - 使用游戏的实际thumbnailUrl
+function getGameImagePath(game, gameId) {
+  // 直接使用游戏的thumbnailUrl，如果没有则使用logo作为备用
+  return game.thumbnailUrl || '/images/logo.svg';
 }
 
 // 获取一些示例游戏作为最近游戏（实际应该从localStorage读取）

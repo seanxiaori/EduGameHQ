@@ -652,12 +652,13 @@
   transition: opacity 0.3s ease;
 }
 
-.game-image[src=""], .game-image[src*="placeholder"] {
-  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+.game-image[src=""] {
+  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
 }
 
-.game-image[src=""]:before, .game-image[src*="placeholder"]:before {
-  opacity: 0.3;
+.game-image[src=""]:before {
+  content: "🎮";
+  font-size: 2rem;
 }
 
 /* 最近游戏页面特殊主题 */

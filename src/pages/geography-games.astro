@@ -59,24 +59,10 @@ const featuredGames = geographyGames
   .sort((a, b) => (b.playCount || 0) - (a.playCount || 0))
   .slice(0, 6);
 
-// 智能图片路径处理函数
-function getGameImagePath(game) {
-  if (game.image && game.image !== 'default-intro.jpg') {
-    // 检查是否是完整URL
-    if (game.image.startsWith('http')) {
-      return game.image;
-    }
-    // 检查常见图片格式
-    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp'];
-    const hasExtension = imageExtensions.some(ext => game.image.toLowerCase().includes(ext));
-    
-    if (hasExtension) {
-      return game.image.startsWith('/') ? game.image : `/images/games/${game.image}`;
-    }
-  }
-  
-  // 使用占位图片
-  return '/images/placeholder-game.jpg';
+// 获取游戏图片URL
+function getGameImageUrl(game) {
+  // 使用游戏的thumbnailUrl，如果没有则使用logo作为备用
+  return game.thumbnailUrl || '/images/logo.svg';
 }
 ---
 
@@ -125,7 +111,7 @@ function getGameImagePath(game) {
               return (
                 <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
-                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <img src={getGameImageUrl(game)} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         ⭐ {formatPopularity(popularity)}
@@ -174,7 +160,7 @@ function getGameImagePath(game) {
               return (
                 <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
-                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <img src={getGameImageUrl(game)} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         ⭐ {formatPopularity(popularity)}
@@ -223,7 +209,7 @@ function getGameImagePath(game) {
               return (
                 <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
-                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <img src={getGameImageUrl(game)} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         ⭐ {formatPopularity(popularity)}
@@ -272,7 +258,7 @@ function getGameImagePath(game) {
               return (
                 <div class="game-card geography-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
-                    <img src={getGameImagePath(game)} alt={game.title} class="game-image" />
+                    <img src={getGameImageUrl(game)} alt={game.title} class="game-image" />
                     <div class="game-overlay">
                       <div class="popularity-badge">
                         🔥 {formatPopularity(popularity)}

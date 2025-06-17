@@ -22,31 +22,10 @@ try {
   console.warn('Unable to read games data file');
 }
 
-// 智能图片路径处理函数
-function getGameImagePath(game: any): string {
-  if (!game.images || game.images.length === 0) {
-    return '/images/placeholder-game.jpg';
-  }
-  
-  const imageName = game.images[0];
-  
-  // 如果是default-intro.jpg或其他占位符，使用通用占位图
-  if (imageName === 'default-intro.jpg' || imageName.includes('placeholder')) {
-    return '/images/placeholder-game.jpg';
-  }
-  
-  // 尝试不同的图片路径
-  const possiblePaths = [
-    `/images/games/${imageName}`,
-    `/images/games/details/${imageName}`,
-    `/images/${imageName}`,
-    `/images/games/${game.id}.jpg`,
-    `/images/games/${game.id}.png`,
-    `/images/games/${game.id}.svg`
-  ];
-  
-  // 返回第一个可能的路径，如果都不存在则使用占位图
-  return possiblePaths[0];
+// 获取游戏图片URL
+function getGameImageUrl(game) {
+  // 使用游戏的thumbnailUrl，如果没有则使用logo作为备用
+  return game.thumbnailUrl || '/images/logo.svg';
 }
 
 // 筛选艺术游戏
@@ -67,7 +46,7 @@ const artGames = Object.entries(allGamesData)
     id: id,
     title: game.title,
     description: game.description,
-    image: getGameImagePath(game),
+    image: getGameImageUrl(game),
     difficulty: game.difficulty || 'Medium',
     age: `Ages ${game.ageRange}`,
     url: `/games/${id}`,

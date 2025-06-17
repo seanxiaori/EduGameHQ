@@ -117,10 +117,11 @@ function getTimeText(daysAgo: number): string {
             <a href={`/games/${game.slug}`} class="game-card new-theme">
               <div class="game-image-container">
                 <img 
-                  src={game.image || '/images/placeholder-game.jpg'} 
+                  src={game.thumbnailUrl || '/images/logo.svg'} 
                   alt={game.title}
                   class="game-image"
                   loading="lazy"
+                  onerror="this.onerror=null; this.src='/images/logo.svg';"
                 />
                 <div class="game-overlay">
                   <div class="play-button">
@@ -166,10 +167,11 @@ function getTimeText(daysAgo: number): string {
             <a href={`/games/${game.slug}`} class="game-card new-theme">
               <div class="game-image-container">
                 <img 
-                  src={game.image || '/images/placeholder-game.jpg'} 
+                  src={game.thumbnailUrl || '/images/logo.svg'} 
                   alt={game.title}
                   class="game-image"
                   loading="lazy"
+                  onerror="this.onerror=null; this.src='/images/logo.svg';"
                 />
                 <div class="game-overlay">
                   <div class="play-button">
@@ -215,10 +217,11 @@ function getTimeText(daysAgo: number): string {
             <a href={`/games/${game.slug}`} class="game-card new-theme">
               <div class="game-image-container">
                 <img 
-                  src={game.image || '/images/placeholder-game.jpg'} 
+                  src={game.thumbnailUrl || '/images/logo.svg'} 
                   alt={game.title}
                   class="game-image"
                   loading="lazy"
+                  onerror="this.onerror=null; this.src='/images/logo.svg';"
                 />
                 <div class="game-overlay">
                   <div class="play-button">
@@ -264,10 +267,11 @@ function getTimeText(daysAgo: number): string {
             <a href={`/games/${game.slug}`} class="game-card new-theme">
               <div class="game-image-container">
                 <img 
-                  src={game.image || '/images/placeholder-game.jpg'} 
+                  src={game.thumbnailUrl || '/images/logo.svg'} 
                   alt={game.title}
                   class="game-image"
                   loading="lazy"
+                  onerror="this.onerror=null; this.src='/images/logo.svg';"
                 />
                 <div class="game-overlay">
                   <div class="play-button">

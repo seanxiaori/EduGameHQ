@@ -155,14 +155,8 @@ const pageDescription = 'Search through our collection of 240+ educational games
 
     // 创建游戏卡片HTML - 使用通用样式结构
     function createGameCard(game) {
-      // 获取游戏图片 - 使用游戏slug作为图片名称
-      let imageUrl = '/images/placeholder-game.jpg'; // 默认占位符
-      
-      // 尝试使用游戏slug对应的图片文件
-      if (game.slug) {
-        // 首先尝试JPG格式
-        imageUrl = `/images/games/${game.slug}.jpg`;
-      }
+      // 使用游戏的实际缩略图URL，如果没有则使用默认图片
+      let imageUrl = game.thumbnailUrl || '/images/logo.svg'; // 使用logo作为备用
       
       const gameUrl = `/games/${game.slug}`;
       
@@ -217,7 +211,7 @@ const pageDescription = 'Search through our collection of 240+ educational games
         <div class="game-card ${categoryClass}-theme" onclick="window.location.href='${gameUrl}'">
           <div class="game-image-container">
             <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy" 
-                 onerror="this.onerror=null; this.src='/images/placeholder-game.jpg';">
+                 onerror="this.onerror=null; this.src='/images/logo.svg';">
             <div class="game-overlay">
               ${playedBadge}
               <div class="popularity-badge">${popularityDisplay}</div>
