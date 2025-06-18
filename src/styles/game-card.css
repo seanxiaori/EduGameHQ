@@ -53,26 +53,6 @@
   transform: scale(1.05);
 }
 
-/* 游戏覆盖层 */
-.game-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none; /* 默认状态下不阻挡鼠标事件 */
-}
-
-.game-card:hover .game-overlay {
-  opacity: 1;
-  pointer-events: auto; /* 悬停时恢复鼠标事件，让play按钮可以点击 */
-}
-
-/* ==================== 四角分布式布局 - 简化版 ==================== */
-
 /* 左上角：游戏历史标签 */
 .played-badge {
   position: absolute;
@@ -171,7 +151,6 @@
   text-decoration: none !important; /* 强制移除下划线 */
   -webkit-text-decoration: none !important;
   -moz-text-decoration: none !important;
-  outline: none !important;
 }
 
 /* 收藏按钮激活状态 - 优雅的红色渐变 */
@@ -295,35 +274,42 @@
   border: 2px solid white;
 }
 
-/* 播放按钮 - 修复居中问题 */
+/* 播放按钮 - 默认隐藏，hover时显示 */
 .play-button {
-  position: absolute; /* 新增：绝对定位 */
-  top: 50%; /* 新增：垂直居中 */
-  left: 50%; /* 新增：水平居中 */
-  transform: translate(-50%, -50%); /* 新增：精确居中 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: linear-gradient(135deg, white 0%, #f8fafc 100%);
   color: #6366F1;
   border: none;
-  padding: 1rem 2.5rem; /* 恢复桌面端尺寸 */
+  padding: 1rem 2.5rem;
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem; /* 恢复桌面端间距 */
-  font-size: 1rem; /* 恢复桌面端字体 */
+  gap: 0.75rem;
+  font-size: 1rem;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
-  min-width: 150px; /* 恢复桌面端最小宽度 */
+  min-width: 150px;
   text-decoration: none;
   border: 2px solid rgba(99, 102, 241, 0.2);
-  z-index: 6; /* 新增：确保在其他元素之上 */
+  z-index: 6;
+  opacity: 0; /* 默认隐藏 */
+  pointer-events: none; /* 默认不可点击 */
+}
+
+.game-card:hover .play-button {
+  opacity: 1; /* 悬停时显示 */
+  pointer-events: auto; /* 悬停时可点击 */
 }
 
 .play-button:hover {
-  transform: translate(-50%, -50%) scale(1.08); /* 恢复桌面端缩放 */
+  transform: translate(-50%, -50%) scale(1.08);
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
   background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
   color: white;
@@ -539,57 +525,6 @@
   color: #EF4444;
   font-weight: 700;
   font-size: 0.75rem;
-}
-
-/* 主题色蒙版效果 */
-.game-card:hover .game-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(251, 191, 36, 0.25);
-  transition: opacity 0.3s ease;
-  opacity: 1;
-}
-
-/* 不同主题页面的蒙版颜色 */
-.game-card.math-theme:hover .game-image::after {
-  background: rgba(234, 88, 12, 0.25);
-}
-
-.game-card.science-theme:hover .game-image::after {
-  background: rgba(5, 150, 105, 0.25);
-}
-
-.game-card.coding-theme:hover .game-image::after {
-  background: rgba(37, 99, 235, 0.25);
-}
-
-.game-card.language-theme:hover .game-image::after {
-  background: rgba(192, 38, 211, 0.25);
-}
-
-.game-card.puzzle-theme:hover .game-image::after {
-  background: rgba(124, 58, 237, 0.25);
-}
-
-.game-card.sports-theme:hover .game-image::after {
-  background: rgba(220, 38, 38, 0.25);
-}
-
-.game-card.art-theme:hover .game-image::after {
-  background: rgba(236, 72, 153, 0.25);
-}
-
-.game-card.geography-theme:hover .game-image::after {
-  background: rgba(8, 145, 178, 0.25);
-}
-
-.game-card.trending:hover .game-image::after {
-  background: rgba(239, 68, 68, 0.25);
-}
-
-.game-card.recent-game:hover .game-image::after {
-  background: rgba(14, 165, 233, 0.25);
 }
 
 /* 动画效果 */

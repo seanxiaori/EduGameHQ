@@ -99,18 +99,18 @@ const gameUrl = `/games/${safeGame.slug}`;
       onerror="this.src='/images/logo.svg'"
     />
     
-    <div class="game-overlay">
-      <div class="game-badges">
-        {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
-        {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
-        {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
-        {showUpdated && <span class="badge updated">UPDATED</span>}
-      </div>
-      
-      <a href={gameUrl} class="play-button">
-        <i class="fas fa-play"></i>
-        <span>Play Now</span>
-      </a>
+    <!-- Play按钮独立出来 -->
+    <a href={gameUrl} class="play-button">
+      <i class="fas fa-play"></i>
+      <span>Play Now</span>
+    </a>
+    
+    <!-- 游戏徽章独立出来 -->
+    <div class="game-badges">
+      {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
+      {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
+      {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
+      {showUpdated && <span class="badge updated">UPDATED</span>}
     </div>
     
     <!-- 收藏按钮独立出来，不受蒙版影响 -->
