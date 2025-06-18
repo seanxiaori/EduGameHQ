@@ -122,14 +122,6 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                   <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                     <i class="far fa-heart"></i>
                   </button>
-                  <!-- 左下角：人气标签 -->
-                  <div class="popularity-badge">
-                    {formatPopularity(popularity)}
-                  </div>
-                  <!-- 右下角：难度标签 -->
-                  <div class="difficulty-badge easy">
-                    Easy
-                  </div>
                 </div>
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
@@ -137,11 +129,12 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                   <div class="game-tags">
                     <span class="category-tag math">Math</span>
                     <span class="feature-tag featured">FEATURED</span>
+                    <span class="difficulty-tag easy">EASY</span>
                   </div>
                   <div class="game-stats">
                     <div class="stat">
-                      <i class="fas fa-play-circle"></i>
-                      <span class="play-count">{formatPopularity(popularity)} plays</span>
+                      <i class="fas fa-fire"></i>
+                      <span class="popularity-count">{formatPopularity(popularity)} popular</span>
                     </div>
                     <div class="stat">
                       <i class="fas fa-child"></i>
@@ -208,14 +201,6 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                       <i class="far fa-heart"></i>
                     </button>
-                    <!-- 左下角：人气标签 -->
-                    <div class="popularity-badge">
-                      {formatPopularity(popularity)}
-                    </div>
-                    <!-- 右下角：难度标签 -->
-                    <div class="difficulty-badge easy">
-                      Easy
-                    </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
@@ -226,8 +211,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     </div>
                     <div class="game-stats">
                       <div class="stat">
-                        <i class="fas fa-play-circle"></i>
-                        <span class="play-count">{formatPopularity(plays)} plays</span>
+                        <i class="fas fa-fire"></i>
+                        <span class="popularity-count">{formatPopularity(popularity)} popular</span>
                       </div>
                       <div class="stat">
                         <i class="fas fa-child"></i>
@@ -295,14 +280,6 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                       <i class="far fa-heart"></i>
                     </button>
-                    <!-- 左下角：人气标签 -->
-                    <div class="popularity-badge">
-                      {formatPopularity(popularity)}
-                    </div>
-                    <!-- 右下角：难度标签 -->
-                    <div class="difficulty-badge medium">
-                      Medium
-                    </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
@@ -313,8 +290,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     </div>
                     <div class="game-stats">
                       <div class="stat">
-                        <i class="fas fa-play-circle"></i>
-                        <span class="play-count">{formatPopularity(plays)} plays</span>
+                        <i class="fas fa-fire"></i>
+                        <span class="popularity-count">{formatPopularity(popularity)} popular</span>
                       </div>
                       <div class="stat">
                         <i class="fas fa-child"></i>
@@ -382,14 +359,6 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                       <i class="far fa-heart"></i>
                     </button>
-                    <!-- 左下角：人气标签 -->
-                    <div class="popularity-badge">
-                      {formatPopularity(popularity)}
-                    </div>
-                    <!-- 右下角：难度标签 -->
-                    <div class="difficulty-badge hard">
-                      Hard
-                    </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
@@ -400,8 +369,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     </div>
                     <div class="game-stats">
                       <div class="stat">
-                        <i class="fas fa-play-circle"></i>
-                        <span class="play-count">{formatPopularity(plays)} plays</span>
+                        <i class="fas fa-fire"></i>
+                        <span class="popularity-count">{formatPopularity(popularity)} popular</span>
                       </div>
                       <div class="stat">
                         <i class="fas fa-child"></i>

@@ -11,9 +11,9 @@
 /* 游戏卡片基础样式 */
 .game-card {
   background: white;
-  border-radius: 16px;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.08);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: pointer;
   text-decoration: none;
@@ -34,7 +34,7 @@
 /* 游戏图片容器 */
 .game-image-container {
   position: relative;
-  height: 200px;
+  height: 180px;
   overflow: hidden;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
@@ -67,7 +67,7 @@
   opacity: 1;
 }
 
-/* ==================== 四角分布式布局 ==================== */
+/* ==================== 四角分布式布局 - 简化版 ==================== */
 
 /* 左上角：游戏历史标签 */
 .played-badge {
@@ -155,33 +155,6 @@
   color: white !important;
   transform: scale(1.2);
   box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
-}
-
-/* 左下角：人气标签 */
-.popularity-badge {
-  position: absolute;
-  bottom: 12px;
-  left: 12px;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
-  color: white;
-  padding: 0.3rem 0.6rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  animation: pulse 3s infinite;
-  z-index: 3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.popularity-badge::before {
-  content: '🔥';
-  font-size: 0.8rem;
 }
 
 /* 右下角：难度/特色标签 */
@@ -289,19 +262,19 @@
   font-size: 1.1rem;
 }
 
-/* 游戏信息区域 - 优化密度 */
+/* 游戏信息区域 - 紧凑化优化 */
 .game-info {
-  padding: 1.5rem;
+  padding: 1.2rem;
   background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
   border-top: 1px solid #E5E7EB;
   position: relative;
 }
 
 .game-title {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1F2937;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -311,36 +284,36 @@
 
 .game-description {
   color: #6B7280;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
-/* 游戏标签 - 优化布局 */
+/* 游戏标签 - 紧凑化布局 */
 .game-tags {
   display: flex;
-  gap: 0.35rem;
+  gap: 0.3rem;
   flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.6rem;
 }
 
-/* 统一标签基础样式 */
+/* 统一标签基础样式 - 减小尺寸 */
 .category-tag,
 .feature-tag,
 .game-tag {
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0;
   border: none;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 /* 分类标签 */
@@ -399,19 +372,18 @@
   background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
 }
 
-/* 难易度标签 */
+/* 难易度标签 - 减小尺寸 */
 .difficulty-tag {
-  padding: 0.3rem 0.8rem;
-  border-radius: 8px;
-  font-size: 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   border: none;
   transition: all 0.2s ease;
   color: white;
   text-transform: uppercase;
-  font-size: 0.7rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
 }
 
 .difficulty-tag.easy { 
@@ -424,39 +396,60 @@
   background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
 }
 
-/* 游戏统计信息 - 增强视觉效果 */
+/* 游戏统计信息 - 优化对齐和紧凑度 */
 .game-stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
+  margin-top: 0.6rem;
+  padding: 0.6rem 0.75rem;
   border-top: 1px solid #e5e7eb;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   color: #6b7280;
-  background: rgba(255, 255, 255, 0.5);
-  padding: 0.75rem;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 6px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
+  margin-bottom: 0;
 }
 
 .stat {
   display: flex;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.3rem;
   font-weight: 500;
 }
 
 .stat i {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   opacity: 0.8;
   color: #F59E0B;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+
+.stat:last-child {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.stat:last-child i {
+  color: #8B5CF6;
 }
 
 .play-count {
   color: #EF4444;
   font-weight: 700;
+}
+
+.popularity-count {
+  color: #EF4444;
+  font-weight: 700;
+  font-size: 0.75rem;
 }
 
 /* 主题色蒙版效果 */
@@ -538,7 +531,7 @@
   }
 
   .game-image-container {
-    height: 140px;
+    height: 130px;
   }
 
   /* 移动端四角布局调整 */
@@ -558,14 +551,6 @@
     font-size: 0.9rem;
   }
 
-  .popularity-badge {
-    bottom: 8px;
-    left: 8px;
-    font-size: 0.65rem;
-    padding: 0.25rem 0.5rem;
-    border-radius: 8px;
-  }
-
   .difficulty-badge {
     bottom: 8px;
     right: 8px;
@@ -579,8 +564,13 @@
   }
 
   .game-title {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .game-description {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
   }
 
   .game-tags {
@@ -593,8 +583,8 @@
   .difficulty-tag,
   .game-tag {
     font-size: 0.65rem;
-    padding: 0.2rem 0.6rem;
-    border-radius: 6px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
   }
 
   .play-button {
@@ -605,8 +595,19 @@
   }
 
   .game-stats {
-    padding: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    font-size: 0.7rem;
+    margin-top: 0.5rem;
+  }
+
+  .stat {
+    gap: 0.25rem;
+  }
+
+  .stat i {
     font-size: 0.75rem;
+    width: 12px;
+    height: 12px;
   }
 }
 
