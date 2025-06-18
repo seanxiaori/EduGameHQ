@@ -109,32 +109,31 @@
   color: white;
 }
 
-/* 右上角：收藏按钮 - 透明玻璃效果版 - 修复下划线问题 */
+/* 右上角：收藏按钮 - 修复为规整圆形 */
 .favorite-heart-btn {
   position: absolute;
   top: 12px;
   right: 12px;
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
   border: none;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.25);  /* 改为深色半透明背景 */
-  color: #FFFFFF;  /* 默认白色图标 */
+  background: rgba(255, 255, 255, 0.9);  /* 改为白色半透明背景 */
+  color: #6B7280;  /* 默认灰色图标 */
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 5;
-  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);  /* 微妙的边框 */
-  text-decoration: none !important; /* 强制移除下划线 */
-  outline: none !important; /* 移除焦点轮廓 */
-  -webkit-text-decoration: none !important; /* Webkit浏览器兼容 */
-  -moz-text-decoration: none !important; /* Firefox兼容 */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);  /* 微妙的边框 */
+  text-decoration: none !important;
+  outline: none !important;
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
 }
 
 /* 收藏按钮内的图标 - 强制重置所有文本装饰 */
@@ -153,22 +152,22 @@
 }
 
 .game-card:hover .favorite-heart-btn {
-  background: rgba(0, 0, 0, 0.4);  /* 悬停时稍微加深背景 */
+  background: rgba(255, 255, 255, 1);  /* 悬停时完全不透明 */
   transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.3);
-  text-decoration: none !important; /* 强制移除下划线 */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.15);
+  text-decoration: none !important;
   -webkit-text-decoration: none !important;
   -moz-text-decoration: none !important;
 }
 
 .favorite-heart-btn:hover {
-  background: rgba(239, 68, 68, 0.9) !important;  /* 悬停时红色背景 */
+  background: rgba(239, 68, 68, 1) !important;  /* 悬停时红色背景 */
   color: white !important;
-  transform: scale(1.2) !important;
+  transform: scale(1.15) !important;
   box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4) !important;
   border-color: rgba(239, 68, 68, 0.6) !important;
-  text-decoration: none !important; /* 强制移除下划线 */
+  text-decoration: none !important;
   -webkit-text-decoration: none !important;
   -moz-text-decoration: none !important;
 }
@@ -176,24 +175,24 @@
 /* 收藏按钮激活状态 - 优雅的红色渐变 */
 .favorite-heart-btn.active,
 .favorite-heart-btn.favorited {
-  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
   color: white !important;
   animation: heartBeat 0.6s ease-in-out;
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
-  border-color: rgba(236, 72, 153, 0.6);
-  text-decoration: none !important; /* 强制移除下划线 */
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+  border-color: rgba(239, 68, 68, 0.6);
+  text-decoration: none !important;
   -webkit-text-decoration: none !important;
   -moz-text-decoration: none !important;
 }
 
 .favorite-heart-btn.active:hover,
 .favorite-heart-btn.favorited:hover {
-  background: linear-gradient(135deg, #DB2777 0%, #BE185D 100%) !important;
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%) !important;
   color: white !important;
-  transform: scale(1.2);
-  box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5) !important;
-  border-color: rgba(219, 39, 119, 0.8) !important;
-  text-decoration: none !important; /* 强制移除下划线 */
+  transform: scale(1.15);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+  border-color: rgba(220, 38, 38, 0.8) !important;
+  text-decoration: none !important;
   -webkit-text-decoration: none !important;
   -moz-text-decoration: none !important;
 }
