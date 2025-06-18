@@ -406,7 +406,7 @@ class GameStatsManager {
   }
 
   /**
-   * 获取游戏人气值 (iframe优化版)
+   * 获取游戏人气值 (iframe优化版 + 智能基础人气值)
    * @param {string} gameSlug - 游戏标识符
    * @param {Object} gameInfo - 游戏基础信息
    * @returns {number} 人气值
@@ -416,8 +416,8 @@ class GameStatsManager {
     const iframeStats = this.iframeStats[gameSlug];
     
     if (!stats) {
-      // 如果没有统计数据，返回基于游戏基础信息的估算值
-      return gameInfo.playCount || Math.floor(Math.random() * 5000) + 500;
+      // 智能基础人气值计算系统
+      return this.calculateSmartBasePopularity(gameSlug, gameInfo);
     }
     
     // 基于真实数据计算人气值 (iframe优化算法)
@@ -428,8 +428,11 @@ class GameStatsManager {
     const iframeBonus = iframeStats ? iframeStats.loadCount * 10 : 0;
     const timeEngagementBonus = Math.floor(realPlayTime / 60) * 5; // 每分钟真实游戏时间+5分
     
-    // 人气值计算公式 (iframe优化版)
-    const popularity = Math.floor(
+    // 获取基础人气值
+    const basePopularity = this.calculateSmartBasePopularity(gameSlug, gameInfo);
+    
+    // 人气值计算公式 (iframe优化版 + 基础人气值)
+    const realDataPopularity = Math.floor(
       playCount * 100 +           // 播放次数权重
       recentActivity * 50 +       // 最近活跃度权重
       categoryBonus +             // 分类加成
@@ -437,7 +440,162 @@ class GameStatsManager {
       timeEngagementBonus         // 时间参与度加成
     );
     
-    return Math.max(popularity, 1); // 最小值为1
+    // 返回基础人气值 + 真实数据加成
+    return Math.max(basePopularity + realDataPopularity, basePopularity);
+  }
+
+  /**
+   * 计算智能基础人气值
+   * @param {string} gameSlug - 游戏标识符
+   * @param {Object} gameInfo - 游戏基础信息
+   * @returns {number} 基础人气值
+   */
+  calculateSmartBasePopularity(gameSlug, gameInfo = {}) {
+    let basePopularity = 500; // 最低基础人气值
+    
+    // 1. 分类权重 (教育价值越高，基础人气越高)
+    const categoryMultipliers = {
+      'math': 1.8,        // 数学游戏 - 教育价值最高
+      'science': 1.7,     // 科学游戏
+      'language': 1.6,    // 语言游戏
+      'puzzle': 1.4,      // 益智游戏
+      'art': 1.3,         // 艺术游戏
+      'sports': 1.2,      // 体育游戏
+      'strategy': 1.5,    // 策略游戏
+      'adventure': 1.1,   // 冒险游戏
+      'action': 1.0       // 动作游戏
+    };
+    
+    const categoryMultiplier = categoryMultipliers[gameInfo.category] || 1.0;
+    basePopularity *= categoryMultiplier;
+    
+    // 2. 特色标签加成
+    if (gameInfo.featured) basePopularity += 800;    // 精选游戏
+    if (gameInfo.trending) basePopularity += 600;    // 热门游戏
+    if (gameInfo.isNew) basePopularity += 400;       // 新游戏
+    
+    // 3. 难度调整 (适中难度更受欢迎)
+    const difficultyMultipliers = {
+      'easy': 1.2,
+      'medium': 1.4,
+      'hard': 1.1
+    };
+    
+    const difficulty = (gameInfo.difficulty || 'medium').toLowerCase();
+    const difficultyMultiplier = difficultyMultipliers[difficulty] || 1.0;
+    basePopularity *= difficultyMultiplier;
+    
+    // 4. 年龄段适应性 (覆盖范围越广，人气越高)
+    const ageRange = gameInfo.ageRange || '6-12';
+    const [minAge, maxAge] = ageRange.split('-').map(age => parseInt(age) || 0);
+    const ageSpan = maxAge - minAge;
+    
+    if (ageSpan >= 8) basePopularity += 300;        // 适合8年以上年龄段
+    else if (ageSpan >= 6) basePopularity += 200;   // 适合6年以上年龄段
+    else if (ageSpan >= 4) basePopularity += 100;   // 适合4年以上年龄段
+    
+    // 5. 开发者声誉加成
+    const developerBonus = this.getDeveloperBonus(gameInfo.developer);
+    basePopularity += developerBonus;
+    
+    // 6. 技术兼容性加成
+    if (gameInfo.mobileSupport) basePopularity += 200;  // 支持移动设备
+    if (gameInfo.responsive) basePopularity += 150;     // 响应式设计
+    if (gameInfo.verified) basePopularity += 100;       // 已验证游戏
+    
+    // 7. 标签丰富度加成 (标签越多，说明游戏特性越丰富)
+    const tagCount = (gameInfo.tags || []).length;
+    basePopularity += Math.min(tagCount * 50, 300); // 最多300分标签加成
+    
+    // 8. 游戏指南完整性加成
+    if (gameInfo.gameGuide) {
+      if (gameInfo.gameGuide.howToPlay && gameInfo.gameGuide.howToPlay.length > 0) {
+        basePopularity += 100;
+      }
+      if (gameInfo.gameGuide.controls && Object.keys(gameInfo.gameGuide.controls).length > 0) {
+        basePopularity += 100;
+      }
+      if (gameInfo.gameGuide.tips && gameInfo.gameGuide.tips.length > 0) {
+        basePopularity += 100;
+      }
+    }
+    
+    // 9. 随机波动 (让每个游戏的人气值略有不同，更真实)
+    const gameSlugHash = this.hashString(gameSlug);
+    const randomVariation = (gameSlugHash % 400) - 200; // -200到+200的随机变化
+    basePopularity += randomVariation;
+    
+    // 10. 最终调整和取整
+    basePopularity = Math.floor(basePopularity);
+    
+    // 确保最小值和最大值
+    basePopularity = Math.max(basePopularity, 300);   // 最低300人气
+    basePopularity = Math.min(basePopularity, 8000);  // 最高8000基础人气
+    
+    console.log(`🎯 ${gameSlug} 智能基础人气值: ${basePopularity} (分类: ${gameInfo.category}, 特色: ${gameInfo.featured ? '精选' : ''}${gameInfo.trending ? '热门' : ''}${gameInfo.isNew ? '新品' : ''})`);
+    
+    return basePopularity;
+  }
+
+  /**
+   * 获取开发者声誉加成
+   * @param {string} developer - 开发者名称
+   * @returns {number} 声誉加成值
+   */
+  getDeveloperBonus(developer) {
+    if (!developer) return 0;
+    
+    const developerLower = developer.toLowerCase();
+    
+    // 知名开发者/平台加成
+    const knownDevelopers = {
+      'scratch mit': 500,        // MIT Scratch - 教育权威
+      'khan academy': 450,       // 可汗学院
+      'educational insights': 400,
+      'learning games for kids': 350,
+      'abcya': 300,
+      'coolmath games': 300,
+      'math playground': 300,
+      'funbrain': 250,
+      'pbs kids': 250,
+      'national geographic': 200,
+      'disney': 200,
+      'lego': 200
+    };
+    
+    for (const [knownDev, bonus] of Object.entries(knownDevelopers)) {
+      if (developerLower.includes(knownDev)) {
+        return bonus;
+      }
+    }
+    
+    // 通用开发者类型加成
+    if (developerLower.includes('educational') || developerLower.includes('learning')) {
+      return 150;
+    }
+    if (developerLower.includes('kids') || developerLower.includes('children')) {
+      return 100;
+    }
+    if (developerLower.includes('math') || developerLower.includes('science')) {
+      return 100;
+    }
+    
+    return 50; // 默认开发者加成
+  }
+
+  /**
+   * 字符串哈希函数 (用于生成一致的随机数)
+   * @param {string} str - 输入字符串
+   * @returns {number} 哈希值
+   */
+  hashString(str) {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      const char = str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + char;
+      hash = hash & hash; // 转换为32位整数
+    }
+    return Math.abs(hash);
   }
 
   /**

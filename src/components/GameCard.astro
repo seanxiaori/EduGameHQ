@@ -169,16 +169,17 @@ const gameUrl = `/games/${safeGame.slug}`;
     }
 
     init() {
-      // 等待统计管理器加载
-      if (typeof window.gameStatsManager === 'undefined') {
-        setTimeout(() => this.init(), 100);
-        return;
-      }
+      // 立即初始化游戏卡片，不等待统计管理器
+      this.initializeGameCards();
       
-      // 初始化当前页面的所有游戏卡片
-      document.addEventListener('DOMContentLoaded', () => {
-        this.initializeGameCards();
-      });
+      // 等待统计管理器加载后再次更新（获取更精确的数据）
+      if (typeof window.gameStatsManager === 'undefined') {
+        setTimeout(() => {
+          if (typeof window.gameStatsManager !== 'undefined') {
+            this.initializeGameCards(); // 用真实数据重新更新
+          }
+        }, 500);
+      }
       
       // 监听动态内容变化
       const observer = new MutationObserver(() => {
@@ -231,15 +232,21 @@ const gameUrl = `/games/${safeGame.slug}`;
     }
 
     updateDynamicData(card, gameSlug) {
-      if (!window.gameStatsManager) return;
+      if (!window.gameStatsManager) {
+        // 如果统计管理器还未加载，使用备用方案显示基础人气值
+        this.updatePopularityWithFallback(card, gameSlug);
+        return;
+      }
       
-      // 更新人气值显示
+      // 更新人气值显示 - 立即显示，不再显示Loading
       const popularityStat = card.querySelector('.popularity-stat');
       if (popularityStat) {
         const popularity = window.gameStatsManager.getPopularity(gameSlug, safeGame);
         const popularityCount = popularityStat.querySelector('.popularity-count');
         if (popularityCount) {
           popularityCount.textContent = this.formatPopularity(popularity) + ' popular';
+          // 添加人气值等级样式
+          this.updatePopularityStyle(popularityCount, popularity);
         }
       }
 
@@ -253,6 +260,62 @@ const gameUrl = `/games/${safeGame.slug}`;
         } else {
           badgeContainer.innerHTML = '';
         }
+      }
+    }
+
+    updatePopularityWithFallback(card, gameSlug) {
+      // 备用方案：在统计管理器加载前显示基础人气值
+      const popularityStat = card.querySelector('.popularity-stat');
+      if (popularityStat) {
+        const popularityCount = popularityStat.querySelector('.popularity-count');
+        if (popularityCount && popularityCount.textContent === 'Loading...') {
+          // 使用简化版本的基础人气值计算
+          const basePopularity = this.calculateFallbackPopularity(gameSlug, safeGame);
+          popularityCount.textContent = this.formatPopularity(basePopularity) + ' popular';
+          this.updatePopularityStyle(popularityCount, basePopularity);
+        }
+      }
+    }
+
+    calculateFallbackPopularity(gameSlug, gameInfo) {
+      let basePopularity = 500;
+      
+      // 简化版分类权重
+      const categoryMultipliers = {
+        'math': 1.8, 'science': 1.7, 'language': 1.6, 'puzzle': 1.4, 
+        'art': 1.3, 'sports': 1.2, 'strategy': 1.5, 'adventure': 1.1, 'action': 1.0
+      };
+      
+      basePopularity *= (categoryMultipliers[gameInfo.category] || 1.0);
+      
+      // 特色加成
+      if (gameInfo.featured) basePopularity += 800;
+      if (gameInfo.trending) basePopularity += 600;
+      if (gameInfo.isNew) basePopularity += 400;
+      
+      // 简单的哈希随机化
+      let hash = 0;
+      for (let i = 0; i < gameSlug.length; i++) {
+        hash = ((hash << 5) - hash) + gameSlug.charCodeAt(i);
+      }
+      const randomVariation = (Math.abs(hash) % 400) - 200;
+      basePopularity += randomVariation;
+      
+      return Math.max(Math.floor(basePopularity), 300);
+    }
+
+    updatePopularityStyle(element, popularity) {
+      // 根据人气值设置不同的颜色样式
+      element.classList.remove('popularity-low', 'popularity-medium', 'popularity-high', 'popularity-hot');
+      
+      if (popularity >= 3000) {
+        element.classList.add('popularity-hot');
+      } else if (popularity >= 2000) {
+        element.classList.add('popularity-high');
+      } else if (popularity >= 1000) {
+        element.classList.add('popularity-medium');
+      } else {
+        element.classList.add('popularity-low');
       }
     }
 
@@ -423,4 +486,39 @@ const gameUrl = `/games/${safeGame.slug}`;
 <style>
   /* 引入通用游戏卡片样式 */
   @import "/src/styles/game-card.css";
+
+  /* 人气值等级样式 */
+  .popularity-count {
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .popularity-count.popularity-hot {
+    color: #DC2626;
+    text-shadow: 0 0 8px rgba(220, 38, 38, 0.3);
+    animation: popularityPulse 2s infinite;
+  }
+
+  .popularity-count.popularity-high {
+    color: #EA580C;
+  }
+
+  .popularity-count.popularity-medium {
+    color: #CA8A04;
+  }
+
+  .popularity-count.popularity-low {
+    color: #6B7280;
+  }
+
+  @keyframes popularityPulse {
+    0%, 100% { 
+      transform: scale(1); 
+      opacity: 1; 
+    }
+    50% { 
+      transform: scale(1.05); 
+      opacity: 0.9; 
+    }
+  }
 </style> 
