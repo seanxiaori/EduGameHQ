@@ -107,30 +107,46 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                       <span>Play Now</span>
                     </button>
                   </div>
-                  <!-- 游戏历史标签 - 左上角 -->
+                  <!-- 左上角：游戏历史标签 -->
                   {randomHistory && (
-                    <div class={`played-badge ${
+                    <div class={`played-badge ${ 
                       randomHistory === 'Today' ? 'today' : 
                       randomHistory === 'Yesterday' ? 'yesterday' : 
-                      'few-days-ago'
+                      randomHistory === 'A few days ago' ? 'few-days-ago' : 
+                      'weeks-ago'
                     }`}>
                       {randomHistory}
                     </div>
                   )}
-                  <!-- 人气标签 - 根据是否有历史标签调整位置 -->
-                  <div class={`popularity-badge ${randomHistory ? 'with-history' : ''}`}>
-                    🔥 {formatPopularity(popularity)}
-                  </div>
-                  <!-- 收藏按钮 - 右上角 -->
-                  <button class="favorite-heart-btn" data-game-slug={game.id}>
+                  <!-- 右上角：收藏按钮 -->
+                  <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                     <i class="far fa-heart"></i>
                   </button>
+                  <!-- 左下角：人气标签 -->
+                  <div class="popularity-badge">
+                    {formatPopularity(popularity)}
+                  </div>
+                  <!-- 右下角：难度标签 -->
+                  <div class="difficulty-badge easy">
+                    Easy
+                  </div>
                 </div>
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
+                  <p class="game-description">{game.description}</p>
                   <div class="game-tags">
                     <span class="category-tag math">Math</span>
                     <span class="feature-tag featured">FEATURED</span>
+                  </div>
+                  <div class="game-stats">
+                    <div class="stat">
+                      <i class="fas fa-play-circle"></i>
+                      <span class="play-count">{formatPopularity(popularity)} plays</span>
+                    </div>
+                    <div class="stat">
+                      <i class="fas fa-child"></i>
+                      <span>Ages {game.age || '8-16'}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -154,38 +170,62 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           
             <div class="games-grid">
             {easyGames.map((game, index) => {
-              const popularity = game.playCount || 0;
-              const formatPopularity = (num) => {
-                if (!num || num === 0) return '0';
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
+              const plays = Math.floor(Math.random() * 7000) + 2000;
+              const popularity = Math.floor(Math.random() * 800) + 200;
+              const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
+              const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
               
               return (
                 <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" />
                     <div class="game-overlay">
-                      <div class="popularity-badge">
-                        ⭐ {formatPopularity(popularity)}
-                      </div>
                       <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
                       </button>
                     </div>
-                    <!-- 收藏按钮 -->
-                    <button class="favorite-heart-btn" data-game-slug={game.id}>
+                    <!-- 左上角：游戏历史标签 -->
+                    {randomHistory && (
+                      <div class={`played-badge ${ 
+                        randomHistory === 'Today' ? 'today' : 
+                        randomHistory === 'Yesterday' ? 'yesterday' : 
+                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
+                        'weeks-ago'
+                      }`}>
+                        {randomHistory}
+                      </div>
+                    )}
+                    <!-- 右上角：收藏按钮 -->
+                    <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                       <i class="far fa-heart"></i>
                     </button>
+                    <!-- 左下角：人气标签 -->
+                    <div class="popularity-badge">
+                      {formatPopularity(popularity)}
+                    </div>
+                    <!-- 右下角：难度标签 -->
+                    <div class="difficulty-badge easy">
+                      Easy
+                    </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
-                      <div class="game-tags">
+                    <p class="game-description">{game.description}</p>
+                    <div class="game-tags">
                       <span class="category-tag math">Math</span>
                       <span class="difficulty-tag easy">EASY</span>
+                    </div>
+                    <div class="game-stats">
+                      <div class="stat">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="play-count">{formatPlayCount(plays)} plays</span>
                       </div>
+                      <div class="stat">
+                        <i class="fas fa-child"></i>
+                        <span>Ages {game.ageRange || '6-12'}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
@@ -209,13 +249,10 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           
           <div class="games-grid">
             {mediumGames.map((game, index) => {
-              const popularity = game.playCount || 0;
-              const formatPopularity = (num) => {
-                if (!num || num === 0) return '0';
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
+              const plays = Math.floor(Math.random() * 5000) + 1000;
+              const popularity = Math.floor(Math.random() * 500) + 100;
+              const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
+              const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
               
               return (
                 <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
@@ -227,20 +264,46 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                         <span>Play Now</span>
                       </button>
                     </div>
-                    <!-- 人气标签 - 左上角 -->
-                    <div class="popularity-badge">
-                      ⭐ {formatPopularity(popularity)}
-                    </div>
-                    <!-- 收藏按钮 - 右上角 -->
-                    <button class="favorite-heart-btn" data-game-slug={game.id}>
+                    <!-- 左上角：游戏历史标签 -->
+                    {randomHistory && (
+                      <div class={`played-badge ${ 
+                        randomHistory === 'Today' ? 'today' : 
+                        randomHistory === 'Yesterday' ? 'yesterday' : 
+                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
+                        'weeks-ago'
+                      }`}>
+                        {randomHistory}
+                      </div>
+                    )}
+                    <!-- 右上角：收藏按钮 -->
+                    <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                       <i class="far fa-heart"></i>
                     </button>
+                    <!-- 左下角：人气标签 -->
+                    <div class="popularity-badge">
+                      {formatPopularity(popularity)}
+                    </div>
+                    <!-- 右下角：难度标签 -->
+                    <div class="difficulty-badge medium">
+                      Medium
+                    </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
+                    <p class="game-description">{game.description}</p>
                     <div class="game-tags">
                       <span class="category-tag math">Math</span>
                       <span class="difficulty-tag medium">MEDIUM</span>
+                    </div>
+                    <div class="game-stats">
+                      <div class="stat">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="play-count">{formatPlayCount(plays)} plays</span>
+                      </div>
+                      <div class="stat">
+                        <i class="fas fa-child"></i>
+                        <span>Ages {game.ageRange || '10-16'}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -265,13 +328,10 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           
                 <div class="games-grid">
             {hardGames.map((game, index) => {
-              const popularity = game.playCount || 0;
-              const formatPopularity = (num) => {
-                if (!num || num === 0) return '0';
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
+              const plays = Math.floor(Math.random() * 3000) + 500;
+              const popularity = Math.floor(Math.random() * 300) + 50;
+              const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
+              const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
               
               return (
                 <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
@@ -283,20 +343,46 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                         <span>Play Now</span>
                       </button>
                     </div>
-                    <!-- 人气标签 - 左上角 -->
-                    <div class="popularity-badge">
-                      🔥 {formatPopularity(popularity)}
-                    </div>
-                    <!-- 收藏按钮 - 右上角 -->
-                    <button class="favorite-heart-btn" data-game-slug={game.id}>
+                    <!-- 左上角：游戏历史标签 -->
+                    {randomHistory && (
+                      <div class={`played-badge ${ 
+                        randomHistory === 'Today' ? 'today' : 
+                        randomHistory === 'Yesterday' ? 'yesterday' : 
+                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
+                        'weeks-ago'
+                      }`}>
+                        {randomHistory}
+                      </div>
+                    )}
+                    <!-- 右上角：收藏按钮 -->
+                    <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
                       <i class="far fa-heart"></i>
                     </button>
+                    <!-- 左下角：人气标签 -->
+                    <div class="popularity-badge">
+                      {formatPopularity(popularity)}
+                    </div>
+                    <!-- 右下角：难度标签 -->
+                    <div class="difficulty-badge hard">
+                      Hard
+                    </div>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
+                    <p class="game-description">{game.description}</p>
                     <div class="game-tags">
                       <span class="category-tag math">Math</span>
                       <span class="difficulty-tag hard">HARD</span>
+                    </div>
+                    <div class="game-stats">
+                      <div class="stat">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="play-count">{formatPlayCount(plays)} plays</span>
+                      </div>
+                      <div class="stat">
+                        <i class="fas fa-child"></i>
+                        <span>Ages {game.ageRange || '12+'}</span>
+                      </div>
                     </div>
                   </div>
                 </div>

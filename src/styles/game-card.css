@@ -1,4 +1,4 @@
-/* 统一游戏卡片样式 - 基于首页设计 */
+/* 统一游戏卡片样式 - 四角分布式布局设计 */
 
 /* 游戏网格布局 */
 .games-grid {
@@ -20,6 +20,7 @@
   color: inherit;
   display: block;
   border: 2px solid #E5E7EB;
+  position: relative;
 }
 
 .game-card:hover {
@@ -66,12 +67,14 @@
   opacity: 1;
 }
 
-/* 游戏历史标签 - 左上角位置（最高优先级）*/
+/* ==================== 四角分布式布局 ==================== */
+
+/* 左上角：游戏历史标签 */
 .played-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  padding: 0.25rem 0.5rem;
+  top: 12px;
+  left: 12px;
+  padding: 0.3rem 0.6rem;
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 600;
@@ -79,93 +82,184 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   z-index: 4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 .played-badge.today {
-  background: #10B981;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
   color: white;
 }
 
 .played-badge.yesterday {
-  background: #3B82F6;
+  background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
   color: white;
 }
 
 .played-badge.few-days-ago {
-  background: #8B5CF6;
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
   color: white;
 }
 
 .played-badge.weeks-ago {
-  background: #6B7280;
+  background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
   color: white;
 }
 
-/* 人气值标签 - 智能位置调整 */
+/* 右上角：收藏按钮 */
+.favorite-heart-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 5;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.game-card:hover .favorite-heart-btn {
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.favorite-heart-btn:hover {
+  background: #FEE2E2 !important;
+  color: #EF4444 !important;
+  transform: scale(1.2) !important;
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3) !important;
+}
+
+.favorite-heart-btn.active {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+  color: white !important;
+  animation: heartBeat 0.6s ease-in-out;
+  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
+  border-color: #EF4444;
+}
+
+.favorite-heart-btn.active:hover {
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%) !important;
+  color: white !important;
+  transform: scale(1.2);
+  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+}
+
+/* 左下角：人气标签 */
 .popularity-badge {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: rgba(0, 0, 0, 0.7);
+  bottom: 12px;
+  left: 12px;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.9) 100%);
   color: white;
-  padding: 0.25rem 0.5rem;
+  padding: 0.3rem 0.6rem;
   border-radius: 12px;
   font-size: 0.75rem;
   font-weight: 600;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  animation: pulse 2s infinite;
+  animation: pulse 3s infinite;
   z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
 }
 
-/* 当有游戏历史标签时，人气标签向下偏移 */
-.game-card .played-badge ~ .popularity-badge,
-.game-card .popularity-badge.with-history {
-  top: 45px; /* 向下偏移，避免与游戏历史重叠 */
-  left: 10px;
+.popularity-badge::before {
+  content: '🔥';
+  font-size: 0.8rem;
 }
 
-/* 如果游戏历史标签不存在，人气标签保持在左上角 */
-.game-card:not(.has-history) .popularity-badge {
-  top: 10px;
-  left: 10px;
+/* 右下角：难度/特色标签 */
+.difficulty-badge {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 3;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 }
 
+.difficulty-badge.easy {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  color: white;
+}
+
+.difficulty-badge.medium {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: white;
+}
+
+.difficulty-badge.hard {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  color: white;
+}
+
+/* 动画效果 */
 @keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% { 
+    transform: scale(1.02);
+    opacity: 1;
+  }
 }
 
-/* 收藏按钮心跳动画 */
 @keyframes heartBeat {
   0% { transform: scale(1); }
-  14% { transform: scale(1.3); }
+  14% { transform: scale(1.25); }
   28% { transform: scale(1); }
-  42% { transform: scale(1.3); }
+  42% { transform: scale(1.25); }
   70% { transform: scale(1); }
 }
 
-/* 排名标签 */
+/* 排名标签（顶部中央）*/
 .ranking-badge {
   position: absolute;
   top: -8px;
-  left: 16px;
-  background: #EF4444;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
   color: white;
-  padding: 8px 12px;
+  padding: 8px 14px;
   border-radius: 20px;
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   z-index: 10;
-  box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+  border: 2px solid white;
 }
 
 /* 播放按钮 */
 .play-button {
-  background: white;
+  background: linear-gradient(135deg, white 0%, #f8fafc 100%);
   color: #6366F1;
   border: none;
-  padding: 1rem 2rem;
+  padding: 1rem 2.5rem;
   border-radius: 30px;
   display: flex;
   align-items: center;
@@ -175,33 +269,40 @@
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
-  min-width: 140px;
+  min-width: 150px;
   text-decoration: none;
+  border: 2px solid rgba(99, 102, 241, 0.2);
 }
 
 .play-button:hover {
   transform: scale(1.08);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background: white;
-  color: #6366F1;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: white;
   text-decoration: none;
+  border-color: #6366F1;
 }
 
-/* 游戏信息区域 */
+.play-button i {
+  font-size: 1.1rem;
+}
+
+/* 游戏信息区域 - 优化密度 */
 .game-info {
   padding: 1.5rem;
   background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
   border-top: 1px solid #E5E7EB;
+  position: relative;
 }
 
 .game-title {
-  font-size: 1.125rem;
+  font-size: 1.2rem;
   font-weight: 700;
   color: #1F2937;
-  margin-bottom: 1rem;
-  line-height: 1.4;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -219,95 +320,98 @@
   overflow: hidden;
 }
 
-/* 游戏标签 */
+/* 游戏标签 - 优化布局 */
 .game-tags {
   display: flex;
-  gap: 0.25rem;
+  gap: 0.35rem;
   flex-wrap: wrap;
   align-items: center;
+  margin-bottom: 0.75rem;
 }
 
 /* 统一标签基础样式 */
 .category-tag,
 .feature-tag,
 .game-tag {
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
   font-size: 0.75rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0;
   border: none;
   transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 /* 分类标签 */
 .category-tag {
   color: white;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .category-tag.math { 
-  background: #EA580C;
+  background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
 }
 .category-tag.science { 
-  background: #059669;
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
 }
 .category-tag.coding { 
-  background: #2563EB;
+  background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
 }
 .category-tag.language { 
-  background: #C026D3;
+  background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
 }
 .category-tag.puzzle { 
-  background: #7C3AED;
+  background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
 }
 .category-tag.sports { 
-  background: #DC2626;
+  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
 }
 .category-tag.art { 
-  background: #EC4899;
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
 }
 .category-tag.geography { 
-  background: #0891B2;
+  background: linear-gradient(135deg, #0891B2 0%, #0E7490 100%);
 }
 
 /* 特色标签 */
 .feature-tag {
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.5px;
   color: white;
   font-size: 0.7rem;
 }
 
 .feature-tag.new { 
-  background: #10B981;
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
 }
 .feature-tag.hot { 
-  background: #EF4444;
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
 }
 .feature-tag.featured { 
-  background: #8B5CF6;
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
 }
 .feature-tag.updated { 
-  background: #F59E0B;
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
 }
 .feature-tag.continue {
-  background: #0EA5E9;
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
 }
 
-/* 难易度标签 - 与首页一致 */
+/* 难易度标签 */
 .difficulty-tag {
-  padding: 0.25rem 0.75rem;
-  border-radius: 6px;
+  padding: 0.3rem 0.8rem;
+  border-radius: 8px;
   font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
   border: none;
   transition: all 0.2s ease;
   color: white;
   text-transform: uppercase;
   font-size: 0.7rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .difficulty-tag.easy { 
@@ -320,49 +424,39 @@
   background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
 }
 
-/* 年龄和难度标签 */
-.game-tag.age {
-  background: #F3F4F6;
-  color: #6B7280;
-}
-
-.game-tag.difficulty.easy {
-  background: #10B981;
-  color: white;
-}
-
-.game-tag.difficulty.medium {
-  background: #F59E0B;
-  color: white;
-}
-
-.game-tag.difficulty.hard {
-  background: #EF4444;
-  color: white;
-}
-
-/* 游戏统计信息 */
+/* 游戏统计信息 - 增强视觉效果 */
 .game-stats {
   display: flex;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+  color: #6b7280;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.75rem;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .stat {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
-  font-size: 0.8rem;
-  color: #6B7280;
+  gap: 0.35rem;
+  font-weight: 500;
 }
 
 .stat i {
+  font-size: 0.85rem;
+  opacity: 0.8;
   color: #F59E0B;
 }
 
 .play-count {
   color: #EF4444;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* 主题色蒙版效果 */
@@ -370,50 +464,50 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(251, 191, 36, 0.35); /* 首页金黄色蒙版 */
+  background: rgba(251, 191, 36, 0.25);
   transition: opacity 0.3s ease;
   opacity: 1;
 }
 
 /* 不同主题页面的蒙版颜色 */
 .game-card.math-theme:hover .game-image::after {
-  background: rgba(234, 88, 12, 0.3); /* 数学橙色蒙版 */
+  background: rgba(234, 88, 12, 0.25);
 }
 
 .game-card.science-theme:hover .game-image::after {
-  background: rgba(5, 150, 105, 0.3); /* 科学绿色蒙版 */
+  background: rgba(5, 150, 105, 0.25);
 }
 
 .game-card.coding-theme:hover .game-image::after {
-  background: rgba(37, 99, 235, 0.3); /* 编程蓝色蒙版 */
+  background: rgba(37, 99, 235, 0.25);
 }
 
 .game-card.language-theme:hover .game-image::after {
-  background: rgba(192, 38, 211, 0.3); /* 语言紫色蒙版 */
+  background: rgba(192, 38, 211, 0.25);
 }
 
 .game-card.puzzle-theme:hover .game-image::after {
-  background: rgba(124, 58, 237, 0.3); /* 益智深紫色蒙版 */
+  background: rgba(124, 58, 237, 0.25);
 }
 
 .game-card.sports-theme:hover .game-image::after {
-  background: rgba(220, 38, 38, 0.3); /* 体育红色蒙版 */
+  background: rgba(220, 38, 38, 0.25);
 }
 
 .game-card.art-theme:hover .game-image::after {
-  background: rgba(236, 72, 153, 0.3); /* 艺术粉色蒙版 */
+  background: rgba(236, 72, 153, 0.25);
 }
 
 .game-card.geography-theme:hover .game-image::after {
-  background: rgba(8, 145, 178, 0.3); /* 地理青色蒙版 */
+  background: rgba(8, 145, 178, 0.25);
 }
 
 .game-card.trending:hover .game-image::after {
-  background: rgba(239, 68, 68, 0.3); /* 趋势红色蒙版 */
+  background: rgba(239, 68, 68, 0.25);
 }
 
 .game-card.recent-game:hover .game-image::after {
-  background: rgba(14, 165, 233, 0.3); /* 最近蓝色蒙版 */
+  background: rgba(14, 165, 233, 0.25);
 }
 
 /* 动画效果 */
@@ -432,15 +526,10 @@
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-@keyframes fireFlicker {
-  0% { transform: scale(1) rotate(-1deg); }
-  100% { transform: scale(1.05) rotate(1deg); }
-}
-
 /* 响应式设计 */
 @media (max-width: 768px) {
   .games-grid {
-    grid-template-columns: repeat(2, 1fr);  /* 手机端显示2个游戏 */
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 
@@ -452,17 +541,51 @@
     height: 140px;
   }
 
+  /* 移动端四角布局调整 */
+  .played-badge {
+    top: 8px;
+    left: 8px;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+  }
+
+  .favorite-heart-btn {
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 8px;
+    font-size: 0.9rem;
+  }
+
+  .popularity-badge {
+    bottom: 8px;
+    left: 8px;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+  }
+
+  .difficulty-badge {
+    bottom: 8px;
+    right: 8px;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 8px;
+  }
+
   .game-info {
     padding: 1rem;
   }
 
   .game-title {
     font-size: 1rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
   }
 
   .game-tags {
     gap: 0.25rem;
+    margin-bottom: 0.5rem;
   }
 
   .category-tag,
@@ -471,41 +594,7 @@
   .game-tag {
     font-size: 0.65rem;
     padding: 0.2rem 0.6rem;
-    border-radius: 4px;
-  }
-
-  /* 移动端标签位置调整 */
-  .played-badge,
-  .popularity-badge {
-    font-size: 0.65rem;
-    padding: 0.2rem 0.4rem;
-    border-radius: 8px;
-  }
-
-  .played-badge {
-    top: 8px;
-    left: 8px;
-  }
-
-  .popularity-badge {
-    top: 8px;
-    left: 8px;
-  }
-
-  /* 移动端人气标签向下偏移调整 */
-  .game-card .played-badge ~ .popularity-badge,
-  .game-card .popularity-badge.with-history {
-    top: 35px; /* 移动端向下偏移减少 */
-    left: 8px;
-  }
-
-  /* 移动端收藏按钮 */
-  .favorite-heart-btn {
-    width: 32px;
-    height: 32px;
-    top: 8px;
-    right: 8px;
-    font-size: 0.875rem;
+    border-radius: 6px;
   }
 
   .play-button {
@@ -514,12 +603,17 @@
     gap: 0.5rem;
     min-width: 120px;
   }
+
+  .game-stats {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+  }
 }
 
 /* 平板端适配 */
 @media (min-width: 769px) and (max-width: 1024px) {
   .games-grid {
-    grid-template-columns: repeat(3, 1fr);  /* 平板端显示3个游戏 */
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
   }
 
@@ -530,279 +624,76 @@
 
 @media (min-width: 1024px) {
   .games-grid {
-    grid-template-columns: repeat(4, 1fr);  /* 桌面端显示4个游戏 */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 @media (min-width: 1400px) {
   .games-grid {
-    grid-template-columns: repeat(4, 1fr);  /* 大屏幕保持4个游戏 */
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* 特殊卡片样式 */
 .game-card.featured {
   border: 2px solid #8B5CF6;
-  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
 }
 
 .game-card.trending {
   border: 2px solid #EF4444;
-  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.25);
 }
 
 .game-card.new {
   border: 2px solid #10B981;
-  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.2);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
 }
 
 /* 学科主题卡片 */
 .game-card.math-theme {
   border: 2px solid #EA580C;
-  box-shadow: 0 4px 15px rgba(234, 88, 12, 0.2);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.25);
 }
 
 .game-card.science-theme {
   border: 2px solid #059669;
-  box-shadow: 0 4px 15px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 6px 20px rgba(5, 150, 105, 0.25);
 }
 
 .game-card.coding-theme {
   border: 2px solid #2563EB;
-  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.25);
 }
 
 .game-card.language-theme {
   border: 2px solid #C026D3;
-  box-shadow: 0 4px 15px rgba(192, 38, 211, 0.2);
+  box-shadow: 0 6px 20px rgba(192, 38, 211, 0.25);
 }
 
 .game-card.puzzle-theme {
   border: 2px solid #7C3AED;
-  box-shadow: 0 4px 15px rgba(124, 58, 237, 0.2);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.25);
 }
 
 .game-card.sports-theme {
   border: 2px solid #DC2626;
-  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.2);
+  box-shadow: 0 6px 20px rgba(220, 38, 38, 0.25);
 }
 
 .game-card.art-theme {
   border: 2px solid #EC4899;
-  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+  box-shadow: 0 6px 20px rgba(236, 72, 153, 0.25);
 }
 
 .game-card.geography-theme {
   border: 2px solid #0891B2;
-  box-shadow: 0 4px 15px rgba(8, 145, 178, 0.2);
+  box-shadow: 0 6px 20px rgba(8, 145, 178, 0.25);
 }
 
 .game-card.recent-game {
   border: 2px solid #0EA5E9;
-  box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
-}
-
-/* 特殊标签样式 */
-.play-time-badge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(14, 165, 233, 0.9);
-  color: white;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-}
-
-/* 游戏来源标识 */
-.source-badge {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  padding: 0.25rem 0.5rem;
-  border-radius: 12px;
-  font-size: 0.7rem;
-  font-weight: 600;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.game-card:hover .source-badge {
-  opacity: 1;
-}
-
-/* 不同来源的标识颜色 */
-.source-badge.crawled {
-  background: rgba(34, 197, 94, 0.9);
-  color: white;
-}
-
-.source-badge.github {
-  background: rgba(36, 41, 47, 0.9);
-  color: white;
-}
-
-.source-badge.curated {
-  background: rgba(168, 85, 247, 0.9);
-  color: white;
-}
-
-/* GitHub开源游戏特殊样式 */
-.game-card.github-game {
-  border-left: 4px solid #24292f;
-}
-
-.game-card.github-game:hover {
-  border-left-color: #0969da;
-  box-shadow: 0 20px 40px rgba(9, 105, 218, 0.15);
-}
-
-/* 爬取游戏特殊样式 */
-.game-card.crawled-game {
-  border-left: 4px solid #22c55e;
-}
-
-.game-card.crawled-game:hover {
-  border-left-color: #16a34a;
-  box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
-}
-
-/* 精选游戏特殊样式 */
-.game-card.curated-game {
-  border-left: 4px solid #a855f7;
-}
-
-.game-card.curated-game:hover {
-  border-left-color: #9333ea;
-  box-shadow: 0 20px 40px rgba(168, 85, 247, 0.15);
-}
-
-/* 图片加载失败处理 */
-.game-image {
-  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  position: relative;
-}
-
-.game-image::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 48px;
-  height: 48px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%236b7280' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z'/%3E%3C/svg%3E") no-repeat center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.game-image[src=""] {
-  background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
-}
-
-.game-image[src=""]:before {
-  content: "🎮";
-  font-size: 2rem;
-}
-
-/* 最近游戏页面特殊主题 */
-.game-card.recent-theme {
-  border: 2px solid #e0f2fe;
-}
-
-.game-card.recent-theme:hover {
-  border-color: #0ea5e9;
-  box-shadow: 0 20px 40px rgba(14, 165, 233, 0.15);
-}
-
-/* 继续游戏按钮特殊样式 */
-.play-button.continue-btn {
-  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
-  color: white;
-}
-
-.play-button.continue-btn:hover {
-  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-  transform: scale(1.08);
-}
-
-/* 游戏统计信息 */
-.game-stats {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.75rem;
-  padding-top: 0.75rem;
-  border-top: 1px solid #e5e7eb;
-  font-size: 0.8rem;
-  color: #6b7280;
-}
-
-.stat {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.stat i {
-  font-size: 0.75rem;
-  opacity: 0.7;
-}
-
-/* 收藏按钮 - 保持在右上角 */
-.favorite-heart-btn {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  width: 36px;
-  height: 36px;
-  border: none;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
-  color: #6B7280;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 5;
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.game-card:hover .favorite-heart-btn {
-  background: rgba(255, 255, 255, 1);
-  transform: scale(1.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.favorite-heart-btn:hover {
-  background: #FEE2E2 !important;
-  color: #EF4444 !important;
-  transform: scale(1.15) !important;
-  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.2) !important;
-}
-
-.favorite-heart-btn.active {
-  background: #EF4444 !important;
-  color: white !important;
-  animation: heartBeat 0.5s ease-in-out;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-}
-
-.favorite-heart-btn.active:hover {
-  background: #DC2626 !important;
-  color: white !important;
-  transform: scale(1.15);
-  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4) !important;
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.25);
 }
 
 /* 收藏状态指示器 */
@@ -820,5 +711,5 @@
   background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
   border-radius: 18px;
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.2;
 }
