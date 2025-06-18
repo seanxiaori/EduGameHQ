@@ -29,6 +29,9 @@ const sampleFavorites = allGamesData
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
   <!-- 主要内容 -->
   <main class="main-content">
     <div class="content-wrapper">
@@ -112,6 +115,7 @@ const sampleFavorites = allGamesData
             </div>
           </div>
           
+          <!-- 使用标准的games-grid类名，确保应用game-card.css样式 -->
           <div class="games-grid" id="favoritesGrid">
             <!-- 动态生成的收藏游戏卡片 -->
           </div>
@@ -153,6 +157,7 @@ const sampleFavorites = allGamesData
           </div>
         </div>
         
+        <!-- 使用标准的games-grid类名，确保应用game-card.css样式 -->
         <div class="games-grid" id="recommendationsGrid">
           <!-- 推荐游戏将在这里动态生成 -->
         </div>
@@ -466,10 +471,8 @@ const sampleFavorites = allGamesData
     });
   </script>
 
-  <!-- 页面样式 -->
+  <!-- 页面样式 - 移除重复的网格样式，完全依赖game-card.css -->
   <style>
-    @import '../styles/game-card.css';
-
     /* 页面主要内容 */
     .main-content {
       min-height: 100vh;
@@ -736,70 +739,6 @@ const sampleFavorites = allGamesData
       border-color: #EC4899;
     }
 
-    /* 游戏网格 */
-    .games-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
-    .games-grid.list-view {
-      grid-template-columns: 1fr;
-      gap: 1rem;
-    }
-
-    .games-grid.list-view .game-card {
-      display: flex;
-      align-items: center;
-      padding: 1rem;
-    }
-
-    .games-grid.list-view .game-image-container {
-      width: 120px;
-      height: 80px;
-      flex-shrink: 0;
-      margin-right: 1rem;
-    }
-
-    /* 收藏按钮 */
-    .favorite-heart-btn {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
-      border: none;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.9);
-      color: #6B7280;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .game-card:hover .favorite-heart-btn {
-      opacity: 1;
-    }
-
-    .favorite-heart-btn:hover {
-      transform: scale(1.1);
-      background: white;
-      color: #EC4899;
-    }
-
-    .favorite-heart-btn.active {
-      background: #EC4899;
-      color: white;
-    }
-
-    .favorite-heart-btn.active:hover {
-      background: #DB2777;
-    }
-
     /* 空状态 */
     .empty-state {
       display: flex;
@@ -934,10 +873,6 @@ const sampleFavorites = allGamesData
         grid-template-columns: 1fr;
       }
 
-      .games-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
       .empty-actions {
         flex-direction: column;
         width: 100%;
@@ -949,10 +884,6 @@ const sampleFavorites = allGamesData
     }
 
     @media (min-width: 769px) and (max-width: 1024px) {
-      .games-grid {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
       .favorites-stats {
         grid-template-columns: repeat(2, 1fr);
       }
