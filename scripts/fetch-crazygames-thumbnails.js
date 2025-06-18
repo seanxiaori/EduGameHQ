@@ -7,32 +7,19 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
-// 需要更新缩略图的19款新球类运动游戏
+// 需要更新缩略图的10款新体育游戏
 const GAMES_TO_UPDATE = [
-  // 篮球游戏
-  'basketball-stars-2019',
-  'basketball-legends-2020',
-  'basket-random',
-  'basketball-superstars',
+  // 新添加的体育游戏
+  'mini-golf-club',
+  'basketball-orbit',
   'basketbros',
-  'basketball-legends',
-  
-  // 足球游戏
-  'soccer-legends-2021',
-  'soccer-skills-world-cup',
+  'hotfoot-baseball',
+  'qb-legend',
+  '3d-bowling',
+  'hoop-world-3d',
+  'free-kick-classic',
   'soccer-random',
-  'football-legends',
-  'penalty-shooters-2',
-  'soccer-physics',
-  
-  // 其他球类游戏
-  'tennis-masters-cup',
-  'volleyball-challenge',
-  'golf-champions',
-  'bowling-stars',
-  'baseball-pro',
-  'rugby-legends',
-  'water-polo'
+  'volley-random'
 ];
 
 /**
