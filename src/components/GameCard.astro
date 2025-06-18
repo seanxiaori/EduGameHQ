@@ -24,7 +24,35 @@ export interface GameCardProps {
   showDeveloper?: boolean;
 }
 
-const { game, showPlayHistory = true, showPopularity = true, showDeveloper = false } = Astro.props;
+const { 
+  game, 
+  showTrending = false, 
+  showFeatured = false, 
+  showNew = false,
+  showUpdated = false,
+  showPlayHistory = false,
+  showPopularity = false, 
+  showDeveloper = false,
+  showFavorite = false 
+} = Astro.props;
+
+// 安全的游戏数据处理 - 防御性编程
+const safeGame = {
+  slug: game.slug || 'unknown',
+  title: game.title || 'Untitled Game',
+  description: game.description || 'Educational game for learning.',
+  category: game.category || 'puzzle',
+  categoryName: game.categoryName || game.category || 'Puzzle',
+  difficulty: game.difficulty || 'Medium', // 添加安全默认值
+  ageRange: game.ageRange || '6-18',
+  thumbnailUrl: game.thumbnailUrl || '/images/logo.svg',
+  featured: game.featured || false,
+  trending: game.trending || false,
+  isNew: game.isNew || false,
+  developer: game.developer || null,
+  // 确保所有字段都有安全的默认值
+  ...game
+};
 
 // 生成随机人气数据
 const generatePopularity = (baseCount: number = 0) => {
@@ -47,19 +75,47 @@ const formatPopularity = (num: number) => {
 };
 
 // 生成动态数据
-const popularity = generatePopularity(game.playCount);
+const popularity = safeGame.playCount || Math.floor(Math.random() * 15000) + 500;
 const playHistory = showPlayHistory ? generatePlayHistory() : null;
-const gameUrl = `/games/${game.slug}`;
+const gameUrl = `/games/${safeGame.slug}`;
 ---
 
-<div class={`game-card ${game.category}-theme animate-fadeInUp`} data-game-id={game.slug}>
+<div class={`game-card ${safeGame.category}-theme animate-fadeInUp`} data-game-id={safeGame.slug}>
   <div class="game-image-container">
-    <img src={game.thumbnailUrl} alt={game.title} class="game-image" />
+    <img 
+      src={safeGame.thumbnailUrl} 
+      alt={safeGame.title}
+      class="game-image"
+      loading="lazy"
+      onerror="this.src='/images/logo.svg'"
+    />
+    
     <div class="game-overlay">
-      <button class="play-button" onclick={`window.location.href='${gameUrl}'`}>
+      {showPopularity && (
+        <div class="popularity-badge">
+          <i class="fas fa-fire"></i>
+          <span>{formatPopularity(popularity)}</span>
+        </div>
+      )}
+      
+      <div class="game-badges">
+        {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
+        {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
+        {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
+        {showUpdated && <span class="badge updated">UPDATED</span>}
+        {showPlayHistory && <span class="badge recent">RECENT</span>}
+      </div>
+      
+      <a href={gameUrl} class="play-button">
         <i class="fas fa-play"></i>
         <span>Play Now</span>
-      </button>
+      </a>
+      
+      {showFavorite && (
+        <button class="favorite-heart-btn" aria-label="Add to favorites">
+          <i class="far fa-heart"></i>
+        </button>
+      )}
     </div>
     
     <!-- 左上角：游戏历史标签 -->
@@ -75,21 +131,24 @@ const gameUrl = `/games/${game.slug}`;
     )}
     
     <!-- 右上角：收藏按钮 -->
-    <button class="favorite-heart-btn" data-game-slug={game.slug}>
+    <button class="favorite-heart-btn" data-game-slug={safeGame.slug}>
       <i class="far fa-heart"></i>
     </button>
   </div>
   
   <div class="game-info">
-    <h3 class="game-title">{game.title}</h3>
-    <p class="game-description">{game.description}</p>
+    <h3 class="game-title">
+      <a href={gameUrl}>{safeGame.title}</a>
+    </h3>
+    
+    <p class="game-description">{safeGame.description}</p>
     
     <div class="game-tags">
-      <span class={`category-tag ${game.category}`}>{game.categoryName}</span>
-      {game.featured && <span class="feature-tag featured">FEATURED</span>}
-      {game.trending && <span class="feature-tag hot">HOT</span>}
-      {game.isNew && <span class="feature-tag new">NEW</span>}
-      <span class={`difficulty-tag ${game.difficulty.toLowerCase()}`}>{game.difficulty.toUpperCase()}</span>
+      <span class={`category-tag ${safeGame.category}`}>{safeGame.categoryName}</span>
+      {safeGame.featured && <span class="feature-tag featured">FEATURED</span>}
+      {safeGame.trending && <span class="feature-tag hot">HOT</span>}
+      {safeGame.isNew && <span class="feature-tag new">NEW</span>}
+      <span class={`difficulty-tag ${safeGame.difficulty.toLowerCase()}`}>{safeGame.difficulty.toUpperCase()}</span>
     </div>
     
     <div class="game-stats">
@@ -101,12 +160,12 @@ const gameUrl = `/games/${game.slug}`;
       )}
       <div class="stat">
         <i class="fas fa-child"></i>
-        <span>Ages {game.ageRange}</span>
+        <span>Ages {safeGame.ageRange}</span>
       </div>
-      {showDeveloper && game.developer && (
+      {showDeveloper && safeGame.developer && (
         <div class="stat">
           <i class="fas fa-user"></i>
-          <span>{game.developer}</span>
+          <span>{safeGame.developer}</span>
         </div>
       )}
     </div>
