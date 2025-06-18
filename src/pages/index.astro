@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
@@ -11,7 +12,7 @@ const seoData = {
   ogImage: "/images/edugamehq-og.jpg"
 };
 
-// 从JSON文件读取游戏数据 - 使用新的数据格式
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -22,26 +23,10 @@ try {
   console.warn('Unable to read games data file:', error);
 }
 
-// 特色游戏数据 - 使用新的数据格式
+// 特色游戏数据 - 筛选featured游戏
 const featuredGames = allGamesData
   .filter(game => game.featured)
-  .slice(0, 12)
-  .map(game => ({
-    id: game.slug,
-    title: game.title,
-    description: game.description.substring(0, 100) + '...',
-    icon: game.category === 'math' ? 'fas fa-calculator' : 
-          game.category === 'science' ? 'fas fa-flask' :
-          game.category === 'coding' ? 'fas fa-code' :
-          game.category === 'language' ? 'fas fa-keyboard' :
-          'fas fa-puzzle-piece',
-    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
-    subject: game.categoryName,
-    age: `Ages ${game.ageRange}`,
-    category: game.category,
-    difficulty: game.difficulty || 'Medium',
-    url: `/games/${game.slug}`
-  }));
+  .slice(0, 12);
 
 // 所有游戏列表（用于随机功能）
 const allGames = allGamesData.map(game => ({
@@ -52,6 +37,9 @@ const allGames = allGamesData.map(game => ({
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
   <!-- 主要内容 -->
   <main class="main-content">
     <div class="content-wrapper">
@@ -231,248 +219,34 @@ const allGames = allGamesData.map(game => ({
         </div>
         
         <div class="games-grid">
-          {featuredGames.map((game, index) => {
-            if (!game) return null;
-            
-            // 模拟人气值数据
-            const popularity = Math.floor(Math.random() * 15000) + 500;
-            const formatPopularity = (num) => {
-              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-              return num.toString();
-            };
-            
-            // 模拟游戏历史
-            const playHistory = ['Today', 'Yesterday', 'A few days ago', 'A few weeks ago', null];
-            const randomHistory = playHistory[Math.floor(Math.random() * playHistory.length)];
-            
-            // 确定特色标签
-            const isNew = Math.random() > 0.7;
-            const isHot = popularity > 10000;
-            const isFeatured = Math.random() > 0.8;
-            const isUpdated = Math.random() > 0.9;
-            
-            let featureTag = null;
-            if (isNew) featureTag = 'NEW';
-            else if (isHot) featureTag = 'HOT';
-            else if (isFeatured) featureTag = 'FEATURED';
-            else if (isUpdated) featureTag = 'UPDATED';
-            
-            return (
-              <div class="game-card animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.slug}>
-                <div class="game-image-container">
-                <img src={game.image} alt={game.title} class="game-image" />
-                  <div class="game-overlay">
-                    {randomHistory && (
-                      <div class={`played-badge ${
-                        randomHistory === 'Today' ? 'today' : 
-                        randomHistory === 'Yesterday' ? 'yesterday' : 
-                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
-                        'weeks-ago'
-                      }`}>
-                        {randomHistory}
-                      </div>
-                    )}
-                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                      <i class="fas fa-play"></i>
-                      <span>Play Now</span>
-                    </button>
-                </div>
-                <div class={`popularity-badge ${randomHistory ? 'with-history' : ''}`}>
-                  {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
-                </div>
-                <button class="favorite-heart-btn" data-game-slug={game.slug}>
-                  <i class="far fa-heart"></i>
-                </button>
-              </div>
-              <div class="game-info">
-                <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                    <span class={`category-tag ${game.category}`}>{game.subject}</span>
-                    <span class={`difficulty-tag ${game.difficulty.toLowerCase()}`}>{game.difficulty}</span>
-                    {featureTag && (
-                      <span class={`feature-tag ${featureTag.toLowerCase()}`}>{featureTag}</span>
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {featuredGames.map((game) => (
+            <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+          ))}
         </div>
       </section>
     </div>
   </main>
 
-  <!-- 游戏卡片管理功能的JavaScript -->
+  <!-- 随机游戏功能脚本 -->
   <script define:vars={{ allGames }} is:inline>
-    // 游戏卡片管理类
-    class GameCardManager {
-      constructor() {
-        this.initializeCards();
-      }
-
-      // 人气值计算
-      calculatePopularity(playCount, favorites, rating, recentActivity) {
-        return Math.floor(playCount * 0.6 + favorites * 2 + rating * 100 + recentActivity * 0.4);
-      }
-
-      // 格式化人气值显示
-      formatPopularity(num) {
-        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-        if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-        return num.toString();
-      }
-
-      // 检查游戏历史
-      checkPlayHistory(gameId) {
-        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
-        const lastPlayed = history[gameId];
-        if (!lastPlayed) return null;
-        
-        const daysDiff = Math.floor((Date.now() - lastPlayed) / (1000 * 60 * 60 * 24));
-        if (daysDiff === 0) return 'Today';
-        if (daysDiff === 1) return 'Yesterday';  
-        if (daysDiff <= 7) return 'A few days ago';
-        return 'A few weeks ago';
-      }
-
-      // 获取特色标签
-      getFeatureTag(game) {
-        if (game.isNew) return 'NEW';
-        if (game.popularity > 10000) return 'HOT';
-        if (game.isFeatured) return 'FEATURED';
-        if (game.isUpdated) return 'UPDATED';
-        return null;
-      }
-
-      // 记录游戏播放
-      recordGamePlay(gameId) {
-        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
-        history[gameId] = Date.now();
-        localStorage.setItem('gameHistory', JSON.stringify(history));
-        
-        // 更新人气值
-        const popularity = JSON.parse(localStorage.getItem('gamePopularity') || '{}');
-        popularity[gameId] = (popularity[gameId] || 0) + 1;
-        localStorage.setItem('gamePopularity', JSON.stringify(popularity));
-      }
-
-      // 初始化卡片
-      initializeCards() {
-        const cards = document.querySelectorAll('.game-card');
-        cards.forEach(card => {
-          const gameId = card.dataset.gameId;
-          const playButton = card.querySelector('.play-button');
-          
-          if (playButton && gameId) {
-            playButton.addEventListener('click', (e) => {
-              e.preventDefault();
-              this.recordGamePlay(gameId);
-              // 延迟跳转，让动画完成
-              setTimeout(() => {
-                const url = playButton.getAttribute('onclick').match(/'([^']+)'/)[1];
-                window.location.href = url;
-              }, 200);
-            });
-          }
-        });
-      }
-
-      // 更新卡片显示
-      updateCardDisplay(gameId) {
-        const card = document.querySelector(`[data-game-id="${gameId}"]`);
-        if (!card) return;
-
-        const playHistory = this.checkPlayHistory(gameId);
-        const playedBadge = card.querySelector('.played-badge');
-        
-        if (playHistory && playedBadge) {
-          playedBadge.textContent = playHistory;
-          playedBadge.className = `played-badge ${
-            playHistory === 'Today' ? 'today' : 
-            playHistory === 'Yesterday' ? 'yesterday' : 
-            playHistory === 'A few days ago' ? 'few-days-ago' : 
-            'weeks-ago'
-          }`;
-        }
-      }
-    }
-
     // 随机游戏功能 - 定义为全局函数
     window.playRandomGame = function() {
       const randomIndex = Math.floor(Math.random() * allGames.length);
       const randomGame = allGames[randomIndex];
       if (randomGame) {
-      window.location.href = randomGame.url;
+        window.location.href = randomGame.url;
       }
     };
 
     // 页面加载完成后的初始化
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('首页加载完成，游戏卡片管理系统已启用');
-      window.gameCardManager = new GameCardManager();
-    });
-  </script>
-
-  <!-- 引入全局收藏管理器 -->
-  <script src="/src/scripts/favorites-manager.js"></script>
-
-  <!-- 首页收藏功能初始化 -->
-  <script>
-    // 首页收藏功能支持
-    document.addEventListener('DOMContentLoaded', function() {
-      // 初始化所有收藏按钮
-      const favoriteButtons = document.querySelectorAll('.favorite-heart-btn');
-      
-      favoriteButtons.forEach(button => {
-        const gameSlug = button.getAttribute('data-game-slug');
-        if (gameSlug) {
-          // 检查当前收藏状态
-          const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-          if (favorites.includes(gameSlug)) {
-            button.classList.add('active');
-            button.innerHTML = '<i class="fas fa-heart"></i>';
-          }
-          
-          // 添加点击事件
-          button.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const currentFavorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-            const isFavorited = currentFavorites.includes(gameSlug);
-            
-            if (isFavorited) {
-              // 移除收藏
-              const newFavorites = currentFavorites.filter(id => id !== gameSlug);
-              localStorage.setItem('favoriteGames', JSON.stringify(newFavorites));
-              button.classList.remove('active');
-              button.innerHTML = '<i class="far fa-heart"></i>';
-              console.log(`❌ 已从收藏中移除: ${gameSlug}`);
-            } else {
-              // 添加收藏
-              currentFavorites.push(gameSlug);
-              localStorage.setItem('favoriteGames', JSON.stringify(currentFavorites));
-              button.classList.add('active');
-              button.innerHTML = '<i class="fas fa-heart"></i>';
-              console.log(`❤️ 已添加到收藏: ${gameSlug}`);
-            }
-            
-            // 触发收藏状态变化事件
-            window.dispatchEvent(new CustomEvent('favoritesChanged', {
-              detail: { gameSlug, isFavorite: !isFavorited }
-            }));
-          });
-        }
-      });
-      
-      console.log('✅ 首页收藏功能已初始化');
+      console.log('✅ 首页加载完成，统一游戏卡片系统已启用');
     });
   </script>
 </BaseLayout>
 
 <style>
-  /* 主要内容区域 - 移除最大宽度限制 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: #FEFCFB;
@@ -585,532 +359,245 @@ const allGames = allGamesData.map(game => ({
 
   .floating-icon {
     position: absolute;
-    width: 60px;
-    height: 60px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    box-shadow: 0 8px 25px -5px rgba(0, 0, 0, 0.1);
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .floating-icon.math {
-    top: 20%;
-    left: 10%;
-    color: #EA580C;
-    animation-delay: 0s;
-  }
-
-  .floating-icon.science {
-    top: 10%;
-    right: 20%;
-    color: #059669;
-    animation-delay: 0.5s;
-  }
-
-  .floating-icon.coding {
-    bottom: 30%;
-    left: 20%;
-    color: #2563EB;
-    animation-delay: 1s;
-  }
-
-  .floating-icon.language {
-    bottom: 20%;
-    right: 10%;
-    color: #C026D3;
-    animation-delay: 1.5s;
-  }
-
-  .floating-icon.puzzle {
-    top: 50%;
-    left: 50%;
-    color: #7C3AED;
-    animation-delay: 2s;
-    transform: translate(-50%, -50%);
-  }
-
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-
-  /* 分类展示 */
-  .categories-section, .featured-section {
-    margin-bottom: 3rem;
-  }
-
-  .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #1F2937;
-  }
-
-  .section-subtitle {
-    text-align: center;
-    color: #6B7280;
-    font-size: 1.125rem;
-    margin-bottom: 2rem;
-  }
-
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    align-items: stretch;
-  }
-
-  .category-card {
-    background: white;
-    border-radius: 20px;
-    padding: 0;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.4s ease;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid #E5E7EB;
-    display: flex;
-    flex-direction: column;
-    height: 280px;
-    min-height: 280px;
-  }
-
-  .category-card:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-    text-decoration: none;
-    color: inherit;
-  }
-
-  .category-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--category-gradient);
-  }
-
-  .category-card.math { 
-    --category-gradient: linear-gradient(90deg, #EA580C, #FB923C);
-  }
-  .category-card.science { 
-    --category-gradient: linear-gradient(90deg, #059669, #10B981);
-  }
-  .category-card.coding { 
-    --category-gradient: linear-gradient(90deg, #2563EB, #3B82F6);
-  }
-  .category-card.language { 
-    --category-gradient: linear-gradient(90deg, #C026D3, #D946EF);
-  }
-  .category-card.puzzle { 
-    --category-gradient: linear-gradient(90deg, #7C3AED, #8B5CF6);
-  }
-  .category-card.sports { 
-    --category-gradient: linear-gradient(90deg, #DC2626, #EF4444);
-  }
-  .category-card.art { 
-    --category-gradient: linear-gradient(90deg, #EC4899, #F472B6);
-  }
-  .category-card.geography { 
-    --category-gradient: linear-gradient(90deg, #0891B2, #06B6D4);
-  }
-
-  .category-card-header {
-    position: relative;
-    height: 140px;
-    min-height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .category-card.math .category-card-header {
-    background: linear-gradient(135deg, #FFF7ED, rgba(234, 88, 12, 0.1));
-  }
-  .category-card.science .category-card-header {
-    background: linear-gradient(135deg, #ECFDF5, rgba(5, 150, 105, 0.1));
-  }
-  .category-card.coding .category-card-header {
-    background: linear-gradient(135deg, #EFF6FF, rgba(37, 99, 235, 0.1));
-  }
-  .category-card.language .category-card-header {
-    background: linear-gradient(135deg, #FAF5FF, rgba(192, 38, 211, 0.1));
-  }
-  .category-card.puzzle .category-card-header {
-    background: linear-gradient(135deg, #F5F3FF, rgba(124, 58, 237, 0.1));
-  }
-  .category-card.sports .category-card-header {
-    background: linear-gradient(135deg, #FEF2F2, #FECACA);
-  }
-  .category-card.art .category-card-header {
-    background: linear-gradient(135deg, #FDF2F8, rgba(236, 72, 153, 0.1));
-  }
-  .category-card.geography .category-card-header {
-    background: linear-gradient(135deg, #F0F9FF, rgba(8, 145, 178, 0.1));
-  }
-
-  .category-card-icon {
     width: 80px;
     height: 80px;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: white;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-    position: relative;
-  }
-
-  .category-card.math .category-card-icon { background: #EA580C; }
-  .category-card.science .category-card-icon { background: #059669; }
-  .category-card.coding .category-card-icon { background: #2563EB; }
-  .category-card.language .category-card-icon { background: #C026D3; }
-  .category-card.puzzle .category-card-icon { background: #7C3AED; }
-  .category-card.sports .category-card-icon { background: #DC2626; }
-  .category-card.art .category-card-icon { background: #EC4899; }
-  .category-card.geography .category-card-icon { background: #0891B2; }
-
-  .category-floating-elements {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-  }
-
-  .floating-symbol {
-    position: absolute;
-    font-size: 1.2rem;
-    opacity: 0.5;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
     animation: float 6s ease-in-out infinite;
-    color: #4B5563;
-    font-weight: 700;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   }
 
-  .floating-symbol:nth-child(1) {
-    top: 15%;
-    left: 10%;
+  .floating-icon.math {
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+    top: 10%;
+    left: 20%;
     animation-delay: 0s;
   }
 
-  .floating-symbol:nth-child(2) {
-    top: 50%;
+  .floating-icon.science {
+    background: linear-gradient(135deg, #10B981, #059669);
+    top: 60%;
+    left: 10%;
+    animation-delay: 1.2s;
+  }
+
+  .floating-icon.coding {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    top: 30%;
     right: 15%;
-    animation-delay: 2s;
+    animation-delay: 2.4s;
   }
 
-  .floating-symbol:nth-child(3) {
-    bottom: 20%;
-    left: 20%;
-    animation-delay: 4s;
+  .floating-icon.language {
+    background: linear-gradient(135deg, #EC4899, #DB2777);
+    top: 70%;
+    right: 25%;
+    animation-delay: 3.6s;
   }
 
-  .category-card-content {
-    padding: 1.5rem;
-    flex: 1;
+  .floating-icon.puzzle {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    top: 45%;
+    left: 45%;
+    animation-delay: 4.8s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  /* 模块通用样式 */
+  .module-header {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    min-height: 0;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
   }
 
-  .category-card-title {
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+  }
+
+  .module-icon.categories {
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+  }
+
+  .module-icon.featured {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .module-text {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #1F2937;
-    line-height: 1.2;
-    text-align: center;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .module-description {
+    color: #6B7280;
+    font-size: 0.9rem;
     margin: 0;
-  }
-
-  /* 特色游戏 */
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-  }
-
-  .game-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-    border: 2px solid #E5E7EB;
-  }
-
-  .game-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    border-color: #F59E0B;
-  }
-
-  .game-image-container {
-    position: relative;
-    height: 200px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-  }
-
-  .game-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .game-card:hover .game-image {
-    transform: scale(1.05);
-  }
-
-  .game-overlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .game-card:hover .game-overlay {
-    opacity: 1;
-  }
-
-  .played-badge {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .played-badge.today {
-    background: #10B981;
-    color: white;
-  }
-
-  .played-badge.yesterday {
-    background: #3B82F6;
-    color: white;
-  }
-
-  .played-badge.few-days-ago {
-    background: #8B5CF6;
-    color: white;
-  }
-
-  .played-badge.weeks-ago {
-    background: #6B7280;
-    color: white;
-  }
-
-  .popularity-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 0.25rem 0.5rem;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-
-  .play-button {
-    background: white;
-    color: #6366F1;
-    border: none;
-    padding: 1rem 2rem;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    font-size: 1rem;
-    font-weight: 700;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-    white-space: nowrap;
-    min-width: 140px;
-  }
-
-  .play-button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    background: white;
-    color: #6366F1;
-  }
-
-  .game-info {
-    padding: 1.5rem;
-    background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
-    border-top: 1px solid #E5E7EB;
-  }
-
-  .game-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin-bottom: 1rem;
     line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+  }
+
+  /* 分类网格 */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .category-card {
+    display: block;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #F3F4F6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
     overflow: hidden;
   }
 
-  .game-tags {
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-color: transparent;
+  }
+
+  .category-card-header {
+    position: relative;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .category-floating-elements {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
     display: flex;
-    gap: 0.25rem;
-    flex-wrap: wrap;
-    align-items: center;
+    justify-content: space-around;
+    z-index: 1;
   }
 
-  /* 统一标签基础样式 - 简洁版本 */
-  .category-tag,
-  .feature-tag,
-  .difficulty-tag {
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0;
-    border: none;
-    transition: all 0.2s ease;
+  .floating-symbol {
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: floatSymbol 4s ease-in-out infinite;
   }
 
-  /* 分类标签 - 简洁的单色背景 */
-  .category-tag {
-    color: white;
-    font-weight: 600;
+  .floating-symbol:nth-child(2) {
+    animation-delay: 1.3s;
   }
 
-  .category-tag.math { 
-    background: #EA580C;
-  }
-  .category-tag.science { 
-    background: #059669;
-  }
-  .category-tag.coding { 
-    background: #2563EB;
-  }
-  .category-tag.language { 
-    background: #C026D3;
-  }
-  .category-tag.puzzle { 
-    background: #7C3AED;
-  }
-  .category-tag.sports { 
-    background: #DC2626;
-  }
-  .category-tag.art { 
-    background: #EC4899;
-  }
-  .category-tag.geography { 
-    background: #0891B2;
+  .floating-symbol:nth-child(3) {
+    animation-delay: 2.6s;
   }
 
-  /* 特色标签 - 简洁设计 */
-  .feature-tag {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    color: white;
-    font-size: 0.7rem;
-  }
-
-  .feature-tag.new { 
-    background: #10B981;
-  }
-  .feature-tag.hot { 
-    background: #EF4444;
-  }
-  .feature-tag.featured { 
-    background: #8B5CF6;
-  }
-  .feature-tag.updated { 
-    background: #F59E0B;
-  }
-
-  /* 难易度标签 - 新增 */
-  .difficulty-tag {
-    padding: 0.25rem 0.75rem;
-    border-radius: 6px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0;
-    border: none;
-    transition: all 0.2s ease;
-    color: white;
-    text-transform: uppercase;
-    font-size: 0.7rem;
-  }
-
-  .difficulty-tag.easy { 
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-  }
-  .difficulty-tag.medium { 
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  }
-  .difficulty-tag.hard { 
-    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-  }
-
-  /* 简化的悬停效果 */
-  .category-tag:hover,
-  .feature-tag:hover,
-  .difficulty-tag:hover {
-    transform: translateY(-1px);
-    opacity: 0.9;
-  }
-
-  /* 动画 */
-  @keyframes float {
+  @keyframes floatSymbol {
     0%, 100% {
       transform: translateY(0px);
+      opacity: 0.3;
     }
     50% {
       transform: translateY(-10px);
+      opacity: 0.6;
     }
   }
 
+  .category-card-icon {
+    font-size: 3rem;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .category-card-content {
+    text-align: center;
+  }
+
+  .category-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* 分类特定颜色 */
+  .category-card.math:hover {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  }
+
+  .category-card.science:hover {
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+  }
+
+  .category-card.language:hover {
+    background: linear-gradient(135deg, #FDF4FF, #FAE8FF);
+  }
+
+  .category-card.puzzle:hover {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  }
+
+  .category-card.sports:hover {
+    background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+  }
+
+  .category-card.art:hover {
+    background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+  }
+
+  /* 特色游戏区域 */
+  .featured-section {
+    margin-bottom: 3rem;
+  }
+
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -1127,6 +614,31 @@ const allGames = allGamesData.map(game => ({
   }
 
   /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero {
+      padding: 3rem 2rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .floating-icon {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+  }
+
   @media (max-width: 768px) {
     .content-wrapper {
       padding: 1rem;
@@ -1135,21 +647,22 @@ const allGames = allGamesData.map(game => ({
     .hero {
       padding: 2rem 1.5rem;
       margin-bottom: 2rem;
-    }
-
-    .hero-container {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-      text-align: center;
+      border-radius: 16px;
     }
 
     .hero-title {
       font-size: 2.5rem;
+      text-align: center;
     }
-    
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      text-align: center;
+    }
+
     .hero-stats {
       grid-template-columns: repeat(3, 1fr);
-      gap: 0.75rem;
+      gap: 0.5rem;
     }
 
     .stat-item {
@@ -1160,305 +673,108 @@ const allGames = allGamesData.map(game => ({
       font-size: 1.25rem;
     }
 
+    .stat-label {
+      font-size: 0.75rem;
+    }
+
+    .hero-image {
+      height: 300px;
+      order: -1;
+    }
+
+    .floating-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 1.25rem;
+    }
+
     .categories-grid {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 1rem;
     }
 
     .category-card {
-      padding: 1rem;
+      padding: 1.5rem;
+      border-radius: 16px;
     }
-    
+
+    .category-card-icon {
+      font-size: 2.5rem;
+    }
+
     .category-card-title {
-      font-size: 0.9rem;
+      font-size: 1.125rem;
     }
 
-    .games-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
     }
 
-    .game-card {
-      border-radius: 12px;
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
     }
 
-    .game-image-container {
-      height: 140px;
+    .module-title {
+      font-size: 1.375rem;
     }
 
-    .game-info {
-      padding: 1rem;
-    }
-
-    .game-title {
-      font-size: 1rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .game-tags {
-      gap: 0.25rem;
-    }
-
-    .category-tag,
-    .feature-tag,
-    .difficulty-tag {
-      font-size: 0.65rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 4px;
-    }
-
-    .played-badge,
-    .popularity-badge {
-      font-size: 0.65rem;
-      padding: 0.2rem 0.4rem;
-    }
-
-    .play-button {
-      padding: 0.75rem 1.5rem;
+    .module-description {
       font-size: 0.875rem;
-      gap: 0.5rem;
-      min-width: 120px;
-    }
-  }
-
-  /* 平板端适配 */
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
     }
 
-    .game-image-container {
-      height: 180px;
-    }
-
-    .hero-title {
-      font-size: 3rem;
-    }
-
-    .categories-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
-  @media (min-width: 1400px) {
-    .games-grid {
-      grid-template-columns: repeat(4, 1fr);
+    .featured-section {
+      margin-bottom: 2.5rem;
     }
   }
 
   @media (max-width: 640px) {
+    .hero {
+      padding: 1.5rem 1rem;
+      border-radius: 14px;
+    }
+
     .hero-title {
       font-size: 2rem;
     }
-    
-    .stat-number {
-      font-size: 1.5rem;
+
+    .hero-subtitle {
+      font-size: 1rem;
     }
 
-    .category-card-title {
-      font-size: 1.2rem;
-    }
-    
-    .game-image-container {
-      height: 160px;
+    .hero-image {
+      height: 250px;
     }
 
-    /* 移动端模块头部样式 */
-    .module-header {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.5rem;
-      padding: 1.5rem;
+    .floating-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
     }
 
-    .module-icon {
-      width: 60px;
-      height: 60px;
-      font-size: 1.5rem;
+    .category-card {
+      padding: 1.25rem;
     }
 
-    .module-title {
+    .category-card-icon {
       font-size: 2rem;
     }
 
-    .module-description {
+    .category-card-title {
       font-size: 1rem;
     }
-  }
 
-  /* 分类卡片颜色主题 */
-  .category-card.math {
-    background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
-    border: 1px solid #FED7AA;
-  }
+    .module-header {
+      padding: 1rem;
+    }
 
-  .category-card.science {
-    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
-    border: 1px solid #A7F3D0;
-  }
-
-  .category-card.coding {
-    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
-    border: 1px solid #93C5FD;
-  }
-
-  .category-card.language {
-    background: linear-gradient(135deg, #FAE8FF, #F3E8FF);
-    border: 1px solid #DDD6FE;
-  }
-
-  .category-card.puzzle {
-    background: linear-gradient(135deg, #F3E8FF, #EDE9FE);
-    border: 1px solid #C4B5FD;
-  }
-
-  .category-card.sports {
-    background: linear-gradient(135deg, #FEF2F2, #FECACA);
-    border: 1px solid #FCA5A5;
-  }
-
-  .category-card.art {
-    background: linear-gradient(135deg, #FCE7F3, #FBCFE8);
-    border: 1px solid #F9A8D4;
-  }
-
-  .category-card.geography {
-    background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
-    border: 1px solid #BBF7D0;
-  }
-
-  /* 分类卡片悬停效果 */
-  .category-card.math:hover {
-    background: linear-gradient(135deg, #FEF3C7, #FDE68A);
-    border-color: #F59E0B;
-  }
-
-  .category-card.science:hover {
-    background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
-    border-color: #10B981;
-  }
-
-  .category-card.coding:hover {
-    background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
-    border-color: #3B82F6;
-  }
-
-  .category-card.language:hover {
-    background: linear-gradient(135deg, #FAE8FF, #F3E8FF);
-    border-color: #A855F7;
-  }
-
-  .category-card.puzzle:hover {
-    background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
-    border-color: #8B5CF6;
-  }
-
-  .category-card.sports:hover {
-    background: linear-gradient(135deg, #FEF2F2, #FECACA);
-    border-color: #EF4444;
-  }
-
-  .category-card.geography:hover {
-    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
-    border-color: #22C55E;
-  }
-
-  .category-card.art:hover {
-    background: linear-gradient(135deg, #FCE7F3, #FBCFE8);
-    border-color: #EC4899;
-  }
-
-  /* 模块头部样式 */
-  .module-header {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    margin-bottom: 2.5rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border: 1px solid #E5E7EB;
-  }
-
-  .module-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.75rem;
-    box-shadow: 
-      0 12px 28px rgba(0, 0, 0, 0.15),
-      0 4px 12px rgba(0, 0, 0, 0.1),
-      inset 0 2px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-  }
-
-  .module-icon::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 20px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3) 0%, transparent 50%, rgba(0, 0, 0, 0.1) 100%);
-    pointer-events: none;
-  }
-
-  .module-icon:hover {
-    transform: translateY(-2px) scale(1.02);
-  }
-
-  .module-icon.categories {
-    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 25%, #6D28D9 100%);
-    box-shadow: 
-      0 12px 28px rgba(139, 92, 246, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.1),
-      inset 0 2px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .module-icon.featured {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 25%, #B45309 100%);
-    box-shadow: 
-      0 12px 28px rgba(245, 158, 11, 0.3),
-      0 4px 12px rgba(0, 0, 0, 0.1),
-      inset 0 2px 0 rgba(255, 255, 255, 0.25),
-      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  .module-text {
-    flex: 1;
-  }
-
-  .module-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin: 0 0 0.5rem 0;
-    background: linear-gradient(135deg, #1F2937 0%, #374151 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    line-height: 1.2;
-  }
-
-  .module-description {
-    font-size: 1.125rem;
-    color: #6B7280;
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.5;
+    .module-title {
+      font-size: 1.25rem;
+    }
   }
 </style> 
 
