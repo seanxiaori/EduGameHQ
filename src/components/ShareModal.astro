@@ -1,0 +1,820 @@
+---
+// 分享模态框组件 - 提供多平台分享功能
+export interface Props {
+  gameTitle: string;
+  gameUrl: string;
+  gameDescription?: string;
+  gameImage?: string;
+}
+
+const { gameTitle, gameUrl, gameDescription = "", gameImage = "" } = Astro.props;
+
+// 生成分享文案
+const shareText = `Check out this awesome educational game: ${gameTitle}! Perfect for learning and fun. Play now at EduGameHQ!`;
+const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
+---
+
+<!-- 分享模态框 -->
+<div id="shareModal" class="share-modal-overlay" style="display: none;">
+  <div class="share-modal">
+    <!-- 模态框头部 -->
+    <div class="share-modal-header">
+      <div class="share-header-content">
+        <div class="share-icon">
+          <i class="fas fa-share-alt"></i>
+        </div>
+        <div class="share-title-group">
+          <h3 class="share-title">Share This Game</h3>
+          <p class="share-subtitle">Spread the fun and learning!</p>
+        </div>
+      </div>
+      <button class="share-close-btn" onclick="closeShareModal()">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <!-- 游戏信息预览 -->
+    <div class="share-game-preview">
+      {gameImage && (
+        <div class="share-game-image">
+          <img src={gameImage} alt={gameTitle} />
+        </div>
+      )}
+      <div class="share-game-info">
+        <h4 class="share-game-title">{gameTitle}</h4>
+        <p class="share-game-description">{gameDescription}</p>
+        <span class="share-game-url">{gameUrl}</span>
+      </div>
+    </div>
+
+    <!-- 分享选项 -->
+    <div class="share-options">
+      <h4 class="share-section-title">
+        <i class="fas fa-rocket"></i>
+        Share on Social Media
+      </h4>
+      
+      <div class="share-buttons-grid">
+        <!-- Twitter分享 -->
+        <button class="share-btn twitter-btn" onclick="shareToTwitter()">
+          <i class="fab fa-twitter"></i>
+          <span>Twitter</span>
+        </button>
+
+        <!-- Facebook分享 -->
+        <button class="share-btn facebook-btn" onclick="shareToFacebook()">
+          <i class="fab fa-facebook-f"></i>
+          <span>Facebook</span>
+        </button>
+
+        <!-- WhatsApp分享 -->
+        <button class="share-btn whatsapp-btn" onclick="shareToWhatsApp()">
+          <i class="fab fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </button>
+
+        <!-- Telegram分享 -->
+        <button class="share-btn telegram-btn" onclick="shareToTelegram()">
+          <i class="fab fa-telegram-plane"></i>
+          <span>Telegram</span>
+        </button>
+
+        <!-- Email分享 -->
+        <button class="share-btn email-btn" onclick="shareToEmail()">
+          <i class="fas fa-envelope"></i>
+          <span>Email</span>
+        </button>
+
+        <!-- Reddit分享 -->
+        <button class="share-btn reddit-btn" onclick="shareToReddit()">
+          <i class="fab fa-reddit-alien"></i>
+          <span>Reddit</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 复制选项 -->
+    <div class="share-copy-section">
+      <h4 class="share-section-title">
+        <i class="fas fa-copy"></i>
+        Copy & Share
+      </h4>
+      
+      <div class="copy-options">
+        <!-- 复制链接 -->
+        <div class="copy-item">
+          <div class="copy-input-group">
+            <input 
+              type="text" 
+              id="gameUrlInput" 
+              value={gameUrl} 
+              readonly 
+              class="copy-input"
+            />
+            <button class="copy-btn" onclick="copyGameUrl()">
+              <i class="fas fa-copy"></i>
+              Copy Link
+            </button>
+          </div>
+          <span class="copy-label">Game URL</span>
+        </div>
+
+        <!-- 复制嵌入代码 -->
+        <div class="copy-item">
+          <div class="copy-input-group">
+            <input 
+              type="text" 
+              id="embedCodeInput" 
+              value={`<iframe src="${gameUrl}" width="800" height="600" frameborder="0"></iframe>`}
+              readonly 
+              class="copy-input"
+            />
+            <button class="copy-btn" onclick="copyEmbedCode()">
+              <i class="fas fa-code"></i>
+              Copy Embed
+            </button>
+          </div>
+          <span class="copy-label">Embed Code for Websites</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分享统计 -->
+    <div class="share-stats">
+      <div class="stats-item">
+        <i class="fas fa-share"></i>
+        <span>Shared <span id="shareCount">0</span> times</span>
+      </div>
+      <div class="stats-item">
+        <i class="fas fa-heart"></i>
+        <span>Help others discover great games!</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* 分享模态框样式 */
+  .share-modal-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+    display: none !important; /* 默认隐藏 */
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 10000 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: all 0.3s ease !important;
+    backdrop-filter: blur(8px) !important;
+    padding: 1rem !important;
+  }
+
+  .share-modal-overlay.active {
+    display: flex !important; /* 激活时显示 */
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .share-modal {
+    background: white;
+    border-radius: 24px;
+    max-width: 540px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    transform: scale(0.9) translateY(-20px);
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .share-modal-overlay.active .share-modal {
+    transform: scale(1) translateY(0);
+  }
+
+  /* 模态框头部 */
+  .share-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 2rem 1rem;
+    border-bottom: 1px solid #F3F4F6;
+  }
+
+  .share-header-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .share-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+  }
+
+  .share-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .share-subtitle {
+    font-size: 0.9rem;
+    color: #6B7280;
+    margin: 0.25rem 0 0;
+  }
+
+  .share-close-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: #F3F4F6;
+    color: #6B7280;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .share-close-btn:hover {
+    background: #E5E7EB;
+    color: #374151;
+    transform: scale(1.05);
+  }
+
+  /* 游戏预览 */
+  .share-game-preview {
+    display: flex;
+    gap: 1rem;
+    padding: 1.5rem 2rem;
+    background: #F9FAFB;
+    margin: 0 2rem;
+    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+  }
+
+  .share-game-image {
+    width: 80px;
+    height: 60px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .share-game-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .share-game-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .share-game-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+
+  .share-game-description {
+    font-size: 0.85rem;
+    color: #6B7280;
+    margin: 0 0 0.5rem;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .share-game-url {
+    font-size: 0.8rem;
+    color: #9CA3AF;
+    font-family: monospace;
+  }
+
+  /* 分享选项 */
+  .share-options {
+    padding: 1.5rem 2rem;
+  }
+
+  .share-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #374151;
+    margin: 0 0 1rem;
+  }
+
+  .share-section-title i {
+    color: #6366F1;
+  }
+
+  .share-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .share-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1rem;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white;
+  }
+
+  .share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 社交媒体按钮颜色 */
+  .twitter-btn { background: linear-gradient(135deg, #1DA1F2 0%, #0d8bd9 100%); }
+  .facebook-btn { background: linear-gradient(135deg, #1877F2 0%, #166fe5 100%); }
+  .whatsapp-btn { background: linear-gradient(135deg, #25D366 0%, #20ba5a 100%); }
+  .telegram-btn { background: linear-gradient(135deg, #0088CC 0%, #006699 100%); }
+  .email-btn { background: linear-gradient(135deg, #EA4335 0%, #d93025 100%); }
+  .reddit-btn { background: linear-gradient(135deg, #FF4500 0%, #e03d00 100%); }
+
+  /* 复制选项 */
+  .share-copy-section {
+    padding: 0 2rem 1.5rem;
+    border-top: 1px solid #F3F4F6;
+    margin-top: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  .copy-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .copy-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .copy-input-group {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .copy-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    background: #F9FAFB;
+    color: #6B7280;
+    font-family: monospace;
+  }
+
+  .copy-input:focus {
+    outline: none;
+    border-color: #6366F1;
+    background: white;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: 12px;
+    background: #6366F1;
+    color: white;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+  }
+
+  .copy-btn:hover {
+    background: #4F46E5;
+    transform: translateY(-1px);
+  }
+
+  .copy-btn.copied {
+    background: #10B981;
+  }
+
+  .copy-label {
+    font-size: 0.8rem;
+    color: #6B7280;
+    font-weight: 500;
+  }
+
+  /* 分享统计 */
+  .share-stats {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem 2rem;
+    border-top: 1px solid #F3F4F6;
+    margin-top: 1rem;
+  }
+
+  .stats-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #6B7280;
+  }
+
+  .stats-item i {
+    color: #10B981;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .share-modal {
+      margin: 1rem;
+      max-width: none;
+      border-radius: 20px;
+    }
+
+    .share-modal-header {
+      padding: 1.5rem 1.5rem 1rem;
+    }
+
+    .share-title {
+      font-size: 1.25rem;
+    }
+
+    .share-game-preview {
+      margin: 0 1.5rem;
+      padding: 1rem;
+    }
+
+    .share-options {
+      padding: 1.25rem 1.5rem;
+    }
+
+    .share-copy-section {
+      padding: 0 1.5rem 1.25rem;
+    }
+
+    .share-buttons-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .copy-input-group {
+      flex-direction: column;
+    }
+
+    .copy-btn {
+      justify-content: center;
+    }
+
+    .share-stats {
+      padding: 1rem 1.5rem 1.5rem;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .share-buttons-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .share-game-preview {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .share-game-image {
+      width: 100px;
+      height: 75px;
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<script>
+  // 分享模态框JavaScript功能
+  let shareModal;
+  let currentGameData = {};
+
+  // 等待DOM加载完成
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取模态框元素
+    shareModal = document.getElementById('shareModal');
+    
+    if (!shareModal) {
+      console.error('ShareModal: 未找到分享模态框元素');
+      return;
+    }
+
+    console.log('ShareModal: 分享模态框初始化成功');
+  });
+
+  // 打开分享模态框
+  function openShareModal(title, url, description = '', image = '') {
+    if (!shareModal) {
+      console.error('ShareModal: 模态框未初始化');
+      return;
+    }
+
+    // 存储当前游戏数据
+    currentGameData = { title, url, description, image };
+    
+    // 更新模态框内容
+    updateModalContent(title, url, description, image);
+    
+    // 显示模态框
+    shareModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    
+    // 更新分享统计
+    const gameSlug = getGameSlug(url);
+    updateShareCount(gameSlug);
+    
+    console.log('ShareModal: 打开分享模态框', { title, url });
+  }
+
+  // 更新模态框内容
+  function updateModalContent(title, url, description, image) {
+    // 更新游戏标题
+    const titleElement = shareModal.querySelector('.share-game-title');
+    if (titleElement) titleElement.textContent = title;
+    
+    // 更新游戏描述
+    const descElement = shareModal.querySelector('.share-game-description');
+    if (descElement) descElement.textContent = description;
+    
+    // 更新游戏URL
+    const urlElement = shareModal.querySelector('.share-game-url');
+    if (urlElement) urlElement.textContent = url;
+    
+    // 更新游戏图片
+    const imageElement = shareModal.querySelector('.share-game-image img');
+    if (imageElement && image) {
+      imageElement.src = image;
+      imageElement.alt = title;
+    }
+    
+    // 更新输入框的值
+    const urlInput = document.getElementById('gameUrlInput');
+    if (urlInput) urlInput.value = url;
+    
+    const embedInput = document.getElementById('embedCodeInput');
+    if (embedInput) {
+      embedInput.value = `<iframe src="${url}" width="800" height="600" frameborder="0"></iframe>`;
+    }
+  }
+
+  // 关闭分享模态框
+  function closeShareModal() {
+    if (!shareModal) return;
+    
+    shareModal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // 从URL获取游戏slug
+  function getGameSlug(url) {
+    return url.split('/').pop() || '';
+  }
+
+  // 更新分享统计
+  function updateShareCount(gameSlug) {
+    try {
+      const shareStats = JSON.parse(localStorage.getItem('gameShareStats') || '{}');
+      const count = shareStats[gameSlug] || 0;
+      const countElement = document.getElementById('shareCount');
+      if (countElement) {
+        countElement.textContent = count;
+      }
+    } catch (error) {
+      console.error('获取分享统计失败:', error);
+    }
+  }
+
+  // 记录分享行为
+  function recordShare(gameSlug, platform) {
+    try {
+      const shareStats = JSON.parse(localStorage.getItem('gameShareStats') || '{}');
+      shareStats[gameSlug] = (shareStats[gameSlug] || 0) + 1;
+      localStorage.setItem('gameShareStats', JSON.stringify(shareStats));
+      
+      // 更新显示
+      updateShareCount(gameSlug);
+      
+      // 显示成功提示
+      showShareSuccess(`Shared to ${platform}!`);
+      
+      console.log(`游戏 ${gameSlug} 分享到 ${platform}，总分享次数: ${shareStats[gameSlug]}`);
+    } catch (error) {
+      console.error('记录分享统计失败:', error);
+    }
+  }
+
+  // 社交媒体分享函数
+  function shareToTwitter() {
+    const text = encodeURIComponent(`Check out this awesome educational game: ${currentGameData.title}! Perfect for learning and fun. #EduGameHQ #EducationalGames #Learning`);
+    const url = encodeURIComponent(currentGameData.url);
+    window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'width=600,height=400');
+    recordShare(getGameSlug(currentGameData.url), 'Twitter');
+  }
+
+  function shareToFacebook() {
+    const url = encodeURIComponent(currentGameData.url);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
+    recordShare(getGameSlug(currentGameData.url), 'Facebook');
+  }
+
+  function shareToWhatsApp() {
+    const text = encodeURIComponent(`Check out this awesome educational game: ${currentGameData.title}! ${currentGameData.url}`);
+    window.open(`https://wa.me/?text=${text}`, '_blank');
+    recordShare(getGameSlug(currentGameData.url), 'WhatsApp');
+  }
+
+  function shareToTelegram() {
+    const text = encodeURIComponent(`Check out this awesome educational game: ${currentGameData.title}!`);
+    const url = encodeURIComponent(currentGameData.url);
+    window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
+    recordShare(getGameSlug(currentGameData.url), 'Telegram');
+  }
+
+  function shareToEmail() {
+    const subject = encodeURIComponent(`Check out this educational game: ${currentGameData.title}`);
+    const body = encodeURIComponent(`Hi!\n\nI found this amazing educational game that I think you'd enjoy:\n\n${currentGameData.title}\n${currentGameData.description}\n\nPlay it here: ${currentGameData.url}\n\nEnjoy learning!\n\nShared from EduGameHQ`);
+    window.open(`mailto:?subject=${subject}&body=${body}`);
+    recordShare(getGameSlug(currentGameData.url), 'Email');
+  }
+
+  function shareToReddit() {
+    const title = encodeURIComponent(`Check out this educational game: ${currentGameData.title}`);
+    const url = encodeURIComponent(currentGameData.url);
+    window.open(`https://reddit.com/submit?title=${title}&url=${url}`, '_blank');
+    recordShare(getGameSlug(currentGameData.url), 'Reddit');
+  }
+
+  // 复制功能
+  function copyGameUrl() {
+    const input = document.getElementById('gameUrlInput');
+    if (!input) return;
+    
+    input.select();
+    navigator.clipboard.writeText(input.value).then(() => {
+      const btn = event.target.closest('.copy-btn');
+      if (!btn) return;
+      
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      btn.classList.add('copied');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+      
+      recordShare(getGameSlug(currentGameData.url), 'Copy Link');
+    });
+  }
+
+  function copyEmbedCode() {
+    const input = document.getElementById('embedCodeInput');
+    if (!input) return;
+    
+    input.select();
+    navigator.clipboard.writeText(input.value).then(() => {
+      const btn = event.target.closest('.copy-btn');
+      if (!btn) return;
+      
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+      btn.classList.add('copied');
+      
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+      
+      recordShare(getGameSlug(currentGameData.url), 'Copy Embed');
+    });
+  }
+
+  // 显示分享成功提示
+  function showShareSuccess(message) {
+    // 移除现有提示
+    const existingToast = document.querySelector('.share-success-toast');
+    if (existingToast) {
+      existingToast.remove();
+    }
+
+    // 创建提示元素
+    const toast = document.createElement('div');
+    toast.className = 'share-success-toast';
+    toast.innerHTML = `
+      <div class="toast-content">
+        <i class="fas fa-check-circle"></i>
+        <span>${message}</span>
+      </div>
+    `;
+
+    // 添加样式
+    Object.assign(toast.style, {
+      position: 'fixed',
+      top: '20px',
+      right: '20px',
+      zIndex: '10001',
+      padding: '1rem 1.5rem',
+      borderRadius: '12px',
+      background: '#10B981',
+      color: 'white',
+      fontWeight: '600',
+      fontSize: '0.9rem',
+      boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)',
+      transform: 'translateX(100%)',
+      transition: 'transform 0.3s ease',
+      backdropFilter: 'blur(10px)'
+    });
+
+    // 添加到页面
+    document.body.appendChild(toast);
+
+    // 动画显示
+    setTimeout(() => {
+      toast.style.transform = 'translateX(0)';
+    }, 100);
+
+    // 3秒后自动隐藏
+    setTimeout(() => {
+      toast.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        if (toast.parentNode) {
+          toast.parentNode.removeChild(toast);
+        }
+      }, 300);
+    }, 3000);
+  }
+
+  // 事件监听器
+  document.addEventListener('DOMContentLoaded', function() {
+    // 点击遮罩层关闭模态框
+    if (shareModal) {
+      shareModal.addEventListener('click', (e) => {
+        if (e.target === shareModal) {
+          closeShareModal();
+        }
+      });
+    }
+
+    // ESC键关闭模态框
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && shareModal && shareModal.classList.contains('active')) {
+        closeShareModal();
+      }
+    });
+  });
+
+  // 将函数绑定到全局作用域
+  window.openShareModal = openShareModal;
+  window.closeShareModal = closeShareModal;
+  window.shareToTwitter = shareToTwitter;
+  window.shareToFacebook = shareToFacebook;
+  window.shareToWhatsApp = shareToWhatsApp;
+  window.shareToTelegram = shareToTelegram;
+  window.shareToEmail = shareToEmail;
+  window.shareToReddit = shareToReddit;
+  window.copyGameUrl = copyGameUrl;
+  window.copyEmbedCode = copyEmbedCode;
+</script> 

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
+import ShareModal from '../../components/ShareModal.astro';
 import fs from 'fs';
 import path from 'path';
 
@@ -122,7 +123,13 @@ const seoData = {
               <i class="fas fa-heart"></i>
               Favorite
             </button>
-            <button class="control-btn share-btn" onclick="shareGame()">
+            <button 
+              class="control-btn share-btn" 
+              data-game-title={game.title}
+              data-game-description={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+              data-game-image={game.thumbnailUrl || ''}
+              onclick="handleShareClick(this)"
+            >
               <i class="fas fa-share"></i>
               Share
             </button>
@@ -1068,15 +1075,30 @@ const seoData = {
     }
   }
 
-  function shareGame() {
+  function handleShareClick(button) {
+    const title = button.getAttribute('data-game-title');
+    const description = button.getAttribute('data-game-description');
+    const image = button.getAttribute('data-game-image');
+    const url = window.location.href;
+    
+    // 调用ShareModal的全局openShareModal函数
+    if (typeof window.openShareModal === 'function') {
+      window.openShareModal(title, url, description, image);
+    } else {
+      // 回退方案
+      shareGameFallback(title, url, description);
+    }
+  }
+
+  function shareGameFallback(title, url, description) {
+    // 直接调用ShareModal的全局函数
     if (navigator.share) {
       navigator.share({
-        title: document.title,
-        url: window.location.href
+        title: title,
+        url: url
       });
     } else {
-      // 复制链接到剪贴板
-      navigator.clipboard.writeText(window.location.href);
+      navigator.clipboard.writeText(url);
       showNotification('Game link copied to clipboard!', 'info');
     }
   }
@@ -1174,10 +1196,18 @@ const seoData = {
   (window as any).toggleFullscreen = toggleFullscreen;
   (window as any).restartGame = restartGame;
   (window as any).toggleFavorite = toggleFavorite;
-  (window as any).shareGame = shareGame;
+  (window as any).handleShareClick = handleShareClick;
 
   // 页面加载后初始化收藏状态
   document.addEventListener('DOMContentLoaded', () => {
     initializeFavoriteState();
   });
-</script> 
+</script>
+
+<!-- 分享模态框组件 -->
+<ShareModal 
+  gameTitle={game.title}
+  gameUrl={`${Astro.site || 'https://edugamehq.com'}/games/${game.slug}`}
+  gameDescription={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+  gameImage={game.thumbnailUrl || ''}
+/> 
