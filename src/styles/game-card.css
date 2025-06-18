@@ -63,10 +63,12 @@
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none; /* 默认状态下不阻挡鼠标事件 */
 }
 
 .game-card:hover .game-overlay {
   opacity: 1;
+  pointer-events: auto; /* 悬停时恢复鼠标事件，让play按钮可以点击 */
 }
 
 /* ==================== 四角分布式布局 - 简化版 ==================== */
