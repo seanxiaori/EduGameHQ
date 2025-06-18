@@ -2554,7 +2554,7 @@
         "Use hints when available"
       ]
     },
-    "thumbnailUrl": "/images/games/language/bhides-english-classes.svg",
+    "thumbnailUrl": "https://img.gamedistribution.com/ba551324893543dd9a30a7fe4c26806a-512x384.jpg",
     "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
@@ -3147,5 +3147,734 @@
     "trending": false,
     "isNew": true,
     "developer": "Gameyogi"
+  },
+  {
+    "slug": "nuts-puzzle-sort-by-color",
+    "title": "Nuts & Bolts Puzzle: Sort by Color",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/nuts-puzzle-sort-by-color",
+    "description": "Nuts & Bolts Puzzle is a satisfying sorting game where you organize colorful nuts and bolts. Use logical thinking and planning skills to sort all pieces by color and complete each challenging level!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click and drag nuts and bolts to sort them by color",
+        "Group all pieces of the same color together",
+        "Use empty spaces strategically to move pieces",
+        "Complete each level by perfectly organizing all items",
+        "Plan your moves carefully to avoid getting stuck"
+      ],
+      "controls": {
+        "mouse": "Click and drag to move nuts and bolts",
+        "touch": "Touch and drag pieces to sort them on mobile"
+      },
+      "tips": [
+        "Start by identifying all available colors",
+        "Work on one color at a time for better organization",
+        "Use empty spaces as temporary storage",
+        "Think several moves ahead before acting",
+        "Don't rush - careful planning prevents mistakes"
+      ]
+    },
+    "thumbnailUrl": "/images/games/puzzle/nuts-puzzle-sort-by-color.svg",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "sorting",
+      "logic",
+      "color matching",
+      "organization",
+      "educational",
+      "planning"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/nuts-puzzle-sort-by-color",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "未知"
+  },
+  {
+    "slug": "blockbuster-puzzle",
+    "title": "Blockbuster Puzzle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/blockbuster-puzzle",
+    "description": "Blockbuster Puzzle is an exciting block-matching game that challenges your spatial reasoning. Arrange and fit different shaped blocks to clear lines and achieve high scores!",
+    "gameGuide": {
+      "howToPlay": [
+        "Drag and drop blocks onto the game grid",
+        "Fill complete rows or columns to clear them",
+        "Fit blocks strategically to maximize space",
+        "Clear multiple lines simultaneously for bonus points",
+        "Continue until no more blocks can be placed"
+      ],
+      "controls": {
+        "mouse": "Drag blocks from the bottom panel to the grid",
+        "touch": "Touch and drag blocks to place them on mobile"
+      },
+      "tips": [
+        "Always look for opportunities to clear multiple lines",
+        "Keep the grid as clear as possible",
+        "Save space for larger, oddly-shaped blocks",
+        "Plan ahead by checking upcoming block shapes",
+        "Focus on corners and edges to maintain flexibility"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/blockbuster-puzzle_16x9/20241118032546/blockbuster-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "blocks",
+      "tetris-like",
+      "spatial reasoning",
+      "strategy",
+      "educational",
+      "logic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/blockbuster-puzzle",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Clever Apps"
+  },
+  {
+    "slug": "get-a-screw-3d-puzzle",
+    "title": "Get a Screw 3D Puzzle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/get-a-screw-3d-puzzle",
+    "description": "Get a Screw 3D Puzzle is a mechanical puzzle game where you unscrew and remove bolts in the correct order. Use spatial thinking and problem-solving skills to disassemble complex 3D structures!",
+    "gameGuide": {
+      "howToPlay": [
+        "Examine the 3D structure to identify moveable screws",
+        "Click on screws to unscrew them in the correct order",
+        "Remove bolts and plates strategically",
+        "Clear the way for other screws by removing obstacles",
+        "Complete each level by removing all screws"
+      ],
+      "controls": {
+        "mouse": "Click on screws to interact with them, drag to rotate view",
+        "touch": "Tap screws to unscrew, swipe to rotate on mobile"
+      },
+      "tips": [
+        "Rotate the view to see all angles",
+        "Look for screws that aren't blocked by other pieces",
+        "Work from outside to inside systematically",
+        "Some screws may require others to be removed first",
+        "Take your time to understand the structure"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/get-a-screw-3d-puzzle_16x9/20250516032444/get-a-screw-3d-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "3D",
+      "mechanical",
+      "screws",
+      "spatial reasoning",
+      "educational",
+      "engineering"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/get-a-screw-3d-puzzle",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Mirra Games"
+  },
+  {
+    "slug": "block-puzzle-master",
+    "title": "Block Puzzle Master",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/block-puzzle-master",
+    "description": "Block Puzzle Master is a classic block-fitting puzzle game. Drag and drop blocks to fill rows and columns, developing spatial awareness and strategic thinking skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select blocks from the bottom panel",
+        "Drag and place them on the 10x10 grid",
+        "Fill complete rows or columns to clear them",
+        "Score points for each cleared line",
+        "Game ends when no more blocks can be placed"
+      ],
+      "controls": {
+        "mouse": "Click and drag blocks to place them on the grid",
+        "touch": "Touch and drag blocks to position them on mobile"
+      },
+      "tips": [
+        "Always try to clear multiple lines at once",
+        "Keep the center of the grid as open as possible",
+        "Save room for larger L-shaped and T-shaped blocks",
+        "Don't fill corners unless you can clear them immediately",
+        "Plan several moves ahead for better scores"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/block-puzzle-master_16x9/20240308034605/block-puzzle-master_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "blocks",
+      "tetris",
+      "spatial reasoning",
+      "strategy",
+      "educational",
+      "classic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/block-puzzle-master",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Onki Games"
+  },
+  {
+    "slug": "parking-jam-dqq",
+    "title": "Parking Jam",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/parking-jam-dqq",
+    "description": "Parking Jam is a traffic puzzle game where you help cars escape from a crowded parking lot. Use logical thinking and planning to move cars in the right order and clear the jam!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click and drag cars to move them forward or backward",
+        "Cars can only move in the direction they're facing",
+        "Clear a path for the target car to reach the exit",
+        "Move other cars out of the way strategically",
+        "Complete each level with the minimum number of moves"
+      ],
+      "controls": {
+        "mouse": "Click and drag cars to move them",
+        "touch": "Touch and swipe cars to move them on mobile"
+      },
+      "tips": [
+        "Identify which car needs to exit first",
+        "Work backwards from the exit to plan moves",
+        "Move cars that block multiple others first",
+        "Some cars may need to move multiple times",
+        "Think step by step to avoid creating new jams"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/parking-jam-dqq_16x9/20250120063846/parking-jam-dqq_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "traffic",
+      "cars",
+      "logic",
+      "planning",
+      "educational",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/parking-jam-dqq",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Famobi"
+  },
+  {
+    "slug": "coffee-match-block-puzzle",
+    "title": "Coffee Match Block Puzzle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/coffee-match-block-puzzle",
+    "description": "Coffee Match Block Puzzle combines the relaxing theme of coffee with engaging block puzzle mechanics. Fit coffee-themed blocks together while enjoying a cozy café atmosphere!",
+    "gameGuide": {
+      "howToPlay": [
+        "Drag coffee-themed blocks onto the grid",
+        "Fill complete rows or columns to clear them",
+        "Match coffee cups, beans, and café items",
+        "Create combos by clearing multiple lines",
+        "Enjoy the relaxing coffee shop atmosphere"
+      ],
+      "controls": {
+        "mouse": "Drag blocks from the selection area to the grid",
+        "touch": "Touch and drag blocks to place them on mobile"
+      },
+      "tips": [
+        "Start with the largest blocks first",
+        "Keep corners clear for small blocks",
+        "Look for opportunities to clear multiple lines",
+        "Coffee-themed blocks have special bonus effects",
+        "Take your time and enjoy the relaxing gameplay"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/coffee-match-block-puzzle_16x9/20250603070116/coffee-match-block-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "coffee",
+      "blocks",
+      "relaxing",
+      "matching",
+      "educational",
+      "cozy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/coffee-match-block-puzzle",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Bravestars Games"
+  },
+  {
+    "slug": "twisted-tangle-nmt",
+    "title": "Twisted Tangle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/twisted-tangle-nmt",
+    "description": "Twisted Tangle is a mind-bending puzzle game where you untangle twisted ropes and chains. Develop spatial reasoning and problem-solving skills as you work through increasingly complex tangles!",
+    "gameGuide": {
+      "howToPlay": [
+        "Examine the tangled ropes and chains",
+        "Click and drag rope segments to untangle them",
+        "Rotate and move pieces to find the solution",
+        "Work systematically to avoid creating new tangles",
+        "Clear all tangles to complete each level"
+      ],
+      "controls": {
+        "mouse": "Click and drag rope segments, scroll to zoom",
+        "touch": "Touch and drag to move ropes, pinch to zoom on mobile"
+      },
+      "tips": [
+        "Start with the most obvious tangles first",
+        "Rotate your view to see from different angles",
+        "Follow one rope from end to end",
+        "Be patient - rushing creates more tangles",
+        "Look for loops and work to straighten them"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/twisted-tangle-nmt_16x9/20250409111646/twisted-tangle-nmt_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "ropes",
+      "untangling",
+      "spatial reasoning",
+      "3D",
+      "educational",
+      "challenging"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/twisted-tangle-nmt",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Rollic Games"
+  },
+  {
+    "slug": "wood-screw-bolts-puzzle",
+    "title": "Wood Screw Bolts Puzzle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/wood-screw-bolts-puzzle",
+    "description": "Wood Screw Bolts Puzzle is a mechanical puzzle game where you remove screws and bolts from wooden structures. Learn about construction and engineering while solving challenging puzzles!",
+    "gameGuide": {
+      "howToPlay": [
+        "Examine the wooden structure and identify removable screws",
+        "Click on screws to unscrew them in the correct sequence",
+        "Remove wooden pieces as screws are taken out",
+        "Clear all screws and disassemble the structure",
+        "Use logical thinking to determine the correct order"
+      ],
+      "controls": {
+        "mouse": "Click on screws to remove them, drag to rotate view",
+        "touch": "Tap screws to unscrew, swipe to change perspective"
+      },
+      "tips": [
+        "Look for screws that aren't supporting other pieces",
+        "Remove edge pieces before interior ones",
+        "Some screws may be hidden behind wooden boards",
+        "Work systematically from one side to the other",
+        "Understand how the pieces fit together"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/wood-screw-bolts-puzzle_16x9/20250410095028/wood-screw-bolts-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "wood",
+      "screws",
+      "construction",
+      "engineering",
+      "educational",
+      "mechanical"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/wood-screw-bolts-puzzle",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "FreePlay LLC"
+  },
+  {
+    "slug": "find-the-difference",
+    "title": "Find the Difference",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/find-the-difference",
+    "description": "Find the Difference is a classic observation puzzle game. Compare two similar images and spot all the differences. Improve your attention to detail and visual perception skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at two seemingly identical pictures side by side",
+        "Click on areas where you spot differences",
+        "Find all differences to complete each level",
+        "Use hints if you get stuck on difficult spots",
+        "Work quickly for bonus points and stars"
+      ],
+      "controls": {
+        "mouse": "Click on differences you spot between the images",
+        "touch": "Tap on differences you find on mobile devices"
+      },
+      "tips": [
+        "Scan systematically from left to right",
+        "Look for differences in colors, shapes, and objects",
+        "Check backgrounds and small details carefully",
+        "Don't click randomly - wrong clicks may cost points",
+        "Take breaks if your eyes get tired"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/find-the-difference/20230711101336/find-the-difference-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "observation",
+      "differences",
+      "visual perception",
+      "attention",
+      "educational",
+      "classic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/find-the-difference",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "1LIFE.GAMES"
+  },
+  {
+    "slug": "box-it-up",
+    "title": "Box It Up",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/box-it-up",
+    "description": "Box It Up is a spatial puzzle game where you pack items efficiently into boxes. Develop organizational skills and spatial reasoning while solving increasingly complex packing challenges!",
+    "gameGuide": {
+      "howToPlay": [
+        "Drag items from the inventory into the box",
+        "Rotate pieces to fit them in different orientations",
+        "Pack all items efficiently without overlapping",
+        "Use every bit of space to achieve perfect packing",
+        "Complete levels by fitting all items in the box"
+      ],
+      "controls": {
+        "mouse": "Drag items to move, right-click to rotate",
+        "keyboard": "Use R key to rotate selected items",
+        "touch": "Drag to move, double-tap to rotate on mobile"
+      },
+      "tips": [
+        "Start with the largest items first",
+        "Try different orientations for better fit",
+        "Look for shapes that complement each other",
+        "Don't leave small gaps that can't be filled",
+        "Plan ahead before placing each item"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/box-it-up_16x9/20250122040512/box-it-up_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "packing",
+      "spatial reasoning",
+      "organization",
+      "efficiency",
+      "educational",
+      "3D"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/box-it-up",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Onki Games"
+  },
+  {
+    "slug": "city-blocks",
+    "title": "City Blocks",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/city-blocks",
+    "description": "City Blocks is an urban planning puzzle game where you build a city by placing building blocks strategically. Learn about city planning and spatial organization while creating the perfect metropolis!",
+    "gameGuide": {
+      "howToPlay": [
+        "Place building blocks on the city grid",
+        "Create complete rows or columns to clear them",
+        "Build different types of city structures",
+        "Plan your city layout for maximum efficiency",
+        "Score points for completed city blocks"
+      ],
+      "controls": {
+        "mouse": "Drag building blocks onto the city grid",
+        "touch": "Touch and drag blocks to place them on mobile"
+      },
+      "tips": [
+        "Balance residential, commercial, and industrial areas",
+        "Leave space for roads and infrastructure",
+        "Clear completed blocks to make room for new buildings",
+        "Think about real city planning principles",
+        "Create a functional and beautiful cityscape"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/city-blocks/20210923161750/city-blocks-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "city building",
+      "urban planning",
+      "blocks",
+      "strategy",
+      "educational",
+      "simulation"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/city-blocks",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Dev Dude"
+  },
+  {
+    "slug": "fill-the-fridge",
+    "title": "Fill the Fridge",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/fill-the-fridge",
+    "description": "Fill the Fridge is a satisfying organization puzzle where you pack groceries and food items efficiently into a refrigerator. Learn about organization and spatial planning!",
+    "gameGuide": {
+      "howToPlay": [
+        "Drag food items from the counter into the fridge",
+        "Rotate items to fit them in the best orientation",
+        "Pack everything efficiently without wasting space",
+        "Keep similar items grouped together",
+        "Fill the entire fridge to complete each level"
+      ],
+      "controls": {
+        "mouse": "Drag items to move, right-click to rotate",
+        "touch": "Drag to move items, double-tap to rotate on mobile"
+      },
+      "tips": [
+        "Start with larger items like milk cartons and juice boxes",
+        "Keep frozen items in the freezer section",
+        "Group fruits and vegetables together",
+        "Use door compartments for smaller items",
+        "Think about real-life fridge organization"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/fill-the-fridge_16x9/20241212101419/fill-the-fridge_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "puzzle",
+      "organization",
+      "fridge",
+      "food",
+      "household",
+      "educational",
+      "life skills"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/fill-the-fridge",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "tiplay studio"
+  },
+  {
+    "slug": "mirror-room-escape",
+    "title": "Mirror Room Escape",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/mirror-room-escape",
+    "description": "Mirror Room Escape is a challenging escape room puzzle where you use mirrors and light reflections to solve puzzles and find your way out. Develop logical thinking and problem-solving skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Examine the room for clues and interactive objects",
+        "Use mirrors to redirect light beams to targets",
+        "Solve puzzles by reflecting light in the correct pattern",
+        "Find keys and unlock doors to progress",
+        "Escape the room by solving all mirror puzzles"
+      ],
+      "controls": {
+        "mouse": "Click to interact with objects, drag to rotate mirrors",
+        "touch": "Tap to interact, swipe to adjust mirror angles"
+      },
+      "tips": [
+        "Study how light reflects off different surfaces",
+        "Experiment with different mirror angles",
+        "Look for hidden switches activated by light",
+        "Some puzzles require multiple mirrors working together",
+        "Take notes of clues and patterns you discover"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/mirror-room-escape_16x9/20250306044530/mirror-room-escape_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "escape room",
+      "mirrors",
+      "light",
+      "physics",
+      "educational",
+      "challenging"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/mirror-room-escape",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "masasgames"
   }
 ]
