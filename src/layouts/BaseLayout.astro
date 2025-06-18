@@ -120,10 +120,6 @@ const { title, description = "Free educational games for kids and students", bod
                 <i class="fas fa-flask"></i>
                 Science Games
               </a>
-              <a href="/coding-games" class="dropdown-item coding">
-                <i class="fas fa-code"></i>
-                Coding Games
-              </a>
               <a href="/language-games" class="dropdown-item language">
                 <i class="fas fa-book-open"></i>
                 Language Games
@@ -139,10 +135,6 @@ const { title, description = "Free educational games for kids and students", bod
               <a href="/art-games" class="dropdown-item art">
                 <i class="fas fa-palette"></i>
                 Art & Creativity
-              </a>
-              <a href="/geography-games" class="dropdown-item geography">
-                <i class="fas fa-globe"></i>
-                History & Geography
               </a>
               <hr class="dropdown-divider">
               <a href="/recently-played" class="dropdown-item">
@@ -214,10 +206,6 @@ const { title, description = "Free educational games for kids and students", bod
               <i class="fas fa-flask"></i>
               Science Games
             </a>
-            <a href="/coding-games" class="mobile-menu-item coding">
-              <i class="fas fa-code"></i>
-              Coding Games
-            </a>
             <a href="/language-games" class="mobile-menu-item language">
               <i class="fas fa-book-open"></i>
               Language Games
@@ -233,10 +221,6 @@ const { title, description = "Free educational games for kids and students", bod
             <a href="/art-games" class="mobile-menu-item art">
               <i class="fas fa-palette"></i>
               Art & Creativity
-            </a>
-            <a href="/geography-games" class="mobile-menu-item geography">
-              <i class="fas fa-globe"></i>
-              History & Geography
             </a>
           </div>
           <div class="mobile-menu-section">
@@ -283,12 +267,10 @@ const { title, description = "Free educational games for kids and students", bod
             <ul class="footer-links">
               <li><a href="/math-games">Math Games</a></li>
               <li><a href="/science-games">Science Games</a></li>
-              <li><a href="/coding-games">Coding Games</a></li>
               <li><a href="/language-games">Language Games</a></li>
               <li><a href="/puzzle-games">Puzzle Games</a></li>
               <li><a href="/sports-games">Sports Games</a></li>
               <li><a href="/art-games">Art & Creativity</a></li>
-              <li><a href="/geography-games">History & Geography</a></li>
             </ul>
           </div>
 
@@ -465,8 +447,7 @@ const { title, description = "Free educational games for kids and students", bod
         '/games/sudoku',
         '/games/grid-construction',
         '/sports-games',
-        '/art-games',
-        '/geography-games'
+        '/art-games'
       ];
       const randomGame = games[Math.floor(Math.random() * games.length)];
       if (randomGame) {
