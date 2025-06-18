@@ -732,19 +732,6 @@
   position: relative;
 }
 
-.game-card.favorited::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-  border-radius: 18px;
-  z-index: -1;
-  opacity: 0.2;
-}
-
 .game-card.geography-theme {
   border-color: #8B5CF6;
 }
