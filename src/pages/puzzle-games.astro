@@ -155,7 +155,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Puzzle Games</h2>
+              <h2 class="module-title">Easy Level Games</h2>
               <p class="module-subtitle">Perfect for beginners and young puzzle solvers</p>
             </div>
           </div>
@@ -206,8 +206,8 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Puzzle Games</h2>
-              <p class="module-subtitle">Intermediate challenges for developing puzzle skills</p>
+              <h2 class="module-title">Medium Level Games</h2>
+              <p class="module-subtitle">Intermediate challenges for developing problem solvers</p>
             </div>
           </div>
           
@@ -257,7 +257,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Advanced Puzzle Games</h2>
+              <h2 class="module-title">Hard Level Games</h2>
               <p class="module-subtitle">Complex brain teasers for expert puzzle solvers</p>
             </div>
           </div>
@@ -610,9 +610,9 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
   /* 游戏网格 */
   .games-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 1.5rem;
-    padding: 0;
+    padding: 0 1.5rem 1.5rem;
   }
 
   /* 学习建议模块 */
@@ -822,6 +822,20 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
 
     .tip-text, .skill-description {
       font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .games-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .games-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
     }
   }
 

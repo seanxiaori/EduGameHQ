@@ -3175,7 +3175,7 @@
         "Don't rush - careful planning prevents mistakes"
       ]
     },
-    "thumbnailUrl": "/images/games/puzzle/nuts-puzzle-sort-by-color.svg",
+    "thumbnailUrl": "https://imgs.crazygames.com/nuts-puzzle-sort-by-color_16x9/20250602100233/nuts-puzzle-sort-by-color_16x9-cover?metadata=none&quality=70",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -3876,5 +3876,729 @@
     "trending": false,
     "isNew": true,
     "developer": "masasgames"
+  },
+  {
+    "slug": "color-match-amg",
+    "title": "Color Match AMG",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/color-match-amg",
+    "description": "Color Match AMG is a creative color-matching game that helps develop color recognition and artistic skills. Match colors precisely and create beautiful patterns while learning about color theory and visual design!",
+    "gameGuide": {
+      "howToPlay": [
+        "Observe the target color carefully",
+        "Mix primary colors to create the exact match",
+        "Use the color wheel to understand color relationships",
+        "Complete color patterns and sequences",
+        "Progress through increasingly challenging color combinations"
+      ],
+      "controls": {
+        "mouse": "Click and drag to mix colors and create matches",
+        "colorWheel": "Use the color wheel to select precise colors"
+      },
+      "tips": [
+        "Learn basic color theory: red + blue = purple",
+        "Practice mixing primary colors (red, blue, yellow)",
+        "Observe how adding white or black changes brightness",
+        "Pay attention to color temperature (warm vs cool)",
+        "Use small adjustments for precise color matching"
+      ]
+    },
+    "thumbnailUrl": "/images/games/art/color-match-amg.svg",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "art",
+      "creativity",
+      "color theory",
+      "visual design",
+      "educational",
+      "pattern recognition"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/color-match-amg",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "AMG Studio"
+  },
+  {
+    "slug": "cups---water-sort-puzzle",
+    "title": "Cups - Water Sort Puzzle",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/cups---water-sort-puzzle",
+    "description": "Cups - Water Sort Puzzle is a relaxing color-sorting game that combines logical thinking with visual aesthetics. Pour colored water between cups to sort all colors correctly and create beautiful color arrangements!",
+    "gameGuide": {
+      "howToPlay": [
+        "Tap a cup to pour water into another cup",
+        "Sort all colors so each cup contains only one color",
+        "Water can only be poured on the same color or empty space",
+        "Use strategy to avoid getting stuck",
+        "Complete each level with minimum moves for better scores"
+      ],
+      "controls": {
+        "mouse": "Click on cups to select and pour water",
+        "touch": "Tap cups on mobile devices to pour water"
+      },
+      "tips": [
+        "Start with colors that have the most pieces",
+        "Plan several moves ahead to avoid dead ends",
+        "Use empty cups strategically as temporary storage",
+        "Don't rush - think about the best sequence",
+        "Some levels require specific pouring orders"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/cups---water-sort-puzzle_16x9/20230829022932/cups---water-sort-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "puzzle",
+      "color sorting",
+      "logic",
+      "relaxing",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/cups---water-sort-puzzle",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Blury Studio"
+  },
+  {
+    "slug": "cake-sort-puzzle-3d",
+    "title": "Cake Sort Puzzle 3D",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/cake-sort-puzzle-3d",
+    "description": "Cake Sort Puzzle 3D is a delightful 3D sorting game that combines creativity with problem-solving. Sort colorful cake layers to create beautiful, uniform cakes while developing spatial reasoning and color recognition skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Drag and drop cake layers to sort them by color",
+        "Create uniform cakes with all layers the same color",
+        "Use 3D perspective to plan your sorting strategy",
+        "Complete each level with the fewest moves possible",
+        "Unlock new cake designs and decorations"
+      ],
+      "controls": {
+        "mouse": "Click and drag to move cake layers between plates",
+        "touch": "Touch and drag on mobile devices to sort cakes"
+      },
+      "tips": [
+        "Visualize the final arrangement before starting",
+        "Work with one color at a time for efficiency",
+        "Use empty plates as temporary storage",
+        "Consider the 3D perspective when planning moves",
+        "Practice spatial reasoning to improve sorting speed"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/cake-sort-puzzle-3d_16x9/20250116041454/cake-sort-puzzle-3d_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "art",
+      "3D",
+      "sorting",
+      "spatial reasoning",
+      "creativity",
+      "food themed"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/cake-sort-puzzle-3d",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Lion Studios"
+  },
+  {
+    "slug": "pottery-master",
+    "title": "Pottery Master",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/pottery-master",
+    "description": "Pottery Master is a relaxing pottery simulation game that teaches traditional ceramic arts. Shape clay on a spinning wheel, design unique pottery pieces, and learn about the ancient art of ceramics while expressing your creativity!",
+    "gameGuide": {
+      "howToPlay": [
+        "Use the pottery wheel to shape clay into various forms",
+        "Control wheel speed and hand pressure for different effects",
+        "Paint and decorate your finished pottery pieces",
+        "Learn different pottery techniques and styles",
+        "Create a collection of unique ceramic artworks"
+      ],
+      "controls": {
+        "mouse": "Use mouse to control pottery wheel and shape clay",
+        "click": "Click to place hands on clay and apply pressure",
+        "drag": "Drag to shape and mold the clay"
+      },
+      "tips": [
+        "Start with simple shapes like bowls and cups",
+        "Keep steady pressure for smooth, even walls",
+        "Center the clay properly before shaping",
+        "Experiment with different pottery wheel speeds",
+        "Take your time - pottery requires patience and practice"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/pottery-master_16x9/20250515024518/pottery-master_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "creativity",
+      "pottery",
+      "ceramics",
+      "traditional crafts",
+      "relaxing"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/pottery-master",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Rike Games"
+  },
+  {
+    "slug": "holographic-trends",
+    "title": "Holographic Trends",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/holographic-trends",
+    "description": "Holographic Trends is a modern fashion and design game that explores futuristic holographic art and fashion trends. Create stunning holographic designs, experiment with iridescent colors, and learn about contemporary digital art techniques!",
+    "gameGuide": {
+      "howToPlay": [
+        "Design holographic fashion items and accessories",
+        "Experiment with iridescent color palettes",
+        "Create futuristic fashion combinations",
+        "Learn about holographic art techniques",
+        "Showcase your designs in virtual fashion shows"
+      ],
+      "controls": {
+        "mouse": "Click and drag to design and customize holographic items",
+        "interface": "Use the design interface to select colors and patterns"
+      },
+      "tips": [
+        "Study real holographic materials for inspiration",
+        "Combine multiple colors for realistic iridescent effects",
+        "Learn about light reflection and refraction",
+        "Experiment with gradients and color transitions",
+        "Consider how holographics look from different angles"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/holographic-trends/20210210062727/holographic-trends-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "fashion",
+      "holographic",
+      "design",
+      "futuristic",
+      "creativity"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/holographic-trends",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Idea Studios"
+  },
+  {
+    "slug": "skribblio",
+    "title": "Skribbl.io",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/skribblio",
+    "description": "Skribbl.io is a multiplayer drawing and guessing game that combines artistic skills with social interaction. Draw pictures while others guess what you're drawing, or guess what others are drawing to earn points and improve your artistic communication skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Take turns drawing assigned words while others guess",
+        "Use simple lines and shapes to communicate ideas",
+        "Type your guesses for other players' drawings",
+        "Earn points for correct guesses and good drawings",
+        "Play with friends or join public rooms"
+      ],
+      "controls": {
+        "mouse": "Use mouse to draw on the canvas",
+        "keyboard": "Type your guesses in the chat",
+        "tools": "Select different drawing tools and colors"
+      },
+      "tips": [
+        "Start with basic shapes and add details",
+        "Think about what makes objects recognizable",
+        "Use different colors to clarify your drawings",
+        "Draw quickly but clearly for better scores",
+        "Pay attention to the number of letters in words"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/skribblio.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "drawing",
+      "multiplayer",
+      "social",
+      "guessing",
+      "creativity"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/skribblio",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "ticedev"
+  },
+  {
+    "slug": "sneaker-art-rvf",
+    "title": "Sneaker Art RVF",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/sneaker-art-rvf",
+    "description": "Sneaker Art RVF is a creative fashion design game where you customize and paint sneakers with unique artistic designs. Learn about footwear design, color combinations, and express your personal style through sneaker art!",
+    "gameGuide": {
+      "howToPlay": [
+        "Choose a sneaker model to customize",
+        "Select colors, patterns, and design elements",
+        "Paint and decorate different parts of the sneaker",
+        "Add logos, text, and artistic elements",
+        "Save and showcase your custom sneaker designs"
+      ],
+      "controls": {
+        "mouse": "Click to select colors and paint on sneakers",
+        "tools": "Use different brushes and design tools",
+        "palette": "Choose from various color palettes and patterns"
+      },
+      "tips": [
+        "Study real sneaker designs for inspiration",
+        "Balance colors and patterns for visual appeal",
+        "Consider the sneaker's shape when placing designs",
+        "Experiment with different artistic styles",
+        "Pay attention to symmetry and proportion"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/sneaker-art-rvf_16x9/20250331082440/sneaker-art-rvf_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "fashion",
+      "design",
+      "customization",
+      "creativity",
+      "sneakers"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/sneaker-art-rvf",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "TapNation"
+  },
+  {
+    "slug": "virtual-piano",
+    "title": "Virtual Piano",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/virtual-piano",
+    "description": "Virtual Piano is an interactive musical instrument that teaches basic piano skills and music theory. Play melodies, learn chord progressions, and explore musical creativity through this digital piano interface!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click on piano keys to play notes and chords",
+        "Learn basic melodies and scale patterns",
+        "Practice finger placement and hand coordination",
+        "Experiment with different musical styles",
+        "Record and playback your musical compositions"
+      ],
+      "controls": {
+        "mouse": "Click on keys to play notes",
+        "keyboard": "Use computer keyboard keys as piano keys",
+        "sustain": "Hold keys for sustained notes"
+      },
+      "tips": [
+        "Start with simple melodies like 'Twinkle, Twinkle, Little Star'",
+        "Learn the names of the white and black keys",
+        "Practice scales to improve finger dexterity",
+        "Experiment with chord combinations",
+        "Listen to the relationship between different notes"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/virtual-piano/cover-1617727916801.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "music",
+      "piano",
+      "musical education",
+      "creativity",
+      "instruments"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/virtual-piano",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Piano Academy"
+  },
+  {
+    "slug": "doodlr-io",
+    "title": "Doodlr.io",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/doodlr-io",
+    "description": "Doodlr.io is a collaborative drawing and art creation game where players can create artwork together in real-time. Express creativity, learn from other artists, and participate in shared artistic projects!",
+    "gameGuide": {
+      "howToPlay": [
+        "Join drawing rooms with other players",
+        "Collaborate on shared canvases in real-time",
+        "Use various drawing tools and colors",
+        "Participate in drawing challenges and themes",
+        "Share and discover artistic creations"
+      ],
+      "controls": {
+        "mouse": "Use mouse to draw and paint on the canvas",
+        "tools": "Select different brushes, shapes, and colors",
+        "chat": "Communicate with other artists via chat"
+      },
+      "tips": [
+        "Respect other artists' work when collaborating",
+        "Experiment with different drawing techniques",
+        "Learn from observing other players' methods",
+        "Participate in themed drawing challenges",
+        "Be creative and have fun with artistic expression"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/doodlr-io/thumb-1568792755216.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "drawing",
+      "multiplayer",
+      "collaborative",
+      "creativity",
+      "social"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/doodlr-io",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Little Island Games"
+  },
+  {
+    "slug": "punk-o-matic",
+    "title": "Punk-O-Matic",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/punk-o-matic",
+    "description": "Punk-O-Matic is a music creation game that lets you compose and perform punk rock music. Create your own punk songs, experiment with different instruments, and learn about music composition and punk rock culture!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select different punk rock instruments and sounds",
+        "Arrange musical patterns to create songs",
+        "Experiment with tempo and rhythm variations",
+        "Layer multiple instruments for full band sound",
+        "Save and share your punk rock compositions"
+      ],
+      "controls": {
+        "mouse": "Click to select instruments and arrange music patterns",
+        "interface": "Use the music interface to control tempo and volume",
+        "playback": "Play and stop your compositions"
+      },
+      "tips": [
+        "Start with simple drum patterns as your foundation",
+        "Layer bass lines before adding guitar and vocals",
+        "Keep punk songs energetic with fast tempos",
+        "Experiment with power chords and simple progressions",
+        "Add variety with breaks and dynamic changes"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/punk-o-matic/cover-1615480846281.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "music",
+      "punk rock",
+      "composition",
+      "creativity",
+      "instruments"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/punk-o-matic",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Evil Dog Productions"
+  },
+  {
+    "slug": "car-painting-simulator",
+    "title": "Car Painting Simulator",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/car-painting-simulator",
+    "description": "Car Painting Simulator is an automotive design game that teaches vehicle customization and painting techniques. Design unique car paint jobs, learn about automotive aesthetics, and express creativity through vehicle art!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select a car model to customize and paint",
+        "Choose colors, patterns, and design elements",
+        "Apply paint using realistic painting tools",
+        "Add decals, stripes, and artistic details",
+        "Showcase your custom car designs"
+      ],
+      "controls": {
+        "mouse": "Use mouse to paint and apply designs to cars",
+        "tools": "Select different paint brushes and spray tools",
+        "colors": "Choose from extensive color palettes"
+      },
+      "tips": [
+        "Plan your design before starting to paint",
+        "Use primer and base coats for better results",
+        "Apply thin, even coats for smooth finishes",
+        "Consider the car's shape when designing patterns",
+        "Study real automotive paint schemes for inspiration"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/car-painting-simulator/20230804170614/car-painting-simulator-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "automotive",
+      "painting",
+      "design",
+      "customization",
+      "creativity"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/car-painting-simulator",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "APEKung"
+  },
+  {
+    "slug": "fun-colors",
+    "title": "Fun Colors",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/fun-colors",
+    "description": "Fun Colors is an engaging color-learning game that teaches color recognition, mixing, and artistic expression. Perfect for young artists to explore the colorful world of art while developing creativity and color theory understanding!",
+    "gameGuide": {
+      "howToPlay": [
+        "Explore different colors and their properties",
+        "Mix primary colors to create secondary colors",
+        "Complete color-matching challenges",
+        "Create colorful artwork and patterns",
+        "Learn about warm and cool color families"
+      ],
+      "controls": {
+        "mouse": "Click to select and mix colors",
+        "drag": "Drag to paint and create colorful designs",
+        "palette": "Use the color palette to explore different hues"
+      },
+      "tips": [
+        "Start with the three primary colors: red, blue, yellow",
+        "Experiment with mixing colors to discover new ones",
+        "Learn about color relationships and harmonies",
+        "Practice identifying different shades and tints",
+        "Have fun and be creative with color combinations"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/fun-colors/20230818050802/fun-colors-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "4-12",
+    "minAge": 4,
+    "maxAge": 12,
+    "tags": [
+      "art",
+      "colors",
+      "education",
+      "creativity",
+      "color theory",
+      "kids"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/fun-colors",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "RAD BROTHERS"
+  },
+  {
+    "slug": "love-colors",
+    "title": "Love Colors",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/love-colors",
+    "description": "Love Colors is a romantic color-matching and design game that combines artistic creativity with emotional expression. Create beautiful color combinations, design romantic scenes, and explore how colors can convey feelings and emotions!",
+    "gameGuide": {
+      "howToPlay": [
+        "Match and combine colors to create romantic scenes",
+        "Design beautiful color palettes for different moods",
+        "Complete color-harmony challenges",
+        "Express emotions through color combinations",
+        "Create artistic compositions with meaningful color choices"
+      ],
+      "controls": {
+        "mouse": "Click to select colors and create designs",
+        "palette": "Use the emotion-based color palette",
+        "design": "Drag and drop elements to create scenes"
+      },
+      "tips": [
+        "Learn how different colors evoke different emotions",
+        "Warm colors (reds, oranges) often feel energetic and passionate",
+        "Cool colors (blues, purples) can feel calm and peaceful",
+        "Use complementary colors for striking contrasts",
+        "Consider color psychology when creating emotional scenes"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/love-colors.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "art",
+      "colors",
+      "emotions",
+      "romance",
+      "creativity",
+      "color psychology"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/love-colors",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Tong965"
   }
 ]
