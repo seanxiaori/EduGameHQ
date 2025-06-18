@@ -329,16 +329,10 @@ if (!isHomePage) {
   
   <!-- 全局games数据 - 供客户端JavaScript使用 -->
   <script define:vars={{ gamesData }}>
-    window.GAMES_DATA = gamesData.map(game => ({
-      slug: game.slug,
-      playCount: game.playCount || 0,
-      category: game.category,
-      featured: game.featured || false,
-      trending: game.trending || false,
-      isNew: game.isNew || false,
-      developer: game.developer || 'Unknown',
-      tags: game.tags || []
-    }));
+    // 设置全局游戏数据
+    window.GAMES_DATA = gamesData || [];
+    console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
+    console.log('📊 GAMES_DATA内容样例:', window.GAMES_DATA.slice(0, 2));
   </script>
   
   <!-- 字体预加载 -->
@@ -1019,6 +1013,141 @@ if (!isHomePage) {
 
   <!-- 全局收藏管理器 -->
   <script src="/src/scripts/favorites-manager.js"></script>
+
+  <!-- 立即执行的人气值更新脚本 -->
+  <script>
+    console.log('🚀 人气值更新脚本开始执行...');
+    
+    // 简单的人气值更新函数
+    function updatePopularityNow() {
+      console.log('🔥 立即更新人气值...');
+      
+      const gameCards = document.querySelectorAll('[data-game-id]');
+      console.log(`🎮 找到 ${gameCards.length} 个游戏卡片`);
+      
+      if (gameCards.length === 0) {
+        console.log('❌ 没有找到游戏卡片，可能页面还未加载完成');
+        return false;
+      }
+      
+      let updatedCount = 0;
+      
+      gameCards.forEach((card, index) => {
+        const gameSlug = card.dataset.gameId;
+        const popularityElement = card.querySelector('.popularity-count');
+        
+        console.log(`🎯 处理游戏 ${index + 1}/${gameCards.length}: ${gameSlug}`);
+        
+        if (popularityElement && gameSlug) {
+          // 简单的基础人气值计算
+          let basePopularity = 500; // 基础人气值
+          
+          // 从DOM提取游戏信息
+          const categoryTag = card.querySelector('.category-tag');
+          let category = 'puzzle';
+          if (categoryTag) {
+            const classes = Array.from(categoryTag.classList);
+            const categories = ['math', 'science', 'language', 'puzzle', 'art', 'sports'];
+            category = categories.find(cat => classes.includes(cat)) || 'puzzle';
+          }
+          
+          // 分类加成
+          const categoryMultipliers = {
+            'math': 1.8,
+            'science': 1.7, 
+            'language': 1.6,
+            'puzzle': 1.4,
+            'art': 1.3,
+            'sports': 1.2
+          };
+          basePopularity *= (categoryMultipliers[category] || 1.0);
+          
+          // 特色标签加成
+          if (card.querySelector('.feature-tag.featured, .badge.featured')) {
+            basePopularity += 800;
+          }
+          if (card.querySelector('.feature-tag.hot, .badge.trending')) {
+            basePopularity += 600;
+          }
+          if (card.querySelector('.feature-tag.new, .badge.new')) {
+            basePopularity += 400;
+          }
+          
+          // 随机变化（基于游戏名称）
+          let hash = 0;
+          for (let i = 0; i < gameSlug.length; i++) {
+            hash = ((hash << 5) - hash) + gameSlug.charCodeAt(i);
+            hash = hash & hash;
+          }
+          const randomVariation = (Math.abs(hash) % 400) - 200;
+          basePopularity += randomVariation;
+          
+          // 确保合理范围
+          basePopularity = Math.max(Math.floor(basePopularity), 300);
+          basePopularity = Math.min(basePopularity, 8000);
+          
+          // 格式化显示
+          let displayText = basePopularity.toString();
+          if (basePopularity >= 1000000) {
+            displayText = (basePopularity / 1000000).toFixed(1) + 'M';
+          } else if (basePopularity >= 1000) {
+            displayText = (basePopularity / 1000).toFixed(1) + 'K';
+          }
+          
+          // 更新显示
+          popularityElement.textContent = displayText;
+          
+          // 添加样式
+          popularityElement.classList.remove('popularity-hot', 'popularity-high', 'popularity-medium', 'popularity-low');
+          if (basePopularity >= 5000) {
+            popularityElement.classList.add('popularity-hot');
+          } else if (basePopularity >= 2000) {
+            popularityElement.classList.add('popularity-high');
+          } else if (basePopularity >= 500) {
+            popularityElement.classList.add('popularity-medium');
+          } else {
+            popularityElement.classList.add('popularity-low');
+          }
+          
+          updatedCount++;
+          console.log(`✅ 游戏 ${gameSlug} 人气值: ${displayText} (${basePopularity})`);
+        }
+      });
+      
+      console.log(`🔥 已更新 ${updatedCount} 个游戏卡片的人气值`);
+      return updatedCount > 0;
+    }
+    
+    // 立即执行一次
+    console.log('📄 当前document.readyState:', document.readyState);
+    updatePopularityNow();
+    
+    // 页面加载完成后再执行一次
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('📄 DOMContentLoaded事件触发');
+        updatePopularityNow();
+      });
+    }
+    
+    // 额外保险：延迟执行
+    setTimeout(function() {
+      console.log('⏰ 500ms延迟执行');
+      updatePopularityNow();
+    }, 500);
+    
+    setTimeout(function() {
+      console.log('⏰ 1000ms延迟执行');
+      updatePopularityNow();
+    }, 1000);
+    
+    setTimeout(function() {
+      console.log('⏰ 2000ms延迟执行');
+      updatePopularityNow();
+    }, 2000);
+    
+    console.log('🚀 人气值更新脚本设置完成');
+  </script>
 </body>
 
 <style>

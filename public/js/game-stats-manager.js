@@ -33,20 +33,78 @@ class GameStatsManager {
    * 初始化管理器
    */
   init() {
+    console.log('🎮 游戏统计管理器开始初始化...');
+    console.log('🕒 当前时间:', new Date().toISOString());
+    console.log('📄 文档状态:', document.readyState);
+    console.log('🌐 window.GAMES_DATA 初始状态:', window.GAMES_DATA);
+    
     this.loadStats();
     this.setupEventListeners();
     this.setupIframeMonitoring();
+
+    // 等待GAMES_DATA和DOM都准备好
+    this.waitForGamesDataAndDOM();
+
+    console.log('🎮 游戏统计管理器初始化完成 (iframe优化版)');
+  }
+
+  /**
+   * 等待GAMES_DATA和DOM都准备好
+   */
+  waitForGamesDataAndDOM() {
+    let checkCount = 0;
+    const maxChecks = 60; // 最多检查60次（30秒）
     
-    // 页面加载完成后更新人气值显示
+    const checkAndUpdate = () => {
+      checkCount++;
+      console.log(`🔍 第${checkCount}次检查GAMES_DATA和DOM状态...`);
+      console.log('📊 window.GAMES_DATA存在:', !!window.GAMES_DATA);
+      console.log('📊 window.GAMES_DATA类型:', typeof window.GAMES_DATA);
+      console.log('📊 window.GAMES_DATA内容:', window.GAMES_DATA);
+      console.log('📄 document.readyState:', document.readyState);
+      
+      // 检查GAMES_DATA是否可用
+      const hasGamesData = window.GAMES_DATA && (Array.isArray(window.GAMES_DATA) || typeof window.GAMES_DATA === 'object');
+      console.log('✅ GAMES_DATA可用:', hasGamesData);
+      
+      // 检查DOM是否准备好
+      const isDOMReady = document.readyState === 'complete' || document.readyState === 'interactive';
+      console.log('✅ DOM准备就绪:', isDOMReady);
+      
+      // 检查是否有游戏卡片
+      const gameCards = document.querySelectorAll('[data-game-id]');
+      console.log('🎮 找到游戏卡片数量:', gameCards.length);
+      
+      if (hasGamesData && isDOMReady && gameCards.length > 0) {
+        console.log('🚀 所有条件满足，开始更新人气值显示...');
+        setTimeout(() => this.updatePopularityDisplay(), 100);
+        return; // 停止检查
+      } else if (checkCount >= maxChecks) {
+        console.log('⏰ 检查超时，强制执行人气值更新...');
+        setTimeout(() => this.updatePopularityDisplay(), 100);
+        return; // 停止检查
+      } else {
+        console.log(`⏳ 等待条件满足... (${checkCount}/${maxChecks})`);
+        setTimeout(checkAndUpdate, 500); // 500ms后再次检查
+      }
+    };
+
+    // 立即检查一次
+    checkAndUpdate();
+
+    // 监听DOM变化
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => this.updatePopularityDisplay(), 100);
+        console.log('📄 DOMContentLoaded 事件触发');
+        setTimeout(checkAndUpdate, 100);
       });
-    } else {
-      setTimeout(() => this.updatePopularityDisplay(), 100);
     }
-    
-    console.log('🎮 游戏统计管理器初始化完成 (iframe优化版)');
+
+    // 监听页面完全加载
+    window.addEventListener('load', () => {
+      console.log('🌐 window.load 事件触发');
+      setTimeout(checkAndUpdate, 100);
+    });
   }
 
   /**
@@ -888,17 +946,24 @@ class GameStatsManager {
     const gameCards = document.querySelectorAll('[data-game-id]');
     console.log(`🎮 找到 ${gameCards.length} 个游戏卡片`);
     
-    gameCards.forEach(card => {
+    if (gameCards.length === 0) {
+      console.log('❌ 没有找到游戏卡片，可能页面还未加载完成');
+      return;
+    }
+    
+    gameCards.forEach((card, index) => {
       const gameSlug = card.dataset.gameId;
       const popularityElement = card.querySelector('.popularity-count');
       
-      console.log(`🎯 处理游戏: ${gameSlug}, 人气元素:`, popularityElement);
+      console.log(`🎯 处理游戏 ${index + 1}/${gameCards.length}: ${gameSlug}`);
+      console.log(`🎯 人气元素:`, popularityElement);
       
       if (popularityElement && gameSlug) {
-        // 从games.json获取游戏基础信息（这里需要通过其他方式获取）
+        // 获取游戏信息（优先使用全局数据，否则从DOM提取）
         const gameInfo = this.getGameInfoFromCard(card);
         console.log(`📋 游戏 ${gameSlug} 的信息:`, gameInfo);
         
+        // 计算人气值（即使没有全局数据也能工作）
         const popularity = this.getPopularity(gameSlug, gameInfo);
         console.log(`🔥 游戏 ${gameSlug} 的人气值: ${popularity}`);
         
@@ -907,10 +972,17 @@ class GameStatsManager {
         
         // 根据人气值添加样式类
         this.updatePopularityStyle(popularityElement, popularity);
+        
+        console.log(`✅ 游戏 ${gameSlug} 人气值已更新: ${this.formatPopularity(popularity)}`);
+      } else {
+        console.log(`❌ 游戏 ${gameSlug} 缺少必要元素:`, {
+          hasPopularityElement: !!popularityElement,
+          hasGameSlug: !!gameSlug
+        });
       }
     });
     
-    console.log(`🔥 已更新 ${gameCards.length} 个游戏卡片的人气值显示`);
+    console.log(`🔥 已完成 ${gameCards.length} 个游戏卡片的人气值更新`);
   }
 
   /**
