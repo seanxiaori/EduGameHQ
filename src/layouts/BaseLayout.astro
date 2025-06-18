@@ -24,6 +24,10 @@ const pageStructure = {
     '/recently-played': { name: 'Recently Played', icon: 'fas fa-clock', color: 'blue' },
     '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'red' },
     '/new-games': { name: 'New Games', icon: 'fas fa-star', color: 'green' }
+  },
+  system: {
+    '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'pink' },
+    '/search': { name: 'Search', icon: 'fas fa-search', color: 'purple' }
   }
 };
 
@@ -31,6 +35,7 @@ const pageStructure = {
 const isHomePage = currentPath === '/';
 const currentCategory = pageStructure.categories[currentPath];
 const currentSpecialPage = pageStructure.special[currentPath];
+const currentSystemPage = pageStructure.system[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
 
 // 构建面包屑导航
@@ -54,6 +59,15 @@ if (!isHomePage) {
       url: currentPath, 
       icon: currentSpecialPage.icon,
       color: currentSpecialPage.color,
+      isCurrent: true 
+    });
+  } else if (currentSystemPage) {
+    // 系统页面面包屑（如收藏、搜索等）
+    breadcrumbs.push({ 
+      name: currentSystemPage.name, 
+      url: currentPath, 
+      icon: currentSystemPage.icon,
+      color: currentSystemPage.color,
       isCurrent: true 
     });
   } else if (isGamePage) {
