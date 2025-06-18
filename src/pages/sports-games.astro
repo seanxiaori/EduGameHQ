@@ -211,7 +211,7 @@ const sportsCoreSkills = [
           </div>
           
           <div class="games-grid">
-            {displayEasyGames.slice(0, 4).map((game, index) => {
+            {displayEasyGames.map((game, index) => {
               const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
                 if (!num || num === 0) return '0';
@@ -262,7 +262,7 @@ const sportsCoreSkills = [
           </div>
           
           <div class="games-grid">
-            {displayMediumGames.slice(0, 4).map((game, index) => {
+            {displayMediumGames.map((game, index) => {
               const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
                 if (!num || num === 0) return '0';
