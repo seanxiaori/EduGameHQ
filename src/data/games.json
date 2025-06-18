@@ -1945,5 +1945,281 @@
     "trending": false,
     "isNew": true,
     "developer": "VOODOO"
+  },
+  {
+    "slug": "galaxy-control-3d-strategy",
+    "title": "Galaxy Control: 3D Strategy",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/galaxy-control-3d-strategy",
+    "description": "Galaxy Control: 3D Strategy is a 3D space strategy game that puts you in command of epic battles and interstellar expansion. Build your base, defend your territory, and engage in thrilling conflicts with other players. With its stunning visuals and dynamic gameplay, every decision you make shapes the galaxy's future. Test your strategic skills and conquer the stars!",
+    "gameGuide": {
+      "howToPlay": [
+        "Build and upgrade your space base",
+        "Command fleets in epic 3D battles",
+        "Expand your territory across the galaxy",
+        "Engage in strategic combat with other players",
+        "Manage resources and develop technologies"
+      ],
+      "controls": {
+        "mouse": "Use the left mouse button to play and interact with the in-game UI",
+        "camera": "Use the right mouse button to rotate the camera",
+        "zoom": "Use the mouse wheel to zoom in/out"
+      },
+      "tips": [
+        "Focus on building a strong defensive base first",
+        "Balance resource production and military expansion",
+        "Scout enemy positions before attacking",
+        "Upgrade your fleet technologies regularly",
+        "Form alliances with other players for mutual benefit"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/galaxy-control-3d-strategy/cover_16x9-1746640008369.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "science",
+      "space",
+      "strategy",
+      "3d",
+      "multiplayer",
+      "technology"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/galaxy-control-3d-strategy",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "FX Games"
+  },
+  {
+    "slug": "quantum-god",
+    "title": "Quantum God",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/quantum-god",
+    "description": "Quantum God is a fascinating incremental game based on quantum physics and universe expansion theory. Start from the smallest particles and work your way up to creating entire universes! Experience the evolution of matter from quantum level to cosmic scale.",
+    "gameGuide": {
+      "howToPlay": [
+        "Start by creating basic quantum particles",
+        "Combine particles to form atoms and molecules",
+        "Build up to larger structures like planets and stars",
+        "Unlock new scientific discoveries and technologies",
+        "Expand your universe through cosmic evolution"
+      ],
+      "controls": {
+        "mouse": "Click to interact with particles and upgrades",
+        "interface": "Use the game interface to purchase upgrades and unlock new content"
+      },
+      "tips": [
+        "Focus on upgrading particle generation first",
+        "Balance between creating new particles and upgrading existing ones",
+        "Read the scientific descriptions to learn real physics concepts",
+        "Plan your upgrades strategically for maximum efficiency",
+        "Experiment with different particle combinations"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/quantum-god_16x9/20240704102546/quantum-god_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "science",
+      "physics",
+      "quantum",
+      "incremental",
+      "educational",
+      "universe"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/quantum-god",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Borutist"
+  },
+  {
+    "slug": "alchemy-merge-clicker",
+    "title": "Alchemy Merge Clicker",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/alchemy-merge-clicker",
+    "description": "Alchemy Merge Clicker is an addictive incremental game where you combine elements to create new materials and discover the secrets of alchemy. Start with basic elements and work your way up to creating rare and powerful substances through strategic merging and clicking!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to generate basic alchemical elements",
+        "Merge identical elements to create more powerful ones",
+        "Unlock new element types as you progress",
+        "Purchase upgrades to increase production speed",
+        "Discover rare combinations and unlock achievements"
+      ],
+      "controls": {
+        "mouse": "Click to generate elements and interact with the interface",
+        "drag": "Drag elements to merge them together"
+      },
+      "tips": [
+        "Focus on upgrading your click power early",
+        "Merge elements strategically to unlock new types",
+        "Invest in automatic generators for passive income",
+        "Experiment with different element combinations",
+        "Save up for expensive upgrades that provide big boosts"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/alchemy-merge-clicker_16x9/20240704043842/alchemy-merge-clicker_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "science",
+      "alchemy",
+      "chemistry",
+      "clicker",
+      "merge",
+      "incremental"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/alchemy-merge-clicker",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Neko"
+  },
+  {
+    "slug": "alchemy",
+    "title": "Alchemy",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/alchemy",
+    "description": "Alchemy is a classic element-combining puzzle game where you discover new materials by mixing basic elements. Start with earth, air, fire, and water, then combine them to create hundreds of different items, from simple tools to complex life forms. Explore the world of scientific discovery through experimentation!",
+    "gameGuide": {
+      "howToPlay": [
+        "Start with four basic elements: earth, air, fire, and water",
+        "Drag and drop elements onto each other to combine them",
+        "Discover new elements through experimentation",
+        "Use logic and creativity to find new combinations",
+        "Unlock all possible elements to complete the game"
+      ],
+      "controls": {
+        "mouse": "Drag and drop elements to combine them",
+        "interface": "Click on discovered elements to use them in new combinations"
+      },
+      "tips": [
+        "Think logically about how real-world elements might combine",
+        "Some combinations require multiple steps to achieve",
+        "Keep track of what you've already discovered",
+        "Experiment with unusual combinations - some might surprise you",
+        "Use hints if you get stuck on finding new elements"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/alchemy/20220815155026/alchemy-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "science",
+      "alchemy",
+      "chemistry",
+      "puzzle",
+      "discovery",
+      "elements"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/alchemy",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "ingenium games"
+  },
+  {
+    "slug": "idle-molecules",
+    "title": "IDLE Molecules",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/idle-molecules",
+    "description": "IDLE Molecules is an engaging incremental game where you build and manage molecular structures to generate scientific progress. Start with simple atoms and gradually unlock complex molecular compounds while learning about chemistry and molecular biology in an entertaining way!",
+    "gameGuide": {
+      "howToPlay": [
+        "Begin by generating basic atomic particles",
+        "Combine atoms to form simple molecules",
+        "Upgrade your molecular generators for better efficiency",
+        "Unlock new molecular types and chemical reactions",
+        "Automate your molecular production systems"
+      ],
+      "controls": {
+        "mouse": "Click to generate molecules and purchase upgrades",
+        "interface": "Use the upgrade menu to improve your molecular production"
+      },
+      "tips": [
+        "Invest in automation early to generate molecules while away",
+        "Focus on upgrading molecule value before quantity",
+        "Unlock new molecular types to access better upgrades",
+        "Balance between different types of molecular production",
+        "Check back regularly to purchase new upgrades and expansions"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/idle-molecules/20221212175943/idle-molecules-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "10-16",
+    "minAge": 10,
+    "maxAge": 16,
+    "tags": [
+      "science",
+      "chemistry",
+      "molecules",
+      "idle",
+      "incremental",
+      "educational"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/idle-molecules",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Vad Games"
   }
 ]
