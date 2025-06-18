@@ -66,7 +66,7 @@
   opacity: 1;
 }
 
-/* 游戏历史标签 - 左上角位置 */
+/* 游戏历史标签 - 左上角位置（最高优先级）*/
 .played-badge {
   position: absolute;
   top: 10px;
@@ -78,7 +78,7 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 3;
+  z-index: 4;
 }
 
 .played-badge.today {
@@ -101,7 +101,7 @@
   color: white;
 }
 
-/* 人气值标签 - 修改为左上角位置，避免与收藏按钮重叠 */
+/* 人气值标签 - 智能位置调整 */
 .popularity-badge {
   position: absolute;
   top: 10px;
@@ -115,24 +115,34 @@
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   animation: pulse 2s infinite;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* 当同时有游戏历史和人气标签时，人气标签向右偏移 */
-.game-card .played-badge + .popularity-badge,
+/* 当有游戏历史标签时，人气标签向下偏移 */
+.game-card .played-badge ~ .popularity-badge,
 .game-card .popularity-badge.with-history {
-  left: auto;
-  right: 60px; /* 为收藏按钮留出空间 */
+  top: 45px; /* 向下偏移，避免与游戏历史重叠 */
+  left: 10px;
 }
 
-/* 如果没有游戏历史标签，人气标签保持在左上角 */
+/* 如果游戏历史标签不存在，人气标签保持在左上角 */
 .game-card:not(.has-history) .popularity-badge {
+  top: 10px;
   left: 10px;
 }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.05); }
+}
+
+/* 收藏按钮心跳动画 */
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.3); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.3); }
+  70% { transform: scale(1); }
 }
 
 /* 排名标签 */
@@ -464,10 +474,38 @@
     border-radius: 4px;
   }
 
+  /* 移动端标签位置调整 */
   .played-badge,
   .popularity-badge {
     font-size: 0.65rem;
     padding: 0.2rem 0.4rem;
+    border-radius: 8px;
+  }
+
+  .played-badge {
+    top: 8px;
+    left: 8px;
+  }
+
+  .popularity-badge {
+    top: 8px;
+    left: 8px;
+  }
+
+  /* 移动端人气标签向下偏移调整 */
+  .game-card .played-badge ~ .popularity-badge,
+  .game-card .popularity-badge.with-history {
+    top: 35px; /* 移动端向下偏移减少 */
+    left: 8px;
+  }
+
+  /* 移动端收藏按钮 */
+  .favorite-heart-btn {
+    width: 32px;
+    height: 32px;
+    top: 8px;
+    right: 8px;
+    font-size: 0.875rem;
   }
 
   .play-button {
@@ -735,6 +773,7 @@
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 5;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -746,20 +785,24 @@
 }
 
 .favorite-heart-btn:hover {
-  background: #FEE2E2;
-  color: #EF4444;
-  transform: scale(1.15);
+  background: #FEE2E2 !important;
+  color: #EF4444 !important;
+  transform: scale(1.15) !important;
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.2) !important;
 }
 
 .favorite-heart-btn.active {
-  background: #EF4444;
-  color: white;
+  background: #EF4444 !important;
+  color: white !important;
   animation: heartBeat 0.5s ease-in-out;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .favorite-heart-btn.active:hover {
-  background: #DC2626;
-  color: white;
+  background: #DC2626 !important;
+  color: white !important;
+  transform: scale(1.15);
+  box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4) !important;
 }
 
 /* 收藏状态指示器 */
