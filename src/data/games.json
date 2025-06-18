@@ -1610,63 +1610,6 @@
     "developer": "Famobi"
   },
   {
-    "slug": "crossword",
-    "title": "Crossword",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/crossword",
-    "description": "Classic Crossword puzzle game with daily challenges! Test your vocabulary and general knowledge by filling in the crossword grid using the given clues.",
-    "gameGuide": {
-      "howToPlay": [
-        "Read the clues for across and down words",
-        "Click on a square to start typing your answer",
-        "Use the number clues to navigate the grid",
-        "Fill in all squares to complete the crossword",
-        "Check your answers when the puzzle is complete"
-      ],
-      "controls": {
-        "mouse": "Click on squares and type answers",
-        "keyboard": "Type letters directly, use arrow keys to navigate",
-        "touch": "Touch squares and use on-screen keyboard"
-      },
-      "tips": [
-        "Start with clues you're most confident about",
-        "Use crossing letters to help with difficult words",
-        "Think about word length and letter patterns",
-        "Consider multiple meanings of clue words",
-        "Don't be afraid to erase and try again"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/games/crossword/cover-1619278453620.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "vocabulary",
-      "crossword",
-      "puzzle",
-      "general knowledge",
-      "educational",
-      "classic"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/crossword",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": true,
-    "trending": false,
-    "isNew": true,
-    "developer": "Crossword Games Studio"
-  },
-  {
     "slug": "crossword-connect",
     "title": "Crossword Connect",
     "category": "language",
@@ -1836,116 +1779,6 @@
     "developer": "SuperSonic"
   },
   {
-    "slug": "typing-speed-test",
-    "title": "Typing Speed Test",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/typing-speed-test",
-    "description": "Typing Speed Test helps you measure and improve your typing skills! Test your words per minute (WPM) and accuracy with various text passages and challenges.",
-    "gameGuide": {
-      "howToPlay": [
-        "Choose a typing test duration (1, 3, or 5 minutes)",
-        "Type the displayed text as accurately as possible",
-        "Focus on both speed and accuracy",
-        "View your results: WPM, accuracy, and errors",
-        "Practice regularly to improve your typing skills"
-      ],
-      "controls": {
-        "keyboard": "Type the displayed text using your keyboard"
-      },
-      "tips": [
-        "Maintain proper finger positioning on home row",
-        "Focus on accuracy before building speed",
-        "Don't look at the keyboard while typing",
-        "Practice typing common word patterns",
-        "Take breaks to avoid finger fatigue"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/typing-speed-test_16x9/20240228104047/typing-speed-test_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "typing",
-      "speed",
-      "accuracy",
-      "skill building",
-      "educational",
-      "practice"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/typing-speed-test",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "Typing Test Pro"
-  },
-  {
-    "slug": "keybr",
-    "title": "Keybr",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/keybr",
-    "description": "Keybr is an advanced typing tutor that uses artificial intelligence to create personalized lessons. Learn touch typing with adaptive algorithms that focus on your weak keys!",
-    "gameGuide": {
-      "howToPlay": [
-        "Start with basic letter combinations",
-        "Type the generated text focusing on accuracy",
-        "The AI adapts to your skill level and weak points",
-        "Practice regularly to build muscle memory",
-        "Track your progress with detailed statistics"
-      ],
-      "controls": {
-        "keyboard": "Type the displayed characters using proper finger positioning"
-      },
-      "tips": [
-        "Start slowly and focus on correct finger placement",
-        "Don't rush - accuracy is more important than speed",
-        "Practice consistently for best results",
-        "Use all fingers, not just index fingers",
-        "Keep your wrists straight and relaxed"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/keybr_16x9/20240228104047/keybr_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "typing",
-      "touch typing",
-      "AI learning",
-      "skill building",
-      "educational",
-      "adaptive"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/keybr",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "Keybr.com"
-  },
-  {
     "slug": "fast-typer",
     "title": "Fast Typer",
     "category": "language",
@@ -1999,5 +1832,285 @@
     "trending": false,
     "isNew": true,
     "developer": "Poki Games"
+  },
+  {
+    "slug": "cut-the-rope",
+    "title": "Cut the Rope",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://www.crazygames.com/embed/cut-the-rope",
+    "description": "Cut the Rope is a delightful physics puzzle game! Help Om Nom, the cute green monster, get his candy by cutting ropes, collecting stars, and solving clever puzzles.",
+    "gameGuide": {
+      "howToPlay": [
+        "Cut the ropes to drop the candy to Om Nom",
+        "Collect all three stars in each level for maximum points",
+        "Use bubbles, spikes, and other objects to guide the candy",
+        "Time your cuts carefully to solve each puzzle",
+        "Complete levels to unlock new challenges"
+      ],
+      "controls": {
+        "mouse": "Click and drag to cut ropes",
+        "touch": "Swipe to cut ropes on mobile devices"
+      },
+      "tips": [
+        "Study the level layout before making your first cut",
+        "Use physics to your advantage - swing the candy",
+        "Some levels require multiple cuts in sequence",
+        "Collect stars for higher scores and achievements",
+        "Experiment with different cutting strategies"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/cut-the-rope/20240415122545/cut-the-rope-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "physics",
+      "cute",
+      "problem solving",
+      "family friendly",
+      "educational",
+      "logic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/cut-the-rope",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "ZeptoLab"
+  },
+  {
+    "slug": "table-tennis-world-tour",
+    "title": "Table Tennis World Tour",
+    "category": "sports",
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/table-tennis-world-tour",
+    "description": "Table Tennis World Tour is an exciting ping pong game! Travel around the world, compete in tournaments, and become the ultimate table tennis champion!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move your paddle to hit the ball back to your opponent",
+        "Aim for different areas of the table to challenge your opponent",
+        "Win matches to progress through the world tour",
+        "Earn points and unlock new locations",
+        "Master different shot types and strategies"
+      ],
+      "controls": {
+        "mouse": "Move mouse to control paddle position and swing",
+        "touch": "Touch and drag to control paddle on mobile"
+      },
+      "tips": [
+        "Watch your opponent's paddle position",
+        "Vary your shot placement and speed",
+        "Use spin shots to confuse opponents",
+        "Practice timing for consistent returns",
+        "Stay focused during long rallies"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/table-tennis-world-tour/20240415122545/table-tennis-world-tour-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "sports",
+      "table tennis",
+      "ping pong",
+      "tournament",
+      "world tour",
+      "competitive",
+      "skill based"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/table-tennis-world-tour",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Famobi"
+  },
+  {
+    "slug": "tennis-masters",
+    "title": "Tennis Masters",
+    "category": "sports",
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/tennis-masters",
+    "description": "Tennis Masters is a professional tennis simulation game! Play against AI opponents, master different shots, and climb the rankings to become a tennis champion!",
+    "gameGuide": {
+      "howToPlay": [
+        "Use mouse or touch controls to position your player",
+        "Time your shots for maximum power and accuracy",
+        "Play different types of shots: forehand, backhand, serve",
+        "Win sets and matches to advance in tournaments",
+        "Improve your ranking by defeating stronger opponents"
+      ],
+      "controls": {
+        "mouse": "Click and drag to aim and power your shots",
+        "touch": "Touch controls for mobile tennis gameplay"
+      },
+      "tips": [
+        "Practice your serve timing for aces",
+        "Use different shot angles to outmaneuver opponents",
+        "Watch the ball trajectory carefully",
+        "Mix up your shot placement",
+        "Stay patient during long rallies"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/tennis-masters/20240415122545/tennis-masters-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "sports",
+      "tennis",
+      "simulation",
+      "tournament",
+      "professional",
+      "competitive",
+      "skill based"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/tennis-masters",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Famobi"
+  },
+  {
+    "slug": "draw-climber",
+    "title": "Draw Climber",
+    "category": "art",
+    "categoryName": "Art & Creativity",
+    "iframeUrl": "https://www.crazygames.com/embed/draw-climber",
+    "description": "Draw Climber is a creative physics game! Draw legs for your character to help them climb over obstacles and reach the finish line. Be creative with your designs!",
+    "gameGuide": {
+      "howToPlay": [
+        "Draw legs for your character using mouse or touch",
+        "Watch your character move with the legs you've drawn",
+        "Redraw legs when facing different obstacles",
+        "Adapt your leg design to overcome various challenges",
+        "Race against opponents to reach the finish line first"
+      ],
+      "controls": {
+        "mouse": "Click and drag to draw legs for your character",
+        "touch": "Touch and draw legs on mobile devices"
+      },
+      "tips": [
+        "Different obstacles require different leg shapes",
+        "Longer legs help with tall obstacles",
+        "Wider legs provide better stability",
+        "Experiment with creative leg designs",
+        "Redraw quickly when obstacles change"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/draw-climber/20240415122545/draw-climber-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "art",
+      "creativity",
+      "drawing",
+      "physics",
+      "problem solving",
+      "fun",
+      "innovative"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/draw-climber",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "VOODOO"
+  },
+  {
+    "slug": "trivia-crack",
+    "title": "Trivia Crack",
+    "category": "geography",
+    "categoryName": "History & Geography",
+    "iframeUrl": "https://www.crazygames.com/embed/trivia-crack",
+    "description": "Trivia Crack is the ultimate trivia game! Test your knowledge across multiple categories including geography, history, science, arts, and sports. Challenge friends or play solo!",
+    "gameGuide": {
+      "howToPlay": [
+        "Answer trivia questions from various categories",
+        "Choose the correct answer from multiple choices",
+        "Earn points for correct answers",
+        "Complete challenges to unlock achievements",
+        "Compete with others for high scores"
+      ],
+      "controls": {
+        "mouse": "Click on answer choices",
+        "touch": "Touch answer options on mobile devices"
+      },
+      "tips": [
+        "Read questions carefully before answering",
+        "Use process of elimination for difficult questions",
+        "Don't rush - take time to think",
+        "Learn from incorrect answers",
+        "Play regularly to improve your knowledge"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/trivia-crack/20240415122545/trivia-crack-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "history",
+      "trivia",
+      "knowledge",
+      "quiz",
+      "educational",
+      "competitive"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/trivia-crack",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Etermax"
   }
 ]
