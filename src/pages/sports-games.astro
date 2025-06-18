@@ -26,11 +26,56 @@ try {
 // 筛选体育游戏
 const sportsGames = allGamesData.filter(game => game.category === 'sports');
 
-// 按难度和特色分组游戏
-const featuredGames = sportsGames.filter(game => game.featured);
-const easyGames = sportsGames.filter(game => game.difficulty === 'Easy');
-const mediumGames = sportsGames.filter(game => game.difficulty === 'Medium');
-const hardGames = sportsGames.filter(game => game.difficulty === 'Hard');
+// 为了兼容新旧数据格式，我们需要标准化游戏数据
+const normalizedSportsGames = sportsGames.map(game => {
+  // 兼容旧格式游戏，为它们添加缺失的字段
+  return {
+    ...game,
+    // 如果没有difficulty字段，根据游戏类型设置默认难度
+    difficulty: game.difficulty || (
+      game.subcategory === 'basketball' || game.subcategory === 'football' ? 'Medium' :
+      game.subcategory === 'golf' || game.subcategory === 'bowling' ? 'Easy' :
+      'Medium'
+    ),
+    // 如果没有featured字段，手动指定一些热门游戏为featured
+    featured: game.featured || ['basket-random', 'basketbros', 'qb-legend', 'table-tennis-world-tour'].includes(game.slug || game.id),
+    // 确保有slug字段
+    slug: game.slug || game.id,
+    // 标准化thumbnailUrl
+    thumbnailUrl: game.thumbnailUrl || game.thumbnail,
+    // 标准化iframeUrl  
+    iframeUrl: game.iframeUrl || game.embedUrl,
+    // 标准化tags
+    tags: game.tags || []
+  };
+});
+
+// 按运动类型分组（兼容两种格式）
+const featuredSportsGames = normalizedSportsGames.filter(game => game.featured);
+const basketballGames = normalizedSportsGames.filter(game => 
+  game.subcategory === 'basketball' || 
+  game.tags.includes('basketball') ||
+  game.title.toLowerCase().includes('basketball') ||
+  game.title.toLowerCase().includes('basket')
+);
+const ballGames = normalizedSportsGames.filter(game => 
+  ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(game.subcategory) ||
+  game.tags.some(tag => ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(tag)) ||
+  game.title.toLowerCase().includes('football') ||
+  game.title.toLowerCase().includes('baseball')
+);
+const precisionGames = normalizedSportsGames.filter(game => 
+  ['golf', 'bowling', 'archery'].includes(game.subcategory) ||
+  game.tags.some(tag => ['golf', 'bowling', 'mini-golf', 'precision'].includes(tag)) ||
+  game.title.toLowerCase().includes('golf') ||
+  game.title.toLowerCase().includes('bowling')
+);
+const individualSports = normalizedSportsGames.filter(game => 
+  ['tennis', 'table-tennis', 'racing', 'athletics'].includes(game.subcategory) ||
+  game.tags.some(tag => ['tennis', 'table tennis', 'ping pong', 'racing'].includes(tag)) ||
+  game.title.toLowerCase().includes('tennis') ||
+  game.title.toLowerCase().includes('ping')
+);
 
 // 体育学习建议
 const sportsLearningTips = [
@@ -116,7 +161,7 @@ const sportsCoreSkills = [
       </section>
 
       <!-- 2. 特色游戏模块 -->
-      {featuredGames.length > 0 && (
+      {featuredSportsGames.length > 0 && (
         <section class="game-module featured-module">
           <div class="module-header">
             <div class="module-icon featured-icon">
@@ -129,77 +174,98 @@ const sportsCoreSkills = [
           </div>
           
           <div class="games-grid">
-            {featuredGames.slice(0, 6).map((game) => (
+            {featuredSportsGames.slice(0, 6).map((game) => (
               <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
             ))}
           </div>
         </section>
       )}
 
-      <!-- 3. 容易难度游戏模块 -->
-      {easyGames.length > 0 && (
-        <section class="game-module difficulty-module easy-module">
+      <!-- 3. 篮球游戏模块 -->
+      {basketballGames.length > 0 && (
+        <section class="game-module difficulty-module basketball-module">
           <div class="module-header">
-            <div class="module-icon easy-icon">
-              <i class="fas fa-smile"></i>
+            <div class="module-icon basketball-icon">
+              <i class="fas fa-basketball-ball"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners to start their sports journey</p>
+              <h2 class="module-title">Basketball Games</h2>
+              <p class="module-subtitle">Dribble, shoot, and score with these basketball games</p>
             </div>
           </div>
           
           <div class="games-grid">
-            {easyGames.map((game) => (
+            {basketballGames.map((game) => (
               <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
             ))}
           </div>
         </section>
       )}
 
-      <!-- 4. 中等难度游戏模块 -->
-      {mediumGames.length > 0 && (
-        <section class="game-module difficulty-module medium-module">
+      <!-- 4. 球类游戏模块 -->
+      {ballGames.length > 0 && (
+        <section class="game-module difficulty-module ball-module">
           <div class="module-header">
-            <div class="module-icon medium-icon">
-              <i class="fas fa-meh"></i>
+            <div class="module-icon ball-icon">
+              <i class="fas fa-futbol"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for developing athletes</p>
+              <h2 class="module-title">Ball Games</h2>
+              <p class="module-subtitle">Kick, throw, and catch your way to victory</p>
             </div>
           </div>
           
           <div class="games-grid">
-            {mediumGames.map((game) => (
+            {ballGames.map((game) => (
               <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
             ))}
           </div>
         </section>
       )}
 
-      <!-- 5. 困难游戏模块 -->
-      {hardGames.length > 0 && (
-        <section class="game-module difficulty-module hard-module">
+      <!-- 5. 精准游戏模块 -->
+      {precisionGames.length > 0 && (
+        <section class="game-module difficulty-module precision-module">
           <div class="module-header">
-            <div class="module-icon hard-icon">
-              <i class="fas fa-frown"></i>
+            <div class="module-icon precision-icon">
+              <i class="fas fa-golf-ball"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Elite challenges for sports champions</p>
+              <h2 class="module-title">Precision Games</h2>
+              <p class="module-subtitle">Perfect your technique in these precision sports</p>
             </div>
           </div>
           
           <div class="games-grid">
-            {hardGames.map((game) => (
+            {precisionGames.map((game) => (
               <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
             ))}
           </div>
         </section>
       )}
 
-      <!-- 6. 学习建议模块 -->
+      <!-- 6. 个人运动模块 -->
+      {individualSports.length > 0 && (
+        <section class="game-module difficulty-module individual-module">
+          <div class="module-header">
+            <div class="module-icon individual-icon">
+              <i class="fas fa-running"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Individual Sports</h2>
+              <p class="module-subtitle">Challenge yourself in these individual sports</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {individualSports.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 7. 学习建议模块 -->
       <section class="info-module tips-module">
         <div class="module-header">
           <div class="module-icon tips-icon">
@@ -254,7 +320,7 @@ const sportsCoreSkills = [
         </div>
       </section>
 
-      <!-- 7. 核心技能模块 -->
+      <!-- 8. 核心技能模块 -->
       <section class="info-module skills-module">
         <div class="module-header">
           <div class="module-icon skills-icon">
