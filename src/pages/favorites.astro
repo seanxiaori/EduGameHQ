@@ -160,9 +160,15 @@ const sampleFavorites = allGamesData
     </div>
   </main>
 
+  <!-- 将服务器端游戏数据传递给客户端 -->
+  <script is:inline define:vars={{ allGamesData }}>
+    // 将服务器端的游戏数据设置为全局变量，供JavaScript使用
+    window.GAMES_DATA = allGamesData;
+  </script>
+
   <!-- 收藏管理的JavaScript -->
   <script is:inline>
-    // 收藏管理类
+    // 收藏管理类 - 修正版
     class FavoritesManager {
       constructor() {
         this.allGames = [];
@@ -174,7 +180,7 @@ const sampleFavorites = allGamesData
       // 初始化
       async init() {
         try {
-          // 加载游戏数据（在实际应用中可能通过API获取）
+          // 加载真实的游戏数据
           await this.loadGameData();
           this.loadFavorites();
           this.updateStats();
@@ -182,42 +188,55 @@ const sampleFavorites = allGamesData
           this.renderRecommendations();
           this.initializeEventListeners();
           
-          console.log('Favorites Manager initialized successfully');
+          console.log('✅ Favorites Manager 初始化成功');
+          console.log(`📊 加载了 ${this.allGames.length} 个游戏数据`);
+          console.log(`❤️ 当前收藏了 ${this.favoriteGameIds.size} 个游戏`);
         } catch (error) {
-          console.error('Failed to initialize Favorites Manager:', error);
+          console.error('❌ Favorites Manager 初始化失败:', error);
         }
       }
 
-      // 加载游戏数据
+      // 加载真实的游戏数据 - 从服务器端传递的数据
       async loadGameData() {
-        // 模拟游戏数据（在实际应用中从API获取）
-        this.allGames = [
-          {
-            slug: '2048',
-            title: '2048',
-            description: 'Combine numbered tiles to reach 2048',
-            category: 'math',
-            categoryName: 'Math Games',
-            thumbnailUrl: '/images/games/math/2048.svg',
-            ageRange: '8-18',
-            difficulty: 'Medium',
-            tags: ['numbers', 'strategy', 'logic'],
-            playCount: 15420
-          },
-          {
-            slug: 'cut-the-rope',
-            title: 'Cut the Rope',
-            description: 'Feed candy to Om Nom by cutting ropes',
-            category: 'puzzle',
-            categoryName: 'Puzzle Games',
-            thumbnailUrl: '/images/games/puzzle/cut-the-rope.svg',
-            ageRange: '6-16',
-            difficulty: 'Easy',
-            tags: ['physics', 'cute', 'problem-solving'],
-            playCount: 23150
+        try {
+          // 使用服务器端传递的真实游戏数据
+          if (window.GAMES_DATA && Array.isArray(window.GAMES_DATA)) {
+            this.allGames = window.GAMES_DATA;
+            console.log(`✅ 成功加载 ${this.allGames.length} 个游戏数据`);
+          } else {
+            console.warn('⚠️ 未找到游戏数据，使用备用数据');
+            // 备用数据（防止服务器数据加载失败）
+            this.allGames = [
+              {
+                slug: '2048',
+                title: '2048',
+                description: 'Combine numbered tiles to reach 2048',
+                category: 'math',
+                categoryName: 'Math Games',
+                thumbnailUrl: '/images/games/math/2048.svg',
+                ageRange: '8-18',
+                difficulty: 'Medium',
+                tags: ['numbers', 'strategy', 'logic'],
+                playCount: 15420
+              },
+              {
+                slug: 'cut-the-rope',
+                title: 'Cut the Rope',
+                description: 'Feed candy to Om Nom by cutting ropes',
+                category: 'puzzle',
+                categoryName: 'Puzzle Games',
+                thumbnailUrl: '/images/games/puzzle/cut-the-rope.svg',
+                ageRange: '6-16',
+                difficulty: 'Easy',
+                tags: ['physics', 'cute', 'problem-solving'],
+                playCount: 23150
+              }
+            ];
           }
-          // 更多游戏数据...
-        ];
+        } catch (error) {
+          console.error('❌ 加载游戏数据失败:', error);
+          this.allGames = [];
+        }
       }
 
       // 从localStorage加载收藏
@@ -226,32 +245,36 @@ const sampleFavorites = allGamesData
         if (favorites) {
           try {
             this.favoriteGameIds = new Set(JSON.parse(favorites));
-            console.log('Loaded favorites:', Array.from(this.favoriteGameIds));
+            console.log('✅ 加载收藏列表:', Array.from(this.favoriteGameIds));
           } catch (error) {
-            console.error('Error loading favorites:', error);
+            console.error('❌ 加载收藏列表失败:', error);
             this.favoriteGameIds = new Set();
           }
+        } else {
+          console.log('ℹ️ 暂无收藏游戏');
         }
       }
 
       // 保存收藏到localStorage
       saveFavorites() {
         localStorage.setItem('favoriteGames', JSON.stringify(Array.from(this.favoriteGameIds)));
+        console.log('✅ 收藏列表已保存');
       }
 
       // 添加/移除收藏
       toggleFavorite(gameSlug) {
         if (this.favoriteGameIds.has(gameSlug)) {
           this.favoriteGameIds.delete(gameSlug);
-          console.log(`Removed ${gameSlug} from favorites`);
+          console.log(`❌ 已从收藏中移除: ${gameSlug}`);
         } else {
           this.favoriteGameIds.add(gameSlug);
-          console.log(`Added ${gameSlug} to favorites`);
+          console.log(`❤️ 已添加到收藏: ${gameSlug}`);
         }
         
         this.saveFavorites();
         this.updateStats();
         this.renderFavorites();
+        this.renderRecommendations();
         
         // 触发自定义事件，通知其他组件
         window.dispatchEvent(new CustomEvent('favoritesChanged', {
@@ -261,7 +284,9 @@ const sampleFavorites = allGamesData
 
       // 获取收藏的游戏
       getFavoriteGames() {
-        return this.allGames.filter(game => this.favoriteGameIds.has(game.slug));
+        const favoriteGames = this.allGames.filter(game => this.favoriteGameIds.has(game.slug));
+        console.log(`📋 找到 ${favoriteGames.length} 个收藏游戏`);
+        return favoriteGames;
       }
 
       // 更新统计信息
@@ -285,6 +310,7 @@ const sampleFavorites = allGamesData
         if (favoriteGames.length === 0) {
           withGames.style.display = 'none';
           emptyState.style.display = 'flex';
+          console.log('📭 显示空收藏状态');
         } else {
           emptyState.style.display = 'none';
           withGames.style.display = 'block';
@@ -312,6 +338,8 @@ const sampleFavorites = allGamesData
               </div>
             </div>
           `).join('');
+          
+          console.log(`✅ 渲染了 ${favoriteGames.length} 个收藏游戏`);
         }
       }
 
@@ -329,6 +357,7 @@ const sampleFavorites = allGamesData
           .filter(game => !this.favoriteGameIds.has(game.slug) && favoriteCategories.includes(game.category))
           .slice(0, 6);
 
+        document.getElementById('recommendationsSection').style.display = 'block';
         const recommendationsGrid = document.getElementById('recommendationsGrid');
         recommendationsGrid.innerHTML = recommendations.map((game, index) => `
           <div class="game-card recommendation-card animate-fadeInUp" style="animation-delay: ${index * 0.1}s">
@@ -353,6 +382,8 @@ const sampleFavorites = allGamesData
             </div>
           </div>
         `).join('');
+        
+        console.log(`✅ 渲染了 ${recommendations.length} 个推荐游戏`);
       }
 
       // 清除所有收藏
@@ -364,7 +395,7 @@ const sampleFavorites = allGamesData
           this.renderFavorites();
           this.renderRecommendations();
           
-          console.log('All favorites cleared');
+          console.log('🗑️ 已清空所有收藏');
         }
       }
 
