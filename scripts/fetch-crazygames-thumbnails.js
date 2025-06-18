@@ -7,10 +7,20 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
-// 需要更新缩略图的新数学游戏
+// 需要更新缩略图的11款新语言游戏
 const GAMES_TO_UPDATE = [
-  // 新添加的数学游戏
-  'drop-merge-the-numbers'
+  // 新添加的语言游戏
+  'bhides-english-classes',  // GameDistribution游戏，可能获取不到
+  'cryptoword',
+  'kitty-scramble',
+  'crossword',
+  'word-string-puzzle',
+  'amazing-word-twist',
+  'pop-a-word',
+  'word-chef',
+  'wodr',
+  'cookie-hangman',
+  'paint-by-words'
 ];
 
 /**

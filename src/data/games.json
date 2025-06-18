@@ -2525,5 +2525,627 @@
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
+  },
+  {
+    "slug": "bhides-english-classes",
+    "title": "Bhides English Classes",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://html5.gamedistribution.com/ba551324893543dd9a30a7fe4c26806a/?gd_sdk_referrer_url=https://www.example.com/games/{game-path}",
+    "description": "Bhides English Classes is an educational language game that helps improve English skills through interactive lessons and fun activities. Perfect for students learning English!",
+    "gameGuide": {
+      "howToPlay": [
+        "Follow interactive English lessons",
+        "Complete grammar and vocabulary exercises",
+        "Practice reading and comprehension skills",
+        "Answer questions to test your knowledge",
+        "Progress through different difficulty levels"
+      ],
+      "controls": {
+        "mouse": "Click to select answers and navigate lessons",
+        "keyboard": "Type answers when required",
+        "touch": "Touch interface for mobile devices"
+      },
+      "tips": [
+        "Take your time to read questions carefully",
+        "Review lesson materials before taking tests",
+        "Practice regularly for better results",
+        "Don't skip the grammar explanations",
+        "Use hints when available"
+      ]
+    },
+    "thumbnailUrl": "/images/games/language/bhides-english-classes.svg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "english",
+      "education",
+      "grammar",
+      "vocabulary",
+      "learning",
+      "interactive"
+    ],
+    "source": "GameDistribution",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://gamedistribution.com/games/bhides-english-classes/",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "GameDistribution"
+  },
+  {
+    "slug": "cryptoword",
+    "title": "Cryptoword",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/cryptoword",
+    "description": "Cryptoword is a challenging word puzzle game where you decode encrypted messages! Use logic and language skills to crack the code and reveal hidden words and phrases.",
+    "gameGuide": {
+      "howToPlay": [
+        "Analyze the encrypted message pattern",
+        "Use frequency analysis to identify common letters",
+        "Start with short words like 'THE', 'AND', 'IS'",
+        "Fill in the decoded letters throughout the puzzle",
+        "Complete the entire message to win"
+      ],
+      "controls": {
+        "mouse": "Click on letters to enter your guesses",
+        "keyboard": "Type letters to decode the message",
+        "touch": "Touch letters on mobile devices"
+      },
+      "tips": [
+        "Look for single-letter words (A, I)",
+        "Common three-letter words are good starting points",
+        "Pay attention to letter frequency patterns",
+        "Use context clues from partially decoded words",
+        "E is the most common letter in English"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/cryptoword_16x9/20240626053927/cryptoword_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "vocabulary",
+      "puzzle",
+      "decoding",
+      "logic",
+      "challenging",
+      "cryptography"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/cryptoword",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Astetrio"
+  },
+  {
+    "slug": "kitty-scramble",
+    "title": "Kitty Scramble",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/kitty-scramble",
+    "description": "Kitty Scramble is an adorable word puzzle game featuring cute cats! Unscramble letters to form words while enjoying charming feline graphics and sounds.",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at the scrambled letters at the bottom",
+        "Drag letters to form words",
+        "Find all possible words to complete the level",
+        "Use hints if you get stuck",
+        "Collect coins to unlock new cat themes"
+      ],
+      "controls": {
+        "mouse": "Click and drag letters to form words",
+        "touch": "Touch and drag letters on mobile devices"
+      },
+      "tips": [
+        "Start with shorter words first",
+        "Look for common word endings",
+        "Try different letter combinations",
+        "Use the shuffle button for new arrangements",
+        "Find bonus words for extra points"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/kitty-scramble_16x9/20240206053210/kitty-scramble_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "vocabulary",
+      "word puzzle",
+      "cats",
+      "cute",
+      "family friendly",
+      "unscramble"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/kitty-scramble",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Clever Apps"
+  },
+  {
+    "slug": "crossword",
+    "title": "Crossword",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/crossword",
+    "description": "Crossword is a classic word puzzle game! Fill in the grid by solving clues across and down. Challenge your vocabulary and general knowledge skills.",
+    "gameGuide": {
+      "howToPlay": [
+        "Read the clues for across and down answers",
+        "Click on a numbered square to start entering letters",
+        "Type your answer using the keyboard",
+        "Use crossing letters to help solve other clues",
+        "Complete the entire grid to finish the puzzle"
+      ],
+      "controls": {
+        "mouse": "Click on squares to select them",
+        "keyboard": "Type letters to fill in answers",
+        "touch": "Touch squares and use on-screen keyboard"
+      },
+      "tips": [
+        "Start with clues you're confident about",
+        "Use crossing letters as hints for other words",
+        "Think about synonyms and wordplay in clues",
+        "Short words are often easier to solve first",
+        "Don't be afraid to guess and adjust"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/crossword/cover-1619278453620.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "vocabulary",
+      "crossword",
+      "puzzle",
+      "knowledge",
+      "classic",
+      "challenging"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/crossword",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Unknown"
+  },
+  {
+    "slug": "word-string-puzzle",
+    "title": "Word String Puzzle",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/word-string-puzzle",
+    "description": "Word String Puzzle is an innovative word game! Connect letters with strings to form words and complete challenging puzzles. Exercise your brain with this unique twist on word games.",
+    "gameGuide": {
+      "howToPlay": [
+        "Connect letters by drawing lines between them",
+        "Form words by connecting letters in the correct order",
+        "Complete all the required words to finish the level",
+        "Strings cannot cross each other",
+        "Plan your connections carefully"
+      ],
+      "controls": {
+        "mouse": "Click and drag to draw strings between letters",
+        "touch": "Touch and drag to connect letters on mobile"
+      },
+      "tips": [
+        "Start with the longest words first",
+        "Plan your string paths to avoid crossing",
+        "Look for letters that appear in multiple words",
+        "Use the undo button if you make mistakes",
+        "Think about letter positioning before connecting"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/word-string-puzzle_16x9/20250602083036/word-string-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "vocabulary",
+      "puzzle",
+      "connection",
+      "innovative",
+      "brain training",
+      "logic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/word-string-puzzle",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Bravestars Games"
+  },
+  {
+    "slug": "amazing-word-twist",
+    "title": "Amazing Word Twist",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/amazing-word-twist",
+    "description": "Amazing Word Twist is an exciting word puzzle game! Twist and rearrange letters to form as many words as possible. Challenge yourself with this dynamic word game.",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at the available letters in the circle",
+        "Form words by selecting letters in order",
+        "Find as many words as possible with the given letters",
+        "Use the twist button to rearrange letters",
+        "Complete all target words to advance"
+      ],
+      "controls": {
+        "mouse": "Click on letters to form words",
+        "touch": "Touch letters to select them on mobile"
+      },
+      "tips": [
+        "Start with 3-letter words and work up",
+        "Look for common prefixes and suffixes",
+        "Use the twist feature for new letter arrangements",
+        "Think of different word categories",
+        "Don't forget about plural forms"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/amazing-word-twist/20201222143827/amazing-word-twist-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "vocabulary",
+      "word puzzle",
+      "twist",
+      "dynamic",
+      "brain training",
+      "challenging"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/amazing-word-twist",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Tom Bombadil"
+  },
+  {
+    "slug": "pop-a-word",
+    "title": "Pop a Word",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/pop-a-word",
+    "description": "Pop a Word is a fun bubble-popping word game! Pop letter bubbles in the correct order to spell words. Combine word skills with bubble-popping fun!",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at the word you need to spell",
+        "Pop letter bubbles in the correct order",
+        "Complete words before time runs out",
+        "Pop bubbles by clicking or touching them",
+        "Earn points for each completed word"
+      ],
+      "controls": {
+        "mouse": "Click on letter bubbles to pop them",
+        "touch": "Touch bubbles to pop them on mobile devices"
+      },
+      "tips": [
+        "Plan your bubble-popping route carefully",
+        "Work quickly but accurately",
+        "Focus on one word at a time",
+        "Watch for falling bubbles",
+        "Practice to improve your speed"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/pop-a-word/20230313171006/pop-a-word-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "vocabulary",
+      "bubbles",
+      "spelling",
+      "fun",
+      "action",
+      "family friendly"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/pop-a-word",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Foony"
+  },
+  {
+    "slug": "word-chef",
+    "title": "Word Chef",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/word-chef",
+    "description": "Word Chef is a delicious word cooking game! Cook up words by connecting letters and serve them to hungry customers. Combine cooking themes with word puzzles!",
+    "gameGuide": {
+      "howToPlay": [
+        "Connect letters to form words",
+        "Serve completed words to customers",
+        "Meet the required word targets for each level",
+        "Earn coins to upgrade your kitchen",
+        "Complete cooking challenges with word skills"
+      ],
+      "controls": {
+        "mouse": "Click and drag to connect letters",
+        "touch": "Touch and swipe to connect letters on mobile"
+      },
+      "tips": [
+        "Look for longer words to earn more points",
+        "Plan your letter connections efficiently",
+        "Use cooking-related words when possible",
+        "Complete orders quickly for bonus points",
+        "Upgrade your kitchen for better rewards"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/word-chef/20220303174756/word-chef-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "vocabulary",
+      "cooking",
+      "word puzzle",
+      "restaurant",
+      "fun",
+      "themed"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/word-chef",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Obumo Games"
+  },
+  {
+    "slug": "wodr",
+    "title": "Wodr",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/wodr",
+    "description": "Wodr is a Wordle-inspired word guessing game! Guess the hidden word in 6 attempts using clues from your previous guesses. Perfect for vocabulary building!",
+    "gameGuide": {
+      "howToPlay": [
+        "Guess a 5-letter word by typing",
+        "Check the color feedback for each letter",
+        "Green means correct letter in correct position",
+        "Yellow means correct letter in wrong position",
+        "Gray means letter is not in the word"
+      ],
+      "controls": {
+        "keyboard": "Type your word guesses",
+        "mouse": "Click on virtual keyboard if available",
+        "touch": "Use on-screen keyboard on mobile"
+      },
+      "tips": [
+        "Start with words containing common vowels",
+        "Use elimination strategy based on feedback",
+        "Try words with common consonants",
+        "Pay attention to letter positioning",
+        "Think of different word categories"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/wodr_16x9/20241002075613/wodr_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "vocabulary",
+      "word guessing",
+      "wordle",
+      "logic",
+      "deduction",
+      "daily challenge"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/wodr",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "just.so"
+  },
+  {
+    "slug": "cookie-hangman",
+    "title": "Cookie Hangman",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/cookie-hangman",
+    "description": "Cookie Hangman is a sweet twist on the classic hangman game! Guess the word before the cookie crumbles. A delicious way to practice vocabulary and spelling!",
+    "gameGuide": {
+      "howToPlay": [
+        "Guess letters to reveal the hidden word",
+        "Click on alphabet letters to make guesses",
+        "Correct guesses reveal letters in the word",
+        "Wrong guesses make the cookie crumble",
+        "Solve the word before the cookie is gone"
+      ],
+      "controls": {
+        "mouse": "Click on letters to guess them",
+        "keyboard": "Type letters to make guesses",
+        "touch": "Touch letters on mobile devices"
+      },
+      "tips": [
+        "Start with common vowels (A, E, I, O, U)",
+        "Try common consonants (R, S, T, L, N)",
+        "Think about word length and category",
+        "Use context clues if available",
+        "Be strategic with your letter choices"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/cookie-hangman_16x9/20230901052106/cookie-hangman_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "vocabulary",
+      "spelling",
+      "hangman",
+      "cookies",
+      "sweet",
+      "classic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/cookie-hangman",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "abcgames"
+  },
+  {
+    "slug": "paint-by-words",
+    "title": "Paint by Words",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/paint-by-words",
+    "description": "Paint by Words combines art and vocabulary! Solve word puzzles to reveal beautiful pictures. Color the artwork by finding the right words!",
+    "gameGuide": {
+      "howToPlay": [
+        "Solve word puzzles to unlock paint colors",
+        "Each correct word reveals part of the picture",
+        "Complete all words to finish the artwork",
+        "Use different colors based on word categories",
+        "Enjoy the completed masterpiece"
+      ],
+      "controls": {
+        "mouse": "Click to solve word puzzles and paint",
+        "keyboard": "Type answers to word challenges",
+        "touch": "Touch interface for mobile devices"
+      },
+      "tips": [
+        "Focus on easier words first",
+        "Use context clues from the emerging picture",
+        "Think about different word categories",
+        "Take breaks to appreciate the artwork",
+        "Don't rush - enjoy the creative process"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/paint-by-words_16x9/20250225070640/paint-by-words_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "vocabulary",
+      "art",
+      "painting",
+      "creative",
+      "relaxing",
+      "educational"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/paint-by-words",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Gameyogi"
   }
 ]
