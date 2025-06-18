@@ -31,7 +31,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "art games for children",
       "geography games online"
     ],
-    ogImage: "/images/edugamehq-og-home.jpg",
+    ogImage: "/images/logo.svg",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -75,7 +75,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "calculation games",
       "math puzzle games"
     ],
-    ogImage: "/images/math-games-og.jpg",
+    ogImage: "/images/logo.svg",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -108,7 +108,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "experiment games",
       "nature games"
     ],
-    ogImage: "/images/science-games-og.jpg",
+    ogImage: "/images/logo.svg",
     structuredData: {
       "@context": "https://schema.org",
       "@type": "CollectionPage",
@@ -135,7 +135,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "algorithm games",
       "computational thinking"
     ],
-    ogImage: "/images/coding-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 语言游戏页面
@@ -155,7 +155,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "ESL games",
       "English practice games"
     ],
-    ogImage: "/images/language-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 益智游戏页面
@@ -174,7 +174,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "puzzle games for kids",
       "cognitive games"
     ],
-    ogImage: "/images/puzzle-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 体育游戏页面
@@ -193,7 +193,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "basketball games",
       "athletics games"
     ],
-    ogImage: "/images/sports-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 艺术创意游戏页面
@@ -212,7 +212,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "visual arts games",
       "craft games"
     ],
-    ogImage: "/images/art-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 趋势游戏页面
@@ -228,7 +228,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "viral educational games",
       "top rated games"
     ],
-    ogImage: "/images/trending-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 新游戏页面
@@ -243,7 +243,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "new games for kids",
       "updated learning games"
     ],
-    ogImage: "/images/new-games-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 最近游玩页面
@@ -257,7 +257,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "learning progress",
       "educational game history"
     ],
-    ogImage: "/images/recently-played-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 收藏页面
@@ -271,7 +271,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "my games collection",
       "preferred learning games"
     ],
-    ogImage: "/images/favorites-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 搜索页面
@@ -285,7 +285,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "educational game finder",
       "learning game search"
     ],
-    ogImage: "/images/search-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 关于我们页面
@@ -300,7 +300,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "learning platform",
       "kids education"
     ],
-    ogImage: "/images/about-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 帮助中心页面
@@ -315,7 +315,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "educational games help",
       "technical support"
     ],
-    ogImage: "/images/help-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 隐私政策页面
@@ -330,7 +330,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "educational games privacy",
       "kids online safety"
     ],
-    ogImage: "/images/privacy-og.jpg"
+    ogImage: "/images/logo.svg"
   },
 
   // 服务条款页面
@@ -344,7 +344,21 @@ export const seoConfig: Record<string, SEOConfig> = {
       "educational games terms",
       "user agreement"
     ],
-    ogImage: "/images/terms-og.jpg"
+    ogImage: "/images/logo.svg"
+  },
+
+  // 游戏详情页面（动态）
+  '/games/[slug]': {
+    title: "Educational Game | Learning Games | EduGameHQ",
+    description: "Play this educational game and enhance your learning experience. Free, safe, and fun learning games for students.",
+    keywords: [
+      "educational game",
+      "learning game",
+      "free online game",
+      "student game",
+      "educational activity"
+    ],
+    ogImage: "/images/logo.svg"
   }
 };
 
@@ -352,18 +366,7 @@ export const seoConfig: Record<string, SEOConfig> = {
 export function getPageSEO(path: string): SEOConfig {
   // 处理游戏详情页面的动态路由
   if (path.startsWith('/games/')) {
-    return {
-      title: "Educational Game | Play and Learn | EduGameHQ",
-      description: "Play this engaging educational game and enhance your learning experience. Fun, interactive gameplay designed for students aged 6-18.",
-      keywords: [
-        "educational game",
-        "learning game",
-        "interactive game",
-        "educational gameplay",
-        "learning through play"
-      ],
-      ogImage: "/images/game-og.jpg"
-    };
+    return seoConfig['/games/[slug]'];
   }
 
   return seoConfig[path] || seoConfig['/'];
@@ -380,10 +383,10 @@ export function generateStructuredData(path: string, gameData?: any) {
       "@type": "Game",
       "name": gameData.title,
       "description": gameData.description,
-      "url": `https://edugamehq.com${path}`,
-      "image": gameData.thumbnailUrl,
-      "genre": gameData.category,
-      "educationalLevel": `Ages ${gameData.minAge}-${gameData.maxAge}`,
+      "url": `https://edugamehq.com/games/${gameData.slug}`,
+      "image": gameData.thumbnailUrl || "/images/logo.svg",
+      "genre": gameData.categoryName,
+      "educationalLevel": gameData.ageRange,
       "learningResourceType": "Educational Game",
       "interactivityType": "active",
       "educationalUse": "instruction",
@@ -410,5 +413,5 @@ export function getKeywordsString(path: string): string {
 // 生成Open Graph URL
 export function getOGImageUrl(path: string): string {
   const config = getPageSEO(path);
-  return config.ogImage || '/images/og-default.jpg';
+  return config.ogImage || '/images/logo.svg';
 } 
