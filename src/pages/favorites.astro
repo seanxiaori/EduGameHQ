@@ -54,10 +54,6 @@ const sampleFavorites = allGamesData
             <i class="fas fa-trash-alt"></i>
             <span>Clear All</span>
           </button>
-          <button id="exportFavoritesBtn" class="export-favorites-btn">
-            <i class="fas fa-download"></i>
-            <span>Export</span>
-          </button>
         </div>
       </section>
 
@@ -372,51 +368,12 @@ const sampleFavorites = allGamesData
         }
       }
 
-      // 导出收藏列表
-      exportFavorites() {
-        const favoriteGames = this.getFavoriteGames();
-        if (favoriteGames.length === 0) {
-          alert('No favorites to export!');
-          return;
-        }
-
-        const exportData = {
-          exportDate: new Date().toISOString(),
-          totalCount: favoriteGames.length,
-          games: favoriteGames.map(game => ({
-            title: game.title,
-            slug: game.slug,
-            category: game.categoryName,
-            difficulty: game.difficulty,
-            url: `${window.location.origin}/games/${game.slug}`
-          }))
-        };
-
-        const blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `edugamehq-favorites-${new Date().toISOString().split('T')[0]}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-
-        console.log('Favorites exported successfully');
-      }
-
       // 初始化事件监听器
       initializeEventListeners() {
         // 清除收藏按钮
         const clearBtn = document.getElementById('clearFavoritesBtn');
         if (clearBtn) {
           clearBtn.addEventListener('click', () => this.clearAllFavorites());
-        }
-
-        // 导出收藏按钮
-        const exportBtn = document.getElementById('exportFavoritesBtn');
-        if (exportBtn) {
-          exportBtn.addEventListener('click', () => this.exportFavorites());
         }
 
         // 视图切换按钮
@@ -563,7 +520,7 @@ const sampleFavorites = allGamesData
       flex-shrink: 0;
     }
 
-    .clear-favorites-btn, .export-favorites-btn {
+    .clear-favorites-btn {
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -574,9 +531,6 @@ const sampleFavorites = allGamesData
       font-size: 0.875rem;
       cursor: pointer;
       transition: all 0.3s ease;
-    }
-
-    .clear-favorites-btn {
       background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
       color: white;
       box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
@@ -586,18 +540,6 @@ const sampleFavorites = allGamesData
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
       background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
-    }
-
-    .export-favorites-btn {
-      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-      color: white;
-      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
-    }
-
-    .export-favorites-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
-      background: linear-gradient(135deg, #059669 0%, #047857 100%);
     }
 
     /* 收藏统计 */
