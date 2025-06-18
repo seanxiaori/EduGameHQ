@@ -543,49 +543,68 @@ if (isHomePage) {
 
     // DOM加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('=== SEARCH INITIALIZATION DEBUG ===');
+      console.log('页面初始化开始...');
       
-      // 下拉菜单功能 - 支持多个下拉菜单
+      // 下拉菜单功能修复
       const dropdowns = document.querySelectorAll('.nav-dropdown');
-      dropdowns.forEach(dropdown => {
-        const dropdownToggle = dropdown.querySelector('.dropdown-trigger');
-        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+      console.log('找到下拉菜单数量:', dropdowns.length);
+      
+      dropdowns.forEach((dropdown, index) => {
+        const trigger = dropdown.querySelector('.dropdown-trigger, button');
+        const menu = dropdown.querySelector('.dropdown-menu');
         
-        if (dropdownToggle && dropdownMenu) {
-          dropdownToggle.addEventListener('click', function(e) {
+        console.log(`下拉菜单 ${index}:`, { trigger, menu });
+        
+        if (trigger && menu) {
+          // 移除旧的事件监听器（如果存在）
+          const newTrigger = trigger.cloneNode(true);
+          trigger.parentNode.replaceChild(newTrigger, trigger);
+          
+          // 添加新的事件监听器
+          newTrigger.addEventListener('click', function(e) {
+            console.log(`点击了下拉菜单 ${index}`);
             e.preventDefault();
             e.stopPropagation();
             
-            // 关闭其他下拉菜单
-            dropdowns.forEach(otherDropdown => {
-              if (otherDropdown !== dropdown) {
+            // 关闭其他菜单
+            dropdowns.forEach((otherDropdown, otherIndex) => {
+              if (otherIndex !== index) {
                 const otherMenu = otherDropdown.querySelector('.dropdown-menu');
                 if (otherMenu) {
                   otherMenu.classList.remove('show');
+                  console.log(`关闭了其他菜单 ${otherIndex}`);
                 }
               }
             });
             
-            // 切换当前下拉菜单
-            dropdownMenu.classList.toggle('show');
+            // 切换当前菜单
+            const isOpen = menu.classList.contains('show');
+            if (isOpen) {
+              menu.classList.remove('show');
+              console.log(`关闭菜单 ${index}`);
+            } else {
+              menu.classList.add('show');
+              console.log(`打开菜单 ${index}`);
+            }
           });
+          
+          console.log(`成功绑定下拉菜单 ${index}`);
         }
       });
       
-      // 点击外部关闭所有下拉菜单
+      // 点击外部关闭下拉菜单
       document.addEventListener('click', function(e) {
-        const isClickInsideDropdown = e.target.closest('.nav-dropdown');
-        if (!isClickInsideDropdown) {
+        if (!e.target.closest('.nav-dropdown')) {
           dropdowns.forEach(dropdown => {
-            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-            if (dropdownMenu) {
-              dropdownMenu.classList.remove('show');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            if (menu) {
+              menu.classList.remove('show');
             }
           });
         }
       });
       
-      // 移动端菜单功能
+      // 移动端菜单
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
       
@@ -597,7 +616,6 @@ if (isHomePage) {
           mobileMenuBtn.classList.toggle('active');
         });
         
-        // 点击菜单项后关闭移动端菜单
         const mobileMenuItems = mobileMenu.querySelectorAll('.mobile-menu-item');
         mobileMenuItems.forEach(item => {
           item.addEventListener('click', function() {
@@ -607,16 +625,11 @@ if (isHomePage) {
         });
       }
       
-      // 搜索功能初始化
+      // 搜索功能
       const searchBox = document.querySelector('.search-box');
       const searchWrapper = document.querySelector('.search-wrapper');
-      console.log('Search box found:', !!searchBox);
-      console.log('Search box element:', searchBox);
       
       if (searchBox && searchWrapper) {
-        console.log('Search box placeholder:', searchBox.placeholder);
-        
-        // 监听输入变化，控制搜索按钮显示
         searchBox.addEventListener('input', function() {
           if (this.value.trim().length > 0) {
             searchWrapper.classList.add('has-content');
@@ -625,49 +638,23 @@ if (isHomePage) {
           }
         });
         
-        // 搜索框回车事件
         searchBox.addEventListener('keypress', function(e) {
-          console.log('=== SEARCH KEYPRESS EVENT ===');
-          console.log('Key pressed:', e.key);
-          console.log('Key code:', e.keyCode);
-          console.log('Current value:', this.value);
-          
-          if (e.key === 'Enter' || e.keyCode === 13) {
+          if (e.key === 'Enter') {
             e.preventDefault();
-            e.stopPropagation();
-            console.log('ENTER KEY DETECTED - CALLING performSearch()');
             performSearch();
           }
         });
-        
-        // 备用keydown事件
-        searchBox.addEventListener('keydown', function(e) {
-          if (e.key === 'Enter' || e.keyCode === 13) {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('KEYDOWN ENTER - CALLING performSearch()');
-            performSearch();
-          }
-        });
-        
-        console.log('Search functionality initialized successfully');
-      } else {
-        console.error('Search box not found during initialization!');
       }
       
-      // 搜索按钮事件
       const searchButton = document.querySelector('.search-button');
       if (searchButton) {
-        console.log('Search button found:', searchButton);
         searchButton.addEventListener('click', function(e) {
           e.preventDefault();
-          e.stopPropagation();
-          console.log('SEARCH BUTTON CLICKED - CALLING performSearch()');
           performSearch();
         });
-      } else {
-        console.log('Search button not found');
       }
+      
+      console.log('页面初始化完成');
     });
     
     // 全局随机游戏函数
