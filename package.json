@@ -4,8 +4,8 @@
   "version": "1.0.0",
   "description": "EduGameHQ - Free Educational Games Platform built with Astro 5.0",
   "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
+    "dev": "set PORT=3000 && astro dev --port 3000",
+    "start": "set PORT=3000 && astro dev --port 3000",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
