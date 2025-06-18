@@ -7,17 +7,32 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
-// 需要更新信息的CrazyGames游戏列表 (只更新这4个游戏的缩略图)
+// 需要更新缩略图的19款新球类运动游戏
 const GAMES_TO_UPDATE = [
-  // 解谜游戏
-  'cut-the-rope',
+  // 篮球游戏
+  'basketball-stars-2019',
+  'basketball-legends-2020',
+  'basket-random',
+  'basketball-superstars',
+  'basketbros',
+  'basketball-legends',
   
-  // 体育游戏
-  'table-tennis-world-tour',
-  'tennis-masters',
+  // 足球游戏
+  'soccer-legends-2021',
+  'soccer-skills-world-cup',
+  'soccer-random',
+  'football-legends',
+  'penalty-shooters-2',
+  'soccer-physics',
   
-  // 艺术创意游戏
-  'draw-climber'
+  // 其他球类游戏
+  'tennis-masters-cup',
+  'volleyball-challenge',
+  'golf-champions',
+  'bowling-stars',
+  'baseball-pro',
+  'rugby-legends',
+  'water-polo'
 ];
 
 /**
