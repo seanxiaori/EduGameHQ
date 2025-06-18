@@ -776,20 +776,52 @@ const categoriesButtonText = currentCategory || 'Categories';
     cursor: pointer;
     transition: all 0.3s ease;
     white-space: nowrap;
+    text-decoration: none !important;
+    outline: none !important;
   }
 
   .nav-btn:hover {
     background: #F59E0B;
     color: white;
     transform: translateY(-1px);
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
   }
 
   .favorites-btn:hover {
     background: #EF4444;
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
   }
 
   .random-btn:hover {
     background: #8B5CF6;
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+  }
+
+  /* 确保导航按钮在任何状态下都不显示下划线 */
+  .nav-btn:link,
+  .nav-btn:visited,
+  .nav-btn:hover,
+  .nav-btn:active,
+  .nav-btn:focus,
+  .nav-btn:focus-visible,
+  .favorites-btn:link,
+  .favorites-btn:visited,
+  .favorites-btn:hover,
+  .favorites-btn:active,
+  .favorites-btn:focus,
+  .favorites-btn:focus-visible {
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    text-decoration-line: none !important;
+    border-bottom: none !important;
+    outline: none !important;
   }
 
   .mobile-menu-btn {

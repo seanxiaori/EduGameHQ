@@ -24,6 +24,45 @@
     font-weight: 600;
     letter-spacing: -0.025em;
   }
+
+  /* 全局按钮重置 - 强制移除所有下划线 */
+  button,
+  button *,
+  button::before,
+  button::after,
+  .btn,
+  .btn *,
+  .btn::before,
+  .btn::after {
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    text-decoration-line: none !important;
+    text-decoration-style: none !important;
+    text-decoration-color: transparent !important;
+    border-bottom: none !important;
+  }
+
+  /* 确保按钮在所有状态下都不显示下划线 */
+  button:link,
+  button:visited,
+  button:hover,
+  button:active,
+  button:focus,
+  button:focus-visible,
+  .btn:link,
+  .btn:visited,
+  .btn:hover,
+  .btn:active,
+  .btn:focus,
+  .btn:focus-visible {
+    text-decoration: none !important;
+    -webkit-text-decoration: none !important;
+    -moz-text-decoration: none !important;
+    text-decoration-line: none !important;
+    border-bottom: none !important;
+    outline: none !important;
+  }
 }
 
 /* 组件样式 */

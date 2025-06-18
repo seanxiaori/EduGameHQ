@@ -107,7 +107,7 @@
   color: white;
 }
 
-/* 右上角：收藏按钮 - 增强版 */
+/* 右上角：收藏按钮 - 增强版 - 修复下划线问题 */
 .favorite-heart-btn {
   position: absolute;
   top: 12px;
@@ -130,6 +130,24 @@
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   border: 2px solid rgba(255, 255, 255, 0.8);
   text-decoration: none !important; /* 强制移除下划线 */
+  outline: none !important; /* 移除焦点轮廓 */
+  -webkit-text-decoration: none !important; /* Webkit浏览器兼容 */
+  -moz-text-decoration: none !important; /* Firefox兼容 */
+}
+
+/* 收藏按钮内的图标 - 强制重置所有文本装饰 */
+.favorite-heart-btn i,
+.favorite-heart-btn *,
+.favorite-heart-btn::before,
+.favorite-heart-btn::after {
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
+  text-decoration-line: none !important;
+  text-decoration-style: none !important;
+  text-decoration-color: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
 }
 
 .game-card:hover .favorite-heart-btn {
@@ -137,6 +155,8 @@
   transform: scale(1.1);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   text-decoration: none !important; /* 强制移除下划线 */
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
 }
 
 .favorite-heart-btn:hover {
@@ -145,6 +165,9 @@
   transform: scale(1.2) !important;
   box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3) !important;
   text-decoration: none !important; /* 强制移除下划线 */
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
+  outline: none !important;
 }
 
 /* 收藏按钮激活状态 - 修复版 */
@@ -156,6 +179,8 @@
   box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
   border-color: #EC4899;
   text-decoration: none !important; /* 强制移除下划线 */
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
 }
 
 .favorite-heart-btn.active:hover,
@@ -165,6 +190,23 @@
   transform: scale(1.2);
   box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5) !important;
   text-decoration: none !important; /* 强制移除下划线 */
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
+}
+
+/* 确保收藏按钮在任何状态下都不显示下划线 */
+.favorite-heart-btn:link,
+.favorite-heart-btn:visited,
+.favorite-heart-btn:hover,
+.favorite-heart-btn:active,
+.favorite-heart-btn:focus,
+.favorite-heart-btn:focus-visible {
+  text-decoration: none !important;
+  -webkit-text-decoration: none !important;
+  -moz-text-decoration: none !important;
+  text-decoration-line: none !important;
+  border-bottom: none !important;
+  outline: none !important;
 }
 
 /* 右下角：难度/特色标签 */
