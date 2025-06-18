@@ -11,15 +11,15 @@ const seoData = {
   ogImage: "/images/art-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 修复路径
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.warn('Unable to read games data file:', error);
 }
 
 // 获取游戏图片URL
@@ -29,10 +29,10 @@ function getGameImageUrl(game) {
 }
 
 // 筛选艺术游戏
-const artGames = Object.entries(allGamesData)
-  .filter(([_id, game]: [string, Game]) => 
+const artGames = allGamesData
+  .filter(game => 
     game.category === 'art' || 
-    game.categoryName === 'Art' ||
+    game.categoryName === 'Art & Creativity' ||
     (game.title && (
       game.title.toLowerCase().includes('art') ||
       game.title.toLowerCase().includes('creative') ||
@@ -42,14 +42,14 @@ const artGames = Object.entries(allGamesData)
       game.title.toLowerCase().includes('design')
     ))
   )
-  .map(([id, game]: [string, Game]) => ({
-    id: id,
+  .map(game => ({
+    id: game.slug,
     title: game.title,
     description: game.description,
     image: getGameImageUrl(game),
     difficulty: game.difficulty || 'Medium',
     age: `Ages ${game.ageRange}`,
-    url: `/games/${id}`,
+    url: `/games/${game.slug}`,
     playCount: game.playCount || Math.floor(Math.random() * 15000) + 500,
     category: 'art',
     categoryName: 'Art'
