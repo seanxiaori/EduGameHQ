@@ -1749,7 +1749,7 @@
         "Experiment with different cutting strategies"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/cut-the-rope/20240415122545/cut-the-rope-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/cut-the-rope-ebx_16x9/20240530085010/cut-the-rope-ebx_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
     "ageRange": "6-18",
     "minAge": 6,
@@ -1776,7 +1776,7 @@
     "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "ZeptoLab"
+    "developer": "Famobi"
   },
   {
     "slug": "table-tennis-world-tour",
@@ -1805,7 +1805,7 @@
         "Stay focused during long rallies"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/table-tennis-world-tour/20240415122545/table-tennis-world-tour-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/table-tennis-world-tour_16x9/20230908041108/table-tennis-world-tour_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
     "ageRange": "8-18",
     "minAge": 8,
@@ -1861,7 +1861,7 @@
         "Stay patient during long rallies"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/tennis-masters/20240415122545/tennis-masters-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/tennis-masters/20201207104629/tennis-masters-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
@@ -1888,7 +1888,7 @@
     "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "Famobi"
+    "developer": "MadPuffers"
   },
   {
     "slug": "draw-climber",
@@ -1917,7 +1917,7 @@
         "Redraw quickly when obstacles change"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/draw-climber/20240415122545/draw-climber-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/draw-climber_16x9/20250327042947/draw-climber_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
     "ageRange": "6-18",
     "minAge": 6,
@@ -1944,7 +1944,7 @@
     "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "VOODOO"
+    "developer": "Voodoo"
   },
   {
     "slug": "galaxy-control-3d-strategy",
