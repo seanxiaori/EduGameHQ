@@ -607,14 +607,6 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
     line-height: 1.4;
   }
 
-  /* 游戏网格 */
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    padding: 0 1.5rem 1.5rem;
-  }
-
   /* 学习建议模块 */
   .tips-grid {
     display: grid;
@@ -826,17 +818,9 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
   }
 
   @media (min-width: 769px) and (max-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
   }
 
   @media (min-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
   }
 
   @media (max-width: 640px) {
