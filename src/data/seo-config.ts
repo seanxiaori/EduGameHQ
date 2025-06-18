@@ -366,10 +366,20 @@ export const seoConfig: Record<string, SEOConfig> = {
 export function getPageSEO(path: string): SEOConfig {
   // 处理游戏详情页面的动态路由
   if (path.startsWith('/games/')) {
-    return seoConfig['/games/[slug]'] || seoConfig['/'];
+    return seoConfig['/games/[slug]'] || seoConfig['/'] || {
+      title: 'EduGameHQ - Educational Games',
+      description: 'Free educational games for kids',
+      keywords: ['educational games', 'kids games'],
+      ogImage: '/images/logo.svg'
+    };
   }
 
-  return seoConfig[path] || seoConfig['/'];
+  return seoConfig[path] || seoConfig['/'] || {
+    title: 'EduGameHQ - Educational Games',
+    description: 'Free educational games for kids',
+    keywords: ['educational games', 'kids games'],
+    ogImage: '/images/logo.svg'
+  };
 }
 
 // 生成结构化数据的工具函数

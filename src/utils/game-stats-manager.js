@@ -36,6 +36,16 @@ class GameStatsManager {
     this.loadStats();
     this.setupEventListeners();
     this.setupIframeMonitoring();
+    
+    // 页面加载完成后更新人气值显示
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => this.updatePopularityDisplay(), 100);
+      });
+    } else {
+      setTimeout(() => this.updatePopularityDisplay(), 100);
+    }
+    
     console.log('🎮 游戏统计管理器初始化完成 (iframe优化版)');
   }
 
@@ -863,6 +873,122 @@ class GameStatsManager {
       console.log('📊 统计数据导入成功');
     } catch (error) {
       console.error('导入统计数据失败:', error);
+    }
+  }
+
+  /**
+   * 更新页面上所有游戏卡片的人气值显示
+   */
+  updatePopularityDisplay() {
+    const gameCards = document.querySelectorAll('[data-game-id]');
+    
+    gameCards.forEach(card => {
+      const gameSlug = card.dataset.gameId;
+      const popularityElement = card.querySelector('.popularity-count');
+      
+      if (popularityElement && gameSlug) {
+        // 从games.json获取游戏基础信息（这里需要通过其他方式获取）
+        const gameInfo = this.getGameInfoFromCard(card);
+        const popularity = this.getPopularity(gameSlug, gameInfo);
+        
+        // 更新显示文本
+        popularityElement.textContent = this.formatPopularity(popularity);
+        
+        // 根据人气值添加样式类
+        this.updatePopularityStyle(popularityElement, popularity);
+      }
+    });
+    
+    console.log(`🔥 已更新 ${gameCards.length} 个游戏卡片的人气值显示`);
+  }
+
+  /**
+   * 从游戏卡片DOM中提取游戏信息，并合并全局games数据
+   * @param {Element} card - 游戏卡片DOM元素
+   * @returns {Object} 游戏信息对象
+   */
+  getGameInfoFromCard(card) {
+    const gameSlug = card.dataset.gameId;
+    
+    // 从全局GAMES_DATA中获取基础信息
+    let gameInfo = {
+      playCount: 0,
+      category: 'puzzle',
+      featured: false,
+      trending: false,
+      isNew: false,
+      tags: [],
+      developer: 'Unknown'
+    };
+
+    // 如果有全局games数据，从中获取基础信息
+    if (window.GAMES_DATA && Array.isArray(window.GAMES_DATA)) {
+      const globalGameData = window.GAMES_DATA.find(game => game.slug === gameSlug);
+      if (globalGameData) {
+        gameInfo = { ...gameInfo, ...globalGameData };
+      }
+    }
+
+    // 从DOM中提取分类信息（作为备用）
+    const categoryTag = card.querySelector('.category-tag');
+    if (categoryTag && !gameInfo.category) {
+      const classes = categoryTag.classList;
+      const categories = ['math', 'science', 'language', 'puzzle', 'art', 'sports', 'coding'];
+      gameInfo.category = categories.find(cat => classes.contains(cat)) || 'puzzle';
+    }
+
+    // 从DOM中提取特色标签（作为备用）
+    if (!gameInfo.featured) {
+      gameInfo.featured = !!card.querySelector('.feature-tag.featured, .badge.featured');
+    }
+    if (!gameInfo.trending) {
+      gameInfo.trending = !!card.querySelector('.feature-tag.hot, .badge.trending');
+    }
+    if (!gameInfo.isNew) {
+      gameInfo.isNew = !!card.querySelector('.feature-tag.new, .badge.new');
+    }
+
+    // 从DOM中提取开发者信息（作为备用）
+    if (gameInfo.developer === 'Unknown') {
+      const developerElement = card.querySelector('.stat .fas.fa-user + span');
+      if (developerElement) {
+        gameInfo.developer = developerElement.textContent.trim();
+      }
+    }
+
+    return gameInfo;
+  }
+
+  /**
+   * 格式化人气数字显示
+   * @param {number} num - 人气数值
+   * @returns {string} 格式化后的字符串
+   */
+  formatPopularity(num) {
+    if (!num || num === 0) return '0';
+    if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+    if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+    return num.toString();
+  }
+
+  /**
+   * 根据人气值更新样式类
+   * @param {Element} element - 人气值显示元素
+   * @param {number} popularity - 人气值
+   */
+  updatePopularityStyle(element, popularity) {
+    // 移除现有的人气样式类
+    element.classList.remove('popularity-hot', 'popularity-high', 'popularity-medium', 'popularity-low');
+    
+    // 根据人气值添加相应的样式类
+    if (popularity >= 5000) {
+      element.classList.add('popularity-hot');
+    } else if (popularity >= 2000) {
+      element.classList.add('popularity-high');
+    } else if (popularity >= 500) {
+      element.classList.add('popularity-medium');
+    } else {
+      element.classList.add('popularity-low');
     }
   }
 }

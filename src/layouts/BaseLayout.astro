@@ -1,5 +1,7 @@
 ---
 import { getPageSEO, generateStructuredData, getKeywordsString, getOGImageUrl } from '../data/seo-config';
+import fs from 'fs';
+import path from 'path';
 
 export interface Props {
   title?: string;
@@ -31,25 +33,34 @@ const pageStructure = {
     '/science-games': { name: 'Science Games', icon: 'fas fa-flask', color: 'science' },
     '/language-games': { name: 'Language Games', icon: 'fas fa-book-open', color: 'language' },
     '/puzzle-games': { name: 'Puzzle Games', icon: 'fas fa-puzzle-piece', color: 'puzzle' },
-    '/sports-games': { name: 'Sports Games', icon: 'fas fa-running', color: 'sports' },
-    '/art-games': { name: 'Art & Creativity', icon: 'fas fa-palette', color: 'art' }
+    '/sports-games': { name: 'Sports Games', icon: 'fas fa-futbol', color: 'sports' },
+    '/art-games': { name: 'Art Games', icon: 'fas fa-palette', color: 'art' }
   },
   special: {
-    '/recently-played': { name: 'Recently Played', icon: 'fas fa-clock', color: 'blue' },
-    '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'red' },
-    '/new-games': { name: 'New Games', icon: 'fas fa-star', color: 'green' }
+    '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'trending' },
+    '/recently-played': { name: 'Recently Played', icon: 'fas fa-history', color: 'recent' }
   },
   system: {
-    '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'pink' },
-    '/search': { name: 'Search', icon: 'fas fa-search', color: 'purple' }
+    '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'favorites' },
+    '/search': { name: 'Search', icon: 'fas fa-search', color: 'search' }
   },
   support: {
-    '/help': { name: 'Help Center', icon: 'fas fa-question-circle', color: 'blue' },
-    '/privacy-policy': { name: 'Privacy Policy', icon: 'fas fa-shield-alt', color: 'green' },
-    '/terms-of-service': { name: 'Terms of Service', icon: 'fas fa-file-contract', color: 'orange' },
-    '/about': { name: 'About Us', icon: 'fas fa-heart', color: 'purple' }
+    '/privacy': { name: 'Privacy Policy', icon: 'fas fa-shield-alt', color: 'support' },
+    '/terms': { name: 'Terms of Service', icon: 'fas fa-file-contract', color: 'support' },
+    '/contact': { name: 'Contact Us', icon: 'fas fa-envelope', color: 'support' },
+    '/about': { name: 'About', icon: 'fas fa-info-circle', color: 'support' }
   }
 };
+
+// 读取games.json数据用于客户端
+let gamesData = [];
+try {
+  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  gamesData = JSON.parse(fileContent);
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
 
 // 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
@@ -315,6 +326,20 @@ if (!isHomePage) {
   
   <!-- 游戏统计管理器 - 全局加载 -->
   <script src="/src/utils/game-stats-manager.js" defer></script>
+  
+  <!-- 全局games数据 - 供客户端JavaScript使用 -->
+  <script>
+    window.GAMES_DATA = {JSON.stringify(gamesData.map(game => ({
+      slug: game.slug,
+      playCount: game.playCount || 0,
+      category: game.category,
+      featured: game.featured || false,
+      trending: game.trending || false,
+      isNew: game.isNew || false,
+      developer: game.developer || 'Unknown',
+      tags: game.tags || []
+    })))};
+  </script>
   
   <!-- 字体预加载 -->
   <link rel="preload" href="/fonts/main.woff2" as="font" type="font/woff2" crossorigin>
