@@ -1,315 +1,286 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import type { Game } from '../types/game';
-// 引入通用游戏卡片样式
-import '../styles/game-card.css';
 
-// 页面元数据 - 使用默认值，客户端会动态更新
+// 页面元数据 - 默认值，客户端会动态更新
 const pageTitle = 'Search Educational Games | EduGameHQ';
 const pageDescription = 'Search through our collection of 240+ educational games for kids aged 6-18. Find math, science, coding, language, and puzzle games.';
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
+  <!-- 引入统一游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+
   <main class="main-content" id="main-content">
     <div class="content-wrapper">
-      <!-- 搜索头部 -->
-      <div class="search-header">
-        <h1 class="search-title" id="searchTitle">Search Educational Games</h1>
-        <p class="search-description" id="searchDescription">
-          Find the perfect educational game for your learning journey
-        </p>
-      </div>
 
-      <!-- 搜索结果容器 -->
+      <!-- 1. 搜索头部 -->
+      <section class="search-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon search">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title" id="searchTitle">Search Educational Games</h1>
+            <p class="page-description" id="searchDescription">
+              Find the perfect educational game for your learning journey
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 搜索结果容器 -->
       <div id="searchResults">
-        <!-- 搜索提示页面 -->
-        <div class="search-prompt" id="searchPrompt">
-          <div class="search-prompt-content">
-            <div class="search-prompt-icon">
-              <i class="fas fa-search"></i>
+        <!-- 2.1 搜索提示页面 -->
+        <section class="info-module search-prompt" id="searchPrompt">
+          <div class="module-header">
+            <div class="module-icon prompt-icon">
+              <i class="fas fa-lightbulb"></i>
             </div>
-            <h2 class="search-prompt-title">Start Your Learning Adventure</h2>
-            <p class="search-prompt-text">
-              Use the search bar above to find educational games by subject, difficulty, or keywords. 
-              Discover math, science, coding, language arts, and more!
-            </p>
-            
-            <div class="popular-searches">
-              <h3>Popular Searches</h3>
-              <div class="popular-tags">
-                <a href="/search?q=math" class="popular-tag">Math</a>
-                <a href="/search?q=science" class="popular-tag">Science</a>
-                <a href="/search?q=coding" class="popular-tag">Coding</a>
-                <a href="/search?q=puzzle" class="popular-tag">Puzzle</a>
-                <a href="/search?q=language" class="popular-tag">Language</a>
-                <a href="/search?q=geography" class="popular-tag">Geography</a>
-              </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Start Your Learning Adventure</h2>
+              <p class="module-subtitle">Use the search bar to find educational games by subject, difficulty, or keywords</p>
             </div>
           </div>
-        </div>
-
-        <!-- 搜索结果网格 -->
-        <div class="games-grid" id="gamesGrid" style="display: none;">
-          <!-- 游戏卡片将通过JavaScript动态生成 -->
-        </div>
-
-        <!-- 无结果页面 -->
-        <div class="no-results" id="noResults" style="display: none;">
-          <div class="no-results-content">
-            <div class="no-results-icon">
-              <i class="fas fa-search"></i>
-            </div>
-            <h2 class="no-results-title">No Games Found</h2>
-            <p class="no-results-text" id="noResultsText">
-              We couldn't find any games matching your search. Try different keywords or browse our categories.
-            </p>
-            
-            <div class="search-suggestions">
-              <h3>Try searching for:</h3>
-              <div class="suggestion-tags">
-                <a href="/search?q=math" class="suggestion-tag">Math Games</a>
-                <a href="/search?q=science" class="suggestion-tag">Science Games</a>
-                <a href="/search?q=coding" class="suggestion-tag">Coding Games</a>
-                <a href="/search?q=puzzle" class="suggestion-tag">Puzzle Games</a>
-                <a href="/search?q=easy" class="suggestion-tag">Easy Games</a>
-                <a href="/search?q=hard" class="suggestion-tag">Challenge Games</a>
-              </div>
+          
+          <div class="popular-searches">
+            <h3 class="section-title">Popular Searches</h3>
+            <div class="popular-tags">
+              <a href="/search?q=math" class="popular-tag">Math</a>
+              <a href="/search?q=science" class="popular-tag">Science</a>
+              <a href="/search?q=coding" class="popular-tag">Coding</a>
+              <a href="/search?q=puzzle" class="popular-tag">Puzzle</a>
+              <a href="/search?q=language" class="popular-tag">Language</a>
+              <a href="/search?q=geography" class="popular-tag">Geography</a>
             </div>
           </div>
-        </div>
+        </section>
+
+        <!-- 2.2 搜索结果网格 -->
+        <section class="game-module search-results" id="searchResultsModule" style="display: none;">
+          <div class="module-header">
+            <div class="module-icon results-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title" id="resultsTitle">Search Results</h2>
+              <p class="module-subtitle" id="resultsSubtitle">Found games matching your search</p>
+            </div>
+          </div>
+          
+          <div class="games-grid" id="gamesGrid">
+            <!-- 游戏卡片将通过JavaScript动态生成 -->
+          </div>
+        </section>
+
+        <!-- 2.3 无结果页面 -->
+        <section class="info-module no-results" id="noResults" style="display: none;">
+          <div class="module-header">
+            <div class="module-icon no-results-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">No Games Found</h2>
+              <p class="module-subtitle" id="noResultsText">We couldn't find any games matching your search</p>
+            </div>
+          </div>
+          
+          <div class="search-suggestions">
+            <h3 class="section-title">Try searching for:</h3>
+            <div class="suggestion-tags">
+              <a href="/search?q=math" class="suggestion-tag">Math Games</a>
+              <a href="/search?q=science" class="suggestion-tag">Science Games</a>
+              <a href="/search?q=coding" class="suggestion-tag">Coding Games</a>
+              <a href="/search?q=puzzle" class="suggestion-tag">Puzzle Games</a>
+              <a href="/search?q=easy" class="suggestion-tag">Easy Games</a>
+              <a href="/search?q=hard" class="suggestion-tag">Challenge Games</a>
+            </div>
+          </div>
+        </section>
       </div>
+
     </div>
   </main>
 
-  <!-- 客户端搜索脚本 -->
-  <script>
-    // 客户端搜索功能 - 使用通用游戏卡片样式
-    document.addEventListener('DOMContentLoaded', async function() {
-      try {
-        // 加载游戏数据
-        console.log('Loading games data...');
+  <!-- 简化的搜索功能JavaScript -->
+  <script is:inline>
+    // 简化的搜索管理器
+    class SearchManager {
+      constructor() {
+        this.games = [];
+        this.init();
+      }
+
+      // 初始化
+      async init() {
+        try {
+          await this.loadGamesData();
+          this.handleSearch();
+          console.log('🔍 搜索管理器初始化完成');
+        } catch (error) {
+          console.error('搜索初始化失败:', error);
+          this.displayError();
+        }
+      }
+
+      // 加载游戏数据
+      async loadGamesData() {
         const response = await fetch('/games-data.json');
         if (!response.ok) {
-          throw new Error(`Failed to load games data: ${response.status}`);
+          throw new Error(`加载游戏数据失败: ${response.status}`);
         }
         
         const rawData = await response.json();
-        console.log('Raw games data loaded:', Object.keys(rawData).length, 'games');
-        
-        // 将游戏对象转换为数组，并添加slug属性
-        const games = Object.entries(rawData).map(([slug, game]) => ({
+        this.games = Object.entries(rawData).map(([slug, game]) => ({
           ...game,
           slug
         }));
         
-        console.log('Games data processed:', games.length, 'games');
-        console.log('Sample game:', games[0]);
-        
-        // 获取URL参数
+        console.log(`已加载 ${this.games.length} 个游戏数据`);
+      }
+
+      // 处理搜索
+      handleSearch() {
         const urlParams = new URLSearchParams(window.location.search);
         const query = urlParams.get('q') || '';
-        console.log('Search query from URL:', query);
         
         if (query.length > 0) {
-          // 执行搜索
-          const searchResults = performSearch(games, query);
-          displaySearchResults(searchResults, query);
+          const searchResults = this.performSearch(query);
+          this.displaySearchResults(searchResults, query);
         } else {
-          // 显示搜索提示
-          displaySearchPrompt();
+          this.displaySearchPrompt();
         }
-      } catch (error) {
-        console.error('Error loading games:', error);
-        displayError();
       }
-    });
 
-    // 搜索函数
-    function performSearch(games, query) {
-      const searchTerm = query.toLowerCase().trim();
-      
-      return games.filter(game => {
-        // 搜索游戏标题
-        if (game.title && game.title.toLowerCase().includes(searchTerm)) {
-          return true;
-        }
+      // 执行搜索
+      performSearch(query) {
+        const searchTerm = query.toLowerCase().trim();
         
-        // 搜索游戏描述
-        if (game.description && game.description.toLowerCase().includes(searchTerm)) {
-          return true;
-        }
-        
-        // 搜索游戏分类
-        if (game.category && game.category.toLowerCase().includes(searchTerm)) {
-          return true;
-        }
-        
-        // 搜索游戏标签
-        if (game.tags && Array.isArray(game.tags)) {
-          return game.tags.some(tag => tag.toLowerCase().includes(searchTerm));
-        }
-        
-        return false;
-      });
-    }
+        return this.games.filter(game => {
+          return (
+            (game.title && game.title.toLowerCase().includes(searchTerm)) ||
+            (game.description && game.description.toLowerCase().includes(searchTerm)) ||
+            (game.category && game.category.toLowerCase().includes(searchTerm)) ||
+            (game.tags && Array.isArray(game.tags) && 
+             game.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
+          );
+        });
+      }
 
-    // 创建游戏卡片HTML - 使用通用样式结构
-    function createGameCard(game) {
-      // 使用游戏的实际缩略图URL，如果没有则使用默认图片
-      let imageUrl = game.thumbnailUrl || '/images/logo.svg'; // 使用logo作为备用
-      
-      const gameUrl = `/games/${game.slug}`;
-      
-      // 获取分类标签样式
-      const categoryClass = game.category ? game.category.toLowerCase() : 'puzzle';
-      
-      // 获取难度标签
-      const difficultyTag = game.difficulty || 'Medium';
-      
-      // 计算人气值 (模拟数据)
-      const popularity = Math.floor(Math.random() * 15000) + 500;
-      let popularityDisplay = '';
-      let popularityIcon = '';
-      
-      if (popularity >= 5000) {
-        popularityDisplay = `🔥 ${(popularity / 1000).toFixed(1)}K`;
-      } else if (popularity >= 1000) {
-        popularityDisplay = `⭐ ${(popularity / 1000).toFixed(1)}K`;
-      } else {
-        popularityDisplay = popularity.toString();
-      }
-      
-      // 检查最近游戏时间 (从localStorage)
-      const gameHistory = JSON.parse(localStorage.getItem('gameHistory') || '{}');
-      const lastPlayed = gameHistory[game.slug];
-      let playedBadge = '';
-      
-      if (lastPlayed) {
-        const daysDiff = Math.floor((Date.now() - lastPlayed) / (1000 * 60 * 60 * 24));
-        if (daysDiff === 0) {
-          playedBadge = '<div class="played-badge">Today</div>';
-        } else if (daysDiff === 1) {
-          playedBadge = '<div class="played-badge">Yesterday</div>';
-        } else if (daysDiff <= 7) {
-          playedBadge = '<div class="played-badge">A few days ago</div>';
-        } else if (daysDiff <= 30) {
-          playedBadge = '<div class="played-badge">A few weeks ago</div>';
-        }
-      }
-      
-      // 获取特色标签
-      let featureTag = '';
-      if (game.isNew) {
-        featureTag = '<span class="feature-tag new">NEW</span>';
-      } else if (popularity > 10000) {
-        featureTag = '<span class="feature-tag hot">HOT</span>';
-      } else if (game.isFeatured) {
-        featureTag = '<span class="feature-tag featured">FEATURED</span>';
-      }
-      
-      return `
-        <div class="game-card ${categoryClass}-theme" onclick="window.location.href='${gameUrl}'">
-          <div class="game-image-container">
-            <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy" 
-                 onerror="this.onerror=null; this.src='/images/logo.svg';">
-            <div class="game-overlay">
-              ${playedBadge}
-              <div class="popularity-badge">${popularityDisplay}</div>
-              <a href="${gameUrl}" class="play-button">
-                <i class="fas fa-play"></i>
-                Play Now
-              </a>
+      // 创建简化的游戏卡片HTML（使用GameCard结构）
+      createGameCard(game) {
+        const imageUrl = game.thumbnailUrl || '/images/logo.svg';
+        const gameUrl = `/games/${game.slug}`;
+        const categoryClass = game.category ? game.category.toLowerCase() : 'puzzle';
+        
+        // 模拟人气值
+        const popularity = Math.floor(Math.random() * 15000) + 500;
+        const popularityDisplay = popularity >= 1000 ? 
+          `${(popularity / 1000).toFixed(1)}K` : popularity.toString();
+        
+        return `
+          <div class="game-card" onclick="window.location.href='${gameUrl}'">
+            <div class="game-image-container">
+              <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy">
+              <div class="game-overlay">
+                <div class="popularity-badge">${popularityDisplay}</div>
+                <button class="play-button">
+                  <i class="fas fa-play"></i>
+                  <span>Play Now</span>
+                </button>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">${game.title}</h3>
+              <div class="game-tags">
+                <span class="category-tag ${categoryClass}">${game.categoryName || game.category}</span>
+              </div>
             </div>
           </div>
-          <div class="game-info">
-            <h3 class="game-title">${game.title}</h3>
-            <div class="game-tags">
-              <span class="category-tag ${categoryClass}">${game.categoryName || game.category}</span>
-              <span class="difficulty-tag ${difficultyTag.toLowerCase()}">${difficultyTag}</span>
-              ${featureTag}
-            </div>
-          </div>
-        </div>
-      `;
-    }
+        `;
+      }
 
-    // 显示搜索结果
-    function displaySearchResults(results, query) {
-      const searchPrompt = document.getElementById('searchPrompt');
-      const gamesGrid = document.getElementById('gamesGrid');
-      const noResults = document.getElementById('noResults');
-      const searchTitle = document.getElementById('searchTitle');
-      const searchDescription = document.getElementById('searchDescription');
-      
-      // 隐藏搜索提示和无结果页面
-      searchPrompt.style.display = 'none';
-      noResults.style.display = 'none';
-      
-      if (results.length > 0) {
-        // 显示搜索结果
-        gamesGrid.style.display = 'grid';
-        gamesGrid.innerHTML = results.map(game => createGameCard(game)).join('');
+      // 显示搜索结果
+      displaySearchResults(results, query) {
+        const searchPrompt = document.getElementById('searchPrompt');
+        const searchResultsModule = document.getElementById('searchResultsModule');
+        const gamesGrid = document.getElementById('gamesGrid');
+        const noResults = document.getElementById('noResults');
         
-        // 更新页面标题和描述
-        searchTitle.textContent = `Search Results for "${query}"`;
-        searchDescription.textContent = `Found ${results.length} educational games matching your search.`;
+        // 隐藏其他区域
+        searchPrompt.style.display = 'none';
+        noResults.style.display = 'none';
         
-        // 更新页面元数据
-        document.title = `Search Results for "${query}" | EduGameHQ`;
+        if (results.length > 0) {
+          // 显示搜索结果
+          searchResultsModule.style.display = 'block';
+          gamesGrid.innerHTML = results.map(game => this.createGameCard(game)).join('');
+          
+          // 更新标题
+          document.getElementById('searchTitle').textContent = `Search Results for "${query}"`;
+          document.getElementById('searchDescription').textContent = 
+            `Found ${results.length} educational games matching your search.`;
+          document.getElementById('resultsTitle').textContent = `Search Results`;
+          document.getElementById('resultsSubtitle').textContent = 
+            `Found ${results.length} games for "${query}"`;
+          
+          console.log(`显示 ${results.length} 个搜索结果`);
+        } else {
+          this.displayNoResults(query);
+        }
+      }
+
+      // 显示无结果
+      displayNoResults(query) {
+        const searchPrompt = document.getElementById('searchPrompt');
+        const searchResultsModule = document.getElementById('searchResultsModule');
+        const noResults = document.getElementById('noResults');
         
-        console.log(`Displaying ${results.length} search results for "${query}"`);
-      } else {
-        // 显示无结果页面
-        gamesGrid.style.display = 'none';
+        searchPrompt.style.display = 'none';
+        searchResultsModule.style.display = 'none';
         noResults.style.display = 'block';
         
+        document.getElementById('searchTitle').textContent = `No Results for "${query}"`;
+        document.getElementById('searchDescription').textContent = 
+          'Try different keywords or explore our game categories.';
+        document.getElementById('noResultsText').textContent = 
+          `We couldn't find any games matching "${query}". Try different keywords or browse our categories.`;
+      }
+
+      // 显示搜索提示
+      displaySearchPrompt() {
+        const searchPrompt = document.getElementById('searchPrompt');
+        const searchResultsModule = document.getElementById('searchResultsModule');
+        const noResults = document.getElementById('noResults');
+        
+        searchPrompt.style.display = 'block';
+        searchResultsModule.style.display = 'none';
+        noResults.style.display = 'none';
+      }
+
+      // 显示错误
+      displayError() {
+        const noResults = document.getElementById('noResults');
         const noResultsText = document.getElementById('noResultsText');
-        noResultsText.textContent = `We couldn't find any games matching "${query}". Try different keywords or browse our categories.`;
         
-        // 更新页面标题和描述
-        searchTitle.textContent = `No Results for "${query}"`;
-        searchDescription.textContent = 'Try different keywords or explore our game categories.';
-        
-        console.log(`No results found for "${query}"`);
+        noResults.style.display = 'block';
+        noResultsText.textContent = 'Sorry, there was an error loading the games. Please try again later.';
       }
     }
 
-    // 显示搜索提示
-    function displaySearchPrompt() {
-      const searchPrompt = document.getElementById('searchPrompt');
-      const gamesGrid = document.getElementById('gamesGrid');
-      const noResults = document.getElementById('noResults');
-      
-      searchPrompt.style.display = 'block';
-      gamesGrid.style.display = 'none';
-      noResults.style.display = 'none';
-      
-      console.log('Displaying search prompt');
-    }
-
-    // 显示错误信息
-    function displayError() {
-      const searchPrompt = document.getElementById('searchPrompt');
-      const gamesGrid = document.getElementById('gamesGrid');
-      const noResults = document.getElementById('noResults');
-      
-      searchPrompt.style.display = 'none';
-      gamesGrid.style.display = 'none';
-      noResults.style.display = 'block';
-      
-      const noResultsText = document.getElementById('noResultsText');
-      noResultsText.textContent = 'Sorry, there was an error loading the games. Please try again later.';
-      
-      console.log('Displaying error message');
-    }
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      window.searchManager = new SearchManager();
+    });
   </script>
 </BaseLayout>
 
 <style>
-  /* 搜索页面样式 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
-    background: linear-gradient(135deg, #FEFCFB 0%, #F8F6F3 50%, #FFF7ED 100%);
+    background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(245, 158, 11, 0.05) 100%);
     min-height: 100vh;
   }
 
@@ -319,312 +290,170 @@ const pageDescription = 'Search through our collection of 240+ educational games
     padding: 2rem;
   }
 
+  /* 1. 搜索头部区域 */
   .search-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: white;
+    background: linear-gradient(135deg, #FEF3E2 0%, #FED7AA 50%, rgba(245, 158, 11, 0.08) 100%);
     border-radius: 20px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    border: 1px solid #E5E7EB;
-  }
-
-  .search-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin-bottom: 1rem;
-  }
-
-  .search-description {
-    font-size: 1.125rem;
-    color: #6B7280;
-    margin: 0;
-  }
-
-  /* 游戏网格样式 */
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    margin-top: 2rem;
-  }
-
-  .game-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border: 1px solid #F3F4F6;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    cursor: pointer;
-  }
-
-  .game-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  }
-
-  .game-image-container {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(245, 158, 11, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(245, 158, 11, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
     position: relative;
-    width: 100%;
-    height: 180px;
     overflow: hidden;
   }
 
-  .game-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-
-  .game-card:hover .game-image {
-    transform: scale(1.05);
-  }
-
-  .game-overlay {
+  .search-header::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.3) 50%, transparent 100%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .game-card:hover .game-overlay {
-    opacity: 1;
-  }
-
-  /* 游戏过标签 (左上角) */
-  .played-badge {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    background: rgba(0, 0, 0, 0.8);
     color: white;
-    padding: 4px 8px;
+    font-size: 1.75rem;
+    box-shadow: 
+      0 8px 24px rgba(245, 158, 11, 0.3),
+      0 4px 12px rgba(245, 158, 11, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .section-icon:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 32px rgba(245, 158, 11, 0.4),
+      0 6px 16px rgba(245, 158, 11, 0.3);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* 通用模块样式 */
+  .game-module,
+  .info-module {
+    margin-bottom: 3rem;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
     border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    backdrop-filter: blur(10px);
-  }
-
-  /* 人气值标签 (右上角) */
-  .popularity-badge {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    background: rgba(255, 255, 255, 0.95);
-    color: #1F2937;
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    animation: pulse 2s infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-
-  .play-button {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
-    background: white;
-    color: #2563EB;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-  }
-
-  .play-button:hover {
-    background: #F0F9FF;
-    transform: scale(1.05);
-  }
-
-  .game-info {
-    padding: 1.25rem;
-  }
-
-  .game-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin: 0 0 0.75rem 0;
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .game-description {
-    color: #6B7280;
-    font-size: 0.875rem;
-    line-height: 1.5;
-    margin: 0 0 1rem 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .game-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-
-  .category-tag, .difficulty-tag, .feature-tag {
-    padding: 0.25rem 0.75rem;
-    border-radius: 20px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* 分类标签样式 */
-  .category-tag {
-    background: linear-gradient(135deg, #F59E0B, #D97706);
+    justify-content: center;
     color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    margin-top: 2px;
   }
 
-  .category-tag.math {
-    background: linear-gradient(135deg, #EA580C, #DC2626);
+  .prompt-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
   }
 
-  .category-tag.science {
-    background: linear-gradient(135deg, #059669, #047857);
-  }
-
-  .category-tag.coding {
-    background: linear-gradient(135deg, #2563EB, #1D4ED8);
-  }
-
-  .category-tag.language {
-    background: linear-gradient(135deg, #C026D3, #A21CAF);
-  }
-
-  .category-tag.puzzle {
-    background: linear-gradient(135deg, #7C3AED, #6D28D9);
-  }
-
-  .category-tag.sports {
-    background: linear-gradient(135deg, #DC2626, #B91C1C);
-  }
-
-  .category-tag.art {
-    background: linear-gradient(135deg, #EC4899, #DB2777);
-  }
-
-  .category-tag.geography {
-    background: linear-gradient(135deg, #0891B2, #0E7490);
-  }
-
-  /* 难度标签样式 */
-  .difficulty-tag {
-    background: #EFF6FF;
-    color: #1E40AF;
-  }
-
-  .difficulty-tag.easy {
-    background: #F0FDF4;
-    color: #166534;
-  }
-
-  .difficulty-tag.medium {
-    background: #FEF3C7;
-    color: #92400E;
-  }
-
-  .difficulty-tag.hard {
-    background: #FEF2F2;
-    color: #991B1B;
-  }
-
-  /* 特色标签样式 */
-  .feature-tag {
-    font-weight: 700;
-  }
-
-  .feature-tag.new {
-    background: linear-gradient(135deg, #10B981, #059669);
-    color: white;
-  }
-
-  .feature-tag.hot {
-    background: linear-gradient(135deg, #EF4444, #DC2626);
-    color: white;
-  }
-
-  .feature-tag.featured {
-    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
-    color: white;
-  }
-
-  .feature-tag.updated {
-    background: linear-gradient(135deg, #F59E0B, #D97706);
-    color: white;
-  }
-
-  /* 无结果样式 */
-  .no-results {
-    text-align: center;
-    padding: 4rem 2rem;
-  }
-
-  .no-results-content {
-    max-width: 500px;
-    margin: 0 auto;
+  .results-icon {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
   }
 
   .no-results-icon {
-    font-size: 4rem;
-    color: #9CA3AF;
-    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
   }
 
-  .no-results-title {
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
     font-family: 'Space Grotesk', sans-serif;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #1F2937;
-    margin-bottom: 1rem;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
   }
 
-  .no-results-text {
+  .module-subtitle {
     color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 搜索相关样式 */
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.125rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+    text-align: center;
   }
 
+  .popular-searches,
   .search-suggestions {
-    margin-top: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
   }
 
-  .search-suggestions h3 {
-    font-size: 1rem;
-    color: #374151;
-    margin-bottom: 1rem;
-  }
-
+  .popular-tags,
   .suggestion-tags {
     display: flex;
     flex-wrap: wrap;
@@ -632,14 +461,28 @@ const pageDescription = 'Search through our collection of 240+ educational games
     justify-content: center;
   }
 
+  .popular-tag,
   .suggestion-tag {
     padding: 0.5rem 1rem;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .popular-tag {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: white;
+  }
+
+  .popular-tag:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+  }
+
+  .suggestion-tag {
     background: #F3F4F6;
     color: #374151;
-    text-decoration: none;
-    border-radius: 20px;
-    font-weight: 500;
-    transition: all 0.3s ease;
   }
 
   .suggestion-tag:hover {
@@ -648,104 +491,150 @@ const pageDescription = 'Search through our collection of 240+ educational games
     transform: translateY(-1px);
   }
 
-  /* 搜索提示样式 */
-  .search-prompt {
-    text-align: center;
-    padding: 4rem 2rem;
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .search-prompt-content {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .search-prompt-icon {
-    font-size: 5rem;
-    color: #F59E0B;
-    margin-bottom: 2rem;
-  }
-
-  .search-prompt-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin-bottom: 1.5rem;
-  }
-
-  .search-prompt-text {
-    color: #6B7280;
-    font-size: 1.125rem;
-    line-height: 1.6;
-    margin-bottom: 3rem;
-  }
-
-  .popular-searches h3 {
-    font-size: 1.25rem;
-    color: #374151;
-    margin-bottom: 1.5rem;
-  }
-
-  .popular-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: center;
-  }
-
-  .popular-tag {
-    padding: 0.75rem 1.5rem;
-    background: linear-gradient(135deg, #F59E0B, #D97706);
-    color: white;
-    text-decoration: none;
-    border-radius: 25px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-
-  .popular-tag:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
   }
 
   /* 响应式设计 */
-  @media (max-width: 1200px) {
-    .games-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+  @media (max-width: 1024px) {
+    .header-content {
+      gap: 1.5rem;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
     }
   }
 
   @media (max-width: 768px) {
-    .games-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-    
-    .game-image-container {
-      height: 150px;
-    }
-    
-    .game-info {
+    .content-wrapper {
       padding: 1rem;
     }
-    
-    .game-title {
+
+    .search-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 18px;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    .section-icon {
+      width: 64px;
+      height: 64px;
+      font-size: 1.5rem;
+      border-radius: 18px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
       font-size: 1rem;
     }
-    
-    .game-description {
-      font-size: 0.8rem;
+
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
+      margin-top: 0;
+    }
+
+    .module-title {
+      font-size: 1.375rem;
+    }
+
+    .module-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .game-module,
+    .info-module {
+      margin-bottom: 2.5rem;
+    }
+
+    .popular-tags,
+    .suggestion-tags {
+      gap: 0.5rem;
+    }
+
+    .popular-tag,
+    .suggestion-tag {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
     }
   }
 
-  @media (max-width: 480px) {
-    .games-grid {
-      grid-template-columns: 1fr;
-      gap: 0.75rem;
+  @media (max-width: 640px) {
+    .search-header {
+      padding: 1.25rem;
+      border-radius: 16px;
     }
-    
-    .content-wrapper {
+
+    .header-content {
+      gap: 1rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.25rem;
+      border-radius: 16px;
+    }
+
+    .page-description {
+      font-size: 0.95rem;
+    }
+
+    .module-title {
+      font-size: 1.25rem;
+    }
+
+    .module-header {
+      padding: 1rem;
+    }
+
+    .popular-searches,
+    .search-suggestions {
       padding: 1rem;
     }
   }
