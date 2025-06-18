@@ -3,7 +3,7 @@
 /* 游戏网格布局 */
 .games-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);  /* 默认桌面端显示4个游戏 */
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -418,7 +418,7 @@
 /* 响应式设计 */
 @media (max-width: 768px) {
   .games-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);  /* 手机端显示2个游戏 */
     gap: 1rem;
   }
 
@@ -469,7 +469,7 @@
 /* 平板端适配 */
 @media (min-width: 769px) and (max-width: 1024px) {
   .games-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);  /* 平板端显示3个游戏 */
     gap: 1.5rem;
   }
 
@@ -480,13 +480,13 @@
 
 @media (min-width: 1024px) {
   .games-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);  /* 桌面端显示4个游戏 */
   }
 }
 
 @media (min-width: 1400px) {
   .games-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);  /* 大屏幕保持4个游戏 */
   }
 }
 
