@@ -5,13 +5,6 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
-const seoData = {
-  title: "Sports Games for Kids | Free Online Sports Games | EduGameHQ",
-  description: "Play 20+ free sports games for kids aged 6-18. Experience soccer, basketball, tennis, racing and more athletic challenges online.",
-  keywords: ["sports games", "soccer games", "basketball games", "tennis games", "racing games", "kids sports games", "free sports games"],
-  ogImage: "/images/sports-games-og.jpg"
-};
-
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
@@ -25,6 +18,12 @@ try {
 
 // 筛选体育游戏
 const sportsGames = allGamesData.filter(game => game.category === 'sports');
+
+// 按难度和特色分组游戏
+const featuredGames = sportsGames.filter(game => game.featured);
+const easyGames = sportsGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = sportsGames.filter(game => game.difficulty === 'Medium');
+const hardGames = sportsGames.filter(game => game.difficulty === 'Hard');
 
 // 为了兼容新旧数据格式，我们需要标准化游戏数据
 const normalizedSportsGames = sportsGames.map(game => {
@@ -136,7 +135,7 @@ const sportsCoreSkills = [
 ];
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
@@ -154,7 +153,7 @@ const sportsCoreSkills = [
           <div class="header-text">
             <h1 class="page-title">Sports Games</h1>
             <p class="page-description">
-              Get active with our exciting collection of sports games! From soccer and basketball to racing and athletics, develop your competitive spirit, improve hand-eye coordination, and learn teamwork through fun virtual sports experiences.
+              Get active and learn through sports games! Combine physical education concepts with fun gameplay, teaching teamwork, strategy, healthy competition, and sportsmanship through virtual athletic challenges.
             </p>
           </div>
         </div>

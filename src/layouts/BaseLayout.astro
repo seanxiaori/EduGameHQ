@@ -1,14 +1,28 @@
 ---
+import { getPageSEO, generateStructuredData, getKeywordsString, getOGImageUrl } from '../data/seo-config';
+
 export interface Props {
-  title: string;
+  title?: string;
   description?: string;
   bodyClass?: string;
+  gameData?: any; // 游戏页面的游戏数据
 }
 
-const { title, description = "Free educational games for kids and students", bodyClass = "" } = Astro.props;
+const { title, description, bodyClass = "", gameData } = Astro.props;
 
-// 获取当前页面路径，用于导航高亮
+// 获取当前页面路径，用于导航高亮和SEO配置
 const currentPath = Astro.url.pathname;
+
+// 获取SEO配置
+const seoConfig = getPageSEO(currentPath);
+const pageTitle = title || seoConfig.title;
+const pageDescription = description || seoConfig.description;
+const pageKeywords = getKeywordsString(currentPath);
+const ogImageUrl = getOGImageUrl(currentPath);
+const structuredData = generateStructuredData(currentPath, gameData);
+
+// 构建完整的页面URL
+const canonicalUrl = new URL(currentPath, Astro.site || 'https://edugamehq.com').toString();
 
 // 定义页面分类和层级结构
 const pageStructure = {
@@ -106,75 +120,196 @@ if (!isHomePage) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{title}</title>
-  <meta name="description" content={description}>
+  
+  <!-- 页面标题和描述 -->
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription}>
+  
+  <!-- SEO关键词 -->
+  <meta name="keywords" content={pageKeywords}>
+  
+  <!-- 其他SEO元标签 -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="author" content="EduGameHQ">
+  <meta name="language" content="English">
+  <meta name="revisit-after" content="7 days">
+  <meta name="distribution" content="global">
+  <meta name="rating" content="general">
+  
+  <!-- 地理位置标签（全球教育平台）-->
+  <meta name="geo.region" content="US">
+  <meta name="geo.placename" content="Global">
+  <meta name="ICBM" content="39.7392, -104.9903">
+  
+  <!-- 教育相关META标签 -->
+  <meta name="educational-level" content="K-12">
+  <meta name="educational-audience" content="student">
+  <meta name="educational-subject" content="mathematics,science,language arts,computer science,physical education,arts">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
   
-  <!-- Fonts -->
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalUrl}>
+  
+  <!-- Alternate hreflang for international SEO -->
+  <link rel="alternate" hreflang="en" href={canonicalUrl}>
+  <link rel="alternate" hreflang="x-default" href={canonicalUrl}>
+  
+  <!-- Fonts - 优化加载 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
   
-  <!-- Meta Tags -->
-  <meta name="robots" content="index, follow">
-  <meta name="author" content="EduGameHQ">
-  <meta name="keywords" content="educational games, learning games, kids games, math games, science games, coding games, free online games">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content={pageTitle}>
+  <meta property="og:description" content={pageDescription}>
+  <meta property="og:type" content={isGamePage ? "game" : "website"}>
+  <meta property="og:url" content={canonicalUrl}>
+  <meta property="og:image" content={new URL(ogImageUrl, Astro.site || 'https://edugamehq.com').toString()}>
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
+  <meta property="og:site_name" content="EduGameHQ">
+  <meta property="og:locale" content="en_US">
   
-  <!-- Open Graph -->
-  <meta property="og:title" content={title}>
-  <meta property="og:description" content={description}>
-  <meta property="og:type" content="website">
-  <meta property="og:url" content={Astro.url}>
-  <meta property="og:image" content="/images/og-image.jpg">
-  
-  <!-- Twitter Card -->
+  <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content={title}>
-  <meta name="twitter:description" content={description}>
-  <meta name="twitter:image" content="/images/og-image.jpg">
+  <meta name="twitter:site" content="@EduGameHQ">
+  <meta name="twitter:creator" content="@EduGameHQ">
+  <meta name="twitter:title" content={pageTitle}>
+  <meta name="twitter:description" content={pageDescription}>
+  <meta name="twitter:image" content={new URL(ogImageUrl, Astro.site || 'https://edugamehq.com').toString()}>
+  <meta name="twitter:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
   
-  <!-- Canonical URL -->
-  <link rel="canonical" href={Astro.url}>
+  <!-- Facebook Meta Tags -->
+  <meta property="fb:app_id" content="your-facebook-app-id">
+  
+  <!-- Pinterest Meta Tags -->
+  <meta name="pinterest-rich-pin" content="true">
+  
+  <!-- LinkedIn Meta Tags -->
+  <meta property="linkedin:owner" content="EduGameHQ">
   
   <!-- Preload critical resources -->
   <link rel="preload" href="/images/logo.svg" as="image">
+  <link rel="preload" href={ogImageUrl} as="image">
   
-  <!-- Structured Data -->
-  <script type="application/ld+json" is:inline>
+  <!-- DNS Prefetch for external resources -->
+  <link rel="dns-prefetch" href="//fonts.googleapis.com">
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  
+  <!-- Structured Data (JSON-LD) -->
+  {structuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  )}
+  
+  <!-- Additional structured data for educational content -->
+  <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
+    "@type": "EducationalOrganization",
     "name": "EduGameHQ",
-    "description": "Free educational games for kids aged 6-18. Learn math, science, coding, language arts and more through engaging games.",
+    "alternateName": "Educational Games Headquarters",
+    "description": "Free educational games platform for kids aged 6-18",
     "url": "https://edugamehq.com",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://edugamehq.com/search?q={search_term_string}",
-      "query-input": "required name=search_term_string"
+    "logo": "https://edugamehq.com/images/logo.svg",
+    "sameAs": [
+      "https://twitter.com/EduGameHQ",
+      "https://facebook.com/EduGameHQ",
+      "https://youtube.com/EduGameHQ"
+    ],
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@edugamehq.com"
+    },
+    "educationalCredentialAwarded": "None",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Educational Games",
+      "itemListElement": [
+        {
+          "@type": "OfferCategory",
+          "name": "Math Games"
+        },
+        {
+          "@type": "OfferCategory", 
+          "name": "Science Games"
+        },
+        {
+          "@type": "OfferCategory",
+          "name": "Language Games"
+        },
+        {
+          "@type": "OfferCategory",
+          "name": "Coding Games"
+        },
+        {
+          "@type": "OfferCategory",
+          "name": "Puzzle Games"
+        },
+        {
+          "@type": "OfferCategory",
+          "name": "Sports Games"
+        },
+        {
+          "@type": "OfferCategory",
+          "name": "Art Games"
+        }
+      ]
     }
   }
   </script>
   
-  <!-- Google Analytics -->
+  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script is:inline>
+  <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       window.dataLayer.push(arguments);
     }
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+    gtag('config', 'G-XXXXXXXXXX', {
+      page_title: document.title,
+      page_location: window.location.href,
+      content_group1: 'Educational Games',
+      custom_map: {
+        'dimension1': 'page_category',
+        'dimension2': 'user_type'
+      }
+    });
   </script>
+  
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="your-google-search-console-verification-code">
+  
+  <!-- Bing Webmaster Tools Verification -->
+  <meta name="msvalidate.01" content="your-bing-verification-code">
+  
+  <!-- Yandex Verification -->
+  <meta name="yandex-verification" content="your-yandex-verification-code">
+  
+  <!-- Theme Color for mobile browsers -->
+  <meta name="theme-color" content="#F59E0B">
+  <meta name="msapplication-TileColor" content="#F59E0B">
+  
+  <!-- PWA Manifest -->
+  <link rel="manifest" href="/manifest.json">
 </head>
 
 <body class={`min-h-screen ${bodyClass}`}>
-  <!-- Skip to main content -->
+  <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-gold-500 text-white px-4 py-2 rounded-lg z-50">
     Skip to main content
   </a>
@@ -185,7 +320,7 @@ if (!isHomePage) {
     <header class="navbar">
       <div class="nav-container">
         <!-- Logo -->
-        <a href="/" class="logo">
+        <a href="/" class="logo" aria-label="EduGameHQ Home">
           <div class="logo-icon">
             <img src="/images/logo.svg" alt="EduGameHQ Logo" width="40" height="40" />
           </div>
@@ -193,11 +328,11 @@ if (!isHomePage) {
         </a>
         
         <!-- 智能面包屑导航 -->
-        <nav class="nav-menu">
+        <nav class="nav-menu" aria-label="Main navigation">
           {breadcrumbs.length === 0 ? (
             <!-- 首页导航 -->
             <div class="nav-breadcrumbs">
-              <a href="/" class="nav-link current">
+              <a href="/" class="nav-link current" aria-current="page">
                 <i class="fas fa-home"></i>
                 Home
               </a>

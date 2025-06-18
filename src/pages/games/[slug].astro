@@ -55,14 +55,35 @@ function getGameSourceUrl(game: any): string {
   return game.sourceUrl || game.url || '';
 }
 
-// SEO数据
-const seoData = {
-  title: `${game.title} - Free Educational Game | EduGameHQ`,
-  description: `Play ${game.title} for free! ${game.description || 'An engaging educational game perfect for learning and fun.'} No downloads required - play instantly in your browser.`
+// 动态生成SEO数据
+const gameTitle = game.title;
+const gameDescription = game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`;
+const categoryName = game.category.charAt(0).toUpperCase() + game.category.slice(1);
+const ageRange = `Ages ${game.minAge || 6}-${game.maxAge || 18}`;
+
+// 构建动态SEO信息
+const dynamicSEO = {
+  title: `${gameTitle} - Free ${categoryName} Game | EduGameHQ`,
+  description: `${gameDescription} Perfect for students ${ageRange}. Play instantly in your browser - no downloads required!`,
+  keywords: [
+    game.title.toLowerCase(),
+    `${game.category} game`,
+    `educational ${game.category} game`,
+    `free ${game.category} game`,
+    `${game.category} games for kids`,
+    `online ${game.category} game`,
+    `interactive ${game.category} game`,
+    `learning ${game.category} game`,
+    ...((game.tags || []).slice(0, 5))
+  ].filter(Boolean)
 };
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout 
+  title={dynamicSEO.title} 
+  description={dynamicSEO.description}
+  gameData={game}
+>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
 

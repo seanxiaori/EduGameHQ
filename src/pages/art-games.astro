@@ -5,13 +5,6 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
-const seoData = {
-  title: "Art & Creativity Games for Kids | Free Online Creative Learning Games | EduGameHQ",
-  description: "Play 30+ free art and creativity games for kids aged 6-18. Unleash your imagination through digital art, music, design, and creative expression.",
-  keywords: ["art games", "creativity games", "digital art games", "music games", "design games", "creative expression", "art for kids", "educational art games"],
-  ogImage: "/images/art-games-og.jpg"
-};
-
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
@@ -33,7 +26,7 @@ const mediumGames = artGames.filter(game => game.difficulty === 'Medium');
 const hardGames = artGames.filter(game => game.difficulty === 'Hard');
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
@@ -51,7 +44,7 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
           <div class="header-text">
             <h1 class="page-title">Art & Creativity Games</h1>
             <p class="page-description">
-              Unleash your creativity! Explore visual arts, music, design, and creative expression through interactive games that inspire artistic thinking and imagination while developing aesthetic appreciation and creative skills.
+              Unleash your creativity with our collection of art and creativity games! Explore visual arts, music, design, and creative expression through interactive games that inspire imagination and artistic skills.
             </p>
           </div>
         </div>

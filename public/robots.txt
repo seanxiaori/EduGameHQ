@@ -1,0 +1,74 @@
+# EduGameHQ.com - Robots.txt
+# 教育游戏聚合平台 - 搜索引擎爬虫指导文件
+
+# 允许所有搜索引擎爬虫访问
+User-agent: *
+Allow: /
+
+# 不允许爬取的目录和文件
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_astro/
+Disallow: /src/
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /scripts/
+Disallow: /temp/
+Disallow: /cache/
+
+# 不允许爬取用户个人数据相关页面
+Disallow: /recently-played
+Disallow: /favorites
+Disallow: /user/
+
+# 允许爬取但降低优先级的页面
+Crawl-delay: 1
+
+# 特别针对Google搜索引擎的设置
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# 特别针对Bing搜索引擎的设置  
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# 特别针对百度搜索引擎的设置
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# 特别针对Yandex搜索引擎的设置
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# 阻止恶意爬虫
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+# Sitemap位置
+Sitemap: https://edugamehq.com/sitemap.xml
+
+# 主要页面（提示搜索引擎优先抓取）
+# 首页
+# https://edugamehq.com/
+
+# 分类页面
+# https://edugamehq.com/math-games
+# https://edugamehq.com/science-games
+# https://edugamehq.com/language-games
+# https://edugamehq.com/puzzle-games
+# https://edugamehq.com/sports-games
+# https://edugamehq.com/art-games
+
+# 特殊页面
+# https://edugamehq.com/trending
+# https://edugamehq.com/new-games 

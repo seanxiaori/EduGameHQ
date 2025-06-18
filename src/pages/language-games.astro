@@ -5,13 +5,6 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
-const seoData = {
-  title: "Language Games for Kids | Free Educational Language Learning Games",
-  description: "Play 15+ free language games for kids aged 6-18. Improve vocabulary, spelling, reading comprehension and communication skills.",
-  keywords: ["language games", "vocabulary games", "spelling games", "reading games", "grammar games", "kids language learning", "free language games"],
-  ogImage: "/images/language-games-og.jpg"
-};
-
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
@@ -33,7 +26,7 @@ const mediumGames = languageGames.filter(game => game.difficulty === 'Medium');
 const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
@@ -45,13 +38,13 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
         <div class="header-content">
           <div class="header-icon">
             <div class="section-icon language">
-              <i class="fas fa-comment"></i>
+              <i class="fas fa-book-open"></i>
             </div>
           </div>
           <div class="header-text">
             <h1 class="page-title">Language Games</h1>
             <p class="page-description">
-              Master the art of communication with engaging language games! Build vocabulary, improve spelling, enhance reading comprehension, and develop strong writing skills through interactive storytelling and word challenges.
+              Master language skills through engaging games! Our collection focuses on reading, writing, vocabulary, grammar, and communication skills. Perfect for English learners of all levels, from basic literacy to advanced language arts.
             </p>
           </div>
         </div>
