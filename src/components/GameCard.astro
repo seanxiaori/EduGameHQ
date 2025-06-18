@@ -111,13 +111,14 @@ const gameUrl = `/games/${safeGame.slug}`;
         <i class="fas fa-play"></i>
         <span>Play Now</span>
       </a>
-      
-      {showFavorite && (
-        <button class="favorite-heart-btn" data-game-slug={safeGame.slug} aria-label="Add to favorites">
-          <i class="far fa-heart"></i>
-        </button>
-      )}
     </div>
+    
+    <!-- 收藏按钮独立出来，不受蒙版影响 -->
+    {showFavorite && (
+      <button class="favorite-heart-btn" data-game-slug={safeGame.slug} aria-label="Add to favorites">
+        <i class="far fa-heart"></i>
+      </button>
+    )}
     
     <!-- 左上角：游戏历史标签 - 动态显示 -->
     <div class="played-badge-container" data-game-slug={safeGame.slug}></div>
