@@ -139,253 +139,339 @@ const recentlyPlayedGames = allGamesData
     </div>
   </main>
 
-  <!-- 简化的游戏历史管理JavaScript -->
+  <!-- 最近游戏管理器 -->
   <script is:inline>
-    // 简化的游戏历史管理
-    class RecentGamesManager {
+    // 增强的最近游戏管理器 - 集成真实统计数据
+    class RecentlyPlayedManager {
       constructor() {
+        this.storageKey = 'gameHistory';
         this.init();
       }
 
       // 初始化
       init() {
-        this.initializeClearButton();
-        this.updateRecentlyPlayedDisplay();
-        console.log('✅ 最近游戏管理器初始化完成');
+        // 等待统计管理器加载
+        if (typeof window.gameStatsManager === 'undefined') {
+          setTimeout(() => this.init(), 100);
+          return;
+        }
+
+        this.loadRecentGames();
+        this.setupEventListeners();
+        this.setupRealTimeUpdates();
+        console.log('⏱️ 最近游戏管理器初始化完成');
       }
 
-      // 初始化清除按钮
-      initializeClearButton() {
-        console.log('🔧 正在初始化清除按钮...');
-        const clearBtn = document.getElementById('clearHistoryBtn');
-        console.log('清除按钮元素:', clearBtn);
+      // 加载最近游戏 - 使用真实数据
+      loadRecentGames() {
+        if (typeof window.gameStatsManager === 'undefined') return;
+
+        // 获取真实的最近游戏数据
+        const recentGames = window.gameStatsManager.getRecentGames(20);
         
-        if (clearBtn) {
-          console.log('✅ 找到清除按钮，正在绑定事件...');
-          clearBtn.addEventListener('click', (e) => {
-            console.log('🖱️ 清除按钮被点击了！');
-            e.preventDefault();
-            e.stopPropagation();
-            this.clearHistory();
-          });
-          console.log('✅ 清除按钮事件绑定完成');
-        } else {
-          console.error('❌ 未找到清除按钮元素 (ID: clearHistoryBtn)');
+        console.log('📊 最近游戏数据:', recentGames);
+
+        if (recentGames.length === 0) {
+          this.showEmptyState();
+          return;
         }
+
+        // 隐藏空状态
+        this.hideEmptyState();
+
+        // 更新页面显示
+        this.updateRecentGamesDisplay(recentGames);
+        this.updatePageStats(recentGames);
       }
 
       // 更新最近游戏显示
-      updateRecentlyPlayedDisplay() {
-        const history = JSON.parse(localStorage.getItem('gameHistory') || '{}');
-        if (Object.keys(history).length === 0) {
-          console.log('没有游戏历史记录');
-          return;
-        }
+      updateRecentGamesDisplay(recentGames) {
+        const gamesGrid = document.querySelector('.games-grid');
+        if (!gamesGrid) return;
+
+        // 获取当前显示的游戏卡片
+        const existingCards = gamesGrid.querySelectorAll('.game-card');
         
-        // 这里可以根据实际历史记录更新显示
-        console.log(`发现 ${Object.keys(history).length} 个游戏历史记录`);
+        // 更新现有卡片的历史标签和人气值
+        existingCards.forEach(card => {
+          const gameSlug = card.dataset.gameId;
+          if (!gameSlug) return;
+
+          // 查找对应的历史数据
+          const gameHistory = recentGames.find(g => g.slug === gameSlug);
+          if (gameHistory) {
+            // 更新历史标签
+            this.updateHistoryLabel(card, gameHistory);
+            
+            // 更新人气值
+            this.updatePopularity(card, gameSlug);
+
+            // 添加最近播放标识
+            this.addRecentBadge(card, gameHistory);
+          }
+        });
+
+        // 重新排序卡片（根据最近播放时间）
+        this.reorderCardsByRecency(gamesGrid, recentGames);
       }
 
-      // 清除游戏历史
-      clearHistory() {
-        console.log('🗑️ clearHistory函数被调用');
-        console.log('当前this对象:', this);
+      // 更新历史标签
+      updateHistoryLabel(card, gameHistory) {
+        const badgeContainer = card.querySelector('.played-badge-container');
+        if (!badgeContainer) return;
+
+        const historyLabel = window.gameStatsManager.getPlayHistoryLabel(gameHistory.slug);
+        if (historyLabel) {
+          const badgeClass = this.getHistoryBadgeClass(historyLabel);
+          badgeContainer.innerHTML = `<div class="played-badge ${badgeClass}">${historyLabel}</div>`;
+        }
+      }
+
+      // 更新人气值
+      updatePopularity(card, gameSlug) {
+        const popularityStat = card.querySelector('.popularity-stat .popularity-count');
+        if (popularityStat) {
+          const popularity = window.gameStatsManager.getPopularity(gameSlug);
+          popularityStat.textContent = this.formatPopularity(popularity) + ' popular';
+        }
+      }
+
+      // 添加最近播放标识
+      addRecentBadge(card, gameHistory) {
+        const badgesContainer = card.querySelector('.game-badges');
+        if (!badgesContainer) return;
+
+        // 移除现有的最近播放标识
+        const existingBadge = badgesContainer.querySelector('.badge.recent');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+
+        // 根据播放时间添加相应标识
+        const playDate = new Date(gameHistory.timestamp);
+        const now = new Date();
+        const diffHours = (now - playDate) / (1000 * 60 * 60);
+
+        if (diffHours <= 1) {
+          // 1小时内播放
+          const recentBadge = document.createElement('span');
+          recentBadge.className = 'badge recent';
+          recentBadge.textContent = 'JUST PLAYED';
+          badgesContainer.appendChild(recentBadge);
+        } else if (diffHours <= 24) {
+          // 24小时内播放
+          const recentBadge = document.createElement('span');
+          recentBadge.className = 'badge recent-today';
+          recentBadge.textContent = 'TODAY';
+          badgesContainer.appendChild(recentBadge);
+        }
+      }
+
+      // 重新排序卡片
+      reorderCardsByRecency(gamesGrid, recentGames) {
+        const cards = Array.from(gamesGrid.querySelectorAll('.game-card'));
         
-        // 创建自定义确认对话框
-        this.showCustomConfirm(
-          'Clear Game History?',
-          'Are you sure you want to clear your game history? This action cannot be undone.',
-          () => {
-            localStorage.removeItem('gameHistory');
-            localStorage.removeItem('gamePopularity');
-            console.log('🗑️ Game history cleared');
-            
-            // 显示成功提示
-            this.showSuccessMessage('Game history has been cleared successfully!');
-            
-            // 延迟刷新页面
+        // 按最近播放时间排序
+        cards.sort((a, b) => {
+          const slugA = a.dataset.gameId;
+          const slugB = b.dataset.gameId;
+          
+          const gameA = recentGames.find(g => g.slug === slugA);
+          const gameB = recentGames.find(g => g.slug === slugB);
+          
+          if (!gameA && !gameB) return 0;
+          if (!gameA) return 1;
+          if (!gameB) return -1;
+          
+          return new Date(gameB.timestamp) - new Date(gameA.timestamp);
+        });
+
+        // 重新插入排序后的卡片
+        cards.forEach(card => {
+          gamesGrid.appendChild(card);
+        });
+      }
+
+      // 更新页面统计信息
+      updatePageStats(recentGames) {
+        // 更新页面描述中的统计信息
+        const pageDescription = document.querySelector('.page-description');
+        if (pageDescription && recentGames.length > 0) {
+          const totalGames = recentGames.length;
+          const todayGames = recentGames.filter(game => {
+            const playDate = new Date(game.timestamp);
+            const today = new Date();
+            return playDate.toDateString() === today.toDateString();
+          }).length;
+
+          const newDescription = `Continue your learning journey! You've played ${totalGames} games recently, including ${todayGames} today. Pick up where you left off or discover new educational adventures.`;
+          pageDescription.textContent = newDescription;
+        }
+
+        // 更新活动统计模块
+        this.updateActivityStats(recentGames);
+      }
+
+      // 更新活动统计
+      updateActivityStats(recentGames) {
+        const userStats = window.gameStatsManager.getUserStats();
+        
+        // 更新统计数字
+        const statElements = {
+          '.stat-total-games .stat-number': userStats.totalGamesInLibrary,
+          '.stat-play-time .stat-number': this.formatPlayTime(userStats.totalPlayTime),
+          '.stat-favorite-category .stat-number': userStats.favoriteCategory || 'None',
+          '.stat-most-played .stat-number': userStats.mostPlayedGame?.title || 'None'
+        };
+
+        Object.entries(statElements).forEach(([selector, value]) => {
+          const element = document.querySelector(selector);
+          if (element) {
+            element.textContent = value;
+          }
+        });
+      }
+
+      // 显示空状态
+      showEmptyState() {
+        const emptyState = document.querySelector('.empty-state');
+        const gamesModule = document.querySelector('.game-module');
+        
+        if (emptyState) {
+          emptyState.style.display = 'block';
+        }
+        if (gamesModule) {
+          gamesModule.style.display = 'none';
+        }
+      }
+
+      // 隐藏空状态
+      hideEmptyState() {
+        const emptyState = document.querySelector('.empty-state');
+        const gamesModule = document.querySelector('.game-module');
+        
+        if (emptyState) {
+          emptyState.style.display = 'none';
+        }
+        if (gamesModule) {
+          gamesModule.style.display = 'block';
+        }
+      }
+
+      // 设置实时更新
+      setupRealTimeUpdates() {
+        // 监听统计数据更新
+        window.addEventListener('gameStatsUpdated', (e) => {
+          if (e.detail.action === 'gameStart' || e.detail.action === 'storageChange') {
             setTimeout(() => {
-              location.reload();
-            }, 1500);
-          }
-        );
-      }
-
-      // 显示自定义确认对话框
-      showCustomConfirm(title, message, onConfirm) {
-        console.log('📝 showCustomConfirm函数被调用');
-        console.log('参数:', { title, message, onConfirm });
-        
-        // 移除已存在的对话框
-        const existingOverlay = document.querySelector('.custom-confirm-overlay');
-        if (existingOverlay) {
-          existingOverlay.remove();
-        }
-        
-        // 创建遮罩层
-        const overlay = document.createElement('div');
-        overlay.className = 'custom-confirm-overlay';
-        overlay.style.cssText = `
-          position: fixed !important;
-          top: 0 !important;
-          left: 0 !important;
-          right: 0 !important;
-          bottom: 0 !important;
-          background: rgba(0, 0, 0, 0.5) !important;
-          display: flex !important;
-          align-items: center !important;
-          justify-content: center !important;
-          z-index: 10000 !important;
-          opacity: 0 !important;
-          visibility: hidden !important;
-          transition: all 0.3s ease !important;
-          backdrop-filter: blur(4px) !important;
-        `;
-        
-        // 创建对话框
-        const dialog = document.createElement('div');
-        dialog.className = 'custom-confirm-dialog';
-        dialog.style.cssText = `
-          background: white !important;
-          border-radius: 20px !important;
-          padding: 0 !important;
-          max-width: 480px !important;
-          width: 90% !important;
-          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
-          transform: scale(0.9) translateY(-20px) !important;
-          transition: all 0.3s ease !important;
-          overflow: hidden !important;
-          border: 1px solid rgba(0, 0, 0, 0.1) !important;
-        `;
-        
-        dialog.innerHTML = `
-          <div class="confirm-header" style="padding: 2rem 2rem 1rem !important; text-align: center !important; background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%) !important; border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;">
-            <i class="fas fa-exclamation-triangle confirm-icon" style="font-size: 3rem !important; color: #F59E0B !important; margin-bottom: 1rem !important; display: block !important; animation: pulse 2s infinite !important;"></i>
-            <h3 class="confirm-title" style="font-family: 'Space Grotesk', sans-serif !important; font-size: 1.5rem !important; font-weight: 700 !important; color: #1F2937 !important; margin: 0 !important; line-height: 1.3 !important;">${title}</h3>
-          </div>
-          <div class="confirm-body" style="padding: 1.5rem 2rem !important; text-align: center !important;">
-            <p class="confirm-message" style="color: #6B7280 !important; font-size: 1rem !important; line-height: 1.6 !important; margin: 0 !important;">${message}</p>
-          </div>
-          <div class="confirm-actions" style="padding: 1rem 2rem 2rem !important; display: flex !important; gap: 1rem !important; justify-content: center !important;">
-            <button class="confirm-btn cancel-btn" id="confirmCancel" style="display: flex !important; align-items: center !important; gap: 0.5rem !important; padding: 0.875rem 1.5rem !important; border: 2px solid #E5E7EB !important; border-radius: 12px !important; font-weight: 600 !important; font-size: 0.95rem !important; cursor: pointer !important; transition: all 0.3s ease !important; min-width: 120px !important; justify-content: center !important; background: #F3F4F6 !important; color: #6B7280 !important;">
-              <i class="fas fa-times"></i>
-              Cancel
-            </button>
-            <button class="confirm-btn confirm-btn-primary" id="confirmYes" style="display: flex !important; align-items: center !important; gap: 0.5rem !important; padding: 0.875rem 1.5rem !important; border: none !important; border-radius: 12px !important; font-weight: 600 !important; font-size: 0.95rem !important; cursor: pointer !important; transition: all 0.3s ease !important; min-width: 120px !important; justify-content: center !important; background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important; color: white !important; box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3) !important;">
-              <i class="fas fa-check"></i>
-              Clear History
-            </button>
-          </div>
-        `;
-        
-        overlay.appendChild(dialog);
-        document.body.appendChild(overlay);
-        
-        console.log('✅ 对话框已添加到DOM');
-        
-        // 添加动画
-        setTimeout(() => {
-          overlay.style.opacity = '1';
-          overlay.style.visibility = 'visible';
-          dialog.style.transform = 'scale(1) translateY(0)';
-          console.log('✅ 对话框动画已触发');
-        }, 10);
-        
-        // 绑定事件
-        const cancelBtn = dialog.querySelector('#confirmCancel');
-        const yesBtn = dialog.querySelector('#confirmYes');
-        
-        const closeDialog = () => {
-          console.log('🔒 关闭对话框');
-          overlay.style.opacity = '0';
-          overlay.style.visibility = 'hidden';
-                setTimeout(() => {
-            if (document.body.contains(overlay)) {
-              document.body.removeChild(overlay);
-            }
-          }, 300);
-        };
-        
-        cancelBtn.addEventListener('click', closeDialog);
-        yesBtn.addEventListener('click', () => {
-          console.log('✅ 用户确认清除历史');
-          closeDialog();
-          onConfirm();
-        });
-        
-        // 点击遮罩层关闭
-        overlay.addEventListener('click', (e) => {
-          if (e.target === overlay) {
-            closeDialog();
+              this.loadRecentGames();
+            }, 500);
           }
         });
-        
-        // ESC键关闭
-        const handleEsc = (e) => {
-          if (e.key === 'Escape') {
-            closeDialog();
-            document.removeEventListener('keydown', handleEsc);
+
+        // 监听页面可见性变化，刷新数据
+        document.addEventListener('visibilitychange', () => {
+          if (!document.hidden) {
+            this.loadRecentGames();
           }
-        };
-        document.addEventListener('keydown', handleEsc);
+        });
       }
 
-      // 显示成功提示
-      showSuccessMessage(message) {
-        console.log('🎉 显示成功提示:', message);
-        
-        // 移除已存在的提示
-        const existingToast = document.querySelector('.success-toast');
-        if (existingToast) {
-          existingToast.remove();
+      // 设置事件监听器
+      setupEventListeners() {
+        // 清除历史按钮
+        const clearBtn = document.querySelector('.clear-history-btn');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            this.clearHistory();
+          });
         }
+
+        // 刷新按钮
+        const refreshBtn = document.querySelector('.refresh-btn');
+        if (refreshBtn) {
+          refreshBtn.addEventListener('click', () => {
+            this.loadRecentGames();
+          });
+        }
+      }
+
+      // 清除历史记录
+      clearHistory() {
+        if (confirm('Are you sure you want to clear your game history? This action cannot be undone.')) {
+          if (window.gameStatsManager) {
+            window.gameStatsManager.clearAllStats();
+          }
+          
+          // 显示空状态
+          this.showEmptyState();
+          
+          // 显示通知
+          this.showNotification('Game history cleared successfully', 'success');
+        }
+      }
+
+      // 工具函数
+      getHistoryBadgeClass(label) {
+        switch (label) {
+          case 'Today': return 'today';
+          case 'Yesterday': return 'yesterday';
+          case 'A few days ago': return 'few-days-ago';
+          case '2 weeks ago': return 'weeks-ago';
+          case 'A month ago': return 'month-ago';
+          default: return 'default';
+        }
+      }
+
+      formatPopularity(num) {
+        if (!num || num === 0) return '0';
+        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+        return num.toString();
+      }
+
+      formatPlayTime(seconds) {
+        if (!seconds || seconds === 0) return '0m';
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
         
-        const toast = document.createElement('div');
-        toast.className = 'success-toast';
-        toast.style.cssText = `
-          position: fixed !important;
-          top: 2rem !important;
-          right: 2rem !important;
-          background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-          color: white !important;
-          padding: 1rem 1.5rem !important;
-          border-radius: 12px !important;
-          box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3) !important;
-          z-index: 10001 !important;
-          display: flex !important;
-          align-items: center !important;
-          gap: 0.75rem !important;
-          font-weight: 600 !important;
-          font-size: 0.95rem !important;
-          transform: translateX(100%) !important;
-          opacity: 0 !important;
-          transition: all 0.3s ease !important;
-          max-width: 350px !important;
+        if (hours > 0) {
+          return `${hours}h ${minutes}m`;
+        }
+        return `${minutes}m`;
+      }
+
+      // 显示通知
+      showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.style.cssText = `
+          position: fixed;
+          top: 2rem;
+          right: 2rem;
+          background: ${type === 'success' ? '#10B981' : '#6B7280'};
+          color: white;
+          padding: 0.75rem 1.25rem;
+          border-radius: 8px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          z-index: 10000;
+          font-weight: 600;
+          transform: translateX(100%);
+          transition: transform 0.3s ease;
         `;
         
-        toast.innerHTML = `
-          <i class="fas fa-check-circle" style="font-size: 1.25rem !important; flex-shrink: 0 !important;"></i>
-          <span>${message}</span>
-        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
         
-        document.body.appendChild(toast);
-        console.log('✅ 成功提示已添加到DOM');
-        
-        // 添加动画
         setTimeout(() => {
-          toast.style.transform = 'translateX(0)';
-          toast.style.opacity = '1';
-          console.log('✅ 成功提示动画已触发');
+          notification.style.transform = 'translateX(0)';
         }, 10);
         
-        // 自动移除
         setTimeout(() => {
-          toast.style.transform = 'translateX(100%)';
-          toast.style.opacity = '0';
+          notification.style.transform = 'translateX(100%)';
           setTimeout(() => {
-            if (document.body.contains(toast)) {
-              document.body.removeChild(toast);
-              console.log('✅ 成功提示已移除');
+            if (document.body.contains(notification)) {
+              document.body.removeChild(notification);
             }
           }, 300);
         }, 3000);
@@ -394,7 +480,7 @@ const recentlyPlayedGames = allGamesData
 
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
-      window.recentGamesManager = new RecentGamesManager();
+      window.recentlyPlayedManager = new RecentlyPlayedManager();
     });
   </script>
 </BaseLayout>

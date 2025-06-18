@@ -155,7 +155,7 @@ const trendingGames = allGamesData
 
   <!-- 简化的热门游戏管理JavaScript -->
   <script is:inline>
-    // 简化的热门游戏管理
+    // 增强的热门游戏管理器 - 集成真实统计数据
     class TrendingGamesManager {
       constructor() {
         this.init();
@@ -163,15 +163,164 @@ const trendingGames = allGamesData
 
       // 初始化
       init() {
+        // 等待统计管理器加载
+        if (typeof window.gameStatsManager === 'undefined') {
+          setTimeout(() => this.init(), 100);
+          return;
+        }
+
         this.updateTrendingDisplay();
         this.initializeAnimations();
+        this.setupRealTimeUpdates();
         console.log('🔥 热门游戏管理器初始化完成');
       }
 
-      // 更新热门游戏显示
+      // 更新热门游戏显示 - 使用真实数据
       updateTrendingDisplay() {
-        // 这里可以根据实际数据更新热门游戏显示
-        console.log('热门游戏显示已更新');
+        if (typeof window.gameStatsManager === 'undefined') return;
+
+        // 获取真实的热门游戏数据
+        const trendingGames = window.gameStatsManager.getTrendingGames(20);
+        
+        // 更新页面上的游戏卡片
+        const gameCards = document.querySelectorAll('.game-card[data-game-id]');
+        gameCards.forEach(card => {
+          const gameSlug = card.dataset.gameId;
+          if (!gameSlug) return;
+
+          // 查找对应的统计数据
+          const gameStats = trendingGames.find(g => g.slug === gameSlug);
+          if (gameStats) {
+            // 更新人气值显示
+            const popularityStat = card.querySelector('.popularity-stat .popularity-count');
+            if (popularityStat) {
+              popularityStat.textContent = this.formatPopularity(gameStats.popularity) + ' popular';
+            }
+
+            // 添加热门标识
+            if (gameStats.recentActivity >= 8) {
+              this.addHotBadge(card);
+            }
+          }
+        });
+
+        // 更新趋势分析数据
+        this.updateTrendAnalysis();
+
+        console.log('🔥 热门游戏显示已更新，基于真实统计数据');
+      }
+
+      // 添加热门标识
+      addHotBadge(card) {
+        const badgesContainer = card.querySelector('.game-badges');
+        if (badgesContainer && !badgesContainer.querySelector('.badge.trending')) {
+          const hotBadge = document.createElement('span');
+          hotBadge.className = 'badge trending';
+          hotBadge.textContent = 'HOT';
+          badgesContainer.appendChild(hotBadge);
+        }
+      }
+
+      // 更新趋势分析
+      updateTrendAnalysis() {
+        if (typeof window.gameStatsManager === 'undefined') return;
+
+        const userStats = window.gameStatsManager.getUserStats();
+        const trendingGames = window.gameStatsManager.getTrendingGames(50);
+
+        // 计算各分类的热度
+        const categoryStats = this.calculateCategoryTrends(trendingGames);
+
+        // 更新趋势指标
+        this.updateTrendIndicators(categoryStats);
+      }
+
+      // 计算分类趋势
+      calculateCategoryTrends(games) {
+        const categories = {
+          math: { count: 0, totalPopularity: 0, trend: 0 },
+          science: { count: 0, totalPopularity: 0, trend: 0 },
+          language: { count: 0, totalPopularity: 0, trend: 0 },
+          puzzle: { count: 0, totalPopularity: 0, trend: 0 }
+        };
+
+        games.forEach(game => {
+          const category = game.category || 'puzzle';
+          if (categories[category]) {
+            categories[category].count++;
+            categories[category].totalPopularity += game.popularity || 0;
+            categories[category].trend += game.recentActivity || 0;
+          }
+        });
+
+        // 计算平均热度和趋势
+        Object.keys(categories).forEach(cat => {
+          const data = categories[cat];
+          if (data.count > 0) {
+            data.averagePopularity = Math.floor(data.totalPopularity / data.count);
+            data.trendPercentage = Math.min(Math.floor(data.trend / data.count * 10), 50);
+          }
+        });
+
+        return categories;
+      }
+
+      // 更新趋势指标
+      updateTrendIndicators(categoryStats) {
+        const trendItems = document.querySelectorAll('.trend-item');
+        
+        trendItems.forEach(item => {
+          const icon = item.querySelector('.trend-icon');
+          let category = 'puzzle';
+          
+          if (icon.classList.contains('math-icon')) category = 'math';
+          else if (icon.classList.contains('science-icon')) category = 'science';
+          else if (icon.classList.contains('language-icon')) category = 'language';
+          else if (icon.classList.contains('coding-icon')) category = 'puzzle'; // 编程归类为益智
+
+          const stats = categoryStats[category];
+          if (stats && stats.count > 0) {
+            const percentageElement = item.querySelector('.trend-percentage');
+            if (percentageElement) {
+              percentageElement.textContent = `+${stats.trendPercentage}%`;
+            }
+
+            // 更新趋势描述
+            const trendText = item.querySelector('.trend-text');
+            if (trendText && stats.count > 0) {
+              const descriptions = {
+                math: `${stats.count} math games with average popularity of ${this.formatPopularity(stats.averagePopularity)}`,
+                science: `${stats.count} science games trending with high engagement`,
+                language: `${stats.count} language games showing strong user interest`,
+                puzzle: `${stats.count} puzzle games with growing popularity`
+              };
+              trendText.textContent = descriptions[category] || trendText.textContent;
+            }
+          }
+        });
+      }
+
+      // 设置实时更新
+      setupRealTimeUpdates() {
+        // 监听统计数据更新
+        window.addEventListener('gameStatsUpdated', () => {
+          setTimeout(() => {
+            this.updateTrendingDisplay();
+          }, 500);
+        });
+
+        // 定期更新（每30秒）
+        setInterval(() => {
+          this.updateTrendingDisplay();
+        }, 30000);
+      }
+
+      // 格式化人气数字
+      formatPopularity(num) {
+        if (!num || num === 0) return '0';
+        if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+        if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+        return num.toString();
       }
 
       // 初始化动画效果

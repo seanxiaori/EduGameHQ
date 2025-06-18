@@ -1219,9 +1219,81 @@ const dynamicSEO = {
   (window as any).toggleFavorite = toggleFavorite;
   (window as any).handleShareClick = handleShareClick;
 
-  // 页面加载后初始化收藏状态
+  // 游戏统计数据记录功能
+  let gameStartTime = null;
+  let gameSlug = null;
+
+  function initializeGameStats() {
+    gameSlug = window.location.pathname.split('/').pop();
+    if (!gameSlug) return;
+
+    // 等待统计管理器加载
+    if (typeof window.gameStatsManager === 'undefined') {
+      setTimeout(initializeGameStats, 100);
+      return;
+    }
+
+    // 记录游戏开始播放
+    const gameInfo = {
+      title: document.querySelector('.game-main-title')?.textContent || gameSlug,
+      category: document.querySelector('.category-tag')?.textContent?.toLowerCase() || 'unknown'
+    };
+
+    window.gameStatsManager.recordGameStart(gameSlug, gameInfo);
+    gameStartTime = Date.now();
+
+    console.log(`🎮 开始记录游戏统计: ${gameSlug}`);
+  }
+
+  function recordGameEnd() {
+    if (!gameSlug || !gameStartTime || typeof window.gameStatsManager === 'undefined') return;
+
+    const playTime = Math.floor((Date.now() - gameStartTime) / 1000); // 转换为秒
+    window.gameStatsManager.recordGameEnd(gameSlug, playTime);
+
+    console.log(`🎮 记录游戏结束: ${gameSlug}, 游戏时长: ${playTime}秒`);
+  }
+
+  // 重写restart函数，记录新的游戏开始
+  function restartGame() {
+    const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
+    if (iframe) {
+      // 先记录当前游戏结束
+      recordGameEnd();
+      
+      // 重新加载游戏
+      iframe.src = iframe.src;
+      
+      // 重新开始统计
+      setTimeout(() => {
+        initializeGameStats();
+      }, 1000);
+    }
+  }
+
+  // 页面加载后初始化收藏状态和游戏统计
   document.addEventListener('DOMContentLoaded', () => {
     initializeFavoriteState();
+    
+    // 延迟初始化游戏统计，确保游戏已开始加载
+    setTimeout(() => {
+      initializeGameStats();
+    }, 2000);
+  });
+
+  // 页面卸载时记录游戏结束
+  window.addEventListener('beforeunload', () => {
+    recordGameEnd();
+  });
+
+  // 页面隐藏时记录游戏结束（用户切换标签页等）
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      recordGameEnd();
+    } else if (gameSlug && typeof window.gameStatsManager !== 'undefined') {
+      // 页面重新可见时重新开始记录
+      gameStartTime = Date.now();
+    }
   });
 </script>
 

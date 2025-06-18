@@ -1,4 +1,7 @@
 ---
+// 导入类型定义
+import type { Game } from '../types/game';
+
 // 通用游戏卡片组件 - 支持所有动态数据
 export interface GameCardProps {
   game: {
@@ -24,47 +27,52 @@ export interface GameCardProps {
   showDeveloper?: boolean;
 }
 
-const { 
-  game, 
-  showTrending = false, 
-  showFeatured = false, 
+// 组件属性接口
+interface Props {
+  game: Game;
+  showTrending?: boolean;
+  showFeatured?: boolean;
+  showNew?: boolean;
+  showUpdated?: boolean;
+  showPlayHistory?: boolean;
+  showPopularity?: boolean;
+  showFavorite?: boolean;
+  showDeveloper?: boolean;
+  playCount?: number;
+}
+
+// 解构属性并设置默认值
+const {
+  game,
+  showTrending = false,
+  showFeatured = false,
   showNew = false,
   showUpdated = false,
   showPlayHistory = false,
-  showPopularity = false, 
+  showPopularity = false,
+  showFavorite = false,
   showDeveloper = false,
-  showFavorite = false 
+  playCount = 0
 } = Astro.props;
 
-// 安全的游戏数据处理 - 防御性编程
-const safeGame = {
-  slug: game.slug || 'unknown',
-  title: game.title || 'Untitled Game',
-  description: game.description || 'Educational game for learning.',
-  category: game.category || 'puzzle',
-  categoryName: game.categoryName || game.category || 'Puzzle',
-  difficulty: game.difficulty || 'Medium', // 添加安全默认值
-  ageRange: game.ageRange || '6-18',
-  thumbnailUrl: game.thumbnailUrl || '/images/logo.svg',
-  featured: game.featured || false,
-  trending: game.trending || false,
-  isNew: game.isNew || false,
-  developer: game.developer || null,
-  // 确保所有字段都有安全的默认值
+// 确保游戏对象有效
+const safeGame: Game = {
+  slug: '',
+  title: 'Unknown Game',
+  description: 'No description available',
+  category: 'puzzle',
+  categoryName: 'Puzzle',
+  difficulty: 'Easy',
+  ageRange: '6-12',
+  thumbnailUrl: '/images/placeholder-game.jpg',
+  gameUrl: '',
+  featured: false,
+  trending: false,
+  isNew: false,
+  tags: [],
+  developer: 'Unknown',
   ...game
 };
-
-// 生成随机人气数据
-const generatePopularity = (baseCount: number = 0) => {
-  const base = baseCount > 0 ? baseCount : Math.floor(Math.random() * 10000) + 1000;
-  return Math.floor(base * (0.8 + Math.random() * 0.4)); // ±20% 变化
-};
-
-// 生成游戏历史
-const generatePlayHistory = () => {
-  const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
-  return Math.random() > 0.3 ? histories[Math.floor(Math.random() * histories.length)] : null;
-  };
 
 // 格式化人气数字
 const formatPopularity = (num: number) => {
@@ -74,11 +82,12 @@ const formatPopularity = (num: number) => {
   return num.toString();
 };
 
-// 生成动态数据
-const popularity = safeGame.playCount || Math.floor(Math.random() * 15000) + 500;
-const playHistory = showPlayHistory ? generatePlayHistory() : null;
+// 游戏URL
 const gameUrl = `/games/${safeGame.slug}`;
 ---
+
+<!-- 引入游戏统计管理器 -->
+<script src="/src/utils/game-stats-manager.js" is:inline></script>
 
 <div class={`game-card ${safeGame.category}-theme animate-fadeInUp`} data-game-id={safeGame.slug}>
   <div class="game-image-container">
@@ -110,17 +119,8 @@ const gameUrl = `/games/${safeGame.slug}`;
       )}
     </div>
     
-    <!-- 左上角：游戏历史标签 -->
-    {playHistory && (
-      <div class={`played-badge ${ 
-        playHistory === 'Today' ? 'today' : 
-        playHistory === 'Yesterday' ? 'yesterday' : 
-        playHistory === 'A few days ago' ? 'few-days-ago' : 
-        'weeks-ago'
-      }`}>
-        {playHistory}
-      </div>
-    )}
+    <!-- 左上角：游戏历史标签 - 动态显示 -->
+    <div class="played-badge-container" data-game-slug={safeGame.slug}></div>
   </div>
   
   <div class="game-info">
@@ -138,11 +138,11 @@ const gameUrl = `/games/${safeGame.slug}`;
       <span class={`difficulty-tag ${safeGame.difficulty.toLowerCase()}`}>{safeGame.difficulty.toUpperCase()}</span>
     </div>
     
-      <div class="game-stats">
+    <div class="game-stats">
       {showPopularity && (
-        <div class="stat">
+        <div class="stat popularity-stat" data-game-slug={safeGame.slug}>
           <i class="fas fa-fire"></i>
-          <span class="popularity-count">{formatPopularity(popularity)} popular</span>
+          <span class="popularity-count">Loading...</span>
         </div>
       )}
       <div class="stat">
@@ -153,22 +153,28 @@ const gameUrl = `/games/${safeGame.slug}`;
         <div class="stat">
           <i class="fas fa-user"></i>
           <span>{safeGame.developer}</span>
-    </div>
+        </div>
       )}
     </div>
   </div>
 </div>
 
-<!-- 通用收藏管理器 - 每个卡片自动初始化 -->
-<script>
-  // 通用游戏卡片收藏管理器
-  class UniversalGameCardManager {
+<!-- 增强的游戏卡片管理器 - 集成统计系统 -->
+<script define:vars={{ safeGame, showPlayHistory, showPopularity }}>
+  // 增强的游戏卡片管理器
+  class EnhancedGameCardManager {
     constructor() {
       this.storageKey = 'favoriteGames';
       this.init();
     }
 
     init() {
+      // 等待统计管理器加载
+      if (typeof window.gameStatsManager === 'undefined') {
+        setTimeout(() => this.init(), 100);
+        return;
+      }
+      
       // 初始化当前页面的所有游戏卡片
       document.addEventListener('DOMContentLoaded', () => {
         this.initializeGameCards();
@@ -183,33 +189,108 @@ const gameUrl = `/games/${safeGame.slug}`;
         childList: true,
         subtree: true
       });
-  }
-  
+
+      // 监听统计数据更新
+      window.addEventListener('gameStatsUpdated', (e) => {
+        this.handleStatsUpdate(e.detail);
+      });
+    }
+    
     initializeGameCards() {
       // 初始化所有未处理的游戏卡片
-      const uninitializedCards = document.querySelectorAll('.game-card[data-game-id]:not([data-favorites-initialized])');
+      const uninitializedCards = document.querySelectorAll('.game-card[data-game-id]:not([data-enhanced-initialized])');
       
       uninitializedCards.forEach(card => {
         const gameSlug = card.dataset.gameId;
         if (!gameSlug) return;
 
         // 标记为已初始化
-        card.setAttribute('data-favorites-initialized', 'true');
+        card.setAttribute('data-enhanced-initialized', 'true');
 
-        // 获取收藏按钮
-        const favoriteBtn = card.querySelector('.favorite-heart-btn');
-        if (favoriteBtn) {
-          // 设置点击事件
-          favoriteBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            this.toggleFavorite(gameSlug);
-          });
-
-          // 设置初始状态
-          this.updateFavoriteButtonState(favoriteBtn, this.isFavorited(gameSlug));
-        }
+        // 设置收藏功能
+        this.setupFavoriteButton(card, gameSlug);
+        
+        // 更新动态数据显示
+        this.updateDynamicData(card, gameSlug);
       });
+    }
+
+    setupFavoriteButton(card, gameSlug) {
+      const favoriteBtn = card.querySelector('.favorite-heart-btn');
+      if (favoriteBtn) {
+        // 设置点击事件
+        favoriteBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          this.toggleFavorite(gameSlug);
+        });
+
+        // 设置初始状态
+        this.updateFavoriteButtonState(favoriteBtn, this.isFavorited(gameSlug));
+      }
+    }
+
+    updateDynamicData(card, gameSlug) {
+      if (!window.gameStatsManager) return;
+      
+      // 更新人气值显示
+      const popularityStat = card.querySelector('.popularity-stat');
+      if (popularityStat) {
+        const popularity = window.gameStatsManager.getPopularity(gameSlug, safeGame);
+        const popularityCount = popularityStat.querySelector('.popularity-count');
+        if (popularityCount) {
+          popularityCount.textContent = this.formatPopularity(popularity) + ' popular';
+        }
+      }
+
+      // 更新游戏历史标签
+      const badgeContainer = card.querySelector('.played-badge-container');
+      if (badgeContainer && showPlayHistory) {
+        const historyLabel = window.gameStatsManager.getPlayHistoryLabel(gameSlug);
+        if (historyLabel) {
+          const badgeClass = this.getHistoryBadgeClass(historyLabel);
+          badgeContainer.innerHTML = `<div class="played-badge ${badgeClass}">${historyLabel}</div>`;
+        } else {
+          badgeContainer.innerHTML = '';
+        }
+      }
+    }
+
+    getHistoryBadgeClass(label) {
+      switch (label) {
+        case 'Today': return 'today';
+        case 'Yesterday': return 'yesterday';
+        case 'A few days ago': return 'few-days-ago';
+        case '2 weeks ago': return 'weeks-ago';
+        case 'A month ago': return 'month-ago';
+        default: return 'default';
+      }
+    }
+
+    formatPopularity(num) {
+      if (!num || num === 0) return '0';
+      if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+      if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+      return num.toString();
+    }
+
+    handleStatsUpdate(detail) {
+      // 当统计数据更新时，刷新相关游戏卡片的显示
+      if (detail.gameSlug) {
+        const cards = document.querySelectorAll(`[data-game-id="${detail.gameSlug}"]`);
+        cards.forEach(card => {
+          this.updateDynamicData(card, detail.gameSlug);
+        });
+      } else {
+        // 全局更新
+        const allCards = document.querySelectorAll('.game-card[data-game-id]');
+        allCards.forEach(card => {
+          const gameSlug = card.dataset.gameId;
+          if (gameSlug) {
+            this.updateDynamicData(card, gameSlug);
+          }
+        });
+      }
     }
 
     // 检查是否已收藏
@@ -220,7 +301,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       } catch (error) {
         console.error('读取收藏状态失败:', error);
         return false;
-  }
+      }
     }
 
     // 切换收藏状态
@@ -241,8 +322,8 @@ const gameUrl = `/games/${safeGame.slug}`;
           localStorage.setItem(this.storageKey, JSON.stringify(favorites));
           this.updateAllButtons(gameSlug, true);
           this.showNotification('Added to favorites', 'added');
-  }
-  
+        }
+        
         // 触发全局事件
         window.dispatchEvent(new CustomEvent('favoritesChanged', {
           detail: { gameSlug, isFavorite: !isFavorited }
@@ -263,88 +344,79 @@ const gameUrl = `/games/${safeGame.slug}`;
           this.updateFavoriteButtonState(favoriteBtn, isFavorited);
         }
       });
-  }
-  
-    // 更新单个收藏按钮状态
-    updateFavoriteButtonState(button, isFavorited) {
-      const heartIcon = button.querySelector('i');
-      if (!heartIcon) return;
+    }
 
+    // 更新收藏按钮状态
+    updateFavoriteButtonState(button, isFavorited) {
+      const icon = button.querySelector('i');
+      if (icon) {
+        icon.className = isFavorited ? 'fas fa-heart' : 'far fa-heart';
+      }
+      
+      button.style.background = isFavorited ? '#EC4899' : '#6B7280';
+      button.style.color = 'white';
+      
+      // 添加动画效果
       if (isFavorited) {
-        // 设置为收藏状态
-        heartIcon.className = 'fas fa-heart';
-        button.classList.add('active', 'favorited');
-        button.style.color = '#EC4899';
-      } else {
-        // 设置为未收藏状态
-        heartIcon.className = 'far fa-heart';
-        button.classList.remove('active', 'favorited');
-        button.style.color = '#9CA3AF';
-  }
+        button.style.transform = 'scale(1.1)';
+        setTimeout(() => {
+          button.style.transform = 'scale(1)';
+        }, 200);
+      }
     }
 
     // 显示通知
-    showNotification(message, type = 'info') {
-      // 移除现有通知
+    showNotification(message, type) {
+      // 移除已存在的通知
       const existingNotification = document.querySelector('.game-card-notification');
       if (existingNotification) {
         existingNotification.remove();
-  }
-  
-      // 创建通知元素
+      }
+
       const notification = document.createElement('div');
       notification.className = `game-card-notification ${type}`;
-      notification.innerHTML = `
-        <div class="notification-content">
-          <i class="fas ${type === 'added' ? 'fa-heart' : type === 'removed' ? 'fa-heart-broken' : 'fa-exclamation-triangle'}"></i>
-          <span>${message}</span>
-        </div>
+      notification.style.cssText = `
+        position: fixed !important;
+        top: 2rem !important;
+        right: 2rem !important;
+        background: ${type === 'added' ? '#10B981' : type === 'removed' ? '#EF4444' : '#6B7280'} !important;
+        color: white !important;
+        padding: 0.75rem 1.25rem !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        z-index: 10000 !important;
+        font-size: 0.875rem !important;
+        font-weight: 600 !important;
+        transform: translateX(100%) !important;
+        opacity: 0 !important;
+        transition: all 0.3s ease !important;
       `;
-
-      // 添加样式
-      Object.assign(notification.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        zIndex: '9999',
-        padding: '1rem 1.5rem',
-        borderRadius: '12px',
-        background: type === 'added' ? '#10B981' : type === 'removed' ? '#EF4444' : '#F59E0B',
-        color: 'white',
-        fontWeight: '600',
-        fontSize: '0.9rem',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
-        transform: 'translateX(100%)',
-        transition: 'transform 0.3s ease',
-        backdropFilter: 'blur(10px)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem'
-      });
-
-      // 添加到页面
+      
+      notification.textContent = message;
       document.body.appendChild(notification);
-
-      // 动画显示
+      
+      // 显示动画
       setTimeout(() => {
         notification.style.transform = 'translateX(0)';
-      }, 100);
-
-      // 3秒后自动隐藏
+        notification.style.opacity = '1';
+      }, 10);
+      
+      // 自动隐藏
       setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
+        notification.style.opacity = '0';
         setTimeout(() => {
-          if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
+          if (document.body.contains(notification)) {
+            document.body.removeChild(notification);
           }
         }, 300);
-      }, 3000);
+      }, 2000);
     }
   }
 
-  // 创建全局实例（如果不存在）
-  if (!window.universalGameCardManager) {
-    window.universalGameCardManager = new UniversalGameCardManager();
+  // 创建增强管理器实例
+  if (typeof window.enhancedGameCardManager === 'undefined') {
+    window.enhancedGameCardManager = new EnhancedGameCardManager();
   }
 </script>
 
