@@ -107,7 +107,7 @@
   color: white;
 }
 
-/* 右上角：收藏按钮 */
+/* 右上角：收藏按钮 - 增强版 */
 .favorite-heart-btn {
   position: absolute;
   top: 12px;
@@ -117,7 +117,7 @@
   border: none;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.95);
-  color: #6B7280;
+  color: #9CA3AF;  /* 默认灰色 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -144,19 +144,22 @@
   box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3) !important;
 }
 
-.favorite-heart-btn.active {
-  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+/* 收藏按钮激活状态 - 修复版 */
+.favorite-heart-btn.active,
+.favorite-heart-btn.favorited {
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
   color: white !important;
   animation: heartBeat 0.6s ease-in-out;
-  box-shadow: 0 5px 15px rgba(239, 68, 68, 0.4);
-  border-color: #EF4444;
+  box-shadow: 0 5px 15px rgba(236, 72, 153, 0.4);
+  border-color: #EC4899;
 }
 
-.favorite-heart-btn.active:hover {
-  background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%) !important;
+.favorite-heart-btn.active:hover,
+.favorite-heart-btn.favorited:hover {
+  background: linear-gradient(135deg, #DB2777 0%, #BE185D 100%) !important;
   color: white !important;
   transform: scale(1.2);
-  box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5) !important;
+  box-shadow: 0 8px 25px rgba(219, 39, 119, 0.5) !important;
 }
 
 /* 右下角：难度/特色标签 */
@@ -199,17 +202,28 @@
     opacity: 0.9;
   }
   50% { 
-    transform: scale(1.02);
+    transform: scale(1.05);
     opacity: 1;
   }
 }
 
+/* 心跳动画 - 修复版 */
 @keyframes heartBeat {
-  0% { transform: scale(1); }
-  14% { transform: scale(1.25); }
-  28% { transform: scale(1); }
-  42% { transform: scale(1.25); }
-  70% { transform: scale(1); }
+  0% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.3);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.3);
+  }
+  70% {
+    transform: scale(1);
+  }
 }
 
 /* 排名标签（顶部中央）*/
@@ -731,4 +745,26 @@
   border-radius: 18px;
   z-index: -1;
   opacity: 0.2;
+}
+
+.game-card.geography-theme {
+  border-color: #8B5CF6;
+}
+
+.game-card.recent-game {
+  background: linear-gradient(to bottom right, #FFF7ED, #FEF3C7);
+  border-color: #F59E0B;
+}
+
+.game-card.favorited {
+  border-color: #EC4899;
+}
+
+.game-card.favorited::before {
+  content: '❤️';
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 10;
+  font-size: 1.2rem;
 }

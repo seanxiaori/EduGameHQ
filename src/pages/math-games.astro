@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
@@ -11,7 +12,7 @@ const seoData = {
   ogImage: "/images/math-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据 - 使用新的数据格式
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -23,26 +24,10 @@ try {
 }
 
 // 筛选数学游戏
-const mathGames = allGamesData
-  .filter(game => game.category === 'math')
-  .map(game => ({
-    id: game.slug,
-    title: game.title,
-    description: game.description,
-    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
-    difficulty: game.difficulty || 'Medium',
-    age: `Ages ${game.ageRange}`,
-    url: `/games/${game.slug}`,
-    playCount: game.playCount || Math.floor(Math.random() * 15000) + 500,
-    category: 'math',
-    categoryName: 'Math',
-    featured: game.featured || false
-  }));
+const mathGames = allGamesData.filter(game => game.category === 'math');
 
-// 按难度分组游戏
-const featuredGames = mathGames.filter(game => game.featured).length > 0 
-  ? mathGames.filter(game => game.featured).slice(0, 6)
-  : mathGames.slice(0, 3);
+// 按难度和特色分组游戏
+const featuredGames = mathGames.filter(game => game.featured);
 const easyGames = mathGames.filter(game => game.difficulty === 'Easy');
 const mediumGames = mathGames.filter(game => game.difficulty === 'Medium');
 const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
@@ -73,80 +58,25 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
       </section>
 
       <!-- 2. 特色游戏模块 -->
-      <section class="game-module featured-module">
-        <div class="module-header">
-          <div class="module-icon featured-icon">
-            <i class="fas fa-star"></i>
+      {featuredGames.length > 0 && (
+        <section class="game-module featured-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon">
+              <i class="fas fa-star"></i>
             </div>
-          <div class="module-title-group">
-            <h2 class="module-title">Featured Math Games</h2>
-            <p class="module-subtitle">Our most popular and recommended math games</p>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Math Games</h2>
+              <p class="module-subtitle">Our most popular and recommended math games</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="games-grid">
-          {featuredGames.map((game, index) => {
-            const popularity = game.playCount || 0;
-            const formatPopularity = (num) => {
-              if (!num || num === 0) return '0';
-              if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-              if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-              return num.toString();
-            };
-            
-            const playHistory = ['Today', 'Yesterday', 'A few days ago', null];
-            const randomHistory = playHistory[Math.floor(Math.random() * playHistory.length)];
-            
-            return (
-              <div class="game-card math-theme featured animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                <div class="game-image-container">
-                  <img src={game.image} alt={game.title} class="game-image" />
-                  <div class="game-overlay">
-                    <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                      <i class="fas fa-play"></i>
-                      <span>Play Now</span>
-                    </button>
-                  </div>
-                  <!-- 左上角：游戏历史标签 -->
-                  {randomHistory && (
-                    <div class={`played-badge ${ 
-                      randomHistory === 'Today' ? 'today' : 
-                      randomHistory === 'Yesterday' ? 'yesterday' : 
-                      randomHistory === 'A few days ago' ? 'few-days-ago' : 
-                      'weeks-ago'
-                    }`}>
-                      {randomHistory}
-                    </div>
-                  )}
-                  <!-- 右上角：收藏按钮 -->
-                  <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
-                    <i class="far fa-heart"></i>
-                  </button>
-                </div>
-                <div class="game-info">
-                  <h3 class="game-title">{game.title}</h3>
-                  <p class="game-description">{game.description}</p>
-                  <div class="game-tags">
-                    <span class="category-tag math">Math</span>
-                    <span class="feature-tag featured">FEATURED</span>
-                    <span class="difficulty-tag easy">EASY</span>
-                  </div>
-                  <div class="game-stats">
-                    <div class="stat">
-                      <i class="fas fa-fire"></i>
-                      <span class="popularity-count">{formatPopularity(popularity)} popular</span>
-                    </div>
-                    <div class="stat">
-                      <i class="fas fa-child"></i>
-                      <span>Ages {game.ageRange || '8-16'}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
+          
+          <div class="games-grid">
+            {featuredGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <!-- 3. 容易难度游戏模块 -->
       {easyGames.length > 0 && (
@@ -154,75 +84,17 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           <div class="module-header">
             <div class="module-icon easy-icon">
               <i class="fas fa-smile"></i>
-              </div>
+            </div>
             <div class="module-title-group">
               <h2 class="module-title">Easy Level Games</h2>
               <p class="module-subtitle">Perfect for beginners and young learners</p>
             </div>
           </div>
           
-            <div class="games-grid">
-            {easyGames.map((game, index) => {
-              const plays = Math.floor(Math.random() * 7000) + 2000;
-              const popularity = Math.floor(Math.random() * 800) + 200;
-              const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
-              const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
-              
-              // 格式化数字显示函数
-              const formatPopularity = (num) => {
-                if (!num || num === 0) return '0';
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              return (
-                <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                    <!-- 左上角：游戏历史标签 -->
-                    {randomHistory && (
-                      <div class={`played-badge ${ 
-                        randomHistory === 'Today' ? 'today' : 
-                        randomHistory === 'Yesterday' ? 'yesterday' : 
-                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
-                        'weeks-ago'
-                      }`}>
-                        {randomHistory}
-                      </div>
-                    )}
-                    <!-- 右上角：收藏按钮 -->
-                    <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
-                      <i class="far fa-heart"></i>
-                    </button>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <p class="game-description">{game.description}</p>
-                    <div class="game-tags">
-                      <span class="category-tag math">Math</span>
-                      <span class="difficulty-tag easy">EASY</span>
-                    </div>
-                    <div class="game-stats">
-                      <div class="stat">
-                        <i class="fas fa-fire"></i>
-                        <span class="popularity-count">{formatPopularity(popularity)} popular</span>
-                      </div>
-                      <div class="stat">
-                        <i class="fas fa-child"></i>
-                        <span>Ages {game.ageRange || '6-12'}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+          <div class="games-grid">
+            {easyGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} />
+            ))}
           </div>
         </section>
       )}
@@ -241,69 +113,11 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           </div>
           
           <div class="games-grid">
-            {mediumGames.map((game, index) => {
-              const plays = Math.floor(Math.random() * 5000) + 1000;
-              const popularity = Math.floor(Math.random() * 500) + 100;
-              const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
-              const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
-              
-              // 格式化数字显示函数
-              const formatPopularity = (num) => {
-                if (!num || num === 0) return '0';
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              return (
-                <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                    <!-- 左上角：游戏历史标签 -->
-                    {randomHistory && (
-                      <div class={`played-badge ${ 
-                        randomHistory === 'Today' ? 'today' : 
-                        randomHistory === 'Yesterday' ? 'yesterday' : 
-                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
-                        'weeks-ago'
-                      }`}>
-                        {randomHistory}
-                      </div>
-                    )}
-                    <!-- 右上角：收藏按钮 -->
-                    <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
-                      <i class="far fa-heart"></i>
-                    </button>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <p class="game-description">{game.description}</p>
-                    <div class="game-tags">
-                      <span class="category-tag math">Math</span>
-                      <span class="difficulty-tag medium">MEDIUM</span>
-                    </div>
-                    <div class="game-stats">
-                      <div class="stat">
-                        <i class="fas fa-fire"></i>
-                        <span class="popularity-count">{formatPopularity(popularity)} popular</span>
-                      </div>
-                      <div class="stat">
-                        <i class="fas fa-child"></i>
-                        <span>Ages {game.ageRange || '10-16'}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-            </div>
-          </section>
+            {mediumGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} />
+            ))}
+          </div>
+        </section>
       )}
 
       <!-- 5. 困难游戏模块 -->
@@ -312,76 +126,18 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           <div class="module-header">
             <div class="module-icon hard-icon">
               <i class="fas fa-frown"></i>
-                  </div>
+            </div>
             <div class="module-title-group">
               <h2 class="module-title">Hard Level Games</h2>
               <p class="module-subtitle">Advanced challenges for math experts</p>
             </div>
           </div>
           
-                <div class="games-grid">
-            {hardGames.map((game, index) => {
-              const plays = Math.floor(Math.random() * 3000) + 500;
-              const popularity = Math.floor(Math.random() * 300) + 50;
-              const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
-              const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
-              
-              // 格式化数字显示函数
-              const formatPopularity = (num) => {
-                if (!num || num === 0) return '0';
-                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-                return num.toString();
-              };
-              
-              return (
-                <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
-                  <div class="game-image-container">
-                    <img src={game.image} alt={game.title} class="game-image" />
-                    <div class="game-overlay">
-                      <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                        <i class="fas fa-play"></i>
-                        <span>Play Now</span>
-                      </button>
-                    </div>
-                    <!-- 左上角：游戏历史标签 -->
-                    {randomHistory && (
-                      <div class={`played-badge ${ 
-                        randomHistory === 'Today' ? 'today' : 
-                        randomHistory === 'Yesterday' ? 'yesterday' : 
-                        randomHistory === 'A few days ago' ? 'few-days-ago' : 
-                        'weeks-ago'
-                      }`}>
-                        {randomHistory}
-                      </div>
-                    )}
-                    <!-- 右上角：收藏按钮 -->
-                    <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.id}')">
-                      <i class="far fa-heart"></i>
-                    </button>
-                  </div>
-                  <div class="game-info">
-                    <h3 class="game-title">{game.title}</h3>
-                    <p class="game-description">{game.description}</p>
-                    <div class="game-tags">
-                      <span class="category-tag math">Math</span>
-                      <span class="difficulty-tag hard">HARD</span>
-                    </div>
-                    <div class="game-stats">
-                      <div class="stat">
-                        <i class="fas fa-fire"></i>
-                        <span class="popularity-count">{formatPopularity(popularity)} popular</span>
-                      </div>
-                      <div class="stat">
-                        <i class="fas fa-child"></i>
-                        <span>Ages {game.ageRange || '12+'}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-                        </div>
+          <div class="games-grid">
+            {hardGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} />
+            ))}
+          </div>
         </section>
       )}
 
@@ -390,7 +146,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         <div class="module-header">
           <div class="module-icon tips-icon">
             <i class="fas fa-lightbulb"></i>
-                      </div>
+          </div>
           <div class="module-title-group">
             <h2 class="module-title">Math Learning Tips</h2>
             <p class="module-subtitle">Expert advice to improve your math skills</p>
@@ -437,8 +193,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <p class="tip-text">Focus on understanding the reasoning behind each solution</p>
             </div>
           </div>
-                </div>
-              </section>
+        </div>
+      </section>
 
       <!-- 7. 核心技能模块 -->
       <section class="info-module skills-module">
@@ -466,7 +222,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-times"></i>
-              </div>
+            </div>
             <div class="skill-content">
               <h4 class="skill-title">Multiplication & Division</h4>
               <p class="skill-description">Build fluency in advanced operations</p>
@@ -476,7 +232,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-percentage"></i>
-              </div>
+            </div>
             <div class="skill-content">
               <h4 class="skill-title">Fractions & Decimals</h4>
               <p class="skill-description">Understand parts and wholes</p>
@@ -486,17 +242,17 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-shapes"></i>
-          </div>
+            </div>
             <div class="skill-content">
               <h4 class="skill-title">Geometry</h4>
               <p class="skill-description">Explore shapes and spatial reasoning</p>
             </div>
-      </div>
+          </div>
 
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-function"></i>
-      </div>
+            </div>
             <div class="skill-content">
               <h4 class="skill-title">Algebra</h4>
               <p class="skill-description">Solve equations and work with variables</p>
@@ -833,7 +589,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
 
     .skills-grid {
       grid-template-columns: repeat(2, 1fr);
-  }
+    }
 
     .header-content {
       gap: 1.5rem;
@@ -845,54 +601,54 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
 
     .page-description {
       font-size: 1rem;
-  }
+    }
   }
 
   @media (max-width: 768px) {
     .content-wrapper {
       padding: 1rem;
-  }
+    }
 
     .page-header {
       padding: 1.5rem;
       margin-bottom: 2rem;
       border-radius: 18px;
-  }
+    }
 
     .header-content {
       flex-direction: column;
       text-align: center;
       gap: 1.25rem;
-  }
+    }
 
     .header-text {
       text-align: center;
-  }
+    }
 
     .category-icon {
       width: 64px;
       height: 64px;
-  }
+    }
 
     .icon-background {
       width: 64px;
       height: 64px;
       font-size: 1.75rem;
       border-radius: 18px;
-  }
+    }
 
     .icon-background::after {
       inset: 2px;
-    border-radius: 16px;
+      border-radius: 16px;
     }
 
     .page-title {
       font-size: 2rem;
-  }
+    }
 
     .page-description {
       font-size: 1rem;
-  }
+    }
 
     .module-header {
       flex-direction: column;
@@ -906,11 +662,11 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
       height: 44px;
       font-size: 1.125rem;
       margin-top: 0;
-  }
+    }
 
     .module-title {
       font-size: 1.375rem;
-  }
+    }
 
     .module-subtitle {
       font-size: 0.875rem;
@@ -1002,196 +758,4 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style>
-
-<!-- 完全重构的收藏功能JavaScript -->
-<script is:inline>
-  // 数学游戏页面专用收藏管理器 - 完全修复版
-  const favoritesManager = {
-    // 切换收藏状态
-    toggleFavorite(gameSlug) {
-      try {
-        console.log(`🔄 开始处理收藏切换: ${gameSlug}`);
-        
-        // 获取当前收藏列表
-        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-        const isFavorited = favorites.includes(gameSlug);
-        
-        console.log(`📋 当前收藏状态: ${isFavorited ? '已收藏' : '未收藏'}`);
-        
-        if (isFavorited) {
-          // 移除收藏
-          const newFavorites = favorites.filter(id => id !== gameSlug);
-          localStorage.setItem('favoriteGames', JSON.stringify(newFavorites));
-          console.log(`❌ 已从收藏中移除: ${gameSlug}`);
-          
-          // 立即更新UI为未收藏状态
-          this.updateGameCardUI(gameSlug, false);
-          this.showNotification('Removed from favorites', 'removed');
-          
-        } else {
-          // 添加收藏
-          favorites.push(gameSlug);
-          localStorage.setItem('favoriteGames', JSON.stringify(favorites));
-          console.log(`❤️ 已添加到收藏: ${gameSlug}`);
-          
-          // 立即更新UI为收藏状态
-          this.updateGameCardUI(gameSlug, true);
-          this.showNotification('Added to favorites', 'added');
-        }
-        
-        // 触发全局事件通知其他组件
-        window.dispatchEvent(new CustomEvent('favoritesChanged', {
-          detail: { gameSlug, isFavorite: !isFavorited }
-        }));
-        
-      } catch (error) {
-        console.error('❌ 收藏操作失败:', error);
-        this.showNotification('Something went wrong', 'error');
-      }
-    },
-    
-    // 更新特定游戏卡片的UI - 修复版
-    updateGameCardUI(gameSlug, isFavorited) {
-      console.log(`🎨 更新UI: ${gameSlug} -> ${isFavorited ? '收藏' : '取消收藏'}`);
-      
-      // 查找所有该游戏的卡片（可能有多个）
-      const gameCards = document.querySelectorAll(`[data-game-id="${gameSlug}"]`);
-      console.log(`🔍 找到 ${gameCards.length} 个游戏卡片需要更新`);
-      
-      gameCards.forEach((card, index) => {
-        const favoriteBtn = card.querySelector('.favorite-heart-btn');
-        const heartIcon = favoriteBtn?.querySelector('i');
-        
-        if (favoriteBtn && heartIcon) {
-          console.log(`🔧 更新第 ${index + 1} 个卡片的收藏按钮`);
-          
-          if (isFavorited) {
-            // 设置为收藏状态：实心红心
-            heartIcon.className = 'fas fa-heart';
-            heartIcon.style.color = '#EC4899';
-            favoriteBtn.classList.add('active');
-            card.classList.add('favorited');
-            console.log(`✅ 卡片 ${index + 1} 已设置为收藏状态`);
-          } else {
-            // 设置为未收藏状态：空心灰心
-            heartIcon.className = 'far fa-heart';
-            heartIcon.style.color = '#9CA3AF';
-            favoriteBtn.classList.remove('active');
-            card.classList.remove('favorited');
-            console.log(`✅ 卡片 ${index + 1} 已设置为未收藏状态`);
-          }
-        } else {
-          console.warn(`⚠️ 第 ${index + 1} 个卡片没有找到收藏按钮`);
-        }
-      });
-    },
-    
-    // 显示通知
-    showNotification(message, type = 'info') {
-      // 移除现有通知
-      const existingNotification = document.querySelector('.favorite-notification');
-      if (existingNotification) {
-        existingNotification.remove();
-      }
-
-      // 创建通知元素
-      const notification = document.createElement('div');
-      notification.className = `favorite-notification ${type}`;
-      notification.innerHTML = `
-        <div class="notification-content">
-          <i class="fas ${type === 'added' ? 'fa-heart' : type === 'removed' ? 'fa-heart-broken' : 'fa-exclamation-triangle'}"></i>
-          <span>${message}</span>
-        </div>
-      `;
-
-      // 添加样式
-      Object.assign(notification.style, {
-        position: 'fixed',
-        top: '20px',
-        right: '20px',
-        zIndex: '9999',
-        padding: '1rem 1.5rem',
-        borderRadius: '12px',
-        background: type === 'added' ? '#10B981' : type === 'removed' ? '#EF4444' : '#F59E0B',
-        color: 'white',
-        fontWeight: '600',
-        fontSize: '0.9rem',
-        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
-        transform: 'translateX(100%)',
-        transition: 'transform 0.3s ease',
-        backdropFilter: 'blur(10px)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem'
-      });
-
-      // 添加到页面
-      document.body.appendChild(notification);
-
-      // 动画显示
-      setTimeout(() => {
-        notification.style.transform = 'translateX(0)';
-      }, 100);
-
-      // 3秒后自动隐藏
-      setTimeout(() => {
-        notification.style.transform = 'translateX(100%)';
-        setTimeout(() => {
-          if (notification.parentNode) {
-            notification.parentNode.removeChild(notification);
-          }
-        }, 300);
-      }, 3000);
-    },
-    
-    // 初始化所有收藏按钮的状态
-    initializeFavoriteStates() {
-      try {
-        console.log('🚀 开始初始化收藏状态...');
-        
-        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
-        const gameCards = document.querySelectorAll('[data-game-id]');
-        
-        console.log(`📊 当前收藏列表: [${favorites.join(', ')}]`);
-        console.log(`🎯 找到 ${gameCards.length} 个游戏卡片需要初始化`);
-        
-        gameCards.forEach((card, index) => {
-          const gameSlug = card.dataset.gameId;
-          if (gameSlug) {
-            const isFavorited = favorites.includes(gameSlug);
-            console.log(`🔍 游戏 ${gameSlug}: ${isFavorited ? '已收藏' : '未收藏'}`);
-            this.updateGameCardUI(gameSlug, isFavorited);
-          }
-        });
-        
-        console.log('✅ 收藏状态初始化完成');
-      } catch (error) {
-        console.error('❌ 初始化收藏状态失败:', error);
-      }
-    }
-  };
-  
-  // 将收藏管理器设为全局可用
-  window.favoritesManager = favoritesManager;
-  
-  // 等待页面加载完成后初始化
-  document.addEventListener('DOMContentLoaded', () => {
-    console.log('🎯 数学游戏页面 - 收藏功能初始化开始');
-    
-    // 延迟一点确保所有元素都已渲染
-    setTimeout(() => {
-      favoritesManager.initializeFavoriteStates();
-    }, 500);
-    
-    console.log('✅ 数学游戏页面 - 收藏功能初始化完成');
-  });
-
-  // 添加额外的调试功能
-  window.debugFavorites = () => {
-    console.log('=== 收藏功能调试信息 ===');
-    console.log('当前收藏:', JSON.parse(localStorage.getItem('favoriteGames') || '[]'));
-    console.log('游戏卡片数量:', document.querySelectorAll('[data-game-id]').length);
-    console.log('收藏按钮数量:', document.querySelectorAll('.favorite-heart-btn').length);
-  };
-</script>
 
