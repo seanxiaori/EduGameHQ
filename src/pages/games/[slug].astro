@@ -54,6 +54,25 @@ function getGameSourceUrl(game: any): string {
   return game.sourceUrl || game.url || '';
 }
 
+// 获取来源页面信息
+const referrerHeader = Astro.request.headers.get('referer');
+let referrer = null;
+
+if (referrerHeader) {
+  try {
+    const referrerUrl = new URL(referrerHeader);
+    const referrerPath = referrerUrl.pathname;
+    
+    // 检查是否来自特殊页面
+    const specialPages = ['/recently-played', '/trending', '/new-games', '/favorites'];
+    if (specialPages.includes(referrerPath)) {
+      referrer = referrerPath;
+    }
+  } catch (e) {
+    // 忽略无效的referrer URL
+  }
+}
+
 // SEO数据
 const seoData = {
   title: `${game.title} - Free Educational Game | EduGameHQ`,
@@ -61,7 +80,7 @@ const seoData = {
 };
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} gameData={game}>
+<BaseLayout title={seoData.title} description={seoData.description} gameData={game} referrer={referrer}>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
 
