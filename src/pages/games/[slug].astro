@@ -1027,7 +1027,22 @@ const dynamicSEO = {
   function restartGame() {
     const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
     if (iframe) {
+      // 先记录当前游戏结束
+      recordGameEnd();
+      
+      // 重置交互计数器
+      iframeInteractionCount = 0;
+      lastIframeInteraction = null;
+      
+      // 重新加载游戏
       iframe.src = iframe.src;
+      
+      // 重新开始统计
+      setTimeout(() => {
+        initializeGameStats();
+      }, 1000);
+      
+      console.log('🔄 游戏重启，统计数据已重置');
     }
   }
 
@@ -1219,9 +1234,11 @@ const dynamicSEO = {
   (window as any).toggleFavorite = toggleFavorite;
   (window as any).handleShareClick = handleShareClick;
 
-  // 游戏统计数据记录功能
+  // 游戏统计数据记录功能 (iframe优化版)
   let gameStartTime = null;
   let gameSlug = null;
+  let iframeInteractionCount = 0;
+  let lastIframeInteraction = null;
 
   function initializeGameStats() {
     gameSlug = window.location.pathname.split('/').pop();
@@ -1242,33 +1259,163 @@ const dynamicSEO = {
     window.gameStatsManager.recordGameStart(gameSlug, gameInfo);
     gameStartTime = Date.now();
 
-    console.log(`🎮 开始记录游戏统计: ${gameSlug}`);
+    // 设置iframe交互监听
+    setupIframeInteractionTracking();
+
+    console.log(`🎮 开始记录游戏统计 (iframe优化): ${gameSlug}`);
+  }
+
+  function setupIframeInteractionTracking() {
+    const iframe = document.querySelector('.game-iframe');
+    if (!iframe) return;
+
+    // 监听iframe的鼠标事件
+    iframe.addEventListener('mouseenter', () => {
+      console.log('🖱️ 鼠标进入iframe');
+      recordIframeInteraction('mouseenter');
+    });
+
+    iframe.addEventListener('mouseleave', () => {
+      console.log('🖱️ 鼠标离开iframe');
+      recordIframeInteraction('mouseleave');
+    });
+
+    // 监听iframe的点击事件
+    iframe.addEventListener('click', () => {
+      console.log('🖱️ 点击iframe');
+      recordIframeInteraction('click');
+    });
+
+    // 监听iframe的焦点事件
+    iframe.addEventListener('focus', () => {
+      console.log('🎯 iframe获得焦点');
+      recordIframeInteraction('focus');
+    });
+
+    iframe.addEventListener('blur', () => {
+      console.log('🎯 iframe失去焦点');
+      recordIframeInteraction('blur');
+    });
+
+    // 尝试监听iframe内的PostMessage事件
+    window.addEventListener('message', (event) => {
+      // 检查消息来源是否为游戏iframe
+      if (event.source === iframe.contentWindow) {
+        console.log('📨 收到iframe内部消息:', event.data);
+        recordIframeInteraction('postmessage', event.data);
+      }
+    });
+
+    // 监听键盘事件（当iframe有焦点时）
+    document.addEventListener('keydown', (event) => {
+      if (document.activeElement === iframe) {
+        console.log('⌨️ iframe内键盘按下:', event.key);
+        recordIframeInteraction('keydown', event.key);
+      }
+    });
+
+    // 定期检查iframe是否还在加载
+    let loadCheckInterval = setInterval(() => {
+      try {
+        // 尝试访问iframe的contentDocument来检测加载状态
+        if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+          console.log('✅ iframe游戏完全加载完成');
+          recordIframeInteraction('loaded');
+          clearInterval(loadCheckInterval);
+          
+          // 尝试注入交互监听脚本到iframe
+          injectInteractionScript(iframe);
+        }
+      } catch (e) {
+        // 跨域限制，无法访问iframe内容，这是正常的
+        console.log('🔒 iframe跨域限制，使用外部监听');
+        clearInterval(loadCheckInterval);
+      }
+    }, 1000);
+
+    console.log('👂 iframe交互监听已设置');
+  }
+
+  function recordIframeInteraction(type, data = null) {
+    iframeInteractionCount++;
+    lastIframeInteraction = {
+      type: type,
+      timestamp: Date.now(),
+      data: data
+    };
+
+    // 通知统计管理器用户正在与游戏交互
+    if (window.gameStatsManager && gameSlug) {
+      window.gameStatsManager.updateGameActivity(gameSlug);
+    }
+
+    console.log(`🎯 iframe交互记录: ${type}`, data);
+  }
+
+  function injectInteractionScript(iframe) {
+    try {
+      // 尝试向iframe注入交互监听脚本
+      const script = iframe.contentDocument.createElement('script');
+      script.textContent = `
+        // 游戏内交互监听脚本
+        let interactionCount = 0;
+        
+        function reportInteraction(type, detail) {
+          interactionCount++;
+          window.parent.postMessage({
+            type: 'gameInteraction',
+            action: type,
+            detail: detail,
+            count: interactionCount,
+            timestamp: Date.now()
+          }, '*');
+        }
+        
+        // 监听各种游戏交互
+        ['click', 'mousedown', 'mouseup', 'keydown', 'keyup', 'touchstart', 'touchend'].forEach(eventType => {
+          document.addEventListener(eventType, (e) => {
+            reportInteraction(eventType, {
+              target: e.target.tagName,
+              x: e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX),
+              y: e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY)
+            });
+          }, true);
+        });
+        
+        // 监听游戏特定事件（如果游戏支持）
+        window.addEventListener('gameEvent', (e) => {
+          reportInteraction('gameEvent', e.detail);
+        });
+        
+        console.log('🎮 游戏内交互监听脚本已注入');
+      `;
+      
+      iframe.contentDocument.head.appendChild(script);
+      console.log('✅ 成功注入iframe交互监听脚本');
+    } catch (error) {
+      console.log('❌ 无法注入iframe脚本 (跨域限制):', error.message);
+    }
   }
 
   function recordGameEnd() {
     if (!gameSlug || !gameStartTime || typeof window.gameStatsManager === 'undefined') return;
 
     const playTime = Math.floor((Date.now() - gameStartTime) / 1000); // 转换为秒
+    
+    // 计算交互密度（每分钟交互次数）
+    const interactionDensity = playTime > 0 ? (iframeInteractionCount / (playTime / 60)) : 0;
+    
+    // 将交互数据传递给统计管理器
     window.gameStatsManager.recordGameEnd(gameSlug, playTime);
-
-    console.log(`🎮 记录游戏结束: ${gameSlug}, 游戏时长: ${playTime}秒`);
-  }
-
-  // 重写restart函数，记录新的游戏开始
-  function restartGame() {
-    const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
-    if (iframe) {
-      // 先记录当前游戏结束
-      recordGameEnd();
-      
-      // 重新加载游戏
-      iframe.src = iframe.src;
-      
-      // 重新开始统计
-      setTimeout(() => {
-        initializeGameStats();
-      }, 1000);
+    
+    // 记录iframe特定统计
+    if (window.gameStatsManager.iframeStats && window.gameStatsManager.iframeStats[gameSlug]) {
+      window.gameStatsManager.iframeStats[gameSlug].interactionCount = iframeInteractionCount;
+      window.gameStatsManager.iframeStats[gameSlug].interactionDensity = interactionDensity;
+      window.gameStatsManager.iframeStats[gameSlug].lastInteraction = lastIframeInteraction;
     }
+
+    console.log(`🎮 记录游戏结束 (iframe优化): ${gameSlug}, 游戏时长: ${playTime}秒, 交互次数: ${iframeInteractionCount}, 交互密度: ${interactionDensity.toFixed(2)}/分钟`);
   }
 
   // 页面加载后初始化收藏状态和游戏统计
