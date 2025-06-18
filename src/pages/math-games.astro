@@ -1004,29 +1004,155 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
 </style> 
 
 <!-- 引入全局收藏管理器脚本 -->
-<script src="/src/scripts/favorites-manager.js"></script>
+<script is:inline src="/scripts/favorites-manager.js"></script>
 
 <!-- 初始化收藏功能 -->
-<script>
-  // 等待页面加载完成后初始化收藏功能
-  document.addEventListener('DOMContentLoaded', () => {
-    // 等待全局收藏管理器加载
-    if (window.globalFavoritesManager) {
-      console.log('🎯 数学游戏页面 - 收藏功能初始化开始');
-      window.globalFavoritesManager.initializeGameCards();
-      console.log('✅ 数学游戏页面 - 收藏功能初始化完成');
-    } else {
-      // 如果还没加载，等待一会再试
-      setTimeout(() => {
-        if (window.globalFavoritesManager) {
-          console.log('🎯 数学游戏页面 - 延迟收藏功能初始化开始');
-          window.globalFavoritesManager.initializeGameCards();
-          console.log('✅ 数学游戏页面 - 延迟收藏功能初始化完成');
+<script is:inline>
+  // 创建简化的收藏管理器，避免依赖外部脚本
+  const mathGamesManager = {
+    // 切换收藏状态
+    toggleFavorite(gameSlug) {
+      try {
+        // 获取当前收藏列表
+        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        const isFavorited = favorites.includes(gameSlug);
+        
+        if (isFavorited) {
+          // 移除收藏
+          const newFavorites = favorites.filter(id => id !== gameSlug);
+          localStorage.setItem('favoriteGames', JSON.stringify(newFavorites));
+          console.log(`❌ 已从收藏中移除: ${gameSlug}`);
         } else {
-          console.warn('⚠️ 数学游戏页面 - 全局收藏管理器未找到');
+          // 添加收藏
+          favorites.push(gameSlug);
+          localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+          console.log(`❤️ 已添加到收藏: ${gameSlug}`);
         }
-      }, 500);
+        
+        // 更新所有相关按钮的UI
+        this.updateFavoriteButtons(gameSlug, !isFavorited);
+        
+        // 触发全局事件
+        window.dispatchEvent(new CustomEvent('favoritesChanged', {
+          detail: { gameSlug, isFavorite: !isFavorited }
+        }));
+        
+        // 显示通知
+        this.showNotification(
+          !isFavorited ? 'Added to favorites' : 'Removed from favorites',
+          !isFavorited ? 'added' : 'removed'
+        );
+        
+      } catch (error) {
+        console.error('收藏操作失败:', error);
+        this.showNotification('Something went wrong', 'error');
+      }
+    },
+    
+    // 更新收藏按钮UI
+    updateFavoriteButtons(gameSlug, isFavorited) {
+      const gameCards = document.querySelectorAll(`[data-game-id="${gameSlug}"]`);
+      gameCards.forEach(card => {
+        const favoriteBtn = card.querySelector('.favorite-heart-btn');
+        const heartIcon = favoriteBtn?.querySelector('i');
+        
+        if (favoriteBtn && heartIcon) {
+          if (isFavorited) {
+            heartIcon.className = 'fas fa-heart';
+            favoriteBtn.classList.add('active');
+            card.classList.add('favorited');
+          } else {
+            heartIcon.className = 'far fa-heart';
+            favoriteBtn.classList.remove('active');
+            card.classList.remove('favorited');
+          }
+        }
+      });
+    },
+    
+    // 显示通知
+    showNotification(message, type = 'info') {
+      // 移除现有通知
+      const existingNotification = document.querySelector('.favorite-notification');
+      if (existingNotification) {
+        existingNotification.remove();
+      }
+
+      // 创建通知元素
+      const notification = document.createElement('div');
+      notification.className = `favorite-notification ${type}`;
+      notification.innerHTML = `
+        <div class="notification-content">
+          <i class="fas ${type === 'added' ? 'fa-heart' : type === 'removed' ? 'fa-heart-broken' : 'fa-exclamation-triangle'}"></i>
+          <span>${message}</span>
+        </div>
+      `;
+
+      // 添加样式
+      Object.assign(notification.style, {
+        position: 'fixed',
+        top: '20px',
+        right: '20px',
+        zIndex: '9999',
+        padding: '1rem 1.5rem',
+        borderRadius: '12px',
+        background: type === 'added' ? '#10B981' : type === 'removed' ? '#EF4444' : '#F59E0B',
+        color: 'white',
+        fontWeight: '600',
+        fontSize: '0.9rem',
+        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+        transform: 'translateX(100%)',
+        transition: 'transform 0.3s ease',
+        backdropFilter: 'blur(10px)'
+      });
+
+      // 添加到页面
+      document.body.appendChild(notification);
+
+      // 动画显示
+      setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+      }, 100);
+
+      // 3秒后自动隐藏
+      setTimeout(() => {
+        notification.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+          if (notification.parentNode) {
+            notification.parentNode.removeChild(notification);
+          }
+        }, 300);
+      }, 3000);
+    },
+    
+    // 初始化所有收藏按钮的状态
+    initializeFavoriteStates() {
+      try {
+        const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        const gameCards = document.querySelectorAll('[data-game-id]');
+        
+        gameCards.forEach(card => {
+          const gameSlug = card.dataset.gameId;
+          if (gameSlug && favorites.includes(gameSlug)) {
+            this.updateFavoriteButtons(gameSlug, true);
+          }
+        });
+        
+        console.log(`✅ 初始化了 ${gameCards.length} 个游戏卡片的收藏状态`);
+      } catch (error) {
+        console.error('初始化收藏状态失败:', error);
+      }
     }
+  };
+  
+  // 将收藏管理器设为全局可用
+  window.favoritesManager = mathGamesManager;
+  
+  // 等待页面加载完成后初始化
+  document.addEventListener('DOMContentLoaded', () => {
+    console.log('🎯 数学游戏页面 - 收藏功能初始化开始');
+    mathGamesManager.initializeFavoriteStates();
+    console.log('✅ 数学游戏页面 - 收藏功能初始化完成');
   });
 </script>
 
