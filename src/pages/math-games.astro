@@ -102,24 +102,26 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                 <div class="game-image-container">
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
-                    {randomHistory && (
-                      <div class={`played-badge ${
-                        randomHistory === 'Today' ? 'today' : 
-                        randomHistory === 'Yesterday' ? 'yesterday' : 
-                        'few-days-ago'
-                      }`}>
-                        {randomHistory}
-                      </div>
-                    )}
-                    <div class="popularity-badge">
-                      🔥 {formatPopularity(popularity)}
-                    </div>
                     <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>
                     </button>
                   </div>
-                  <!-- 收藏按钮 -->
+                  <!-- 游戏历史标签 - 左上角 -->
+                  {randomHistory && (
+                    <div class={`played-badge ${
+                      randomHistory === 'Today' ? 'today' : 
+                      randomHistory === 'Yesterday' ? 'yesterday' : 
+                      'few-days-ago'
+                    }`}>
+                      {randomHistory}
+                    </div>
+                  )}
+                  <!-- 人气标签 - 根据是否有历史标签调整位置 -->
+                  <div class={`popularity-badge ${randomHistory ? 'with-history' : ''}`}>
+                    🔥 {formatPopularity(popularity)}
+                  </div>
+                  <!-- 收藏按钮 - 右上角 -->
                   <button class="favorite-heart-btn" data-game-slug={game.id}>
                     <i class="far fa-heart"></i>
                   </button>
@@ -220,15 +222,16 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                   <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" />
                     <div class="game-overlay">
-                      <div class="popularity-badge">
-                        ⭐ {formatPopularity(popularity)}
-                      </div>
                       <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
                       </button>
                     </div>
-                    <!-- 收藏按钮 -->
+                    <!-- 人气标签 - 左上角 -->
+                    <div class="popularity-badge">
+                      ⭐ {formatPopularity(popularity)}
+                    </div>
+                    <!-- 收藏按钮 - 右上角 -->
                     <button class="favorite-heart-btn" data-game-slug={game.id}>
                       <i class="far fa-heart"></i>
                     </button>
@@ -275,23 +278,28 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                   <div class="game-image-container">
                     <img src={game.image} alt={game.title} class="game-image" />
                     <div class="game-overlay">
-                      <div class="popularity-badge">
-                        🔥 {formatPopularity(popularity)}
-                          </div>
                       <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                         <i class="fas fa-play"></i>
                         <span>Play Now</span>
                       </button>
-                        </div>
-                      </div>
-                      <div class="game-info">
-                        <h3 class="game-title">{game.title}</h3>
-                          <div class="game-tags">
+                    </div>
+                    <!-- 人气标签 - 左上角 -->
+                    <div class="popularity-badge">
+                      🔥 {formatPopularity(popularity)}
+                    </div>
+                    <!-- 收藏按钮 - 右上角 -->
+                    <button class="favorite-heart-btn" data-game-slug={game.id}>
+                      <i class="far fa-heart"></i>
+                    </button>
+                  </div>
+                  <div class="game-info">
+                    <h3 class="game-title">{game.title}</h3>
+                    <div class="game-tags">
                       <span class="category-tag math">Math</span>
                       <span class="difficulty-tag hard">HARD</span>
-                          </div>
-                            </div>
-                          </div>
+                    </div>
+                  </div>
+                </div>
               );
             })}
                         </div>

@@ -343,16 +343,6 @@ const sampleFavorites = allGamesData
                   <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${(game.difficulty || 'Medium').toUpperCase()}</span>
                   <span class="feature-tag favorited">FAVORITED</span>
                 </div>
-                <div class="game-stats">
-                  <div class="stat">
-                    <i class="fas fa-play"></i>
-                    <span>${game.playCount || Math.floor(Math.random() * 15000) + 500} plays</span>
-                  </div>
-                  <div class="stat">
-                    <i class="fas fa-child"></i>
-                    <span>Ages ${game.ageRange || '6-12'}</span>
-                  </div>
-                </div>
               </div>
             </div>
           `).join('');
@@ -399,16 +389,6 @@ const sampleFavorites = allGamesData
                 <span class="category-tag ${game.category}">${game.category.charAt(0).toUpperCase() + game.category.slice(1)}</span>
                 <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${(game.difficulty || 'Medium').toUpperCase()}</span>
                 <span class="feature-tag recommended">RECOMMENDED</span>
-              </div>
-              <div class="game-stats">
-                <div class="stat">
-                  <i class="fas fa-play"></i>
-                  <span>${game.playCount || Math.floor(Math.random() * 15000) + 500} plays</span>
-                </div>
-                <div class="stat">
-                  <i class="fas fa-child"></i>
-                  <span>Ages ${game.ageRange || '6-12'}</span>
-                </div>
               </div>
             </div>
           </div>

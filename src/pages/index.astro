@@ -273,14 +273,17 @@ const allGames = allGamesData.map(game => ({
                         {randomHistory}
                       </div>
                     )}
-                    <div class="popularity-badge">
-                      {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
-                    </div>
                     <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>
                     </button>
                 </div>
+                <div class={`popularity-badge ${randomHistory ? 'with-history' : ''}`}>
+                  {popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} {formatPopularity(popularity)}
+                </div>
+                <button class="favorite-heart-btn" data-game-slug={game.slug}>
+                  <i class="far fa-heart"></i>
+                </button>
               </div>
               <div class="game-info">
                 <h3 class="game-title">{game.title}</h3>
@@ -408,6 +411,62 @@ const allGames = allGamesData.map(game => ({
     document.addEventListener('DOMContentLoaded', function() {
       console.log('首页加载完成，游戏卡片管理系统已启用');
       window.gameCardManager = new GameCardManager();
+    });
+  </script>
+
+  <!-- 引入全局收藏管理器 -->
+  <script src="/src/scripts/favorites-manager.js"></script>
+
+  <!-- 首页收藏功能初始化 -->
+  <script>
+    // 首页收藏功能支持
+    document.addEventListener('DOMContentLoaded', function() {
+      // 初始化所有收藏按钮
+      const favoriteButtons = document.querySelectorAll('.favorite-heart-btn');
+      
+      favoriteButtons.forEach(button => {
+        const gameSlug = button.getAttribute('data-game-slug');
+        if (gameSlug) {
+          // 检查当前收藏状态
+          const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+          if (favorites.includes(gameSlug)) {
+            button.classList.add('active');
+            button.innerHTML = '<i class="fas fa-heart"></i>';
+          }
+          
+          // 添加点击事件
+          button.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const currentFavorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+            const isFavorited = currentFavorites.includes(gameSlug);
+            
+            if (isFavorited) {
+              // 移除收藏
+              const newFavorites = currentFavorites.filter(id => id !== gameSlug);
+              localStorage.setItem('favoriteGames', JSON.stringify(newFavorites));
+              button.classList.remove('active');
+              button.innerHTML = '<i class="far fa-heart"></i>';
+              console.log(`❌ 已从收藏中移除: ${gameSlug}`);
+            } else {
+              // 添加收藏
+              currentFavorites.push(gameSlug);
+              localStorage.setItem('favoriteGames', JSON.stringify(currentFavorites));
+              button.classList.add('active');
+              button.innerHTML = '<i class="fas fa-heart"></i>';
+              console.log(`❤️ 已添加到收藏: ${gameSlug}`);
+            }
+            
+            // 触发收藏状态变化事件
+            window.dispatchEvent(new CustomEvent('favoritesChanged', {
+              detail: { gameSlug, isFavorite: !isFavorited }
+            }));
+          });
+        }
+      });
+      
+      console.log('✅ 首页收藏功能已初始化');
     });
   </script>
 </BaseLayout>

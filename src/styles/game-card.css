@@ -66,7 +66,7 @@
   opacity: 1;
 }
 
-/* 游戏历史标签 */
+/* 游戏历史标签 - 左上角位置 */
 .played-badge {
   position: absolute;
   top: 10px;
@@ -77,8 +77,8 @@
   font-weight: 600;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 3;
 }
 
 .played-badge.today {
@@ -101,11 +101,11 @@
   color: white;
 }
 
-/* 人气值标签 */
+/* 人气值标签 - 修改为左上角位置，避免与收藏按钮重叠 */
 .popularity-badge {
   position: absolute;
   top: 10px;
-  right: 10px;
+  left: 10px;
   background: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 0.25rem 0.5rem;
@@ -114,8 +114,20 @@
   font-weight: 600;
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   animation: pulse 2s infinite;
+  z-index: 2;
+}
+
+/* 当同时有游戏历史和人气标签时，人气标签向右偏移 */
+.game-card .played-badge + .popularity-badge,
+.game-card .popularity-badge.with-history {
+  left: auto;
+  right: 60px; /* 为收藏按钮留出空间 */
+}
+
+/* 如果没有游戏历史标签，人气标签保持在左上角 */
+.game-card:not(.has-history) .popularity-badge {
+  left: 10px;
 }
 
 @keyframes pulse {
@@ -705,11 +717,11 @@
   opacity: 0.7;
 }
 
-/* 收藏按钮样式 */
+/* 收藏按钮 - 保持在右上角 */
 .favorite-heart-btn {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
   width: 36px;
   height: 36px;
   border: none;
@@ -719,32 +731,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  z-index: 5;
   backdrop-filter: blur(10px);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 10;
-  opacity: 0;
 }
 
 .game-card:hover .favorite-heart-btn {
-  opacity: 1;
+  background: rgba(255, 255, 255, 1);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .favorite-heart-btn:hover {
-  transform: scale(1.1);
-  background: white;
-  color: #EC4899;
+  background: #FEE2E2;
+  color: #EF4444;
+  transform: scale(1.15);
 }
 
 .favorite-heart-btn.active {
-  background: #EC4899;
+  background: #EF4444;
   color: white;
-  opacity: 1;
+  animation: heartBeat 0.5s ease-in-out;
 }
 
 .favorite-heart-btn.active:hover {
-  background: #DB2777;
+  background: #DC2626;
+  color: white;
 }
 
 /* 收藏状态指示器 */
