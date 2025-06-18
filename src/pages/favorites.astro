@@ -317,14 +317,14 @@ const sampleFavorites = allGamesData
           
           // 使用标准游戏卡片结构
           favoritesGrid.innerHTML = favoriteGames.map((game, index) => `
-            <a href="/games/${game.slug}" class="game-card ${game.category}-theme animate-fadeInUp" style="animation-delay: ${index * 0.1}s" data-game-id="${game.slug}">
+            <div class="game-card ${game.category}-theme animate-fadeInUp" style="animation-delay: ${index * 0.1}s" data-game-id="${game.slug}">
               <div class="game-image-container">
                 <img src="${game.thumbnailUrl || '/images/logo.svg'}" alt="${game.title}" class="game-image" />
                 <div class="game-overlay">
-                  <div class="play-button">
+                  <button class="play-button" onclick="window.location.href='/games/${game.slug}'">
                     <i class="fas fa-play"></i>
                     <span>Play Now</span>
-                  </div>
+                  </button>
                 </div>
                 <button class="favorite-heart-btn active" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.slug}')">
                   <i class="fas fa-heart"></i>
@@ -332,24 +332,24 @@ const sampleFavorites = allGamesData
               </div>
               <div class="game-info">
                 <h3 class="game-title">${game.title}</h3>
-                <p class="game-description">${game.description || 'Educational game for learning and fun'}</p>
+                <p class="game-description">${game.description || 'Fun educational game for all ages'}</p>
                 <div class="game-tags">
-                  <span class="category-tag ${game.category}">${game.categoryName}</span>
-                  <span class="difficulty-tag ${game.difficulty?.toLowerCase() || 'medium'}">${game.difficulty || 'Medium'}</span>
+                  <span class="category-tag ${game.category}">${game.category.charAt(0).toUpperCase() + game.category.slice(1)}</span>
+                  <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${(game.difficulty || 'Medium').toUpperCase()}</span>
                   <span class="feature-tag favorited">FAVORITED</span>
                 </div>
                 <div class="game-stats">
                   <div class="stat">
-                    <i class="fas fa-users"></i>
-                    <span>${game.playCount || 0} plays</span>
+                    <i class="fas fa-play"></i>
+                    <span>${game.playCount || Math.floor(Math.random() * 15000) + 500} plays</span>
                   </div>
                   <div class="stat">
-                    <i class="fas fa-clock"></i>
-                    <span>${game.ageRange || '6-18'}</span>
+                    <i class="fas fa-child"></i>
+                    <span>Ages ${game.ageRange || '6-12'}</span>
                   </div>
                 </div>
               </div>
-            </a>
+            </div>
           `).join('');
           
           console.log(`✅ 渲染了 ${favoriteGames.length} 个收藏游戏`);
@@ -374,14 +374,14 @@ const sampleFavorites = allGamesData
         const recommendationsGrid = document.getElementById('recommendationsGrid');
         // 使用标准游戏卡片结构
         recommendationsGrid.innerHTML = recommendations.map((game, index) => `
-          <a href="/games/${game.slug}" class="game-card ${game.category}-theme animate-fadeInUp" style="animation-delay: ${index * 0.1}s" data-game-id="${game.slug}">
+          <div class="game-card ${game.category}-theme animate-fadeInUp" style="animation-delay: ${index * 0.1}s" data-game-id="${game.slug}">
             <div class="game-image-container">
               <img src="${game.thumbnailUrl || '/images/logo.svg'}" alt="${game.title}" class="game-image" />
               <div class="game-overlay">
-                <div class="play-button">
+                <button class="play-button" onclick="window.location.href='/games/${game.slug}'">
                   <i class="fas fa-play"></i>
                   <span>Play Now</span>
-                </div>
+                </button>
               </div>
               <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.slug}')">
                 <i class="far fa-heart"></i>
@@ -389,24 +389,24 @@ const sampleFavorites = allGamesData
             </div>
             <div class="game-info">
               <h3 class="game-title">${game.title}</h3>
-              <p class="game-description">${game.description || 'Educational game for learning and fun'}</p>
+              <p class="game-description">${game.description || 'Fun educational game for all ages'}</p>
               <div class="game-tags">
-                <span class="category-tag ${game.category}">${game.categoryName}</span>
-                <span class="difficulty-tag ${game.difficulty?.toLowerCase() || 'medium'}">${game.difficulty || 'Medium'}</span>
+                <span class="category-tag ${game.category}">${game.category.charAt(0).toUpperCase() + game.category.slice(1)}</span>
+                <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${(game.difficulty || 'Medium').toUpperCase()}</span>
                 <span class="feature-tag recommended">RECOMMENDED</span>
               </div>
               <div class="game-stats">
                 <div class="stat">
-                  <i class="fas fa-users"></i>
-                  <span>${game.playCount || 0} plays</span>
+                  <i class="fas fa-play"></i>
+                  <span>${game.playCount || Math.floor(Math.random() * 15000) + 500} plays</span>
                 </div>
                 <div class="stat">
-                  <i class="fas fa-clock"></i>
-                  <span>${game.ageRange || '6-18'}</span>
+                  <i class="fas fa-child"></i>
+                  <span>Ages ${game.ageRange || '6-12'}</span>
                 </div>
               </div>
             </div>
-          </a>
+          </div>
         `).join('');
         
         console.log(`✅ 渲染了 ${recommendations.length} 个推荐游戏`);

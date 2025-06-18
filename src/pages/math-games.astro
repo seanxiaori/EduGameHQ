@@ -119,6 +119,10 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                       <span>Play Now</span>
                     </button>
                   </div>
+                  <!-- 收藏按钮 -->
+                  <button class="favorite-heart-btn" data-game-slug={game.id}>
+                    <i class="far fa-heart"></i>
+                  </button>
                 </div>
                 <div class="game-info">
                   <h3 class="game-title">{game.title}</h3>
@@ -169,6 +173,10 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                         <span>Play Now</span>
                       </button>
                     </div>
+                    <!-- 收藏按钮 -->
+                    <button class="favorite-heart-btn" data-game-slug={game.id}>
+                      <i class="far fa-heart"></i>
+                    </button>
                   </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
@@ -216,11 +224,15 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                         ⭐ {formatPopularity(popularity)}
                       </div>
                       <button class="play-button" onclick={`window.location.href='${game.url}'`}>
-                          <i class="fas fa-play"></i>
+                        <i class="fas fa-play"></i>
                         <span>Play Now</span>
                       </button>
-                        </div>
-                      </div>
+                    </div>
+                    <!-- 收藏按钮 -->
+                    <button class="favorite-heart-btn" data-game-slug={game.id}>
+                      <i class="far fa-heart"></i>
+                    </button>
+                  </div>
                   <div class="game-info">
                     <h3 class="game-title">{game.title}</h3>
                     <div class="game-tags">
@@ -903,4 +915,31 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style> 
+
+<!-- 引入全局收藏管理器脚本 -->
+<script src="/src/scripts/favorites-manager.js"></script>
+
+<!-- 初始化收藏功能 -->
+<script>
+  // 等待页面加载完成后初始化收藏功能
+  document.addEventListener('DOMContentLoaded', () => {
+    // 等待全局收藏管理器加载
+    if (window.globalFavoritesManager) {
+      console.log('🎯 数学游戏页面 - 收藏功能初始化开始');
+      window.globalFavoritesManager.initializeGameCards();
+      console.log('✅ 数学游戏页面 - 收藏功能初始化完成');
+    } else {
+      // 如果还没加载，等待一会再试
+      setTimeout(() => {
+        if (window.globalFavoritesManager) {
+          console.log('🎯 数学游戏页面 - 延迟收藏功能初始化开始');
+          window.globalFavoritesManager.initializeGameCards();
+          console.log('✅ 数学游戏页面 - 延迟收藏功能初始化完成');
+        } else {
+          console.warn('⚠️ 数学游戏页面 - 全局收藏管理器未找到');
+        }
+      }, 500);
+    }
+  });
+</script>
 
