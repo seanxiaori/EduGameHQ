@@ -10,23 +10,58 @@ const { title, description = "Free educational games for kids and students", bod
 // 获取当前页面路径，用于导航高亮
 const currentPath = Astro.url.pathname;
 
-// 定义分类页面映射
-const categoryMap = {
-  '/math-games': 'Math Games',
-  '/science-games': 'Science Games', 
-  '/language-games': 'Language Games',
-  '/puzzle-games': 'Puzzle Games',
-  '/sports-games': 'Sports Games',
-  '/art-games': 'Art & Creativity'
+// 定义页面分类和层级结构
+const pageStructure = {
+  categories: {
+    '/math-games': { name: 'Math Games', icon: 'fas fa-calculator', color: 'math' },
+    '/science-games': { name: 'Science Games', icon: 'fas fa-flask', color: 'science' },
+    '/language-games': { name: 'Language Games', icon: 'fas fa-book-open', color: 'language' },
+    '/puzzle-games': { name: 'Puzzle Games', icon: 'fas fa-puzzle-piece', color: 'puzzle' },
+    '/sports-games': { name: 'Sports Games', icon: 'fas fa-running', color: 'sports' },
+    '/art-games': { name: 'Art & Creativity', icon: 'fas fa-palette', color: 'art' }
+  },
+  special: {
+    '/recently-played': { name: 'Recently Played', icon: 'fas fa-clock', color: 'blue' },
+    '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'red' },
+    '/new-games': { name: 'New Games', icon: 'fas fa-star', color: 'green' },
+    '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'pink' },
+    '/search': { name: 'Search', icon: 'fas fa-search', color: 'purple' }
+  }
 };
 
-// 获取当前分类名称
-const currentCategory = categoryMap[currentPath];
+// 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
-const isSpecialPage = ['/recently-played', '/trending', '/new-games', '/favorites', '/search'].includes(currentPath);
+const currentCategory = pageStructure.categories[currentPath];
+const currentSpecialPage = pageStructure.special[currentPath];
+const isGamePage = currentPath.startsWith('/games/');
 
-// 导航按钮显示文本
-const categoriesButtonText = currentCategory || 'Categories';
+// 构建面包屑导航
+const breadcrumbs = [];
+if (!isHomePage) {
+  breadcrumbs.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
+  
+  if (currentCategory) {
+    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
+    breadcrumbs.push({ 
+      name: currentCategory.name, 
+      url: currentPath, 
+      icon: currentCategory.icon,
+      color: currentCategory.color,
+      isCurrent: true 
+    });
+  } else if (currentSpecialPage) {
+    breadcrumbs.push({ 
+      name: currentSpecialPage.name, 
+      url: currentPath, 
+      icon: currentSpecialPage.icon,
+      color: currentSpecialPage.color,
+      isCurrent: true 
+    });
+  } else if (isGamePage) {
+    // 游戏页面面包屑 - 需要根据游戏所属分类来确定
+    breadcrumbs.push({ name: 'Games', url: '/', icon: 'fas fa-gamepad' });
+  }
+}
 ---
 
 <!DOCTYPE html>
@@ -120,58 +155,92 @@ const categoriesButtonText = currentCategory || 'Categories';
           <span>EduGameHQ</span>
         </a>
         
-        <!-- 主导航菜单 -->
+        <!-- 智能面包屑导航 -->
         <nav class="nav-menu">
-          <a href="/" class="nav-link">
-            <i class="fas fa-home"></i>
-            Home
-          </a>
-          <div class="nav-dropdown">
-            <button class={`nav-link dropdown-trigger ${currentCategory ? 'active' : ''}`} id="categoriesDropdown">
-              <i class="fas fa-gamepad"></i>
-              {categoriesButtonText}
-              <i class="fas fa-chevron-down dropdown-arrow"></i>
-            </button>
-            <div class="dropdown-menu" id="categoriesMenu">
-              <a href="/math-games" class={`dropdown-item math ${currentPath === '/math-games' ? 'active' : ''}`}>
-                <i class="fas fa-calculator"></i>
-                Math Games
+          {breadcrumbs.length === 0 ? (
+            <!-- 首页导航 -->
+            <div class="nav-breadcrumbs">
+              <a href="/" class="nav-link current">
+                <i class="fas fa-home"></i>
+                Home
               </a>
-              <a href="/science-games" class={`dropdown-item science ${currentPath === '/science-games' ? 'active' : ''}`}>
-                <i class="fas fa-flask"></i>
-                Science Games
-              </a>
-              <a href="/language-games" class={`dropdown-item language ${currentPath === '/language-games' ? 'active' : ''}`}>
-                <i class="fas fa-book-open"></i>
-                Language Games
-              </a>
-              <a href="/puzzle-games" class={`dropdown-item puzzle ${currentPath === '/puzzle-games' ? 'active' : ''}`}>
-                <i class="fas fa-puzzle-piece"></i>
-                Puzzle Games
-              </a>
-              <a href="/sports-games" class={`dropdown-item sports ${currentPath === '/sports-games' ? 'active' : ''}`}>
-                <i class="fas fa-running"></i>
-                Sports Games
-              </a>
-              <a href="/art-games" class={`dropdown-item art ${currentPath === '/art-games' ? 'active' : ''}`}>
-                <i class="fas fa-palette"></i>
-                Art & Creativity
-              </a>
-              <hr class="dropdown-divider">
-              <a href="/recently-played" class={`dropdown-item ${currentPath === '/recently-played' ? 'active' : ''}`}>
-                <i class="fas fa-clock"></i>
-                Recently Played
-              </a>
-              <a href="/trending" class={`dropdown-item ${currentPath === '/trending' ? 'active' : ''}`}>
-                <i class="fas fa-fire"></i>
-                Trending
-              </a>
-              <a href="/new-games" class={`dropdown-item ${currentPath === '/new-games' ? 'active' : ''}`}>
-                <i class="fas fa-star"></i>
-                New Games
-              </a>
+              <div class="nav-dropdown">
+                <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                  <i class="fas fa-gamepad"></i>
+                  Categories
+                  <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </button>
+                <div class="dropdown-menu" id="categoriesMenu">
+                  {Object.entries(pageStructure.categories).map(([path, info]) => (
+                    <a href={path} class={`dropdown-item ${info.color}`}>
+                      <i class={info.icon}></i>
+                      {info.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div class="nav-dropdown">
+                <button class="nav-link dropdown-trigger" id="specialDropdown">
+                  <i class="fas fa-star"></i>
+                  Special
+                  <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </button>
+                <div class="dropdown-menu" id="specialMenu">
+                  {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
+                    <a href={path} class={`dropdown-item ${info.color}`}>
+                      <i class={info.icon}></i>
+                      {info.name}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
+          ) : (
+            <!-- 面包屑导航 -->
+            <div class="nav-breadcrumbs">
+              {breadcrumbs.map((crumb, index) => (
+                <div class="breadcrumb-item">
+                  {crumb.isDropdown ? (
+                    <div class="nav-dropdown">
+                      <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                        <i class={crumb.icon}></i>
+                        {crumb.name}
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                      </button>
+                      <div class="dropdown-menu" id="categoriesMenu">
+                        {Object.entries(pageStructure.categories).map(([path, info]) => (
+                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                            <i class={info.icon}></i>
+                            {info.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <a href={crumb.url} class={`nav-link ${crumb.isCurrent ? 'current' : ''} ${crumb.color || ''}`}>
+                      <i class={crumb.icon}></i>
+                      {crumb.name}
+                    </a>
+                  )}
+                  {index < breadcrumbs.length - 1 && (
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+          
+          <!-- 特殊页面独立导航（仅在非首页显示） -->
+          {!isHomePage && currentSpecialPage && (
+            <div class="special-nav">
+              {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
+                <a href={path} class={`nav-link special-link ${info.color} ${currentPath === path ? 'current' : ''}`}>
+                  <i class={info.icon}></i>
+                  <span class="nav-link-text">{info.name}</span>
+                </a>
+              ))}
+            </div>
+          )}
         </nav>
         
         <!-- 搜索区域 -->
@@ -192,7 +261,7 @@ const categoriesButtonText = currentCategory || 'Categories';
         
         <!-- 右侧按钮组 -->
         <div class="nav-actions">
-          <a href="/favorites" class="nav-btn favorites-btn" title="Favorites">
+          <a href="/favorites" class={`nav-btn favorites-btn ${currentPath === '/favorites' ? 'current' : ''}`} title="Favorites">
             <i class="fas fa-heart"></i>
             <span class="nav-btn-text">Favorites</span>
           </a>
@@ -219,44 +288,21 @@ const categoriesButtonText = currentCategory || 'Categories';
           </a>
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">Categories</div>
-            <a href="/math-games" class={`mobile-menu-item math ${currentPath === '/math-games' ? 'active' : ''}`}>
-              <i class="fas fa-calculator"></i>
-              Math Games
-            </a>
-            <a href="/science-games" class={`mobile-menu-item science ${currentPath === '/science-games' ? 'active' : ''}`}>
-              <i class="fas fa-flask"></i>
-              Science Games
-            </a>
-            <a href="/language-games" class={`mobile-menu-item language ${currentPath === '/language-games' ? 'active' : ''}`}>
-              <i class="fas fa-book-open"></i>
-              Language Games
-            </a>
-            <a href="/puzzle-games" class={`mobile-menu-item puzzle ${currentPath === '/puzzle-games' ? 'active' : ''}`}>
-              <i class="fas fa-puzzle-piece"></i>
-              Puzzle Games
-            </a>
-            <a href="/sports-games" class={`mobile-menu-item sports ${currentPath === '/sports-games' ? 'active' : ''}`}>
-              <i class="fas fa-running"></i>
-              Sports Games
-            </a>
-            <a href="/art-games" class={`mobile-menu-item art ${currentPath === '/art-games' ? 'active' : ''}`}>
-              <i class="fas fa-palette"></i>
-              Art & Creativity
-            </a>
+            {Object.entries(pageStructure.categories).map(([path, info]) => (
+              <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                <i class={info.icon}></i>
+                {info.name}
+              </a>
+            ))}
           </div>
           <div class="mobile-menu-section">
-            <a href="/recently-played" class={`mobile-menu-item ${currentPath === '/recently-played' ? 'active' : ''}`}>
-              <i class="fas fa-clock"></i>
-              Recently Played
-            </a>
-            <a href="/trending" class={`mobile-menu-item ${currentPath === '/trending' ? 'active' : ''}`}>
-              <i class="fas fa-fire"></i>
-              Trending
-            </a>
-            <a href="/new-games" class={`mobile-menu-item ${currentPath === '/new-games' ? 'active' : ''}`}>
-              <i class="fas fa-star"></i>
-              New Games
-            </a>
+            <div class="mobile-menu-title">Special Pages</div>
+            {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
+              <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                <i class={info.icon}></i>
+                {info.name}
+              </a>
+            ))}
           </div>
         </div>
       </div>
@@ -374,25 +420,66 @@ const categoriesButtonText = currentCategory || 'Categories';
     document.addEventListener('DOMContentLoaded', function() {
       console.log('=== SEARCH INITIALIZATION DEBUG ===');
       
-      // 下拉菜单功能 - 修复选择器
-      const dropdown = document.querySelector('.nav-dropdown');
-      if (dropdown) {
+      // 下拉菜单功能 - 支持多个下拉菜单
+      const dropdowns = document.querySelectorAll('.nav-dropdown');
+      dropdowns.forEach(dropdown => {
         const dropdownToggle = dropdown.querySelector('.dropdown-trigger');
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         
         if (dropdownToggle && dropdownMenu) {
           dropdownToggle.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
+            
+            // 关闭其他下拉菜单
+            dropdowns.forEach(otherDropdown => {
+              if (otherDropdown !== dropdown) {
+                const otherMenu = otherDropdown.querySelector('.dropdown-menu');
+                if (otherMenu) {
+                  otherMenu.classList.remove('show');
+                }
+              }
+            });
+            
+            // 切换当前下拉菜单
             dropdownMenu.classList.toggle('show');
           });
-          
-          // 点击外部关闭下拉菜单
-          document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
+        }
+      });
+      
+      // 点击外部关闭所有下拉菜单
+      document.addEventListener('click', function(e) {
+        const isClickInsideDropdown = e.target.closest('.nav-dropdown');
+        if (!isClickInsideDropdown) {
+          dropdowns.forEach(dropdown => {
+            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+            if (dropdownMenu) {
               dropdownMenu.classList.remove('show');
             }
           });
         }
+      });
+      
+      // 移动端菜单功能
+      const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      
+      if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          mobileMenu.classList.toggle('show');
+          mobileMenuBtn.classList.toggle('active');
+        });
+        
+        // 点击菜单项后关闭移动端菜单
+        const mobileMenuItems = mobileMenu.querySelectorAll('.mobile-menu-item');
+        mobileMenuItems.forEach(item => {
+          item.addEventListener('click', function() {
+            mobileMenu.classList.remove('show');
+            mobileMenuBtn.classList.remove('active');
+          });
+        });
       }
       
       // 搜索功能初始化
@@ -540,6 +627,39 @@ const categoriesButtonText = currentCategory || 'Categories';
     flex-shrink: 0;
   }
 
+  /* 面包屑导航样式 */
+  .nav-breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb-separator {
+    color: #9CA3AF;
+    font-size: 0.75rem;
+  }
+
+  /* 特殊页面独立导航 */
+  .special-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 1px solid #E5E7EB;
+  }
+
+  .special-link {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+  }
+
   .nav-link {
     display: flex;
     align-items: center;
@@ -558,6 +678,76 @@ const categoriesButtonText = currentCategory || 'Categories';
     background: #F3F1EE;
     color: #F59E0B;
     transform: translateY(-1px);
+  }
+
+  /* 当前页面高亮样式 */
+  .nav-link.current {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  }
+
+  .nav-link.current:hover {
+    background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
+    transform: translateY(-1px);
+  }
+
+  /* 分类特定颜色 */
+  .nav-link.math.current {
+    background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
+    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
+  }
+
+  .nav-link.science.current {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+  }
+
+  .nav-link.language.current {
+    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
+    box-shadow: 0 2px 8px rgba(192, 38, 211, 0.3);
+  }
+
+  .nav-link.puzzle.current {
+    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
+    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
+  }
+
+  .nav-link.sports.current {
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+  }
+
+  .nav-link.art.current {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+  }
+
+  /* 特殊页面颜色 */
+  .nav-link.red.current {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+  }
+
+  .nav-link.green.current {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  }
+
+  .nav-link.blue.current {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+  }
+
+  .nav-link.pink.current {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
+  }
+
+  .nav-link.purple.current {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
   }
 
   /* 下拉菜单样式 */
@@ -627,6 +817,11 @@ const categoriesButtonText = currentCategory || 'Categories';
   .dropdown-item.sports:hover { color: #DC2626; }
   .dropdown-item.art:hover { color: #EC4899; }
   .dropdown-item.geography:hover { color: #0891B2; }
+  .dropdown-item.red:hover { color: #EF4444; }
+  .dropdown-item.green:hover { color: #10B981; }
+  .dropdown-item.blue:hover { color: #3B82F6; }
+  .dropdown-item.pink:hover { color: #EC4899; }
+  .dropdown-item.purple:hover { color: #8B5CF6; }
 
   /* 导航项高亮状态 */
   .dropdown-item.active {
@@ -659,11 +854,24 @@ const categoriesButtonText = currentCategory || 'Categories';
     background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
   }
 
-  /* Categories按钮高亮状态 */
-  .nav-dropdown .dropdown-trigger.active {
-    background: #F59E0B !important;
-    color: white !important;
-    border-radius: 12px;
+  .dropdown-item.active.red {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
+  }
+
+  .dropdown-item.active.green {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
+  }
+
+  .dropdown-item.active.blue {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
+  }
+
+  .dropdown-item.active.pink {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
+  }
+
+  .dropdown-item.active.purple {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
   }
 
   .dropdown-divider {
@@ -1075,6 +1283,14 @@ const categoriesButtonText = currentCategory || 'Categories';
     .nav-btn-text {
       display: none;
     }
+
+    .special-nav {
+      display: none;
+    }
+
+    .breadcrumb-separator {
+      margin: 0 0.25rem;
+    }
   }
 
   @media (max-width: 768px) {
@@ -1105,6 +1321,21 @@ const categoriesButtonText = currentCategory || 'Categories';
     .logo {
       font-size: 1.25rem;
     }
+
+    /* 移动端面包屑简化 */
+    .nav-breadcrumbs {
+      gap: 0.25rem;
+    }
+
+    .breadcrumb-separator {
+      font-size: 0.7rem;
+      margin: 0 0.1rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1121,6 +1352,20 @@ const categoriesButtonText = currentCategory || 'Categories';
     
     .footer-social {
       justify-content: center;
+    }
+
+    /* 移动端隐藏面包屑分隔符 */
+    .breadcrumb-separator {
+      display: none;
+    }
+
+    .nav-breadcrumbs {
+      flex-wrap: wrap;
+      gap: 0.25rem;
+    }
+
+    .breadcrumb-item {
+      gap: 0.25rem;
     }
   }
 </style>
