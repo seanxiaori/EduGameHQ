@@ -108,8 +108,18 @@ const recommendedGames = allGamesData
             </div>
           </div>
           
+          <!-- 使用统一GameCard组件预渲染所有游戏，JavaScript控制显示/隐藏 -->
           <div class="games-grid" id="favoritesGrid">
-            <!-- 动态生成的收藏游戏卡片将在这里显示 -->
+            {allGamesData.map((game) => (
+              <div class="favorite-game-card" data-game-slug={game.slug} style="display: none;">
+                <GameCard 
+                  game={game} 
+                  showPopularity={true} 
+                  showFavorite={true} 
+                  showDeveloper={false}
+                />
+              </div>
+            ))}
           </div>
         </div>
 
@@ -158,18 +168,11 @@ const recommendedGames = allGamesData
     </div>
   </main>
 
-  <!-- 将服务器端游戏数据传递给客户端 -->
-  <script is:inline define:vars={{ allGamesData }}>
-    // 将服务器端的游戏数据设置为全局变量，供JavaScript使用
-    window.GAMES_DATA = allGamesData;
-  </script>
-
-  <!-- 收藏管理的JavaScript -->
+  <!-- 简化的收藏管理JavaScript -->
   <script is:inline>
-    // 简化的收藏管理类
-    class FavoritesManager {
+    // 极简的收藏管理类 - 只负责显示/隐藏预渲染的GameCard
+    class SimpleFavoritesManager {
       constructor() {
-        this.allGames = window.GAMES_DATA || [];
         this.favoriteGameIds = new Set();
         this.init();
       }
@@ -177,8 +180,7 @@ const recommendedGames = allGamesData
       // 初始化
       init() {
         this.loadFavorites();
-        this.updateStats();
-        this.renderFavorites();
+        this.updateDisplay();
         this.initializeEventListeners();
         console.log('✅ 收藏管理器初始化完成');
       }
@@ -194,109 +196,61 @@ const recommendedGames = allGamesData
         }
       }
 
+      // 更新显示状态
+      updateDisplay() {
+        const favoritesWithGames = document.getElementById('favoritesWithGames');
+        const emptyFavorites = document.getElementById('emptyFavorites');
+        const favoriteCards = document.querySelectorAll('.favorite-game-card');
+
+        // 隐藏所有游戏卡片
+        favoriteCards.forEach(card => {
+          card.style.display = 'none';
+        });
+
+        // 显示收藏的游戏卡片
+        let visibleCount = 0;
+        this.favoriteGameIds.forEach(gameSlug => {
+          const card = document.querySelector(`[data-game-slug="${gameSlug}"]`);
+          if (card) {
+            card.style.display = 'block';
+            visibleCount++;
+          }
+        });
+
+        // 根据是否有收藏游戏显示不同内容
+        if (visibleCount > 0) {
+          favoritesWithGames.style.display = 'block';
+          emptyFavorites.style.display = 'none';
+        } else {
+          favoritesWithGames.style.display = 'none';
+          emptyFavorites.style.display = 'block';
+        }
+
+        // 更新统计信息
+        this.updateStats();
+      }
+
       // 更新统计信息
       updateStats() {
         const favoritesCount = this.favoriteGameIds.size;
-        const categories = new Set();
         
-        this.favoriteGameIds.forEach(gameId => {
-          const game = this.allGames.find(g => g.slug === gameId);
-          if (game) categories.add(game.category);
+        // 计算收藏游戏的分类数量
+        const categories = new Set();
+        this.favoriteGameIds.forEach(gameSlug => {
+          const card = document.querySelector(`[data-game-slug="${gameSlug}"]`);
+          if (card) {
+            // 从GameCard中提取分类信息（通过查找category-tag）
+            const categoryTag = card.querySelector('.category-tag');
+            if (categoryTag) {
+              categories.add(categoryTag.textContent.trim());
+            }
+          }
         });
 
+        // 更新统计显示
         document.getElementById('favoritesCount').textContent = favoritesCount;
         document.getElementById('categoriesCount').textContent = categories.size;
-        document.getElementById('totalPlayTime').textContent = `${Math.floor(favoritesCount * 15 / 60)}h`;
-      }
-
-      // 渲染收藏游戏列表
-      renderFavorites() {
-        const favoritesGrid = document.getElementById('favoritesGrid');
-        const favoritesWithGames = document.getElementById('favoritesWithGames');
-        const emptyFavorites = document.getElementById('emptyFavorites');
-
-        if (this.favoriteGameIds.size === 0) {
-          favoritesWithGames.style.display = 'none';
-          emptyFavorites.style.display = 'block';
-          return;
-        }
-
-        favoritesWithGames.style.display = 'block';
-        emptyFavorites.style.display = 'none';
-
-        // 渲染收藏的游戏
-        const favoriteGames = this.allGames.filter(game => this.favoriteGameIds.has(game.slug));
-        favoritesGrid.innerHTML = favoriteGames.map(game => this.createGameCardHTML(game)).join('');
-        
-        // 重新初始化收藏按钮
-        this.initializeFavoriteButtons();
-      }
-
-      // 创建游戏卡片HTML（使用与GameCard组件相同的结构）
-      createGameCardHTML(game) {
-        const popularity = game.popularity || Math.floor(Math.random() * 1000) + 100;
-        const formatPopularity = (num) => {
-          if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-          if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-          return num.toString();
-        };
-
-        return `
-          <div class="game-card animate-fadeInUp" data-game-id="${game.slug}">
-            <div class="game-image-container">
-              <img src="${game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`}" alt="${game.title}" class="game-image" loading="lazy" />
-              <div class="game-overlay">
-                <button class="play-button" onclick="window.location.href='/games/${game.slug}'">
-                  <i class="fas fa-play"></i>
-                  <span>Play Now</span>
-                </button>
-              </div>
-              <div class="popularity-badge">
-                ${popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} ${formatPopularity(popularity)}
-              </div>
-              <button class="favorite-heart-btn active" data-game-slug="${game.slug}" title="Remove from favorites">
-                <i class="fas fa-heart"></i>
-              </button>
-            </div>
-            <div class="game-info">
-              <h3 class="game-title">${game.title}</h3>
-              <div class="game-tags">
-                <span class="category-tag ${game.category}">${game.categoryName}</span>
-                <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${game.difficulty || 'Medium'}</span>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      // 初始化收藏按钮
-      initializeFavoriteButtons() {
-        const favoriteButtons = document.querySelectorAll('.favorite-heart-btn');
-        favoriteButtons.forEach(button => {
-          button.addEventListener('click', (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            
-            const gameSlug = button.getAttribute('data-game-slug');
-            this.removeFavorite(gameSlug);
-          });
-        });
-      }
-
-      // 移除收藏
-      removeFavorite(gameSlug) {
-        this.favoriteGameIds.delete(gameSlug);
-        localStorage.setItem('favoriteGames', JSON.stringify([...this.favoriteGameIds]));
-        
-        this.updateStats();
-        this.renderFavorites();
-        
-        // 触发收藏状态变化事件
-        window.dispatchEvent(new CustomEvent('favoritesChanged', {
-          detail: { gameSlug, isFavorite: false }
-        }));
-        
-        console.log(`❌ 已从收藏中移除: ${gameSlug}`);
+        document.getElementById('totalPlayTime').textContent = Math.floor(favoritesCount * 0.5) + 'h';
       }
 
       // 清空所有收藏
@@ -305,8 +259,10 @@ const recommendedGames = allGamesData
           this.favoriteGameIds.clear();
           localStorage.setItem('favoriteGames', JSON.stringify([]));
           
-          this.updateStats();
-          this.renderFavorites();
+          this.updateDisplay();
+          
+          // 触发全局收藏变化事件
+          window.dispatchEvent(new CustomEvent('favoritesChanged'));
           
           console.log('🗑️ 已清空所有收藏游戏');
         }
@@ -320,18 +276,17 @@ const recommendedGames = allGamesData
           clearBtn.addEventListener('click', () => this.clearAllFavorites());
         }
 
-        // 监听收藏状态变化
+        // 监听收藏状态变化（来自GameCard组件）
         window.addEventListener('favoritesChanged', () => {
           this.loadFavorites();
-          this.updateStats();
-          this.renderFavorites();
+          this.updateDisplay();
         });
       }
     }
 
     // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
-      window.favoritesManager = new FavoritesManager();
+      window.simpleFavoritesManager = new SimpleFavoritesManager();
     });
   </script>
 </BaseLayout>
@@ -418,10 +373,10 @@ const recommendedGames = allGamesData
 
   .page-description {
     font-size: 1.125rem;
-    color: #6B7280;
+    color: #7F1D1D;
     margin: 0;
     font-weight: 500;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
   .header-actions {
@@ -430,43 +385,44 @@ const recommendedGames = allGamesData
   }
 
   .clear-favorites-btn {
-    background: rgba(255, 255, 255, 0.9);
-    color: #DC2626;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.875rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #DC2626;
+    border: 2px solid rgba(220, 38, 38, 0.2);
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
     font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
 
   .clear-favorites-btn:hover {
-    background: white;
+    background: #DC2626;
+    color: white;
+    border-color: #DC2626;
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
   }
 
   /* 收藏统计 */
   .favorites-stats {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
 
   .stat-card {
     background: white;
-    padding: 1.5rem;
     border-radius: 16px;
+    padding: 2rem;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     border: 1px solid #F3F4F6;
     transition: all 0.3s ease;
@@ -474,12 +430,13 @@ const recommendedGames = allGamesData
 
   .stat-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.15);
+    border-color: rgba(220, 38, 38, 0.25);
   }
 
   .stat-icon {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 12px;
     background: linear-gradient(135deg, #DC2626, #B91C1C);
     display: flex;
@@ -487,6 +444,7 @@ const recommendedGames = allGamesData
     justify-content: center;
     color: white;
     font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
     flex-shrink: 0;
   }
 
@@ -495,34 +453,48 @@ const recommendedGames = allGamesData
   }
 
   .stat-number {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 800;
     color: #1F2937;
-    margin-bottom: 0.25rem;
+    line-height: 1;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   .stat-label {
+    font-size: 0.9rem;
     color: #6B7280;
-    font-weight: 500;
-    font-size: 0.875rem;
+    font-weight: 600;
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* 收藏游戏区域 */
+  .favorites-section {
+    margin-bottom: 3rem;
+  }
+
+  .favorites-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
   }
 
   /* 模块头部 */
   .module-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
     margin-bottom: 2rem;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border: 1px solid #F3F4F6;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #F3F4F6;
   }
 
   .module-icon {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -546,52 +518,70 @@ const recommendedGames = allGamesData
   }
 
   .module-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: #1F2937;
     margin: 0 0 0.25rem 0;
-    line-height: 1.3;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   .module-subtitle {
+    font-size: 1rem;
     color: #6B7280;
-    font-size: 0.9rem;
     margin: 0;
-    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  /* 游戏网格 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* 简化favorite-game-card样式，因为内部使用GameCard组件 */
+  .favorite-game-card {
+    /* GameCard组件自带样式，这里不需要额外样式 */
   }
 
   /* 空状态 */
   .empty-state {
-    text-align: center;
-    padding: 4rem 2rem;
     background: white;
     border-radius: 20px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border: 1px solid #F3F4F6;
+    padding: 4rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
   }
 
   .empty-icon {
-    font-size: 4rem;
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 2rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #FEE2E2, #FECACA);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #DC2626;
-    margin-bottom: 1.5rem;
-    opacity: 0.7;
+    font-size: 2.5rem;
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.15);
   }
 
   .empty-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: #1F2937;
     margin: 0 0 1rem 0;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   .empty-description {
+    font-size: 1.125rem;
     color: #6B7280;
-    font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0 0 2rem 0;
-    max-width: 500px;
+    max-width: 480px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -604,15 +594,15 @@ const recommendedGames = allGamesData
   }
 
   .action-btn {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 1.75rem;
     border-radius: 12px;
     font-weight: 600;
     text-decoration: none;
     transition: all 0.3s ease;
-    font-size: 0.875rem;
+    font-size: 1rem;
   }
 
   .action-btn.primary {
@@ -622,75 +612,49 @@ const recommendedGames = allGamesData
   }
 
   .action-btn.primary:hover {
+    background: linear-gradient(135deg, #B91C1C, #991B1B);
     transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
   }
 
   .action-btn.secondary {
     background: white;
-    color: #6B7280;
-    border: 1px solid #E5E7EB;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: #DC2626;
+    border: 2px solid #DC2626;
   }
 
   .action-btn.secondary:hover {
-    background: #F9FAFB;
+    background: #DC2626;
+    color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
   }
 
-  /* 收藏和推荐区域 */
-  .favorites-section,
+  /* 推荐游戏区域 */
   .recommendations-section {
-    margin-bottom: 3rem;
-  }
-
-  /* 动画效果 */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out forwards;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
   }
 
   /* 响应式设计 */
   @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+    
     .page-header {
+      padding: 2rem;
       flex-direction: column;
       gap: 1.5rem;
       text-align: center;
     }
-
+    
     .header-content {
       flex-direction: column;
-      text-align: center;
-    }
-
-    .favorites-stats {
-      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
-    }
-
-    .stat-card {
-      padding: 1rem;
-    }
-
-    .stat-icon {
-      width: 40px;
-      height: 40px;
-      font-size: 1rem;
-    }
-
-    .stat-number {
-      font-size: 1.25rem;
     }
   }
 
@@ -698,105 +662,66 @@ const recommendedGames = allGamesData
     .content-wrapper {
       padding: 1rem;
     }
-
+    
     .page-header {
-      padding: 2rem 1.5rem;
-      border-radius: 16px;
+      padding: 1.5rem;
     }
-
+    
     .page-title {
       font-size: 2rem;
     }
-
-    .page-description {
-      font-size: 1rem;
-    }
-
+    
     .favorites-stats {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
       gap: 1rem;
     }
-
+    
     .stat-card {
-      padding: 1.25rem;
+      padding: 1.5rem;
     }
-
+    
+    .stat-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 1rem;
+    }
+    
+    .stat-number {
+      font-size: 1.5rem;
+    }
+    
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    
+    .favorites-content, .recommendations-section {
+      padding: 1.5rem;
+    }
+    
     .empty-state {
       padding: 3rem 1.5rem;
-      border-radius: 16px;
     }
-
-    .empty-icon {
-      font-size: 3rem;
-    }
-
-    .empty-title {
-      font-size: 1.25rem;
-    }
-
-    .empty-description {
-      font-size: 0.9rem;
-    }
-
+    
     .empty-actions {
       flex-direction: column;
       align-items: center;
     }
-
+    
     .action-btn {
       width: 100%;
-      max-width: 280px;
+      max-width: 240px;
       justify-content: center;
-    }
-
-    .module-header {
-      flex-direction: column;
-      text-align: center;
-      gap: 0.75rem;
-      padding: 1.25rem;
-    }
-
-    .module-icon {
-      width: 44px;
-      height: 44px;
-      font-size: 1.125rem;
-    }
-
-    .module-title {
-      font-size: 1.375rem;
-    }
-
-    .module-subtitle {
-      font-size: 0.875rem;
     }
   }
 
-  @media (max-width: 640px) {
-    .page-header {
-      padding: 1.5rem 1rem;
+  @media (max-width: 480px) {
+    .games-grid {
+      grid-template-columns: 1fr;
     }
-
-    .page-title {
-      font-size: 1.75rem;
-    }
-
-    .section-icon {
-      width: 56px;
-      height: 56px;
-      font-size: 1.25rem;
-    }
-
-    .clear-favorites-btn {
-      padding: 0.625rem 1.25rem;
-      font-size: 0.8rem;
-    }
-
-    .empty-state {
-      padding: 2.5rem 1rem;
-    }
-
-    .empty-icon {
-      font-size: 2.5rem;
+    
+    .favorites-stats {
+      grid-template-columns: 1fr;
     }
   }
 </style> 
