@@ -7,20 +7,21 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
-// 需要更新缩略图的11款新语言游戏
+// 需要更新缩略图的13款新艺术创意游戏
 const GAMES_TO_UPDATE = [
-  // 新添加的语言游戏
-  'bhides-english-classes',  // GameDistribution游戏，可能获取不到
-  'cryptoword',
-  'kitty-scramble',
-  'crossword',
-  'word-string-puzzle',
-  'amazing-word-twist',
-  'pop-a-word',
-  'word-chef',
-  'wodr',
-  'cookie-hangman',
-  'paint-by-words'
+  'color-match-amg',
+  'cups---water-sort-puzzle',
+  'cake-sort-puzzle-3d',
+  'pottery-master',
+  'holographic-trends',
+  'skribblio',
+  'sneaker-art-rvf',
+  'virtual-piano',
+  'doodlr-io',
+  'punk-o-matic',
+  'car-painting-simulator',
+  'fun-colors',
+  'love-colors'
 ];
 
 /**

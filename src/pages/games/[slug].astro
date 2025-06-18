@@ -772,7 +772,7 @@ const seoData = {
     letter-spacing: 0.05em;
   }
 
-  /* GameGuide样式 - 更美观的设计 */
+  /* GameGuide样式 - 完全重写，去除蓝色小点，增加美观设计 */
   .guide-title {
     display: flex;
     align-items: center;
@@ -801,8 +801,9 @@ const seoData = {
     box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
   }
 
+  /* 重写guide-list和tips-list样式，完全去除蓝色小点 */
   .guide-list, .tips-list {
-    list-style: none;
+    list-style: none !important;
     padding: 0;
     margin: 0;
     display: flex;
@@ -811,55 +812,106 @@ const seoData = {
   }
 
   .guide-list li, .tips-list li {
-    padding: 1.25rem 1.5rem;
-    background: white;
+    /* 完全重置所有继承的样式 */
+    all: unset;
+    display: block;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
     border-radius: 16px;
-    border: 2px solid #F1F5F9;
+    border: 2px solid transparent;
+    background-clip: padding-box;
     color: #374151;
     font-weight: 500;
-    line-height: 1.6;
-    position: relative;
-    transition: all 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    line-height: 1.7;
     font-size: 1rem;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: default;
+    margin: 0;
+    /* 确保没有任何伪元素 */
+  }
+
+  /* 明确移除所有可能的伪元素 */
+  .guide-list li:before, 
+  .guide-list li:after,
+  .tips-list li:before,
+  .tips-list li:after {
+    display: none !important;
+    content: none !important;
   }
 
   .guide-list li:hover, .tips-list li:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.12);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15), 0 4px 6px rgba(0, 0, 0, 0.05);
     border-color: #6366F1;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
   }
 
-  .guide-list li:after {
-    content: "";
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6366F1;
-    font-weight: bold;
-    font-size: 0.875rem;
+  /* 为guide-list添加特殊的序号样式 */
+  .guide-list {
+    counter-reset: step-counter;
   }
 
   .guide-list li {
-    padding-left: 1.5rem;
+    counter-increment: step-counter;
+    padding-left: 4rem;
   }
 
-  .tips-list li:after {
-    content: "";
+  .guide-list li:before {
+    display: flex !important;
+    content: counter(step-counter) !important;
     position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.125rem;
+    left: 1.25rem;
+    top: 1.25rem;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.875rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
   }
 
+  .guide-list li:hover:before {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  }
+
+  /* 为tips-list添加特殊的图标样式 */
   .tips-list li {
-    padding-left: 1.5rem;
+    padding-left: 4rem;
+  }
+
+  .tips-list li:before {
+    display: flex !important;
+    content: "💡" !important;
+    position: absolute;
+    left: 1.25rem;
+    top: 1.25rem;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    border-radius: 50%;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .tips-list li:hover:before {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
   }
 
   .tips-list li:hover {
     border-color: #F59E0B;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
   }
 
   /* 控制方式网格样式 - 更精美的设计 */
