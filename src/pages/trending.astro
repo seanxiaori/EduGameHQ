@@ -5,49 +5,42 @@ import fs from 'fs';
 import path from 'path';
 
 const seoData = {
-  title: "Trending Educational Games | Most Popular Learning Games",
-  description: "Discover the most popular educational games trending now. Play the hottest math, science, coding, and puzzle games loved by students worldwide.",
-  keywords: ["trending games", "popular educational games", "hot learning games", "most played games", "trending now", "popular kids games"],
+  title: "Trending Games | Popular Educational Games | EduGameHQ",
+  description: "Play the most popular educational games trending now. Join thousands of students learning through the hottest math, science, coding, and language games.",
+  keywords: ["trending games", "popular games", "hot educational games", "most played games", "trending learning games", "popular educational content"],
   ogImage: "/images/trending-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 修复路径
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.warn('Unable to read games data file:', error);
 }
 
-// 获取所有游戏并模拟趋势数据
-const trendingGames = Object.entries(allGamesData)
-  .map(([id, game]: [string, Game]) => {
-    const popularity = Math.floor(Math.random() * 20000) + 1000;
-    return {
-      id: id,
-      title: game.title,
-      description: game.description,
-      image: game.screenshots && game.screenshots.length > 0 
-        ? `/images/games/details/${game.screenshots[0]}` 
-        : `/images/games/${id}.svg`,
-      url: `/games/${id}`,
-      category: game.category,
-      categoryName: game.categoryName,
-      ageRange: game.ageRange,
-      popularity: popularity,
-      playCount: popularity * 10,
-      ranking: 0 // 将在排序后设置
-    };
-  })
-  .sort((a, b) => b.popularity - a.popularity)
-  .slice(0, 12)
-  .map((game, index) => ({
-    ...game,
-    ranking: index + 1
-  }));
+// 获取热门游戏（按playCount排序，并添加一些随机性）
+const trendingGames = allGamesData
+  .map(game => ({
+    id: game.slug,
+    title: game.title,
+    description: game.description,
+    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
+    url: `/games/${game.slug}`,
+    category: game.category,
+    categoryName: game.categoryName,
+    ageRange: game.ageRange,
+    difficulty: game.difficulty || 'Medium',
+    tags: game.tags || [],
+    playCount: game.playCount || Math.floor(Math.random() * 20000) + 1000,
+    trending: game.trending || Math.random() > 0.6,
+    trendingScore: (game.playCount || Math.floor(Math.random() * 20000) + 1000) + Math.random() * 5000
+  }))
+  .sort((a, b) => b.trendingScore - a.trendingScore)
+  .slice(0, 20);
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
@@ -98,9 +91,9 @@ const trendingGames = Object.entries(allGamesData)
             
             // 确定趋势标签
             let trendingBadge = 'HOT';
-            if (game.ranking === 1) trendingBadge = 'FIRE';
-            else if (game.ranking <= 3) trendingBadge = 'HOT';
-            else if (game.ranking <= 6) trendingBadge = 'TOP';
+            if (index === 0) trendingBadge = 'FIRE';
+            else if (index <= 2) trendingBadge = 'HOT';
+            else if (index <= 5) trendingBadge = 'TOP';
             else trendingBadge = 'RISING';
             
             return (
@@ -109,7 +102,7 @@ const trendingGames = Object.entries(allGamesData)
                   <img src={game.image} alt={game.title} class="game-image" />
                   <div class="game-overlay">
                     <div class="played-badge today">Today</div>
-                    <div class="popularity-badge">🔥 {formatPopularity(game.popularity)}</div>
+                    <div class="popularity-badge">🔥 {formatPopularity(game.playCount)}</div>
                     <button class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
                       <span>Play Now</span>

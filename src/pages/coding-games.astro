@@ -5,40 +5,38 @@ import fs from 'fs';
 import path from 'path';
 
 const seoData = {
-  title: "Coding Games for Kids | Learn Programming Through Play",
-  description: "Learn programming fundamentals with fun coding games for kids aged 8-18. Master JavaScript, Python, and more through interactive challenges.",
-  keywords: ["coding games", "programming games", "learn coding", "kids programming", "JavaScript games", "Python games", "coding for beginners"],
+  title: "Coding Games for Kids | Free Programming & Computer Science Games | EduGameHQ",
+  description: "Play 30+ free coding games for kids aged 8-18. Learn programming concepts, algorithms, and computational thinking through fun interactive games.",
+  keywords: ["coding games", "programming games", "computer science games", "coding for kids", "learn programming", "educational coding games", "free coding games"],
   ogImage: "/images/coding-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 修复路径
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
-  console.warn('Unable to read games data file');
+  console.warn('Unable to read games data file:', error);
 }
 
 // 筛选编程游戏
-const codingGames = Object.entries(allGamesData)
-  .filter(([id, game]: [string, Game]) => game.category === 'coding')
-  .map(([id, game]: [string, Game]) => ({
-    id: id,
+const codingGames = allGamesData
+  .filter(game => game.category === 'coding')
+  .map(game => ({
+    id: game.slug,
     title: game.title,
     description: game.description,
-    image: game.screenshots && game.screenshots.length > 0 
-      ? `/images/games/details/${game.screenshots[0]}` 
-      : `/images/games/${id}.svg`,
-    url: `/games/${id}`,
+    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
+    url: `/games/${game.slug}`,
     category: game.category,
     categoryName: game.categoryName,
     ageRange: game.ageRange,
-    difficulty: game.difficulty || 'medium',
-    skills: game.skills || [],
-    isFeatured: Math.random() > 0.7
+    difficulty: game.difficulty || 'Medium',
+    skills: game.tags || [],
+    isFeatured: game.featured || Math.random() > 0.7
   }));
 
 // 按难度分组游戏

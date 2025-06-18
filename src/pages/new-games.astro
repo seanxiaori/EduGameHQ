@@ -5,22 +5,42 @@ import fs from 'fs';
 import path from 'path';
 
 const seoData = {
-  title: "New Educational Games | Latest Learning Games Added",
-  description: "Discover the newest educational games added to EduGameHQ. Fresh learning experiences for math, science, coding, language and puzzle games.",
-  keywords: ["new games", "latest educational games", "fresh learning games", "recently added games", "new learning content"],
+  title: "New Games | Latest Educational Games for Kids | EduGameHQ",
+  description: "Discover the newest educational games for kids aged 6-18. Fresh content added regularly to keep learning fun and engaging.",
+  keywords: ["new games", "latest games", "newest educational games", "fresh content", "recently added games", "new learning games"],
   ogImage: "/images/new-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games/games.json');
-let allGamesData: GameData = {};
+// 从JSON文件读取游戏数据 - 修复路径
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
 
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as GameData;
+  allGamesData = JSON.parse(fileContent) as Game[];
 } catch (error) {
   console.error('Error reading games data:', error);
 }
+
+// 获取最新游戏（按lastUpdated排序）
+const newGames = allGamesData
+  .filter(game => game.isNew || game.lastUpdated)
+  .sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime())
+  .slice(0, 20)
+  .map(game => ({
+    id: game.slug,
+    title: game.title,
+    description: game.description,
+    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
+    url: `/games/${game.slug}`,
+    category: game.category,
+    categoryName: game.categoryName,
+    ageRange: game.ageRange,
+    difficulty: game.difficulty || 'Medium',
+    tags: game.tags || [],
+    lastUpdated: game.lastUpdated,
+    isNew: game.isNew || false
+  }));
 
 // 获取所有游戏并按时间分类
 const allGames = Object.values(allGamesData).flat();
