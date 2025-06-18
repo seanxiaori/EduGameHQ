@@ -28,6 +28,12 @@ const pageStructure = {
   system: {
     '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'pink' },
     '/search': { name: 'Search', icon: 'fas fa-search', color: 'purple' }
+  },
+  support: {
+    '/help': { name: 'Help Center', icon: 'fas fa-question-circle', color: 'blue' },
+    '/privacy-policy': { name: 'Privacy Policy', icon: 'fas fa-shield-alt', color: 'green' },
+    '/terms-of-service': { name: 'Terms of Service', icon: 'fas fa-file-contract', color: 'orange' },
+    '/about': { name: 'About Us', icon: 'fas fa-heart', color: 'purple' }
   }
 };
 
@@ -36,6 +42,7 @@ const isHomePage = currentPath === '/';
 const currentCategory = pageStructure.categories[currentPath];
 const currentSpecialPage = pageStructure.special[currentPath];
 const currentSystemPage = pageStructure.system[currentPath];
+const currentSupportPage = pageStructure.support[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
 
 // 构建面包屑导航
@@ -68,6 +75,22 @@ if (!isHomePage) {
       url: currentPath, 
       icon: currentSystemPage.icon,
       color: currentSystemPage.color,
+      isCurrent: true 
+    });
+  } else if (currentSupportPage) {
+    // Support页面面包屑
+    breadcrumbs.push({ 
+      name: 'Support', 
+      url: '#', 
+      icon: 'fas fa-life-ring', 
+      color: 'support',
+      isDropdown: true 
+    });
+    breadcrumbs.push({ 
+      name: currentSupportPage.name, 
+      url: currentPath, 
+      icon: currentSupportPage.icon,
+      color: currentSupportPage.color,
       isCurrent: true 
     });
   } else if (isGamePage) {
@@ -211,28 +234,42 @@ if (!isHomePage) {
                 <div class="breadcrumb-item">
                   {crumb.isDropdown ? (
                     <div class="nav-dropdown">
-                      <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                      <button class="nav-link dropdown-trigger" id={`${crumb.color}Dropdown`}>
                         <i class={crumb.icon}></i>
                         {crumb.name}
                         <i class="fas fa-chevron-down dropdown-arrow"></i>
                       </button>
-                      <div class="dropdown-menu" id="categoriesMenu">
-                        <!-- 游戏分类 -->
-                        {Object.entries(pageStructure.categories).map(([path, info]) => (
-                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                            <i class={info.icon}></i>
-                            {info.name}
-                          </a>
-                        ))}
-                        <!-- 分隔线 -->
-                        <hr class="dropdown-divider">
-                        <!-- 特殊页面 -->
-                        {Object.entries(pageStructure.special).map(([path, info]) => (
-                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                            <i class={info.icon}></i>
-                            {info.name}
-                          </a>
-                        ))}
+                      <div class="dropdown-menu" id={`${crumb.color}Menu`}>
+                        {crumb.name === 'Categories' ? (
+                          <>
+                            <!-- 游戏分类 -->
+                            {Object.entries(pageStructure.categories).map(([path, info]) => (
+                              <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                                <i class={info.icon}></i>
+                                {info.name}
+                              </a>
+                            ))}
+                            <!-- 分隔线 -->
+                            <hr class="dropdown-divider">
+                            <!-- 特殊页面 -->
+                            {Object.entries(pageStructure.special).map(([path, info]) => (
+                              <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                                <i class={info.icon}></i>
+                                {info.name}
+                              </a>
+                            ))}
+                          </>
+                        ) : crumb.name === 'Support' ? (
+                          <>
+                            <!-- Support页面 -->
+                            {Object.entries(pageStructure.support).map(([path, info]) => (
+                              <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                                <i class={info.icon}></i>
+                                {info.name}
+                              </a>
+                            ))}
+                          </>
+                        ) : null}
                       </div>
                     </div>
                   ) : (
@@ -307,6 +344,16 @@ if (!isHomePage) {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">Special Pages</div>
             {Object.entries(pageStructure.special).map(([path, info]) => (
+              <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                <i class={info.icon}></i>
+                {info.name}
+              </a>
+            ))}
+          </div>
+          
+          <div class="mobile-menu-section">
+            <div class="mobile-menu-title">Support</div>
+            {Object.entries(pageStructure.support).map(([path, info]) => (
               <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {info.name}
@@ -758,6 +805,17 @@ if (!isHomePage) {
     box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
   }
 
+  .nav-link.orange.current {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+  }
+
+  /* Support页面特定样式 */
+  .nav-link.support.current {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  }
+
   /* 下拉菜单样式 */
   .nav-dropdown {
     position: relative;
@@ -830,6 +888,7 @@ if (!isHomePage) {
   .dropdown-item.blue:hover { color: #3B82F6; }
   .dropdown-item.pink:hover { color: #EC4899; }
   .dropdown-item.purple:hover { color: #8B5CF6; }
+  .dropdown-item.orange:hover { color: #F59E0B; }
 
   /* 导航项高亮状态 */
   .dropdown-item.active {
@@ -880,6 +939,10 @@ if (!isHomePage) {
 
   .dropdown-item.active.purple {
     background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
+  }
+
+  .dropdown-item.active.orange {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
   }
 
   .dropdown-divider {

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
+// 关于我们SEO数据
 const seoData = {
   title: "About EduGameHQ | Educational Gaming Platform",
   description: "Learn about EduGameHQ's mission to make learning fun through educational games. Discover our story, values, and commitment to quality education.",
@@ -67,572 +68,957 @@ const values = [
     icon: "fas fa-world"
   }
 ];
+
+// 关于我们章节数据（用于目录导航）
+const aboutSections = [
+  { id: "mission", title: "Our Mission", icon: "fa-bullseye" },
+  { id: "values", title: "Core Values", icon: "fa-heart" },
+  { id: "story", title: "Our Story", icon: "fa-book" },
+  { id: "team", title: "Meet Our Team", icon: "fa-users" },
+  { id: "stats", title: "Our Impact", icon: "fa-chart-line" }
+];
 ---
 
 <BaseLayout {...seoData}>
-  <div class="about-page">
-    <!-- 英雄区域 -->
-    <section class="hero-section">
-      <div class="container-custom">
-        <div class="hero-content">
-          <h1 class="hero-title">About EduGameHQ</h1>
-          <p class="hero-subtitle">
-            Where Learning Meets Fun - Transforming Education Through Interactive Gaming
-          </p>
-          <div class="hero-description">
-            <p>
-              EduGameHQ is the world's leading platform for free educational games, 
-              designed to make learning engaging, effective, and accessible for students aged 6-18.
+  <main class="about-page">
+    <div class="content-wrapper">
+      
+      <!-- 关于我们头部 -->
+      <section class="about-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon about-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">About EduGameHQ</h1>
+            <p class="page-description">
+              Where Learning Meets Fun - Transforming Education Through Interactive Gaming
+            </p>
+            <p class="company-subtitle">
+              Making quality education accessible, engaging, and enjoyable for every child
             </p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- 统计数据 -->
-    <section class="stats-section">
-      <div class="container-custom">
-        <div class="stats-grid">
-          {stats.map((stat) => (
-            <div class="stat-card">
-              <div class="stat-icon">
-                <i class={stat.icon}></i>
+      <div class="about-content">
+        <!-- 侧边栏目录 -->
+        <aside class="about-sidebar">
+          <div class="sidebar-header">
+            <h3>Explore Our Story</h3>
+          </div>
+          <nav class="about-nav">
+            <ul>
+              {aboutSections.map((section) => (
+                <li>
+                  <a href={`#${section.id}`} class="nav-link">
+                    <i class={`fas ${section.icon}`}></i>
+                    <span>{section.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
+
+        <!-- 主要内容区域 -->
+        <div class="about-main">
+
+          <!-- 统计数据 -->
+          <section class="stats-section" id="stats">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-chart-line"></i>
               </div>
-              <div class="stat-number">{stat.number}</div>
-              <div class="stat-label">{stat.label}</div>
+              <h2 class="section-title">Our Impact</h2>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
+            <div class="stats-grid">
+              {stats.map((stat) => (
+                <div class="stat-card">
+                  <div class="stat-icon">
+                    <i class={stat.icon}></i>
+                  </div>
+                  <div class="stat-number">{stat.number}</div>
+                  <div class="stat-label">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </section>
 
-    <!-- 使命愿景 -->
-    <section class="mission-section">
-      <div class="container-custom">
-        <div class="mission-content">
-          <div class="mission-text">
-            <h2 class="section-title">Our Mission</h2>
-            <p class="mission-description">
-              To democratize quality education by providing free, engaging, and effective 
-              educational games that inspire curiosity, foster creativity, and build 
-              essential skills for the 21st century.
+          <!-- 使命愿景 -->
+          <section class="mission-section" id="mission">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h2 class="section-title">Our Mission</h2>
+            </div>
+            <div class="mission-content">
+              <div class="mission-text">
+                <p class="mission-description">
+                  To democratize quality education by providing free, engaging, and effective 
+                  educational games that inspire curiosity, foster creativity, and build 
+                  essential skills for the 21st century.
+                </p>
+                
+                <div class="vision-section">
+                  <h3 class="subsection-title">Our Vision</h3>
+                  <p class="vision-description">
+                    A world where every child has access to high-quality educational content 
+                    that makes learning joyful, meaningful, and transformative.
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mission-visual">
+                <div class="mission-icon-large">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 价值主张 -->
+          <section class="values-section" id="values">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h2 class="section-title">Our Core Values</h2>
+            </div>
+            <div class="values-grid">
+              {values.map((value) => (
+                <div class="value-card">
+                  <div class="value-icon">
+                    <i class={value.icon}></i>
+                  </div>
+                  <h3 class="value-title">{value.title}</h3>
+                  <p class="value-description">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- 我们的故事 -->
+          <section class="story-section" id="story">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-book"></i>
+              </div>
+              <h2 class="section-title">Our Story</h2>
+            </div>
+            <div class="story-content">
+              <div class="story-timeline">
+                <div class="timeline-item">
+                  <div class="timeline-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>The Beginning</h4>
+                    <p>
+                      EduGameHQ was born from a simple observation: children learn best when they're having fun. 
+                      Founded in 2023 by a team of educators, game developers, and child psychologists, 
+                      we set out to bridge the gap between entertainment and education.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>Growth & Expansion</h4>
+                    <p>
+                      What started as a small collection of math games has grown into a comprehensive 
+                      platform serving over 50,000 students worldwide. Our games cover mathematics, 
+                      science, coding, language arts, and critical thinking skills.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>Today & Beyond</h4>
+                    <p>
+                      Today, EduGameHQ continues to evolve, always guided by our core belief that 
+                      quality education should be free, accessible, and enjoyable for every child.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 团队介绍 -->
+          <section class="team-section" id="team">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-users"></i>
+              </div>
+              <h2 class="section-title">Meet Our Team</h2>
+            </div>
+            <p class="team-intro">
+              Our diverse team of educators, developers, and researchers work together 
+              to create the best possible learning experience for students worldwide.
             </p>
             
-            <h3 class="subsection-title">Our Vision</h3>
-            <p class="vision-description">
-              A world where every child has access to high-quality educational content 
-              that makes learning joyful, meaningful, and transformative.
-            </p>
-          </div>
-          
-          <div class="mission-visual">
-            <div class="mission-icon">
-              <i class="fas fa-graduation-cap"></i>
+            <div class="team-grid">
+              {teamMembers.map((member) => (
+                <div class="team-card">
+                  <div class="team-avatar">
+                    <i class={member.icon}></i>
+                  </div>
+                  <h3 class="team-name">{member.name}</h3>
+                  <div class="team-role">{member.role}</div>
+                  <p class="team-description">{member.description}</p>
+                </div>
+              ))}
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
+          </section>
 
-    <!-- 价值主张 -->
-    <section class="values-section">
-      <div class="container-custom">
-        <h2 class="section-title text-center">Our Core Values</h2>
-        <div class="values-grid">
-          {values.map((value) => (
-            <div class="value-card">
-              <div class="value-icon">
-                <i class={value.icon}></i>
+          <!-- 联系行动区域 -->
+          <section class="contact-cta">
+            <div class="cta-content">
+              <div class="cta-icon">
+                <i class="fas fa-envelope"></i>
               </div>
-              <h3 class="value-title">{value.title}</h3>
-              <p class="value-description">{value.description}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- 我们的故事 -->
-    <section class="story-section">
-      <div class="container-custom">
-        <div class="story-content">
-          <h2 class="section-title">Our Story</h2>
-          <div class="story-text">
-            <p>
-              EduGameHQ was born from a simple observation: children learn best when they're having fun. 
-              Founded in 2023 by a team of educators, game developers, and child psychologists, 
-              we set out to bridge the gap between entertainment and education.
-            </p>
-            
-            <p>
-              What started as a small collection of math games has grown into a comprehensive 
-              platform serving over 50,000 students worldwide. Our games cover mathematics, 
-              science, coding, language arts, and critical thinking skills.
-            </p>
-            
-            <p>
-              Today, EduGameHQ continues to evolve, always guided by our core belief that 
-              quality education should be free, accessible, and enjoyable for every child.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 团队介绍 -->
-    <section class="team-section">
-      <div class="container-custom">
-        <h2 class="section-title text-center">Meet Our Team</h2>
-        <p class="team-intro">
-          Our diverse team of educators, developers, and researchers work together 
-          to create the best possible learning experience for students worldwide.
-        </p>
-        
-        <div class="team-grid">
-          {teamMembers.map((member) => (
-            <div class="team-card">
-              <div class="team-avatar">
-                <i class={member.icon}></i>
+              <div class="cta-text">
+                <h3>Want to Know More?</h3>
+                <p>We'd love to hear from you! Contact us for partnerships, feedback, or just to say hello.</p>
               </div>
-              <h3 class="team-name">{member.name}</h3>
-              <div class="team-role">{member.role}</div>
-              <p class="team-description">{member.description}</p>
+              <div class="cta-actions">
+                <a href="/help" class="btn-primary">Get in Touch</a>
+                <a href="/privacy-policy" class="btn-secondary">Our Policies</a>
+              </div>
             </div>
-          ))}
+          </section>
         </div>
       </div>
-    </section>
-
-    <!-- 联系我们 -->
-    <section class="contact-section">
-      <div class="container-custom">
-        <div class="contact-content">
-          <h2 class="section-title text-center">Get In Touch</h2>
-          <p class="contact-description">
-            Have questions, suggestions, or want to partner with us? 
-            We'd love to hear from you!
-          </p>
-          
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <span>hello@edugamehq.com</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-globe"></i>
-              <span>www.edugamehq.com</span>
-            </div>
-          </div>
-          
-          <div class="social-links">
-            <a href="#" class="social-link">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-facebook"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-youtube"></i>
-            </a>
-            <a href="#" class="social-link">
-              <i class="fab fa-linkedin"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
+    </div>
+  </main>
 </BaseLayout>
 
+<script>
+  // 平滑滚动到锚点
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
+        
+        if (targetElement) {
+          // 移除所有活动状态
+          navLinks.forEach(nl => nl.classList.remove('active'));
+          // 添加当前活动状态
+          this.classList.add('active');
+          
+          // 平滑滚动
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // 滚动监听，高亮当前章节
+    const sections = document.querySelectorAll('section[id]');
+    const options = {
+      threshold: 0.3,
+      rootMargin: '-100px 0px -50% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const correspondingNavLink = document.querySelector(`a[href="#${sectionId}"]`);
+          
+          // 移除所有活动状态
+          navLinks.forEach(nl => nl.classList.remove('active'));
+          
+          // 添加当前活动状态
+          if (correspondingNavLink) {
+            correspondingNavLink.classList.add('active');
+          }
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
 <style>
+  /* 主要内容区域 */
   .about-page {
-    background: #FEFCFB;
+    width: 100%;
+    background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(34, 197, 94, 0.05) 100%);
+    min-height: 100vh;
   }
 
-  .container-custom {
+  .content-wrapper {
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  /* 英雄区域 */
-  .hero-section {
-    background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 50%, #3B82F6 100%);
-    padding: 4rem 0;
-    text-align: center;
-  }
-
-  .hero-title {
-    font-size: 3.5rem;
-    font-weight: 800;
-    color: #1F2937;
-    margin-bottom: 1rem;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .hero-subtitle {
-    font-size: 1.5rem;
-    color: #4B5563;
-    margin-bottom: 2rem;
-    font-weight: 600;
-  }
-
-  .hero-description {
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .hero-description p {
-    font-size: 1.125rem;
-    color: #6B7280;
-    line-height: 1.7;
-  }
-
-  /* 统计数据 */
-  .stats-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
-  .stats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-  }
-
-  .stat-card {
-    text-align: center;
     padding: 2rem;
-    border-radius: 1rem;
-    background: #F8F9FA;
-    transition: transform 0.3s ease;
   }
 
-  .stat-card:hover {
-    transform: translateY(-4px);
+  /* 关于我们头部 - 绿色主题 */
+  .about-header {
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #10B981 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.2);
+    position: relative;
+    overflow: hidden;
   }
 
-  .stat-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #4F46E5, #F59E0B);
-    border-radius: 50%;
+  .about-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
     color: white;
     font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
-  .stat-number {
+  .about-icon {
+    background: linear-gradient(135deg, #10B981, #059669);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    color: #1F2937;
-    margin-bottom: 0.5rem;
-    font-family: 'Space Grotesk', sans-serif;
+    margin: 0 0 0.5rem 0;
+    color: #065F46;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
   }
 
-  .stat-label {
-    color: #6B7280;
-    font-weight: 500;
-  }
-
-  /* 使命愿景 */
-  .mission-section {
-    padding: 4rem 0;
-    background: #FEFCFB;
-  }
-
-  .mission-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-    align-items: center;
-  }
-
-  .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    color: #1F2937;
-    margin-bottom: 1.5rem;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .section-title.text-center {
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .mission-description {
+  .page-description {
     font-size: 1.125rem;
+    color: #047857;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .company-subtitle {
+    font-size: 0.875rem;
+    color: #065F46;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  /* 内容布局 */
+  .about-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* 侧边栏 */
+  .about-sidebar {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .sidebar-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #10B981;
+  }
+
+  .about-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-nav li {
+    margin-bottom: 0.25rem;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
     color: #4B5563;
-    line-height: 1.7;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: #F3F4F6;
+    color: #10B981;
+  }
+
+  .nav-link.active {
+    background: #D1FAE5;
+    color: #065F46;
+    font-weight: 600;
+  }
+
+  .nav-link i {
+    width: 16px;
+    text-align: center;
+    opacity: 0.7;
+  }
+
+  .nav-link.active i {
+    opacity: 1;
+    color: #10B981;
+  }
+
+  /* 主要内容 */
+  .about-main {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .about-main section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .about-main section:last-of-type {
     margin-bottom: 2rem;
   }
 
-  .subsection-title {
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #F3F4F6;
+  }
+
+  .section-icon-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .section-title {
     font-size: 1.5rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #1F2937;
-    margin-bottom: 1rem;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* 统计数据 */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #BBF7D0;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #065F46;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: #047857;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  /* 使命愿景 */
+  .mission-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .mission-text {
+    line-height: 1.7;
+  }
+
+  .mission-description {
+    color: #4B5563;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .vision-section {
+    background: #F0FDF4;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid #10B981;
+  }
+
+  .subsection-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #065F46;
+    margin: 0 0 1rem 0;
   }
 
   .vision-description {
-    font-size: 1.125rem;
-    color: #4B5563;
+    color: #047857;
+    margin: 0;
     line-height: 1.7;
   }
 
   .mission-visual {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
   }
 
-  .mission-icon {
-    width: 200px;
-    height: 200px;
-    background: linear-gradient(135deg, #4F46E5, #F59E0B);
-    border-radius: 50%;
+  .mission-icon-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #10B981, #059669);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 4rem;
-    box-shadow: 0 20px 40px rgba(79, 70, 229, 0.3);
+    font-size: 3rem;
+    margin: 0 auto;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
   }
 
   /* 价值主张 */
-  .values-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
   .values-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .value-card {
-    text-align: center;
+    background: #FAFAFA;
+    border-radius: 16px;
     padding: 2rem;
-    border-radius: 1rem;
-    background: #FEFCFB;
+    text-align: center;
     border: 1px solid #E5E7EB;
     transition: all 0.3s ease;
   }
 
   .value-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: #F0FDF4;
+    border-color: #10B981;
+    transform: translateY(-3px);
   }
 
   .value-icon {
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, #10B981, #34D399);
-    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10B981, #059669);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
   }
 
   .value-title {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: #1F2937;
-    margin-bottom: 1rem;
+    margin: 0 0 1rem 0;
   }
 
   .value-description {
-    color: #6B7280;
+    color: #4B5563;
+    margin: 0;
     line-height: 1.6;
   }
 
-  /* 我们的故事 */
-  .story-section {
-    padding: 4rem 0;
-    background: #F8F9FA;
+  /* 故事时间轴 */
+  .story-timeline {
+    margin-top: 1.5rem;
   }
 
-  .story-text p {
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    width: 2px;
+    height: calc(100% + 1rem);
+    background: #D1FAE5;
+  }
+
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-content h4 {
     font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+  }
+
+  .timeline-content p {
     color: #4B5563;
+    margin: 0;
     line-height: 1.7;
-    margin-bottom: 1.5rem;
   }
 
   /* 团队介绍 */
-  .team-section {
-    padding: 4rem 0;
-    background: white;
-  }
-
   .team-intro {
+    color: #4B5563;
+    font-size: 1rem;
     text-align: center;
-    font-size: 1.125rem;
-    color: #6B7280;
-    margin-bottom: 3rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-bottom: 2rem;
+    line-height: 1.7;
   }
 
   .team-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
   }
 
   .team-card {
-    text-align: center;
+    background: #FAFAFA;
+    border-radius: 16px;
     padding: 2rem;
-    border-radius: 1rem;
-    background: #FEFCFB;
+    text-align: center;
     border: 1px solid #E5E7EB;
     transition: all 0.3s ease;
   }
 
   .team-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    background: #F0FDF4;
+    border-color: #10B981;
+    transform: translateY(-3px);
   }
 
   .team-avatar {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #7C3AED, #A855F7);
-    border-radius: 50%;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #10B981, #059669);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 1rem;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
   }
 
   .team-name {
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-weight: 600;
     color: #1F2937;
-    margin-bottom: 0.5rem;
+    margin: 0 0 0.5rem 0;
   }
 
   .team-role {
-    color: #7C3AED;
-    font-weight: 500;
+    color: #10B981;
+    font-weight: 600;
+    font-size: 0.875rem;
     margin-bottom: 1rem;
   }
 
   .team-description {
-    color: #6B7280;
+    color: #4B5563;
+    margin: 0;
+    font-size: 0.875rem;
     line-height: 1.6;
-    font-size: 0.9rem;
   }
 
-  /* 联系我们 */
-  .contact-section {
-    padding: 4rem 0;
-    background: linear-gradient(135deg, #1F2937, #374151);
-    color: white;
+  /* 联系行动区域 */
+  .contact-cta {
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border: 1px solid #10B981;
   }
 
-  .contact-content {
-    text-align: center;
-  }
-
-  .contact-section .section-title {
-    color: white;
-  }
-
-  .contact-description {
-    font-size: 1.125rem;
-    color: #D1D5DB;
-    margin-bottom: 2rem;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .contact-info {
+  .cta-content {
     display: flex;
-    justify-content: center;
+    align-items: center;
     gap: 2rem;
-    margin-bottom: 2rem;
   }
 
-  .contact-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #D1D5DB;
-  }
-
-  .contact-item i {
-    color: #F59E0B;
-  }
-
-  .social-links {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-  }
-
-  .social-link {
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
+  .cta-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #10B981, #059669);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .cta-text {
+    flex: 1;
+  }
+
+  .cta-text h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #065F46;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cta-text p {
+    color: #047857;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
     text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
     transition: all 0.3s ease;
   }
 
-  .social-link:hover {
-    background: #F59E0B;
-    transform: translateY(-2px);
+  .btn-primary {
+    background: #10B981;
+    color: white;
+    border: 2px solid #10B981;
+  }
+
+  .btn-primary:hover {
+    background: #059669;
+    border-color: #059669;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #10B981;
+    border: 2px solid #10B981;
+  }
+
+  .btn-secondary:hover {
+    background: #10B981;
+    color: white;
   }
 
   /* 响应式设计 */
-  @media (max-width: 768px) {
-    .hero-title {
-      font-size: 2.5rem;
+  @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
     }
 
-    .hero-subtitle {
-      font-size: 1.25rem;
-    }
-
-    .mission-content {
+    .about-content {
       grid-template-columns: 1fr;
       gap: 2rem;
     }
 
-    .mission-icon {
-      width: 150px;
-      height: 150px;
-      font-size: 3rem;
+    .about-sidebar {
+      position: static;
+      max-height: none;
+      margin-bottom: 1rem;
     }
 
-    .section-title {
+    .about-header {
+      padding: 2rem;
+    }
+
+    .header-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .mission-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .about-header {
+      padding: 1.5rem;
+    }
+
+    .page-title {
       font-size: 2rem;
     }
 
-    .contact-info {
-      flex-direction: column;
-      gap: 1rem;
+    .about-main {
+      padding: 1.5rem;
     }
 
-    .container-custom {
-      padding: 0 1rem;
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .values-grid, .team-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .timeline-item::after {
+      display: none;
+    }
+
+    .cta-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .cta-actions {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+      text-align: center;
     }
   }
 </style> 
