@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
@@ -22,9 +23,9 @@ try {
   console.warn('Unable to read games data file:', error);
 }
 
-// 获取一些示例收藏游戏（在实际应用中，这些将从localStorage中读取）
-const sampleFavorites = allGamesData
-  .filter(game => ['2048', 'cut-the-rope', 'animal-dna-run', 'kitty-scramble', 'math-duck', 'alchemy-merge-clicker'].includes(game.slug))
+// 获取一些示例推荐游戏（不同分类的热门游戏）
+const recommendedGames = allGamesData
+  .filter(game => game.featured || game.popularity > 500)
   .slice(0, 6);
 ---
 
@@ -96,7 +97,7 @@ const sampleFavorites = allGamesData
       <!-- 收藏游戏列表 -->
       <section class="favorites-section">
         <!-- 有收藏游戏时显示 -->
-        <div id="favoritesWithGames" class="favorites-content">
+        <div id="favoritesWithGames" class="favorites-content" style="display: none;">
           <div class="module-header">
             <div class="module-icon favorites-icon">
               <i class="fas fa-star"></i>
@@ -105,19 +106,10 @@ const sampleFavorites = allGamesData
               <h2 class="module-title">Your Favorite Games</h2>
               <p class="module-subtitle">Games you've marked as favorites</p>
             </div>
-            <div class="view-options">
-              <button class="view-btn active" data-view="grid">
-                <i class="fas fa-th"></i>
-              </button>
-              <button class="view-btn" data-view="list">
-                <i class="fas fa-list"></i>
-              </button>
-            </div>
           </div>
           
-          <!-- 使用标准的games-grid类名，确保应用game-card.css样式 -->
           <div class="games-grid" id="favoritesGrid">
-            <!-- 动态生成的收藏游戏卡片 -->
+            <!-- 动态生成的收藏游戏卡片将在这里显示 -->
           </div>
         </div>
 
@@ -146,7 +138,7 @@ const sampleFavorites = allGamesData
       </section>
 
       <!-- 推荐游戏 -->
-      <section class="recommendations-section" id="recommendationsSection">
+      <section class="recommendations-section">
         <div class="module-header">
           <div class="module-icon recommendations-icon">
             <i class="fas fa-lightbulb"></i>
@@ -157,9 +149,10 @@ const sampleFavorites = allGamesData
           </div>
         </div>
         
-        <!-- 使用标准的games-grid类名，确保应用game-card.css样式 -->
-        <div class="games-grid" id="recommendationsGrid">
-          <!-- 推荐游戏将在这里动态生成 -->
+        <div class="games-grid">
+          {recommendedGames.map((game) => (
+            <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+          ))}
         </div>
       </section>
     </div>
@@ -173,700 +166,637 @@ const sampleFavorites = allGamesData
 
   <!-- 收藏管理的JavaScript -->
   <script is:inline>
-    // 收藏管理类 - 修正版
+    // 简化的收藏管理类
     class FavoritesManager {
       constructor() {
-        this.allGames = [];
+        this.allGames = window.GAMES_DATA || [];
         this.favoriteGameIds = new Set();
-        this.currentView = 'grid';
         this.init();
       }
 
       // 初始化
-      async init() {
-        try {
-          // 加载真实的游戏数据
-          await this.loadGameData();
-          this.loadFavorites();
-          this.updateStats();
-          this.renderFavorites();
-          this.renderRecommendations();
-          this.initializeEventListeners();
-          
-          console.log('✅ Favorites Manager 初始化成功');
-          console.log(`📊 加载了 ${this.allGames.length} 个游戏数据`);
-          console.log(`❤️ 当前收藏了 ${this.favoriteGameIds.size} 个游戏`);
-        } catch (error) {
-          console.error('❌ Favorites Manager 初始化失败:', error);
-        }
-      }
-
-      // 加载真实的游戏数据 - 从服务器端传递的数据
-      async loadGameData() {
-        try {
-          // 使用服务器端传递的真实游戏数据
-          if (window.GAMES_DATA && Array.isArray(window.GAMES_DATA)) {
-            this.allGames = window.GAMES_DATA;
-            console.log(`✅ 成功加载 ${this.allGames.length} 个游戏数据`);
-          } else {
-            console.warn('⚠️ 未找到游戏数据，使用备用数据');
-            // 备用数据（防止服务器数据加载失败）
-            this.allGames = [
-              {
-                slug: '2048',
-                title: '2048',
-                description: 'Combine numbered tiles to reach 2048',
-                category: 'math',
-                categoryName: 'Math Games',
-                thumbnailUrl: '/images/games/math/2048.svg',
-                ageRange: '8-18',
-                difficulty: 'Medium',
-                tags: ['numbers', 'strategy', 'logic'],
-                playCount: 15420
-              },
-              {
-                slug: 'cut-the-rope',
-                title: 'Cut the Rope',
-                description: 'Feed candy to Om Nom by cutting ropes',
-                category: 'puzzle',
-                categoryName: 'Puzzle Games',
-                thumbnailUrl: '/images/games/puzzle/cut-the-rope.svg',
-                ageRange: '6-16',
-                difficulty: 'Easy',
-                tags: ['physics', 'cute', 'problem-solving'],
-                playCount: 23150
-              }
-            ];
-          }
-        } catch (error) {
-          console.error('❌ 加载游戏数据失败:', error);
-          this.allGames = [];
-        }
-      }
-
-      // 从localStorage加载收藏
-      loadFavorites() {
-        const favorites = localStorage.getItem('favoriteGames');
-        if (favorites) {
-          try {
-            this.favoriteGameIds = new Set(JSON.parse(favorites));
-            console.log('✅ 加载收藏列表:', Array.from(this.favoriteGameIds));
-          } catch (error) {
-            console.error('❌ 加载收藏列表失败:', error);
-            this.favoriteGameIds = new Set();
-          }
-        } else {
-          console.log('ℹ️ 暂无收藏游戏');
-        }
-      }
-
-      // 保存收藏到localStorage
-      saveFavorites() {
-        localStorage.setItem('favoriteGames', JSON.stringify(Array.from(this.favoriteGameIds)));
-        console.log('✅ 收藏列表已保存');
-      }
-
-      // 添加/移除收藏
-      toggleFavorite(gameSlug) {
-        if (this.favoriteGameIds.has(gameSlug)) {
-          this.favoriteGameIds.delete(gameSlug);
-          console.log(`❌ 已从收藏中移除: ${gameSlug}`);
-        } else {
-          this.favoriteGameIds.add(gameSlug);
-          console.log(`❤️ 已添加到收藏: ${gameSlug}`);
-        }
-        
-        this.saveFavorites();
+      init() {
+        this.loadFavorites();
         this.updateStats();
         this.renderFavorites();
-        this.renderRecommendations();
-        
-        // 触发自定义事件，通知其他组件
-        window.dispatchEvent(new CustomEvent('favoritesChanged', {
-          detail: { gameSlug, isFavorite: this.favoriteGameIds.has(gameSlug) }
-        }));
+        this.initializeEventListeners();
+        console.log('✅ 收藏管理器初始化完成');
       }
 
-      // 获取收藏的游戏
-      getFavoriteGames() {
-        const favoriteGames = this.allGames.filter(game => this.favoriteGameIds.has(game.slug));
-        console.log(`📋 找到 ${favoriteGames.length} 个收藏游戏`);
-        return favoriteGames;
+      // 从localStorage加载收藏列表
+      loadFavorites() {
+        try {
+          const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+          this.favoriteGameIds = new Set(favorites);
+        } catch (error) {
+          console.error('加载收藏列表失败:', error);
+          this.favoriteGameIds = new Set();
+        }
       }
 
       // 更新统计信息
       updateStats() {
-        const favoriteGames = this.getFavoriteGames();
-        const categoriesSet = new Set(favoriteGames.map(game => game.category));
-        const totalPlayTime = favoriteGames.reduce((total, game) => total + (game.playCount || 0), 0);
+        const favoritesCount = this.favoriteGameIds.size;
+        const categories = new Set();
+        
+        this.favoriteGameIds.forEach(gameId => {
+          const game = this.allGames.find(g => g.slug === gameId);
+          if (game) categories.add(game.category);
+        });
 
-        document.getElementById('favoritesCount').textContent = favoriteGames.length;
-        document.getElementById('categoriesCount').textContent = categoriesSet.size;
-        document.getElementById('totalPlayTime').textContent = Math.floor(totalPlayTime / 1000) + 'h';
+        document.getElementById('favoritesCount').textContent = favoritesCount;
+        document.getElementById('categoriesCount').textContent = categories.size;
+        document.getElementById('totalPlayTime').textContent = `${Math.floor(favoritesCount * 15 / 60)}h`;
       }
 
-      // 渲染收藏游戏
+      // 渲染收藏游戏列表
       renderFavorites() {
-        const favoriteGames = this.getFavoriteGames();
         const favoritesGrid = document.getElementById('favoritesGrid');
-        const emptyState = document.getElementById('emptyFavorites');
-        const withGames = document.getElementById('favoritesWithGames');
+        const favoritesWithGames = document.getElementById('favoritesWithGames');
+        const emptyFavorites = document.getElementById('emptyFavorites');
 
-        if (favoriteGames.length === 0) {
-          withGames.style.display = 'none';
-          emptyState.style.display = 'flex';
-          console.log('📭 显示空收藏状态');
-        } else {
-          emptyState.style.display = 'none';
-          withGames.style.display = 'block';
-          
-          // 使用标准游戏卡片结构
-          favoritesGrid.innerHTML = favoriteGames.map((game, index) => `
-            <div class="game-card ${game.category}-theme animate-fadeInUp" style="animation-delay: ${index * 0.1}s" data-game-id="${game.slug}">
-              <div class="game-image-container">
-                <img src="${game.thumbnailUrl || '/images/logo.svg'}" alt="${game.title}" class="game-image" />
-                <div class="game-overlay">
-                  <button class="play-button" onclick="window.location.href='/games/${game.slug}'">
-                    <i class="fas fa-play"></i>
-                    <span>Play Now</span>
-                  </button>
-                </div>
-                <button class="favorite-heart-btn active" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.slug}')">
-                  <i class="fas fa-heart"></i>
-                </button>
-              </div>
-              <div class="game-info">
-                <h3 class="game-title">${game.title}</h3>
-                <p class="game-description">${game.description || 'Fun educational game for all ages'}</p>
-                <div class="game-tags">
-                  <span class="category-tag ${game.category}">${game.category.charAt(0).toUpperCase() + game.category.slice(1)}</span>
-                  <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${(game.difficulty || 'Medium').toUpperCase()}</span>
-                  <span class="feature-tag favorited">FAVORITED</span>
-                </div>
-              </div>
-            </div>
-          `).join('');
-          
-          console.log(`✅ 渲染了 ${favoriteGames.length} 个收藏游戏`);
-        }
-      }
-
-      // 渲染推荐游戏
-      renderRecommendations() {
-        // 基于收藏游戏的分类推荐类似游戏
-        const favoriteGames = this.getFavoriteGames();
-        if (favoriteGames.length === 0) {
-          document.getElementById('recommendationsSection').style.display = 'none';
+        if (this.favoriteGameIds.size === 0) {
+          favoritesWithGames.style.display = 'none';
+          emptyFavorites.style.display = 'block';
           return;
         }
 
-        const favoriteCategories = [...new Set(favoriteGames.map(game => game.category))];
-        const recommendations = this.allGames
-          .filter(game => !this.favoriteGameIds.has(game.slug) && favoriteCategories.includes(game.category))
-          .slice(0, 8);
+        favoritesWithGames.style.display = 'block';
+        emptyFavorites.style.display = 'none';
 
-        document.getElementById('recommendationsSection').style.display = 'block';
-        const recommendationsGrid = document.getElementById('recommendationsGrid');
-        // 使用标准游戏卡片结构
-        recommendationsGrid.innerHTML = recommendations.map((game, index) => `
-          <div class="game-card ${game.category}-theme animate-fadeInUp" style="animation-delay: ${index * 0.1}s" data-game-id="${game.slug}">
+        // 渲染收藏的游戏
+        const favoriteGames = this.allGames.filter(game => this.favoriteGameIds.has(game.slug));
+        favoritesGrid.innerHTML = favoriteGames.map(game => this.createGameCardHTML(game)).join('');
+        
+        // 重新初始化收藏按钮
+        this.initializeFavoriteButtons();
+      }
+
+      // 创建游戏卡片HTML（使用与GameCard组件相同的结构）
+      createGameCardHTML(game) {
+        const popularity = game.popularity || Math.floor(Math.random() * 1000) + 100;
+        const formatPopularity = (num) => {
+          if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+          if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+          return num.toString();
+        };
+
+        return `
+          <div class="game-card animate-fadeInUp" data-game-id="${game.slug}">
             <div class="game-image-container">
-              <img src="${game.thumbnailUrl || '/images/logo.svg'}" alt="${game.title}" class="game-image" />
+              <img src="${game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`}" alt="${game.title}" class="game-image" loading="lazy" />
               <div class="game-overlay">
                 <button class="play-button" onclick="window.location.href='/games/${game.slug}'">
                   <i class="fas fa-play"></i>
                   <span>Play Now</span>
                 </button>
               </div>
-              <button class="favorite-heart-btn" onclick="event.preventDefault(); event.stopPropagation(); favoritesManager.toggleFavorite('${game.slug}')">
-                <i class="far fa-heart"></i>
+              <div class="popularity-badge">
+                ${popularity > 5000 ? '🔥' : popularity > 1000 ? '⭐' : ''} ${formatPopularity(popularity)}
+              </div>
+              <button class="favorite-heart-btn active" data-game-slug="${game.slug}" title="Remove from favorites">
+                <i class="fas fa-heart"></i>
               </button>
             </div>
             <div class="game-info">
               <h3 class="game-title">${game.title}</h3>
-              <p class="game-description">${game.description || 'Fun educational game for all ages'}</p>
               <div class="game-tags">
-                <span class="category-tag ${game.category}">${game.category.charAt(0).toUpperCase() + game.category.slice(1)}</span>
-                <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${(game.difficulty || 'Medium').toUpperCase()}</span>
-                <span class="feature-tag recommended">RECOMMENDED</span>
+                <span class="category-tag ${game.category}">${game.categoryName}</span>
+                <span class="difficulty-tag ${(game.difficulty || 'medium').toLowerCase()}">${game.difficulty || 'Medium'}</span>
               </div>
             </div>
           </div>
-        `).join('');
-        
-        console.log(`✅ 渲染了 ${recommendations.length} 个推荐游戏`);
+        `;
       }
 
-      // 清除所有收藏
+      // 初始化收藏按钮
+      initializeFavoriteButtons() {
+        const favoriteButtons = document.querySelectorAll('.favorite-heart-btn');
+        favoriteButtons.forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const gameSlug = button.getAttribute('data-game-slug');
+            this.removeFavorite(gameSlug);
+          });
+        });
+      }
+
+      // 移除收藏
+      removeFavorite(gameSlug) {
+        this.favoriteGameIds.delete(gameSlug);
+        localStorage.setItem('favoriteGames', JSON.stringify([...this.favoriteGameIds]));
+        
+        this.updateStats();
+        this.renderFavorites();
+        
+        // 触发收藏状态变化事件
+        window.dispatchEvent(new CustomEvent('favoritesChanged', {
+          detail: { gameSlug, isFavorite: false }
+        }));
+        
+        console.log(`❌ 已从收藏中移除: ${gameSlug}`);
+      }
+
+      // 清空所有收藏
       clearAllFavorites() {
-        if (confirm('Are you sure you want to remove all games from your favorites? This action cannot be undone.')) {
+        if (confirm('确定要清空所有收藏游戏吗？此操作无法撤销。')) {
           this.favoriteGameIds.clear();
-          this.saveFavorites();
+          localStorage.setItem('favoriteGames', JSON.stringify([]));
+          
           this.updateStats();
           this.renderFavorites();
-          this.renderRecommendations();
           
-          console.log('🗑️ 已清空所有收藏');
+          console.log('🗑️ 已清空所有收藏游戏');
         }
       }
 
       // 初始化事件监听器
       initializeEventListeners() {
-        // 清除收藏按钮
+        // 清空收藏按钮
         const clearBtn = document.getElementById('clearFavoritesBtn');
         if (clearBtn) {
           clearBtn.addEventListener('click', () => this.clearAllFavorites());
         }
 
-        // 视图切换按钮
-        const viewBtns = document.querySelectorAll('.view-btn');
-        viewBtns.forEach(btn => {
-          btn.addEventListener('click', () => {
-            viewBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            this.currentView = btn.dataset.view;
-            this.updateView();
-          });
+        // 监听收藏状态变化
+        window.addEventListener('favoritesChanged', () => {
+          this.loadFavorites();
+          this.updateStats();
+          this.renderFavorites();
         });
       }
-
-      // 更新视图模式
-      updateView() {
-        const grid = document.getElementById('favoritesGrid');
-        if (this.currentView === 'list') {
-          grid.classList.add('list-view');
-        } else {
-          grid.classList.remove('list-view');
-        }
-      }
     }
-
-    // 创建全局实例
-    let favoritesManager;
 
     // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', () => {
-      favoritesManager = new FavoritesManager();
-      window.favoritesManager = favoritesManager; // 供外部调用
+    document.addEventListener('DOMContentLoaded', function() {
+      window.favoritesManager = new FavoritesManager();
     });
   </script>
+</BaseLayout>
 
-  <!-- 页面样式 - 移除重复的网格样式，完全依赖game-card.css -->
-  <style>
-    /* 页面主要内容 */
-    .main-content {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 50%, rgba(236, 72, 153, 0.08) 100%);
-      padding: 2rem 0;
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 页面头部 - 红色主题 */
+  .page-header {
+    background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 50%, #DC2626 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-icon.favorites {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    color: #991B1B;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .header-actions {
+    position: relative;
+    z-index: 1;
+  }
+
+  .clear-favorites-btn {
+    background: rgba(255, 255, 255, 0.9);
+    color: #DC2626;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .clear-favorites-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* 收藏统计 */
+  .favorites-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .stat-info {
+    flex: 1;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #1F2937;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    color: #6B7280;
+    font-weight: 500;
+    font-size: 0.875rem;
+  }
+
+  /* 模块头部 */
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+  }
+
+  .favorites-icon {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+  }
+
+  .recommendations-icon {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .module-subtitle {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 空状态 */
+  .empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .empty-icon {
+    font-size: 4rem;
+    color: #DC2626;
+    margin-bottom: 1.5rem;
+    opacity: 0.7;
+  }
+
+  .empty-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+  }
+
+  .empty-description {
+    color: #6B7280;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 0 2rem 0;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .empty-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.875rem;
+  }
+
+  .action-btn.primary {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+  }
+
+  .action-btn.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
+  }
+
+  .action-btn.secondary {
+    background: white;
+    color: #6B7280;
+    border: 1px solid #E5E7EB;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .action-btn.secondary:hover {
+    background: #F9FAFB;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* 收藏和推荐区域 */
+  .favorites-section,
+  .recommendations-section {
+    margin-bottom: 3rem;
+  }
+
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-
-    .content-wrapper {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 0 2rem;
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
+  }
 
-    /* 页面头部 */
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
     .page-header {
-      background: linear-gradient(135deg, #FDF2F8 0%, #FCE7F3 50%, rgba(236, 72, 153, 0.08) 100%);
-      border-radius: 20px;
-      padding: 2rem;
-      margin-bottom: 2.5rem;
-      border: 1px solid rgba(236, 72, 153, 0.15);
-      box-shadow: 
-        0 8px 32px rgba(236, 72, 153, 0.08),
-        0 2px 8px rgba(0, 0, 0, 0.04);
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(236, 72, 153, 0.3) 50%, transparent 100%);
+      flex-direction: column;
+      gap: 1.5rem;
+      text-align: center;
     }
 
     .header-content {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex: 1;
+      flex-direction: column;
+      text-align: center;
     }
 
-    .header-icon {
-      flex-shrink: 0;
-    }
-
-    .section-icon {
-      width: 72px;
-      height: 72px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.75rem;
-      box-shadow: 
-        0 8px 24px rgba(236, 72, 153, 0.3),
-        0 4px 12px rgba(236, 72, 153, 0.2);
-      transition: all 0.3s ease;
-    }
-
-    .section-icon.favorites {
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 50%, #BE185D 100%);
-    }
-
-    .section-icon:hover {
-      transform: translateY(-2px) scale(1.02);
-      box-shadow: 
-        0 12px 32px rgba(236, 72, 153, 0.4),
-        0 6px 16px rgba(236, 72, 153, 0.3);
-    }
-
-    .header-text {
-      flex: 1;
-    }
-
-    .page-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      font-family: 'Space Grotesk', sans-serif;
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 50%, #BE185D 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin: 0 0 0.5rem 0;
-      line-height: 1.2;
-    }
-
-    .page-description {
-      font-size: 1.125rem;
-      color: #64748B;
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    /* 头部操作按钮 */
-    .header-actions {
-      display: flex;
-      gap: 1rem;
-      flex-shrink: 0;
-    }
-
-    .clear-favorites-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 12px;
-      font-weight: 600;
-      font-size: 0.875rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-      color: white;
-      box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
-    }
-
-    .clear-favorites-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(239, 68, 68, 0.4);
-      background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
-    }
-
-    /* 收藏统计 */
     .favorites-stats {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-      margin-bottom: 2.5rem;
+      gap: 1rem;
     }
 
     .stat-card {
-      background: white;
-      border-radius: 16px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      border: 1px solid #F3F4F6;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: all 0.3s ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
-      border-color: rgba(236, 72, 153, 0.2);
+      padding: 1rem;
     }
 
     .stat-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.25rem;
-      flex-shrink: 0;
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
-    }
-
-    .stat-info {
-      flex: 1;
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
     }
 
     .stat-number {
-      font-size: 1.875rem;
-      font-weight: 800;
-      color: #1F2937;
-      font-family: 'Space Grotesk', sans-serif;
-      line-height: 1;
-    }
-
-    .stat-label {
-      font-size: 0.875rem;
-      color: #6B7280;
-      font-weight: 500;
-      margin-top: 0.25rem;
-    }
-
-    /* 模块头部样式 */
-    .module-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1.5rem;
-      padding: 1.5rem;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-      border: 1px solid #F3F4F6;
-    }
-
-    .module-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       font-size: 1.25rem;
-      color: white;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-      flex-shrink: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
     }
 
-    .favorites-icon {
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+    .page-header {
+      padding: 2rem 1.5rem;
+      border-radius: 16px;
     }
 
-    .recommendations-icon {
-      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    .page-title {
+      font-size: 2rem;
     }
 
-    .module-title-group {
-      flex: 1;
+    .page-description {
+      font-size: 1rem;
     }
 
-    .module-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1F2937;
-      margin: 0 0 0.25rem 0;
-      font-family: 'Space Grotesk', sans-serif;
+    .favorites-stats {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
-    .module-subtitle {
-      font-size: 0.9rem;
-      color: #6B7280;
-      margin: 0;
+    .stat-card {
+      padding: 1.25rem;
     }
 
-    /* 视图选择按钮 */
-    .view-options {
-      display: flex;
-      gap: 0.5rem;
-    }
-
-    .view-btn {
-      width: 36px;
-      height: 36px;
-      border: 1px solid #E5E7EB;
-      background: white;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #6B7280;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .view-btn:hover, .view-btn.active {
-      background: #EC4899;
-      color: white;
-      border-color: #EC4899;
-    }
-
-    /* 空状态 */
     .empty-state {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
-      border: 1px solid #F3F4F6;
+      padding: 3rem 1.5rem;
+      border-radius: 16px;
     }
 
     .empty-icon {
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #FEE2E2 0%, #FECACA 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      color: #EF4444;
-      margin-bottom: 1.5rem;
+      font-size: 3rem;
     }
 
     .empty-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #1F2937;
-      margin: 0 0 0.75rem 0;
-      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
     }
 
     .empty-description {
-      font-size: 1rem;
-      color: #6B7280;
-      line-height: 1.6;
-      margin: 0 0 2rem 0;
-      max-width: 500px;
+      font-size: 0.9rem;
     }
 
     .empty-actions {
-      display: flex;
-      gap: 1rem;
+      flex-direction: column;
+      align-items: center;
     }
 
     .action-btn {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.875rem 1.5rem;
-      border-radius: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
+      width: 100%;
+      max-width: 280px;
+      justify-content: center;
     }
 
-    .action-btn.primary {
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-      color: white;
-      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
     }
 
-    .action-btn.primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
-      text-decoration: none;
-      color: white;
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
     }
 
-    .action-btn.secondary {
-      background: white;
-      color: #6B7280;
-      border: 2px solid #E5E7EB;
+    .module-title {
+      font-size: 1.375rem;
     }
 
-    .action-btn.secondary:hover {
-      background: #F9FAFB;
-      border-color: #EC4899;
-      color: #EC4899;
-      text-decoration: none;
-      transform: translateY(-2px);
+    .module-subtitle {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-header {
+      padding: 1.5rem 1rem;
     }
 
-    /* 推荐游戏标签 */
-    .feature-tag.recommended {
-      background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-      color: white;
+    .page-title {
+      font-size: 1.75rem;
     }
 
-    /* 收藏游戏标签 */
-    .feature-tag.favorited {
-      background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-      color: white;
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.25rem;
     }
 
-    /* 响应式设计 */
-    @media (max-width: 768px) {
-      .content-wrapper {
-        padding: 0 1rem;
-      }
-
-      .page-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 1.5rem;
-      }
-
-      .header-content {
-        flex-direction: column;
-        gap: 1rem;
-      }
-
-      .page-title {
-        font-size: 2rem;
-      }
-
-      .section-icon {
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-      }
-
-      .header-actions {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .favorites-stats {
-        grid-template-columns: 1fr;
-      }
-
-      .empty-actions {
-        flex-direction: column;
-        width: 100%;
-      }
-
-      .action-btn {
-        justify-content: center;
-      }
+    .clear-favorites-btn {
+      padding: 0.625rem 1.25rem;
+      font-size: 0.8rem;
     }
 
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .favorites-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
+    .empty-state {
+      padding: 2.5rem 1rem;
     }
-  </style>
-</BaseLayout> 
+
+    .empty-icon {
+      font-size: 2.5rem;
+    }
+  }
+</style> 
