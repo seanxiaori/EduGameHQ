@@ -47,7 +47,7 @@ const recentlyPlayedGames = allGamesData
     id: game.slug,
     title: game.title,
     description: game.description,
-    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
+    image: game.thumbnailUrl || '/images/logo.svg', // 使用实际缩略图URL或logo作为备用
     url: `/games/${game.slug}`,
     category: game.category,
     categoryName: game.categoryName,

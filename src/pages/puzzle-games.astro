@@ -37,7 +37,7 @@ const puzzleGames = allGamesData
       title: game.title,
       description: game.description,
       icon: 'fas fa-puzzle-piece',
-      image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
+      image: game.thumbnailUrl || '/images/logo.svg',
       difficulty: adjustedDifficulty,
       age: `Ages ${game.ageRange}`,
       skills: game.tags && game.tags.length > 0 ? game.tags : ['Logic', 'Problem Solving'],
