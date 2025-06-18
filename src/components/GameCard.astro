@@ -64,7 +64,7 @@ const generatePopularity = (baseCount: number = 0) => {
 const generatePlayHistory = () => {
   const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
   return Math.random() > 0.3 ? histories[Math.floor(Math.random() * histories.length)] : null;
-};
+  };
 
 // 格式化人气数字
 const formatPopularity = (num: number) => {
@@ -138,7 +138,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       <span class={`difficulty-tag ${safeGame.difficulty.toLowerCase()}`}>{safeGame.difficulty.toUpperCase()}</span>
     </div>
     
-    <div class="game-stats">
+      <div class="game-stats">
       {showPopularity && (
         <div class="stat">
           <i class="fas fa-fire"></i>
@@ -153,7 +153,7 @@ const gameUrl = `/games/${safeGame.slug}`;
         <div class="stat">
           <i class="fas fa-user"></i>
           <span>{safeGame.developer}</span>
-        </div>
+    </div>
       )}
     </div>
   </div>
@@ -183,8 +183,8 @@ const gameUrl = `/games/${safeGame.slug}`;
         childList: true,
         subtree: true
       });
-    }
-
+  }
+  
     initializeGameCards() {
       // 初始化所有未处理的游戏卡片
       const uninitializedCards = document.querySelectorAll('.game-card[data-game-id]:not([data-favorites-initialized])');
@@ -220,7 +220,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       } catch (error) {
         console.error('读取收藏状态失败:', error);
         return false;
-      }
+  }
     }
 
     // 切换收藏状态
@@ -241,8 +241,8 @@ const gameUrl = `/games/${safeGame.slug}`;
           localStorage.setItem(this.storageKey, JSON.stringify(favorites));
           this.updateAllButtons(gameSlug, true);
           this.showNotification('Added to favorites', 'added');
-        }
-        
+  }
+  
         // 触发全局事件
         window.dispatchEvent(new CustomEvent('favoritesChanged', {
           detail: { gameSlug, isFavorite: !isFavorited }
@@ -263,8 +263,8 @@ const gameUrl = `/games/${safeGame.slug}`;
           this.updateFavoriteButtonState(favoriteBtn, isFavorited);
         }
       });
-    }
-
+  }
+  
     // 更新单个收藏按钮状态
     updateFavoriteButtonState(button, isFavorited) {
       const heartIcon = button.querySelector('i');
@@ -280,7 +280,7 @@ const gameUrl = `/games/${safeGame.slug}`;
         heartIcon.className = 'far fa-heart';
         button.classList.remove('active', 'favorited');
         button.style.color = '#9CA3AF';
-      }
+  }
     }
 
     // 显示通知
@@ -289,8 +289,8 @@ const gameUrl = `/games/${safeGame.slug}`;
       const existingNotification = document.querySelector('.game-card-notification');
       if (existingNotification) {
         existingNotification.remove();
-      }
-
+  }
+  
       // 创建通知元素
       const notification = document.createElement('div');
       notification.className = `game-card-notification ${type}`;

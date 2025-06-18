@@ -54,11 +54,6 @@ function getGameSourceUrl(game: any): string {
   return game.sourceUrl || game.url || '';
 }
 
-// 获取来源页面信息
-// 在静态渲染模式下，不使用Astro.request.headers
-// 改为在客户端JavaScript中处理referrer逻辑
-let referrer = null;
-
 // SEO数据
 const seoData = {
   title: `${game.title} - Free Educational Game | EduGameHQ`,
@@ -66,7 +61,7 @@ const seoData = {
 };
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} gameData={game} referrer={referrer}>
+<BaseLayout title={seoData.title} description={seoData.description}>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
 

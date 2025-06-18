@@ -3,11 +3,9 @@ export interface Props {
   title: string;
   description?: string;
   bodyClass?: string;
-  gameData?: any; // 添加游戏数据参数用于游戏详情页
-  referrer?: string; // 添加来源页面参数
 }
 
-const { title, description = "Free educational games for kids and students", bodyClass = "", gameData, referrer } = Astro.props;
+const { title, description = "Free educational games for kids and students", bodyClass = "" } = Astro.props;
 
 // 获取当前页面路径，用于导航高亮
 const currentPath = Astro.url.pathname;
@@ -25,48 +23,23 @@ const pageStructure = {
   special: {
     '/recently-played': { name: 'Recently Played', icon: 'fas fa-clock', color: 'blue' },
     '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'red' },
-    '/new-games': { name: 'New Games', icon: 'fas fa-star', color: 'green' },
-    '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'pink' },
-    '/search': { name: 'Search', icon: 'fas fa-search', color: 'purple' }
+    '/new-games': { name: 'New Games', icon: 'fas fa-star', color: 'green' }
   }
 };
-
-// 分类映射函数 - 将游戏的category字段映射到对应的页面路径
-function getCategoryPath(category: string): string {
-  const categoryMap: { [key: string]: string } = {
-    'math': '/math-games',
-    'science': '/science-games',
-    'language': '/language-games',
-    'puzzle': '/puzzle-games',
-    'sports': '/sports-games',
-    'art': '/art-games',
-    'geography': '/geography-games',
-    'coding': '/coding-games'
-  };
-  return categoryMap[category] || '/';
-}
-
-// 获取来源页面信息（通过referrer header或localStorage）
-function getReferrerInfo() {
-  // 在静态渲染模式下，不使用Astro.request.headers
-  // 改为在客户端JavaScript中处理referrer逻辑
-  return null;
-}
 
 // 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
 const currentCategory = pageStructure.categories[currentPath];
 const currentSpecialPage = pageStructure.special[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
-const referrerInfo = getReferrerInfo();
 
-// 构建简洁的面包屑导航
+// 构建面包屑导航
 const breadcrumbs = [];
 if (!isHomePage) {
   breadcrumbs.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
   
   if (currentCategory) {
-    // 分类页面面包屑：Home > Math Games
+    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
     breadcrumbs.push({ 
       name: currentCategory.name, 
       url: currentPath, 
@@ -75,7 +48,7 @@ if (!isHomePage) {
       isCurrent: true 
     });
   } else if (currentSpecialPage) {
-    // 特殊页面面包屑：Home > Trending
+    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
     breadcrumbs.push({ 
       name: currentSpecialPage.name, 
       url: currentPath, 
@@ -83,54 +56,11 @@ if (!isHomePage) {
       color: currentSpecialPage.color,
       isCurrent: true 
     });
-  } else if (isGamePage && gameData) {
-    // 游戏页面面包屑 - 使用默认分类路径
-    const gameCategoryPath = getCategoryPath(gameData.category);
-    const gameCategoryInfo = pageStructure.categories[gameCategoryPath];
-    
-    if (gameCategoryInfo) {
-      breadcrumbs.push({ 
-        name: gameCategoryInfo.name, 
-        url: gameCategoryPath, 
-        icon: gameCategoryInfo.icon,
-        color: gameCategoryInfo.color
-      });
-    }
-    
-    // 游戏名称（简化显示）
-    const gameTitle = gameData.title.length > 25 ? gameData.title.substring(0, 25) + '...' : gameData.title;
-    breadcrumbs.push({ 
-      name: gameTitle, 
-      url: currentPath, 
-      icon: 'fas fa-play',
-      color: gameCategoryInfo?.color || 'default',
-      isCurrent: true 
-    });
   } else if (isGamePage) {
-    // 游戏页面但没有游戏数据的情况
+    // 游戏页面面包屑 - 需要根据游戏所属分类来确定
+    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
     breadcrumbs.push({ name: 'Games', url: '/', icon: 'fas fa-gamepad' });
   }
-}
-
-// 导航菜单项（简化版）
-const navItems = [];
-if (isHomePage) {
-  // 首页显示完整导航
-  navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home', current: true });
-  navItems.push({ name: 'Categories', type: 'dropdown', icon: 'fas fa-gamepad' });
-  navItems.push({ name: 'Special', type: 'dropdown', icon: 'fas fa-star' });
-} else if (currentCategory || isGamePage) {
-  // 分类页面或游戏页面
-  navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
-  navItems.push({ name: 'Categories', type: 'dropdown', icon: 'fas fa-gamepad', current: !!currentCategory });
-} else if (currentSpecialPage) {
-  // 特殊页面
-  navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
-  navItems.push({ name: 'Special', type: 'dropdown', icon: 'fas fa-star', current: !!currentSpecialPage });
-} else {
-  // 其他页面
-  navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
-  navItems.push({ name: 'Categories', type: 'dropdown', icon: 'fas fa-gamepad' });
 }
 ---
 
@@ -232,31 +162,26 @@ if (isHomePage) {
             <div class="nav-breadcrumbs">
               <a href="/" class="nav-link current">
                 <i class="fas fa-home"></i>
-                <span class="nav-text">Home</span>
+                Home
               </a>
               <div class="nav-dropdown">
                 <button class="nav-link dropdown-trigger" id="categoriesDropdown">
                   <i class="fas fa-gamepad"></i>
-                  <span class="nav-text">Categories</span>
+                  Categories
                   <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </button>
                 <div class="dropdown-menu" id="categoriesMenu">
+                  <!-- 游戏分类 -->
                   {Object.entries(pageStructure.categories).map(([path, info]) => (
                     <a href={path} class={`dropdown-item ${info.color}`}>
                       <i class={info.icon}></i>
                       {info.name}
                     </a>
                   ))}
-                </div>
-              </div>
-              <div class="nav-dropdown">
-                <button class="nav-link dropdown-trigger" id="specialDropdown">
-                  <i class="fas fa-star"></i>
-                  <span class="nav-text">Special</span>
-                  <i class="fas fa-chevron-down dropdown-arrow"></i>
-                </button>
-                <div class="dropdown-menu" id="specialMenu">
-                  {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
+                  <!-- 分隔线 -->
+                  <hr class="dropdown-divider">
+                  <!-- 特殊页面 -->
+                  {Object.entries(pageStructure.special).map(([path, info]) => (
                     <a href={path} class={`dropdown-item ${info.color}`}>
                       <i class={info.icon}></i>
                       {info.name}
@@ -266,82 +191,47 @@ if (isHomePage) {
               </div>
             </div>
           ) : (
-            <!-- 简化面包屑导航 -->
+            <!-- 面包屑导航 -->
             <div class="nav-breadcrumbs">
               {breadcrumbs.map((crumb, index) => (
-                <>
-                  <a href={crumb.url} class={`nav-link ${crumb.isCurrent ? 'current' : ''} ${crumb.color || ''}`}>
-                    <i class={crumb.icon}></i>
-                    <span class="nav-text">{crumb.name}</span>
-                  </a>
-                  {index < breadcrumbs.length - 1 && (
-                    <span class="breadcrumb-separator">
-                      <i class="fas fa-chevron-right"></i>
-                    </span>
+                <div class="breadcrumb-item">
+                  {crumb.isDropdown ? (
+                    <div class="nav-dropdown">
+                      <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                        <i class={crumb.icon}></i>
+                        {crumb.name}
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                      </button>
+                      <div class="dropdown-menu" id="categoriesMenu">
+                        <!-- 游戏分类 -->
+                        {Object.entries(pageStructure.categories).map(([path, info]) => (
+                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                            <i class={info.icon}></i>
+                            {info.name}
+                          </a>
+                        ))}
+                        <!-- 分隔线 -->
+                        <hr class="dropdown-divider">
+                        <!-- 特殊页面 -->
+                        {Object.entries(pageStructure.special).map(([path, info]) => (
+                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                            <i class={info.icon}></i>
+                            {info.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <a href={crumb.url} class={`nav-link ${crumb.isCurrent ? 'current' : ''} ${crumb.color || ''}`}>
+                      <i class={crumb.icon}></i>
+                      {crumb.name}
+                    </a>
                   )}
-                </>
+                  {index < breadcrumbs.length - 1 && (
+                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                  )}
+                </div>
               ))}
-              
-              <!-- 快速导航下拉菜单 -->
-              {(currentCategory || (isGamePage && !referrer)) && (
-                <div class="nav-dropdown quick-nav">
-                  <button class="nav-link dropdown-trigger quick-nav-btn" id="quickCategoriesDropdown">
-                    <i class="fas fa-th-large"></i>
-                    <i class="fas fa-chevron-down dropdown-arrow"></i>
-                  </button>
-                  <div class="dropdown-menu" id="quickCategoriesMenu">
-                    <div class="dropdown-section">
-                      <div class="dropdown-section-title">Categories</div>
-                      {Object.entries(pageStructure.categories).map(([path, info]) => (
-                        <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                          <i class={info.icon}></i>
-                          {info.name}
-                        </a>
-                      ))}
-                    </div>
-                    <hr class="dropdown-divider" />
-                    <div class="dropdown-section">
-                      <div class="dropdown-section-title">Special Pages</div>
-                      {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
-                        <a href={path} class={`dropdown-item ${info.color}`}>
-                          <i class={info.icon}></i>
-                          {info.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
-              
-              {(currentSpecialPage || (isGamePage && referrer && pageStructure.special[referrer])) && (
-                <div class="nav-dropdown quick-nav">
-                  <button class="nav-link dropdown-trigger quick-nav-btn" id="quickSpecialDropdown">
-                    <i class="fas fa-th-large"></i>
-                    <i class="fas fa-chevron-down dropdown-arrow"></i>
-                  </button>
-                  <div class="dropdown-menu" id="quickSpecialMenu">
-                    <div class="dropdown-section">
-                      <div class="dropdown-section-title">Special Pages</div>
-                      {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
-                        <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                          <i class={info.icon}></i>
-                          {info.name}
-                        </a>
-                      ))}
-                    </div>
-                    <hr class="dropdown-divider" />
-                    <div class="dropdown-section">
-                      <div class="dropdown-section-title">Categories</div>
-                      {Object.entries(pageStructure.categories).map(([path, info]) => (
-                        <a href={path} class={`dropdown-item ${info.color}`}>
-                          <i class={info.icon}></i>
-                          {info.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           )}
         </nav>
@@ -389,8 +279,9 @@ if (isHomePage) {
             <i class="fas fa-home"></i>
             Home
           </a>
+          
           <div class="mobile-menu-section">
-            <div class="mobile-menu-title">Categories</div>
+            <div class="mobile-menu-title">Game Categories</div>
             {Object.entries(pageStructure.categories).map(([path, info]) => (
               <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
@@ -398,9 +289,10 @@ if (isHomePage) {
               </a>
             ))}
           </div>
+          
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">Special Pages</div>
-            {Object.entries(pageStructure.special).slice(0, 3).map(([path, info]) => (
+            {Object.entries(pageStructure.special).map(([path, info]) => (
               <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {info.name}
@@ -493,10 +385,6 @@ if (isHomePage) {
   
   <!-- JavaScript -->
   <script>
-    // 立即测试JavaScript是否加载
-    console.log('🚀 EduGameHQ JavaScript 正在加载...');
-    console.log('当前时间:', new Date().toLocaleString());
-    
     // 全局搜索函数
     function performSearch() {
       console.log('=== PERFORM SEARCH CALLED ===');
@@ -525,83 +413,49 @@ if (isHomePage) {
 
     // DOM加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('✅ 页面DOM加载完成，开始初始化...');
+      console.log('=== SEARCH INITIALIZATION DEBUG ===');
       
-      // 检查页面元素是否存在
-      const navbar = document.querySelector('.navbar');
+      // 下拉菜单功能 - 支持多个下拉菜单
       const dropdowns = document.querySelectorAll('.nav-dropdown');
-      console.log('🔍 页面检查结果:', {
-        navbar: !!navbar,
-        dropdownsCount: dropdowns.length,
-        url: window.location.href
-      });
-      
-      // 下拉菜单功能修复
-      console.log('🎯 开始初始化下拉菜单...');
-      
-      dropdowns.forEach((dropdown, index) => {
-        const trigger = dropdown.querySelector('.dropdown-trigger, button');
-        const menu = dropdown.querySelector('.dropdown-menu');
+      dropdowns.forEach(dropdown => {
+        const dropdownToggle = dropdown.querySelector('.dropdown-trigger');
+        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         
-        console.log(`📋 下拉菜单 ${index}:`, { 
-          trigger: !!trigger, 
-          menu: !!menu,
-          triggerText: trigger?.textContent?.trim(),
-          triggerId: trigger?.id
-        });
-        
-        if (trigger && menu) {
-          // 移除旧的事件监听器（如果存在）
-          const newTrigger = trigger.cloneNode(true);
-          trigger.parentNode.replaceChild(newTrigger, trigger);
-          
-          // 添加新的事件监听器
-          newTrigger.addEventListener('click', function(e) {
-            console.log(`🎯 点击了下拉菜单 ${index} (${newTrigger.textContent?.trim()})`);
+        if (dropdownToggle && dropdownMenu) {
+          dropdownToggle.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
             
-            // 关闭其他菜单
-            dropdowns.forEach((otherDropdown, otherIndex) => {
-              if (otherIndex !== index) {
+            // 关闭其他下拉菜单
+            dropdowns.forEach(otherDropdown => {
+              if (otherDropdown !== dropdown) {
                 const otherMenu = otherDropdown.querySelector('.dropdown-menu');
-                if (otherMenu && otherMenu.classList.contains('show')) {
+                if (otherMenu) {
                   otherMenu.classList.remove('show');
-                  console.log(`🔒 关闭了其他菜单 ${otherIndex}`);
                 }
               }
             });
             
-            // 切换当前菜单
-            const isOpen = menu.classList.contains('show');
-            if (isOpen) {
-              menu.classList.remove('show');
-              console.log(`🔒 关闭菜单 ${index}`);
-            } else {
-              menu.classList.add('show');
-              console.log(`🔓 打开菜单 ${index}`);
-            }
+            // 切换当前下拉菜单
+            dropdownMenu.classList.toggle('show');
           });
-          
-          console.log(`✅ 成功绑定下拉菜单 ${index}`);
-        } else {
-          console.error(`❌ 下拉菜单 ${index} 元素缺失:`, { trigger, menu });
         }
       });
       
-      // 点击外部关闭下拉菜单
+      // 点击外部关闭所有下拉菜单
       document.addEventListener('click', function(e) {
-        if (!e.target.closest('.nav-dropdown')) {
+        const isClickInsideDropdown = e.target.closest('.nav-dropdown');
+        if (!isClickInsideDropdown) {
           dropdowns.forEach(dropdown => {
-            const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu && menu.classList.contains('show')) {
-              menu.classList.remove('show');
+            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+            if (dropdownMenu) {
+              dropdownMenu.classList.remove('show');
             }
           });
         }
       });
       
-      // 移动端菜单
+      // 移动端菜单功能
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
       
@@ -613,6 +467,7 @@ if (isHomePage) {
           mobileMenuBtn.classList.toggle('active');
         });
         
+        // 点击菜单项后关闭移动端菜单
         const mobileMenuItems = mobileMenu.querySelectorAll('.mobile-menu-item');
         mobileMenuItems.forEach(item => {
           item.addEventListener('click', function() {
@@ -622,11 +477,16 @@ if (isHomePage) {
         });
       }
       
-      // 搜索功能
+      // 搜索功能初始化
       const searchBox = document.querySelector('.search-box');
       const searchWrapper = document.querySelector('.search-wrapper');
+      console.log('Search box found:', !!searchBox);
+      console.log('Search box element:', searchBox);
       
       if (searchBox && searchWrapper) {
+        console.log('Search box placeholder:', searchBox.placeholder);
+        
+        // 监听输入变化，控制搜索按钮显示
         searchBox.addEventListener('input', function() {
           if (this.value.trim().length > 0) {
             searchWrapper.classList.add('has-content');
@@ -635,34 +495,50 @@ if (isHomePage) {
           }
         });
         
+        // 搜索框回车事件
         searchBox.addEventListener('keypress', function(e) {
-          if (e.key === 'Enter') {
+          console.log('=== SEARCH KEYPRESS EVENT ===');
+          console.log('Key pressed:', e.key);
+          console.log('Key code:', e.keyCode);
+          console.log('Current value:', this.value);
+          
+          if (e.key === 'Enter' || e.keyCode === 13) {
             e.preventDefault();
+            e.stopPropagation();
+            console.log('ENTER KEY DETECTED - CALLING performSearch()');
             performSearch();
           }
         });
+        
+        // 备用keydown事件
+        searchBox.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.keyCode === 13) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('KEYDOWN ENTER - CALLING performSearch()');
+            performSearch();
+          }
+        });
+        
+        console.log('Search functionality initialized successfully');
+      } else {
+        console.error('Search box not found during initialization!');
       }
       
+      // 搜索按钮事件
       const searchButton = document.querySelector('.search-button');
       if (searchButton) {
+        console.log('Search button found:', searchButton);
         searchButton.addEventListener('click', function(e) {
           e.preventDefault();
+          e.stopPropagation();
+          console.log('SEARCH BUTTON CLICKED - CALLING performSearch()');
           performSearch();
         });
+      } else {
+        console.log('Search button not found');
       }
-      
-      console.log('🎉 页面初始化完成！');
     });
-    
-    // 立即测试
-    console.log('📱 开始测试DOM状态...');
-    if (document.readyState === 'loading') {
-      console.log('⏳ DOM 还在加载中...');
-    } else if (document.readyState === 'interactive') {
-      console.log('🔄 DOM 已加载但资源可能还在加载...');
-    } else if (document.readyState === 'complete') {
-      console.log('✅ DOM 和所有资源都已加载完成！');
-    }
     
     // 全局随机游戏函数
     window.playRandomGame = function() {
@@ -685,143 +561,6 @@ if (isHomePage) {
 
   <!-- 全局收藏管理器 -->
   <script src="/src/scripts/favorites-manager.js"></script>
-
-  <!-- 客户端导航增强脚本 -->
-  <script is:inline>
-    // 🚀 客户端导航增强管理器
-    class NavigationEnhancer {
-      constructor() {
-        this.specialPages = ['/recently-played', '/trending', '/new-games', '/favorites'];
-        this.init();
-      }
-
-      // 初始化导航增强功能
-      init() {
-        this.trackPageNavigation();
-        this.enhanceBreadcrumbs();
-        this.initializeBackButton();
-      }
-
-      // 跟踪页面导航，保存referrer信息
-      trackPageNavigation() {
-        try {
-          // 保存当前页面为referrer，供下次导航使用
-          const currentPath = window.location.pathname;
-          
-          // 如果是特殊页面，保存到localStorage
-          if (this.specialPages.includes(currentPath)) {
-            localStorage.setItem('lastSpecialPage', currentPath);
-          }
-          
-          // 如果是分类页面，保存分类信息
-          if (currentPath.includes('-games') && currentPath !== '/') {
-            localStorage.setItem('lastCategoryPage', currentPath);
-          }
-          
-        } catch (e) {
-          // 忽略localStorage错误
-        }
-      }
-
-      // 增强面包屑导航
-      enhanceBreadcrumbs() {
-        try {
-          const currentPath = window.location.pathname;
-          
-          // 如果是游戏页面，尝试添加智能面包屑
-          if (currentPath.startsWith('/games/')) {
-            this.enhanceGamePageBreadcrumbs();
-          }
-          
-        } catch (e) {
-          // 忽略错误
-        }
-      }
-
-      // 增强游戏页面面包屑
-      enhanceGamePageBreadcrumbs() {
-        try {
-          const breadcrumbsContainer = document.querySelector('.nav-breadcrumbs');
-          if (!breadcrumbsContainer) return;
-
-          // 检查是否有保存的特殊页面referrer
-          const lastSpecialPage = localStorage.getItem('lastSpecialPage');
-          const lastCategoryPage = localStorage.getItem('lastCategoryPage');
-          
-          // 如果来自特殊页面，更新面包屑显示
-          if (lastSpecialPage && document.referrer.includes(lastSpecialPage)) {
-            this.updateBreadcrumbsForSpecialPage(lastSpecialPage, breadcrumbsContainer);
-          }
-          
-        } catch (e) {
-          // 忽略错误
-        }
-      }
-
-      // 为特殊页面更新面包屑
-      updateBreadcrumbsForSpecialPage(specialPage, container) {
-        try {
-          const specialPageMap = {
-            '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'trending' },
-            '/recently-played': { name: 'Recent', icon: 'fas fa-clock', color: 'recent' },
-            '/new-games': { name: 'New Games', icon: 'fas fa-sparkles', color: 'new' },
-            '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'favorite' }
-          };
-
-          const pageInfo = specialPageMap[specialPage];
-          if (!pageInfo) return;
-
-          // 查找是否有第二个面包屑项（分类项）
-          const breadcrumbLinks = container.querySelectorAll('.nav-link');
-          if (breadcrumbLinks.length >= 2) {
-            const categoryLink = breadcrumbLinks[1];
-            
-            // 更新为特殊页面信息
-            categoryLink.href = specialPage;
-            categoryLink.title = pageInfo.name;
-            
-            const icon = categoryLink.querySelector('i');
-            if (icon) {
-              icon.className = pageInfo.icon;
-            }
-            
-            const text = categoryLink.querySelector('.nav-text');
-            if (text) {
-              text.textContent = pageInfo.name;
-            }
-          }
-          
-        } catch (e) {
-          // 忽略错误
-        }
-      }
-
-      // 初始化智能返回按钮
-      initializeBackButton() {
-        try {
-          // 为所有面包屑链接添加点击跟踪
-          const breadcrumbLinks = document.querySelectorAll('.nav-breadcrumbs .nav-link');
-          breadcrumbLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-              const href = link.getAttribute('href');
-              if (href && href !== '#') {
-                // 保存导航历史
-                this.trackPageNavigation();
-              }
-            });
-          });
-          
-        } catch (e) {
-          // 忽略错误
-        }
-      }
-    }
-
-    // 页面加载完成后初始化导航增强器
-    document.addEventListener('DOMContentLoaded', function() {
-      window.navigationEnhancer = new NavigationEnhancer();
-    });
-  </script>
 </body>
 
 <style>
@@ -888,81 +627,17 @@ if (isHomePage) {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .nav-breadcrumbs::-webkit-scrollbar {
-    display: none;
   }
 
   .breadcrumb-item {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    flex-shrink: 0;
   }
 
   .breadcrumb-separator {
-    display: flex;
-    align-items: center;
     color: #9CA3AF;
-    font-size: 0.8rem;
-    margin: 0 0.5rem;
-    flex-shrink: 0;
-  }
-
-  /* 快速导航样式 */
-  .quick-nav {
-    margin-left: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .quick-nav-btn {
-    padding: 0.5rem !important;
-    min-width: 40px !important;
-    justify-content: center !important;
-  }
-
-  .quick-nav-btn .nav-text {
-    display: none !important;
-  }
-
-  .quick-nav-btn .dropdown-arrow {
-    margin-left: 0 !important;
-  }
-
-  /* 下拉菜单分组样式 */
-  .dropdown-section {
-    padding: 0.5rem 0;
-  }
-
-  .dropdown-section-title {
-    font-weight: 600;
-    color: #6B7280;
-    padding: 0.5rem 1rem;
     font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 1px solid #F3F4F6;
-    margin-bottom: 0.5rem;
-  }
-
-  /* 特殊页面独立导航 */
-  .special-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-left: 1rem;
-    padding-left: 1rem;
-    border-left: 1px solid #E5E7EB;
-  }
-
-  .special-link {
-    padding: 0.5rem 0.75rem !important;
-    font-size: 0.85rem !important;
   }
 
   .nav-link {
@@ -971,24 +646,18 @@ if (isHomePage) {
     gap: 8px;
     padding: 0.75rem 1rem;
     border-radius: 12px;
-    text-decoration: none !important;
+    text-decoration: none;
     color: #4B5563;
     font-weight: 500;
     transition: all 0.3s ease;
     font-size: 0.95rem;
     white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .nav-text {
-    flex-shrink: 0;
   }
 
   .nav-link:hover {
     background: #F3F1EE;
     color: #F59E0B;
     transform: translateY(-1px);
-    text-decoration: none !important;
   }
 
   /* 当前页面高亮样式 */
@@ -1598,20 +1267,6 @@ if (isHomePage) {
     .breadcrumb-separator {
       margin: 0 0.25rem;
     }
-
-    /* 平板端保持导航文本显示，确保用户能看到按钮功能 */
-    .nav-text {
-      font-size: 0.85rem; /* 稍微缩小文字 */
-    }
-
-    .nav-link {
-      padding: 0.6rem 0.8rem; /* 稍微减小内边距 */
-      font-size: 0.85rem;
-    }
-
-    .quick-nav-btn {
-      padding: 0.6rem !important;
-    }
   }
 
   @media (max-width: 768px) {
@@ -1642,6 +1297,21 @@ if (isHomePage) {
     .logo {
       font-size: 1.25rem;
     }
+
+    /* 移动端面包屑简化 */
+    .nav-breadcrumbs {
+      gap: 0.25rem;
+    }
+
+    .breadcrumb-separator {
+      font-size: 0.7rem;
+      margin: 0 0.1rem;
+    }
+
+    .nav-link {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.85rem;
+    }
   }
 
   @media (max-width: 640px) {
@@ -1659,28 +1329,19 @@ if (isHomePage) {
     .footer-social {
       justify-content: center;
     }
-  }
 
-  /* 超小屏幕优化 */
-  @media (max-width: 480px) {
+    /* 移动端隐藏面包屑分隔符 */
+    .breadcrumb-separator {
+      display: none;
+    }
+
     .nav-breadcrumbs {
+      flex-wrap: wrap;
       gap: 0.25rem;
     }
 
-    .breadcrumb-separator {
-      font-size: 0.7rem;
-      margin: 0 0.1rem;
-    }
-
-    .nav-link {
-      padding: 0.5rem;
-      min-width: 36px;
-      font-size: 0.9rem;
-    }
-
-    .quick-nav-btn {
-      padding: 0.5rem !important;
-      min-width: 36px !important;
+    .breadcrumb-item {
+      gap: 0.25rem;
     }
   }
 </style>
