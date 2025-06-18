@@ -33,10 +33,10 @@
   border-color: #F59E0B;
 }
 
-/* 游戏图片容器 - 缩短高度 */
+/* 游戏图片容器 */
 .game-image-container {
   position: relative;
-  height: 140px;  /* 进一步缩短，原来是180px */
+  height: 180px;
   overflow: hidden;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
 }
@@ -264,66 +264,64 @@
   font-size: 1.1rem;
 }
 
-/* 游戏信息区域 - 减少padding */
+/* 游戏信息区域 - 使用flex自动分配空间 */
 .game-info {
-  padding: 1rem;  /* 减少padding，原来是1.2rem */
+  padding: 1.2rem;
   background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
   border-top: 1px solid #E5E7EB;
   position: relative;
   display: flex;
   flex-direction: column;
-  flex: 1;
+  flex: 1;  /* 占据剩余空间 */
 }
 
-/* 游戏标题 - 改为1行显示 */
+/* 游戏标题 - 固定1行高度 */
 .game-title {
-  font-size: 1rem;  /* 稍微减小，原来是1.1rem */
+  font-size: 1.1rem;
   font-weight: 700;
   color: #1F2937;
-  margin-bottom: 0.4rem;  /* 减少间距，原来是0.5rem */
+  margin-bottom: 0.5rem;
   line-height: 1.3;
   display: -webkit-box;
-  -webkit-line-clamp: 1;  /* 改为1行，原来是2行 */
+  -webkit-line-clamp: 1;  /* 改为只显示1行 */
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 1.3rem;  /* 固定1行高度：1rem * 1.3 = 1.3rem */
-  min-height: 1.3rem;
-  text-overflow: ellipsis;  /* 确保省略号显示 */
-  white-space: nowrap;  /* 强制单行显示 */
+  height: 1.43rem;  /* 固定1行高度：1.1rem * 1.3 = 1.43rem */
+  min-height: 1.43rem;  /* 确保最小高度 */
 }
 
-/* 游戏描述 - 改为1行显示 */
+/* 游戏描述 - 固定2行高度 */
 .game-description {
   color: #6B7280;
   line-height: 1.4;
-  margin-bottom: 0.6rem;  /* 减少间距，原来是0.75rem */
-  font-size: 0.8rem;  /* 稍微减小，原来是0.85rem */
+  margin-bottom: 0.75rem;
+  font-size: 0.85rem;
   display: -webkit-box;
-  -webkit-line-clamp: 1;  /* 改为1行，原来是2行 */
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: 1.12rem;  /* 固定1行高度：0.8rem * 1.4 = 1.12rem */
-  min-height: 1.12rem;
-  text-overflow: ellipsis;
+  height: 2.38rem;  /* 固定2行高度：0.85rem * 1.4 * 2 = 2.38rem */
+  min-height: 2.38rem;  /* 确保最小高度 */
 }
 
-/* 游戏标签区域 - 减少高度 */
+/* 游戏标签区域 - 确保自动填充空间 */
 .game-tags {
   display: flex;
-  gap: 0.25rem;  /* 减少间距，原来是0.3rem */
+  gap: 0.3rem;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin-bottom: auto;
-  min-height: 1.8rem;  /* 减少最小高度，原来是2rem */
+  margin-bottom: auto;  /* 自动填充空间，推送统计信息到底部 */
+  min-height: 1.8rem;  /* 减小最小高度 */
+  flex: 1;  /* 占据剩余空间 */
 }
 
-/* 统一标签基础样式 - 进一步减小 */
+/* 统一标签基础样式 - 减小尺寸 */
 .category-tag,
 .feature-tag,
 .game-tag {
-  padding: 0.2rem 0.5rem;  /* 减少padding，原来是0.25rem 0.65rem */
-  border-radius: 5px;  /* 减小圆角，原来是6px */
-  font-size: 0.65rem;  /* 减小字体，原来是0.7rem */
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0;
   border: none;
@@ -387,11 +385,11 @@
   background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
 }
 
-/* 难易度标签 - 进一步减小 */
+/* 难易度标签 - 减小尺寸 */
 .difficulty-tag {
-  padding: 0.2rem 0.5rem;  /* 减少padding */
-  border-radius: 5px;  /* 减小圆角 */
-  font-size: 0.6rem;  /* 减小字体，原来是0.65rem */
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.5px;
   border: none;
@@ -411,22 +409,23 @@
   background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
 }
 
-/* 游戏统计信息 - 进一步紧凑 */
+/* 游戏统计信息 - 强制置底 */
 .game-stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  padding: 0.5rem 0.6rem;  /* 减少padding，原来是0.6rem 0.75rem */
+  margin-top: auto;  /* 自动推到底部 */
+  padding: 0.6rem 0.75rem;
   border-top: 1px solid #e5e7eb;
-  font-size: 0.7rem;  /* 稍微减小，原来是0.75rem */
+  font-size: 0.75rem;
   color: #6b7280;
   background: rgba(255, 255, 255, 0.6);
   border-radius: 6px;
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   margin-bottom: 0;
-  flex-shrink: 0;
+  flex-shrink: 0;  /* 防止压缩 */
+  position: relative;  /* 确保定位 */
 }
 
 .stat {
