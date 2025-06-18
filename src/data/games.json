@@ -1554,33 +1554,33 @@
     "developer": "Anatomy Games"
   },
   {
-    "slug": "word-cookies",
-    "title": "Word Cookies",
+    "slug": "words-of-wonders",
+    "title": "Words of Wonders",
     "category": "language",
     "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/word-cookies",
-    "description": "Word Cookies is a fun word puzzle game where you connect letters to form words. Swipe through letters to discover hidden words and improve your vocabulary skills!",
+    "iframeUrl": "https://www.crazygames.com/embed/words-of-wonders",
+    "description": "Words of Wonders is an exciting word puzzle game that combines crossword and word search elements. Explore famous landmarks while solving challenging word puzzles!",
     "gameGuide": {
       "howToPlay": [
-        "Look at the available letters in the circle",
-        "Swipe or click to connect letters and form words",
-        "Find all hidden words to complete each level",
-        "Use hints if you get stuck on difficult words",
-        "Progress through increasingly challenging puzzles"
+        "Swipe letters to form words in the correct order",
+        "Fill in the crossword grid with the words you create",
+        "Use all available letters to complete each level",
+        "Discover hidden bonus words for extra points",
+        "Travel through different landmarks as you progress"
       ],
       "controls": {
-        "mouse": "Click and drag to connect letters, click on hint button for help",
-        "touch": "Swipe to connect letters, tap hint button when needed"
+        "mouse": "Click and drag to connect letters and form words",
+        "touch": "Swipe to connect letters on mobile devices"
       },
       "tips": [
-        "Start with shorter words first",
-        "Look for common word patterns and endings",
+        "Start with shorter words to get letter hints",
+        "Look for common word endings like -ING, -ED, -ER",
         "Try different letter combinations systematically",
-        "Use the shuffle button to rearrange letters",
-        "Don't forget to check for plural forms of words"
+        "Find bonus words for extra coins and hints",
+        "Use hints when stuck on difficult levels"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/word-cookies_16x9/20240228104047/word-cookies_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/words-of-wonders_16x9/20231019163757/words-of-wonders_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
     "ageRange": "8-18",
     "minAge": 8,
@@ -1589,9 +1589,10 @@
       "language",
       "vocabulary",
       "word puzzle",
-      "spelling",
+      "crossword",
+      "travel",
       "educational",
-      "brain training"
+      "landmarks"
     ],
     "source": "CrazyGames",
     "iframeCompatible": true,
@@ -1599,98 +1600,44 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/word-cookies",
+    "sourceUrl": "https://www.crazygames.com/game/words-of-wonders",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "Word Games Studio"
+    "developer": "Famobi"
   },
   {
-    "slug": "type-or-die",
-    "title": "Type or Die",
+    "slug": "crossword",
+    "title": "Crossword",
     "category": "language",
     "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/type-or-die",
-    "description": "Type or Die is a fast-paced typing game where speed and accuracy matter! Type words quickly to survive and compete with other players in this thrilling typing challenge!",
+    "iframeUrl": "https://www.crazygames.com/embed/crossword",
+    "description": "Classic Crossword puzzle game with daily challenges! Test your vocabulary and general knowledge by filling in the crossword grid using the given clues.",
     "gameGuide": {
       "howToPlay": [
-        "Read the word or phrase that appears on screen",
-        "Type it as quickly and accurately as possible",
-        "Complete typing challenges before time runs out",
-        "Compete against other players in multiplayer mode",
-        "Improve your typing speed and accuracy"
+        "Read the clues for across and down words",
+        "Click on a square to start typing your answer",
+        "Use the number clues to navigate the grid",
+        "Fill in all squares to complete the crossword",
+        "Check your answers when the puzzle is complete"
       ],
       "controls": {
-        "keyboard": "Type the displayed words using your keyboard"
+        "mouse": "Click on squares and type answers",
+        "keyboard": "Type letters directly, use arrow keys to navigate",
+        "touch": "Touch squares and use on-screen keyboard"
       },
       "tips": [
-        "Focus on accuracy first, then build up speed",
-        "Use proper finger positioning for faster typing",
-        "Don't look at the keyboard while typing",
-        "Practice common word patterns",
-        "Stay calm under pressure"
+        "Start with clues you're most confident about",
+        "Use crossing letters to help with difficult words",
+        "Think about word length and letter patterns",
+        "Consider multiple meanings of clue words",
+        "Don't be afraid to erase and try again"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/type-or-die_16x9/20240228104047/type-or-die_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "typing",
-      "speed",
-      "accuracy",
-      "multiplayer",
-      "competitive",
-      "skill building"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/type-or-die",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "Typing Games Co"
-  },
-  {
-    "slug": "bookworm-adventures",
-    "title": "Bookworm Adventures",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/bookworm-adventures",
-    "description": "Bookworm Adventures combines word puzzles with RPG elements! Create words from letter tiles to battle enemies, cast spells, and embark on an epic literary adventure!",
-    "gameGuide": {
-      "howToPlay": [
-        "Create words by connecting adjacent letter tiles",
-        "Longer words deal more damage to enemies",
-        "Use special letter tiles for bonus effects",
-        "Defeat enemies to progress through the story",
-        "Collect treasures and upgrade your abilities"
-      ],
-      "controls": {
-        "mouse": "Click and drag to select letters and form words",
-        "touch": "Touch and drag to connect letters on mobile devices"
-      },
-      "tips": [
-        "Look for longer words to deal maximum damage",
-        "Use rare letters like Q, X, Z for bonus points",
-        "Plan your words strategically for tough battles",
-        "Explore different word combinations",
-        "Save powerful words for boss fights"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/bookworm-adventures_16x9/20240228104047/bookworm-adventures_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/games/crossword/cover-1619278453620.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
@@ -1698,65 +1645,9 @@
     "tags": [
       "language",
       "vocabulary",
-      "RPG",
-      "adventure",
-      "word puzzle",
-      "strategy",
-      "educational"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/bookworm-adventures",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "PopCap Games"
-  },
-  {
-    "slug": "word-search",
-    "title": "Word Search",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/word-search",
-    "description": "Word Search is a classic puzzle game where you find hidden words in a grid of letters. Search horizontally, vertically, and diagonally to discover all the words!",
-    "gameGuide": {
-      "howToPlay": [
-        "Look at the word list on the side of the puzzle",
-        "Find each word hidden in the letter grid",
-        "Words can be horizontal, vertical, or diagonal",
-        "Click and drag to highlight found words",
-        "Complete all words to finish the puzzle"
-      ],
-      "controls": {
-        "mouse": "Click and drag to highlight words in the grid",
-        "touch": "Touch and drag to select words on mobile devices"
-      },
-      "tips": [
-        "Start with longer words as they're easier to spot",
-        "Look for unusual letters like Q, X, Z first",
-        "Check all directions: forward, backward, up, down, diagonal",
-        "Use the word list to know what you're looking for",
-        "Take breaks if you get stuck on a particular word"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/word-search_16x9/20240228104047/word-search_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "vocabulary",
+      "crossword",
       "puzzle",
-      "word finding",
-      "pattern recognition",
+      "general knowledge",
       "educational",
       "classic"
     ],
@@ -1766,168 +1657,55 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/word-search",
+    "sourceUrl": "https://www.crazygames.com/game/crossword",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "Puzzle Games Studio"
+    "developer": "Crossword Games Studio"
   },
   {
-    "slug": "hangman",
-    "title": "Hangman",
+    "slug": "crossword-connect",
+    "title": "Crossword Connect",
     "category": "language",
     "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/hangman",
-    "description": "Hangman is the classic word guessing game! Guess letters to reveal the hidden word before the drawing is completed. Test your vocabulary and deduction skills!",
+    "iframeUrl": "https://www.crazygames.com/embed/crossword-connect",
+    "description": "Crossword Connect combines word search with crossword puzzles! Connect letters to form words and fill the crossword grid in this innovative word game.",
     "gameGuide": {
       "howToPlay": [
-        "A word is chosen and represented by blank spaces",
-        "Guess letters one at a time by clicking or typing",
-        "Correct letters appear in their positions",
-        "Wrong guesses add parts to the hangman drawing",
-        "Win by guessing the word before the drawing is complete"
-      ],
-      "controls": {
-        "mouse": "Click on letter buttons to make guesses",
-        "keyboard": "Type letters directly to make guesses",
-        "touch": "Touch letter buttons on mobile devices"
-      },
-      "tips": [
-        "Start with common vowels like A, E, I, O, U",
-        "Try frequent consonants like R, S, T, L, N",
-        "Look for common word patterns and endings",
-        "Consider the word length when making guesses",
-        "Think about the category if one is provided"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/hangman_16x9/20240228104047/hangman_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "vocabulary",
-      "word guessing",
-      "spelling",
-      "deduction",
-      "classic",
-      "educational"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/hangman",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "Classic Games Studio"
-  },
-  {
-    "slug": "word-connect",
-    "title": "Word Connect",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/word-connect",
-    "description": "Word Connect is a challenging word puzzle game! Connect letters in the correct order to form words and fill in the crossword-style grid. Exercise your brain with this addictive word game!",
-    "gameGuide": {
-      "howToPlay": [
-        "Look at the letters available at the bottom",
+        "Look at the available letters at the bottom",
         "Connect letters by swiping to form words",
-        "Fill in the crossword grid with correct words",
-        "Find all possible words to complete each level",
-        "Use hints when you're stuck on difficult puzzles"
+        "Place words in the crossword grid",
+        "Fill all squares to complete the level",
+        "Use hints when you need help finding words"
       ],
       "controls": {
-        "mouse": "Click and drag to connect letters and form words",
+        "mouse": "Click and drag to connect letters",
         "touch": "Swipe to connect letters on mobile devices"
       },
       "tips": [
-        "Start with shorter words to get letter clues",
+        "Start with longer words for more letter clues",
         "Look for common prefixes and suffixes",
-        "Try different letter combinations systematically",
-        "Use the shuffle button to see letters differently",
-        "Think about word families and related terms"
+        "Use crossing letters to help form new words",
+        "Try different letter combinations",
+        "Save hints for the most challenging levels"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/word-connect_16x9/20240228104047/word-connect_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "thumbnailUrl": "https://imgs.crazygames.com/crossword-connect/20220815135414/crossword-connect-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
+    "ageRange": "9-18",
+    "minAge": 9,
     "maxAge": 18,
     "tags": [
       "language",
       "vocabulary",
-      "word puzzle",
       "crossword",
-      "brain training",
-      "educational",
-      "challenging"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/word-connect",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "Word Puzzle Games"
-  },
-  {
-    "slug": "letter-boxed",
-    "title": "Letter Boxed",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/letter-boxed",
-    "description": "Letter Boxed is a unique word puzzle inspired by The New York Times game! Create words using letters from the sides of a box, with each new word starting with the last letter of the previous word!",
-    "gameGuide": {
-      "howToPlay": [
-        "Letters are arranged on the four sides of a square",
-        "Create words by connecting letters from different sides",
-        "Each new word must start with the last letter of the previous word",
-        "Try to use all letters in as few words as possible",
-        "Challenge yourself to find the optimal solution"
-      ],
-      "controls": {
-        "mouse": "Click on letters to form words, click submit when ready",
-        "touch": "Touch letters to select them on mobile devices"
-      },
-      "tips": [
-        "Plan your word chain to use all letters efficiently",
-        "Look for words that end with useful letters",
-        "Consider longer words to use more letters at once",
-        "Think about letter frequency and combinations",
-        "Don't be afraid to restart with a different strategy"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/letter-boxed_16x9/20240228104047/letter-boxed_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "12-18",
-    "minAge": 12,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "vocabulary",
       "word puzzle",
-      "strategy",
-      "challenging",
-      "brain training",
-      "NYT style"
+      "connection",
+      "educational",
+      "innovative"
     ],
     "source": "CrazyGames",
     "iframeCompatible": true,
@@ -1935,56 +1713,55 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/letter-boxed",
+    "sourceUrl": "https://www.crazygames.com/game/crossword-connect",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "Puzzle Box Games"
+    "developer": "playh5"
   },
   {
-    "slug": "spelling-bee",
-    "title": "Spelling Bee",
+    "slug": "word-wipe",
+    "title": "Word Wipe",
     "category": "language",
     "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/spelling-bee",
-    "description": "Spelling Bee is inspired by The New York Times puzzle! Create words using the given letters, with one required letter that must appear in every word. How many words can you find?",
+    "iframeUrl": "https://www.crazygames.com/embed/word-wipe",
+    "description": "Word Wipe is a fast-paced word search game! Find and clear words from the grid before time runs out. The more words you find, the higher your score!",
     "gameGuide": {
       "howToPlay": [
-        "Use the 7 letters provided to create words",
-        "Every word must include the center (required) letter",
-        "Words must be at least 4 letters long",
-        "Find as many valid words as possible",
-        "Try to find the pangram (word using all 7 letters)"
+        "Find words in the letter grid by connecting adjacent letters",
+        "Words can be formed horizontally, vertically, or diagonally",
+        "Click and drag to select letters and form words",
+        "Clear lines by finding words to prevent the grid from filling up",
+        "Beat the clock to achieve high scores"
       ],
       "controls": {
-        "mouse": "Click on letters to spell words, click enter to submit",
-        "keyboard": "Type letters directly, press Enter to submit words",
-        "touch": "Touch letters to form words on mobile devices"
+        "mouse": "Click and drag to select letters and form words",
+        "touch": "Touch and drag to connect letters on mobile"
       },
       "tips": [
-        "Always include the center letter in every word",
-        "Look for common word endings like -ING, -ED, -ER",
-        "Try different combinations systematically",
-        "Don't forget about plural forms",
-        "The pangram uses all 7 letters exactly once"
+        "Look for longer words for higher points",
+        "Focus on clearing lines to prevent game over",
+        "Work quickly but don't sacrifice accuracy",
+        "Look for words in all directions",
+        "Practice to improve your word recognition speed"
       ]
     },
-    "thumbnailUrl": "https://imgs.crazygames.com/spelling-bee_16x9/20240228104047/spelling-bee_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
+    "thumbnailUrl": "https://imgs.crazygames.com/games/word-wipe/cover_16x9-1707829913887.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
     "maxAge": 18,
     "tags": [
       "language",
       "vocabulary",
-      "spelling",
-      "word puzzle",
-      "challenging",
-      "NYT style",
-      "educational"
+      "word search",
+      "fast-paced",
+      "time pressure",
+      "educational",
+      "arcade"
     ],
     "source": "CrazyGames",
     "iframeCompatible": true,
@@ -1992,13 +1769,235 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/spelling-bee",
+    "sourceUrl": "https://www.crazygames.com/game/word-wipe",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Arkadium"
+  },
+  {
+    "slug": "emoji-puzzle",
+    "title": "Emoji Puzzle",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/emoji-puzzle",
+    "description": "Emoji Puzzle is a fun word guessing game using emojis! Decode the emoji combinations to guess movies, songs, phrases, and more. Test your emoji knowledge!",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at the emoji combination presented",
+        "Think about what the emojis represent together",
+        "Type your guess for the movie, song, or phrase",
+        "Use hints if you're stuck on a puzzle",
+        "Progress through increasingly challenging emoji combinations"
+      ],
+      "controls": {
+        "keyboard": "Type your guesses using the keyboard",
+        "mouse": "Click on hint buttons when needed",
+        "touch": "Use on-screen keyboard on mobile devices"
+      },
+      "tips": [
+        "Think about literal and figurative meanings",
+        "Consider popular culture references",
+        "Look for word play and puns in emoji combinations",
+        "Break down complex emoji sequences",
+        "Use hints sparingly to challenge yourself"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/emoji-puzzle_16x9/20240415122545/emoji-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "vocabulary",
+      "emoji",
+      "guessing",
+      "pop culture",
+      "educational",
+      "modern"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/emoji-puzzle",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": false,
     "trending": false,
     "isNew": true,
-    "developer": "Spelling Games Studio"
+    "developer": "SuperSonic"
+  },
+  {
+    "slug": "typing-speed-test",
+    "title": "Typing Speed Test",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/typing-speed-test",
+    "description": "Typing Speed Test helps you measure and improve your typing skills! Test your words per minute (WPM) and accuracy with various text passages and challenges.",
+    "gameGuide": {
+      "howToPlay": [
+        "Choose a typing test duration (1, 3, or 5 minutes)",
+        "Type the displayed text as accurately as possible",
+        "Focus on both speed and accuracy",
+        "View your results: WPM, accuracy, and errors",
+        "Practice regularly to improve your typing skills"
+      ],
+      "controls": {
+        "keyboard": "Type the displayed text using your keyboard"
+      },
+      "tips": [
+        "Maintain proper finger positioning on home row",
+        "Focus on accuracy before building speed",
+        "Don't look at the keyboard while typing",
+        "Practice typing common word patterns",
+        "Take breaks to avoid finger fatigue"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/typing-speed-test_16x9/20240228104047/typing-speed-test_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "typing",
+      "speed",
+      "accuracy",
+      "skill building",
+      "educational",
+      "practice"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/typing-speed-test",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Typing Test Pro"
+  },
+  {
+    "slug": "keybr",
+    "title": "Keybr",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://www.crazygames.com/embed/keybr",
+    "description": "Keybr is an advanced typing tutor that uses artificial intelligence to create personalized lessons. Learn touch typing with adaptive algorithms that focus on your weak keys!",
+    "gameGuide": {
+      "howToPlay": [
+        "Start with basic letter combinations",
+        "Type the generated text focusing on accuracy",
+        "The AI adapts to your skill level and weak points",
+        "Practice regularly to build muscle memory",
+        "Track your progress with detailed statistics"
+      ],
+      "controls": {
+        "keyboard": "Type the displayed characters using proper finger positioning"
+      },
+      "tips": [
+        "Start slowly and focus on correct finger placement",
+        "Don't rush - accuracy is more important than speed",
+        "Practice consistently for best results",
+        "Use all fingers, not just index fingers",
+        "Keep your wrists straight and relaxed"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/keybr_16x9/20240228104047/keybr_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "typing",
+      "touch typing",
+      "AI learning",
+      "skill building",
+      "educational",
+      "adaptive"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/keybr",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Keybr.com"
+  },
+  {
+    "slug": "fast-typer",
+    "title": "Fast Typer",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://poki.com/en/g/fast-typer",
+    "description": "Fast Typer is an exciting typing game where you race against time! Type words quickly and accurately to survive waves of challenges and improve your typing speed!",
+    "gameGuide": {
+      "howToPlay": [
+        "Words appear on screen that you must type quickly",
+        "Type each word completely before it disappears",
+        "Survive multiple waves of increasing difficulty",
+        "Earn points for speed and accuracy",
+        "Challenge yourself to beat your high score"
+      ],
+      "controls": {
+        "keyboard": "Type the displayed words using your keyboard"
+      },
+      "tips": [
+        "Keep your eyes on the screen, not the keyboard",
+        "Type in bursts rather than single letters",
+        "Stay calm even when the pace increases",
+        "Practice common word patterns",
+        "Focus on accuracy to avoid losing points"
+      ]
+    },
+    "thumbnailUrl": "https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,f=auto/fast-typer.png",
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "typing",
+      "speed",
+      "accuracy",
+      "time pressure",
+      "educational",
+      "competitive"
+    ],
+    "source": "Poki",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://poki.com/en/g/fast-typer",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Poki Games"
   }
 ]

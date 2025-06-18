@@ -9,31 +9,48 @@ import path from 'path';
 
 // 需要更新信息的CrazyGames游戏列表 (所有CrazyGames游戏)
 const GAMES_TO_UPDATE = [
-  // 数学游戏
-  'count-masters-stickman-games',
-  'five-o',
-  'merge-the-numbers',
-  '2048',
-  'numbers-arena',
-  'stone-puzzle-games',
-  'number-line-match',
-  'stack-it',
-  'math-push',
-  'number-digger',
-  'gravity-crowd',
-  'math-duck',
-  'bff-math-class',
-  '100-doors-puzzle-box',
-  'aritmazetic',
-  'super-number-defense',
-  'puzzle-survivor',
-  'the-last-light-of-lyra',
-  'nullify',
-  'number-masters',
-  'math-expressions',
-  'snake-blockade',
-  'xor',
-  'dicetris'
+  // 语言游戏
+  'words-of-wonders',
+  'crossword',
+  'crossword-connect',
+  'word-wipe',
+  'emoji-puzzle',
+  'typing-speed-test',
+  'keybr',
+  // fast-typer 是Poki平台的，不在CrazyGames上
+  
+  // 编程游戏
+  'code-combat',
+  'lightbot',
+  'robot-programming',
+  
+  // 解谜游戏
+  'bloxorz',
+  'cut-the-rope',
+  'brain-test-tricky-puzzles',
+  'red-ball-4',
+  'fireboy-and-watergirl-forest-temple',
+  'memory-test',
+  'simon-says',
+  
+  // 体育游戏
+  'basketball-stars',
+  'soccer-skills-world-cup',
+  'table-tennis-world-tour',
+  'tennis-masters',
+  
+  // 艺术创意游戏
+  'draw-climber',
+  'draw-story',
+  'coloring-book',
+  'pixel-art',
+  
+  // 历史地理游戏
+  'geography-quiz-flags-and-capitals',
+  'world-geography-quiz',
+  'flags-of-the-world-quiz',
+  'trivia-crack',
+  'quizzland-trivia'
 ];
 
 /**
