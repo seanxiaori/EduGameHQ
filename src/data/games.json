@@ -1835,62 +1835,6 @@
     "developer": "Famobi"
   },
   {
-    "slug": "tennis-masters",
-    "title": "Tennis Masters",
-    "category": "sports",
-    "categoryName": "Sports",
-    "iframeUrl": "https://www.crazygames.com/embed/tennis-masters",
-    "description": "Tennis Masters is a professional tennis simulation game! Play against AI opponents, master different shots, and climb the rankings to become a tennis champion!",
-    "gameGuide": {
-      "howToPlay": [
-        "Use mouse or touch controls to position your player",
-        "Time your shots for maximum power and accuracy",
-        "Play different types of shots: forehand, backhand, serve",
-        "Win sets and matches to advance in tournaments",
-        "Improve your ranking by defeating stronger opponents"
-      ],
-      "controls": {
-        "mouse": "Click and drag to aim and power your shots",
-        "touch": "Touch controls for mobile tennis gameplay"
-      },
-      "tips": [
-        "Practice your serve timing for aces",
-        "Use different shot angles to outmaneuver opponents",
-        "Watch the ball trajectory carefully",
-        "Mix up your shot placement",
-        "Stay patient during long rallies"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/tennis-masters/20201207104629/tennis-masters-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "sports",
-      "tennis",
-      "simulation",
-      "tournament",
-      "professional",
-      "competitive",
-      "skill based"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/tennis-masters",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": true,
-    "trending": false,
-    "isNew": true,
-    "developer": "MadPuffers"
-  },
-  {
     "slug": "draw-climber",
     "title": "Draw Climber",
     "category": "art",
