@@ -243,30 +243,35 @@
   border: 2px solid white;
 }
 
-/* 播放按钮 */
+/* 播放按钮 - 修复居中问题 */
 .play-button {
+  position: absolute; /* 新增：绝对定位 */
+  top: 50%; /* 新增：垂直居中 */
+  left: 50%; /* 新增：水平居中 */
+  transform: translate(-50%, -50%); /* 新增：精确居中 */
   background: linear-gradient(135deg, white 0%, #f8fafc 100%);
   color: #6366F1;
   border: none;
-  padding: 1rem 2.5rem;
+  padding: 1rem 2.5rem; /* 恢复桌面端尺寸 */
   border-radius: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
-  font-size: 1rem;
+  gap: 0.75rem; /* 恢复桌面端间距 */
+  font-size: 1rem; /* 恢复桌面端字体 */
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
-  min-width: 150px;
+  min-width: 150px; /* 恢复桌面端最小宽度 */
   text-decoration: none;
   border: 2px solid rgba(99, 102, 241, 0.2);
+  z-index: 6; /* 新增：确保在其他元素之上 */
 }
 
 .play-button:hover {
-  transform: scale(1.08);
+  transform: translate(-50%, -50%) scale(1.08); /* 恢复桌面端缩放 */
   box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
   background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
   color: white;
@@ -620,10 +625,16 @@
   }
 
   .play-button {
+    /* 继承桌面端的居中定位，调整移动端尺寸 */
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
     gap: 0.5rem;
     min-width: 120px;
+  }
+
+  .play-button:hover {
+    /* 移动端hover效果，保持居中，稍小缩放 */
+    transform: translate(-50%, -50%) scale(1.05);
   }
 
   .game-stats {
@@ -767,4 +778,69 @@
   right: -8px;
   z-index: 10;
   font-size: 1.2rem;
+}
+
+/* 人气徽章 - 确保绝对定位不影响play-button居中 */
+.popularity-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(239, 68, 68, 0.95);
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 5;
+  box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
+}
+
+/* 游戏徽章容器 - 确保绝对定位 */
+.game-badges {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  z-index: 5;
+}
+
+/* 游戏徽章 */
+.badge {
+  padding: 0.3rem 0.7rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.badge.trending {
+  background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+}
+
+.badge.featured {
+  background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+}
+
+.badge.new {
+  background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+}
+
+.badge.updated {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+}
+
+.badge.recent {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
 }
