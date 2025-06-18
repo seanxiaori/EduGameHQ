@@ -1666,62 +1666,6 @@
     "developer": "playh5"
   },
   {
-    "slug": "word-wipe",
-    "title": "Word Wipe",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://www.crazygames.com/embed/word-wipe",
-    "description": "Word Wipe is a fast-paced word search game! Find and clear words from the grid before time runs out. The more words you find, the higher your score!",
-    "gameGuide": {
-      "howToPlay": [
-        "Find words in the letter grid by connecting adjacent letters",
-        "Words can be formed horizontally, vertically, or diagonally",
-        "Click and drag to select letters and form words",
-        "Clear lines by finding words to prevent the grid from filling up",
-        "Beat the clock to achieve high scores"
-      ],
-      "controls": {
-        "mouse": "Click and drag to select letters and form words",
-        "touch": "Touch and drag to connect letters on mobile"
-      },
-      "tips": [
-        "Look for longer words for higher points",
-        "Focus on clearing lines to prevent game over",
-        "Work quickly but don't sacrifice accuracy",
-        "Look for words in all directions",
-        "Practice to improve your word recognition speed"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/games/word-wipe/cover_16x9-1707829913887.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "vocabulary",
-      "word search",
-      "fast-paced",
-      "time pressure",
-      "educational",
-      "arcade"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/word-wipe",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": true,
-    "trending": false,
-    "isNew": true,
-    "developer": "Arkadium"
-  },
-  {
     "slug": "emoji-puzzle",
     "title": "Emoji Puzzle",
     "category": "language",
@@ -1777,61 +1721,6 @@
     "trending": false,
     "isNew": true,
     "developer": "SuperSonic"
-  },
-  {
-    "slug": "fast-typer",
-    "title": "Fast Typer",
-    "category": "language",
-    "categoryName": "Language",
-    "iframeUrl": "https://poki.com/en/g/fast-typer",
-    "description": "Fast Typer is an exciting typing game where you race against time! Type words quickly and accurately to survive waves of challenges and improve your typing speed!",
-    "gameGuide": {
-      "howToPlay": [
-        "Words appear on screen that you must type quickly",
-        "Type each word completely before it disappears",
-        "Survive multiple waves of increasing difficulty",
-        "Earn points for speed and accuracy",
-        "Challenge yourself to beat your high score"
-      ],
-      "controls": {
-        "keyboard": "Type the displayed words using your keyboard"
-      },
-      "tips": [
-        "Keep your eyes on the screen, not the keyboard",
-        "Type in bursts rather than single letters",
-        "Stay calm even when the pace increases",
-        "Practice common word patterns",
-        "Focus on accuracy to avoid losing points"
-      ]
-    },
-    "thumbnailUrl": "https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,f=auto/fast-typer.png",
-    "difficulty": "Hard",
-    "ageRange": "12-18",
-    "minAge": 12,
-    "maxAge": 18,
-    "tags": [
-      "language",
-      "typing",
-      "speed",
-      "accuracy",
-      "time pressure",
-      "educational",
-      "competitive"
-    ],
-    "source": "Poki",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://poki.com/en/g/fast-typer",
-    "lastUpdated": "2025-01-16",
-    "lastChecked": "2025-01-16",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "Poki Games"
   },
   {
     "slug": "cut-the-rope",
