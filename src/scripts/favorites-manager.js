@@ -172,7 +172,11 @@ class GlobalFavoritesManager {
     selectors.forEach(selector => {
       const buttons = document.querySelectorAll(selector);
       buttons.forEach(favoriteBtn => {
-        const heartIcon = favoriteBtn.querySelector('i');
+        // 只在收藏按钮内直接查找图标，使用 :scope > i 确保是直接子元素
+        let heartIcon = null;
+        if (favoriteBtn.classList.contains('favorite-heart-btn')) {
+          heartIcon = favoriteBtn.querySelector(':scope > i');
+        }
         const gameCard = favoriteBtn.closest('[data-game-id]');
         
         if (heartIcon) {
@@ -201,7 +205,8 @@ class GlobalFavoritesManager {
       
       if (gameSlug) {
         const isFavorited = this.isFavorited(gameSlug);
-        const heartIcon = favoriteBtn.querySelector('i');
+        // 只选择收藏按钮的直接子图标元素，使用 :scope > i 确保精确性
+        const heartIcon = favoriteBtn.querySelector(':scope > i');
         const gameCard = favoriteBtn.closest('[data-game-id]');
         
         if (heartIcon) {
