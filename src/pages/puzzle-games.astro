@@ -126,7 +126,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
                       </div>
                     )}
                     <div class="popularity-badge">
-                      �� {formatPopularity(popularity)}
+                      ⭐ {formatPopularity(popularity)}
                     </div>
                     <div class="play-button" onclick={`window.location.href='${game.url}'`}>
                       <i class="fas fa-play"></i>
@@ -161,7 +161,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
           </div>
           
           <div class="games-grid">
-            {displayEasyGames.slice(0, 4).map((game, index) => {
+            {displayEasyGames.map((game, index) => {
               const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
                 if (!num || num === 0) return '0';
@@ -212,7 +212,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
           </div>
           
           <div class="games-grid">
-            {displayMediumGames.slice(0, 4).map((game, index) => {
+            {displayMediumGames.map((game, index) => {
               const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
                 if (!num || num === 0) return '0';
@@ -263,7 +263,7 @@ const displayHardGames = hardGames.length > 0 ? hardGames : puzzleGames.slice(-2
           </div>
           
           <div class="games-grid">
-            {displayHardGames.slice(0, 4).map((game, index) => {
+            {displayHardGames.map((game, index) => {
               const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
                 if (!num || num === 0) return '0';
