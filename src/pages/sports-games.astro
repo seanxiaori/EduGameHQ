@@ -212,8 +212,9 @@ const sportsCoreSkills = [
           
           <div class="games-grid">
             {displayEasyGames.slice(0, 4).map((game, index) => {
-              const popularity = game.playCount;
+              const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
                 return num.toString();
@@ -262,8 +263,9 @@ const sportsCoreSkills = [
           
           <div class="games-grid">
             {displayMediumGames.slice(0, 4).map((game, index) => {
-              const popularity = game.playCount;
+              const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
                 return num.toString();
@@ -312,8 +314,9 @@ const sportsCoreSkills = [
           
           <div class="games-grid">
             {displayHardGames.map((game, index) => {
-              const popularity = game.playCount;
+              const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
                 return num.toString();

@@ -101,8 +101,9 @@ if (hardGames.length === 0 && artGames.length > 6) {
         
         <div class="games-grid">
           {featuredGames.map((game, index) => {
-            const popularity = game.playCount;
+            const popularity = game.playCount || 0;
             const formatPopularity = (num) => {
+              if (!num || num === 0) return '0';
               if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
               if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
               return num.toString();
@@ -162,8 +163,9 @@ if (hardGames.length === 0 && artGames.length > 6) {
           
           <div class="games-grid">
             {easyGames.map((game, index) => {
-              const popularity = game.playCount;
+              const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
                 return num.toString();
@@ -212,8 +214,9 @@ if (hardGames.length === 0 && artGames.length > 6) {
           
           <div class="games-grid">
             {mediumGames.map((game, index) => {
-              const popularity = game.playCount;
+              const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
                 return num.toString();
@@ -262,8 +265,9 @@ if (hardGames.length === 0 && artGames.length > 6) {
           
           <div class="games-grid">
             {hardGames.map((game, index) => {
-              const popularity = game.playCount;
+              const popularity = game.playCount || 0;
               const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
                 if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
                 if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
                 return num.toString();
