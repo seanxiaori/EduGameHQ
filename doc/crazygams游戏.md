@@ -1,7 +1,8 @@
 https://www.crazygames.com/terms-and-conditions
 
+=== EduGameHQ 8大分类游戏资源库 ===
 
-MATH GAMES:
+MATH GAMES (数学游戏):
 https://www.crazygames.com/game/count-masters-stickman-games
 <iframe src="https://www.crazygames.com/embed/count-masters-stickman-games" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
@@ -56,12 +57,6 @@ https://www.crazygames.com/game/puzzle-survivor
 https://www.crazygames.com/game/the-last-light-of-lyra
 <iframe src="https://www.crazygames.com/embed/the-last-light-of-lyra" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-https://www.crazygames.com/game/the-last-light-of-lyra
-<iframe src="https://www.crazygames.com/embed/the-last-light-of-lyra" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-https://www.crazygames.com/game/nullify
-<iframe src="https://www.crazygames.com/embed/nullify" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
 https://www.crazygames.com/game/nullify
 <iframe src="https://www.crazygames.com/embed/nullify" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
@@ -80,7 +75,7 @@ https://www.crazygames.com/game/xor
 https://www.crazygames.com/game/dicetris
 <iframe src="https://www.crazygames.com/embed/dicetris" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-SCIENCE GAMES:
+SCIENCE GAMES (科学游戏):
 https://www.crazygames.com/game/little-alchemy-2
 <iframe src="https://www.crazygames.com/embed/little-alchemy-2" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
@@ -99,17 +94,17 @@ https://www.crazygames.com/game/idle-research
 https://www.crazygames.com/game/skeleton-simulator
 <iframe src="https://www.crazygames.com/embed/skeleton-simulator" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-GEOGRAPHY GAMES:
-https://www.crazygames.com/game/geography-quiz-flags-and-capitals
-<iframe src="https://www.crazygames.com/embed/geography-quiz-flags-and-capitals" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+CODING GAMES (编程游戏):
+https://www.crazygames.com/game/code-combat
+<iframe src="https://www.crazygames.com/embed/code-combat" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-https://www.crazygames.com/game/world-geography-quiz
-<iframe src="https://www.crazygames.com/embed/world-geography-quiz" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+https://www.crazygames.com/game/lightbot
+<iframe src="https://www.crazygames.com/embed/lightbot" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-https://www.crazygames.com/game/flags-of-the-world-quiz
-<iframe src="https://www.crazygames.com/embed/flags-of-the-world-quiz" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+https://www.crazygames.com/game/robot-programming
+<iframe src="https://www.crazygames.com/embed/robot-programming" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-WORD & LANGUAGE GAMES:
+LANGUAGE GAMES (语言游戏):
 https://www.crazygames.com/game/words-of-wonders
 <iframe src="https://www.crazygames.com/embed/words-of-wonders" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
@@ -125,7 +120,16 @@ https://www.crazygames.com/game/word-wipe
 https://www.crazygames.com/game/emoji-puzzle
 <iframe src="https://www.crazygames.com/embed/emoji-puzzle" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-LOGIC & PUZZLE GAMES:
+https://www.crazygames.com/game/typing-speed-test
+<iframe src="https://www.crazygames.com/embed/typing-speed-test" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/keybr
+<iframe src="https://www.crazygames.com/embed/keybr" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://poki.com/en/g/fast-typer
+<iframe src="https://poki.com/en/g/fast-typer" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+PUZZLE GAMES (解谜游戏):
 https://www.crazygames.com/game/bloxorz
 <iframe src="https://www.crazygames.com/embed/bloxorz" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
@@ -141,35 +145,91 @@ https://www.crazygames.com/game/red-ball-4
 https://www.crazygames.com/game/fireboy-and-watergirl-forest-temple
 <iframe src="https://www.crazygames.com/embed/fireboy-and-watergirl-forest-temple" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-TRIVIA & KNOWLEDGE GAMES:
-https://www.crazygames.com/game/trivia-crack
-<iframe src="https://www.crazygames.com/embed/trivia-crack" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-https://www.crazygames.com/game/tot-or-trivia
-<iframe src="https://www.crazygames.com/embed/tot-or-trivia" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-https://www.crazygames.com/game/quizzland-trivia
-<iframe src="https://www.crazygames.com/embed/quizzland-trivia" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-https://www.crazygames.com/game/teacher-simulator
-<iframe src="https://www.crazygames.com/embed/teacher-simulator" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-TYPING & SKILL GAMES:
-https://www.crazygames.com/game/typing-speed-test
-<iframe src="https://www.crazygames.com/embed/typing-speed-test" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-https://www.crazygames.com/game/keybr
-<iframe src="https://www.crazygames.com/embed/keybr" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-https://www.crazygames.com/game/type-for-your-life
-<iframe src="https://www.crazygames.com/embed/type-for-your-life" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
-
-MEMORY & CONCENTRATION GAMES:
 https://www.crazygames.com/game/memory-test
 <iframe src="https://www.crazygames.com/embed/memory-test" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
 https://www.crazygames.com/game/simon-says
 <iframe src="https://www.crazygames.com/embed/simon-says" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
 
-https://www.crazygames.com/game/concentration-game
-<iframe src="https://www.crazygames.com/embed/concentration-game" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+https://poki.com/en/g/2048
+<iframe src="https://poki.com/en/g/2048" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+SPORTS GAMES (体育游戏):
+https://www.crazygames.com/game/basketball-stars
+<iframe src="https://www.crazygames.com/embed/basketball-stars" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/soccer-skills-world-cup
+<iframe src="https://www.crazygames.com/embed/soccer-skills-world-cup" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/table-tennis-world-tour
+<iframe src="https://www.crazygames.com/embed/table-tennis-world-tour" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/tennis-masters
+<iframe src="https://www.crazygames.com/embed/tennis-masters" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://poki.com/en/g/penalty-shooters-2
+<iframe src="https://poki.com/en/g/penalty-shooters-2" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://poki.com/en/g/soccer-skills-euro-cup
+<iframe src="https://poki.com/en/g/soccer-skills-euro-cup" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+ART & CREATIVITY (艺术创意):
+https://www.crazygames.com/game/draw-climber
+<iframe src="https://www.crazygames.com/embed/draw-climber" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/draw-story
+<iframe src="https://www.crazygames.com/embed/draw-story" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/coloring-book
+<iframe src="https://www.crazygames.com/embed/coloring-book" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/pixel-art
+<iframe src="https://www.crazygames.com/embed/pixel-art" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://kids.poki.com/game/coloring-book
+<iframe src="https://kids.poki.com/game/coloring-book" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://poki.com/en/g/color-artist
+<iframe src="https://poki.com/en/g/color-artist" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+HISTORY & GEOGRAPHY (历史地理):
+https://www.crazygames.com/game/geography-quiz-flags-and-capitals
+<iframe src="https://www.crazygames.com/embed/geography-quiz-flags-and-capitals" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/world-geography-quiz
+<iframe src="https://www.crazygames.com/embed/world-geography-quiz" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/flags-of-the-world-quiz
+<iframe src="https://www.crazygames.com/embed/flags-of-the-world-quiz" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/trivia-crack
+<iframe src="https://www.crazygames.com/embed/trivia-crack" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://www.crazygames.com/game/quizzland-trivia
+<iframe src="https://www.crazygames.com/embed/quizzland-trivia" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://poki.com/en/g/flags
+<iframe src="https://poki.com/en/g/flags" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+https://poki.com/en/g/wheres-your-country
+<iframe src="https://poki.com/en/g/wheres-your-country" style="width: 100%; height: 100%;" frameborder="0" allow="gamepad *;"></iframe>
+
+=== 备用游戏来源 ===
+如果CrazyGames某些分类游戏不够，可以考虑以下网站：
+- Scratch MIT (scratch.mit.edu) - 编程教育游戏
+- itch.io - 独立教育游戏
+- Miniplay.com - 儿童友好游戏
+- Poki.com - 教育休闲游戏
+- Kids.Poki.com - 专门为儿童设计的安全游戏
+
+=== 各分类游戏统计 ===
+📊 Math Games: 24个游戏 ✅
+🔬 Science Games: 6个游戏 ✅  
+💻 Coding Games: 3个游戏 (需要补充Scratch项目)
+📝 Language Games: 8个游戏 ✅
+🧩 Puzzle Games: 8个游戏 ✅
+⚽ Sports Games: 6个游戏 ✅
+🎨 Art & Creativity: 6个游戏 ✅
+🌍 History & Geography: 7个游戏 ✅
+
+总计: 68个教育游戏涵盖8大分类
