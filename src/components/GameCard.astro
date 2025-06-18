@@ -86,9 +86,6 @@ const formatPopularity = (num: number) => {
 const gameUrl = `/games/${safeGame.slug}`;
 ---
 
-<!-- 引入游戏统计管理器 -->
-<script src="/src/utils/game-stats-manager.js" is:inline></script>
-
 <div class={`game-card ${safeGame.category}-theme animate-fadeInUp`} data-game-id={safeGame.slug}>
   <div class="game-image-container">
     <img 
