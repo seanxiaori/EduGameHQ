@@ -269,15 +269,17 @@ if (isHomePage) {
             <!-- 简化面包屑导航 -->
             <div class="nav-breadcrumbs">
               {breadcrumbs.map((crumb, index) => (
-                <div class="breadcrumb-item">
+                <>
                   <a href={crumb.url} class={`nav-link ${crumb.isCurrent ? 'current' : ''} ${crumb.color || ''}`}>
                     <i class={crumb.icon}></i>
                     <span class="nav-text">{crumb.name}</span>
                   </a>
                   {index < breadcrumbs.length - 1 && (
-                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
+                    <span class="breadcrumb-separator">
+                      <i class="fas fa-chevron-right"></i>
+                    </span>
                   )}
-                </div>
+                </>
               ))}
               
               <!-- 快速导航下拉菜单 -->
@@ -904,8 +906,11 @@ if (isHomePage) {
   }
 
   .breadcrumb-separator {
+    display: flex;
+    align-items: center;
     color: #9CA3AF;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+    margin: 0 0.5rem;
     flex-shrink: 0;
   }
 
@@ -966,7 +971,7 @@ if (isHomePage) {
     gap: 8px;
     padding: 0.75rem 1rem;
     border-radius: 12px;
-    text-decoration: none;
+    text-decoration: none !important;
     color: #4B5563;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -983,6 +988,7 @@ if (isHomePage) {
     background: #F3F1EE;
     color: #F59E0B;
     transform: translateY(-1px);
+    text-decoration: none !important;
   }
 
   /* 当前页面高亮样式 */
