@@ -1001,71 +1001,87 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 
-<!-- 引入全局收藏管理器脚本 -->
-<script is:inline src="/scripts/favorites-manager.js"></script>
-
-<!-- 初始化收藏功能 -->
+<!-- 完全重构的收藏功能JavaScript -->
 <script is:inline>
-  // 创建简化的收藏管理器，避免依赖外部脚本
-  const mathGamesManager = {
+  // 数学游戏页面专用收藏管理器 - 完全修复版
+  const favoritesManager = {
     // 切换收藏状态
     toggleFavorite(gameSlug) {
       try {
+        console.log(`🔄 开始处理收藏切换: ${gameSlug}`);
+        
         // 获取当前收藏列表
         const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
         const isFavorited = favorites.includes(gameSlug);
+        
+        console.log(`📋 当前收藏状态: ${isFavorited ? '已收藏' : '未收藏'}`);
         
         if (isFavorited) {
           // 移除收藏
           const newFavorites = favorites.filter(id => id !== gameSlug);
           localStorage.setItem('favoriteGames', JSON.stringify(newFavorites));
           console.log(`❌ 已从收藏中移除: ${gameSlug}`);
+          
+          // 立即更新UI为未收藏状态
+          this.updateGameCardUI(gameSlug, false);
+          this.showNotification('Removed from favorites', 'removed');
+          
         } else {
           // 添加收藏
           favorites.push(gameSlug);
           localStorage.setItem('favoriteGames', JSON.stringify(favorites));
           console.log(`❤️ 已添加到收藏: ${gameSlug}`);
+          
+          // 立即更新UI为收藏状态
+          this.updateGameCardUI(gameSlug, true);
+          this.showNotification('Added to favorites', 'added');
         }
         
-        // 更新所有相关按钮的UI
-        this.updateFavoriteButtons(gameSlug, !isFavorited);
-        
-        // 触发全局事件
+        // 触发全局事件通知其他组件
         window.dispatchEvent(new CustomEvent('favoritesChanged', {
           detail: { gameSlug, isFavorite: !isFavorited }
         }));
         
-        // 显示通知
-        this.showNotification(
-          !isFavorited ? 'Added to favorites' : 'Removed from favorites',
-          !isFavorited ? 'added' : 'removed'
-        );
-        
       } catch (error) {
-        console.error('收藏操作失败:', error);
+        console.error('❌ 收藏操作失败:', error);
         this.showNotification('Something went wrong', 'error');
       }
     },
     
-    // 更新收藏按钮UI
-    updateFavoriteButtons(gameSlug, isFavorited) {
+    // 更新特定游戏卡片的UI - 修复版
+    updateGameCardUI(gameSlug, isFavorited) {
+      console.log(`🎨 更新UI: ${gameSlug} -> ${isFavorited ? '收藏' : '取消收藏'}`);
+      
+      // 查找所有该游戏的卡片（可能有多个）
       const gameCards = document.querySelectorAll(`[data-game-id="${gameSlug}"]`);
-      gameCards.forEach(card => {
+      console.log(`🔍 找到 ${gameCards.length} 个游戏卡片需要更新`);
+      
+      gameCards.forEach((card, index) => {
         const favoriteBtn = card.querySelector('.favorite-heart-btn');
         const heartIcon = favoriteBtn?.querySelector('i');
         
         if (favoriteBtn && heartIcon) {
+          console.log(`🔧 更新第 ${index + 1} 个卡片的收藏按钮`);
+          
           if (isFavorited) {
+            // 设置为收藏状态：实心红心
             heartIcon.className = 'fas fa-heart';
+            heartIcon.style.color = '#EC4899';
             favoriteBtn.classList.add('active');
             card.classList.add('favorited');
+            console.log(`✅ 卡片 ${index + 1} 已设置为收藏状态`);
           } else {
+            // 设置为未收藏状态：空心灰心
             heartIcon.className = 'far fa-heart';
+            heartIcon.style.color = '#9CA3AF';
             favoriteBtn.classList.remove('active');
             card.classList.remove('favorited');
+            console.log(`✅ 卡片 ${index + 1} 已设置为未收藏状态`);
           }
+        } else {
+          console.warn(`⚠️ 第 ${index + 1} 个卡片没有找到收藏按钮`);
         }
       });
     },
@@ -1103,7 +1119,10 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
         transform: 'translateX(100%)',
         transition: 'transform 0.3s ease',
-        backdropFilter: 'blur(10px)'
+        backdropFilter: 'blur(10px)',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '0.5rem'
       });
 
       // 添加到页面
@@ -1128,31 +1147,51 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     // 初始化所有收藏按钮的状态
     initializeFavoriteStates() {
       try {
+        console.log('🚀 开始初始化收藏状态...');
+        
         const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
         const gameCards = document.querySelectorAll('[data-game-id]');
         
-        gameCards.forEach(card => {
+        console.log(`📊 当前收藏列表: [${favorites.join(', ')}]`);
+        console.log(`🎯 找到 ${gameCards.length} 个游戏卡片需要初始化`);
+        
+        gameCards.forEach((card, index) => {
           const gameSlug = card.dataset.gameId;
-          if (gameSlug && favorites.includes(gameSlug)) {
-            this.updateFavoriteButtons(gameSlug, true);
+          if (gameSlug) {
+            const isFavorited = favorites.includes(gameSlug);
+            console.log(`🔍 游戏 ${gameSlug}: ${isFavorited ? '已收藏' : '未收藏'}`);
+            this.updateGameCardUI(gameSlug, isFavorited);
           }
         });
         
-        console.log(`✅ 初始化了 ${gameCards.length} 个游戏卡片的收藏状态`);
+        console.log('✅ 收藏状态初始化完成');
       } catch (error) {
-        console.error('初始化收藏状态失败:', error);
+        console.error('❌ 初始化收藏状态失败:', error);
       }
     }
   };
   
   // 将收藏管理器设为全局可用
-  window.favoritesManager = mathGamesManager;
+  window.favoritesManager = favoritesManager;
   
   // 等待页面加载完成后初始化
   document.addEventListener('DOMContentLoaded', () => {
     console.log('🎯 数学游戏页面 - 收藏功能初始化开始');
-    mathGamesManager.initializeFavoriteStates();
+    
+    // 延迟一点确保所有元素都已渲染
+    setTimeout(() => {
+      favoritesManager.initializeFavoriteStates();
+    }, 500);
+    
     console.log('✅ 数学游戏页面 - 收藏功能初始化完成');
   });
+
+  // 添加额外的调试功能
+  window.debugFavorites = () => {
+    console.log('=== 收藏功能调试信息 ===');
+    console.log('当前收藏:', JSON.parse(localStorage.getItem('favoriteGames') || '[]'));
+    console.log('游戏卡片数量:', document.querySelectorAll('[data-game-id]').length);
+    console.log('收藏按钮数量:', document.querySelectorAll('.favorite-heart-btn').length);
+  };
 </script>
 
