@@ -366,7 +366,7 @@ export const seoConfig: Record<string, SEOConfig> = {
 export function getPageSEO(path: string): SEOConfig {
   // 处理游戏详情页面的动态路由
   if (path.startsWith('/games/')) {
-    return seoConfig['/games/[slug]'];
+    return seoConfig['/games/[slug]'] || seoConfig['/'];
   }
 
   return seoConfig[path] || seoConfig['/'];
