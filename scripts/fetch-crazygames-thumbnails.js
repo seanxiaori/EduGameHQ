@@ -7,19 +7,10 @@ import puppeteer from 'puppeteer';
 import fs from 'fs';
 import path from 'path';
 
-// 需要更新缩略图的10款新体育游戏
+// 需要更新缩略图的新数学游戏
 const GAMES_TO_UPDATE = [
-  // 新添加的体育游戏
-  'mini-golf-club',
-  'basketball-orbit',
-  'basketbros',
-  'hotfoot-baseball',
-  'qb-legend',
-  '3d-bowling',
-  'hoop-world-3d',
-  'free-kick-classic',
-  'soccer-random',
-  'volley-random'
+  // 新添加的数学游戏
+  'drop-merge-the-numbers'
 ];
 
 /**

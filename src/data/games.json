@@ -1,5 +1,57 @@
 [
   {
+    "slug": "drop-merge-the-numbers",
+    "title": "Drop Merge the Numbers",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/drop-merge-the-numbers",
+    "description": "Drop Merge the Numbers is an engaging math puzzle game where you drop number blocks and merge them to create larger numbers. Combine identical numbers to reach the highest score possible!",
+    "gameGuide": {
+      "howToPlay": [
+        "Drop number blocks from the top of the screen",
+        "Merge identical numbers to create larger numbers",
+        "Plan your moves to create chain reactions",
+        "Reach the highest score possible"
+      ],
+      "controls": {
+        "mouse": "Click to drop number blocks",
+        "keyboard": "Use arrow keys for precise placement"
+      },
+      "tips": [
+        "Plan ahead to create bigger merges",
+        "Try to set up chain reactions for bonus points",
+        "Keep the board organized to avoid filling up"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/drop-merge-the-numbers/20220909075354/drop-merge-the-numbers-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "math",
+      "numbers",
+      "logic",
+      "problem-solving",
+      "strategy",
+      "merge"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/drop-merge-the-numbers",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Blury Studio"
+  },
+  {
     "slug": "2048",
     "title": "2048",
     "category": "math",
