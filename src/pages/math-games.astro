@@ -175,6 +175,14 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
               const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
               
+              // 格式化数字显示函数
+              const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
+              
               return (
                 <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
                   <div class="game-image-container">
@@ -219,7 +227,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     <div class="game-stats">
                       <div class="stat">
                         <i class="fas fa-play-circle"></i>
-                        <span class="play-count">{formatPlayCount(plays)} plays</span>
+                        <span class="play-count">{formatPopularity(plays)} plays</span>
                       </div>
                       <div class="stat">
                         <i class="fas fa-child"></i>
@@ -253,6 +261,14 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               const popularity = Math.floor(Math.random() * 500) + 100;
               const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
               const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
+              
+              // 格式化数字显示函数
+              const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
               
               return (
                 <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
@@ -298,7 +314,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     <div class="game-stats">
                       <div class="stat">
                         <i class="fas fa-play-circle"></i>
-                        <span class="play-count">{formatPlayCount(plays)} plays</span>
+                        <span class="play-count">{formatPopularity(plays)} plays</span>
                       </div>
                       <div class="stat">
                         <i class="fas fa-child"></i>
@@ -332,6 +348,14 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               const popularity = Math.floor(Math.random() * 300) + 50;
               const histories = ['Today', 'Yesterday', 'A few days ago', '2 weeks ago', null];
               const randomHistory = Math.random() > 0.7 ? histories[Math.floor(Math.random() * histories.length)] : null;
+              
+              // 格式化数字显示函数
+              const formatPopularity = (num) => {
+                if (!num || num === 0) return '0';
+                if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+                if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+                return num.toString();
+              };
               
               return (
                 <div class="game-card math-theme animate-fadeInUp" style={`animation-delay: ${index * 0.1}s`} data-game-id={game.id}>
@@ -377,7 +401,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
                     <div class="game-stats">
                       <div class="stat">
                         <i class="fas fa-play-circle"></i>
-                        <span class="play-count">{formatPlayCount(plays)} plays</span>
+                        <span class="play-count">{formatPopularity(plays)} plays</span>
                       </div>
                       <div class="stat">
                         <i class="fas fa-child"></i>
