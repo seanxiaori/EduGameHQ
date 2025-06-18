@@ -363,7 +363,7 @@ const recentlyPlayedGames = allGamesData
         // 监听统计数据更新
         window.addEventListener('gameStatsUpdated', (e) => {
           if (e.detail.action === 'gameStart' || e.detail.action === 'storageChange') {
-            setTimeout(() => {
+                setTimeout(() => {
               this.loadRecentGames();
             }, 500);
           }

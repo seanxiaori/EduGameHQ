@@ -416,8 +416,18 @@ const gameUrl = `/games/${safeGame.slug}`;
         icon.className = isFavorited ? 'fas fa-heart' : 'far fa-heart';
       }
       
-      button.style.background = isFavorited ? '#EC4899' : '#6B7280';
-      button.style.color = 'white';
+      // 更新样式以匹配新的透明玻璃效果设计
+      if (isFavorited) {
+        button.style.background = 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)';
+        button.style.color = 'white';
+        button.style.borderColor = 'rgba(236, 72, 153, 0.6)';
+        button.style.boxShadow = '0 4px 15px rgba(236, 72, 153, 0.4)';
+      } else {
+        button.style.background = 'rgba(0, 0, 0, 0.25)';
+        button.style.color = '#FFFFFF';
+        button.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+        button.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
+      }
       
       // 添加动画效果
       if (isFavorited) {
