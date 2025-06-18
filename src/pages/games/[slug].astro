@@ -77,8 +77,16 @@ const seoData = {
           <div class="title-and-tags">
             <h1 class="game-main-title">{game.title}</h1>
             <div class="game-meta-tags">
-              <span class="category-tag">{game.category}</span>
-              <span class="difficulty-tag">{game.difficulty || 'Medium'}</span>
+              {game.tags && game.tags.length > 0 ? (
+                game.tags.slice(0, 4).map((tag: string) => (
+                  <span class="tag-badge">{tag}</span>
+                ))
+              ) : (
+                <>
+                  <span class="category-tag">{game.category}</span>
+                  <span class="difficulty-tag">{game.difficulty || 'Medium'}</span>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -133,6 +141,63 @@ const seoData = {
           <div class="info-block">
             <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
           </div>
+
+          {game.gameGuide && (
+            <>
+              <!-- 如何游戏 -->
+              {game.gameGuide.howToPlay && game.gameGuide.howToPlay.length > 0 && (
+                <div class="info-block">
+                  <h3 class="guide-title">
+                    <i class="fas fa-play-circle"></i>
+                    How to Play
+                  </h3>
+                  <ul class="guide-list">
+                    {game.gameGuide.howToPlay.map((step: string) => (
+                      <li>{step}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              <!-- 控制方式 -->
+              {game.gameGuide.controls && Object.keys(game.gameGuide.controls).length > 0 && (
+                <div class="info-block">
+                  <h3 class="guide-title">
+                    <i class="fas fa-keyboard"></i>
+                    Game Controls
+                  </h3>
+                  <div class="controls-grid">
+                    {Object.entries(game.gameGuide.controls).map(([type, instruction]: [string, string]) => (
+                      <div class="control-item">
+                        <span class="control-type">
+                          {type === 'mouse' && <i class="fas fa-computer-mouse"></i>}
+                          {type === 'keyboard' && <i class="fas fa-keyboard"></i>}
+                          {type === 'touch' && <i class="fas fa-hand-paper"></i>}
+                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                        </span>
+                        <span class="control-instruction">{instruction}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <!-- 游戏技巧 -->
+              {game.gameGuide.tips && game.gameGuide.tips.length > 0 && (
+                <div class="info-block">
+                  <h3 class="guide-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Tips & Tricks
+                  </h3>
+                  <ul class="tips-list">
+                    {game.gameGuide.tips.map((tip: string) => (
+                      <li>{tip}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </>
+          )}
 
         </div>
       </section>
@@ -300,6 +365,25 @@ const seoData = {
 
   .difficulty-tag {
     background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  /* Tags标签样式 */
+  .tag-badge {
+    padding: 0.375rem 0.875rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    color: white;
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+    box-shadow: 0 2px 4px rgba(139, 92, 246, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .tag-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(139, 92, 246, 0.3);
   }
 
   /* 游戏播放器区域 */
@@ -644,6 +728,112 @@ const seoData = {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.05em;
+  }
+
+  /* GameGuide样式 */
+  .guide-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #1F2937;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #E5E7EB;
+  }
+
+  .guide-title i {
+    color: #6366F1;
+    font-size: 1.125rem;
+  }
+
+  .guide-list, .tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .guide-list li, .tips-list li {
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    border-left: 4px solid #6366F1;
+    color: #374151;
+    font-weight: 500;
+    line-height: 1.6;
+    position: relative;
+    transition: all 0.2s ease;
+  }
+
+  .guide-list li:hover, .tips-list li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.1);
+  }
+
+  .guide-list li:before {
+    content: "▶";
+    color: #6366F1;
+    font-weight: bold;
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .tips-list li:before {
+    content: "💡";
+    margin-right: 0.5rem;
+    font-size: 1rem;
+  }
+
+  /* 控制方式网格样式 */
+  .controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .control-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    transition: all 0.2s ease;
+  }
+
+  .control-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.1);
+    border-color: #6366F1;
+  }
+
+  .control-type {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .control-type i {
+    color: #6366F1;
+    font-size: 1rem;
+  }
+
+  .control-instruction {
+    color: #4B5563;
+    font-weight: 500;
+    line-height: 1.5;
+    font-size: 0.95rem;
   }
 
   /* 响应式设计 */
