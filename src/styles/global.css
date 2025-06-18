@@ -132,13 +132,6 @@
     cursor: pointer;
   }
   
-  .game-card {
-    padding: 1.5rem;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-  
   .container-custom {
     max-width: 80rem;
     margin: 0 auto;

@@ -170,7 +170,7 @@ const recentlyPlayedGames = allGamesData
         const recentGames = window.gameStatsManager.getRecentGames(20);
         
         console.log('📊 最近游戏数据:', recentGames);
-
+        
         if (recentGames.length === 0) {
           this.showEmptyState();
           return;
@@ -210,7 +210,7 @@ const recentlyPlayedGames = allGamesData
             this.addRecentBadge(card, gameHistory);
           }
         });
-
+        
         // 重新排序卡片（根据最近播放时间）
         this.reorderCardsByRecency(gamesGrid, recentGames);
       }
@@ -233,20 +233,20 @@ const recentlyPlayedGames = allGamesData
         if (popularityStat) {
           const popularity = window.gameStatsManager.getPopularity(gameSlug);
           popularityStat.textContent = this.formatPopularity(popularity) + ' popular';
-        }
+          }
       }
 
       // 添加最近播放标识
       addRecentBadge(card, gameHistory) {
         const badgesContainer = card.querySelector('.game-badges');
         if (!badgesContainer) return;
-
+        
         // 移除现有的最近播放标识
         const existingBadge = badgesContainer.querySelector('.badge.recent');
         if (existingBadge) {
           existingBadge.remove();
         }
-
+        
         // 根据播放时间添加相应标识
         const playDate = new Date(gameHistory.timestamp);
         const now = new Date();
@@ -344,7 +344,7 @@ const recentlyPlayedGames = allGamesData
           gamesModule.style.display = 'none';
         }
       }
-
+        
       // 隐藏空状态
       hideEmptyState() {
         const emptyState = document.querySelector('.empty-state');
@@ -373,7 +373,7 @@ const recentlyPlayedGames = allGamesData
         document.addEventListener('visibilitychange', () => {
           if (!document.hidden) {
             this.loadRecentGames();
-          }
+            }
         });
       }
 
@@ -384,7 +384,7 @@ const recentlyPlayedGames = allGamesData
         if (clearBtn) {
           clearBtn.addEventListener('click', () => {
             this.clearHistory();
-          });
+        });
         }
 
         // 刷新按钮
@@ -392,17 +392,17 @@ const recentlyPlayedGames = allGamesData
         if (refreshBtn) {
           refreshBtn.addEventListener('click', () => {
             this.loadRecentGames();
-          });
+        });
         }
       }
-
+        
       // 清除历史记录
       clearHistory() {
         if (confirm('Are you sure you want to clear your game history? This action cannot be undone.')) {
           if (window.gameStatsManager) {
             window.gameStatsManager.clearAllStats();
-          }
-          
+      }
+
           // 显示空状态
           this.showEmptyState();
           
@@ -439,8 +439,8 @@ const recentlyPlayedGames = allGamesData
           return `${hours}h ${minutes}m`;
         }
         return `${minutes}m`;
-      }
-
+        }
+        
       // 显示通知
       showNotification(message, type = 'info') {
         const notification = document.createElement('div');
