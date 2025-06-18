@@ -266,14 +266,14 @@
 
 /* 游戏信息区域 - 减少底部留白 */
 .game-info {
-  padding: 1.2rem 1.2rem 2.8rem 1.2rem;  /* 减少底部空间，从3.5rem改为2.8rem */
+  padding: 1.2rem 1.2rem 2.2rem 1.2rem;  /* 进一步减少底部空间，从2.8rem改为2.2rem */
   background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
   border-top: 1px solid #E5E7EB;
   position: relative;
   display: flex;
   flex-direction: column;
   flex: 1;  /* 占据剩余空间 */
-  min-height: 180px;  /* 减少最小高度，从200px改为180px */
+  min-height: 165px;  /* 减少最小高度，从180px改为165px */
 }
 
 /* 游戏标题 - 固定1行高度 */
@@ -305,13 +305,13 @@
   min-height: 2.38rem;  /* 确保最小高度 */
 }
 
-/* 游戏标签区域 - 自动填充到接近底部 */
+/* 游戏标签区域 - 让标签更接近底部 */
 .game-tags {
   display: flex;
   gap: 0.3rem;
   flex-wrap: wrap;
   align-items: flex-start;
-  margin-bottom: auto;  /* 恢复auto，让标签区域自动扩展 */
+  margin-bottom: 0.5rem;  /* 改为固定的小边距，从auto改为0.5rem */
   min-height: 1.8rem;  /* 保持最小高度 */
 }
 
