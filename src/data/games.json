@@ -49,7 +49,8 @@
     "featured": true,
     "trending": false,
     "isNew": true,
-    "developer": "Blury Studio"
+    "developer": "Blury Studio",
+    "educationalValue": "Physics principles, reaction ability, adaptability"
   },
   {
     "slug": "2048",
@@ -2241,7 +2242,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "物理原理、反应能力、适应性",
+    "educationalValue": "Physics principles, reaction ability, adaptability",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2269,7 +2270,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "精准度、空间感知、物理原理",
+    "educationalValue": "Precision, spatial awareness, physics principles",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2297,7 +2298,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "物理原理、空间思维、精准度",
+    "educationalValue": "Physics principles, spatial thinking, precision",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2325,7 +2326,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "快速反应、团队合作",
+    "educationalValue": "Quick reaction, teamwork",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2353,7 +2354,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "手眼协调、反应速度、时机把握",
+    "educationalValue": "Hand-eye coordination, reaction speed, timing",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2381,7 +2382,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "策略思维、精准度、团队配合",
+    "educationalValue": "Strategic thinking, precision, teamwork",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2409,7 +2410,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "精准度、物理原理、专注力",
+    "educationalValue": "Precision, physics principles, focus",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2437,7 +2438,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "精准度、空间感知、专注力",
+    "educationalValue": "Precision, spatial awareness, focus",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2465,7 +2466,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "精准度、角度计算、专注力",
+    "educationalValue": "Precision, angle calculation, focus",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2493,7 +2494,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "适应性、反应能力、物理原理",
+    "educationalValue": "Adaptability, reaction ability, physics principles",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -2521,7 +2522,7 @@
     ],
     "ageRating": "E",
     "isEducational": true,
-    "educationalValue": "反应速度、团队配合、适应性",
+    "educationalValue": "Reaction speed, teamwork, adaptability",
     "technology": "HTML5",
     "isVerified": true,
     "lastUpdated": "2025-01-16"
@@ -3202,7 +3203,7 @@
     "featured": false,
     "trending": false,
     "isNew": true,
-    "developer": "未知"
+    "developer": "Unknown"
   },
   {
     "slug": "blockbuster-puzzle",
@@ -3904,7 +3905,7 @@
         "Use small adjustments for precise color matching"
       ]
     },
-    "thumbnailUrl": "/images/games/art/color-match-amg.svg",
+    "thumbnailUrl": "https://imgs.crazygames.com/color-match-amg_16x9/20241223043902/color-match-amg_16x9-cover?metadata=none&quality=70",
     "difficulty": "Easy",
     "ageRange": "6-14",
     "minAge": 6,
