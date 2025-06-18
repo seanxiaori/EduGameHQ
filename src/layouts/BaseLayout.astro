@@ -48,19 +48,8 @@ function getCategoryPath(category: string): string {
 
 // 获取来源页面信息（通过referrer header或localStorage）
 function getReferrerInfo() {
-  // 检查是否来自特殊页面
-  const specialPages = ['/recently-played', '/trending', '/new-games', '/favorites'];
-  const referrerHeader = Astro.request.headers.get('referer');
-  
-  if (referrerHeader) {
-    const referrerUrl = new URL(referrerHeader);
-    const referrerPath = referrerUrl.pathname;
-    
-    if (specialPages.includes(referrerPath)) {
-      return pageStructure.special[referrerPath];
-    }
-  }
-  
+  // 在静态渲染模式下，不使用Astro.request.headers
+  // 改为在客户端JavaScript中处理referrer逻辑
   return null;
 }
 
@@ -95,29 +84,17 @@ if (!isHomePage) {
       isCurrent: true 
     });
   } else if (isGamePage && gameData) {
-    // 游戏页面面包屑 - 智能判断来源
-    if (referrer && pageStructure.special[referrer]) {
-      // 来自特殊页面：Home > Trending > Game Name
-      const specialInfo = pageStructure.special[referrer];
+    // 游戏页面面包屑 - 使用默认分类路径
+    const gameCategoryPath = getCategoryPath(gameData.category);
+    const gameCategoryInfo = pageStructure.categories[gameCategoryPath];
+    
+    if (gameCategoryInfo) {
       breadcrumbs.push({ 
-        name: specialInfo.name, 
-        url: referrer, 
-        icon: specialInfo.icon,
-        color: specialInfo.color
+        name: gameCategoryInfo.name, 
+        url: gameCategoryPath, 
+        icon: gameCategoryInfo.icon,
+        color: gameCategoryInfo.color
       });
-    } else {
-      // 来自分类页面或直接访问：Home > Math Games
-      const gameCategoryPath = getCategoryPath(gameData.category);
-      const gameCategoryInfo = pageStructure.categories[gameCategoryPath];
-      
-      if (gameCategoryInfo) {
-        breadcrumbs.push({ 
-          name: gameCategoryInfo.name, 
-          url: gameCategoryPath, 
-          icon: gameCategoryInfo.icon,
-          color: gameCategoryInfo.color
-        });
-      }
     }
     
     // 游戏名称（简化显示）
@@ -126,8 +103,7 @@ if (!isHomePage) {
       name: gameTitle, 
       url: currentPath, 
       icon: 'fas fa-play',
-      color: referrer && pageStructure.special[referrer] ? pageStructure.special[referrer].color : 
-             (pageStructure.categories[getCategoryPath(gameData.category)]?.color || 'default'),
+      color: gameCategoryInfo?.color || 'default',
       isCurrent: true 
     });
   } else if (isGamePage) {
@@ -143,12 +119,12 @@ if (isHomePage) {
   navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home', current: true });
   navItems.push({ name: 'Categories', type: 'dropdown', icon: 'fas fa-gamepad' });
   navItems.push({ name: 'Special', type: 'dropdown', icon: 'fas fa-star' });
-} else if (currentCategory || (isGamePage && !referrer)) {
-  // 分类页面或从分类进入的游戏页面
+} else if (currentCategory || isGamePage) {
+  // 分类页面或游戏页面
   navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
   navItems.push({ name: 'Categories', type: 'dropdown', icon: 'fas fa-gamepad', current: !!currentCategory });
-} else if (currentSpecialPage || (isGamePage && referrer && pageStructure.special[referrer])) {
-  // 特殊页面或从特殊页面进入的游戏页面
+} else if (currentSpecialPage) {
+  // 特殊页面
   navItems.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
   navItems.push({ name: 'Special', type: 'dropdown', icon: 'fas fa-star', current: !!currentSpecialPage });
 } else {
@@ -515,6 +491,10 @@ if (isHomePage) {
   
   <!-- JavaScript -->
   <script>
+    // 立即测试JavaScript是否加载
+    console.log('🚀 EduGameHQ JavaScript 正在加载...');
+    console.log('当前时间:', new Date().toLocaleString());
+    
     // 全局搜索函数
     function performSearch() {
       console.log('=== PERFORM SEARCH CALLED ===');
@@ -543,17 +523,30 @@ if (isHomePage) {
 
     // DOM加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('页面初始化开始...');
+      console.log('✅ 页面DOM加载完成，开始初始化...');
+      
+      // 检查页面元素是否存在
+      const navbar = document.querySelector('.navbar');
+      const dropdowns = document.querySelectorAll('.nav-dropdown');
+      console.log('🔍 页面检查结果:', {
+        navbar: !!navbar,
+        dropdownsCount: dropdowns.length,
+        url: window.location.href
+      });
       
       // 下拉菜单功能修复
-      const dropdowns = document.querySelectorAll('.nav-dropdown');
-      console.log('找到下拉菜单数量:', dropdowns.length);
+      console.log('🎯 开始初始化下拉菜单...');
       
       dropdowns.forEach((dropdown, index) => {
         const trigger = dropdown.querySelector('.dropdown-trigger, button');
         const menu = dropdown.querySelector('.dropdown-menu');
         
-        console.log(`下拉菜单 ${index}:`, { trigger, menu });
+        console.log(`📋 下拉菜单 ${index}:`, { 
+          trigger: !!trigger, 
+          menu: !!menu,
+          triggerText: trigger?.textContent?.trim(),
+          triggerId: trigger?.id
+        });
         
         if (trigger && menu) {
           // 移除旧的事件监听器（如果存在）
@@ -562,7 +555,7 @@ if (isHomePage) {
           
           // 添加新的事件监听器
           newTrigger.addEventListener('click', function(e) {
-            console.log(`点击了下拉菜单 ${index}`);
+            console.log(`🎯 点击了下拉菜单 ${index} (${newTrigger.textContent?.trim()})`);
             e.preventDefault();
             e.stopPropagation();
             
@@ -570,9 +563,9 @@ if (isHomePage) {
             dropdowns.forEach((otherDropdown, otherIndex) => {
               if (otherIndex !== index) {
                 const otherMenu = otherDropdown.querySelector('.dropdown-menu');
-                if (otherMenu) {
+                if (otherMenu && otherMenu.classList.contains('show')) {
                   otherMenu.classList.remove('show');
-                  console.log(`关闭了其他菜单 ${otherIndex}`);
+                  console.log(`🔒 关闭了其他菜单 ${otherIndex}`);
                 }
               }
             });
@@ -581,14 +574,16 @@ if (isHomePage) {
             const isOpen = menu.classList.contains('show');
             if (isOpen) {
               menu.classList.remove('show');
-              console.log(`关闭菜单 ${index}`);
+              console.log(`🔒 关闭菜单 ${index}`);
             } else {
               menu.classList.add('show');
-              console.log(`打开菜单 ${index}`);
+              console.log(`🔓 打开菜单 ${index}`);
             }
           });
           
-          console.log(`成功绑定下拉菜单 ${index}`);
+          console.log(`✅ 成功绑定下拉菜单 ${index}`);
+        } else {
+          console.error(`❌ 下拉菜单 ${index} 元素缺失:`, { trigger, menu });
         }
       });
       
@@ -597,7 +592,7 @@ if (isHomePage) {
         if (!e.target.closest('.nav-dropdown')) {
           dropdowns.forEach(dropdown => {
             const menu = dropdown.querySelector('.dropdown-menu');
-            if (menu) {
+            if (menu && menu.classList.contains('show')) {
               menu.classList.remove('show');
             }
           });
@@ -654,8 +649,18 @@ if (isHomePage) {
         });
       }
       
-      console.log('页面初始化完成');
+      console.log('🎉 页面初始化完成！');
     });
+    
+    // 立即测试
+    console.log('📱 开始测试DOM状态...');
+    if (document.readyState === 'loading') {
+      console.log('⏳ DOM 还在加载中...');
+    } else if (document.readyState === 'interactive') {
+      console.log('🔄 DOM 已加载但资源可能还在加载...');
+    } else if (document.readyState === 'complete') {
+      console.log('✅ DOM 和所有资源都已加载完成！');
+    }
     
     // 全局随机游戏函数
     window.playRandomGame = function() {
@@ -678,6 +683,143 @@ if (isHomePage) {
 
   <!-- 全局收藏管理器 -->
   <script src="/src/scripts/favorites-manager.js"></script>
+
+  <!-- 客户端导航增强脚本 -->
+  <script is:inline>
+    // 🚀 客户端导航增强管理器
+    class NavigationEnhancer {
+      constructor() {
+        this.specialPages = ['/recently-played', '/trending', '/new-games', '/favorites'];
+        this.init();
+      }
+
+      // 初始化导航增强功能
+      init() {
+        this.trackPageNavigation();
+        this.enhanceBreadcrumbs();
+        this.initializeBackButton();
+      }
+
+      // 跟踪页面导航，保存referrer信息
+      trackPageNavigation() {
+        try {
+          // 保存当前页面为referrer，供下次导航使用
+          const currentPath = window.location.pathname;
+          
+          // 如果是特殊页面，保存到localStorage
+          if (this.specialPages.includes(currentPath)) {
+            localStorage.setItem('lastSpecialPage', currentPath);
+          }
+          
+          // 如果是分类页面，保存分类信息
+          if (currentPath.includes('-games') && currentPath !== '/') {
+            localStorage.setItem('lastCategoryPage', currentPath);
+          }
+          
+        } catch (e) {
+          // 忽略localStorage错误
+        }
+      }
+
+      // 增强面包屑导航
+      enhanceBreadcrumbs() {
+        try {
+          const currentPath = window.location.pathname;
+          
+          // 如果是游戏页面，尝试添加智能面包屑
+          if (currentPath.startsWith('/games/')) {
+            this.enhanceGamePageBreadcrumbs();
+          }
+          
+        } catch (e) {
+          // 忽略错误
+        }
+      }
+
+      // 增强游戏页面面包屑
+      enhanceGamePageBreadcrumbs() {
+        try {
+          const breadcrumbsContainer = document.querySelector('.nav-breadcrumbs');
+          if (!breadcrumbsContainer) return;
+
+          // 检查是否有保存的特殊页面referrer
+          const lastSpecialPage = localStorage.getItem('lastSpecialPage');
+          const lastCategoryPage = localStorage.getItem('lastCategoryPage');
+          
+          // 如果来自特殊页面，更新面包屑显示
+          if (lastSpecialPage && document.referrer.includes(lastSpecialPage)) {
+            this.updateBreadcrumbsForSpecialPage(lastSpecialPage, breadcrumbsContainer);
+          }
+          
+        } catch (e) {
+          // 忽略错误
+        }
+      }
+
+      // 为特殊页面更新面包屑
+      updateBreadcrumbsForSpecialPage(specialPage, container) {
+        try {
+          const specialPageMap = {
+            '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'trending' },
+            '/recently-played': { name: 'Recent', icon: 'fas fa-clock', color: 'recent' },
+            '/new-games': { name: 'New Games', icon: 'fas fa-sparkles', color: 'new' },
+            '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'favorite' }
+          };
+
+          const pageInfo = specialPageMap[specialPage];
+          if (!pageInfo) return;
+
+          // 查找是否有第二个面包屑项（分类项）
+          const breadcrumbLinks = container.querySelectorAll('.nav-link');
+          if (breadcrumbLinks.length >= 2) {
+            const categoryLink = breadcrumbLinks[1];
+            
+            // 更新为特殊页面信息
+            categoryLink.href = specialPage;
+            categoryLink.title = pageInfo.name;
+            
+            const icon = categoryLink.querySelector('i');
+            if (icon) {
+              icon.className = pageInfo.icon;
+            }
+            
+            const text = categoryLink.querySelector('.nav-text');
+            if (text) {
+              text.textContent = pageInfo.name;
+            }
+          }
+          
+        } catch (e) {
+          // 忽略错误
+        }
+      }
+
+      // 初始化智能返回按钮
+      initializeBackButton() {
+        try {
+          // 为所有面包屑链接添加点击跟踪
+          const breadcrumbLinks = document.querySelectorAll('.nav-breadcrumbs .nav-link');
+          breadcrumbLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+              const href = link.getAttribute('href');
+              if (href && href !== '#') {
+                // 保存导航历史
+                this.trackPageNavigation();
+              }
+            });
+          });
+          
+        } catch (e) {
+          // 忽略错误
+        }
+      }
+    }
+
+    // 页面加载完成后初始化导航增强器
+    document.addEventListener('DOMContentLoaded', function() {
+      window.navigationEnhancer = new NavigationEnhancer();
+    });
+  </script>
 </body>
 
 <style>

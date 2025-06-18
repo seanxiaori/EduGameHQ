@@ -55,23 +55,9 @@ function getGameSourceUrl(game: any): string {
 }
 
 // 获取来源页面信息
-const referrerHeader = Astro.request.headers.get('referer');
+// 在静态渲染模式下，不使用Astro.request.headers
+// 改为在客户端JavaScript中处理referrer逻辑
 let referrer = null;
-
-if (referrerHeader) {
-  try {
-    const referrerUrl = new URL(referrerHeader);
-    const referrerPath = referrerUrl.pathname;
-    
-    // 检查是否来自特殊页面
-    const specialPages = ['/recently-played', '/trending', '/new-games', '/favorites'];
-    if (specialPages.includes(referrerPath)) {
-      referrer = referrerPath;
-    }
-  } catch (e) {
-    // 忽略无效的referrer URL
-  }
-}
 
 // SEO数据
 const seoData = {
