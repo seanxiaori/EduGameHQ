@@ -1,19 +1,90 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
+import type { Game } from '../types/game';
+import fs from 'fs';
+import path from 'path';
 
-// 页面元数据 - 默认值，客户端会动态更新
-const pageTitle = 'Search Educational Games | EduGameHQ';
-const pageDescription = 'Search through our collection of 240+ educational games for kids aged 6-18. Find math, science, coding, language, and puzzle games.';
+// 搜索相关的SEO数据
+let seoData = {
+  title: "Search Educational Games | EduGameHQ",
+  description: "Search through our collection of educational games for kids aged 6-18. Find math, science, coding, language, and puzzle games.",
+  keywords: ["search games", "educational games", "learning games", "kids games", "school games"]
+};
+
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGames: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGames = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('无法读取游戏数据文件:', error);
+}
+
+// 获取搜索查询参数
+const url = new URL(Astro.request.url);
+const searchQuery = url.searchParams.get('q')?.trim() || '';
+
+// 执行搜索逻辑
+let searchResults: Game[] = [];
+let hasSearched = false;
+
+if (searchQuery) {
+  hasSearched = true;
+  const searchTerm = searchQuery.toLowerCase();
+  
+  // 简单但有效的搜索逻辑
+  searchResults = allGames.filter(game => {
+    return (
+      // 按游戏标题搜索
+      game.title.toLowerCase().includes(searchTerm) ||
+      // 按游戏描述搜索
+      game.description.toLowerCase().includes(searchTerm) ||
+      // 按游戏分类搜索
+      game.category.toLowerCase().includes(searchTerm) ||
+      // 按游戏标签搜索（如果有）
+      (game.tags && game.tags.some(tag => tag.toLowerCase().includes(searchTerm))) ||
+      // 按开发者搜索（如果有）
+      (game.developer && game.developer.toLowerCase().includes(searchTerm))
+    );
+  });
+  
+  // 更新SEO数据
+  if (searchResults.length > 0) {
+    seoData.title = `${searchQuery} Games - Found ${searchResults.length} Results | EduGameHQ`;
+    seoData.description = `Discover ${searchResults.length} educational ${searchQuery} games for kids. Play fun and engaging learning games online.`;
+  } else {
+    seoData.title = `No Results for "${searchQuery}" | EduGameHQ`;
+    seoData.description = `No games found for "${searchQuery}". Try different keywords or explore our popular educational games.`;
+  }
+}
+
+// 获取推荐的热门游戏（用于无搜索结果时显示）
+const popularGames = allGames
+  .filter(game => game.featured || game.popularity > 800)
+  .slice(0, 12);
+
+// 热门搜索关键词
+const popularSearchTerms = [
+  { term: 'math', icon: 'fa-calculator', color: 'blue' },
+  { term: 'science', icon: 'fa-flask', color: 'green' },
+  { term: 'coding', icon: 'fa-code', color: 'purple' },
+  { term: 'puzzle', icon: 'fa-puzzle-piece', color: 'orange' },
+  { term: 'language', icon: 'fa-language', color: 'red' },
+  { term: 'geography', icon: 'fa-globe', color: 'teal' }
+];
 ---
 
-<BaseLayout title={pageTitle} description={pageDescription}>
+<BaseLayout title={seoData.title} description={seoData.description}>
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
-
-  <main class="main-content" id="main-content">
+  
+  <main class="main-content">
     <div class="content-wrapper">
-
-      <!-- 1. 搜索头部 -->
+      
+      <!-- 搜索头部 -->
       <section class="search-header">
         <div class="header-content">
           <div class="header-icon">
@@ -22,258 +93,138 @@ const pageDescription = 'Search through our collection of 240+ educational games
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title" id="searchTitle">Search Educational Games</h1>
-            <p class="page-description" id="searchDescription">
-              Find the perfect educational game for your learning journey
-            </p>
+            {hasSearched ? (
+              <div>
+                <h1 class="page-title">
+                  {searchResults.length > 0 
+                    ? `Found ${searchResults.length} Results` 
+                    : 'No Results Found'
+                  }
+                </h1>
+                <p class="page-description">
+                  Search results for: <strong>"{searchQuery}"</strong>
+                </p>
+              </div>
+            ) : (
+              <div>
+                <h1 class="page-title">Search Educational Games</h1>
+                <p class="page-description">
+                  Find the perfect educational game for your learning journey
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </section>
 
-      <!-- 2. 搜索结果容器 -->
-      <div id="searchResults">
-        <!-- 2.1 搜索提示页面 -->
-        <section class="info-module search-prompt" id="searchPrompt">
+      {/* 如果没有搜索查询，显示搜索提示 */}
+      {!hasSearched && (
+        <section class="search-prompt">
           <div class="module-header">
             <div class="module-icon prompt-icon">
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="module-title-group">
               <h2 class="module-title">Start Your Learning Adventure</h2>
-              <p class="module-subtitle">Use the search bar to find educational games by subject, difficulty, or keywords</p>
+              <p class="module-subtitle">Use the search bar above to find educational games by subject, difficulty, or keywords</p>
             </div>
           </div>
           
           <div class="popular-searches">
             <h3 class="section-title">Popular Searches</h3>
-            <div class="popular-tags">
-              <a href="/search?q=math" class="popular-tag">Math</a>
-              <a href="/search?q=science" class="popular-tag">Science</a>
-              <a href="/search?q=coding" class="popular-tag">Coding</a>
-              <a href="/search?q=puzzle" class="popular-tag">Puzzle</a>
-              <a href="/search?q=language" class="popular-tag">Language</a>
-              <a href="/search?q=geography" class="popular-tag">Geography</a>
+            <div class="search-tags">
+              {popularSearchTerms.map(item => (
+                <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
+                  <i class={`fas ${item.icon}`}></i>
+                  <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)}</span>
+                </a>
+              ))}
             </div>
           </div>
         </section>
+      )}
 
-        <!-- 2.2 搜索结果网格 -->
-        <section class="game-module search-results" id="searchResultsModule" style="display: none;">
-          <div class="module-header">
-            <div class="module-icon results-icon">
-              <i class="fas fa-gamepad"></i>
-            </div>
-            <div class="module-title-group">
-              <h2 class="module-title" id="resultsTitle">Search Results</h2>
-              <p class="module-subtitle" id="resultsSubtitle">Found games matching your search</p>
-            </div>
-          </div>
-          
-          <div class="games-grid" id="gamesGrid">
-            <!-- 游戏卡片将通过JavaScript动态生成 -->
-          </div>
-        </section>
-
-        <!-- 2.3 无结果页面 -->
-        <section class="info-module no-results" id="noResults" style="display: none;">
+      {/* 如果有搜索查询但没有结果 */}
+      {hasSearched && searchResults.length === 0 && (
+        <section class="no-results">
           <div class="module-header">
             <div class="module-icon no-results-icon">
               <i class="fas fa-search"></i>
             </div>
             <div class="module-title-group">
               <h2 class="module-title">No Games Found</h2>
-              <p class="module-subtitle" id="noResultsText">We couldn't find any games matching your search</p>
+              <p class="module-subtitle">Sorry, we couldn't find any games matching "{searchQuery}"</p>
             </div>
           </div>
           
           <div class="search-suggestions">
             <h3 class="section-title">Try searching for:</h3>
-            <div class="suggestion-tags">
-              <a href="/search?q=math" class="suggestion-tag">Math Games</a>
-              <a href="/search?q=science" class="suggestion-tag">Science Games</a>
-              <a href="/search?q=coding" class="suggestion-tag">Coding Games</a>
-              <a href="/search?q=puzzle" class="suggestion-tag">Puzzle Games</a>
-              <a href="/search?q=easy" class="suggestion-tag">Easy Games</a>
-              <a href="/search?q=hard" class="suggestion-tag">Challenge Games</a>
+            <div class="search-tags">
+              {popularSearchTerms.map(item => (
+                <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
+                  <i class={`fas ${item.icon}`}></i>
+                  <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)} Games</span>
+                </a>
+              ))}
             </div>
           </div>
         </section>
-      </div>
+      )}
+
+      {/* 搜索结果 */}
+      {hasSearched && searchResults.length > 0 && (
+        <section class="search-results">
+          <div class="module-header">
+            <div class="module-icon results-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Search Results</h2>
+              <p class="module-subtitle">Found {searchResults.length} games matching "{searchQuery}"</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {searchResults.map((game) => (
+              <GameCard 
+                game={game} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* 推荐游戏（当没有搜索或没有结果时显示） */}
+      {(!hasSearched || searchResults.length === 0) && (
+        <section class="recommendations">
+          <div class="module-header">
+            <div class="module-icon recommendations-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">{hasSearched ? 'You Might Like These Games' : 'Popular Educational Games'}</h2>
+              <p class="module-subtitle">{hasSearched ? 'Try these popular games instead' : 'Start with our most loved educational games'}</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {popularGames.map((game) => (
+              <GameCard 
+                game={game} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
+            ))}
+          </div>
+        </section>
+      )}
 
     </div>
   </main>
-
-  <!-- 简化的搜索功能JavaScript -->
-  <script is:inline>
-    // 简化的搜索管理器
-    class SearchManager {
-      constructor() {
-        this.games = [];
-        this.init();
-      }
-
-      // 初始化
-      async init() {
-        try {
-          await this.loadGamesData();
-          this.handleSearch();
-          console.log('🔍 搜索管理器初始化完成');
-        } catch (error) {
-          console.error('搜索初始化失败:', error);
-          this.displayError();
-        }
-      }
-
-      // 加载游戏数据
-      async loadGamesData() {
-        const response = await fetch('/games-data.json');
-        if (!response.ok) {
-          throw new Error(`加载游戏数据失败: ${response.status}`);
-        }
-        
-        const rawData = await response.json();
-        this.games = Object.entries(rawData).map(([slug, game]) => ({
-          ...game,
-          slug
-        }));
-        
-        console.log(`已加载 ${this.games.length} 个游戏数据`);
-      }
-
-      // 处理搜索
-      handleSearch() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const query = urlParams.get('q') || '';
-        
-        if (query.length > 0) {
-          const searchResults = this.performSearch(query);
-          this.displaySearchResults(searchResults, query);
-        } else {
-          this.displaySearchPrompt();
-        }
-      }
-
-      // 执行搜索
-      performSearch(query) {
-        const searchTerm = query.toLowerCase().trim();
-        
-        return this.games.filter(game => {
-          return (
-            (game.title && game.title.toLowerCase().includes(searchTerm)) ||
-            (game.description && game.description.toLowerCase().includes(searchTerm)) ||
-            (game.category && game.category.toLowerCase().includes(searchTerm)) ||
-            (game.tags && Array.isArray(game.tags) && 
-             game.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
-          );
-        });
-      }
-
-      // 创建简化的游戏卡片HTML（使用GameCard结构）
-      createGameCard(game) {
-        const imageUrl = game.thumbnailUrl || '/images/logo.svg';
-        const gameUrl = `/games/${game.slug}`;
-        const categoryClass = game.category ? game.category.toLowerCase() : 'puzzle';
-        
-        // 模拟人气值
-        const popularity = Math.floor(Math.random() * 15000) + 500;
-        const popularityDisplay = popularity >= 1000 ? 
-          `${(popularity / 1000).toFixed(1)}K` : popularity.toString();
-        
-        return `
-          <div class="game-card" onclick="window.location.href='${gameUrl}'">
-            <div class="game-image-container">
-              <img src="${imageUrl}" alt="${game.title}" class="game-image" loading="lazy">
-              <div class="game-overlay">
-                <div class="popularity-badge">${popularityDisplay}</div>
-                <button class="play-button">
-                  <i class="fas fa-play"></i>
-                  <span>Play Now</span>
-                </button>
-              </div>
-            </div>
-            <div class="game-info">
-              <h3 class="game-title">${game.title}</h3>
-              <div class="game-tags">
-                <span class="category-tag ${categoryClass}">${game.categoryName || game.category}</span>
-              </div>
-            </div>
-          </div>
-        `;
-      }
-
-      // 显示搜索结果
-      displaySearchResults(results, query) {
-        const searchPrompt = document.getElementById('searchPrompt');
-        const searchResultsModule = document.getElementById('searchResultsModule');
-        const gamesGrid = document.getElementById('gamesGrid');
-        const noResults = document.getElementById('noResults');
-        
-        // 隐藏其他区域
-        searchPrompt.style.display = 'none';
-        noResults.style.display = 'none';
-        
-        if (results.length > 0) {
-          // 显示搜索结果
-          searchResultsModule.style.display = 'block';
-          gamesGrid.innerHTML = results.map(game => this.createGameCard(game)).join('');
-          
-          // 更新标题
-          document.getElementById('searchTitle').textContent = `Search Results for "${query}"`;
-          document.getElementById('searchDescription').textContent = 
-            `Found ${results.length} educational games matching your search.`;
-          document.getElementById('resultsTitle').textContent = `Search Results`;
-          document.getElementById('resultsSubtitle').textContent = 
-            `Found ${results.length} games for "${query}"`;
-          
-          console.log(`显示 ${results.length} 个搜索结果`);
-        } else {
-          this.displayNoResults(query);
-        }
-      }
-
-      // 显示无结果
-      displayNoResults(query) {
-        const searchPrompt = document.getElementById('searchPrompt');
-        const searchResultsModule = document.getElementById('searchResultsModule');
-        const noResults = document.getElementById('noResults');
-        
-        searchPrompt.style.display = 'none';
-        searchResultsModule.style.display = 'none';
-        noResults.style.display = 'block';
-        
-        document.getElementById('searchTitle').textContent = `No Results for "${query}"`;
-        document.getElementById('searchDescription').textContent = 
-          'Try different keywords or explore our game categories.';
-        document.getElementById('noResultsText').textContent = 
-          `We couldn't find any games matching "${query}". Try different keywords or browse our categories.`;
-      }
-
-      // 显示搜索提示
-      displaySearchPrompt() {
-        const searchPrompt = document.getElementById('searchPrompt');
-        const searchResultsModule = document.getElementById('searchResultsModule');
-        const noResults = document.getElementById('noResults');
-        
-        searchPrompt.style.display = 'block';
-        searchResultsModule.style.display = 'none';
-        noResults.style.display = 'none';
-      }
-
-      // 显示错误
-      displayError() {
-        const noResults = document.getElementById('noResults');
-        const noResultsText = document.getElementById('noResultsText');
-        
-        noResults.style.display = 'block';
-        noResultsText.textContent = 'Sorry, there was an error loading the games. Please try again later.';
-      }
-    }
-
-    // 页面加载完成后初始化
-    document.addEventListener('DOMContentLoaded', function() {
-      window.searchManager = new SearchManager();
-    });
-  </script>
 </BaseLayout>
 
 <style>
@@ -290,16 +241,13 @@ const pageDescription = 'Search through our collection of 240+ educational games
     padding: 2rem;
   }
 
-  /* 1. 搜索头部区域 */
+  /* 搜索头部 - 橙色主题 */
   .search-header {
-    background: linear-gradient(135deg, #FEF3E2 0%, #FED7AA 50%, rgba(245, 158, 11, 0.08) 100%);
+    background: linear-gradient(135deg, #FEF3E2 0%, #FED7AA 50%, #F59E0B 100%);
     border-radius: 20px;
-    padding: 2rem;
-    margin-bottom: 2.5rem;
-    border: 1px solid rgba(245, 158, 11, 0.15);
-    box-shadow: 
-      0 8px 32px rgba(245, 158, 11, 0.08),
-      0 2px 8px rgba(0, 0, 0, 0.04);
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.2);
     position: relative;
     overflow: hidden;
   }
@@ -310,14 +258,16 @@ const pageDescription = 'Search through our collection of 240+ educational games
     top: 0;
     left: 0;
     right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent 0%, rgba(245, 158, 11, 0.3) 50%, transparent 100%);
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
   }
 
   .header-content {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
   }
 
   .header-icon {
@@ -325,26 +275,19 @@ const pageDescription = 'Search through our collection of 240+ educational games
   }
 
   .section-icon {
-    width: 72px;
-    height: 72px;
-    border-radius: 20px;
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 1.75rem;
-    box-shadow: 
-      0 8px 24px rgba(245, 158, 11, 0.3),
-      0 4px 12px rgba(245, 158, 11, 0.2);
-    transition: all 0.3s ease;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   }
 
-  .section-icon:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 
-      0 12px 32px rgba(245, 158, 11, 0.4),
-      0 6px 16px rgba(245, 158, 11, 0.3);
+  .section-icon.search {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
   }
 
   .header-text {
@@ -352,45 +295,53 @@ const pageDescription = 'Search through our collection of 240+ educational games
   }
 
   .page-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 2.5rem;
     font-weight: 800;
-    font-family: 'Space Grotesk', sans-serif;
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
     margin: 0 0 0.5rem 0;
+    color: #92400E;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     line-height: 1.2;
   }
 
   .page-description {
     font-size: 1.125rem;
-    color: #64748B;
+    color: #78350F;
     margin: 0;
+    font-weight: 500;
     line-height: 1.6;
   }
 
+  .page-description strong {
+    color: #92400E;
+    font-weight: 700;
+  }
+
   /* 通用模块样式 */
-  .game-module,
-  .info-module {
+  .search-prompt,
+  .search-results,
+  .no-results,
+  .recommendations {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
     margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
   }
 
   .module-header {
     display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border: 1px solid #F3F4F6;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #F3F4F6;
   }
 
   .module-icon {
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -399,19 +350,22 @@ const pageDescription = 'Search through our collection of 240+ educational games
     font-size: 1.25rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     flex-shrink: 0;
-    margin-top: 2px;
   }
 
   .prompt-icon {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    background: linear-gradient(135deg, #F59E0B, #D97706);
   }
 
   .results-icon {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    background: linear-gradient(135deg, #059669, #047857);
   }
 
   .no-results-icon {
-    background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+    background: linear-gradient(135deg, #6B7280, #4B5563);
+  }
+
+  .recommendations-icon {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
   }
 
   .module-title-group {
@@ -419,106 +373,150 @@ const pageDescription = 'Search through our collection of 240+ educational games
   }
 
   .module-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: 700;
     color: #1F2937;
     margin: 0 0 0.25rem 0;
-    line-height: 1.3;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
   .module-subtitle {
+    font-size: 1rem;
     color: #6B7280;
-    font-size: 0.9rem;
     margin: 0;
-    line-height: 1.4;
+    font-weight: 500;
   }
 
-  /* 搜索相关样式 */
+  /* 搜索标签 */
   .section-title {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1.125rem;
+    font-size: 1.25rem;
     font-weight: 600;
     color: #1F2937;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
     text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
   }
 
-  .popular-searches,
-  .search-suggestions {
-    padding: 1.5rem;
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    border: 1px solid #F3F4F6;
-  }
-
-  .popular-tags,
-  .suggestion-tags {
+  .search-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.75rem;
+    gap: 1rem;
     justify-content: center;
   }
 
-  .popular-tag,
-  .suggestion-tag {
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
+  .search-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
+    border: 2px solid transparent;
   }
 
-  .popular-tag {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  /* 搜索标签颜色变体 */
+  .search-tag.blue {
+    background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+    color: #1D4ED8;
+  }
+
+  .search-tag.blue:hover {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
     color: white;
-  }
-
-  .popular-tag:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   }
 
-  .suggestion-tag {
-    background: #F3F4F6;
-    color: #374151;
+  .search-tag.green {
+    background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+    color: #059669;
   }
 
-  .suggestion-tag:hover {
-    background: #F59E0B;
+  .search-tag.green:hover {
+    background: linear-gradient(135deg, #10B981, #059669);
     color: white;
-    transform: translateY(-1px);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
   }
 
-  /* 动画效果 */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  .search-tag.purple {
+    background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+    color: #7C3AED;
   }
 
-  .animate-fadeInUp {
-    animation: fadeInUp 0.6s ease-out forwards;
+  .search-tag.purple:hover {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  }
+
+  .search-tag.orange {
+    background: linear-gradient(135deg, #FED7AA, #FDBA74);
+    color: #D97706;
+  }
+
+  .search-tag.orange:hover {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  }
+
+  .search-tag.red {
+    background: linear-gradient(135deg, #FEE2E2, #FECACA);
+    color: #DC2626;
+  }
+
+  .search-tag.red:hover {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
+
+  .search-tag.teal {
+    background: linear-gradient(135deg, #CCFBF1, #99F6E4);
+    color: #0F766E;
+  }
+
+  .search-tag.teal:hover {
+    background: linear-gradient(135deg, #14B8A6, #0F766E);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+  }
+
+  /* 游戏网格 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* 搜索建议和热门搜索 */
+  .popular-searches,
+  .search-suggestions {
+    padding: 1.5rem 0;
   }
 
   /* 响应式设计 */
   @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .search-header {
+      padding: 2rem;
+    }
+    
     .header-content {
-      gap: 1.5rem;
-    }
-
-    .page-title {
-      font-size: 2.25rem;
-    }
-
-    .page-description {
-      font-size: 1rem;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
     }
   }
 
@@ -526,116 +524,51 @@ const pageDescription = 'Search through our collection of 240+ educational games
     .content-wrapper {
       padding: 1rem;
     }
-
+    
     .search-header {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.5rem;
       padding: 1.5rem;
-      margin-bottom: 2rem;
-      border-radius: 18px;
     }
-
-    .header-content {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.25rem;
-    }
-
-    .header-text {
-      text-align: center;
-    }
-
-    .section-icon {
-      width: 64px;
-      height: 64px;
-      font-size: 1.5rem;
-      border-radius: 18px;
-    }
-
+    
     .page-title {
       font-size: 2rem;
     }
-
-    .page-description {
-      font-size: 1rem;
+    
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
     }
-
-    .module-header {
-      flex-direction: column;
-      text-align: center;
+    
+    .search-prompt,
+    .search-results,
+    .no-results,
+    .recommendations {
+      padding: 1.5rem;
+    }
+    
+    .search-tags {
       gap: 0.75rem;
-      padding: 1.25rem;
     }
-
-    .module-icon {
-      width: 44px;
-      height: 44px;
-      font-size: 1.125rem;
-      margin-top: 0;
-    }
-
-    .module-title {
-      font-size: 1.375rem;
-    }
-
-    .module-subtitle {
-      font-size: 0.875rem;
-    }
-
-    .game-module,
-    .info-module {
-      margin-bottom: 2.5rem;
-    }
-
-    .popular-tags,
-    .suggestion-tags {
-      gap: 0.5rem;
-    }
-
-    .popular-tag,
-    .suggestion-tag {
-      padding: 0.375rem 0.75rem;
-      font-size: 0.875rem;
+    
+    .search-tag {
+      padding: 0.625rem 1rem;
+      font-size: 0.9rem;
     }
   }
 
-  @media (max-width: 640px) {
-    .search-header {
-      padding: 1.25rem;
-      border-radius: 16px;
+  @media (max-width: 480px) {
+    .games-grid {
+      grid-template-columns: 1fr;
     }
-
-    .header-content {
-      gap: 1rem;
+    
+    .search-tags {
+      flex-direction: column;
+      align-items: center;
     }
-
-    .page-title {
-      font-size: 1.75rem;
-    }
-
-    .section-icon {
-      width: 56px;
-      height: 56px;
-      font-size: 1.25rem;
-      border-radius: 16px;
-    }
-
-    .page-description {
-      font-size: 0.95rem;
-    }
-
-    .module-title {
-      font-size: 1.25rem;
-    }
-
-    .module-header {
-      padding: 1rem;
-    }
-
-    .popular-searches,
-    .search-suggestions {
-      padding: 1rem;
+    
+    .search-tag {
+      width: 100%;
+      max-width: 240px;
+      justify-content: center;
     }
   }
 </style> 
