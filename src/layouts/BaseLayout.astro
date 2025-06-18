@@ -1593,20 +1593,18 @@ if (isHomePage) {
       margin: 0 0.25rem;
     }
 
-    /* 平板端隐藏导航文本，只显示图标 */
+    /* 平板端保持导航文本显示，确保用户能看到按钮功能 */
     .nav-text {
-      display: none;
+      font-size: 0.85rem; /* 稍微缩小文字 */
     }
 
     .nav-link {
-      padding: 0.75rem;
-      min-width: 44px;
-      justify-content: center;
+      padding: 0.6rem 0.8rem; /* 稍微减小内边距 */
+      font-size: 0.85rem;
     }
 
     .quick-nav-btn {
-      padding: 0.75rem !important;
-      min-width: 44px !important;
+      padding: 0.6rem !important;
     }
   }
 
