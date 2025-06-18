@@ -96,7 +96,6 @@ const gameUrl = `/games/${safeGame.slug}`;
         {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
         {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
         {showUpdated && <span class="badge updated">UPDATED</span>}
-        {showPlayHistory && <span class="badge recent">RECENT</span>}
       </div>
       
       <a href={gameUrl} class="play-button">
