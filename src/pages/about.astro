@@ -311,22 +311,28 @@ const aboutSections = [
     
     navLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetElement = document.getElementById(targetId);
+        const href = this.getAttribute('href');
         
-        if (targetElement) {
-          // 移除所有活动状态
-          navLinks.forEach(nl => nl.classList.remove('active'));
-          // 添加当前活动状态
-          this.classList.add('active');
+        // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
           
-          // 平滑滚动
-          targetElement.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-          });
+          if (targetElement) {
+            // 移除所有活动状态
+            navLinks.forEach(nl => nl.classList.remove('active'));
+            // 添加当前活动状态
+            this.classList.add('active');
+            
+            // 平滑滚动
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
         }
+        // 对于外部链接（如/、/help等），让浏览器正常处理
       });
     });
 

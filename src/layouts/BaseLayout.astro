@@ -476,7 +476,7 @@ if (!isHomePage) {
     document.addEventListener('DOMContentLoaded', function() {
       console.log('=== SEARCH INITIALIZATION DEBUG ===');
       
-      // 下拉菜单功能 - 支持多个下拉菜单
+      // 下拉菜单功能
       const dropdowns = document.querySelectorAll('.nav-dropdown');
       dropdowns.forEach(dropdown => {
         const dropdownToggle = dropdown.querySelector('.dropdown-trigger');
@@ -484,8 +484,11 @@ if (!isHomePage) {
         
         if (dropdownToggle && dropdownMenu) {
           dropdownToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+            // 只对button元素阻止默认行为，不影响a标签
+            if (this.tagName === 'BUTTON') {
+              e.preventDefault();
+              e.stopPropagation();
+            }
             
             // 关闭其他下拉菜单
             dropdowns.forEach(otherDropdown => {
