@@ -91,13 +91,6 @@ const gameUrl = `/games/${safeGame.slug}`;
     />
     
     <div class="game-overlay">
-      {showPopularity && (
-        <div class="popularity-badge">
-          <i class="fas fa-fire"></i>
-          <span>{formatPopularity(popularity)}</span>
-        </div>
-      )}
-      
       <div class="game-badges">
         {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
         {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
@@ -112,7 +105,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       </a>
       
       {showFavorite && (
-        <button class="favorite-heart-btn" aria-label="Add to favorites">
+        <button class="favorite-heart-btn" data-game-slug={safeGame.slug} aria-label="Add to favorites">
           <i class="far fa-heart"></i>
         </button>
       )}
@@ -129,11 +122,6 @@ const gameUrl = `/games/${safeGame.slug}`;
         {playHistory}
       </div>
     )}
-    
-    <!-- 右上角：收藏按钮 -->
-    <button class="favorite-heart-btn" data-game-slug={safeGame.slug}>
-      <i class="far fa-heart"></i>
-    </button>
   </div>
   
   <div class="game-info">

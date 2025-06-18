@@ -780,26 +780,6 @@
   font-size: 1.2rem;
 }
 
-/* 人气徽章 - 确保绝对定位不影响play-button居中 */
-.popularity-badge {
-  position: absolute;
-  top: 12px;
-  left: 12px;
-  background: rgba(239, 68, 68, 0.95);
-  color: white;
-  padding: 0.4rem 0.8rem;
-  border-radius: 12px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  z-index: 5;
-  box-shadow: 0 3px 10px rgba(239, 68, 68, 0.3);
-}
-
 /* 游戏徽章容器 - 确保绝对定位 */
 .game-badges {
   position: absolute;
@@ -822,6 +802,7 @@
   color: white;
   border: 1px solid rgba(255, 255, 255, 0.2);
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px); /* 修复Safari兼容性 */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
