@@ -3,9 +3,10 @@ export interface Props {
   title: string;
   description?: string;
   bodyClass?: string;
+  gameData?: any; // 添加游戏数据参数用于游戏详情页
 }
 
-const { title, description = "Free educational games for kids and students", bodyClass = "" } = Astro.props;
+const { title, description = "Free educational games for kids and students", bodyClass = "", gameData } = Astro.props;
 
 // 获取当前页面路径，用于导航高亮
 const currentPath = Astro.url.pathname;
@@ -29,6 +30,21 @@ const pageStructure = {
   }
 };
 
+// 分类映射函数 - 将游戏的category字段映射到对应的页面路径
+function getCategoryPath(category: string): string {
+  const categoryMap: { [key: string]: string } = {
+    'math': '/math-games',
+    'science': '/science-games',
+    'language': '/language-games',
+    'puzzle': '/puzzle-games',
+    'sports': '/sports-games',
+    'art': '/art-games',
+    'geography': '/geography-games',
+    'coding': '/coding-games'
+  };
+  return categoryMap[category] || '/';
+}
+
 // 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
 const currentCategory = pageStructure.categories[currentPath];
@@ -41,6 +57,7 @@ if (!isHomePage) {
   breadcrumbs.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
   
   if (currentCategory) {
+    // 分类页面面包屑
     breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
     breadcrumbs.push({ 
       name: currentCategory.name, 
@@ -50,6 +67,7 @@ if (!isHomePage) {
       isCurrent: true 
     });
   } else if (currentSpecialPage) {
+    // 特殊页面面包屑
     breadcrumbs.push({ 
       name: currentSpecialPage.name, 
       url: currentPath, 
@@ -57,8 +75,38 @@ if (!isHomePage) {
       color: currentSpecialPage.color,
       isCurrent: true 
     });
+  } else if (isGamePage && gameData) {
+    // 游戏页面面包屑 - 根据游戏分类构建
+    const gameCategoryPath = getCategoryPath(gameData.category);
+    const gameCategoryInfo = pageStructure.categories[gameCategoryPath];
+    
+    if (gameCategoryInfo) {
+      breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
+      breadcrumbs.push({ 
+        name: gameCategoryInfo.name, 
+        url: gameCategoryPath, 
+        icon: gameCategoryInfo.icon,
+        color: gameCategoryInfo.color
+      });
+      breadcrumbs.push({ 
+        name: gameData.title, 
+        url: currentPath, 
+        icon: 'fas fa-play',
+        color: gameCategoryInfo.color,
+        isCurrent: true 
+      });
+    } else {
+      // 如果找不到对应分类，使用通用游戏面包屑
+      breadcrumbs.push({ name: 'Games', url: '/', icon: 'fas fa-gamepad' });
+      breadcrumbs.push({ 
+        name: gameData.title, 
+        url: currentPath, 
+        icon: 'fas fa-play',
+        isCurrent: true 
+      });
+    }
   } else if (isGamePage) {
-    // 游戏页面面包屑 - 需要根据游戏所属分类来确定
+    // 游戏页面但没有游戏数据的情况
     breadcrumbs.push({ name: 'Games', url: '/', icon: 'fas fa-gamepad' });
   }
 }
