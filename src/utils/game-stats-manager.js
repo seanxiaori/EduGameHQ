@@ -415,33 +415,43 @@ class GameStatsManager {
     const stats = this.playStats[gameSlug];
     const iframeStats = this.iframeStats[gameSlug];
     
-    if (!stats) {
-      // 智能基础人气值计算系统
-      return this.calculateSmartBasePopularity(gameSlug, gameInfo);
+    // 获取基础人气值（优先使用games.json中的playCount，否则使用智能计算）
+    let basePopularity = 0;
+    if (gameInfo.playCount && gameInfo.playCount > 0) {
+      // 使用games.json中设置的基础playCount值
+      basePopularity = gameInfo.playCount;
+    } else {
+      // 如果games.json中没有设置playCount，使用智能基础人气值计算
+      basePopularity = this.calculateSmartBasePopularity(gameSlug, gameInfo);
     }
     
-    // 基于真实数据计算人气值 (iframe优化算法)
-    const playCount = stats.playCount;
+    // 如果没有用户统计数据，直接返回基础人气值
+    if (!stats) {
+      return basePopularity;
+    }
+    
+    // 基于真实用户数据计算额外加成
+    const userPlayCount = stats.playCount || 0;
     const realPlayTime = stats.realPlayTime || 0;
     const recentActivity = this.getRecentActivityScore(gameSlug);
     const categoryBonus = this.getCategoryBonus(stats.category);
     const iframeBonus = iframeStats ? iframeStats.loadCount * 10 : 0;
     const timeEngagementBonus = Math.floor(realPlayTime / 60) * 5; // 每分钟真实游戏时间+5分
     
-    // 获取基础人气值
-    const basePopularity = this.calculateSmartBasePopularity(gameSlug, gameInfo);
-    
-    // 人气值计算公式 (iframe优化版 + 基础人气值)
-    const realDataPopularity = Math.floor(
-      playCount * 100 +           // 播放次数权重
-      recentActivity * 50 +       // 最近活跃度权重
-      categoryBonus +             // 分类加成
+    // 用户真实数据加成 (较小的权重，不会压倒基础人气值)
+    const userDataBonus = Math.floor(
+      userPlayCount * 50 +        // 用户播放次数权重（降低权重）
+      recentActivity * 25 +       // 最近活跃度权重（降低权重）
+      categoryBonus * 0.5 +       // 分类加成（降低权重）
       iframeBonus +               // iframe加载加成
       timeEngagementBonus         // 时间参与度加成
     );
     
-    // 返回基础人气值 + 真实数据加成
-    return Math.max(basePopularity + realDataPopularity, basePopularity);
+    // 返回基础人气值 + 用户数据加成
+    const finalPopularity = basePopularity + userDataBonus;
+    
+    // 确保最终值合理
+    return Math.max(finalPopularity, basePopularity);
   }
 
   /**
