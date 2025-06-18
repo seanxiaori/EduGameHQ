@@ -8,7 +8,7 @@
   margin-top: 2rem;
 }
 
-/* 游戏卡片基础样式 */
+/* 游戏卡片基础样式 - 确保一致高度 */
 .game-card {
   background: white;
   border-radius: 14px;
@@ -18,9 +18,11 @@
   cursor: pointer;
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex;  /* 改为flex布局 */
+  flex-direction: column;  /* 垂直排列 */
   border: 2px solid #E5E7EB;
   position: relative;
+  height: 100%;  /* 确保高度一致 */
 }
 
 .game-card:hover {
@@ -262,14 +264,18 @@
   font-size: 1.1rem;
 }
 
-/* 游戏信息区域 - 紧凑化优化 */
+/* 游戏信息区域 - 使用flex自动分配空间 */
 .game-info {
   padding: 1.2rem;
   background: linear-gradient(135deg, #FAFAFA 0%, #F5F5F5 100%);
   border-top: 1px solid #E5E7EB;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;  /* 占据剩余空间 */
 }
 
+/* 游戏标题 - 固定2行高度 */
 .game-title {
   font-size: 1.1rem;
   font-weight: 700;
@@ -280,8 +286,11 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  height: 2.86rem;  /* 固定2行高度：1.1rem * 1.3 * 2 = 2.86rem */
+  min-height: 2.86rem;  /* 确保最小高度 */
 }
 
+/* 游戏描述 - 固定2行高度 */
 .game-description {
   color: #6B7280;
   line-height: 1.4;
@@ -291,15 +300,18 @@
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  height: 2.38rem;  /* 固定2行高度：0.85rem * 1.4 * 2 = 2.38rem */
+  min-height: 2.38rem;  /* 确保最小高度 */
 }
 
-/* 游戏标签 - 紧凑化布局 */
+/* 游戏标签区域 */
 .game-tags {
   display: flex;
   gap: 0.3rem;
   flex-wrap: wrap;
-  align-items: center;
-  margin-bottom: 0.6rem;
+  align-items: flex-start;
+  margin-bottom: auto;  /* 自动填充空间，推送统计信息到底部 */
+  min-height: 2rem;  /* 最小高度确保对齐 */
 }
 
 /* 统一标签基础样式 - 减小尺寸 */
@@ -396,12 +408,12 @@
   background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
 }
 
-/* 游戏统计信息 - 优化对齐和紧凑度 */
+/* 游戏统计信息 - 固定在底部 */
 .game-stats {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 0.6rem;
+  margin-top: auto;  /* 自动推到底部 */
   padding: 0.6rem 0.75rem;
   border-top: 1px solid #e5e7eb;
   font-size: 0.75rem;
@@ -411,6 +423,7 @@
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   margin-bottom: 0;
+  flex-shrink: 0;  /* 防止压缩 */
 }
 
 .stat {
