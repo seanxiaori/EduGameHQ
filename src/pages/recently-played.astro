@@ -156,9 +156,21 @@ const recentlyPlayedGames = allGamesData
 
       // 初始化清除按钮
       initializeClearButton() {
+        console.log('🔧 正在初始化清除按钮...');
         const clearBtn = document.getElementById('clearHistoryBtn');
+        console.log('清除按钮元素:', clearBtn);
+        
         if (clearBtn) {
-          clearBtn.addEventListener('click', () => this.clearHistory());
+          console.log('✅ 找到清除按钮，正在绑定事件...');
+          clearBtn.addEventListener('click', (e) => {
+            console.log('🖱️ 清除按钮被点击了！');
+            e.preventDefault();
+            e.stopPropagation();
+            this.clearHistory();
+          });
+          console.log('✅ 清除按钮事件绑定完成');
+        } else {
+          console.error('❌ 未找到清除按钮元素 (ID: clearHistoryBtn)');
         }
       }
 
@@ -176,6 +188,9 @@ const recentlyPlayedGames = allGamesData
 
       // 清除游戏历史
       clearHistory() {
+        console.log('🗑️ clearHistory函数被调用');
+        console.log('当前this对象:', this);
+        
         // 创建自定义确认对话框
         this.showCustomConfirm(
           'Clear Game History?',
@@ -198,6 +213,9 @@ const recentlyPlayedGames = allGamesData
 
       // 显示自定义确认对话框
       showCustomConfirm(title, message, onConfirm) {
+        console.log('📝 showCustomConfirm函数被调用');
+        console.log('参数:', { title, message, onConfirm });
+        
         // 创建遮罩层
         const overlay = document.createElement('div');
         overlay.className = 'custom-confirm-overlay';
