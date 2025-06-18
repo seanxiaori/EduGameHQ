@@ -29,7 +29,7 @@ const scienceGames = allGamesData
     id: game.slug,
     title: game.title,
     description: game.description,
-    image: game.image || `/images/games/${game.category}/${game.slug}.webp`,
+    image: game.thumbnailUrl || `/images/games/${game.category}/${game.slug}.svg`,
     difficulty: game.difficulty || 'Medium',
     age: `Ages ${game.ageRange}`,
     url: `/games/${game.slug}`,
