@@ -542,17 +542,31 @@ if (!isHomePage) {
     
     // 全局随机游戏函数
     window.playRandomGame = function() {
+      // 真实存在的游戏slug列表，从各个分类中精选
       const games = [
-        '/games/math-duck',
         '/games/2048',
-        '/games/learn-gdscript',
-        '/games/typing-game',
-        '/games/sudoku',
-        '/games/grid-construction',
-        '/sports-games',
-        '/art-games'
+        '/games/math-duck',
+        '/games/five-o',
+        '/games/little-alchemy-2',
+        '/games/solar-system-scope',
+        '/games/cut-the-rope',
+        '/games/table-tennis-world-tour',
+        '/games/draw-climber',
+        '/games/basket-random',
+        '/games/mini-golf-club',
+        '/games/words-of-wonders',
+        '/games/crossword-connect',
+        '/games/emoji-puzzle',
+        '/games/blockbuster-puzzle',
+        '/games/nuts-puzzle-sort-by-color',
+        '/games/find-the-difference',
+        '/games/skribblio',
+        '/games/virtual-piano',
+        '/games/color-match-amg',
+        '/games/pottery-master'
       ];
       const randomGame = games[Math.floor(Math.random() * games.length)];
+      console.log('随机选择的游戏:', randomGame);
       if (randomGame) {
         window.location.href = randomGame;
       }
