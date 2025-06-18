@@ -46,8 +46,8 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": true,
-    "trending": false,
+    "featured": false,
+    "trending": true,
     "isNew": true,
     "developer": "Blury Studio",
     "educationalValue": "Physics principles, reaction ability, adaptability"
@@ -98,7 +98,7 @@
     "lastChecked": "2025-06-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true
   },
   {
@@ -128,10 +128,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/count-masters-stickman-games_16x9/20250220041115/count-masters-stickman-games_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "numbers",
@@ -197,13 +197,9 @@
     "mobileSupport": true,
     "responsive": true,
     "sourceUrl": "https://www.crazygames.com/game/five-o",
-    "lastUpdated": "2025-06-16",
-    "lastChecked": "2025-06-16",
-    "playCount": 0,
-    "featured": false,
+    "isNew": false,
     "trending": false,
-    "isNew": true,
-    "developer": "CodeVandal"
+    "featured": true
   },
   {
     "slug": "merge-the-numbers",
@@ -226,10 +222,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/merge-the-numbers/cover_16x9-1707829510642.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "numbers",
@@ -454,10 +450,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/number-line-match_16x9/20240118133658/number-line-match_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-12",
-    "minAge": 6,
-    "maxAge": 12,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "numbers",
@@ -592,10 +588,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/number-digger_16x9/20240404085417/number-digger_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "adventure",
@@ -685,9 +681,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/math-duck/20220915192455/math-duck-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
-    "ageRange": "4-10",
-    "minAge": 4,
-    "maxAge": 10,
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
     "tags": [
       "math",
       "educational",
@@ -705,7 +701,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
     "developer": "Misc.261 Games"
@@ -730,10 +726,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/bff-math-class_16x9/20230906073023/bff-math-class_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "social",
@@ -776,10 +772,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/100-doors-puzzle-box_16x9/20241113080605/100-doors-puzzle-box_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "puzzle",
@@ -915,10 +911,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/puzzle-survivor_16x9/20250616040010/puzzle-survivor_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "math",
       "survival",
@@ -1104,8 +1100,8 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/math-expressions/20220916215659/math-expressions-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-16",
-    "minAge": 10,
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "math",
@@ -1197,8 +1193,8 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/xor/20210106085429/xor-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Hard",
-    "ageRange": "12-18",
-    "minAge": 12,
+    "ageRange": "10-18",
+    "minAge": 10,
     "maxAge": 18,
     "tags": [
       "math",
@@ -1297,9 +1293,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/little-alchemy-2/20230130142219/little-alchemy-2-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
+    "ageRange": "8-14",
+    "minAge": 8,
+    "maxAge": 14,
     "tags": [
       "science",
       "chemistry",
@@ -1320,7 +1316,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "Recloak"
   },
@@ -1353,9 +1349,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/solar-system-scope/20220301102030/solar-system-scope-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
+    "ageRange": "10-16",
+    "minAge": 10,
+    "maxAge": 16,
     "tags": [
       "science",
       "astronomy",
@@ -1376,7 +1372,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "INOVE"
   },
@@ -1409,10 +1405,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/animal-dna-run_16x9/20240228104047/animal-dna-run_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
     "tags": [
       "science",
       "biology",
@@ -1466,8 +1462,8 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/mini-scientist/cover-1624528804635.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-16",
-    "minAge": 8,
+    "ageRange": "10-16",
+    "minAge": 10,
     "maxAge": 16,
     "tags": [
       "science",
@@ -1488,7 +1484,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
     "developer": "Science Lab"
@@ -1522,9 +1518,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/idle-research/cover-1660205761867.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
+    "ageRange": "10-16",
     "minAge": 10,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "science",
       "research",
@@ -1579,9 +1575,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/skeleton-simulator/cover-1629889854895.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
+    "ageRange": "10-16",
     "minAge": 10,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "science",
       "anatomy",
@@ -1634,10 +1630,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/words-of-wonders_16x9/20231019163757/words-of-wonders_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "8-18",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
     "minAge": 8,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "language",
       "vocabulary",
@@ -1658,7 +1654,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "Famobi"
   },
@@ -1691,9 +1687,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/crossword-connect/20220815135414/crossword-connect-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "9-18",
-    "minAge": 9,
-    "maxAge": 18,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "language",
       "vocabulary",
@@ -1714,7 +1710,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "playh5"
   },
@@ -1747,9 +1743,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/emoji-puzzle_16x9/20240415122545/emoji-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "8-18",
-    "minAge": 8,
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
     "maxAge": 18,
     "tags": [
       "language",
@@ -1803,10 +1799,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/cut-the-rope-ebx_16x9/20240530085010/cut-the-rope-ebx_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "physics",
@@ -1827,7 +1823,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "Famobi"
   },
@@ -1860,9 +1856,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/table-tennis-world-tour_16x9/20230908041108/table-tennis-world-tour_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
+    "ageRange": "8-16",
     "minAge": 8,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "sports",
       "table tennis",
@@ -1883,7 +1879,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "Famobi"
   },
@@ -1915,10 +1911,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/draw-climber_16x9/20250327042947/draw-climber_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
     "minAge": 6,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "art",
       "creativity",
@@ -1938,7 +1934,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": true,
+    "featured": false,
     "trending": false,
     "isNew": true,
     "developer": "Voodoo"
@@ -1972,10 +1968,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/galaxy-control-3d-strategy/cover_16x9-1746640008369.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "10-18",
+    "difficulty": "Medium",
+    "ageRange": "10-16",
     "minAge": 10,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "science",
       "space",
@@ -2028,9 +2024,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/quantum-god_16x9/20240704102546/quantum-god_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "12-18",
-    "minAge": 12,
-    "maxAge": 18,
+    "ageRange": "10-16",
+    "minAge": 10,
+    "maxAge": 16,
     "tags": [
       "science",
       "physics",
@@ -2083,9 +2079,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/alchemy-merge-clicker_16x9/20240704043842/alchemy-merge-clicker_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
-    "ageRange": "8-16",
+    "ageRange": "8-14",
     "minAge": 8,
-    "maxAge": 16,
+    "maxAge": 14,
     "tags": [
       "science",
       "alchemy",
@@ -2137,10 +2133,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/alchemy/20220815155026/alchemy-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "8-16",
+    "difficulty": "Easy",
+    "ageRange": "8-14",
     "minAge": 8,
-    "maxAge": 16,
+    "maxAge": 14,
     "tags": [
       "science",
       "alchemy",
@@ -2193,9 +2189,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/idle-molecules/20221212175943/idle-molecules-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
-    "ageRange": "10-16",
-    "minAge": 10,
-    "maxAge": 16,
+    "ageRange": "8-14",
+    "minAge": 8,
+    "maxAge": 14,
     "tags": [
       "science",
       "chemistry",
@@ -2245,7 +2241,14 @@
     "educationalValue": "Physics principles, reaction ability, adaptability",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Easy",
+    "minAge": 6,
+    "maxAge": 14,
+    "ageRange": "6-14",
+    "isNew": true,
+    "trending": true,
+    "featured": true
   },
   {
     "id": "mini-golf-club",
@@ -2273,7 +2276,14 @@
     "educationalValue": "Precision, spatial awareness, physics principles",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "basketball-orbit",
@@ -2301,7 +2311,14 @@
     "educationalValue": "Physics principles, spatial thinking, precision",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "basketbros",
@@ -2329,7 +2346,14 @@
     "educationalValue": "Quick reaction, teamwork",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "hotfoot-baseball",
@@ -2357,7 +2381,14 @@
     "educationalValue": "Hand-eye coordination, reaction speed, timing",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "qb-legend",
@@ -2385,7 +2416,14 @@
     "educationalValue": "Strategic thinking, precision, teamwork",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "3d-bowling",
@@ -2413,7 +2451,14 @@
     "educationalValue": "Precision, physics principles, focus",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "hoop-world-3d",
@@ -2441,7 +2486,14 @@
     "educationalValue": "Precision, spatial awareness, focus",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "free-kick-classic",
@@ -2469,7 +2521,14 @@
     "educationalValue": "Precision, angle calculation, focus",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Medium",
+    "minAge": 8,
+    "maxAge": 16,
+    "ageRange": "8-16",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "soccer-random",
@@ -2497,7 +2556,14 @@
     "educationalValue": "Adaptability, reaction ability, physics principles",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Easy",
+    "minAge": 6,
+    "maxAge": 14,
+    "ageRange": "6-14",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "id": "volley-random",
@@ -2525,7 +2591,14 @@
     "educationalValue": "Reaction speed, teamwork, adaptability",
     "technology": "HTML5",
     "isVerified": true,
-    "lastUpdated": "2025-01-16"
+    "lastUpdated": "2025-01-16",
+    "difficulty": "Easy",
+    "minAge": 6,
+    "maxAge": 14,
+    "ageRange": "6-14",
+    "isNew": true,
+    "trending": false,
+    "featured": false
   },
   {
     "slug": "bhides-english-classes",
@@ -2557,9 +2630,9 @@
     },
     "thumbnailUrl": "https://img.gamedistribution.com/ba551324893543dd9a30a7fe4c26806a-512x384.jpg",
     "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "language",
       "english",
@@ -2614,8 +2687,8 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/cryptoword_16x9/20240626053927/cryptoword_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Hard",
-    "ageRange": "12-18",
-    "minAge": 12,
+    "ageRange": "10-18",
+    "minAge": 10,
     "maxAge": 18,
     "tags": [
       "language",
@@ -2669,9 +2742,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/kitty-scramble_16x9/20240206053210/kitty-scramble_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "language",
@@ -2692,7 +2765,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": true,
+    "featured": false,
     "trending": false,
     "isNew": true,
     "developer": "Clever Apps"
@@ -2727,9 +2800,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/crossword/cover-1619278453620.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "language",
       "vocabulary",
@@ -2783,9 +2856,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/word-string-puzzle_16x9/20250602083036/word-string-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
+    "ageRange": "8-16",
     "minAge": 8,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "language",
       "vocabulary",
@@ -2839,9 +2912,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/amazing-word-twist/20201222143827/amazing-word-twist-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
+    "ageRange": "8-16",
     "minAge": 8,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "language",
       "vocabulary",
@@ -2894,9 +2967,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/pop-a-word/20230313171006/pop-a-word-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "language",
@@ -2917,7 +2990,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": true,
+    "featured": false,
     "trending": false,
     "isNew": true,
     "developer": "Foony"
@@ -2950,9 +3023,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/word-chef/20220303174756/word-chef-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "language",
@@ -3008,9 +3081,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/wodr_16x9/20241002075613/wodr_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "language",
       "vocabulary",
@@ -3030,7 +3103,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": true,
+    "featured": false,
     "trending": false,
     "isNew": true,
     "developer": "just.so"
@@ -3064,9 +3137,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/cookie-hangman_16x9/20230901052106/cookie-hangman_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "language",
@@ -3121,9 +3194,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/paint-by-words_16x9/20250225070640/paint-by-words_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "language",
@@ -3177,10 +3250,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/nuts-puzzle-sort-by-color_16x9/20250602100233/nuts-puzzle-sort-by-color_16x9-cover?metadata=none&quality=70",
-    "difficulty": "Medium",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
     "tags": [
       "puzzle",
       "sorting",
@@ -3201,7 +3274,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": false,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "Unknown"
   },
@@ -3234,9 +3307,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/blockbuster-puzzle_16x9/20241118032546/blockbuster-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
+    "ageRange": "8-16",
     "minAge": 8,
-    "maxAge": 18,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "blocks",
@@ -3256,7 +3329,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
     "developer": "Clever Apps"
@@ -3289,10 +3362,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/get-a-screw-3d-puzzle_16x9/20250516032444/get-a-screw-3d-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "3D",
@@ -3345,10 +3418,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/block-puzzle-master_16x9/20240308034605/block-puzzle-master_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "blocks",
@@ -3457,10 +3530,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/coffee-match-block-puzzle_16x9/20250603070116/coffee-match-block-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "coffee",
@@ -3513,10 +3586,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/twisted-tangle-nmt_16x9/20250409111646/twisted-tangle-nmt_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "ropes",
@@ -3625,10 +3698,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/find-the-difference/20230711101336/find-the-difference-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "observation",
@@ -3648,7 +3721,7 @@
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
-    "featured": false,
+    "featured": true,
     "trending": false,
     "isNew": true,
     "developer": "1LIFE.GAMES"
@@ -3738,9 +3811,9 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/city-blocks/20210923161750/city-blocks-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
     "maxAge": 16,
     "tags": [
       "puzzle",
@@ -3794,10 +3867,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/fill-the-fridge_16x9/20241212101419/fill-the-fridge_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "organization",
@@ -3850,10 +3923,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/mirror-room-escape_16x9/20250306044530/mirror-room-escape_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Hard",
-    "ageRange": "12-18",
-    "minAge": 12,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "escape room",
@@ -3907,9 +3980,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/color-match-amg_16x9/20241223043902/color-match-amg_16x9-cover?metadata=none&quality=70",
     "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
+    "ageRange": "4-12",
+    "minAge": 4,
+    "maxAge": 12,
     "tags": [
       "art",
       "creativity",
@@ -3962,9 +4035,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/cups---water-sort-puzzle_16x9/20230829022932/cups---water-sort-puzzle_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "puzzle",
@@ -4073,9 +4146,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/pottery-master_16x9/20250515024518/pottery-master_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "creativity",
@@ -4095,7 +4168,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "Rike Games"
   },
@@ -4128,9 +4201,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/holographic-trends/20210210062727/holographic-trends-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "fashion",
@@ -4183,10 +4256,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/skribblio.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "drawing",
@@ -4206,7 +4279,7 @@
     "lastChecked": "2025-01-16",
     "playCount": 0,
     "featured": true,
-    "trending": false,
+    "trending": true,
     "isNew": true,
     "developer": "ticedev"
   },
@@ -4240,9 +4313,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/sneaker-art-rvf_16x9/20250331082440/sneaker-art-rvf_16x9-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "fashion",
@@ -4296,9 +4369,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/virtual-piano/cover-1617727916801.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
+    "ageRange": "4-12",
+    "minAge": 4,
+    "maxAge": 12,
     "tags": [
       "art",
       "music",
@@ -4351,10 +4424,10 @@
       ]
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/doodlr-io/thumb-1568792755216.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Easy",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "drawing",
@@ -4408,9 +4481,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/games/punk-o-matic/cover-1615480846281.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "music",
@@ -4464,9 +4537,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/car-painting-simulator/20230804170614/car-painting-simulator-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
     "tags": [
       "art",
       "automotive",
@@ -4576,9 +4649,9 @@
     },
     "thumbnailUrl": "https://imgs.crazygames.com/love-colors.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
     "difficulty": "Easy",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
+    "ageRange": "4-12",
+    "minAge": 4,
+    "maxAge": 12,
     "tags": [
       "art",
       "colors",
