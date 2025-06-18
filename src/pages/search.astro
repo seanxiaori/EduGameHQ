@@ -69,14 +69,14 @@ const popularGames = allGames
   .filter(game => game.featured || game.popularity > 800)
   .slice(0, 12);
 
-// 热门搜索关键词
+// 热门搜索关键词 - 更新为当前实际使用的分类
 const popularSearchTerms = [
   { term: 'math', icon: 'fa-calculator', color: 'blue' },
   { term: 'science', icon: 'fa-flask', color: 'green' },
-  { term: 'coding', icon: 'fa-code', color: 'purple' },
   { term: 'puzzle', icon: 'fa-puzzle-piece', color: 'orange' },
   { term: 'language', icon: 'fa-language', color: 'red' },
-  { term: 'geography', icon: 'fa-globe', color: 'teal' }
+  { term: 'sports', icon: 'fa-futbol', color: 'purple' },
+  { term: 'art', icon: 'fa-palette', color: 'teal' }
 ];
 ---
 
