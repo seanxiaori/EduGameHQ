@@ -1214,5 +1214,343 @@
     "trending": false,
     "isNew": true,
     "developer": "Kids site"
+  },
+  {
+    "slug": "little-alchemy-2",
+    "title": "Little Alchemy 2",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/little-alchemy-2",
+    "description": "Little Alchemy 2 is a puzzle game where you combine elements to create new ones. Start with basic elements like air, earth, fire, and water, then discover hundreds of new items through experimentation and logical thinking!",
+    "gameGuide": {
+      "howToPlay": [
+        "从基础元素开始：空气、土地、火和水",
+        "将两个元素拖拽到一起进行合成",
+        "观察新创造的元素，并用它们继续实验",
+        "发现新的组合来解锁更多复杂的元素",
+        "探索科学原理，学习元素之间的关系"
+      ],
+      "controls": {
+        "mouse": "拖拽元素进行合成，点击查看元素详情",
+        "touch": "触摸并拖动元素，轻触查看信息"
+      },
+      "tips": [
+        "尝试将相似的元素组合在一起",
+        "思考现实世界中的科学反应",
+        "有些组合需要创造性思维",
+        "记录成功的组合以便后续使用",
+        "不要害怕实验，失败也是学习的一部分"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/little-alchemy-2/20200101000000/little-alchemy-2-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "science",
+      "chemistry",
+      "elements",
+      "puzzle",
+      "educational",
+      "creativity",
+      "logic"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/little-alchemy-2",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "Recloak"
+  },
+  {
+    "slug": "solar-system-scope",
+    "title": "Solar System Scope",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/solar-system-scope",
+    "description": "Solar System Scope is an interactive 3D model of our solar system. Explore planets, moons, and celestial bodies while learning about astronomy, space science, and the wonders of our universe!",
+    "gameGuide": {
+      "howToPlay": [
+        "探索太阳系的3D模型",
+        "点击行星和卫星获取详细信息",
+        "使用控制面板调整时间和视角",
+        "观察行星的轨道运动",
+        "学习天文学知识和宇宙奥秘"
+      ],
+      "controls": {
+        "mouse": "鼠标拖拽旋转视角，滚轮缩放，点击选择天体",
+        "keyboard": "使用方向键移动视角，空格键暂停/播放"
+      },
+      "tips": [
+        "尝试不同的视角观察行星运动",
+        "调整时间速度来观察轨道变化",
+        "点击行星获取科学数据",
+        "比较不同行星的大小和特征",
+        "探索卫星系统，如木星的卫星"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/solar-system-scope/20200101000000/solar-system-scope-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "science",
+      "astronomy",
+      "space",
+      "planets",
+      "educational",
+      "3D",
+      "interactive"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/solar-system-scope",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "INOVE"
+  },
+  {
+    "slug": "animal-dna-run",
+    "title": "Animal DNA Run",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/animal-dna-run",
+    "description": "Animal DNA Run is an exciting runner game that teaches genetics and biology. Collect DNA sequences to transform into different animals while learning about genetic codes and evolution!",
+    "gameGuide": {
+      "howToPlay": [
+        "奔跑并收集DNA序列",
+        "根据收集的DNA变身成不同动物",
+        "学习基因密码和遗传学原理",
+        "避开障碍物继续进化",
+        "探索动物王国的多样性"
+      ],
+      "controls": {
+        "mouse": "鼠标左右移动控制角色方向",
+        "keyboard": "使用方向键或WASD控制移动",
+        "touch": "滑动屏幕控制角色移动"
+      },
+      "tips": [
+        "收集相同颜色的DNA获得更好的变身",
+        "不同动物有不同的特殊能力",
+        "学习DNA序列的组合规律",
+        "观察动物特征与基因的关系",
+        "尝试收集稀有的基因组合"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/animal-dna-run/20200101000000/animal-dna-run-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "science",
+      "biology",
+      "genetics",
+      "DNA",
+      "animals",
+      "runner",
+      "educational"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/animal-dna-run",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "DNA Games"
+  },
+  {
+    "slug": "mini-scientist",
+    "title": "Mini Scientist",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/mini-scientist",
+    "description": "Mini Scientist is an educational game that lets you conduct virtual science experiments. Mix chemicals, observe reactions, and learn scientific principles through hands-on experimentation!",
+    "gameGuide": {
+      "howToPlay": [
+        "选择实验室中的科学仪器",
+        "按照实验步骤进行操作",
+        "观察化学反应和物理现象",
+        "记录实验结果和数据",
+        "学习科学原理和实验方法"
+      ],
+      "controls": {
+        "mouse": "点击和拖拽实验器材，操作实验设备",
+        "touch": "触摸选择工具，滑动进行实验操作"
+      },
+      "tips": [
+        "仔细阅读实验说明",
+        "按正确顺序进行实验步骤",
+        "观察实验现象的细节变化",
+        "尝试不同的实验组合",
+        "学习安全的实验操作方法"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/mini-scientist/20200101000000/mini-scientist-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "science",
+      "chemistry",
+      "physics",
+      "experiments",
+      "laboratory",
+      "educational",
+      "STEM"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/mini-scientist",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Science Lab"
+  },
+  {
+    "slug": "idle-research",
+    "title": "Idle Research",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/idle-research",
+    "description": "Idle Research is a simulation game where you manage a research laboratory. Hire scientists, fund projects, and make groundbreaking discoveries while learning about the scientific research process!",
+    "gameGuide": {
+      "howToPlay": [
+        "建立和管理科研实验室",
+        "雇佣不同专业的科学家",
+        "分配研究资金和项目",
+        "等待研究成果和突破",
+        "学习科学研究的过程和方法"
+      ],
+      "controls": {
+        "mouse": "点击选择研究项目，拖拽分配资源",
+        "touch": "触摸操作界面，管理实验室"
+      },
+      "tips": [
+        "平衡不同领域的研究投入",
+        "升级实验室设备提高效率",
+        "关注科学家的专业技能",
+        "合理分配研究预算",
+        "耐心等待重大科学发现"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/idle-research/20200101000000/idle-research-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "science",
+      "research",
+      "simulation",
+      "management",
+      "idle",
+      "educational",
+      "strategy"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/idle-research",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Research Games"
+  },
+  {
+    "slug": "skeleton-simulator",
+    "title": "Skeleton Simulator",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.crazygames.com/embed/skeleton-simulator",
+    "description": "Skeleton Simulator is an interactive anatomy learning game. Explore the human skeletal system, learn bone names and functions, and understand how our body's framework supports movement and protection!",
+    "gameGuide": {
+      "howToPlay": [
+        "探索人体骨骼系统的3D模型",
+        "点击骨骼部位学习名称和功能",
+        "完成骨骼拼图和识别挑战",
+        "学习骨骼与肌肉的关系",
+        "了解人体解剖学知识"
+      ],
+      "controls": {
+        "mouse": "点击骨骼部位查看信息，拖拽旋转3D模型",
+        "keyboard": "使用方向键移动视角，空格键重置视图",
+        "touch": "触摸骨骼获取信息，滑动旋转模型"
+      },
+      "tips": [
+        "从主要骨骼开始学习",
+        "注意骨骼的连接方式",
+        "学习骨骼的保护功能",
+        "了解不同年龄骨骼的变化",
+        "结合运动理解骨骼的作用"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/skeleton-simulator/20200101000000/skeleton-simulator-cover?metadata=none&quality=40&width=1200&height=630&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "science",
+      "anatomy",
+      "biology",
+      "skeleton",
+      "human body",
+      "educational",
+      "3D"
+    ],
+    "source": "CrazyGames",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://www.crazygames.com/game/skeleton-simulator",
+    "lastUpdated": "2025-01-16",
+    "lastChecked": "2025-01-16",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "Anatomy Games"
   }
 ]
