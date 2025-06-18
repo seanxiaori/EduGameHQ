@@ -328,8 +328,8 @@ if (!isHomePage) {
   <script src="/src/utils/game-stats-manager.js" defer></script>
   
   <!-- 全局games数据 - 供客户端JavaScript使用 -->
-  <script>
-    window.GAMES_DATA = {JSON.stringify(gamesData.map(game => ({
+  <script define:vars={{ gamesData }}>
+    window.GAMES_DATA = gamesData.map(game => ({
       slug: game.slug,
       playCount: game.playCount || 0,
       category: game.category,
@@ -338,7 +338,7 @@ if (!isHomePage) {
       isNew: game.isNew || false,
       developer: game.developer || 'Unknown',
       tags: game.tags || []
-    })))};
+    }));
   </script>
   
   <!-- 字体预加载 -->
