@@ -704,3 +704,63 @@
   font-size: 0.75rem;
   opacity: 0.7;
 }
+
+/* 收藏按钮样式 */
+.favorite-heart-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  color: #6B7280;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  opacity: 0;
+}
+
+.game-card:hover .favorite-heart-btn {
+  opacity: 1;
+}
+
+.favorite-heart-btn:hover {
+  transform: scale(1.1);
+  background: white;
+  color: #EC4899;
+}
+
+.favorite-heart-btn.active {
+  background: #EC4899;
+  color: white;
+  opacity: 1;
+}
+
+.favorite-heart-btn.active:hover {
+  background: #DB2777;
+}
+
+/* 收藏状态指示器 */
+.game-card.favorited {
+  position: relative;
+}
+
+.game-card.favorited::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  border-radius: 18px;
+  z-index: -1;
+  opacity: 0.3;
+}
