@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import type { Game, GameData } from '../types/game';
+import GameCard from '../components/GameCard.astro';
+import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,7 +12,7 @@ const seoData = {
   ogImage: "/images/new-games-og.jpg"
 };
 
-// 从JSON文件读取游戏数据 - 修复路径
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -22,97 +23,33 @@ try {
   console.error('Error reading games data:', error);
 }
 
-// 获取最新游戏（按lastUpdated排序）
-const newGames = allGamesData
-  .filter(game => game.isNew || game.lastUpdated)
-  .sort((a, b) => new Date(b.lastUpdated || '').getTime() - new Date(a.lastUpdated || '').getTime())
-  .slice(0, 20)
-  .map(game => ({
-    id: game.slug,
-    title: game.title,
-    description: game.description,
-    image: game.thumbnailUrl || '/images/logo.svg',
-    url: `/games/${game.slug}`,
-    category: game.category,
-    categoryName: game.categoryName,
-    ageRange: game.ageRange,
-    difficulty: game.difficulty || 'Medium',
-    tags: game.tags || [],
-    lastUpdated: game.lastUpdated,
-    isNew: game.isNew || false
-  }));
+// 获取新游戏（模拟时间分类 - 随机分配到不同时间段）
+const shuffledGames = [...allGamesData].sort(() => Math.random() - 0.5);
 
-// 获取所有游戏并按时间分类
-const allGames = Object.values(allGamesData).flat();
-
-// 模拟时间分类（实际项目中应该基于真实的添加时间）
-const todayGames = allGames.slice(0, 4);
-const thisWeekGames = allGames.slice(4, 8);
-const thisMonthGames = allGames.slice(8, 12);
-const recentlyUpdatedGames = allGames.slice(12, 16);
-
-// 格式化人气值
-function formatPopularity(popularity: number | undefined): string {
-  // 如果popularity为undefined或null，返回默认值
-  if (!popularity || popularity === undefined || popularity === null) {
-    return '0';
-  }
-  
-  if (popularity >= 1000000) {
-    return `${(popularity / 1000000).toFixed(1)}M`;
-  } else if (popularity >= 1000) {
-    return `${(popularity / 1000).toFixed(1)}K`;
-  }
-  return popularity.toString();
-}
-
-// 获取人气图标
-function getPopularityIcon(popularity: number | undefined): string {
-  // 如果popularity为undefined或null，返回空字符串
-  if (!popularity || popularity === undefined || popularity === null) {
-    return '';
-  }
-  
-  if (popularity > 5000) return '🔥';
-  if (popularity > 1000) return '⭐';
-  return '';
-}
-
-// 获取时间标签
-function getTimeLabel(daysAgo: number): string {
-  if (daysAgo === 0) return 'today';
-  if (daysAgo === 1) return 'yesterday';
-  if (daysAgo <= 7) return 'few-days-ago';
-  return 'weeks-ago';
-}
-
-// 获取时间显示文本
-function getTimeText(daysAgo: number): string {
-  if (daysAgo === 0) return 'Today';
-  if (daysAgo === 1) return 'Yesterday';
-  if (daysAgo <= 7) return 'Few days ago';
-  return 'Weeks ago';
-}
+const todayGames = shuffledGames.slice(0, 4);
+const thisWeekGames = shuffledGames.slice(4, 8);
+const thisMonthGames = shuffledGames.slice(8, 12);
+const recentlyUpdatedGames = shuffledGames.slice(12, 16);
 ---
 
-<BaseLayout seoData={seoData}>
-  <!-- 引入统一的游戏卡片样式 -->
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
   
   <main class="main-content">
     <div class="content-wrapper">
 
-      <!-- 页面顶部区域 -->
+      <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
             <div class="section-icon new">
-            <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
           </div>
           <div class="header-text">
             <h1 class="page-title">New Educational Games</h1>
-          <p class="page-description">
+            <p class="page-description">
               Discover the latest educational games added to our platform. Fresh learning experiences 
               across math, science, coding, language arts, and puzzle solving for students of all ages.
             </p>
@@ -120,215 +57,126 @@ function getTimeText(daysAgo: number): string {
         </div>
       </section>
 
-      <!-- 今日新增游戏模块 -->
-      <section class="module-section">
-        <div class="module-header">
-          <div class="module-icon">
-            <i class="fas fa-calendar-day"></i>
+      <!-- 2. 今日新增游戏模块 -->
+      {todayGames.length > 0 && (
+        <section class="game-module today-module">
+          <div class="module-header">
+            <div class="module-icon today-icon">
+              <i class="fas fa-calendar-day"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Today's New Games</h2>
+              <p class="module-subtitle">Fresh games added today</p>
+            </div>
           </div>
-          <div>
-            <h2 class="module-title">Today's New Games</h2>
-            <p class="module-subtitle">Fresh games added today</p>
+          
+          <div class="games-grid">
+            {todayGames.map((game) => (
+              <GameCard game={game} showNew={true} showPopularity={true} showFavorite={true} />
+            ))}
           </div>
-        </div>
-        
-        <div class="games-grid">
-          {todayGames.map((game, index) => (
-            <a href={`/games/${game.slug}`} class="game-card new-theme">
-              <div class="game-image-container">
-                <img 
-                  src={game.thumbnailUrl || '/images/logo.svg'} 
-                  alt={game.title}
-                  class="game-image"
-                  loading="lazy"
-                  onerror="this.onerror=null; this.src='/images/logo.svg';"
-                />
-                <div class="game-overlay">
-                  <div class="play-button">
-                    <i class="fas fa-play"></i>
-                    <span>Play Now</span>
-                  </div>
-                </div>
-                <div class={`played-badge ${getTimeLabel(0)}`}>
-                  {getTimeText(0)}
-                </div>
-                <div class="popularity-badge">
-                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
-                </div>
-              </div>
-              <div class="game-info">
-                <h3 class="game-title">{game.title}</h3>
-                  <div class="game-tags">
-                  <span class={`category-tag ${game.category.toLowerCase()}`}>
-                    {game.category}
-                  </span>
-                  <span class="feature-tag new">NEW</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+        </section>
+      )}
 
-      <!-- 本周新增游戏模块 -->
-      <section class="module-section">
-        <div class="module-header">
-          <div class="module-icon">
-            <i class="fas fa-calendar-week"></i>
-          </div>
-          <div>
-            <h2 class="module-title">This Week's New Games</h2>
-            <p class="module-subtitle">Games added in the past 7 days</p>
-          </div>
-                  </div>
-        
-        <div class="games-grid">
-          {thisWeekGames.map((game, index) => (
-            <a href={`/games/${game.slug}`} class="game-card new-theme">
-              <div class="game-image-container">
-                <img 
-                  src={game.thumbnailUrl || '/images/logo.svg'} 
-                  alt={game.title}
-                  class="game-image"
-                  loading="lazy"
-                  onerror="this.onerror=null; this.src='/images/logo.svg';"
-                />
-                <div class="game-overlay">
-                  <div class="play-button">
-                    <i class="fas fa-play"></i>
-                    <span>Play Now</span>
-                  </div>
-                </div>
-                <div class={`played-badge ${getTimeLabel(index + 1)}`}>
-                  {getTimeText(index + 1)}
-                </div>
-                <div class="popularity-badge">
-                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
-                </div>
-              </div>
-              <div class="game-info">
-                <h3 class="game-title">{game.title}</h3>
-                <div class="game-tags">
-                  <span class={`category-tag ${game.category.toLowerCase()}`}>
-                    {game.category}
-                  </span>
-                  <span class="feature-tag featured">FEATURED</span>
-              </div>
+      <!-- 3. 本周新增游戏模块 -->
+      {thisWeekGames.length > 0 && (
+        <section class="game-module week-module">
+          <div class="module-header">
+            <div class="module-icon week-icon">
+              <i class="fas fa-calendar-week"></i>
             </div>
-            </a>
-          ))}
-        </div>
-      </section>
+            <div class="module-title-group">
+              <h2 class="module-title">This Week's New Games</h2>
+              <p class="module-subtitle">Games added in the past 7 days</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {thisWeekGames.map((game) => (
+              <GameCard game={game} showFeatured={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
 
-      <!-- 本月新增游戏模块 -->
-      <section class="module-section">
-        <div class="module-header">
-          <div class="module-icon">
-            <i class="fas fa-calendar-alt"></i>
+      <!-- 4. 本月新增游戏模块 -->
+      {thisMonthGames.length > 0 && (
+        <section class="game-module month-module">
+          <div class="module-header">
+            <div class="module-icon month-icon">
+              <i class="fas fa-calendar-alt"></i>
             </div>
-          <div>
-            <h2 class="module-title">This Month's New Games</h2>
-            <p class="module-subtitle">Games added in the past 30 days</p>
-          </div>
-            </div>
-        
-        <div class="games-grid">
-          {thisMonthGames.map((game, index) => (
-            <a href={`/games/${game.slug}`} class="game-card new-theme">
-              <div class="game-image-container">
-                <img 
-                  src={game.thumbnailUrl || '/images/logo.svg'} 
-                  alt={game.title}
-                  class="game-image"
-                  loading="lazy"
-                  onerror="this.onerror=null; this.src='/images/logo.svg';"
-                />
-                <div class="game-overlay">
-                  <div class="play-button">
-                    <i class="fas fa-play"></i>
-                    <span>Play Now</span>
+            <div class="module-title-group">
+              <h2 class="module-title">This Month's New Games</h2>
+              <p class="module-subtitle">Games added in the past 30 days</p>
             </div>
           </div>
-                <div class={`played-badge ${getTimeLabel(index + 8)}`}>
-                  {getTimeText(index + 8)}
-            </div>
-                <div class="popularity-badge">
-                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
-            </div>
+          
+          <div class="games-grid">
+            {thisMonthGames.map((game) => (
+              <GameCard game={game} showPopularity={true} showFavorite={true} />
+            ))}
           </div>
-              <div class="game-info">
-                <h3 class="game-title">{game.title}</h3>
-                <div class="game-tags">
-                  <span class={`category-tag ${game.category.toLowerCase()}`}>
-                    {game.category}
-                  </span>
-                  <span class="feature-tag updated">UPDATED</span>
-            </div>
-          </div>
-            </a>
-          ))}
-        </div>
-      </section>
+        </section>
+      )}
 
-      <!-- 最近更新游戏模块 -->
-      <section class="module-section">
-        <div class="module-header">
-          <div class="module-icon">
-            <i class="fas fa-sync-alt"></i>
+      <!-- 5. 最近更新游戏模块 -->
+      {recentlyUpdatedGames.length > 0 && (
+        <section class="game-module updated-module">
+          <div class="module-header">
+            <div class="module-icon updated-icon">
+              <i class="fas fa-sync-alt"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Recently Updated Games</h2>
+              <p class="module-subtitle">Games with recent improvements and updates</p>
+            </div>
           </div>
-          <div>
-            <h2 class="module-title">Recently Updated Games</h2>
-            <p class="module-subtitle">Games with recent improvements and updates</p>
+          
+          <div class="games-grid">
+            {recentlyUpdatedGames.map((game) => (
+              <GameCard game={game} showUpdated={true} showPopularity={true} showFavorite={true} />
+            ))}
           </div>
-        </div>
-        
-        <div class="games-grid">
-          {recentlyUpdatedGames.map((game, index) => (
-            <a href={`/games/${game.slug}`} class="game-card new-theme">
-              <div class="game-image-container">
-                <img 
-                  src={game.thumbnailUrl || '/images/logo.svg'} 
-                  alt={game.title}
-                  class="game-image"
-                  loading="lazy"
-                  onerror="this.onerror=null; this.src='/images/logo.svg';"
-                />
-                <div class="game-overlay">
-                  <div class="play-button">
-                    <i class="fas fa-play"></i>
-                    <span>Play Now</span>
-                  </div>
-                </div>
-                <div class={`played-badge ${getTimeLabel(index + 15)}`}>
-                  {getTimeText(index + 15)}
-                </div>
-                <div class="popularity-badge">
-                  {getPopularityIcon(game.popularity)} {formatPopularity(game.popularity)}
-                </div>
-              </div>
-              <div class="game-info">
-                <h3 class="game-title">{game.title}</h3>
-                <div class="game-tags">
-                  <span class={`category-tag ${game.category.toLowerCase()}`}>
-                    {game.category}
-                  </span>
-                  <span class="feature-tag updated">UPDATED</span>
-                </div>
-              </div>
-            </a>
-          ))}
-        </div>
-      </section>
+        </section>
+      )}
 
     </div>
   </main>
+
+  <!-- 简化的新游戏管理JavaScript -->
+  <script is:inline>
+    // 简化的新游戏管理
+    class NewGamesManager {
+      constructor() {
+        this.init();
+      }
+
+      // 初始化
+      init() {
+        this.updateNewGamesDisplay();
+        console.log('⭐ 新游戏管理器初始化完成');
+      }
+
+      // 更新新游戏显示
+      updateNewGamesDisplay() {
+        // 这里可以根据实际数据更新新游戏显示
+        console.log('新游戏显示已更新');
+      }
+    }
+
+    // 页面加载完成后初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      window.newGamesManager = new NewGamesManager();
+    });
+  </script>
 </BaseLayout>
 
 <style>
   /* 主要内容区域 */
   .main-content {
     width: 100%;
-    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.05) 100%);
     min-height: 100vh;
   }
 
@@ -338,7 +186,7 @@ function getTimeText(daysAgo: number): string {
     padding: 2rem;
   }
 
-  /* 页面头部 */
+  /* 1. 页面头部区域 */
   .page-header {
     background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
     border-radius: 20px;
@@ -418,14 +266,14 @@ function getTimeText(daysAgo: number): string {
     line-height: 1.6;
   }
 
-  /* 模块样式 */
-  .module-section {
+  /* 通用模块样式 */
+  .game-module {
     margin-bottom: 3rem;
   }
 
   .module-header {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
@@ -438,90 +286,182 @@ function getTimeText(daysAgo: number): string {
   .module-icon {
     width: 48px;
     height: 48px;
-    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
     color: white;
-    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .today-icon {
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  }
+
+  .week-icon {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+  }
+
+  .month-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+
+  .updated-icon {
+    background: linear-gradient(135deg, #34D399 0%, #10B981 100%);
+  }
+
+  .module-title-group {
+    flex: 1;
   }
 
   .module-title {
+    font-family: 'Space Grotesk', sans-serif;
     font-size: 1.5rem;
     font-weight: 700;
     color: #1F2937;
-    margin-bottom: 0.25rem;
-    font-family: 'Space Grotesk', sans-serif;
-    line-height: 1.2;
-  }
-
-  .module-subtitle {
-    font-size: 0.9rem;
-    color: #6B7280;
+    margin: 0 0 0.25rem 0;
     line-height: 1.3;
   }
 
-  /* 游戏网格 - 一行显示4个游戏 */
-  .games-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
+  .module-subtitle {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
   }
 
   /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .header-content {
+      gap: 1.5rem;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+
   @media (max-width: 768px) {
-    .games-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
+    .content-wrapper {
+      padding: 1rem;
     }
 
     .page-header {
-      padding: 1.5rem;
-    }
-    
-    .header-content {
       flex-direction: column;
       text-align: center;
       gap: 1.5rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 18px;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    .section-icon {
+      width: 64px;
+      height: 64px;
+      font-size: 1.5rem;
+      border-radius: 18px;
     }
 
     .page-title {
       font-size: 2rem;
     }
 
+    .page-description {
+      font-size: 1rem;
+    }
+
     .module-header {
       flex-direction: column;
       text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
+      margin-top: 0;
+    }
+
+    .module-title {
+      font-size: 1.375rem;
+    }
+
+    .module-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .game-module {
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-header {
+      padding: 1.25rem;
+      border-radius: 16px;
+    }
+
+    .header-content {
       gap: 1rem;
     }
+
+    .page-title {
+      font-size: 1.75rem;
     }
 
-  @media (min-width: 769px) and (max-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .games-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-    }
-  }
-
-  /* 新游戏主题样式 */
-  .game-card.new-theme {
-    border-color: rgba(34, 197, 94, 0.2);
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.25rem;
+      border-radius: 16px;
     }
 
-  .game-card.new-theme:hover {
-    border-color: #22C55E;
-    box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+    .page-description {
+      font-size: 0.95rem;
+    }
+
+    .module-title {
+      font-size: 1.25rem;
+    }
+
+    .module-header {
+      padding: 1rem;
+    }
   }
 </style> 
 
