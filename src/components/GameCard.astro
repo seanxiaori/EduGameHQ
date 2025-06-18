@@ -160,235 +160,119 @@ const gameUrl = `/games/${safeGame.slug}`;
   </div>
 </div>
 
-<!-- 简化版收藏功能调试脚本 -->
-<script define:vars={{ safeGame, showPlayHistory, showPopularity }}>
-  // 简化版收藏管理器 - 专注调试
-  (function() {
-    console.log('🔧 初始化简化版收藏管理器...');
+<!-- 极简调试脚本 - 立即执行 -->
+<script is:inline>
+  // 立即执行的调试脚本
+  console.log('🚀 GameCard脚本开始执行...');
+  
+  // 等待DOM加载
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSimpleFavorites);
+  } else {
+    initSimpleFavorites();
+  }
+  
+  function initSimpleFavorites() {
+    console.log('📄 DOM已加载，开始初始化收藏功能...');
     
-    const STORAGE_KEY = 'favoriteGames';
+    // 查找所有收藏按钮
+    const favoriteButtons = document.querySelectorAll('.favorite-heart-btn');
+    console.log('🔍 找到收藏按钮数量:', favoriteButtons.length);
     
-    // 简化的收藏管理类
-    class SimpleFavoriteManager {
-      // 检查是否已收藏
-      static isFavorited(gameSlug) {
-        try {
-          const favorites = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-          const result = favorites.includes(gameSlug);
-          console.log(`🔍 检查收藏状态 ${gameSlug}: ${result ? '已收藏' : '未收藏'}`);
-          return result;
-        } catch (error) {
-          console.error('❌ 读取收藏状态失败:', error);
-          return false;
-        }
-      }
+    // 为每个按钮添加点击事件
+    favoriteButtons.forEach((button, index) => {
+      const gameSlug = button.getAttribute('data-game-slug');
+      console.log(`🎮 按钮 ${index + 1}: 游戏 ${gameSlug}`);
       
-      // 切换收藏状态
-      static toggleFavorite(gameSlug) {
-        try {
-          console.log(`🔄 开始切换收藏状态: ${gameSlug}`);
-          
-          const favorites = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-          const currentlyFavorited = favorites.includes(gameSlug);
-          
-          console.log(`📋 当前收藏列表:`, favorites);
-          console.log(`📋 当前状态: ${currentlyFavorited ? '已收藏' : '未收藏'}`);
-          
-          let newFavorites;
-          let newState;
-          
-          if (currentlyFavorited) {
-            // 移除收藏
-            newFavorites = favorites.filter(id => id !== gameSlug);
-            newState = false;
-            console.log(`➖ 移除收藏: ${gameSlug}`);
-          } else {
-            // 添加收藏
-            newFavorites = [...favorites, gameSlug];
-            newState = true;
-            console.log(`➕ 添加收藏: ${gameSlug}`);
-          }
-          
-          // 保存到localStorage
-          localStorage.setItem(STORAGE_KEY, JSON.stringify(newFavorites));
-          console.log(`💾 保存新的收藏列表:`, newFavorites);
-          
-          // 立即更新所有相关按钮
-          this.updateAllButtonsForGame(gameSlug, newState);
-          
-          console.log(`✅ 收藏状态更新完成 ${gameSlug}: ${newState ? '已收藏' : '已取消收藏'}`);
-          
-          // 显示通知
-          this.showNotification(newState ? 'Added to favorites' : 'Removed from favorites', newState ? 'added' : 'removed');
-          
-        } catch (error) {
-          console.error('❌ 收藏操作失败:', error);
-          this.showNotification('Something went wrong', 'error');
-        }
-      }
-      
-      // 更新特定游戏的所有按钮
-      static updateAllButtonsForGame(gameSlug, isFavorited) {
-        const gameCards = document.querySelectorAll(`[data-game-id="${gameSlug}"]`);
-        console.log(`🔄 找到 ${gameCards.length} 个 ${gameSlug} 的游戏卡片`);
+      if (gameSlug) {
+        // 初始化按钮状态
+        updateButtonState(button, gameSlug);
         
-        gameCards.forEach((card, index) => {
-          console.log(`🎮 处理第 ${index + 1} 个卡片`);
-          const favoriteBtn = card.querySelector('.favorite-heart-btn');
-          if (favoriteBtn) {
-            console.log(`💖 找到收藏按钮，更新状态: ${isFavorited ? '已收藏' : '未收藏'}`);
-            this.updateButtonState(favoriteBtn, isFavorited);
-          } else {
-            console.log(`⚠ 未找到收藏按钮`);
-          }
-        });
-      }
-      
-      // 更新按钮状态
-      static updateButtonState(button, isFavorited) {
-        if (!button) {
-          console.log(`⚠ 按钮不存在`);
-          return;
-        }
-        
-        console.log(`🎨 更新按钮样式: ${isFavorited ? '收藏状态' : '未收藏状态'}`);
-        
-        const icon = button.querySelector('i');
-        if (icon) {
-          icon.className = isFavorited ? 'fas fa-heart' : 'far fa-heart';
-          console.log(`🎯 图标类名更新为: ${icon.className}`);
-        }
-        
-        // 更新样式
-        if (isFavorited) {
-          button.style.background = 'linear-gradient(135deg, #EC4899 0%, #DB2777 100%)';
-          button.style.color = 'white';
-          button.style.borderColor = 'rgba(236, 72, 153, 0.6)';
-          button.style.boxShadow = '0 4px 15px rgba(236, 72, 153, 0.4)';
-          button.classList.add('favorited');
-        } else {
-          button.style.background = 'rgba(0, 0, 0, 0.25)';
-          button.style.color = '#FFFFFF';
-          button.style.borderColor = 'rgba(255, 255, 255, 0.2)';
-          button.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.2)';
-          button.classList.remove('favorited');
-        }
-        
-        // 添加状态切换动画
-        button.style.transform = 'scale(1.1)';
-        setTimeout(() => {
-          button.style.transform = 'scale(1)';
-        }, 150);
-      }
-      
-      // 显示通知
-      static showNotification(message, type) {
-        console.log(`📢 显示通知: ${message} (${type})`);
-        
-        const existingNotification = document.querySelector('.game-card-notification');
-        if (existingNotification) {
-          existingNotification.remove();
-        }
-
-        const notification = document.createElement('div');
-        notification.className = `game-card-notification ${type}`;
-        notification.style.cssText = `
-          position: fixed !important;
-          top: 2rem !important;
-          right: 2rem !important;
-          background: ${type === 'added' ? '#10B981' : type === 'removed' ? '#EF4444' : '#6B7280'} !important;
-          color: white !important;
-          padding: 0.75rem 1.25rem !important;
-          border-radius: 8px !important;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
-          z-index: 10000 !important;
-          font-size: 0.875rem !important;
-          font-weight: 600 !important;
-          transform: translateX(100%) !important;
-          opacity: 0 !important;
-          transition: all 0.3s ease !important;
-        `;
-        
-        notification.textContent = message;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-          notification.style.transform = 'translateX(0)';
-          notification.style.opacity = '1';
-        }, 10);
-        
-        setTimeout(() => {
-          notification.style.transform = 'translateX(100%)';
-          notification.style.opacity = '0';
-          setTimeout(() => {
-            if (document.body.contains(notification)) {
-              document.body.removeChild(notification);
-            }
-          }, 300);
-        }, 2000);
-      }
-    }
-    
-    // 直接绑定点击事件到所有收藏按钮
-    function bindFavoriteButtons() {
-      console.log('🔗 开始绑定收藏按钮事件...');
-      
-      const favoriteButtons = document.querySelectorAll('.favorite-heart-btn');
-      console.log(`🔍 找到 ${favoriteButtons.length} 个收藏按钮`);
-      
-      favoriteButtons.forEach((button, index) => {
-        const gameSlug = button.getAttribute('data-game-slug');
-        console.log(`🎮 第 ${index + 1} 个按钮，游戏: ${gameSlug}`);
-        
-        if (!gameSlug) {
-          console.error(`❌ 第 ${index + 1} 个按钮缺少 data-game-slug 属性`);
-          return;
-        }
-        
-        // 移除旧的事件监听器（如果存在）
-        button.removeEventListener('click', button._favoriteClickHandler);
-        
-        // 创建新的点击处理函数
-        button._favoriteClickHandler = function(e) {
-          console.log(`💖 点击收藏按钮: ${gameSlug}`);
+        // 添加点击事件
+        button.addEventListener('click', function(e) {
+          console.log('💖 点击收藏按钮:', gameSlug);
           e.preventDefault();
           e.stopPropagation();
-          SimpleFavoriteManager.toggleFavorite(gameSlug);
-        };
-        
-        // 绑定新的事件监听器
-        button.addEventListener('click', button._favoriteClickHandler);
-        
-        // 初始化按钮状态
-        const isFavorited = SimpleFavoriteManager.isFavorited(gameSlug);
-        SimpleFavoriteManager.updateButtonState(button, isFavorited);
-        
-        console.log(`✅ 第 ${index + 1} 个按钮绑定完成`);
-      });
-    }
-    
-    // 初始化函数
-    function init() {
-      console.log('🚀 简化版收藏管理器初始化开始...');
-      
-      // 等待DOM完全加载
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', () => {
-          console.log('📄 DOM加载完成，开始绑定按钮...');
-          setTimeout(bindFavoriteButtons, 100);
+          toggleFavorite(gameSlug, button);
         });
+        
+        console.log(`✅ 按钮 ${index + 1} 初始化完成`);
       } else {
-        console.log('📄 DOM已加载，立即绑定按钮...');
-        setTimeout(bindFavoriteButtons, 100);
+        console.error(`❌ 按钮 ${index + 1} 缺少游戏ID`);
+      }
+    });
+    
+    console.log('🎉 收藏功能初始化完成!');
+  }
+  
+  // 简化的收藏切换函数
+  function toggleFavorite(gameSlug, button) {
+    console.log('🔄 开始切换收藏状态:', gameSlug);
+    
+    try {
+      // 获取当前收藏列表
+      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      console.log('📋 当前收藏列表:', favorites);
+      
+      const isCurrentlyFavorited = favorites.includes(gameSlug);
+      console.log('📋 当前状态:', isCurrentlyFavorited ? '已收藏' : '未收藏');
+      
+      let newFavorites;
+      if (isCurrentlyFavorited) {
+        // 取消收藏
+        newFavorites = favorites.filter(id => id !== gameSlug);
+        console.log('➖ 取消收藏:', gameSlug);
+      } else {
+        // 添加收藏
+        newFavorites = [...favorites, gameSlug];
+        console.log('➕ 添加收藏:', gameSlug);
       }
       
-      console.log('✅ 简化版收藏管理器初始化完成');
+      // 保存到localStorage
+      localStorage.setItem('favoriteGames', JSON.stringify(newFavorites));
+      console.log('💾 保存新列表:', newFavorites);
+      
+      // 更新按钮状态
+      updateButtonState(button, gameSlug);
+      
+      // 显示提示
+      const message = isCurrentlyFavorited ? '已取消收藏' : '已添加收藏';
+      console.log('✅ 操作完成:', message);
+      
+      // 简单的提示（可选）
+      if (window.showNotification) {
+        window.showNotification(message, isCurrentlyFavorited ? 'removed' : 'added');
+      }
+      
+    } catch (error) {
+      console.error('❌ 收藏操作失败:', error);
     }
-    
-    // 启动初始化
-    init();
-    
-  })();
+  }
+  
+  // 更新按钮状态
+  function updateButtonState(button, gameSlug) {
+    try {
+      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      const isFavorited = favorites.includes(gameSlug);
+      
+      const heartIcon = button.querySelector('i');
+      if (heartIcon) {
+        if (isFavorited) {
+          heartIcon.className = 'fas fa-heart';
+          button.classList.add('active');
+          console.log('💖 按钮状态: 已收藏');
+        } else {
+          heartIcon.className = 'far fa-heart';
+          button.classList.remove('active');
+          console.log('🤍 按钮状态: 未收藏');
+        }
+      }
+    } catch (error) {
+      console.error('❌ 更新按钮状态失败:', error);
+    }
+  }
+  
+  console.log('🔧 GameCard脚本加载完成');
 </script>
 
 <style>
