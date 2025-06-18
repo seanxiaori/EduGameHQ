@@ -28,7 +28,12 @@ const relatedGames = gamesData
   .slice(0, 4);
 
 // 游戏来源检测函数
-function getGameSource(url: string): string {
+function getGameSource(url: string | undefined | null): string {
+  // 处理undefined或null的情况
+  if (!url || typeof url !== 'string') {
+    return 'Unknown';
+  }
+  
   if (url.includes('crazygames.com')) return 'CrazyGames';
   if (url.includes('miniplay.com')) return 'Miniplay';
   if (url.includes('gamedistribution.com')) return 'GameDistribution';
@@ -36,6 +41,16 @@ function getGameSource(url: string): string {
   if (url.includes('itch.io')) return 'itch.io';
   if (url.includes('github')) return 'GitHub Open Source';
   return 'External';
+}
+
+// 获取游戏的iframe URL - 兼容两种字段名
+function getGameIframeUrl(game: any): string {
+  return game.iframeUrl || game.embedUrl || '';
+}
+
+// 获取游戏的源URL - 兼容不同字段名
+function getGameSourceUrl(game: any): string {
+  return game.sourceUrl || game.url || '';
 }
 
 // SEO数据
@@ -73,7 +88,7 @@ const seoData = {
       <section class="game-player-section">
         <div class="game-player-container">
           <iframe 
-            src={game.iframeUrl} 
+            src={getGameIframeUrl(game)} 
             class="game-iframe"
             title={game.title}
             allowfullscreen
@@ -135,11 +150,11 @@ const seoData = {
           <div class="developer-details">
             <div class="developer-item">
               <span class="detail-label">Developer:</span>
-              <span class="detail-value">{game.developer || getGameSource(game.iframeUrl) + ' Team'}</span>
+              <span class="detail-value">{game.developer || getGameSource(getGameSourceUrl(game)) + ' Team'}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Source:</span>
-              <span class="detail-value">{game.source || getGameSource(game.iframeUrl)}</span>
+              <span class="detail-value">{getGameSource(getGameSourceUrl(game))}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Type:</span>
