@@ -628,6 +628,7 @@ if (!isHomePage) {
       if (searchBox) {
         const query = (searchBox as HTMLInputElement)?.value?.trim() || '';
         console.log('Search query:', query);
+        console.log('Query length:', query.length);
         
         if (query.length > 0) {
           const searchUrl = `/search?q=${encodeURIComponent(query)}`;
