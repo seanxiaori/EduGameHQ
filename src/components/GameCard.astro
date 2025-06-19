@@ -9,6 +9,7 @@ interface Props {
   showFeatured?: boolean;
   showNew?: boolean;
   showUpdated?: boolean;
+  showPlayHistory?: boolean;
   showPopularity?: boolean;
   showFavorite?: boolean;
   showDeveloper?: boolean;
@@ -27,27 +28,13 @@ const {
 } = Astro.props;
 
 // 确保游戏对象有效 - 修复类型不匹配问题
-const safeGame: Partial<Game> & Pick<Game, 'slug' | 'title' | 'description' | 'category' | 'categoryName' | 'iframeUrl' | 'difficulty' | 'ageRange' | 'minAge' | 'maxAge' | 'thumbnailUrl' | 'featured' | 'trending' | 'isNew' | 'tags' | 'developer' | 'source' | 'iframeCompatible' | 'verified'> = {
+const safeGame = {
+  ...game,
+  // 只覆盖需要默认值的关键字段
   slug: game.slug || '',
   title: game.title || 'Unknown Game',
   description: game.description || 'No description available',
-  category: game.category || 'puzzle',
-  categoryName: game.categoryName || 'Puzzle',
-  iframeUrl: game.iframeUrl || '',
-  difficulty: game.difficulty || 'Easy',
-  ageRange: game.ageRange || '6-12',
-  minAge: game.minAge || 6,
-  maxAge: game.maxAge || 12,
-  thumbnailUrl: game.thumbnailUrl || '/images/logo.svg',
-  featured: game.featured || false,
-  trending: game.trending || false,
-  isNew: game.isNew || false,
-  tags: game.tags || [],
-  developer: game.developer || 'Unknown',
-  source: game.source || 'External',
-  iframeCompatible: game.iframeCompatible ?? true,
-  verified: game.verified ?? true,
-  ...game
+  thumbnailUrl: game.thumbnailUrl || '/images/logo.svg'
 };
 
 // 游戏URL

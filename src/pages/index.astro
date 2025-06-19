@@ -4,6 +4,7 @@ import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getCollection } from 'astro/collections';
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -16,13 +17,17 @@ try {
   console.warn('Unable to read games data file:', error);
 }
 
-// 特色游戏数据 - 筛选featured游戏
-const featuredGames = allGamesData
-  .filter(game => game.featured)
-  .slice(0, 12);
+// 获取游戏数据
+const gamesData = await getCollection('games');
+const allGames = gamesData.map(entry => entry.data);
+
+// 分类游戏
+const featuredGames = allGames.filter(game => game.featured).slice(0, 6);
+const trendingGames = allGames.filter(game => game.trending).slice(0, 8);
+const newGames = allGames.filter(game => game.isNew).slice(0, 4);
 
 // 所有游戏列表（用于随机功能）
-const allGames = allGamesData.map(game => ({
+const allGamesList = allGamesData.map(game => ({
   id: game.slug,
   title: game.title,
   url: `/games/${game.slug}`
@@ -293,11 +298,11 @@ const gameStats = {
   </main>
 
   <!-- 随机游戏功能脚本 -->
-  <script define:vars={{ allGames }} is:inline>
+  <script define:vars={{ allGamesList }} is:inline>
     // 随机游戏功能 - 定义为全局函数
     window.playRandomGame = function() {
-      const randomIndex = Math.floor(Math.random() * allGames.length);
-      const randomGame = allGames[randomIndex];
+      const randomIndex = Math.floor(Math.random() * allGamesList.length);
+      const randomGame = allGamesList[randomIndex];
       if (randomGame) {
         window.location.href = randomGame.url;
       }
