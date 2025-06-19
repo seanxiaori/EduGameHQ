@@ -599,18 +599,30 @@ if (!isHomePage) {
             <p>Made with ❤️ for global education</p>
           </div>
           <div class="footer-social">
-            <a href="#" class="social-link" aria-label="Share on Facebook" onclick="shareCurrentPageToFacebook()">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="Share on Twitter" onclick="shareCurrentPageToTwitter()">
-              <i class="fab fa-twitter"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="Share on YouTube" onclick="shareCurrentPageToEmail()">
-              <i class="fas fa-envelope"></i>
-            </a>
-            <a href="#" class="social-link" aria-label="Copy link to share" onclick="copyCurrentPageLink()">
-              <i class="fas fa-link"></i>
-            </a>
+            <!-- Facebook分享 -->
+            <div class="footer-quick-action-item">
+              <a href="#" class="social-link" aria-label="Share on Facebook" onclick="shareCurrentPageToFacebook(); return false;">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </div>
+            <!-- Twitter分享 -->
+            <div class="footer-quick-action-item">
+              <a href="#" class="social-link" aria-label="Share on Twitter" onclick="shareCurrentPageToTwitter(); return false;">
+                <i class="fab fa-twitter"></i>
+              </a>
+            </div>
+            <!-- 邮件分享 -->
+            <div class="footer-quick-action-item">
+              <a href="#" class="social-link" aria-label="Share on YouTube" onclick="shareCurrentPageToEmail(); return false;">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
+            <!-- 复制链接 -->
+            <div class="footer-quick-action-item">
+              <a href="#" class="social-link" aria-label="Copy link to share" onclick="copyCurrentPageLink(); return false;">
+                <i class="fas fa-link"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
