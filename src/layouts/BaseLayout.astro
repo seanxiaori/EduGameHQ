@@ -627,7 +627,7 @@ if (!isHomePage) {
       console.log('Search box element:', searchBox);
       
       if (searchBox) {
-        const query = searchBox.value.trim();
+        const query = (searchBox as HTMLInputElement)?.value?.trim() || '';
         console.log('Search query:', query);
         
         if (query.length > 0) {
@@ -682,7 +682,7 @@ if (!isHomePage) {
       
       // 点击外部关闭所有下拉菜单
       document.addEventListener('click', function(e) {
-        const isClickInsideDropdown = e.target.closest('.nav-dropdown');
+        const isClickInsideDropdown = (e.target as HTMLElement)?.closest?.('.nav-dropdown');
         if (!isClickInsideDropdown) {
           dropdowns.forEach(dropdown => {
             const dropdownMenu = dropdown.querySelector('.dropdown-menu');
@@ -852,8 +852,18 @@ if (!isHomePage) {
       };
     }
 
+    // 扩展window对象类型
+    declare global {
+      interface Window {
+        shareCurrentPageToFacebook: (event: Event) => void;
+        shareCurrentPageToTwitter: (event: Event) => void;
+        shareCurrentPageToEmail: (event: Event) => void;
+        copyCurrentPageLink: (event: Event) => void;
+      }
+    }
+    
     // Facebook分享
-    window.shareCurrentPageToFacebook = function(event) {
+    window.shareCurrentPageToFacebook = function(event: Event): void {
       event.preventDefault();
       event.stopPropagation();
       
@@ -869,7 +879,7 @@ if (!isHomePage) {
     };
 
     // Twitter分享
-    window.shareCurrentPageToTwitter = function(event) {
+    window.shareCurrentPageToTwitter = function(event: Event): void {
       event.preventDefault();
       event.stopPropagation();
       
@@ -886,7 +896,7 @@ if (!isHomePage) {
     };
 
     // 邮件分享
-    window.shareCurrentPageToEmail = function(event) {
+    window.shareCurrentPageToEmail = function(event: Event): void {
       event.preventDefault();
       event.stopPropagation();
       
@@ -903,7 +913,7 @@ if (!isHomePage) {
     };
 
     // 复制链接
-    window.copyCurrentPageLink = function(event) {
+    window.copyCurrentPageLink = function(event: Event): void {
       event.preventDefault();
       event.stopPropagation();
       
@@ -923,7 +933,7 @@ if (!isHomePage) {
     };
 
     // 复制文本的回退方法
-    function fallbackCopyTextToClipboard(text) {
+    function fallbackCopyTextToClipboard(text: string): void {
       const textArea = document.createElement('textarea');
       textArea.value = text;
       textArea.style.position = 'fixed';
@@ -948,7 +958,7 @@ if (!isHomePage) {
     }
 
     // 显示页脚分享成功提示
-    function showFooterShareSuccess(message) {
+    function showFooterShareSuccess(message: string): void {
       // 移除现有提示
       const existingToast = document.querySelector('.footer-share-toast');
       if (existingToast) {
