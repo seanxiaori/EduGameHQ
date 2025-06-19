@@ -6,7 +6,7 @@ import sitemap from '@astrojs/sitemap';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://edugamehq.com',
-  output: 'static', // 纯静态输出，适合Cloudflare Pages
+  output: 'static',
   
   integrations: [
     react(),
