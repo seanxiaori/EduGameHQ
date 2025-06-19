@@ -3,9 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 // 服务条款SEO数据
 const seoData = {
-  title: "Terms of Service | EduGameHQ - Usage Terms & Conditions",
-  description: "Read EduGameHQ's Terms of Service. Learn about acceptable use, user rights, and platform policies for our educational gaming platform.",
-  keywords: ["terms of service", "usage terms", "educational games terms", "platform policies", "user agreement"]
+  title: "Terms of Service | EduGameHQ - Educational Gaming Platform",
+  description: "Read our terms of service for EduGameHQ educational gaming platform. Safe, educational, and fun games for children aged 6-18.",
+  keywords: ["terms of service", "educational games", "platform rules", "user agreement", "child safety"]
 };
 
 // 服务条款章节数据
@@ -273,51 +273,56 @@ const termsSections = [
                   </ul>
                 )}
 
-                {section.subsections && section.subsections.map((subsection) => (
+                {section.subsections && section.subsections.map((subsection: any) => (
                   <div class="subsection">
                     <h3 class="subsection-title">{subsection.title}</h3>
-                    {subsection.content && (
-                      <p class="subsection-description">{subsection.content}</p>
+                    {(subsection as any).content && (
+                      <p class="subsection-description">{(subsection as any).content}</p>
                     )}
                     
-                    {subsection.type === 'permitted' && (
-                      <div class="highlight-box permitted">
-                        <div class="highlight-icon">
-                          <i class="fas fa-check-circle"></i>
-                        </div>
-                        <ul>
-                          {subsection.items.map((item) => (
-                            <li>{item}</li>
+                    {(subsection as any).type === 'permitted' && (
+                      <div class="permitted-list">
+                        <h5 class="list-title">Permitted activities:</h5>
+                        <ul class="policy-list positive">
+                          {(subsection as any).items?.map((item: string) => (
+                            <li class="policy-item">
+                              <i class="fas fa-check-circle"></i>
+                              {item}
+                            </li>
                           ))}
                         </ul>
                       </div>
                     )}
-
-                    {subsection.type === 'prohibited' && (
-                      <div class="highlight-box prohibited">
-                        <div class="highlight-icon">
-                          <i class="fas fa-times-circle"></i>
-                        </div>
-                        <ul>
-                          {subsection.items.map((item) => (
-                            <li>{item}</li>
+                    
+                    {(subsection as any).type === 'prohibited' && (
+                      <div class="prohibited-list">
+                        <h5 class="list-title">Prohibited activities:</h5>
+                        <ul class="policy-list negative">
+                          {(subsection as any).items?.map((item: string) => (
+                            <li class="policy-item">
+                              <i class="fas fa-times-circle"></i>
+                              {item}
+                            </li>
                           ))}
                         </ul>
                       </div>
                     )}
-
-                    {subsection.items && !subsection.type && (
-                      <ul class="terms-list">
-                        {subsection.items.map((item) => (
-                          <li>{item}</li>
+                    
+                    {(subsection as any).items && !(subsection as any).type && (
+                      <ul class="policy-list">
+                        {(subsection as any).items.map((item: string) => (
+                          <li class="policy-item">
+                            <i class="fas fa-info-circle"></i>
+                            {item}
+                          </li>
                         ))}
                       </ul>
                     )}
-
-                    {subsection.note && (
-                      <div class="terms-note">
-                        <i class="fas fa-info-circle"></i>
-                        <span>{subsection.note}</span>
+                    
+                    {(subsection as any).note && (
+                      <div class="policy-note">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <span>{(subsection as any).note}</span>
                       </div>
                     )}
                   </div>
@@ -361,7 +366,7 @@ const termsSections = [
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function(this: HTMLElement, e: Event) {
         const href = this.getAttribute('href');
         
         // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接

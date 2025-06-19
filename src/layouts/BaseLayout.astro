@@ -221,11 +221,11 @@ if (!isHomePage) {
   
   <!-- Structured Data (JSON-LD) -->
   {structuredData && (
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
   )}
   
   <!-- Additional structured data for educational content -->
-  <script type="application/ld+json">
+  <script type="application/ld+json" is:inline>
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
@@ -283,12 +283,10 @@ if (!isHomePage) {
   </script>
   
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX" is:inline></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      window.dataLayer.push(arguments);
-    }
+    function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-XXXXXXXXXX', {
       page_title: document.title,
@@ -324,10 +322,10 @@ if (!isHomePage) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <!-- 游戏统计管理器 - 全局加载 -->
-  <script src="/js/game-stats-manager.js" defer></script>
+  <script src="/js/game-stats-manager.js" defer is:inline></script>
   
   <!-- 全局games数据 - 供客户端JavaScript使用 -->
-  <script define:vars={{ gamesData }}>
+  <script define:vars={{ gamesData }} is:inline>
     // 设置全局游戏数据
     window.GAMES_DATA = gamesData || [];
     console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
@@ -338,8 +336,8 @@ if (!isHomePage) {
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-  <script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" is:inline></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
@@ -657,7 +655,7 @@ if (!isHomePage) {
         const dropdownMenu = dropdown.querySelector('.dropdown-menu');
         
         if (dropdownToggle && dropdownMenu) {
-          dropdownToggle.addEventListener('click', function(e) {
+          dropdownToggle.addEventListener('click', function(this: HTMLElement, e: Event) {
             // 只对button元素阻止默认行为，不影响a标签
             if (this.tagName === 'BUTTON') {
               e.preventDefault();
@@ -722,10 +720,10 @@ if (!isHomePage) {
       console.log('Search box element:', searchBox);
       
       if (searchBox && searchWrapper) {
-        console.log('Search box placeholder:', searchBox.placeholder);
+        console.log('Search box placeholder:', (searchBox as HTMLInputElement).placeholder);
         
         // 监听输入变化，控制搜索按钮显示
-        searchBox.addEventListener('input', function() {
+        (searchBox as HTMLInputElement).addEventListener('input', function(this: HTMLInputElement) {
           if (this.value.trim().length > 0) {
             searchWrapper.classList.add('has-content');
           } else {
@@ -734,7 +732,7 @@ if (!isHomePage) {
         });
         
         // 搜索框回车事件
-        searchBox.addEventListener('keypress', function(e) {
+        (searchBox as HTMLInputElement).addEventListener('keypress', function(this: HTMLInputElement, e: KeyboardEvent) {
           console.log('=== SEARCH KEYPRESS EVENT ===');
           console.log('Key pressed:', e.key);
           console.log('Key code:', e.keyCode);
@@ -749,7 +747,7 @@ if (!isHomePage) {
         });
         
         // 备用keydown事件
-        searchBox.addEventListener('keydown', function(e) {
+        (searchBox as HTMLInputElement).addEventListener('keydown', function(this: HTMLInputElement, e: KeyboardEvent) {
           if (e.key === 'Enter' || e.keyCode === 13) {
             e.preventDefault();
             e.stopPropagation();
@@ -824,7 +822,8 @@ if (!isHomePage) {
       const path = window.location.pathname;
       
       if (path.includes('/games/')) {
-        const gameName = path.split('/').pop().replace(/-/g, ' ');
+        const gameNamePart = path.split('/').pop();
+        const gameName = gameNamePart ? gameNamePart.replace(/-/g, ' ') : 'this game';
         shareText = `Check out this awesome educational game: ${gameName}! Perfect for learning and fun. Play now at EduGameHQ!`;
       } else if (path.includes('/math-games')) {
         shareText = 'Discover amazing math games that make learning numbers fun! Perfect for students of all ages.';

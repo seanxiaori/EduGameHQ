@@ -1647,10 +1647,13 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     window.gameStatsManager.recordGameEnd(gameSlug, playTime);
     
     // 记录iframe特定统计
-    if (window.gameStatsManager.iframeStats && window.gameStatsManager.iframeStats[gameSlug]) {
-      window.gameStatsManager.iframeStats[gameSlug].interactionCount = iframeInteractionCount;
-      window.gameStatsManager.iframeStats[gameSlug].interactionDensity = interactionDensity;
-      window.gameStatsManager.iframeStats[gameSlug].lastInteraction = lastIframeInteraction;
+    if (window.gameStatsManager?.iframeStats?.[gameSlug]) {
+      const iframeStatsForGame = window.gameStatsManager.iframeStats[gameSlug];
+      if (iframeStatsForGame) {
+        iframeStatsForGame.interactionCount = iframeInteractionCount;
+        iframeStatsForGame.interactionDensity = interactionDensity;
+        iframeStatsForGame.lastInteraction = lastIframeInteraction;
+      }
     }
 
     console.log(`🎮 记录游戏结束 (iframe优化): ${gameSlug}, 游戏时长: ${playTime}秒, 交互次数: ${iframeInteractionCount}, 交互密度: ${interactionDensity.toFixed(2)}/分钟`);
@@ -1702,7 +1705,11 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       threshold: 0.5 // 当50%的游戏区域可见时触发
     });
 
-    observer.observe(document.getElementById('gameIframeWrapper'));
+    const gameIframeWrapper = document.getElementById('gameIframeWrapper');
+    if (gameIframeWrapper) {
+      observer.observe(gameIframeWrapper);
+    }
+
     console.log('👁️ iframe懒加载观察器已设置');
   }
 

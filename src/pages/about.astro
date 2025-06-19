@@ -310,7 +310,7 @@ const aboutSections = [
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function(this: HTMLElement, e: Event) {
         const href = this.getAttribute('href');
         
         // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接

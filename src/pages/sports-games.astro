@@ -46,19 +46,19 @@ const basketballGames = normalizedSportsGames.filter(game =>
 );
 const ballGames = normalizedSportsGames.filter(game => 
   ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(game.subcategory || '') ||
-  game.tags.some(tag => ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(tag)) ||
+  game.tags.some((tag: string) => ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(tag)) ||
   game.title.toLowerCase().includes('football') ||
   game.title.toLowerCase().includes('baseball')
 );
 const precisionGames = normalizedSportsGames.filter(game => 
   ['golf', 'bowling', 'archery'].includes(game.subcategory || '') ||
-  game.tags.some(tag => ['golf', 'bowling', 'mini-golf', 'precision'].includes(tag)) ||
+  game.tags.some((tag: string) => ['golf', 'bowling', 'mini-golf', 'precision'].includes(tag)) ||
   game.title.toLowerCase().includes('golf') ||
   game.title.toLowerCase().includes('bowling')
 );
 const individualSports = normalizedSportsGames.filter(game => 
   ['tennis', 'table-tennis', 'racing', 'athletics'].includes(game.subcategory || '') ||
-  game.tags.some(tag => ['tennis', 'table tennis', 'ping pong', 'racing'].includes(tag)) ||
+  game.tags.some((tag: string) => ['tennis', 'table tennis', 'ping pong', 'racing'].includes(tag)) ||
   game.title.toLowerCase().includes('tennis') ||
   game.title.toLowerCase().includes('ping')
 );
@@ -120,6 +120,9 @@ const sportsCoreSkills = [
     description: 'Build resilience and confidence through challenges'
   }
 ];
+
+console.log('🏃‍♂️ 体育学习建议:', sportsLearningTips.length, '条');
+console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
 ---
 
 <BaseLayout>

@@ -202,13 +202,13 @@ const policySections = [
 
                 {section.items && (
                   <ul class="policy-list">
-                    {section.items.map((item) => (
+                    {section.items.map((item: any) => (
                       <li>
                         {typeof item === 'string' ? (
                           item
                         ) : (
                           <div>
-                            <strong>{item.label}:</strong> {item.detail}
+                            <strong>{(item as any).label}:</strong> {(item as any).detail}
                           </div>
                         )}
                       </li>
@@ -216,7 +216,7 @@ const policySections = [
                   </ul>
                 )}
 
-                {section.subsections && section.subsections.map((subsection) => (
+                {section.subsections && section.subsections.map((subsection: any) => (
                   <div class="subsection">
                     <h3 class="subsection-title">{subsection.title}</h3>
                     {subsection.content && (
@@ -229,8 +229,11 @@ const policySections = [
                           <i class="fas fa-times-circle"></i>
                         </div>
                         <ul>
-                          {subsection.items.map((item) => (
-                            <li>{item}</li>
+                          {subsection.items?.map((item: string) => (
+                            <li class="policy-item">
+                              <i class="fas fa-times-circle"></i>
+                              {item}
+                            </li>
                           ))}
                         </ul>
                       </div>
@@ -239,12 +242,13 @@ const policySections = [
                     {subsection.type === 'may-collect' && (
                       <div class="highlight-box may-collect">
                         <div class="highlight-icon">
-                          <i class="fas fa-info-circle"></i>
+                          <i class="fas fa-question-circle"></i>
                         </div>
                         <ul>
-                          {subsection.items.map((item) => (
-                            <li>
-                              <strong>{item.label}:</strong> {item.detail}
+                          {subsection.items?.map((item: any) => (
+                            <li class="policy-item">
+                              <i class="fas fa-question-circle"></i>
+                              <strong>{(item as any).label}:</strong> {(item as any).detail}
                             </li>
                           ))}
                         </ul>
@@ -253,8 +257,11 @@ const policySections = [
 
                     {subsection.items && !subsection.type && (
                       <ul class="policy-list">
-                        {subsection.items.map((item) => (
-                          <li>{item}</li>
+                        {subsection.items.map((item: string) => (
+                          <li class="policy-item">
+                            <i class="fas fa-check-circle"></i>
+                            {item}
+                          </li>
                         ))}
                       </ul>
                     )}
@@ -299,7 +306,7 @@ const policySections = [
     const navLinks = document.querySelectorAll('.nav-link');
     
     navLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
+      link.addEventListener('click', function(this: HTMLElement, e: Event) {
         const href = this.getAttribute('href');
         
         // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接

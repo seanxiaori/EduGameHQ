@@ -32,13 +32,15 @@ const allGamesList = allGamesData.map((game: any) => ({
 // 统计数据
 const gameStats = {
   totalGames: allGamesData.length,
-  mathGames: allGamesData.filter(game => game.category === 'math').length,
-  scienceGames: allGamesData.filter(game => game.category === 'science').length,
-  languageGames: allGamesData.filter(game => game.category === 'language').length,
-  puzzleGames: allGamesData.filter(game => game.category === 'puzzle').length,
-  sportsGames: allGamesData.filter(game => game.category === 'sports').length,
-  artGames: allGamesData.filter(game => game.category === 'art').length
+  mathGames: allGamesData.filter((game: any) => game.category === 'math').length,
+  scienceGames: allGamesData.filter((game: any) => game.category === 'science').length,
+  languageGames: allGamesData.filter((game: any) => game.category === 'language').length,
+  puzzleGames: allGamesData.filter((game: any) => game.category === 'puzzle').length,
+  sportsGames: allGamesData.filter((game: any) => game.category === 'sports').length,
+  artGames: allGamesData.filter((game: any) => game.category === 'art').length
 };
+
+console.log('📊 游戏统计数据:', gameStats);
 ---
 
 <BaseLayout>
@@ -230,7 +232,7 @@ const gameStats = {
         </div>
         
         <div class="games-grid">
-          {featuredGames.map((game) => (
+          {featuredGames.map((game: any) => (
             <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
           ))}
         </div>
