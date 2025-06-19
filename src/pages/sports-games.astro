@@ -12,7 +12,7 @@ const allGames: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 // 筛选体育游戏
 const sportsGames = allGames.filter(game => game.category === 'sports');
 
-// 兼容性处理：为旧格式游戏添加缺失字段
+// 体育游戏数据规范化
 const normalizedSportsGames: Game[] = sportsGames.map(game => {
   // 兼容旧格式游戏，为它们添加缺失的字段
   return {

@@ -334,42 +334,8 @@ const contactMethods = [
 </BaseLayout>
 
 <script>
-  // FAQ折叠功能
-  function toggleFAQ(index: number): void {
-    const faqItems = document.querySelectorAll('.faq-item');
-    const item = faqItems[index];
-    if (!item) return;
-    
-    const answer = item.querySelector('.faq-answer') as HTMLElement;
-    const icon = item.querySelector('.fa-chevron-down') as HTMLElement;
-    
-    if (!answer || !icon) return;
-    
-    // 切换显示状态
-    if (answer.style.display === 'block') {
-      answer.style.display = 'none';
-      icon.style.transform = 'rotate(0deg)';
-      item.classList.remove('active');
-    } else {
-      // 关闭其他FAQ
-      faqItems.forEach((otherItem, otherIndex) => {
-        if (otherIndex !== index) {
-          const otherAnswer = otherItem.querySelector('.faq-answer') as HTMLElement;
-          const otherIcon = otherItem.querySelector('.fa-chevron-down') as HTMLElement;
-          if (otherAnswer && otherIcon) {
-            otherAnswer.style.display = 'none';
-            otherIcon.style.transform = 'rotate(0deg)';
-            otherItem.classList.remove('active');
-          }
-        }
-      });
-      
-      // 打开当前FAQ
-      answer.style.display = 'block';
-      icon.style.transform = 'rotate(180deg)';
-      item.classList.add('active');
-    }
-  }
+  // FAQ展开/收起功能已通过CSS处理
+  console.log('Help页面加载完成');
 
   // 搜索功能（简单实现）
   document.addEventListener('DOMContentLoaded', function() {

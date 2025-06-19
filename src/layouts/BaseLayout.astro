@@ -64,10 +64,10 @@ try {
 
 // 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
-const currentCategory = pageStructure.categories[currentPath];
-const currentSpecialPage = pageStructure.special[currentPath];
-const currentSystemPage = pageStructure.system[currentPath];
-const currentSupportPage = pageStructure.support[currentPath];
+const currentCategory = (pageStructure.categories as Record<string, any>)[currentPath];
+const currentSpecialPage = (pageStructure.special as Record<string, any>)[currentPath];
+const currentSystemPage = (pageStructure.system as Record<string, any>)[currentPath];
+const currentSupportPage = (pageStructure.support as Record<string, any>)[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
 
 // 构建面包屑导航

@@ -21,8 +21,6 @@ const allGames = gamesData.map((entry: any) => entry.data);
 
 // 分类游戏
 const featuredGames = allGames.filter((game: any) => game.featured).slice(0, 6);
-const trendingGames = allGames.filter(game => game.trending).slice(0, 8);
-const newGames = allGames.filter(game => game.isNew).slice(0, 4);
 
 // 所有游戏列表（用于随机功能）
 const allGamesList = allGamesData.map((game: any) => ({
