@@ -1,17 +1,18 @@
 ---
-// 分享模态框组件 - 提供多平台分享功能
-export interface Props {
-  gameTitle: string;
-  gameUrl: string;
+// ShareModal组件 - 游戏分享功能
+interface Props {
+  gameTitle?: string;
+  gameUrl?: string;
   gameDescription?: string;
   gameImage?: string;
 }
 
-const { gameTitle, gameUrl, gameDescription = "", gameImage = "" } = Astro.props;
-
-// 生成分享文案
-const shareText = `Check out this awesome educational game: ${gameTitle}! Perfect for learning and fun. Play now at EduGameHQ!`;
-const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
+const { 
+  gameTitle = '', 
+  gameUrl = '', 
+  gameDescription = '', 
+  gameImage = '' 
+} = Astro.props;
 ---
 
 <!-- 分享模态框 -->
@@ -529,8 +530,8 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
 
 <script>
   // 分享模态框JavaScript功能
-  let shareModal;
-  let currentGameData = {};
+  let shareModal: HTMLElement | null;
+  let currentGameData: any = {};
 
   // 等待DOM加载完成
   document.addEventListener('DOMContentLoaded', function() {
@@ -546,7 +547,7 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   });
 
   // 打开分享模态框
-  function openShareModal(title, url, description = '', image = '') {
+  function openShareModal(title: string, url: string, description: string = '', image: string = ''): void {
     if (!shareModal) {
       console.error('ShareModal: 模态框未初始化');
       return;
@@ -570,7 +571,9 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   }
 
   // 更新模态框内容
-  function updateModalContent(title, url, description, image) {
+  function updateModalContent(title: string, url: string, description: string, image: string): void {
+    if (!shareModal) return;
+    
     // 更新游戏标题
     const titleElement = shareModal.querySelector('.share-game-title');
     if (titleElement) titleElement.textContent = title;
@@ -584,24 +587,24 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
     if (urlElement) urlElement.textContent = url;
     
     // 更新游戏图片
-    const imageElement = shareModal.querySelector('.share-game-image img');
+    const imageElement = shareModal.querySelector('.share-game-image img') as HTMLImageElement;
     if (imageElement && image) {
       imageElement.src = image;
       imageElement.alt = title;
     }
     
     // 更新输入框的值
-    const urlInput = document.getElementById('gameUrlInput');
+    const urlInput = document.getElementById('gameUrlInput') as HTMLInputElement;
     if (urlInput) urlInput.value = url;
     
-    const embedInput = document.getElementById('embedCodeInput');
+    const embedInput = document.getElementById('embedCodeInput') as HTMLInputElement;
     if (embedInput) {
       embedInput.value = `<iframe src="${url}" width="800" height="600" frameborder="0"></iframe>`;
     }
   }
 
   // 关闭分享模态框
-  function closeShareModal() {
+  function closeShareModal(): void {
     if (!shareModal) return;
     
     shareModal.classList.remove('active');
@@ -609,18 +612,19 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   }
 
   // 从URL获取游戏slug
-  function getGameSlug(url) {
-    return url.split('/').pop() || '';
+  function getGameSlug(url: string): string {
+    const pathParts = url.split('/');
+    return pathParts[pathParts.length - 1] || '';
   }
 
   // 更新分享统计
-  function updateShareCount(gameSlug) {
+  function updateShareCount(gameSlug: string): void {
     try {
       const shareStats = JSON.parse(localStorage.getItem('gameShareStats') || '{}');
       const count = shareStats[gameSlug] || 0;
       const countElement = document.getElementById('shareCount');
       if (countElement) {
-        countElement.textContent = count;
+        countElement.textContent = count.toString();
       }
     } catch (error) {
       console.error('获取分享统计失败:', error);
@@ -628,7 +632,7 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   }
 
   // 记录分享行为
-  function recordShare(gameSlug, platform) {
+  function recordShare(gameSlug: string, platform: string): void {
     try {
       const shareStats = JSON.parse(localStorage.getItem('gameShareStats') || '{}');
       shareStats[gameSlug] = (shareStats[gameSlug] || 0) + 1;
@@ -647,40 +651,40 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   }
 
   // 社交媒体分享函数
-  function shareToTwitter() {
+  function shareToTwitter(): void {
     const text = encodeURIComponent(`Check out this awesome educational game: ${currentGameData.title}! Perfect for learning and fun. #EduGameHQ #EducationalGames #Learning`);
     const url = encodeURIComponent(currentGameData.url);
     window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'width=600,height=400');
     recordShare(getGameSlug(currentGameData.url), 'Twitter');
   }
 
-  function shareToFacebook() {
+  function shareToFacebook(): void {
     const url = encodeURIComponent(currentGameData.url);
     window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`, '_blank', 'width=600,height=400');
     recordShare(getGameSlug(currentGameData.url), 'Facebook');
   }
 
-  function shareToWhatsApp() {
+  function shareToWhatsApp(): void {
     const text = encodeURIComponent(`Check out this awesome educational game: ${currentGameData.title}! ${currentGameData.url}`);
     window.open(`https://wa.me/?text=${text}`, '_blank');
     recordShare(getGameSlug(currentGameData.url), 'WhatsApp');
   }
 
-  function shareToTelegram() {
+  function shareToTelegram(): void {
     const text = encodeURIComponent(`Check out this awesome educational game: ${currentGameData.title}!`);
     const url = encodeURIComponent(currentGameData.url);
     window.open(`https://t.me/share/url?url=${url}&text=${text}`, '_blank');
     recordShare(getGameSlug(currentGameData.url), 'Telegram');
   }
 
-  function shareToEmail() {
+  function shareToEmail(): void {
     const subject = encodeURIComponent(`Check out this educational game: ${currentGameData.title}`);
     const body = encodeURIComponent(`Hi!\n\nI found this amazing educational game that I think you'd enjoy:\n\n${currentGameData.title}\n${currentGameData.description}\n\nPlay it here: ${currentGameData.url}\n\nEnjoy learning!\n\nShared from EduGameHQ`);
     window.open(`mailto:?subject=${subject}&body=${body}`);
     recordShare(getGameSlug(currentGameData.url), 'Email');
   }
 
-  function shareToReddit() {
+  function shareToReddit(): void {
     const title = encodeURIComponent(`Check out this educational game: ${currentGameData.title}`);
     const url = encodeURIComponent(currentGameData.url);
     window.open(`https://reddit.com/submit?title=${title}&url=${url}`, '_blank');
@@ -688,13 +692,13 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   }
 
   // 复制功能
-  function copyGameUrl() {
-    const input = document.getElementById('gameUrlInput');
+  function copyGameUrl(): void {
+    const input = document.getElementById('gameUrlInput') as HTMLInputElement;
     if (!input) return;
     
     input.select();
-    navigator.clipboard.writeText(input.value).then(() => {
-      const btn = event.target.closest('.copy-btn');
+    navigator.clipboard.writeText(input.value || '').then(() => {
+      const btn = (event?.target as HTMLElement)?.closest('.copy-btn') as HTMLElement;
       if (!btn) return;
       
       const originalText = btn.innerHTML;
@@ -710,13 +714,13 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
     });
   }
 
-  function copyEmbedCode() {
-    const input = document.getElementById('embedCodeInput');
+  function copyEmbedCode(): void {
+    const input = document.getElementById('embedCodeInput') as HTMLInputElement;
     if (!input) return;
     
     input.select();
-    navigator.clipboard.writeText(input.value).then(() => {
-      const btn = event.target.closest('.copy-btn');
+    navigator.clipboard.writeText(input.value || '').then(() => {
+      const btn = (event?.target as HTMLElement)?.closest('.copy-btn') as HTMLElement;
       if (!btn) return;
       
       const originalText = btn.innerHTML;
@@ -733,7 +737,7 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   }
 
   // 显示分享成功提示
-  function showShareSuccess(message) {
+  function showShareSuccess(message: string): void {
     // 移除现有提示
     const existingToast = document.querySelector('.share-success-toast');
     if (existingToast) {
@@ -807,14 +811,14 @@ const hashtags = "EduGameHQ,EducationalGames,Learning,Kids,Games";
   });
 
   // 将函数绑定到全局作用域
-  window.openShareModal = openShareModal;
-  window.closeShareModal = closeShareModal;
-  window.shareToTwitter = shareToTwitter;
-  window.shareToFacebook = shareToFacebook;
-  window.shareToWhatsApp = shareToWhatsApp;
-  window.shareToTelegram = shareToTelegram;
-  window.shareToEmail = shareToEmail;
-  window.shareToReddit = shareToReddit;
-  window.copyGameUrl = copyGameUrl;
-  window.copyEmbedCode = copyEmbedCode;
+  (window as any).openShareModal = openShareModal;
+  (window as any).closeShareModal = closeShareModal;
+  (window as any).shareToTwitter = shareToTwitter;
+  (window as any).shareToFacebook = shareToFacebook;
+  (window as any).shareToWhatsApp = shareToWhatsApp;
+  (window as any).shareToTelegram = shareToTelegram;
+  (window as any).shareToEmail = shareToEmail;
+  (window as any).shareToReddit = shareToReddit;
+  (window as any).copyGameUrl = copyGameUrl;
+  (window as any).copyEmbedCode = copyEmbedCode;
 </script> 

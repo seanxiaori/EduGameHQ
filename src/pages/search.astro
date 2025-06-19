@@ -8,65 +8,42 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
-// 搜索相关的SEO数据
-let seoData = {
-  title: "Search Educational Games | EduGameHQ",
-  description: "Search through our collection of educational games for kids aged 6-18. Find math, science, coding, language, and puzzle games.",
-  keywords: ["search games", "educational games", "learning games", "kids games", "school games"]
-};
+// 读取游戏数据
+const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+const allGames: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-let allGames: Game[] = [];
+// 获取搜索参数
+const searchQuery = Astro.url.searchParams.get('q') || '';
+const hasSearched = searchQuery.length > 0;
 
-try {
-  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGames = JSON.parse(fileContent) as Game[];
-} catch (error) {
-  console.warn('无法读取游戏数据文件:', error);
-}
-
-// 获取搜索查询参数
-const url = new URL(Astro.request.url);
-const searchQuery = url.searchParams.get('q')?.trim() || '';
-
-// 执行搜索逻辑
+// 搜索逻辑
 let searchResults: Game[] = [];
-let hasSearched = false;
-
-if (searchQuery) {
-  hasSearched = true;
-  const searchTerm = searchQuery.toLowerCase();
-  
-  // 简单但有效的搜索逻辑
-  searchResults = allGames.filter(game => {
-    return (
-      // 按游戏标题搜索
-      game.title.toLowerCase().includes(searchTerm) ||
-      // 按游戏描述搜索
-      game.description.toLowerCase().includes(searchTerm) ||
-      // 按游戏分类搜索
-      game.category.toLowerCase().includes(searchTerm) ||
-      // 按游戏标签搜索（如果有）
-      (game.tags && game.tags.some(tag => tag.toLowerCase().includes(searchTerm))) ||
-      // 按开发者搜索（如果有）
-      (game.developer && game.developer.toLowerCase().includes(searchTerm))
-    );
-  });
-  
-  // 更新SEO数据
-  if (searchResults.length > 0) {
-    seoData.title = `${searchQuery} Games - Found ${searchResults.length} Results | EduGameHQ`;
-    seoData.description = `Discover ${searchResults.length} educational ${searchQuery} games for kids. Play fun and engaging learning games online.`;
-  } else {
-    seoData.title = `No Results for "${searchQuery}" | EduGameHQ`;
-    seoData.description = `No games found for "${searchQuery}". Try different keywords or explore our popular educational games.`;
-  }
+if (hasSearched) {
+  const query = searchQuery.toLowerCase();
+  searchResults = allGames.filter(game => 
+    game.title.toLowerCase().includes(query) ||
+    game.description.toLowerCase().includes(query) ||
+    game.category.toLowerCase().includes(query) ||
+    game.tags.some(tag => tag.toLowerCase().includes(query))
+  );
 }
+
+// SEO数据
+const seoData = {
+  title: hasSearched 
+    ? `Search Results for "${searchQuery}" - EduGameHQ`
+    : 'Search Educational Games - EduGameHQ',
+  description: hasSearched 
+    ? `Found ${searchResults.length} educational games matching "${searchQuery}". Play free online learning games for kids.`
+    : 'Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.',
+  keywords: hasSearched 
+    ? [searchQuery, 'educational games', 'learning games', 'search results']
+    : ['search games', 'educational games', 'learning games', 'find games', 'game search']
+};
 
 // 获取推荐的热门游戏（用于无搜索结果时显示）
 const popularGames = allGames
-  .filter(game => game.featured || game.popularity > 800)
+  .filter(game => game.featured || (game.popularity && game.popularity > 800))
   .slice(0, 12);
 
 // 热门搜索关键词 - 更新为当前实际使用的分类

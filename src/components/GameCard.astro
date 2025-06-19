@@ -2,31 +2,6 @@
 // 导入类型定义
 import type { Game } from '../types/game';
 
-// 通用游戏卡片组件 - 支持所有动态数据
-export interface GameCardProps {
-  game: {
-    slug: string;
-    title: string;
-    description: string;
-    thumbnailUrl: string;
-    category: string;
-    categoryName: string;
-    difficulty: string;
-    ageRange: string;
-    minAge?: number;
-    maxAge?: number;
-    featured?: boolean;
-    trending?: boolean;
-    isNew?: boolean;
-    playCount?: number;
-    tags?: string[];
-    developer?: string;
-  };
-  showPlayHistory?: boolean;
-  showPopularity?: boolean;
-  showDeveloper?: boolean;
-}
-
 // 组件属性接口
 interface Props {
   game: Game;
@@ -34,11 +9,9 @@ interface Props {
   showFeatured?: boolean;
   showNew?: boolean;
   showUpdated?: boolean;
-  showPlayHistory?: boolean;
   showPopularity?: boolean;
   showFavorite?: boolean;
   showDeveloper?: boolean;
-  playCount?: number;
 }
 
 // 解构属性并设置默认值
@@ -48,38 +21,33 @@ const {
   showFeatured = false,
   showNew = false,
   showUpdated = false,
-  showPlayHistory = false,
   showPopularity = false,
   showFavorite = false,
-  showDeveloper = false,
-  playCount = 0
+  showDeveloper = false
 } = Astro.props;
 
-// 确保游戏对象有效
-const safeGame: Game = {
-  slug: '',
-  title: 'Unknown Game',
-  description: 'No description available',
-  category: 'puzzle',
-  categoryName: 'Puzzle',
-  difficulty: 'Easy',
-  ageRange: '6-12',
-  thumbnailUrl: '/images/logo.svg',
-  gameUrl: '',
-  featured: false,
-  trending: false,
-  isNew: false,
-  tags: [],
-  developer: 'Unknown',
+// 确保游戏对象有效 - 修复类型不匹配问题
+const safeGame: Partial<Game> & Pick<Game, 'slug' | 'title' | 'description' | 'category' | 'categoryName' | 'iframeUrl' | 'difficulty' | 'ageRange' | 'minAge' | 'maxAge' | 'thumbnailUrl' | 'featured' | 'trending' | 'isNew' | 'tags' | 'developer' | 'source' | 'iframeCompatible' | 'verified'> = {
+  slug: game.slug || '',
+  title: game.title || 'Unknown Game',
+  description: game.description || 'No description available',
+  category: game.category || 'puzzle',
+  categoryName: game.categoryName || 'Puzzle',
+  iframeUrl: game.iframeUrl || '',
+  difficulty: game.difficulty || 'Easy',
+  ageRange: game.ageRange || '6-12',
+  minAge: game.minAge || 6,
+  maxAge: game.maxAge || 12,
+  thumbnailUrl: game.thumbnailUrl || '/images/logo.svg',
+  featured: game.featured || false,
+  trending: game.trending || false,
+  isNew: game.isNew || false,
+  tags: game.tags || [],
+  developer: game.developer || 'Unknown',
+  source: game.source || 'External',
+  iframeCompatible: game.iframeCompatible ?? true,
+  verified: game.verified ?? true,
   ...game
-};
-
-// 格式化人气数字
-const formatPopularity = (num: number) => {
-  if (!num || num === 0) return '0';
-  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
-  if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
-  return num.toString();
 };
 
 // 游戏URL
@@ -291,7 +259,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       document.querySelectorAll('.lazy-image').forEach(img => {
         const dataSrc = img.getAttribute('data-src');
         if (dataSrc) {
-          img.src = dataSrc;
+          (img as HTMLImageElement).src = dataSrc;
         }
       });
       return;
@@ -301,7 +269,7 @@ const gameUrl = `/games/${safeGame.slug}`;
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          const img = entry.target;
+          const img = entry.target as HTMLImageElement;
           const dataSrc = img.getAttribute('data-src');
           
           if (dataSrc) {
@@ -334,5 +302,5 @@ const gameUrl = `/games/${safeGame.slug}`;
   }
 
   // 导出到全局，供其他脚本使用
-  window.initImageLazyLoading = initImageLazyLoading;
+  (window as any).initImageLazyLoading = initImageLazyLoading;
 </script> 

@@ -5,27 +5,20 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
+// 读取游戏数据
+const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+const allGamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
+
+// SEO数据
 const seoData = {
-  title: "Your Favorite Games | Educational Games Collection | EduGameHQ",
-  description: "Access your personalized collection of favorite educational games. Keep track of the games you love most and continue your learning journey.",
-  keywords: ["favorite games", "saved games", "educational favorites", "game collection", "personalized learning", "bookmarked games"],
-  ogImage: "/images/favorites-og.jpg"
+  title: 'Your Favorite Games - EduGameHQ',
+  description: 'Your personal collection of favorite educational games. Keep playing the games you love most and discover new ones!',
+  keywords: ['favorite games', 'educational games collection', 'saved games', 'bookmarked games', 'learning games favorites']
 };
-
-// 从JSON文件读取游戏数据
-const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-let allGamesData: Game[] = [];
-
-try {
-  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as Game[];
-} catch (error) {
-  console.warn('Unable to read games data file:', error);
-}
 
 // 获取一些示例推荐游戏（不同分类的热门游戏）
 const recommendedGames = allGamesData
-  .filter(game => game.featured || game.popularity > 500)
+  .filter(game => game.featured || (game.popularity && game.popularity > 500))
   .slice(0, 6);
 ---
 

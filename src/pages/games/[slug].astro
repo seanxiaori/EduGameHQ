@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import ShareModal from '../../components/ShareModal.astro';
+import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
@@ -9,24 +10,29 @@ import path from 'path';
 export async function getStaticPaths() {
   // 读取游戏数据
   const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
-  const gamesData = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
+  const gamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
   
-  return gamesData.map((game: any) => ({
+  return gamesData.map((game: Game) => ({
     params: { slug: game.slug },
     props: { game }
   }));
 }
 
+// 定义Props接口
+interface Props {
+  game: Game;
+}
+
 // 获取当前游戏数据
-const { game } = Astro.props;
+const { game }: Props = Astro.props;
 
 // 读取所有游戏数据用于相关游戏推荐
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
-const gamesData = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
+const gamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
 // 获取相关游戏（同分类的其他游戏，最多4个）
 const relatedGames = gamesData
-  .filter((gameData: any) => gameData.slug !== game.slug && gameData.category === game.category)
+  .filter((gameData: Game) => gameData.slug !== game.slug && gameData.category === game.category)
   .slice(0, 4);
 
 // 游戏来源检测函数
@@ -46,12 +52,12 @@ function getGameSource(url: string | undefined | null): string {
 }
 
 // 获取游戏的iframe URL - 兼容两种字段名
-function getGameIframeUrl(game: any): string {
+function getGameIframeUrl(game: Game): string {
   return game.iframeUrl || game.embedUrl || '';
 }
 
 // 获取游戏的源URL - 兼容不同字段名
-function getGameSourceUrl(game: any): string {
+function getGameSourceUrl(game: Game): string {
   return game.sourceUrl || game.url || '';
 }
 
@@ -319,7 +325,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           </div>
           
           <div class="related-games-grid">
-            {relatedGames.map((relatedGame: any) => (
+            {relatedGames.map((relatedGame: Game) => (
               <GameCard 
                 game={relatedGame} 
                 showPopularity={true} 
@@ -1343,10 +1349,10 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     }
   }
 
-  function handleShareClick(button) {
-    const title = button.getAttribute('data-game-title');
-    const description = button.getAttribute('data-game-description');
-    const image = button.getAttribute('data-game-image');
+  function handleShareClick(button: HTMLElement): void {
+    const title = button.getAttribute('data-game-title') || '';
+    const description = button.getAttribute('data-game-description') || '';
+    const image = button.getAttribute('data-game-image') || '';
     const url = window.location.href;
     
     // 调用ShareModal的全局openShareModal函数
@@ -1358,7 +1364,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     }
   }
 
-  function shareGameFallback(title, url, description) {
+  function shareGameFallback(title: string, url: string, description: string): void {
     // 直接调用ShareModal的全局函数
     if (navigator.share) {
       navigator.share({
@@ -1372,7 +1378,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   }
 
   // 显示通知函数
-  function showNotification(message, type = 'info') {
+  function showNotification(message: string, type: string = 'info'): void {
     // 移除现有通知
     const existingNotification = document.querySelector('.favorite-notification');
     if (existingNotification) {
@@ -1427,7 +1433,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   }
 
   // 初始化收藏状态
-  function initializeFavoriteState() {
+  function initializeFavoriteState(): void {
     const gameSlug = window.location.pathname.split('/').pop();
     if (!gameSlug) return;
 
@@ -1435,7 +1441,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
       const isFavorited = favorites.includes(gameSlug);
       
-      const favoriteBtn = document.querySelector('.favorite-btn');
+      const favoriteBtn = document.querySelector('.favorite-btn') as HTMLElement;
       const heartIcon = favoriteBtn?.querySelector('i');
       
       if (isFavorited) {
@@ -1467,13 +1473,13 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   (window as any).handleShareClick = handleShareClick;
 
   // 游戏统计数据记录功能 (iframe优化版)
-  let gameStartTime = null;
-  let gameSlug = null;
+  let gameStartTime: number | null = null;
+  let gameSlug: string | null = null;
   let iframeInteractionCount = 0;
-  let lastIframeInteraction = null;
+  let lastIframeInteraction: any = null;
 
-  function initializeGameStats() {
-    gameSlug = window.location.pathname.split('/').pop();
+  function initializeGameStats(): void {
+    gameSlug = window.location.pathname.split('/').pop() || null;
     if (!gameSlug) return;
 
     // 等待统计管理器加载
@@ -1497,8 +1503,8 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     console.log(`🎮 开始记录游戏统计 (iframe优化): ${gameSlug}`);
   }
 
-  function setupIframeInteractionTracking() {
-    const iframe = document.querySelector('.game-iframe');
+  function setupIframeInteractionTracking(): void {
+    const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
     if (!iframe) return;
 
     // 监听iframe的鼠标事件
@@ -1568,7 +1574,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     console.log('👂 iframe交互监听已设置');
   }
 
-  function recordIframeInteraction(type, data = null) {
+  function recordIframeInteraction(type: string, data: any = null): void {
     iframeInteractionCount++;
     lastIframeInteraction = {
       type: type,
@@ -1584,10 +1590,10 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     console.log(`🎯 iframe交互记录: ${type}`, data);
   }
 
-  function injectInteractionScript(iframe) {
+  function injectInteractionScript(iframe: HTMLIFrameElement): void {
     try {
       // 尝试向iframe注入交互监听脚本
-      const script = iframe.contentDocument.createElement('script');
+      const script = iframe.contentDocument!.createElement('script');
       script.textContent = `
         // 游戏内交互监听脚本
         let interactionCount = 0;
@@ -1622,14 +1628,14 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         console.log('🎮 游戏内交互监听脚本已注入');
       `;
       
-      iframe.contentDocument.head.appendChild(script);
+      iframe.contentDocument!.head.appendChild(script);
       console.log('✅ 成功注入iframe交互监听脚本');
-    } catch (error) {
+    } catch (error: any) {
       console.log('❌ 无法注入iframe脚本 (跨域限制):', error.message);
     }
   }
 
-  function recordGameEnd() {
+  function recordGameEnd(): void {
     if (!gameSlug || !gameStartTime || typeof window.gameStatsManager === 'undefined') return;
 
     const playTime = Math.floor((Date.now() - gameStartTime) / 1000); // 转换为秒
@@ -1701,10 +1707,10 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   }
 
   // 🎮 手动加载游戏iframe
-  window.loadGameIframe = function() {
+  window.loadGameIframe = function(): void {
     const placeholder = document.getElementById('iframePlaceholder');
-    const iframe = document.getElementById('gameIframe');
-    const loadGameBtn = document.getElementById('loadGameBtn');
+    const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
+    const loadGameBtn = document.getElementById('loadGameBtn') as HTMLButtonElement;
     
     if (!placeholder || !iframe) {
       console.error('❌ 找不到iframe元素');
@@ -1741,7 +1747,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         
         // 记录性能数据
         if (window.gameStatsManager) {
-          window.gameStatsManager.recordIframeLoadTime(gameSlug, loadTime);
+          window.gameStatsManager.recordIframeLoadTime(gameSlug!, loadTime);
         }
       };
       
@@ -1755,15 +1761,18 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         const errorMsg = document.createElement('div');
         errorMsg.className = 'iframe-error';
         errorMsg.innerHTML = '⚠️ Game failed to load. Please try again or check your connection.';
-        placeholder.querySelector('.placeholder-content').appendChild(errorMsg);
+        const placeholderContent = placeholder.querySelector('.placeholder-content');
+        if (placeholderContent) {
+          placeholderContent.appendChild(errorMsg);
+        }
       };
     }
   };
 
   // 🤖 自动加载游戏（用户滚动到游戏区域后自动触发）
-  function autoLoadGame() {
+  function autoLoadGame(): void {
     const placeholder = document.getElementById('iframePlaceholder');
-    const loadGameBtn = document.getElementById('loadGameBtn');
+    const loadGameBtn = document.getElementById('loadGameBtn') as HTMLButtonElement;
     
     if (placeholder && placeholder.style.display !== 'none') {
       console.log('🤖 自动加载游戏iframe');
@@ -1772,19 +1781,21 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       loadGameBtn.innerHTML = '<i class="fas fa-rocket"></i> Auto Loading...';
       
       setTimeout(() => {
-        loadGameIframe();
+        if (window.loadGameIframe) {
+          window.loadGameIframe();
+        }
       }, 1000);
     }
   }
 
   // 🔄 重启游戏优化
-  window.restartGame = function() {
-    const iframe = document.getElementById('gameIframe');
+  window.restartGame = function(): void {
+    const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
     if (iframe && iframe.src) {
       console.log('🔄 重启游戏');
       
       // 记录重启事件
-      if (window.gameStatsManager) {
+      if (window.gameStatsManager && gameSlug) {
         window.gameStatsManager.recordGameRestart(gameSlug);
       }
       
@@ -1800,8 +1811,8 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   };
 
   // 📺 全屏功能优化
-  window.toggleFullscreen = function() {
-    const iframe = document.getElementById('gameIframe');
+  window.toggleFullscreen = function(): void {
+    const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
     if (!iframe) {
       showGameNotification('⚠️ Please load the game first', 'warning');
       return;
@@ -1813,7 +1824,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         showGameNotification('📺 Fullscreen Mode Enabled', 'success');
         
         // 记录全屏事件
-        if (window.gameStatsManager) {
+        if (window.gameStatsManager && gameSlug) {
           window.gameStatsManager.recordGameFullscreen(gameSlug, true);
         }
       }).catch(err => {
@@ -1826,7 +1837,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         showGameNotification('📱 Fullscreen Mode Disabled', 'info');
         
         // 记录全屏事件
-        if (window.gameStatsManager) {
+        if (window.gameStatsManager && gameSlug) {
           window.gameStatsManager.recordGameFullscreen(gameSlug, false);
         }
       });
@@ -1834,7 +1845,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   };
 
   // 🎮 显示游戏通知
-  function showGameNotification(message, type = 'info') {
+  function showGameNotification(message: string, type: string = 'info'): void {
     // 移除现有通知
     const existingNotification = document.querySelector('.game-notification');
     if (existingNotification) {

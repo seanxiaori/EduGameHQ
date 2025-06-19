@@ -15,6 +15,7 @@ export interface Game {
   difficulty: 'Easy' | 'Medium' | 'Hard';
   rating?: number;
   playCount?: number;
+  popularity?: number;
   tags: string[];
   featured?: boolean;
   trending?: boolean;
@@ -25,7 +26,7 @@ export interface Game {
   howToPlay?: string[];
   screenshots?: string[];
   gameGuide?: {
-    howToPlay: string[];
+    howToPlay?: string[];
     controls?: {
       keyboard?: string;
       mouse?: string;
@@ -44,6 +45,10 @@ export interface Game {
   lastChecked?: string;
   developer?: string;
   releaseDate?: string;
+  id?: string;
+  embedUrl?: string;
+  thumbnail?: string;
+  subcategory?: string;
 }
 
 export interface GameData {
@@ -60,12 +65,34 @@ export interface GameHistory {
   timestamp: number;
 }
 
-// 扩展Window接口以支持自定义属性
+export interface GameStatsManager {
+  recordGameStart: (slug: string, gameInfo: any) => void;
+  recordGameEnd: (slug: string, playTime: number) => void;
+  recordGameRestart: (slug: string) => void;
+  recordGameFullscreen: (slug: string, isFullscreen: boolean) => void;
+  recordIframeLoadTime: (slug: string, loadTime: number) => void;
+  updateGameActivity: (slug: string) => void;
+  iframeStats?: {
+    [slug: string]: {
+      interactionCount: number;
+      interactionDensity: number;
+      lastInteraction: any;
+    };
+  };
+}
+
 declare global {
   interface Window {
     dataLayer: any[];
     gtag: (...args: any[]) => void;
     playRandomGame: () => void;
     performSearch?: (query: string) => void;
+    gameStatsManager?: GameStatsManager;
+    openShareModal?: (title: string, url: string, description: string, image: string) => void;
+    toggleFullscreen?: () => void;
+    restartGame?: () => void;
+    loadGameIframe?: () => void;
+    GAMES_DATA?: any[];
+    initImageLazyLoading?: () => void;
   }
 } 

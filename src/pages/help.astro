@@ -335,11 +335,15 @@ const contactMethods = [
 
 <script>
   // FAQ折叠功能
-  function toggleFAQ(index) {
+  function toggleFAQ(index: number): void {
     const faqItems = document.querySelectorAll('.faq-item');
     const item = faqItems[index];
-    const answer = item.querySelector('.faq-answer');
-    const icon = item.querySelector('.fa-chevron-down');
+    if (!item) return;
+    
+    const answer = item.querySelector('.faq-answer') as HTMLElement;
+    const icon = item.querySelector('.fa-chevron-down') as HTMLElement;
+    
+    if (!answer || !icon) return;
     
     // 切换显示状态
     if (answer.style.display === 'block') {
@@ -350,11 +354,13 @@ const contactMethods = [
       // 关闭其他FAQ
       faqItems.forEach((otherItem, otherIndex) => {
         if (otherIndex !== index) {
-          const otherAnswer = otherItem.querySelector('.faq-answer');
-          const otherIcon = otherItem.querySelector('.fa-chevron-down');
-          otherAnswer.style.display = 'none';
-          otherIcon.style.transform = 'rotate(0deg)';
-          otherItem.classList.remove('active');
+          const otherAnswer = otherItem.querySelector('.faq-answer') as HTMLElement;
+          const otherIcon = otherItem.querySelector('.fa-chevron-down') as HTMLElement;
+          if (otherAnswer && otherIcon) {
+            otherAnswer.style.display = 'none';
+            otherIcon.style.transform = 'rotate(0deg)';
+            otherItem.classList.remove('active');
+          }
         }
       });
       
@@ -367,23 +373,31 @@ const contactMethods = [
 
   // 搜索功能（简单实现）
   document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.querySelector('.search-box input');
+    const searchInput = document.querySelector('.search-box input') as HTMLInputElement;
     const faqItems = document.querySelectorAll('.faq-item');
     
-    searchInput.addEventListener('input', function() {
-      const searchTerm = this.value.toLowerCase();
-      
-      faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question span').textContent.toLowerCase();
-        const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+    if (searchInput) {
+      searchInput.addEventListener('input', function(this: HTMLInputElement) {
+        const searchTerm = this.value.toLowerCase();
         
-        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = searchTerm === '' ? 'block' : 'none';
-        }
+        faqItems.forEach(item => {
+          const questionElement = item.querySelector('.faq-question span');
+          const answerElement = item.querySelector('.faq-answer p');
+          
+          if (questionElement && answerElement) {
+            const question = questionElement.textContent?.toLowerCase() || '';
+            const answer = answerElement.textContent?.toLowerCase() || '';
+            
+            const itemElement = item as HTMLElement;
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+              itemElement.style.display = 'block';
+            } else {
+              itemElement.style.display = searchTerm === '' ? 'block' : 'none';
+            }
+          }
+        });
       });
-    });
+    }
   });
 </script>
 
