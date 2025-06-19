@@ -296,19 +296,25 @@ console.log('📊 游戏统计数据:', gameStats);
   </main>
 
   <!-- 随机游戏功能脚本 -->
-  <script define:vars={{ allGamesList }} is:inline>
+  <script is:inline>
     // 随机游戏功能 - 定义为全局函数
     window.playRandomGame = function() {
-      const randomIndex = Math.floor(Math.random() * allGamesList.length);
-      const randomGame = allGamesList[randomIndex];
-      if (randomGame) {
-        window.location.href = randomGame.url;
+      // 使用全局GAMES_DATA而不是重复声明的allGamesList
+      if (window.GAMES_DATA && window.GAMES_DATA.length > 0) {
+        const randomIndex = Math.floor(Math.random() * window.GAMES_DATA.length);
+        const randomGame = window.GAMES_DATA[randomIndex];
+        if (randomGame && randomGame.slug) {
+          window.location.href = `/games/${randomGame.slug}`;
+        }
+      } else {
+        console.warn('⚠️ 游戏数据未加载，无法执行随机游戏功能');
       }
     };
 
     // 页面加载完成后的初始化
     document.addEventListener('DOMContentLoaded', function() {
       console.log('✅ 首页加载完成，统一游戏卡片系统已启用');
+      console.log('🎮 可用游戏数量:', window.GAMES_DATA ? window.GAMES_DATA.length : 0);
     });
   </script>
 </BaseLayout>
