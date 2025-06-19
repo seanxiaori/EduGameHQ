@@ -3,19 +3,48 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
-import { getCollection } from 'astro:content';
+import fs from 'fs';
+import path from 'path';
+import '../styles/game-card.css';
 
-// 获取所有游戏数据
-const allGamesData = await getCollection('games');
-const allGames: Game[] = allGamesData.map((entry: any) => ({
-  ...entry.data,
-  slug: entry.slug
-}));
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData = [];
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent);
+  console.log(`✅ 搜索页面成功加载 ${allGamesData.length} 个游戏数据`);
+} catch (error) {
+  console.error('❌ 搜索页面无法读取游戏数据文件:', error);
+}
+
+// 使用JSON数据作为游戏源
+const allGames: Game[] = allGamesData;
 
 // 获取推荐的热门游戏
 const popularGames = allGames
-  .filter(game => game.featured || (game.popularity && game.popularity > 800))
+  .filter((game: any) => game.featured || (game.popularity && game.popularity > 800))
   .slice(0, 12);
+
+console.log(`🔍 搜索页面找到 ${popularGames.length} 个推荐游戏`);
+console.log(`📊 搜索页面游戏总数: ${allGames.length}`);
+
+// 从URL获取搜索查询
+const url = Astro.url;
+const searchQuery = url.searchParams.get('q') || '';
+
+// 执行搜索（如果有查询词）
+let searchResults: Game[] = [];
+if (searchQuery) {
+  const searchTerm = searchQuery.toLowerCase().trim();
+  searchResults = allGames.filter((game: any) => 
+    game.title.toLowerCase().includes(searchTerm) ||
+    game.description.toLowerCase().includes(searchTerm) ||
+    game.category.toLowerCase().includes(searchTerm) ||
+    (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
+  );
+  console.log(`🔍 搜索"${searchQuery}"找到 ${searchResults.length} 个结果`);
+}
 
 // 热门搜索关键词
 const popularSearchTerms = [
@@ -29,16 +58,13 @@ const popularSearchTerms = [
 
 // SEO数据
 const seoData = {
-  title: 'Search Educational Games - EduGameHQ',
-  description: 'Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.',
+  title: searchQuery ? `Search Results for "${searchQuery}" - EduGameHQ` : 'Search Educational Games - EduGameHQ',
+  description: searchQuery ? `Found ${searchResults.length} educational games matching "${searchQuery}". Play fun learning games for kids.` : 'Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.',
   keywords: ['search games', 'educational games', 'learning games', 'find games', 'game search']
 };
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
-  <!-- 引入统一游戏卡片样式 -->
-  <link rel="stylesheet" href="/src/styles/game-card.css">
-  
   <main class="main-content">
     <div class="content-wrapper">
       
@@ -52,62 +78,154 @@ const seoData = {
           </div>
           <div class="header-text">
             <div>
-              <h1 class="page-title">Search Educational Games</h1>
-              <p class="page-description">
-                Find the perfect educational game for your learning journey
-              </p>
+              {searchQuery ? (
+                searchResults.length > 0 ? (
+                  <>
+                    <h1 class="page-title">Found {searchResults.length} Results</h1>
+                    <p class="page-description">Search results for: <strong>"{searchQuery}"</strong></p>
+                  </>
+                ) : (
+                  <>
+                    <h1 class="page-title">No Results Found</h1>
+                    <p class="page-description">Search results for: <strong>"{searchQuery}"</strong></p>
+                  </>
+                )
+              ) : (
+                <>
+                  <h1 class="page-title">Search Educational Games</h1>
+                  <p class="page-description">Find the perfect educational game for your learning journey</p>
+                </>
+              )}
             </div>
           </div>
         </div>
       </section>
 
-      <section class="search-prompt">
-        <div class="module-header">
-          <div class="module-icon prompt-icon">
-            <i class="fas fa-lightbulb"></i>
+      <!-- 搜索结果 -->
+      {searchQuery && searchResults.length > 0 && (
+        <section class="search-results">
+          <div class="module-header">
+            <div class="module-icon results-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Search Results</h2>
+              <p class="module-subtitle">Found {searchResults.length} games matching "{searchQuery}"</p>
+            </div>
           </div>
-          <div class="module-title-group">
-            <h2 class="module-title">Start Your Learning Adventure</h2>
-            <p class="module-subtitle">Use the search bar above to find educational games by subject, difficulty, or keywords</p>
-          </div>
-        </div>
-        
-        <div class="popular-searches">
-          <h3 class="section-title">Popular Searches</h3>
-          <div class="search-tags">
-            {popularSearchTerms.map(item => (
-              <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
-                <i class={`fas ${item.icon}`}></i>
-                <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)}</span>
-              </a>
+          
+          <div class="games-grid">
+            {searchResults.map((game: any) => (
+              <GameCard 
+                game={game} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* 推荐游戏（当没有搜索或没有结果时显示） */}
-      <section class="recommendations">
-        <div class="module-header">
-          <div class="module-icon recommendations-icon">
-            <i class="fas fa-star"></i>
+      <!-- 无搜索结果 -->
+      {searchQuery && searchResults.length === 0 && (
+        <section class="no-results">
+          <div class="module-header">
+            <div class="module-icon no-results-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">No Games Found</h2>
+              <p class="module-subtitle">Sorry, we couldn't find any games matching "{searchQuery}"</p>
+            </div>
           </div>
-          <div class="module-title-group">
-            <h2 class="module-title">Popular Educational Games</h2>
-            <p class="module-subtitle">Start with our most loved educational games</p>
+          
+          <div class="search-suggestions">
+            <h3 class="section-title">Try searching for:</h3>
+            <div class="search-tags">
+              {popularSearchTerms.map(item => (
+                <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
+                  <i class={`fas ${item.icon}`}></i>
+                  <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)} Games</span>
+                </a>
+              ))}
+            </div>
           </div>
-        </div>
-        
-        <div class="games-grid">
-          {popularGames.map((game) => (
-            <GameCard 
-              game={game} 
-              showPopularity={true} 
-              showFavorite={true} 
-              showDeveloper={false}
-            />
-          ))}
-        </div>
-      </section>
+          
+          <div class="module-header" style="margin-top: 3rem;">
+            <div class="module-icon recommendations-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">You Might Like These Games</h2>
+              <p class="module-subtitle">Try these popular games instead</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {popularGames.map((game: any) => (
+              <GameCard 
+                game={game} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 默认视图（没有搜索时） -->
+      {!searchQuery && (
+        <>
+          <section class="search-prompt">
+            <div class="module-header">
+              <div class="module-icon prompt-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="module-title-group">
+                <h2 class="module-title">Start Your Learning Adventure</h2>
+                <p class="module-subtitle">Use the search bar above to find educational games by subject, difficulty, or keywords</p>
+              </div>
+            </div>
+            
+            <div class="popular-searches">
+              <h3 class="section-title">Popular Searches</h3>
+              <div class="search-tags">
+                {popularSearchTerms.map(item => (
+                  <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
+                    <i class={`fas ${item.icon}`}></i>
+                    <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section class="recommendations">
+            <div class="module-header">
+              <div class="module-icon recommendations-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="module-title-group">
+                <h2 class="module-title">Popular Educational Games</h2>
+                <p class="module-subtitle">Start with our most loved educational games</p>
+              </div>
+            </div>
+            
+            <div class="games-grid">
+              {popularGames.map((game: any) => (
+                <GameCard 
+                  game={game} 
+                  showPopularity={true} 
+                  showFavorite={true} 
+                  showDeveloper={false}
+                />
+              ))}
+            </div>
+          </section>
+        </>
+      )}
 
     </div>
   </main>
@@ -205,7 +323,9 @@ const seoData = {
 
   /* 通用模块样式 */
   .search-prompt,
-  .recommendations {
+  .recommendations,
+  .search-results,
+  .no-results {
     background: white;
     border-radius: 20px;
     padding: 2rem;
@@ -242,6 +362,14 @@ const seoData = {
 
   .recommendations-icon {
     background: linear-gradient(135deg, #DC2626, #B91C1C);
+  }
+
+  .results-icon {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+
+  .no-results-icon {
+    background: linear-gradient(135deg, #6B7280, #4B5563);
   }
 
   .module-title-group {
@@ -378,6 +506,10 @@ const seoData = {
     padding: 1.5rem 0;
   }
 
+  .search-suggestions {
+    margin-bottom: 2rem;
+  }
+
   /* 响应式设计 */
   @media (max-width: 1024px) {
     .content-wrapper {
@@ -414,7 +546,9 @@ const seoData = {
     }
     
     .search-prompt,
-    .recommendations {
+    .recommendations,
+    .search-results,
+    .no-results {
       padding: 1.5rem;
     }
     
@@ -446,260 +580,28 @@ const seoData = {
   }
 </style>
 
-<script is:inline define:vars={{ allGames, popularSearchTerms }}>
-  // 客户端搜索逻辑
-  console.log('🔍 搜索页面初始化...');
+<script>
+  // 简单的客户端增强功能
+  console.log('🔍 搜索页面加载完成');
   
-  let currentResults = [];
-  let isSearching = false;
-  
-  // 获取URL参数中的搜索关键词
-  function getSearchQuery() {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('q') || '';
-  }
-  
-  // 执行搜索
-  function performSearch(query) {
-    if (!query || query.trim() === '') {
-      showDefaultView();
-      return;
-    }
-    
-    console.log(`🔍 搜索关键词: "${query}"`);
-    isSearching = true;
-    
-    const searchTerm = query.toLowerCase().trim();
-    const results = allGames.filter(game => 
-      game.title.toLowerCase().includes(searchTerm) ||
-      game.description.toLowerCase().includes(searchTerm) ||
-      game.category.toLowerCase().includes(searchTerm) ||
-      (game.tags && game.tags.some(tag => tag.toLowerCase().includes(searchTerm)))
-    );
-    
-    currentResults = results;
-    displayResults(results, query);
-  }
-  
-  // 显示搜索结果
-  function displayResults(results, query) {
-    updatePageTitle(results.length, query);
-    
-    if (results.length === 0) {
-      showNoResults(query);
-    } else {
-      showResults(results, query);
-    }
-  }
-  
-  // 更新页面标题
-  function updatePageTitle(count, query) {
-    const titleElement = document.querySelector('.page-title');
-    const descElement = document.querySelector('.page-description');
-    
-    if (titleElement && descElement) {
-      if (count === 0) {
-        titleElement.textContent = 'No Results Found';
-        descElement.innerHTML = `Search results for: <strong>"${query}"</strong>`;
-      } else {
-        titleElement.textContent = `Found ${count} Results`;
-        descElement.innerHTML = `Search results for: <strong>"${query}"</strong>`;
-      }
-    }
-  }
-  
-  // 显示搜索结果
-  function showResults(results, query) {
-    hideAllSections();
-    
-    // 创建搜索结果区域
-    const container = document.querySelector('.content-wrapper');
-    let resultsSection = document.getElementById('search-results-section');
-    
-    if (!resultsSection) {
-      resultsSection = document.createElement('section');
-      resultsSection.id = 'search-results-section';
-      resultsSection.className = 'search-results';
-      container.appendChild(resultsSection);
-    }
-    
-    resultsSection.innerHTML = `
-      <div class="module-header">
-        <div class="module-icon results-icon">
-          <i class="fas fa-gamepad"></i>
-        </div>
-        <div class="module-title-group">
-          <h2 class="module-title">Search Results</h2>
-          <p class="module-subtitle">Found ${results.length} games matching "${query}"</p>
-        </div>
-      </div>
-      <div class="games-grid" id="results-grid">
-        ${results.map(game => createGameCard(game)).join('')}
-      </div>
-    `;
-    
-    resultsSection.style.display = 'block';
-  }
-  
-  // 显示无结果
-  function showNoResults(query) {
-    hideAllSections();
-    
-    const container = document.querySelector('.content-wrapper');
-    let noResultsSection = document.getElementById('no-results-section');
-    
-    if (!noResultsSection) {
-      noResultsSection = document.createElement('section');
-      noResultsSection.id = 'no-results-section';
-      noResultsSection.className = 'no-results';
-      container.appendChild(noResultsSection);
-    }
-    
-    noResultsSection.innerHTML = `
-      <div class="module-header">
-        <div class="module-icon no-results-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <div class="module-title-group">
-          <h2 class="module-title">No Games Found</h2>
-          <p class="module-subtitle">Sorry, we couldn't find any games matching "${query}"</p>
-        </div>
-      </div>
-      <div class="search-suggestions">
-        <h3 class="section-title">Try searching for:</h3>
-        <div class="search-tags">
-          ${popularSearchTerms.map(item => `
-            <a href="/search?q=${item.term}" class="search-tag ${item.color}">
-              <i class="fas ${item.icon}"></i>
-              <span>${item.term.charAt(0).toUpperCase() + item.term.slice(1)} Games</span>
-            </a>
-          `).join('')}
-        </div>
-      </div>
-    `;
-    
-    // 显示推荐游戏
-    const recommendationsSection = document.querySelector('.recommendations');
-    if (recommendationsSection) {
-      const titleElement = recommendationsSection.querySelector('.module-title');
-      const subtitleElement = recommendationsSection.querySelector('.module-subtitle');
-      if (titleElement) titleElement.textContent = 'You Might Like These Games';
-      if (subtitleElement) subtitleElement.textContent = 'Try these popular games instead';
-      recommendationsSection.style.display = 'block';
-    }
-    
-    noResultsSection.style.display = 'block';
-  }
-  
-  // 显示默认视图
-  function showDefaultView() {
-    hideAllSections();
-    isSearching = false;
-    
-    const titleElement = document.querySelector('.page-title');
-    const descElement = document.querySelector('.page-description');
-    
-    if (titleElement && descElement) {
-      titleElement.textContent = 'Search Educational Games';
-      descElement.textContent = 'Find the perfect educational game for your learning journey';
-    }
-    
-    const promptSection = document.querySelector('.search-prompt');
-    const recommendationsSection = document.querySelector('.recommendations');
-    
-    if (promptSection) promptSection.style.display = 'block';
-    if (recommendationsSection) {
-      const titleElement = recommendationsSection.querySelector('.module-title');
-      const subtitleElement = recommendationsSection.querySelector('.module-subtitle');
-      if (titleElement) titleElement.textContent = 'Popular Educational Games';
-      if (subtitleElement) subtitleElement.textContent = 'Start with our most loved educational games';
-      recommendationsSection.style.display = 'block';
-    }
-  }
-  
-  // 隐藏所有动态创建的区域
-  function hideAllSections() {
-    const dynamicSections = ['search-results-section', 'no-results-section'];
-    dynamicSections.forEach(id => {
-      const section = document.getElementById(id);
-      if (section) section.style.display = 'none';
-    });
-    
-    const staticSections = ['.search-prompt', '.recommendations'];
-    staticSections.forEach(selector => {
-      const section = document.querySelector(selector);
-      if (section) section.style.display = 'none';
-    });
-  }
-  
-  // 创建游戏卡片HTML
-  function createGameCard(game) {
-    return `
-      <div class="game-card" data-game-id="${game.slug}">
-        <a href="/games/${game.slug}" class="game-link">
-          <div class="game-image-container">
-            <img src="${game.thumbnail}" alt="${game.title}" class="game-image" loading="lazy">
-            <div class="game-overlay">
-              <span class="play-button">
-                <i class="fas fa-play"></i>
-              </span>
-            </div>
-          </div>
-          <div class="game-content">
-            <h3 class="game-title">${game.title}</h3>
-            <p class="game-description">${game.description}</p>
-            <div class="game-meta">
-              <span class="category-tag ${game.category}">${game.category}</span>
-              <div class="game-stats">
-                <span class="popularity-stat">
-                  <i class="fas fa-fire"></i>
-                  <span class="popularity-count">-</span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    `;
-  }
-  
-  // 初始化页面
-  function initializePage() {
-    const query = getSearchQuery();
-    
-    if (query) {
-      performSearch(query);
-    } else {
-      showDefaultView();
-    }
-    
-    // 监听搜索框输入（如果存在）
+  // 监听搜索框输入，实现实时搜索
+  document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('input[name="q"]');
     if (searchInput) {
-      searchInput.value = query;
+      const urlParams = new URLSearchParams(window.location.search);
+      const currentQuery = urlParams.get('q') || '';
+      searchInput.value = currentQuery;
       
-      searchInput.addEventListener('input', (e) => {
-        const newQuery = e.target.value;
-        const url = new URL(window.location);
-        if (newQuery) {
-          url.searchParams.set('q', newQuery);
-        } else {
-          url.searchParams.delete('q');
+      // 搜索建议功能
+      searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+        if (query.length >= 2) {
+          // 可以在这里添加搜索建议功能
+          console.log(`正在搜索: ${query}`);
         }
-        history.replaceState(null, '', url);
-        performSearch(newQuery);
       });
     }
-  }
-  
-  // 页面加载完成后初始化
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initializePage);
-  } else {
-    initializePage();
-  }
-  
-  console.log('🔍 搜索页面初始化完成');
+  });
 </script>
 
 

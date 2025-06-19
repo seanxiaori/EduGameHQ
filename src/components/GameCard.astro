@@ -43,22 +43,17 @@ const gameUrl = `/games/${safeGame.slug}`;
 
 <div class={`game-card ${safeGame.category}-theme animate-fadeInUp`} data-game-id={safeGame.slug}>
   <div class="game-image-container">
-    <!-- 优化的图片懒加载 -->
-    <div class="image-lazy-wrapper">
-      <!-- 模糊占位符 -->
-      <div class="image-placeholder">
-        <div class="placeholder-shimmer"></div>
-        <i class="fas fa-gamepad placeholder-icon"></i>
-      </div>
-      
-      <!-- 实际图片（懒加载） -->
-    <img 
-        data-src={safeGame.thumbnailUrl}
-      alt={safeGame.title}
-        class="game-image lazy-image"
+    <!-- 优化的图片加载 - 移除懒加载避免404错误 -->
+    <div class="image-wrapper">
+      <!-- 实际图片（直接加载） -->
+      <img 
+        src={safeGame.thumbnailUrl}
+        alt={safeGame.title}
+        class="game-image"
         onload="this.parentElement.classList.add('loaded')"
-        onerror="this.dataset.src='/images/logo.svg'; this.src='/images/logo.svg'; this.parentElement.classList.add('loaded')"
-    />
+        onerror="this.src='/images/logo.svg'; this.parentElement.classList.add('loaded')"
+        loading="lazy"
+      />
     </div>
     
     <!-- Play按钮独立出来 -->
@@ -129,8 +124,8 @@ const gameUrl = `/games/${safeGame.slug}`;
   /* 引入通用游戏卡片样式 */
   @import "/src/styles/game-card.css";
 
-  /* 🚀 图片懒加载样式 */
-  .image-lazy-wrapper {
+  /* 🚀 简化的图片加载样式 */
+  .image-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -138,70 +133,17 @@ const gameUrl = `/games/${safeGame.slug}`;
     border-radius: 12px;
     background: #F8FAFC;
   }
-  
-  .image-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, #F1F5F9 0%, #E2E8F0 100%);
-    z-index: 1;
-    transition: opacity 0.3s ease;
-  }
 
-  .placeholder-shimmer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      transparent 100%
-    );
-    animation: shimmer 1.5s infinite;
-        }
-
-  @keyframes shimmer {
-    0% {
-      transform: translateX(-100%);
-    }
-    100% {
-      transform: translateX(100%);
-    }
-  }
-
-  .placeholder-icon {
-    font-size: 2rem;
-    color: #CBD5E1;
-    z-index: 2;
-  }
-
-  .lazy-image {
-    position: absolute;
-    top: 0;
-    left: 0;
+  .game-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 2;
+    transition: transform 0.3s ease;
+    border-radius: 12px;
   }
 
-  .image-lazy-wrapper.loaded .image-placeholder {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  .image-lazy-wrapper.loaded .lazy-image {
-    opacity: 1;
+  .game-image:hover {
+    transform: scale(1.05);
   }
 
   /* 人气值等级样式 */
@@ -239,58 +181,3 @@ const gameUrl = `/games/${safeGame.slug}`;
     }
   }
 </style>
-
-<script>
-  // 🚀 图片懒加载实现
-  function initImageLazyLoading() {
-    // 检查浏览器是否支持 Intersection Observer
-    if (!('IntersectionObserver' in window)) {
-      // 不支持的话，直接加载所有图片
-      document.querySelectorAll('.lazy-image').forEach(img => {
-        const dataSrc = img.getAttribute('data-src');
-        if (dataSrc) {
-          (img as HTMLImageElement).src = dataSrc;
-        }
-      });
-      return;
-  }
-  
-    // 创建 Intersection Observer
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target as HTMLImageElement;
-          const dataSrc = img.getAttribute('data-src');
-          
-          if (dataSrc) {
-            console.log('🖼️ 开始加载图片:', dataSrc);
-            img.src = dataSrc;
-            img.removeAttribute('data-src');
-            observer.unobserve(img);
-          }
-        }
-      });
-    }, {
-      // 设置根边距，提前加载即将进入视口的图片
-      rootMargin: '50px 0px',
-      threshold: 0.1
-    });
-
-    // 观察所有懒加载图片
-    document.querySelectorAll('.lazy-image[data-src]').forEach(img => {
-      imageObserver.observe(img);
-    });
-
-    console.log('👁️ 图片懒加载观察器已初始化');
-  }
-
-  // DOM加载完成后初始化
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initImageLazyLoading);
-  } else {
-    initImageLazyLoading();
-  }
-
-  // 导出到全局，供其他脚本使用
-  (window as any).initImageLazyLoading = initImageLazyLoading;
-</script>
