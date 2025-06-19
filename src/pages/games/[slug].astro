@@ -55,6 +55,16 @@ function getGameSourceUrl(game: any): string {
   return game.sourceUrl || game.url || '';
 }
 
+// 提取iframe域名用于DNS预解析
+function getIframeDomain(url: string): string {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.hostname;
+  } catch {
+    return '';
+  }
+}
+
 // 动态生成SEO数据
 const gameTitle = game.title;
 const gameDescription = game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`;
@@ -77,6 +87,9 @@ const dynamicSEO = {
     ...((game.tags || []).slice(0, 5))
   ].filter(Boolean)
 };
+
+// 获取iframe域名
+const iframeDomain = getIframeDomain(getGameIframeUrl(game));
 ---
 
 <BaseLayout 
@@ -84,6 +97,17 @@ const dynamicSEO = {
   description={dynamicSEO.description}
   gameData={game}
 >
+  <!-- 性能优化 - DNS预解析和预连接 -->
+  {iframeDomain && (
+    <>
+      <link rel="dns-prefetch" href={`//${iframeDomain}`}>
+      <link rel="preconnect" href={`https://${iframeDomain}`} crossorigin>
+    </>
+  )}
+  
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="/src/styles/game-card.css" as="style">
+  
   <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
 
@@ -118,17 +142,34 @@ const dynamicSEO = {
         </div>
       </section>
 
-      <!-- 游戏播放器区域 -->
+      <!-- 游戏播放器区域 - 优化版本 -->
       <section class="game-player-section">
         <div class="game-player-container">
-          <iframe 
-            src={getGameIframeUrl(game)} 
-            class="game-iframe"
-            title={game.title}
-            allowfullscreen
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
-          ></iframe>
+          <!-- 游戏iframe加载容器 -->
+          <div class="game-iframe-wrapper" id="gameIframeWrapper">
+            <!-- 加载占位符 -->
+            <div class="iframe-placeholder" id="iframePlaceholder">
+              <div class="placeholder-content">
+                <div class="loading-spinner"></div>
+                <h3>Loading {game.title}...</h3>
+                <p>Preparing your educational game experience</p>
+                <button class="load-game-btn" onclick="loadGameIframe()" id="loadGameBtn">
+                  <i class="fas fa-play"></i>
+                  Start Game
+                </button>
+              </div>
+            </div>
+            
+            <!-- 实际的游戏iframe（懒加载） -->
+            <iframe 
+              data-src={getGameIframeUrl(game)}
+              class="game-iframe hidden"
+              id="gameIframe"
+              title={game.title}
+              allowfullscreen
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+            ></iframe>
+          </div>
           
           <!-- 游戏控制按钮 -->
           <div class="game-controls">
@@ -457,12 +498,141 @@ const dynamicSEO = {
     border: 1px solid #E5E7EB;
   }
 
-  .game-iframe {
+  .game-iframe-wrapper {
+    position: relative;
     width: 100%;
     height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #F8FAFC;
+    border: 1px solid #E5E7EB;
+  }
+
+  .iframe-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  .placeholder-content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 400px;
+  }
+
+  .placeholder-content h3 {
+    color: #1F2937;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .placeholder-content p {
+    color: #6B7280;
+    font-size: 1rem;
+    margin: 0 0 2rem 0;
+    line-height: 1.6;
+  }
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #E5E7EB;
+    border-top-color: #6366F1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .load-game-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    color: white;
     border: none;
     border-radius: 12px;
-    background: #F3F4F6;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .load-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #4F46E5 0%, #3730A3 100%);
+  }
+
+  .load-game-btn:active {
+    transform: translateY(0);
+  }
+
+  .load-game-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+  }
+
+  .load-game-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .load-game-btn:hover::before {
+    left: 100%;
+  }
+
+  .iframe-error {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 8px;
+    color: #DC2626;
+    font-size: 0.9rem;
+  }
+
+  .game-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    transition: opacity 0.3s ease;
+  }
+
+  .game-iframe.hidden {
+    opacity: 0;
+    visibility: hidden;
   }
 
   .game-controls {
@@ -1009,6 +1179,68 @@ const dynamicSEO = {
       justify-content: center;
     }
   }
+
+  /* 游戏通知样式 */
+  .game-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .notification-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .notification-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .game-notification-success {
+    background: #10B981;
+    color: white;
+  }
+
+  .game-notification-error {
+    background: #EF4444;
+    color: white;
+  }
+
+  .game-notification-warning {
+    background: #F59E0B;
+    color: white;
+  }
+
+  .game-notification-info {
+    background: #3B82F6;
+    color: white;
+  }
 </style>
 
 <script>
@@ -1422,26 +1654,215 @@ const dynamicSEO = {
   document.addEventListener('DOMContentLoaded', () => {
     initializeFavoriteState();
     
+    // 初始化iframe懒加载
+    initializeIframeLazyLoading();
+    
     // 延迟初始化游戏统计，确保游戏已开始加载
     setTimeout(() => {
       initializeGameStats();
     }, 2000);
   });
 
-  // 页面卸载时记录游戏结束
-  window.addEventListener('beforeunload', () => {
-    recordGameEnd();
-  });
-
-  // 页面隐藏时记录游戏结束（用户切换标签页等）
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      recordGameEnd();
-    } else if (gameSlug && typeof window.gameStatsManager !== 'undefined') {
-      // 页面重新可见时重新开始记录
-      gameStartTime = Date.now();
+  // 🚀 iframe懒加载优化函数
+  function initializeIframeLazyLoading() {
+    const placeholder = document.getElementById('iframePlaceholder');
+    const iframe = document.getElementById('gameIframe');
+    const loadGameBtn = document.getElementById('loadGameBtn');
+    
+    if (!placeholder || !iframe || !loadGameBtn) {
+      console.warn('❌ iframe懒加载初始化失败：找不到必要元素');
+      return;
     }
-  });
+
+    // 设置Intersection Observer来检测何时显示加载按钮
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 用户滚动到游戏区域，自动显示加载按钮
+          loadGameBtn.style.transform = 'scale(1.05)';
+          loadGameBtn.style.boxShadow = '0 4px 20px rgba(99, 102, 241, 0.4)';
+          
+          // 3秒后自动加载游戏（可选）
+          setTimeout(() => {
+            if (placeholder.style.display !== 'none') {
+              autoLoadGame();
+            }
+          }, 3000);
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5 // 当50%的游戏区域可见时触发
+    });
+
+    observer.observe(document.getElementById('gameIframeWrapper'));
+    console.log('👁️ iframe懒加载观察器已设置');
+  }
+
+  // 🎮 手动加载游戏iframe
+  window.loadGameIframe = function() {
+    const placeholder = document.getElementById('iframePlaceholder');
+    const iframe = document.getElementById('gameIframe');
+    const loadGameBtn = document.getElementById('loadGameBtn');
+    
+    if (!placeholder || !iframe) {
+      console.error('❌ 找不到iframe元素');
+      return;
+    }
+
+    // 显示加载状态
+    loadGameBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+    loadGameBtn.disabled = true;
+
+    // 开始加载iframe
+    const iframeSrc = iframe.getAttribute('data-src');
+    if (iframeSrc) {
+      console.log('🚀 开始加载游戏iframe:', iframeSrc);
+      
+      // 记录加载开始时间
+      const loadStartTime = Date.now();
+      
+      // 设置iframe src触发加载
+      iframe.src = iframeSrc;
+      
+      // 监听iframe加载事件
+      iframe.onload = function() {
+        const loadTime = Date.now() - loadStartTime;
+        console.log(`✅ iframe加载完成，耗时: ${loadTime}ms`);
+        
+        // 隐藏占位符，显示iframe
+        placeholder.style.opacity = '0';
+        iframe.classList.remove('hidden');
+        
+        setTimeout(() => {
+          placeholder.style.display = 'none';
+        }, 300);
+        
+        // 记录性能数据
+        if (window.gameStatsManager) {
+          window.gameStatsManager.recordIframeLoadTime(gameSlug, loadTime);
+        }
+      };
+      
+      // 监听iframe加载错误
+      iframe.onerror = function() {
+        console.error('❌ iframe加载失败');
+        loadGameBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Load Failed - Retry';
+        loadGameBtn.disabled = false;
+        
+        // 显示错误提示
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'iframe-error';
+        errorMsg.innerHTML = '⚠️ Game failed to load. Please try again or check your connection.';
+        placeholder.querySelector('.placeholder-content').appendChild(errorMsg);
+      };
+    }
+  };
+
+  // 🤖 自动加载游戏（用户滚动到游戏区域后自动触发）
+  function autoLoadGame() {
+    const placeholder = document.getElementById('iframePlaceholder');
+    const loadGameBtn = document.getElementById('loadGameBtn');
+    
+    if (placeholder && placeholder.style.display !== 'none') {
+      console.log('🤖 自动加载游戏iframe');
+      
+      // 添加自动加载提示
+      loadGameBtn.innerHTML = '<i class="fas fa-rocket"></i> Auto Loading...';
+      
+      setTimeout(() => {
+        loadGameIframe();
+      }, 1000);
+    }
+  }
+
+  // 🔄 重启游戏优化
+  window.restartGame = function() {
+    const iframe = document.getElementById('gameIframe');
+    if (iframe && iframe.src) {
+      console.log('🔄 重启游戏');
+      
+      // 记录重启事件
+      if (window.gameStatsManager) {
+        window.gameStatsManager.recordGameRestart(gameSlug);
+      }
+      
+      // 重新加载iframe
+      iframe.src = iframe.src;
+      
+      // 显示重启提示
+      showGameNotification('🔄 Game Restarted', 'success');
+    } else {
+      console.warn('⚠️ 游戏尚未加载，无法重启');
+      showGameNotification('⚠️ Please load the game first', 'warning');
+    }
+  };
+
+  // 📺 全屏功能优化
+  window.toggleFullscreen = function() {
+    const iframe = document.getElementById('gameIframe');
+    if (!iframe) {
+      showGameNotification('⚠️ Please load the game first', 'warning');
+      return;
+    }
+
+    if (!document.fullscreenElement) {
+      iframe.requestFullscreen().then(() => {
+        console.log('📺 进入全屏模式');
+        showGameNotification('📺 Fullscreen Mode Enabled', 'success');
+        
+        // 记录全屏事件
+        if (window.gameStatsManager) {
+          window.gameStatsManager.recordGameFullscreen(gameSlug, true);
+        }
+      }).catch(err => {
+        console.error('❌ 无法进入全屏:', err);
+        showGameNotification('❌ Fullscreen not supported', 'error');
+      });
+    } else {
+      document.exitFullscreen().then(() => {
+        console.log('📱 退出全屏模式');
+        showGameNotification('📱 Fullscreen Mode Disabled', 'info');
+        
+        // 记录全屏事件
+        if (window.gameStatsManager) {
+          window.gameStatsManager.recordGameFullscreen(gameSlug, false);
+        }
+      });
+    }
+  };
+
+  // 🎮 显示游戏通知
+  function showGameNotification(message, type = 'info') {
+    // 移除现有通知
+    const existingNotification = document.querySelector('.game-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // 创建通知元素
+    const notification = document.createElement('div');
+    notification.className = `game-notification game-notification-${type}`;
+    notification.innerHTML = `
+      <div class="notification-content">
+        <span>${message}</span>
+        <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    `;
+
+    // 添加到页面
+    document.body.appendChild(notification);
+
+    // 3秒后自动移除
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.remove();
+      }
+    }, 3000);
+  }
 </script>
 
 <!-- 分享模态框组件 -->
