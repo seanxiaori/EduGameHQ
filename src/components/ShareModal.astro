@@ -692,7 +692,7 @@ const {
   }
 
   // 复制功能
-  function copyGameUrl(): void {
+  function copyGameUrl(event?: Event): void {
     const input = document.getElementById('gameUrlInput') as HTMLInputElement;
     if (!input) return;
     
@@ -714,7 +714,7 @@ const {
     });
   }
 
-  function copyEmbedCode(): void {
+  function copyEmbedCode(event?: Event): void {
     const input = document.getElementById('embedCodeInput') as HTMLInputElement;
     if (!input) return;
     

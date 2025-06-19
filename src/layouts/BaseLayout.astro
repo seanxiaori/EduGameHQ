@@ -599,16 +599,16 @@ if (!isHomePage) {
             <p>Made with ❤️ for global education</p>
           </div>
           <div class="footer-social">
-            <a href="#" class="social-link" aria-label="Share on Facebook" onclick="shareCurrentPageToFacebook(event)">
+            <a href="#" class="social-link" aria-label="Share on Facebook" onclick="shareCurrentPageToFacebook()">
               <i class="fab fa-facebook-f"></i>
             </a>
-            <a href="#" class="social-link" aria-label="Share on Twitter" onclick="shareCurrentPageToTwitter(event)">
+            <a href="#" class="social-link" aria-label="Share on Twitter" onclick="shareCurrentPageToTwitter()">
               <i class="fab fa-twitter"></i>
             </a>
-            <a href="#" class="social-link" aria-label="Share on YouTube" onclick="shareCurrentPageToEmail(event)">
+            <a href="#" class="social-link" aria-label="Share on YouTube" onclick="shareCurrentPageToEmail()">
               <i class="fas fa-envelope"></i>
             </a>
-            <a href="#" class="social-link" aria-label="Copy link to share" onclick="copyCurrentPageLink(event)">
+            <a href="#" class="social-link" aria-label="Copy link to share" onclick="copyCurrentPageLink()">
               <i class="fas fa-link"></i>
             </a>
           </div>
@@ -736,10 +736,9 @@ if (!isHomePage) {
         (searchBox as HTMLInputElement).addEventListener('keypress', function(this: HTMLInputElement, e: KeyboardEvent) {
           console.log('=== SEARCH KEYPRESS EVENT ===');
           console.log('Key pressed:', e.key);
-          console.log('Key code:', e.keyCode);
           console.log('Current value:', this.value);
           
-          if (e.key === 'Enter' || e.keyCode === 13) {
+          if (e.key === 'Enter') {
             e.preventDefault();
             e.stopPropagation();
             console.log('ENTER KEY DETECTED - CALLING performSearch()');
@@ -749,7 +748,7 @@ if (!isHomePage) {
         
         // 备用keydown事件
         (searchBox as HTMLInputElement).addEventListener('keydown', function(this: HTMLInputElement, e: KeyboardEvent) {
-          if (e.key === 'Enter' || e.keyCode === 13) {
+          if (e.key === 'Enter') {
             e.preventDefault();
             e.stopPropagation();
             console.log('KEYDOWN ENTER - CALLING performSearch()');
@@ -855,18 +854,15 @@ if (!isHomePage) {
     // 扩展window对象类型
     declare global {
       interface Window {
-        shareCurrentPageToFacebook: (event: Event) => void;
-        shareCurrentPageToTwitter: (event: Event) => void;
-        shareCurrentPageToEmail: (event: Event) => void;
-        copyCurrentPageLink: (event: Event) => void;
+        shareCurrentPageToFacebook: () => void;
+        shareCurrentPageToTwitter: () => void;
+        shareCurrentPageToEmail: () => void;
+        copyCurrentPageLink: () => void;
       }
     }
     
     // Facebook分享
-    window.shareCurrentPageToFacebook = function(event: Event): void {
-      event.preventDefault();
-      event.stopPropagation();
-      
+    window.shareCurrentPageToFacebook = function(): void {
       const shareInfo = getCurrentPageShareInfo();
       const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareInfo.url)}`;
       
@@ -879,10 +875,7 @@ if (!isHomePage) {
     };
 
     // Twitter分享
-    window.shareCurrentPageToTwitter = function(event: Event): void {
-      event.preventDefault();
-      event.stopPropagation();
-      
+    window.shareCurrentPageToTwitter = function(): void {
       const shareInfo = getCurrentPageShareInfo();
       const twitterText = `${shareInfo.shareText} #EduGameHQ #EducationalGames #Learning`;
       const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(shareInfo.url)}`;
@@ -896,10 +889,7 @@ if (!isHomePage) {
     };
 
     // 邮件分享
-    window.shareCurrentPageToEmail = function(event: Event): void {
-      event.preventDefault();
-      event.stopPropagation();
-      
+    window.shareCurrentPageToEmail = function(): void {
       const shareInfo = getCurrentPageShareInfo();
       const subject = encodeURIComponent(`Check out this page: ${shareInfo.title}`);
       const body = encodeURIComponent(`Hi!\n\nI found this interesting page that I think you'd enjoy:\n\n${shareInfo.title}\n${shareInfo.description}\n\nCheck it out here: ${shareInfo.url}\n\nShared from EduGameHQ - Making learning fun!`);
@@ -913,10 +903,7 @@ if (!isHomePage) {
     };
 
     // 复制链接
-    window.copyCurrentPageLink = function(event: Event): void {
-      event.preventDefault();
-      event.stopPropagation();
-      
+    window.copyCurrentPageLink = function(): void {
       const shareInfo = getCurrentPageShareInfo();
       
       if (navigator.clipboard && window.isSecureContext) {
@@ -944,6 +931,8 @@ if (!isHomePage) {
       textArea.select();
       
       try {
+        // 尝试使用已弃用的API，如果失败则提供手动复制提示
+        // @ts-ignore - 弃用API，但仍需要作为回退选项
         const successful = document.execCommand('copy');
         if (successful) {
           showFooterShareSuccess('Link copied to clipboard!');
