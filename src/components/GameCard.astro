@@ -94,7 +94,10 @@ const gameUrl = `/games/${safeGame.slug}`;
     <p class="game-description">{safeGame.description}</p>
     
     <div class="game-tags">
-      <span class={`category-tag ${safeGame.category}`}>{safeGame.categoryName}</span>
+      <span class={`category-tag ${safeGame.category}`}>
+        {safeGame.categoryName || (safeGame.category && 
+          safeGame.category.charAt(0).toUpperCase() + safeGame.category.slice(1))}
+      </span>
       {safeGame.featured && <span class="feature-tag featured">FEATURED</span>}
       {safeGame.trending && <span class="feature-tag hot">HOT</span>}
       {safeGame.isNew && <span class="feature-tag new">NEW</span>}
