@@ -5,6 +5,9 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
+// 导入样式文件
+import '../styles/game-card.css';
+
 const seoData = {
   title: "New Games | Latest Educational Games for Kids | EduGameHQ",
   description: "Discover the newest educational games for kids aged 6-18. Fresh content added regularly to keep learning fun and engaging.",
@@ -34,7 +37,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
 
 <BaseLayout title={seoData.title} description={seoData.description}>
   <!-- 引入统一游戏卡片样式 -->
-  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
   
   <main class="main-content">
     <div class="content-wrapper">

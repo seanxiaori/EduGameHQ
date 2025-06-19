@@ -4,6 +4,9 @@ import GameCard from '../components/GameCard.astro';
 import fs from 'fs';
 import path from 'path';
 
+// 导入样式文件
+import '../styles/game-card.css';
+
 // 从JSON文件读取游戏数据
 // 注意：此文件已修复所有TypeScript错误，确保Cloudflare Pages构建成功
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -38,9 +41,6 @@ console.log('📊 游戏统计数据:', gameStats);
 ---
 
 <BaseLayout>
-  <!-- 引入统一游戏卡片样式 -->
-  <link rel="stylesheet" href="/src/styles/game-card.css">
-  
   <!-- 主要内容 -->
   <main class="main-content" id="main-content">
     <div class="content-wrapper">

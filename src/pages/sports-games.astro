@@ -5,6 +5,9 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
+// 导入样式文件
+import '../styles/game-card.css';
+
 // 读取游戏数据
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
 const allGames: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
@@ -127,7 +130,7 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
 
 <BaseLayout>
   <!-- 引入统一游戏卡片样式 -->
-  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
   
   <main class="main-content">
     <div class="content-wrapper">

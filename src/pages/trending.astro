@@ -5,6 +5,9 @@ import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
 
+// 导入样式文件
+import '../styles/game-card.css';
+
 const seoData = {
   title: "Trending Games | Popular Educational Games | EduGameHQ",
   description: "Play the most popular educational games trending now. Join thousands of students learning through the hottest math, science, coding, and language games.",
@@ -35,7 +38,7 @@ const trendingGames = allGamesData
 
 <BaseLayout title={seoData.title} description={seoData.description}>
   <!-- 引入统一游戏卡片样式 -->
-  <link rel="stylesheet" href="/src/styles/game-card.css">
+  
 
   <main class="main-content">
     <div class="content-wrapper">
