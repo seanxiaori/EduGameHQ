@@ -1,7 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GameCard from '../components/GameCard.astro';
-import { getCollection } from 'astro:content';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,16 +10,17 @@ let allGamesData = [];
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
   allGamesData = JSON.parse(fileContent);
+  console.log(`✅ 成功加载 ${allGamesData.length} 个游戏数据`);
 } catch (error) {
-  console.warn('Unable to read games data file:', error);
+  console.error('❌ 无法读取游戏数据文件:', error);
 }
 
-// 获取游戏数据
-const gamesData = await getCollection('games');
-const allGames = gamesData.map((entry: any) => entry.data);
+// 使用JSON数据作为游戏源
+const allGames = allGamesData;
 
 // 分类游戏
 const featuredGames = allGames.filter((game: any) => game.featured).slice(0, 6);
+console.log(`🌟 找到 ${featuredGames.length} 个特色游戏`);
 
 // 所有游戏列表（用于随机功能）
 const allGamesList = allGamesData.map((game: any) => ({
