@@ -41,7 +41,7 @@ class GameStatsManager {
     this.loadStats();
     this.setupEventListeners();
     this.setupIframeMonitoring();
-
+    
     // 等待GAMES_DATA和DOM都准备好
     this.waitForGamesDataAndDOM();
 

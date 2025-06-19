@@ -415,22 +415,22 @@ if (!isHomePage) {
                       <div class="dropdown-menu" id={`${crumb.color}Menu`}>
                         {crumb.name === 'Categories' ? (
                           <>
-                            <!-- 游戏分类 -->
-                            {Object.entries(pageStructure.categories).map(([path, info]) => (
-                              <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                                <i class={info.icon}></i>
-                                {info.name}
-                              </a>
-                            ))}
-                            <!-- 分隔线 -->
-                            <hr class="dropdown-divider">
-                            <!-- 特殊页面 -->
-                            {Object.entries(pageStructure.special).map(([path, info]) => (
-                              <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                                <i class={info.icon}></i>
-                                {info.name}
-                              </a>
-                            ))}
+                        <!-- 游戏分类 -->
+                        {Object.entries(pageStructure.categories).map(([path, info]) => (
+                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                            <i class={info.icon}></i>
+                            {info.name}
+                          </a>
+                        ))}
+                        <!-- 分隔线 -->
+                        <hr class="dropdown-divider">
+                        <!-- 特殊页面 -->
+                        {Object.entries(pageStructure.special).map(([path, info]) => (
+                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                            <i class={info.icon}></i>
+                            {info.name}
+                          </a>
+                        ))}
                           </>
                         ) : crumb.name === 'Support' ? (
                           <>
@@ -659,8 +659,8 @@ if (!isHomePage) {
           dropdownToggle.addEventListener('click', function(this: HTMLElement, e: Event) {
             // 只对button元素阻止默认行为，不影响a标签
             if (this.tagName === 'BUTTON') {
-              e.preventDefault();
-              e.stopPropagation();
+            e.preventDefault();
+            e.stopPropagation();
             }
             
             // 关闭其他下拉菜单

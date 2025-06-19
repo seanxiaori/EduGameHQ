@@ -167,14 +167,14 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
             </div>
             
             <!-- 实际的游戏iframe（懒加载） -->
-            <iframe 
+          <iframe 
               data-src={getGameIframeUrl(game)}
               class="game-iframe hidden"
               id="gameIframe"
-              title={game.title}
-              allowfullscreen
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
-            ></iframe>
+            title={game.title}
+            allowfullscreen
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+          ></iframe>
           </div>
           
           <!-- 游戏控制按钮 -->
@@ -1881,7 +1881,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       }
     }, 3000);
   }
-</script>
+</script> 
 
 <!-- 分享模态框组件 -->
 <ShareModal 

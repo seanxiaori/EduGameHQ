@@ -16,13 +16,13 @@ interface Props {
 }
 
 // 解构属性并设置默认值
-const {
-  game,
-  showTrending = false,
-  showFeatured = false,
+const { 
+  game, 
+  showTrending = false, 
+  showFeatured = false, 
   showNew = false,
   showUpdated = false,
-  showPopularity = false,
+  showPopularity = false, 
   showFavorite = false,
   showDeveloper = false
 } = Astro.props;
@@ -52,13 +52,13 @@ const gameUrl = `/games/${safeGame.slug}`;
       </div>
       
       <!-- 实际图片（懒加载） -->
-      <img 
+    <img 
         data-src={safeGame.thumbnailUrl}
-        alt={safeGame.title}
+      alt={safeGame.title}
         class="game-image lazy-image"
         onload="this.parentElement.classList.add('loaded')"
         onerror="this.dataset.src='/images/logo.svg'; this.src='/images/logo.svg'; this.parentElement.classList.add('loaded')"
-      />
+    />
     </div>
     
     <!-- Play按钮独立出来 -->
@@ -68,19 +68,19 @@ const gameUrl = `/games/${safeGame.slug}`;
     </a>
     
     <!-- 游戏徽章独立出来 -->
-    <div class="game-badges">
-      {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
-      {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
-      {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
-      {showUpdated && <span class="badge updated">UPDATED</span>}
-    </div>
-    
+      <div class="game-badges">
+        {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
+        {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
+        {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
+        {showUpdated && <span class="badge updated">UPDATED</span>}
+      </div>
+      
     <!-- 收藏按钮独立出来，依赖全局脚本处理 -->
-    {showFavorite && (
-      <button class="favorite-heart-btn" data-game-slug={safeGame.slug} aria-label="Add to favorites">
-        <i class="far fa-heart"></i>
-      </button>
-    )}
+      {showFavorite && (
+        <button class="favorite-heart-btn" data-game-slug={safeGame.slug} aria-label="Add to favorites">
+          <i class="far fa-heart"></i>
+        </button>
+      )}
     
     <!-- 左上角：游戏历史标签 - 动态显示 -->
     <div class="played-badge-container" data-game-slug={safeGame.slug}></div>
@@ -104,7 +104,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       <span class={`difficulty-tag ${safeGame.difficulty.toLowerCase()}`}>{safeGame.difficulty.toUpperCase()}</span>
     </div>
     
-    <div class="game-stats">
+      <div class="game-stats">
       {showPopularity && (
         <div class="stat popularity-stat" data-game-slug={safeGame.slug}>
           <i class="fas fa-fire"></i>
@@ -119,7 +119,7 @@ const gameUrl = `/games/${safeGame.slug}`;
         <div class="stat">
           <i class="fas fa-user"></i>
           <span>{safeGame.developer}</span>
-        </div>
+    </div>
       )}
     </div>
   </div>
@@ -138,7 +138,7 @@ const gameUrl = `/games/${safeGame.slug}`;
     border-radius: 12px;
     background: #F8FAFC;
   }
-
+  
   .image-placeholder {
     position: absolute;
     top: 0;
@@ -166,7 +166,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       transparent 100%
     );
     animation: shimmer 1.5s infinite;
-  }
+        }
 
   @keyframes shimmer {
     0% {
@@ -223,7 +223,7 @@ const gameUrl = `/games/${safeGame.slug}`;
   .popularity-count.popularity-medium {
     color: #CA8A04;
   }
-
+  
   .popularity-count.popularity-low {
     color: #6B7280;
   }
@@ -253,8 +253,8 @@ const gameUrl = `/games/${safeGame.slug}`;
         }
       });
       return;
-    }
-
+  }
+  
     // 创建 Intersection Observer
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
@@ -293,4 +293,4 @@ const gameUrl = `/games/${safeGame.slug}`;
 
   // 导出到全局，供其他脚本使用
   (window as any).initImageLazyLoading = initImageLazyLoading;
-</script> 
+</script>

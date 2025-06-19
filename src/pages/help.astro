@@ -344,25 +344,25 @@ const contactMethods = [
     
     if (searchInput) {
       searchInput.addEventListener('input', function(this: HTMLInputElement) {
-        const searchTerm = this.value.toLowerCase();
-        
-        faqItems.forEach(item => {
+      const searchTerm = this.value.toLowerCase();
+      
+      faqItems.forEach(item => {
           const questionElement = item.querySelector('.faq-question span');
           const answerElement = item.querySelector('.faq-answer p');
-          
+        
           if (questionElement && answerElement) {
             const question = questionElement.textContent?.toLowerCase() || '';
             const answer = answerElement.textContent?.toLowerCase() || '';
             
             const itemElement = item as HTMLElement;
-            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
               itemElement.style.display = 'block';
-            } else {
+        } else {
               itemElement.style.display = searchTerm === '' ? 'block' : 'none';
             }
-          }
-        });
+        }
       });
+    });
     }
   });
 </script>

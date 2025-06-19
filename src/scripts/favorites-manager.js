@@ -133,7 +133,7 @@ class GlobalFavoritesManager {
               }
             }
           });
-        }
+  }
       });
       
       if (hasNewContent) {
@@ -238,13 +238,13 @@ class GlobalFavoritesManager {
     const notification = document.createElement('div');
     notification.className = `favorite-notification ${type}`;
     notification.textContent = message;
-    
+
     // 添加到页面
     document.body.appendChild(notification);
-    
+
     // 显示动画
     setTimeout(() => notification.classList.add('show'), 100);
-    
+
     // 自动移除
     setTimeout(() => {
       notification.classList.remove('show');
@@ -259,8 +259,8 @@ class GlobalFavoritesManager {
 
 // 防止重复初始化的全局标志
 if (!window.globalFavoritesManagerInitialized) {
-  // 创建全局实例
-  window.globalFavoritesManager = new GlobalFavoritesManager();
+// 创建全局实例
+window.globalFavoritesManager = new GlobalFavoritesManager();
   window.globalFavoritesManagerInitialized = true;
 }
 
