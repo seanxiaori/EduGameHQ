@@ -19,7 +19,7 @@ try {
 const allGames = allGamesData;
 
 // 分类游戏
-const featuredGames = allGames.filter((game: any) => game.featured).slice(0, 6);
+const featuredGames = allGames.filter((game: any) => game.featured);
 console.log(`🌟 找到 ${featuredGames.length} 个特色游戏`);
 
 // 所有游戏列表（用于随机功能）
