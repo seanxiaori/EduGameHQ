@@ -1,33 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GameCard from '../components/GameCard.astro';
-import type { Game } from '../types/game';
+import { getCollection } from 'astro:content';
 import fs from 'fs';
 import path from 'path';
-import { getCollection } from 'astro/collections';
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-let allGamesData: Game[] = [];
-
+let allGamesData = [];
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  allGamesData = JSON.parse(fileContent) as Game[];
+  allGamesData = JSON.parse(fileContent);
 } catch (error) {
   console.warn('Unable to read games data file:', error);
 }
 
 // 获取游戏数据
 const gamesData = await getCollection('games');
-const allGames = gamesData.map(entry => entry.data);
+const allGames = gamesData.map((entry: any) => entry.data);
 
 // 分类游戏
-const featuredGames = allGames.filter(game => game.featured).slice(0, 6);
+const featuredGames = allGames.filter((game: any) => game.featured).slice(0, 6);
 const trendingGames = allGames.filter(game => game.trending).slice(0, 8);
 const newGames = allGames.filter(game => game.isNew).slice(0, 4);
 
 // 所有游戏列表（用于随机功能）
-const allGamesList = allGamesData.map(game => ({
+const allGamesList = allGamesData.map((game: any) => ({
   id: game.slug,
   title: game.title,
   url: `/games/${game.slug}`
