@@ -800,32 +800,65 @@ const seoData = {
   // 创建游戏卡片
   function createGameCard(game: any): string {
     const gameUrl = `/games/${game.slug}`;
-    const thumbnailUrl = game.thumbnail || '/images/games/default-game.webp';
+    const thumbnailUrl = game.thumbnailUrl || '/images/logo.svg';
     
     return `
-      <div class="game-card" data-game-id="${game.slug}" style="background: white; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; border: 1px solid #E5E7EB; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
-        <div class="game-image" style="position: relative; overflow: hidden; height: 180px;">
-          <img src="${thumbnailUrl}" alt="${game.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
-          <div class="game-badges" style="position: absolute; top: 0.75rem; left: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
-            ${game.featured ? '<span class="badge featured" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">Featured</span>' : ''}
-            <span class="category-tag ${game.category}" style="background: #F3F4F6; color: #4B5563; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 500;">${game.category}</span>
+      <div class="game-card ${game.category}-theme animate-fadeInUp" data-game-id="${game.slug}">
+        <div class="game-image-container">
+          <div class="image-wrapper">
+            <img 
+              src="${thumbnailUrl}"
+              alt="${game.title}"
+              class="game-image"
+              loading="lazy"
+              onerror="this.src='/images/logo.svg'"
+            />
           </div>
+          
+          <a href="${gameUrl}" class="play-button">
+            <i class="fas fa-play"></i>
+            <span>Play Now</span>
+          </a>
+          
+          <div class="game-badges">
+            ${game.trending ? '<span class="badge trending">HOT</span>' : ''}
+            ${game.featured ? '<span class="badge featured">FEATURED</span>' : ''}
+            ${game.isNew ? '<span class="badge new">NEW</span>' : ''}
+          </div>
+          
+          <button class="favorite-heart-btn" data-game-slug="${game.slug}" aria-label="Add to favorites">
+            <i class="far fa-heart"></i>
+          </button>
+          
+          <div class="played-badge-container" data-game-slug="${game.slug}"></div>
         </div>
-        <div class="game-info" style="padding: 1rem;">
-          <h3 class="game-title" style="font-size: 1.125rem; font-weight: 600; color: #1F2937; margin: 0 0 0.5rem 0; line-height: 1.4;">
-            <a href="${gameUrl}" style="text-decoration: none; color: inherit;">${game.title}</a>
+        
+        <div class="game-info">
+          <h3 class="game-title">
+            <a href="${gameUrl}">${game.title}</a>
           </h3>
-          <p class="game-description" style="color: #6B7280; font-size: 0.875rem; line-height: 1.5; margin: 0 0 1rem 0;">${game.description}</p>
-          <div class="game-meta" style="display: flex; justify-content: space-between; align-items: center;">
-            <div class="game-stats" style="display: flex; gap: 1rem; font-size: 0.875rem; color: #6B7280;">
-              <span class="popularity" style="display: flex; align-items: center; gap: 0.25rem;">
-                <i class="fas fa-fire" style="color: #F59E0B;"></i>
-                <span class="popularity-count">1.2K</span>
-              </span>
+          
+          <p class="game-description">${game.description}</p>
+          
+          <div class="game-tags">
+            <span class="category-tag ${game.category}">
+              ${game.categoryName || (game.category && game.category.charAt(0).toUpperCase() + game.category.slice(1))}
+            </span>
+            ${game.featured ? '<span class="feature-tag featured">FEATURED</span>' : ''}
+            ${game.trending ? '<span class="feature-tag hot">HOT</span>' : ''}
+            ${game.isNew ? '<span class="feature-tag new">NEW</span>' : ''}
+            <span class="difficulty-tag ${game.difficulty ? game.difficulty.toLowerCase() : 'medium'}">${game.difficulty ? game.difficulty.toUpperCase() : 'MEDIUM'}</span>
+          </div>
+          
+          <div class="game-stats">
+            <div class="stat popularity-stat" data-game-slug="${game.slug}">
+              <i class="fas fa-fire"></i>
+              <span class="popularity-count">Loading...</span>
             </div>
-            <a href="${gameUrl}" class="play-button" style="background: linear-gradient(135deg, #6366F1, #4F46E5); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.3s ease;">
-              Play Now
-            </a>
+            <div class="stat">
+              <i class="fas fa-child"></i>
+              <span>Ages ${game.ageRange || '6-12'}</span>
+            </div>
           </div>
         </div>
       </div>
