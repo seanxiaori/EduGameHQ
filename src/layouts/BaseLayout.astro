@@ -1028,7 +1028,7 @@ if (!isHomePage) {
       let updatedCount = 0;
       
       gameCards.forEach((card, index) => {
-        const gameSlug = card.dataset.gameId;
+        const gameSlug = (card as HTMLElement).dataset.gameId;
         const popularityElement = card.querySelector('.popularity-count');
         
         console.log(`🎯 处理游戏 ${index + 1}/${gameCards.length}: ${gameSlug}`);
@@ -1047,7 +1047,7 @@ if (!isHomePage) {
           }
           
           // 分类加成
-          const categoryMultipliers = {
+          const categoryMultipliers: Record<string, number> = {
             'math': 1.8,
             'science': 1.7, 
             'language': 1.6,

@@ -1360,11 +1360,11 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       window.openShareModal(title, url, description, image);
     } else {
       // 回退方案
-      shareGameFallback(title, url, description);
+      shareGameFallback(title, url);
     }
   }
 
-  function shareGameFallback(title: string, url: string, description: string): void {
+  function shareGameFallback(title: string, url: string): void {
     // 直接调用ShareModal的全局函数
     if (navigator.share) {
       navigator.share({
