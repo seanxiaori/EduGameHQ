@@ -65,10 +65,15 @@ try {
 
 // 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
-const currentCategory = (pageStructure.categories as Record<string, any>)[currentPath];
-const currentSpecialPage = (pageStructure.special as Record<string, any>)[currentPath];
-const currentSystemPage = (pageStructure.system as Record<string, any>)[currentPath];
-const currentSupportPage = (pageStructure.support as Record<string, any>)[currentPath];
+
+// 修复路径匹配问题 - 确保在构建时也能正确匹配
+const cleanPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
+const normalizedPath = cleanPath || currentPath;
+
+const currentCategory = (pageStructure.categories as Record<string, any>)[normalizedPath] || (pageStructure.categories as Record<string, any>)[currentPath];
+const currentSpecialPage = (pageStructure.special as Record<string, any>)[normalizedPath] || (pageStructure.special as Record<string, any>)[currentPath];
+const currentSystemPage = (pageStructure.system as Record<string, any>)[normalizedPath] || (pageStructure.system as Record<string, any>)[currentPath];
+const currentSupportPage = (pageStructure.support as Record<string, any>)[normalizedPath] || (pageStructure.support as Record<string, any>)[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
 
 // 构建面包屑导航
@@ -125,6 +130,14 @@ if (!isHomePage) {
     breadcrumbs.push({ name: 'Games', url: '/', icon: 'fas fa-gamepad' });
   }
 }
+
+// 添加详细的面包屑调试信息
+console.log('🍞 面包屑调试信息:');
+console.log('- 当前路径:', currentPath);
+console.log('- 是否首页:', isHomePage);
+console.log('- 当前分类:', currentCategory);
+console.log('- 面包屑数组长度:', breadcrumbs.length);
+console.log('- 面包屑内容:', breadcrumbs);
 ---
 
 <!DOCTYPE html>
