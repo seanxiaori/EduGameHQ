@@ -38,7 +38,8 @@ const pageStructure = {
   },
   special: {
     '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'trending' },
-    '/recently-played': { name: 'Recently Played', icon: 'fas fa-history', color: 'recent' }
+    '/recently-played': { name: 'Recently Played', icon: 'fas fa-history', color: 'recent' },
+    '/new-games': { name: 'New Games', icon: 'fas fa-sparkles', color: 'new' }
   },
   system: {
     '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'favorites' },
@@ -1332,6 +1333,12 @@ if (!isHomePage) {
     box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
   }
 
+  /* New Games页面特定样式 */
+  .nav-link.new.current {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+  }
+
   /* 下拉菜单样式 */
   .nav-dropdown {
     position: relative;
@@ -1405,6 +1412,7 @@ if (!isHomePage) {
   .dropdown-item.pink:hover { color: #EC4899; }
   .dropdown-item.purple:hover { color: #8B5CF6; }
   .dropdown-item.orange:hover { color: #F59E0B; }
+  .dropdown-item.new:hover { color: #10B981; }
 
   /* 导航项高亮状态 */
   .dropdown-item.active {
@@ -1459,6 +1467,10 @@ if (!isHomePage) {
 
   .dropdown-item.active.orange {
     background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+  }
+
+  .dropdown-item.active.new {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
   }
 
   .dropdown-divider {
@@ -1690,6 +1702,7 @@ if (!isHomePage) {
   .mobile-menu-item.sports:hover { color: #DC2626; }
   .mobile-menu-item.art:hover { color: #EC4899; }
   .mobile-menu-item.geography:hover { color: #0891B2; }
+  .mobile-menu-item.new:hover { color: #10B981; }
 
   /* 移动端菜单项高亮状态 */
   .mobile-menu-item.active {
@@ -1720,6 +1733,10 @@ if (!isHomePage) {
 
   .mobile-menu-item.active.art {
     background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
+  }
+
+  .mobile-menu-item.active.new {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
   }
 
   .mobile-menu-section {
