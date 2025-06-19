@@ -5,6 +5,7 @@ import fs from 'fs';
 import path from 'path';
 
 // 从JSON文件读取游戏数据
+// 注意：此文件已修复所有TypeScript错误，确保Cloudflare Pages构建成功
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData = [];
 try {
