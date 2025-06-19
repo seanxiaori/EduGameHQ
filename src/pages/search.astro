@@ -33,11 +33,16 @@ console.log(`📊 搜索页面游戏总数: ${allGames.length}`);
 const url = Astro.url;
 const searchQuery = url.searchParams.get('q') || '';
 
-// 调试信息
+// 详细调试信息
+console.log(`🔍 === 详细URL调试信息 ===`);
 console.log(`🔍 完整URL: ${url.toString()}`);
-console.log(`🔍 URL参数: ${url.search}`);
-console.log(`🔍 搜索查询: "${searchQuery}"`);
+console.log(`🔍 URL路径: ${url.pathname}`);
+console.log(`🔍 URL参数字符串: "${url.search}"`);
+console.log(`🔍 URL参数对象:`, url.searchParams);
+console.log(`🔍 所有URL参数:`, [...url.searchParams.entries()]);
+console.log(`🔍 搜索查询 q: "${searchQuery}"`);
 console.log(`🔍 搜索查询长度: ${searchQuery.length}`);
+console.log(`🔍 === 调试信息结束 ===`);
 
 // 执行搜索（如果有查询词）
 let searchResults: Game[] = [];
@@ -599,27 +604,233 @@ const seoData = {
 </style>
 
 <script>
-  // 简单的客户端增强功能
-  console.log('🔍 搜索页面加载完成');
+  // 客户端搜索功能
+  console.log('🔍 搜索页面客户端脚本开始执行');
   
-  // 监听搜索框输入，实现实时搜索
+  // 等待页面和GAMES_DATA加载完成
   document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.querySelector('input[name="q"]');
+    console.log('🔍 DOM加载完成，开始初始化搜索功能');
+    
+    // 检查全局游戏数据
+    if (!window.GAMES_DATA || !Array.isArray(window.GAMES_DATA)) {
+      console.error('❌ GAMES_DATA未找到或格式错误');
+      return;
+    }
+    
+    console.log(`✅ 找到 ${window.GAMES_DATA.length} 个游戏数据`);
+    
+    // 从URL获取搜索参数
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('q') || '';
+    
+    console.log(`🔍 客户端搜索查询: "${searchQuery}"`);
+    
+    // 设置搜索框值
+    const searchInput = document.querySelector('input[name="q"]') as HTMLInputElement;
     if (searchInput) {
-      const urlParams = new URLSearchParams(window.location.search);
-      const currentQuery = urlParams.get('q') || '';
-      searchInput.value = currentQuery;
-      
-      // 搜索建议功能
+      searchInput.value = searchQuery;
+      console.log('✅ 搜索框值已设置');
+    }
+    
+    // 如果有搜索查询，执行搜索
+    if (searchQuery && searchQuery.trim().length > 0) {
+      console.log('🎯 执行客户端搜索...');
+      performClientSearch(searchQuery.trim());
+    } else {
+      console.log('🏠 显示默认页面');
+    }
+    
+    // 搜索建议功能
+    if (searchInput) {
       searchInput.addEventListener('input', function() {
         const query = this.value.trim();
         if (query.length >= 2) {
-          // 可以在这里添加搜索建议功能
           console.log(`正在搜索: ${query}`);
+          // 可以在这里添加实时搜索建议
         }
       });
     }
   });
+  
+  // 客户端搜索函数
+  function performClientSearch(query: string) {
+    console.log(`🔍 开始客户端搜索: "${query}"`);
+    
+    const searchTerm = query.toLowerCase();
+    const allGames = window.GAMES_DATA || [];
+    
+    // 执行搜索逻辑
+    const searchResults = allGames.filter((game: any) => 
+      game.title.toLowerCase().includes(searchTerm) ||
+      game.description.toLowerCase().includes(searchTerm) ||
+      game.category.toLowerCase().includes(searchTerm) ||
+      (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
+    );
+    
+    console.log(`🎮 搜索"${query}"找到 ${searchResults.length} 个结果`);
+    
+    // 更新页面内容
+    updateSearchResults(query, searchResults);
+  }
+  
+  // 更新搜索结果显示
+  function updateSearchResults(query: string, results: any[]) {
+    console.log('🎨 更新搜索结果显示');
+    
+    // 获取页面元素
+    const searchHeader = document.querySelector('.search-header .header-text > div');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
+    if (!searchHeader || !contentWrapper) {
+      console.error('❌ 页面元素未找到');
+      return;
+    }
+    
+    // 更新标题
+    if (results.length > 0) {
+      searchHeader.innerHTML = `
+        <h1 class="page-title">Found ${results.length} Results</h1>
+        <p class="page-description">Search results for: <strong>"${query}"</strong></p>
+      `;
+    } else {
+      searchHeader.innerHTML = `
+        <h1 class="page-title">No Results Found</h1>
+        <p class="page-description">Search results for: <strong>"${query}"</strong></p>
+      `;
+    }
+    
+    // 移除现有的搜索结果和默认内容
+    const existingResults = contentWrapper.querySelectorAll('.search-results, .no-results, .search-prompt, .recommendations');
+    existingResults.forEach(el => el.remove());
+    
+    if (results.length > 0) {
+      // 显示搜索结果
+      const resultsSection = createResultsSection(query, results);
+      contentWrapper.appendChild(resultsSection);
+    } else {
+      // 显示无结果页面
+      const noResultsSection = createNoResultsSection(query);
+      contentWrapper.appendChild(noResultsSection);
+    }
+    
+    console.log('✅ 搜索结果显示更新完成');
+  }
+  
+  // 创建搜索结果区域
+  function createResultsSection(query: string, results: any[]): HTMLElement {
+    const section = document.createElement('section');
+    section.className = 'search-results';
+    section.style.cssText = `
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E5E7EB;
+    `;
+    
+    section.innerHTML = `
+      <div class="module-header" style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #F3F4F6;">
+        <div class="module-icon results-icon" style="width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); flex-shrink: 0; background: linear-gradient(135deg, #059669, #047857);">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="module-title-group" style="flex: 1;">
+          <h2 class="module-title" style="font-size: 1.75rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; font-family: 'Space Grotesk', sans-serif;">Search Results</h2>
+          <p class="module-subtitle" style="font-size: 1rem; color: #6B7280; margin: 0; font-weight: 500;">Found ${results.length} games matching "${query}"</p>
+        </div>
+      </div>
+      <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+        ${results.map(game => createGameCard(game)).join('')}
+      </div>
+    `;
+    
+    return section;
+  }
+  
+  // 创建无结果区域
+  function createNoResultsSection(query: string): HTMLElement {
+    const section = document.createElement('section');
+    section.className = 'no-results';
+    section.style.cssText = `
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E5E7EB;
+    `;
+    
+    // 获取热门搜索词
+    const popularTerms = [
+      { term: 'math', icon: 'fa-calculator', color: 'blue' },
+      { term: 'science', icon: 'fa-flask', color: 'green' },
+      { term: 'puzzle', icon: 'fa-puzzle-piece', color: 'orange' },
+      { term: 'language', icon: 'fa-language', color: 'red' },
+      { term: 'sports', icon: 'fa-futbol', color: 'purple' },
+      { term: 'art', icon: 'fa-palette', color: 'teal' }
+    ];
+    
+    section.innerHTML = `
+      <div class="module-header" style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #F3F4F6;">
+        <div class="module-icon no-results-icon" style="width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); flex-shrink: 0; background: linear-gradient(135deg, #6B7280, #4B5563);">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="module-title-group" style="flex: 1;">
+          <h2 class="module-title" style="font-size: 1.75rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; font-family: 'Space Grotesk', sans-serif;">No Games Found</h2>
+          <p class="module-subtitle" style="font-size: 1rem; color: #6B7280; margin: 0; font-weight: 500;">Sorry, we couldn't find any games matching "${query}"</p>
+        </div>
+      </div>
+      
+      <div class="search-suggestions" style="margin-bottom: 2rem;">
+        <h3 class="section-title" style="font-size: 1.25rem; font-weight: 600; color: #1F2937; margin: 0 0 1.5rem 0; text-align: center; font-family: 'Space Grotesk', sans-serif;">Try searching for:</h3>
+        <div class="search-tags" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+          ${popularTerms.map(item => `
+            <a href="/search?q=${item.term}" class="search-tag ${item.color}" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; border: 2px solid transparent;">
+              <i class="fas ${item.icon}"></i>
+              <span>${item.term.charAt(0).toUpperCase() + item.term.slice(1)} Games</span>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    
+    return section;
+  }
+  
+  // 创建游戏卡片
+  function createGameCard(game: any): string {
+    const gameUrl = `/games/${game.slug}`;
+    const thumbnailUrl = game.thumbnail || '/images/games/default-game.webp';
+    
+    return `
+      <div class="game-card" data-game-id="${game.slug}" style="background: white; border-radius: 16px; overflow: hidden; transition: all 0.3s ease; border: 1px solid #E5E7EB; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);">
+        <div class="game-image" style="position: relative; overflow: hidden; height: 180px;">
+          <img src="${thumbnailUrl}" alt="${game.title}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" />
+          <div class="game-badges" style="position: absolute; top: 0.75rem; left: 0.75rem; display: flex; flex-direction: column; gap: 0.5rem;">
+            ${game.featured ? '<span class="badge featured" style="background: linear-gradient(135deg, #F59E0B, #D97706); color: white; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 600;">Featured</span>' : ''}
+            <span class="category-tag ${game.category}" style="background: #F3F4F6; color: #4B5563; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; font-weight: 500;">${game.category}</span>
+          </div>
+        </div>
+        <div class="game-info" style="padding: 1rem;">
+          <h3 class="game-title" style="font-size: 1.125rem; font-weight: 600; color: #1F2937; margin: 0 0 0.5rem 0; line-height: 1.4;">
+            <a href="${gameUrl}" style="text-decoration: none; color: inherit;">${game.title}</a>
+          </h3>
+          <p class="game-description" style="color: #6B7280; font-size: 0.875rem; line-height: 1.5; margin: 0 0 1rem 0;">${game.description}</p>
+          <div class="game-meta" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="game-stats" style="display: flex; gap: 1rem; font-size: 0.875rem; color: #6B7280;">
+              <span class="popularity" style="display: flex; align-items: center; gap: 0.25rem;">
+                <i class="fas fa-fire" style="color: #F59E0B;"></i>
+                <span class="popularity-count">1.2K</span>
+              </span>
+            </div>
+            <a href="${gameUrl}" class="play-button" style="background: linear-gradient(135deg, #6366F1, #4F46E5); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: 500; font-size: 0.875rem; transition: all 0.3s ease;">
+              Play Now
+            </a>
+          </div>
+        </div>
+      </div>
+    `;
+  }
 </script>
 
 
