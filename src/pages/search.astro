@@ -33,10 +33,18 @@ console.log(`📊 搜索页面游戏总数: ${allGames.length}`);
 const url = Astro.url;
 const searchQuery = url.searchParams.get('q') || '';
 
+// 调试信息
+console.log(`🔍 完整URL: ${url.toString()}`);
+console.log(`🔍 URL参数: ${url.search}`);
+console.log(`🔍 搜索查询: "${searchQuery}"`);
+console.log(`🔍 搜索查询长度: ${searchQuery.length}`);
+
 // 执行搜索（如果有查询词）
 let searchResults: Game[] = [];
 if (searchQuery) {
   const searchTerm = searchQuery.toLowerCase().trim();
+  console.log(`🔍 处理后的搜索词: "${searchTerm}"`);
+  
   searchResults = allGames.filter((game: any) => 
     game.title.toLowerCase().includes(searchTerm) ||
     game.description.toLowerCase().includes(searchTerm) ||
@@ -44,6 +52,16 @@ if (searchQuery) {
     (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
   );
   console.log(`🔍 搜索"${searchQuery}"找到 ${searchResults.length} 个结果`);
+  
+  // 显示前几个匹配的游戏
+  if (searchResults.length > 0) {
+    console.log(`🎮 匹配的游戏示例:`);
+    searchResults.slice(0, 3).forEach((game, index) => {
+      console.log(`  ${index + 1}. ${game.title} (${game.category})`);
+    });
+  }
+} else {
+  console.log(`🔍 没有搜索查询，显示默认页面`);
 }
 
 // 热门搜索关键词
