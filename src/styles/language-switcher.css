@@ -71,6 +71,7 @@
   transition: all 0.3s ease;
   z-index: 1000;
   backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 .language-switcher.active .language-menu {
