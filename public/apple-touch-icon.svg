@@ -1,10 +1,35 @@
-<svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#8B5CF6"/>
-        <stop offset="100%" style="stop-color:#EC4899"/>
-      </linearGradient>
-    </defs>
-    <rect width="180" height="180" rx="45" fill="url(#grad)"/>
-    <text x="90" y="112.5" font-family="Arial" font-size="90" fill="white" text-anchor="middle">E</text>
-  </svg>
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- EduGameHQ品牌渐变 -->
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#D97706"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCD34D"/>
+      <stop offset="100%" style="stop-color:#F59E0B"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆角矩形背景 -->
+  <rect width="180" height="180" rx="40" fill="url(#brandGradient)"/>
+  
+  <!-- 教育书本元素 -->
+  <rect x="30" y="50" width="60" height="80" rx="8" fill="white" fill-opacity="0.9"/>
+  <rect x="30" y="50" width="60" height="15" rx="8" fill="url(#accentGradient)"/>
+  
+  <!-- 游戏控制器元素 -->
+  <rect x="100" y="70" width="50" height="30" rx="15" fill="white" fill-opacity="0.9"/>
+  <circle cx="115" cy="82" r="5" fill="url(#brandGradient)"/>
+  <circle cx="135" cy="82" r="5" fill="url(#brandGradient)"/>
+  <circle cx="115" cy="88" r="3" fill="url(#brandGradient)" fill-opacity="0.7"/>
+  <circle cx="135" cy="88" r="3" fill="url(#brandGradient)" fill-opacity="0.7"/>
+  
+  <!-- 学习进度点 -->
+  <circle cx="60" cy="80" r="8" fill="url(#accentGradient)"/>
+  <circle cx="60" cy="100" r="5" fill="url(#brandGradient)" fill-opacity="0.8"/>
+  <circle cx="60" cy="115" r="5" fill="url(#brandGradient)" fill-opacity="0.6"/>
+  
+  <!-- 游戏星星装饰 -->
+  <path d="M140 40l8 16 16 2-12 11 3 16-14-8-14 8 3-16-12-11 16-2z" fill="white" fill-opacity="0.8"/>
+</svg>

@@ -1,10 +1,30 @@
-<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#8B5CF6"/>
-        <stop offset="100%" style="stop-color:#EC4899"/>
-      </linearGradient>
-    </defs>
-    <rect width="32" height="32" rx="8" fill="url(#grad)"/>
-    <text x="16" y="20" font-family="Arial" font-size="16" fill="white" text-anchor="middle">E</text>
-  </svg>
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- EduGameHQ品牌渐变 -->
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#D97706"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCD34D"/>
+      <stop offset="100%" style="stop-color:#F59E0B"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- 圆角矩形背景 -->
+  <rect width="32" height="32" rx="8" fill="url(#brandGradient)"/>
+  
+  <!-- 教育书本元素 -->
+  <rect x="6" y="9" width="10" height="14" rx="1.5" fill="white" fill-opacity="0.9"/>
+  <rect x="6" y="9" width="10" height="2.5" rx="1.5" fill="url(#accentGradient)"/>
+  
+  <!-- 游戏控制器元素 -->
+  <rect x="18" y="13" width="8" height="5" rx="2.5" fill="white" fill-opacity="0.9"/>
+  <circle cx="20.5" cy="15" r="0.8" fill="url(#brandGradient)"/>
+  <circle cx="23.5" cy="15" r="0.8" fill="url(#brandGradient)"/>
+  
+  <!-- 学习进度点 -->
+  <circle cx="11" cy="15" r="1.2" fill="url(#accentGradient)"/>
+  <circle cx="11" cy="18" r="0.8" fill="url(#brandGradient)" fill-opacity="0.7"/>
+  <circle cx="11" cy="20.5" r="0.8" fill="url(#brandGradient)" fill-opacity="0.5"/>
+</svg>

@@ -1,18 +1,33 @@
 <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- 现代渐变背景 -->
+  <!-- EduGameHQ品牌渐变 -->
   <defs>
-    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8B5CF6"/>
-      <stop offset="100%" style="stop-color:#EC4899"/>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B"/>
+      <stop offset="100%" style="stop-color:#D97706"/>
+    </linearGradient>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FCD34D"/>
+      <stop offset="100%" style="stop-color:#F59E0B"/>
     </linearGradient>
   </defs>
   
   <!-- 圆角矩形背景 -->
-  <rect width="40" height="40" rx="10" fill="url(#logoGradient)"/>
+  <rect width="40" height="40" rx="12" fill="url(#brandGradient)"/>
   
-  <!-- 简洁的书本图标 -->
-  <path d="M12 10h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2H12c-1.1 0-2-.9-2-2V12c0-1.1.9-2 2-2z" fill="white" fill-opacity="0.9"/>
-  <path d="M20 10v20" stroke="white" stroke-width="1.5" stroke-opacity="0.7"/>
-  <circle cx="16" cy="18" r="2" fill="url(#logoGradient)"/>
-  <circle cx="24" cy="22" r="1.5" fill="url(#logoGradient)"/>
+  <!-- 教育书本元素 -->
+  <rect x="8" y="12" width="12" height="16" rx="2" fill="white" fill-opacity="0.9"/>
+  <rect x="8" y="12" width="12" height="3" rx="2" fill="url(#accentGradient)"/>
+  
+  <!-- 游戏控制器元素 -->
+  <rect x="22" y="16" width="10" height="6" rx="3" fill="white" fill-opacity="0.9"/>
+  <circle cx="25" cy="18.5" r="1" fill="url(#brandGradient)"/>
+  <circle cx="29" cy="18.5" r="1" fill="url(#brandGradient)"/>
+  
+  <!-- 学习进度点 -->
+  <circle cx="14" cy="18" r="1.5" fill="url(#accentGradient)"/>
+  <circle cx="14" cy="22" r="1" fill="url(#brandGradient)" fill-opacity="0.7"/>
+  <circle cx="14" cy="25" r="1" fill="url(#brandGradient)" fill-opacity="0.5"/>
+  
+  <!-- 游戏星星装饰 -->
+  <path d="M32 10l1.5 3 3 .5-2.2 2 .7 3-2.5-1.5-2.5 1.5.7-3-2.2-2 3-.5z" fill="white" fill-opacity="0.8" transform="scale(0.6)"/>
 </svg> 
