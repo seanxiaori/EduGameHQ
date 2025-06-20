@@ -2,18 +2,33 @@
 import { getPageSEO, generateStructuredData, getKeywordsString, getOGImageUrl } from '../data/seo-config';
 import fs from 'fs';
 import path from 'path';
+// 多语言支持导入
+import { getLanguageFromPath, getTranslations, t, getLocalizedPath, isRTL, getLanguageInfo, getLanguageSwitchLinks, type LanguageCode } from '../i18n/utils';
+import { defaultLanguage, languages } from '../i18n/config';
+// 导入样式文件
+import '../styles/language-switcher.css';
 
 export interface Props {
   title?: string;
   description?: string;
   bodyClass?: string;
   gameData?: any; // 游戏页面的游戏数据
+  lang?: LanguageCode; // 可选的语言参数
 }
 
-const { title, description, bodyClass = "", gameData } = Astro.props;
+const { title, description, bodyClass = "", gameData, lang } = Astro.props;
 
 // 获取当前页面路径，用于导航高亮和SEO配置
 const currentPath = Astro.url.pathname;
+
+// 多语言配置
+const currentLang = lang || getLanguageFromPath(currentPath);
+const langInfo = getLanguageInfo(currentLang);
+const translations = await getTranslations(currentLang);
+const isRTLLang = isRTL(currentLang);
+
+// 获取语言切换链接
+const languageSwitchLinks = getLanguageSwitchLinks(currentPath);
 
 // 获取SEO配置
 const seoConfig = getPageSEO(currentPath);
@@ -26,30 +41,90 @@ const structuredData = generateStructuredData(currentPath, gameData);
 // 构建完整的页面URL
 const canonicalUrl = new URL(currentPath, Astro.site || 'https://edugamehq.com').toString();
 
-// 定义页面分类和层级结构
+// 定义页面分类和层级结构 - 支持多语言
 const pageStructure = {
   categories: {
-    '/math-games': { name: 'Math Games', icon: 'fas fa-calculator', color: 'math' },
-    '/science-games': { name: 'Science Games', icon: 'fas fa-flask', color: 'science' },
-    '/language-games': { name: 'Language Games', icon: 'fas fa-book-open', color: 'language' },
-    '/puzzle-games': { name: 'Puzzle Games', icon: 'fas fa-puzzle-piece', color: 'puzzle' },
-    '/sports-games': { name: 'Sports Games', icon: 'fas fa-futbol', color: 'sports' },
-    '/art-games': { name: 'Art Games', icon: 'fas fa-palette', color: 'art' }
+    '/math-games': { 
+      name: t(translations, 'categories.math-games', 'Math Games'), 
+      icon: 'fas fa-calculator', 
+      color: 'math' 
+    },
+    '/science-games': { 
+      name: t(translations, 'categories.science-games', 'Science Games'), 
+      icon: 'fas fa-flask', 
+      color: 'science' 
+    },
+    '/language-games': { 
+      name: t(translations, 'categories.language-games', 'Language Games'), 
+      icon: 'fas fa-book-open', 
+      color: 'language' 
+    },
+    '/puzzle-games': { 
+      name: t(translations, 'categories.puzzle-games', 'Puzzle Games'), 
+      icon: 'fas fa-puzzle-piece', 
+      color: 'puzzle' 
+    },
+    '/sports-games': { 
+      name: t(translations, 'categories.sports-games', 'Sports Games'), 
+      icon: 'fas fa-futbol', 
+      color: 'sports' 
+    },
+    '/art-games': { 
+      name: t(translations, 'categories.art-games', 'Art Games'), 
+      icon: 'fas fa-palette', 
+      color: 'art' 
+    }
   },
   special: {
-    '/trending': { name: 'Trending', icon: 'fas fa-fire', color: 'trending' },
-    '/recently-played': { name: 'Recently Played', icon: 'fas fa-history', color: 'recent' },
-    '/new-games': { name: 'New Games', icon: 'fas fa-plus-circle', color: 'new' }
+    '/trending': { 
+      name: t(translations, 'nav.trending', 'Trending'), 
+      icon: 'fas fa-fire', 
+      color: 'trending' 
+    },
+    '/recently-played': { 
+      name: t(translations, 'nav.recent', 'Recently Played'), 
+      icon: 'fas fa-history', 
+      color: 'recent' 
+    },
+    '/new-games': { 
+      name: t(translations, 'nav.new', 'New Games'), 
+      icon: 'fas fa-plus-circle', 
+      color: 'new' 
+    }
   },
   system: {
-    '/favorites': { name: 'Favorites', icon: 'fas fa-heart', color: 'favorites' },
-    '/search': { name: 'Search', icon: 'fas fa-search', color: 'search' }
+    '/favorites': { 
+      name: t(translations, 'nav.favorites', 'Favorites'), 
+      icon: 'fas fa-heart', 
+      color: 'favorites' 
+    },
+    '/search': { 
+      name: t(translations, 'nav.search', 'Search'), 
+      icon: 'fas fa-search', 
+      color: 'search' 
+    }
   },
   support: {
-    '/privacy-policy': { name: 'Privacy Policy', icon: 'fas fa-shield-alt', color: 'support' },
-    '/terms-of-service': { name: 'Terms of Service', icon: 'fas fa-file-contract', color: 'support' },
-    '/help': { name: 'Help & Support', icon: 'fas fa-life-ring', color: 'support' },
-    '/about': { name: 'About', icon: 'fas fa-info-circle', color: 'support' }
+    '/privacy-policy': { 
+      name: t(translations, 'nav.privacy', 'Privacy Policy'), 
+      icon: 'fas fa-shield-alt', 
+      color: 'support' 
+    },
+    '/terms-of-service': { 
+      name: t(translations, 'nav.terms', 'Terms of Service'), 
+      icon: 'fas fa-file-contract', 
+      color: 'support' 
+    },
+    '/help': { 
+      name: t(translations, 'nav.help', 'Help & Support'), 
+      icon: 'fas fa-life-ring', 
+      color: 'support' 
+    },
+    '/about': { 
+      name: t(translations, 'nav.about', 'About'), 
+      icon: 'fas fa-info-circle', 
+      color: 'support' 
+    }
   }
 };
 
@@ -76,25 +151,39 @@ const currentSystemPage = (pageStructure.system as Record<string, any>)[normaliz
 const currentSupportPage = (pageStructure.support as Record<string, any>)[normalizedPath] || (pageStructure.support as Record<string, any>)[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
 
-// 构建面包屑导航
+// 构建面包屑导航 - 多语言支持
 const breadcrumbs = [];
 if (!isHomePage) {
-  breadcrumbs.push({ name: 'Home', url: '/', icon: 'fas fa-home' });
+  breadcrumbs.push({ 
+    name: t(translations, 'nav.home', 'Home'), 
+    url: getLocalizedPath('/', currentLang), 
+    icon: 'fas fa-home' 
+  });
   
   if (currentCategory) {
-    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
+    breadcrumbs.push({ 
+      name: t(translations, 'nav.categories', 'Categories'), 
+      url: '#', 
+      icon: 'fas fa-gamepad', 
+      isDropdown: true 
+    });
     breadcrumbs.push({ 
       name: currentCategory.name, 
-      url: currentPath, 
+      url: getLocalizedPath(currentPath, currentLang), 
       icon: currentCategory.icon,
       color: currentCategory.color,
       isCurrent: true 
     });
   } else if (currentSpecialPage) {
-    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
+    breadcrumbs.push({ 
+      name: t(translations, 'nav.categories', 'Categories'), 
+      url: '#', 
+      icon: 'fas fa-gamepad', 
+      isDropdown: true 
+    });
     breadcrumbs.push({ 
       name: currentSpecialPage.name, 
-      url: currentPath, 
+      url: getLocalizedPath(currentPath, currentLang), 
       icon: currentSpecialPage.icon,
       color: currentSpecialPage.color,
       isCurrent: true 
@@ -103,7 +192,7 @@ if (!isHomePage) {
     // 系统页面面包屑（如收藏、搜索等）
     breadcrumbs.push({ 
       name: currentSystemPage.name, 
-      url: currentPath, 
+      url: getLocalizedPath(currentPath, currentLang), 
       icon: currentSystemPage.icon,
       color: currentSystemPage.color,
       isCurrent: true 
@@ -111,7 +200,7 @@ if (!isHomePage) {
   } else if (currentSupportPage) {
     // Support页面面包屑
     breadcrumbs.push({ 
-      name: 'Support', 
+      name: t(translations, 'support', 'Support'), 
       url: '#', 
       icon: 'fas fa-life-ring', 
       color: 'support',
@@ -119,21 +208,31 @@ if (!isHomePage) {
     });
     breadcrumbs.push({ 
       name: currentSupportPage.name, 
-      url: currentPath, 
+      url: getLocalizedPath(currentPath, currentLang), 
       icon: currentSupportPage.icon,
       color: currentSupportPage.color,
       isCurrent: true 
     });
   } else if (isGamePage) {
     // 游戏页面面包屑 - 需要根据游戏所属分类来确定
-    breadcrumbs.push({ name: 'Categories', url: '#', icon: 'fas fa-gamepad', isDropdown: true });
-    breadcrumbs.push({ name: 'Games', url: '/', icon: 'fas fa-gamepad' });
+    breadcrumbs.push({ 
+      name: t(translations, 'nav.categories', 'Categories'), 
+      url: '#', 
+      icon: 'fas fa-gamepad', 
+      isDropdown: true 
+    });
+    breadcrumbs.push({ 
+      name: t(translations, 'game', 'Games'), 
+      url: getLocalizedPath('/', currentLang), 
+      icon: 'fas fa-gamepad' 
+    });
   }
 }
 
 // 添加详细的面包屑调试信息
 console.log('🍞 面包屑调试信息:');
 console.log('- 当前路径:', currentPath);
+console.log('- 当前语言:', currentLang);
 console.log('- 是否首页:', isHomePage);
 console.log('- 当前分类:', currentCategory);
 console.log('- 面包屑数组长度:', breadcrumbs.length);
@@ -141,7 +240,7 @@ console.log('- 面包屑内容:', breadcrumbs);
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={currentLang} dir={isRTLLang ? 'rtl' : 'ltr'}>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,7 +255,7 @@ console.log('- 面包屑内容:', breadcrumbs);
   <!-- 其他SEO元标签 -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <meta name="author" content="EduGameHQ">
-  <meta name="language" content="English">
+  <meta name="language" content={langInfo.name}>
   <meta name="revisit-after" content="7 days">
   <meta name="distribution" content="global">
   <meta name="rating" content="general">
@@ -181,9 +280,11 @@ console.log('- 面包屑内容:', breadcrumbs);
   <!-- Canonical URL -->
   <link rel="canonical" href={canonicalUrl}>
   
-  <!-- Alternate hreflang for international SEO -->
-  <link rel="alternate" hreflang="en" href={canonicalUrl}>
-  <link rel="alternate" hreflang="x-default" href={canonicalUrl}>
+  <!-- 多语言Alternate hreflang标签 -->
+  {languageSwitchLinks.map(link => (
+    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://edugamehq.com').toString()}>
+  ))}
+  <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://edugamehq.com').toString()}>
   
   <!-- Fonts - 优化加载 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -203,7 +304,7 @@ console.log('- 面包屑内容:', breadcrumbs);
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
   <meta property="og:site_name" content="EduGameHQ">
-  <meta property="og:locale" content="en_US">
+  <meta property="og:locale" content={currentLang === 'en' ? 'en_US' : `${currentLang}_${currentLang.toUpperCase()}`}>
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -340,22 +441,35 @@ console.log('- 面包屑内容:', breadcrumbs);
   <script src="/js/game-stats-manager.js" defer is:inline></script>
   
   <!-- 全局games数据 - 供客户端JavaScript使用 -->
-  <script define:vars={{ gamesData }} is:inline>
-    // 设置全局游戏数据
+  <script define:vars={{ gamesData, currentLang, translations }} is:inline>
+    // 设置全局游戏数据和多语言数据
     window.GAMES_DATA = gamesData || [];
+    window.CURRENT_LANG = currentLang;
+    window.TRANSLATIONS = translations;
     console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
+    console.log('🌍 当前语言:', window.CURRENT_LANG);
     console.log('📊 GAMES_DATA内容样例:', window.GAMES_DATA.slice(0, 2));
   </script>
   
   <!-- FontAwesome样式表 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
+  <!-- RTL样式支持 -->
+  {isRTLLang && (
+    <style>
+      body { direction: rtl; }
+      .search-container { order: -1; }
+      .nav-actions { order: 1; }
+      .breadcrumb-separator { transform: scaleX(-1); }
+    </style>
+  )}
+  
 </head>
 
-<body class={`min-h-screen ${bodyClass}`}>
+<body class={`min-h-screen ${bodyClass} ${isRTLLang ? 'rtl' : 'ltr'}`}>
   <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-gold-500 text-white px-4 py-2 rounded-lg z-50">
-    Skip to main content
+    {t(translations, 'common.skip_to_content', 'Skip to main content')}
   </a>
   
   <!-- 页面内容 -->
@@ -364,7 +478,7 @@ console.log('- 面包屑内容:', breadcrumbs);
     <header class="navbar">
       <div class="nav-container">
         <!-- Logo -->
-        <a href="/" class="logo" aria-label="EduGameHQ Home">
+        <a href={getLocalizedPath('/', currentLang)} class="logo" aria-label="EduGameHQ Home">
           <div class="logo-icon">
             <img src="/images/logo.svg" alt="EduGameHQ Logo" width="40" height="40" />
           </div>
@@ -376,20 +490,20 @@ console.log('- 面包屑内容:', breadcrumbs);
           {breadcrumbs.length === 0 ? (
             <!-- 首页导航 -->
             <div class="nav-breadcrumbs">
-              <a href="/" class="nav-link current" aria-current="page">
+              <a href={getLocalizedPath('/', currentLang)} class="nav-link current" aria-current="page">
                 <i class="fas fa-home"></i>
-                Home
+                {t(translations, 'nav.home', 'Home')}
               </a>
               <div class="nav-dropdown">
                 <button class="nav-link dropdown-trigger" id="categoriesDropdown">
                   <i class="fas fa-gamepad"></i>
-                  Categories
+                  {t(translations, 'nav.categories', 'Categories')}
                   <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </button>
                 <div class="dropdown-menu" id="categoriesMenu">
                   <!-- 游戏分类 -->
                   {Object.entries(pageStructure.categories).map(([path, info]) => (
-                    <a href={path} class={`dropdown-item ${info.color}`}>
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
                       <i class={info.icon}></i>
                       {info.name}
                     </a>
@@ -398,7 +512,7 @@ console.log('- 面包屑内容:', breadcrumbs);
                   <hr class="dropdown-divider">
                   <!-- 特殊页面 -->
                   {Object.entries(pageStructure.special).map(([path, info]) => (
-                    <a href={path} class={`dropdown-item ${info.color}`}>
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
                       <i class={info.icon}></i>
                       {info.name}
                     </a>
@@ -419,11 +533,11 @@ console.log('- 面包屑内容:', breadcrumbs);
                         <i class="fas fa-chevron-down dropdown-arrow"></i>
                       </button>
                       <div class="dropdown-menu" id={`${crumb.color}Menu`}>
-                        {crumb.name === 'Categories' ? (
+                        {crumb.name === t(translations, 'nav.categories', 'Categories') ? (
                           <>
                         <!-- 游戏分类 -->
                         {Object.entries(pageStructure.categories).map(([path, info]) => (
-                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                          <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                             <i class={info.icon}></i>
                             {info.name}
                           </a>
@@ -432,17 +546,17 @@ console.log('- 面包屑内容:', breadcrumbs);
                         <hr class="dropdown-divider">
                         <!-- 特殊页面 -->
                         {Object.entries(pageStructure.special).map(([path, info]) => (
-                          <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                          <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                             <i class={info.icon}></i>
                             {info.name}
                           </a>
                         ))}
                           </>
-                        ) : crumb.name === 'Support' ? (
+                        ) : crumb.name === t(translations, 'support', 'Support') ? (
                           <>
                             <!-- Support页面 -->
                             {Object.entries(pageStructure.support).map(([path, info]) => (
-                              <a href={path} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                              <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                                 <i class={info.icon}></i>
                                 {info.name}
                               </a>
@@ -473,7 +587,7 @@ console.log('- 面包屑内容:', breadcrumbs);
             <input 
               type="text" 
               class="search-box" 
-              placeholder="Search educational games..."
+              placeholder={t(translations, 'search.placeholder', 'Search educational games...')}
               autocomplete="off"
             />
             <button type="button" class="search-button" onclick="performSearch()">
@@ -484,13 +598,31 @@ console.log('- 面包屑内容:', breadcrumbs);
         
         <!-- 右侧按钮组 -->
         <div class="nav-actions">
-          <a href="/favorites" class={`nav-btn favorites-btn ${currentPath === '/favorites' ? 'current' : ''}`} title="Favorites">
+          <!-- 语言切换器 -->
+          <div class="nav-dropdown language-switcher">
+            <button class="nav-btn language-btn" id="languageDropdown" title={t(translations, 'language.switch', 'Switch Language')}>
+              <span class="language-flag">{langInfo.flag}</span>
+              <span class="language-code">{currentLang.toUpperCase()}</span>
+              <i class="fas fa-chevron-down dropdown-arrow"></i>
+            </button>
+            <div class="dropdown-menu language-menu" id="languageMenu">
+              {languageSwitchLinks.map(link => (
+                <a href={link.url} class={`dropdown-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir}>
+                  <span class="language-flag">{link.flag}</span>
+                  <span class="language-name">{link.nativeName}</span>
+                  {link.code === currentLang && <i class="fas fa-check"></i>}
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <a href={getLocalizedPath('/favorites', currentLang)} class={`nav-btn favorites-btn ${currentPath === '/favorites' ? 'current' : ''}`} title={t(translations, 'nav.favorites', 'Favorites')}>
             <i class="fas fa-heart"></i>
-            <span class="nav-btn-text">Favorites</span>
+            <span class="nav-btn-text">{t(translations, 'nav.favorites', 'Favorites')}</span>
           </a>
-          <button class="nav-btn random-btn" onclick="playRandomGame()" title="Random Game">
+          <button class="nav-btn random-btn" onclick="playRandomGame()" title={t(translations, 'game.random', 'Random Game')}>
             <i class="fas fa-dice"></i>
-            <span class="nav-btn-text">Random</span>
+            <span class="nav-btn-text">{t(translations, 'game.random', 'Random')}</span>
           </button>
           
           <!-- 移动端菜单按钮 -->
@@ -505,15 +637,15 @@ console.log('- 面包屑内容:', breadcrumbs);
       <!-- 移动端菜单 -->
       <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-content">
-          <a href="/" class={`mobile-menu-item ${currentPath === '/' ? 'active' : ''}`}>
+          <a href={getLocalizedPath('/', currentLang)} class={`mobile-menu-item ${currentPath === '/' ? 'active' : ''}`}>
             <i class="fas fa-home"></i>
-            Home
+            {t(translations, 'nav.home', 'Home')}
           </a>
           
           <div class="mobile-menu-section">
-            <div class="mobile-menu-title">Game Categories</div>
+            <div class="mobile-menu-title">{t(translations, 'footer.game_categories', 'Game Categories')}</div>
             {Object.entries(pageStructure.categories).map(([path, info]) => (
-              <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {info.name}
               </a>
@@ -521,9 +653,9 @@ console.log('- 面包屑内容:', breadcrumbs);
           </div>
           
           <div class="mobile-menu-section">
-            <div class="mobile-menu-title">Special Pages</div>
+            <div class="mobile-menu-title">{t(translations, 'nav.special', 'Special Pages')}</div>
             {Object.entries(pageStructure.special).map(([path, info]) => (
-              <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {info.name}
               </a>
@@ -531,11 +663,23 @@ console.log('- 面包屑内容:', breadcrumbs);
           </div>
           
           <div class="mobile-menu-section">
-            <div class="mobile-menu-title">Support</div>
+            <div class="mobile-menu-title">{t(translations, 'footer.support', 'Support')}</div>
             {Object.entries(pageStructure.support).map(([path, info]) => (
-              <a href={path} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {info.name}
+              </a>
+            ))}
+          </div>
+          
+          <!-- 移动端语言切换 -->
+          <div class="mobile-menu-section">
+            <div class="mobile-menu-title">{t(translations, 'language.switch', 'Language')}</div>
+            {languageSwitchLinks.map(link => (
+              <a href={link.url} class={`mobile-menu-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir}>
+                <span class="language-flag">{link.flag}</span>
+                <span class="language-name">{link.nativeName}</span>
+                {link.code === currentLang && <i class="fas fa-check"></i>}
               </a>
             ))}
           </div>
@@ -559,1442 +703,140 @@ console.log('- 面包屑内容:', breadcrumbs);
               <span>EduGameHQ</span>
             </div>
             <p class="footer-description">
-              Making learning fun and accessible for students worldwide through engaging educational games.
+              {t(translations, 'footer.description', 'EduGameHQ is your go-to platform for educational games that make learning engaging and effective.')}
             </p>
           </div>
 
           <!-- 游戏分类 -->
           <div class="footer-section">
-            <h3 class="footer-title">Game Categories</h3>
+            <h3 class="footer-title">{t(translations, 'footer.game_categories', 'Game Categories')}</h3>
             <ul class="footer-links">
-              <li><a href="/math-games">Math Games</a></li>
-              <li><a href="/science-games">Science Games</a></li>
-              <li><a href="/language-games">Language Games</a></li>
-              <li><a href="/puzzle-games">Puzzle Games</a></li>
-              <li><a href="/sports-games">Sports Games</a></li>
-              <li><a href="/art-games">Art & Creativity</a></li>
+              <li><a href={getLocalizedPath('/math-games', currentLang)}>{t(translations, 'categories.math-games', 'Math Games')}</a></li>
+              <li><a href={getLocalizedPath('/science-games', currentLang)}>{t(translations, 'categories.science-games', 'Science Games')}</a></li>
+              <li><a href={getLocalizedPath('/language-games', currentLang)}>{t(translations, 'categories.language-games', 'Language Games')}</a></li>
+              <li><a href={getLocalizedPath('/puzzle-games', currentLang)}>{t(translations, 'categories.puzzle-games', 'Puzzle Games')}</a></li>
+              <li><a href={getLocalizedPath('/sports-games', currentLang)}>{t(translations, 'categories.sports-games', 'Sports Games')}</a></li>
+              <li><a href={getLocalizedPath('/art-games', currentLang)}>{t(translations, 'categories.art-games', 'Art & Creativity')}</a></li>
             </ul>
           </div>
 
           <!-- 快速链接 -->
           <div class="footer-section">
-            <h3 class="footer-title">Quick Links</h3>
+            <h3 class="footer-title">{t(translations, 'footer.quick_links', 'Quick Links')}</h3>
             <ul class="footer-links">
-              <li><a href="/recently-played">Recently Played</a></li>
-              <li><a href="/trending">Trending Games</a></li>
-              <li><a href="/new-games">New Games</a></li>
+              <li><a href={getLocalizedPath('/recently-played', currentLang)}>{t(translations, 'nav.recent', 'Recently Played')}</a></li>
+              <li><a href={getLocalizedPath('/trending', currentLang)}>{t(translations, 'nav.trending', 'Trending Games')}</a></li>
+              <li><a href={getLocalizedPath('/new-games', currentLang)}>{t(translations, 'nav.new', 'New Games')}</a></li>
             </ul>
           </div>
 
           <!-- 支持 -->
           <div class="footer-section">
-            <h3 class="footer-title">Support</h3>
+            <h3 class="footer-title">{t(translations, 'footer.support', 'Support')}</h3>
             <ul class="footer-links">
-              <li><a href="/help">Help Center</a></li>
-              <li><a href="/privacy-policy">Privacy Policy</a></li>
-              <li><a href="/terms-of-service">Terms of Service</a></li>
-              <li><a href="/about">About Us</a></li>
+              <li><a href={getLocalizedPath('/help', currentLang)}>{t(translations, 'nav.help', 'Help Center')}</a></li>
+              <li><a href={getLocalizedPath('/privacy-policy', currentLang)}>{t(translations, 'nav.privacy', 'Privacy Policy')}</a></li>
+              <li><a href={getLocalizedPath('/terms-of-service', currentLang)}>{t(translations, 'nav.terms', 'Terms of Service')}</a></li>
+              <li><a href={getLocalizedPath('/about', currentLang)}>{t(translations, 'nav.about', 'About Us')}</a></li>
             </ul>
           </div>
         </div>
 
-        <!-- 版权信息 -->
+        <!-- 页脚底部 -->
         <div class="footer-bottom">
-          <div class="footer-copyright">
-            <p>&copy; 2025 EduGameHQ. All rights reserved.</p>
-            <p>Made with ❤️ for global education</p>
-          </div>
-          <div class="footer-social">
-            <!-- Facebook分享 -->
-            <div class="footer-quick-action-item">
-              <a href="#" class="social-link" aria-label="Share on Facebook" onclick="shareCurrentPageToFacebook(); return false;">
-                <i class="fab fa-facebook-f"></i>
-              </a>
-            </div>
-            <!-- Twitter分享 -->
-            <div class="footer-quick-action-item">
-              <a href="#" class="social-link" aria-label="Share on Twitter" onclick="shareCurrentPageToTwitter(); return false;">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </div>
-            <!-- 邮件分享 -->
-            <div class="footer-quick-action-item">
-              <a href="#" class="social-link" aria-label="Share on YouTube" onclick="shareCurrentPageToEmail(); return false;">
-                <i class="fas fa-envelope"></i>
-              </a>
-            </div>
-            <!-- 复制链接 -->
-            <div class="footer-quick-action-item">
-              <a href="#" class="social-link" aria-label="Copy link to share" onclick="copyCurrentPageLink(); return false;">
-                <i class="fas fa-link"></i>
-              </a>
-            </div>
+          <div class="footer-bottom-content">
+            <p class="footer-copyright">
+              {t(translations, 'footer.copyright', '© 2025 EduGameHQ. All rights reserved.')}
+            </p>
+            <p class="footer-tagline">
+              {t(translations, 'footer.made_with_love', 'Made with ❤️ for learners worldwide')}
+            </p>
           </div>
         </div>
       </div>
     </footer>
   </div>
-  
-  <!-- JavaScript -->
-  <script>
-    // 全局搜索函数
+
+  <!-- 导航JavaScript -->
+  <script is:inline>
+    // 多语言搜索功能
     function performSearch() {
-      console.log('=== PERFORM SEARCH CALLED ===');
       const searchBox = document.querySelector('.search-box');
-      console.log('Search box element:', searchBox);
-      
-      if (searchBox) {
-        const query = (searchBox as HTMLInputElement)?.value?.trim() || '';
-        console.log('Search query:', query);
-        console.log('Query length:', query.length);
-        
-        if (query.length > 0) {
-          const searchUrl = `/search?q=${encodeURIComponent(query)}`;
-          console.log('Redirecting to:', searchUrl);
-          window.location.href = searchUrl;
-        } else {
-          console.log('Empty query, redirecting to search page');
-          window.location.href = '/search';
-        }
-      } else {
-        console.error('Search box not found in performSearch!');
+      const query = searchBox.value.trim();
+      if (query) {
+        const currentLang = window.CURRENT_LANG || 'en';
+        const searchPath = currentLang === 'en' ? '/search' : `/${currentLang}/search`;
+        window.location.href = `${searchPath}?q=${encodeURIComponent(query)}`;
       }
     }
 
-    // 将函数绑定到全局window对象
-    window.performSearch = performSearch;
-
-    // DOM加载完成后初始化
+    // 回车键搜索
     document.addEventListener('DOMContentLoaded', function() {
-      console.log('=== SEARCH INITIALIZATION DEBUG ===');
-      
+      const searchBox = document.querySelector('.search-box');
+      if (searchBox) {
+        searchBox.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            performSearch();
+          }
+        });
+      }
+
       // 下拉菜单功能
       const dropdowns = document.querySelectorAll('.nav-dropdown');
       dropdowns.forEach(dropdown => {
-        const dropdownToggle = dropdown.querySelector('.dropdown-trigger');
-        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+        const trigger = dropdown.querySelector('.dropdown-trigger');
+        const menu = dropdown.querySelector('.dropdown-menu');
         
-        if (dropdownToggle && dropdownMenu) {
-          dropdownToggle.addEventListener('click', function(this: HTMLElement, e: Event) {
-            // 只对button元素阻止默认行为，不影响a标签
-            if (this.tagName === 'BUTTON') {
+        if (trigger && menu) {
+          trigger.addEventListener('click', function(e) {
             e.preventDefault();
             e.stopPropagation();
-            }
             
             // 关闭其他下拉菜单
             dropdowns.forEach(otherDropdown => {
               if (otherDropdown !== dropdown) {
-                const otherMenu = otherDropdown.querySelector('.dropdown-menu');
-                if (otherMenu) {
-                  otherMenu.classList.remove('show');
-                }
+                otherDropdown.classList.remove('active');
               }
             });
             
             // 切换当前下拉菜单
-            dropdownMenu.classList.toggle('show');
+            dropdown.classList.toggle('active');
           });
         }
       });
-      
-      // 点击外部关闭所有下拉菜单
-      document.addEventListener('click', function(e) {
-        const isClickInsideDropdown = (e.target as HTMLElement)?.closest?.('.nav-dropdown');
-        if (!isClickInsideDropdown) {
-          dropdowns.forEach(dropdown => {
-            const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-            if (dropdownMenu) {
-              dropdownMenu.classList.remove('show');
-            }
-          });
-        }
+
+      // 点击外部关闭下拉菜单
+      document.addEventListener('click', function() {
+        dropdowns.forEach(dropdown => {
+          dropdown.classList.remove('active');
+        });
       });
-      
-      // 移动端菜单功能
+
+      // 移动端菜单
       const mobileMenuBtn = document.getElementById('mobileMenuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
       
       if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          mobileMenu.classList.toggle('show');
+        mobileMenuBtn.addEventListener('click', function() {
+          mobileMenu.classList.toggle('active');
           mobileMenuBtn.classList.toggle('active');
         });
-        
-        // 点击菜单项后关闭移动端菜单
-        const mobileMenuItems = mobileMenu.querySelectorAll('.mobile-menu-item');
-        mobileMenuItems.forEach(item => {
-          item.addEventListener('click', function() {
-            mobileMenu.classList.remove('show');
-            mobileMenuBtn.classList.remove('active');
-          });
-        });
-      }
-      
-      // 搜索功能初始化
-      const searchBox = document.querySelector('.search-box');
-      const searchWrapper = document.querySelector('.search-wrapper');
-      console.log('Search box found:', !!searchBox);
-      console.log('Search box element:', searchBox);
-      
-      if (searchBox && searchWrapper) {
-        console.log('Search box placeholder:', (searchBox as HTMLInputElement).placeholder);
-        
-        // 监听输入变化，控制搜索按钮显示
-        (searchBox as HTMLInputElement).addEventListener('input', function(this: HTMLInputElement) {
-          if (this.value.trim().length > 0) {
-            searchWrapper.classList.add('has-content');
-          } else {
-            searchWrapper.classList.remove('has-content');
-          }
-        });
-        
-        // 搜索框回车事件
-        (searchBox as HTMLInputElement).addEventListener('keypress', function(this: HTMLInputElement, e: KeyboardEvent) {
-          console.log('=== SEARCH KEYPRESS EVENT ===');
-          console.log('Key pressed:', e.key);
-          console.log('Current value:', this.value);
-          
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('ENTER KEY DETECTED - CALLING performSearch()');
-            performSearch();
-          }
-        });
-        
-        // 备用keydown事件
-        (searchBox as HTMLInputElement).addEventListener('keydown', function(this: HTMLInputElement, e: KeyboardEvent) {
-          if (e.key === 'Enter') {
-            e.preventDefault();
-            e.stopPropagation();
-            console.log('KEYDOWN ENTER - CALLING performSearch()');
-            performSearch();
-          }
-        });
-        
-        console.log('Search functionality initialized successfully');
-      } else {
-        console.error('Search box not found during initialization!');
-      }
-      
-      // 搜索按钮事件
-      const searchButton = document.querySelector('.search-button');
-      if (searchButton) {
-        console.log('Search button found:', searchButton);
-        searchButton.addEventListener('click', function(e) {
-          e.preventDefault();
-          e.stopPropagation();
-          console.log('SEARCH BUTTON CLICKED - CALLING performSearch()');
-          performSearch();
-        });
-      } else {
-        console.log('Search button not found');
       }
     });
-    
-    // 全局随机游戏函数
-    window.playRandomGame = function() {
-      // 真实存在的游戏slug列表，从各个分类中精选
-      const games = [
-        '/games/2048',
-        '/games/math-duck',
-        '/games/five-o',
-        '/games/little-alchemy-2',
-        '/games/solar-system-scope',
-        '/games/cut-the-rope',
-        '/games/table-tennis-world-tour',
-        '/games/draw-climber',
-        '/games/basket-random',
-        '/games/mini-golf-club',
-        '/games/words-of-wonders',
-        '/games/crossword-connect',
-        '/games/emoji-puzzle',
-        '/games/blockbuster-puzzle',
-        '/games/nuts-puzzle-sort-by-color',
-        '/games/find-the-difference',
-        '/games/skribblio',
-        '/games/virtual-piano',
-        '/games/color-match-amg',
-        '/games/pottery-master'
-      ];
-      const randomGame = games[Math.floor(Math.random() * games.length)];
-      console.log('随机选择的游戏:', randomGame);
-      if (randomGame) {
-        window.location.href = randomGame;
+
+    // 随机游戏功能
+    function playRandomGame() {
+      const games = window.GAMES_DATA || [];
+      if (games.length > 0) {
+        const randomGame = games[Math.floor(Math.random() * games.length)];
+        const currentLang = window.CURRENT_LANG || 'en';
+        const gamePath = currentLang === 'en' ? `/games/${randomGame.slug}` : `/${currentLang}/games/${randomGame.slug}`;
+        window.location.href = gamePath;
       }
-    };
-
-    // 页面底部社交媒体分享函数
-    
-    // 获取当前页面的分享信息
-    function getCurrentPageShareInfo() {
-      const currentUrl = window.location.href;
-      const pageTitle = document.title || 'EduGameHQ - Educational Games Platform';
-      const metaDescription = document.querySelector('meta[name="description"]');
-      const description = metaDescription ? metaDescription.getAttribute('content') : 'Discover amazing educational games for students aged 6-18. Learn while having fun!';
-      
-      // 根据页面路径生成智能分享文案
-      let shareText = '';
-      const path = window.location.pathname;
-      
-      if (path.includes('/games/')) {
-        const gameNamePart = path.split('/').pop();
-        const gameName = gameNamePart ? gameNamePart.replace(/-/g, ' ') : 'this game';
-        shareText = `Check out this awesome educational game: ${gameName}! Perfect for learning and fun. Play now at EduGameHQ!`;
-      } else if (path.includes('/math-games')) {
-        shareText = 'Discover amazing math games that make learning numbers fun! Perfect for students of all ages.';
-      } else if (path.includes('/science-games')) {
-        shareText = 'Explore fascinating science games that bring learning to life! From physics to chemistry.';
-      } else if (path.includes('/language-games')) {
-        shareText = 'Improve your language skills with these engaging educational games! Fun learning for everyone.';
-      } else if (path.includes('/puzzle-games')) {
-        shareText = 'Challenge your mind with these educational puzzle games! Perfect for developing problem-solving skills.';
-      } else if (path.includes('/sports-games')) {
-        shareText = 'Get active with these fun sports and fitness games! Learn while staying healthy.';
-      } else if (path.includes('/art-games')) {
-        shareText = 'Unleash your creativity with these amazing art and design games! Perfect for artistic minds.';
-      } else if (path === '/' || path === '') {
-        shareText = 'Discover EduGameHQ - the ultimate platform for educational games! Learning has never been this fun.';
-      } else {
-        shareText = `Check out this page on EduGameHQ: ${pageTitle}`;
-      }
-      
-      return {
-        url: currentUrl,
-        title: pageTitle,
-        description: description,
-        shareText: shareText
-      };
-    }
-
-    // 扩展window对象类型
-    declare global {
-      interface Window {
-        shareCurrentPageToFacebook: () => void;
-        shareCurrentPageToTwitter: () => void;
-        shareCurrentPageToEmail: () => void;
-        copyCurrentPageLink: () => void;
-      }
-    }
-    
-    // Facebook分享
-    window.shareCurrentPageToFacebook = function(): void {
-      const shareInfo = getCurrentPageShareInfo();
-      const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareInfo.url)}`;
-      
-      window.open(facebookUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
-      
-      // 显示分享成功提示
-      showFooterShareSuccess('Shared to Facebook!');
-      
-      console.log('页面分享到Facebook:', shareInfo.url);
-    };
-
-    // Twitter分享
-    window.shareCurrentPageToTwitter = function(): void {
-      const shareInfo = getCurrentPageShareInfo();
-      const twitterText = `${shareInfo.shareText} #EduGameHQ #EducationalGames #Learning`;
-      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(twitterText)}&url=${encodeURIComponent(shareInfo.url)}`;
-      
-      window.open(twitterUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes');
-      
-      // 显示分享成功提示
-      showFooterShareSuccess('Shared to Twitter!');
-      
-      console.log('页面分享到Twitter:', shareInfo.url);
-    };
-
-    // 邮件分享
-    window.shareCurrentPageToEmail = function(): void {
-      const shareInfo = getCurrentPageShareInfo();
-      const subject = encodeURIComponent(`Check out this page: ${shareInfo.title}`);
-      const body = encodeURIComponent(`Hi!\n\nI found this interesting page that I think you'd enjoy:\n\n${shareInfo.title}\n${shareInfo.description}\n\nCheck it out here: ${shareInfo.url}\n\nShared from EduGameHQ - Making learning fun!`);
-      
-      window.open(`mailto:?subject=${subject}&body=${body}`);
-      
-      // 显示分享成功提示
-      showFooterShareSuccess('Email app opened!');
-      
-      console.log('页面通过邮件分享:', shareInfo.url);
-    };
-
-    // 复制链接
-    window.copyCurrentPageLink = function(): void {
-      const shareInfo = getCurrentPageShareInfo();
-      
-      if (navigator.clipboard && window.isSecureContext) {
-        navigator.clipboard.writeText(shareInfo.url).then(() => {
-          showFooterShareSuccess('Link copied to clipboard!');
-        }).catch(() => {
-          fallbackCopyTextToClipboard(shareInfo.url);
-        });
-      } else {
-        fallbackCopyTextToClipboard(shareInfo.url);
-      }
-      
-      console.log('页面链接已复制:', shareInfo.url);
-    };
-
-    // 复制文本的回退方法
-    function fallbackCopyTextToClipboard(text: string): void {
-      const textArea = document.createElement('textarea');
-      textArea.value = text;
-      textArea.style.position = 'fixed';
-      textArea.style.left = '-999999px';
-      textArea.style.top = '-999999px';
-      document.body.appendChild(textArea);
-      textArea.focus();
-      textArea.select();
-      
-      try {
-        // 尝试使用已弃用的API，如果失败则提供手动复制提示
-        // @ts-ignore - 弃用API，但仍需要作为回退选项
-        const successful = document.execCommand('copy');
-        if (successful) {
-          showFooterShareSuccess('Link copied to clipboard!');
-        } else {
-          showFooterShareSuccess('Please copy the link manually: ' + text);
-        }
-      } catch (err) {
-        showFooterShareSuccess('Please copy the link manually: ' + text);
-      }
-      
-      document.body.removeChild(textArea);
-    }
-
-    // 显示页脚分享成功提示
-    function showFooterShareSuccess(message: string): void {
-      // 移除现有提示
-      const existingToast = document.querySelector('.footer-share-toast');
-      if (existingToast) {
-        existingToast.remove();
-      }
-
-      // 创建提示元素
-      const toast = document.createElement('div');
-      toast.className = 'footer-share-toast';
-      toast.innerHTML = `
-        <div class="toast-content">
-          <i class="fas fa-check-circle"></i>
-          <span>${message}</span>
-        </div>
-      `;
-
-      // 添加样式
-      Object.assign(toast.style, {
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        zIndex: '10001',
-        padding: '1rem 1.5rem',
-        borderRadius: '12px',
-        background: '#10B981',
-        color: 'white',
-        fontWeight: '600',
-        fontSize: '0.9rem',
-        boxShadow: '0 8px 24px rgba(16, 185, 129, 0.3)',
-        transform: 'translateY(100%)',
-        transition: 'transform 0.3s ease',
-        backdropFilter: 'blur(10px)',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '0.5rem'
-      });
-
-      // 添加到页面
-      document.body.appendChild(toast);
-
-      // 动画显示
-      setTimeout(() => {
-        toast.style.transform = 'translateY(0)';
-      }, 100);
-
-      // 3秒后自动隐藏
-      setTimeout(() => {
-        toast.style.transform = 'translateY(100%)';
-        setTimeout(() => {
-          if (toast.parentNode) {
-            toast.parentNode.removeChild(toast);
-          }
-        }, 300);
-      }, 3000);
     }
   </script>
 
-  <!-- 全局收藏管理器 -->
-  <script src="/src/scripts/favorites-manager.js"></script>
-
-  <!-- 立即执行的人气值更新脚本 -->
-  <script>
-    console.log('🚀 人气值更新脚本开始执行...');
-    
-    // 简单的人气值更新函数
-    function updatePopularityNow() {
-      console.log('🔥 立即更新人气值...');
-      
-      const gameCards = document.querySelectorAll('[data-game-id]');
-      console.log(`🎮 找到 ${gameCards.length} 个游戏卡片`);
-      
-      if (gameCards.length === 0) {
-        console.log('❌ 没有找到游戏卡片，可能页面还未加载完成');
-        return false;
-      }
-      
-      let updatedCount = 0;
-      
-      gameCards.forEach((card, index) => {
-        const gameSlug = (card as HTMLElement).dataset.gameId;
-        const popularityElement = card.querySelector('.popularity-count');
-        
-        console.log(`🎯 处理游戏 ${index + 1}/${gameCards.length}: ${gameSlug}`);
-        
-        if (popularityElement && gameSlug) {
-          // 简单的基础人气值计算
-          let basePopularity = 500; // 基础人气值
-          
-          // 从DOM提取游戏信息
-          const categoryTag = card.querySelector('.category-tag');
-          let category = 'puzzle';
-          if (categoryTag) {
-            const classes = Array.from(categoryTag.classList);
-            const categories = ['math', 'science', 'language', 'puzzle', 'art', 'sports'];
-            category = categories.find(cat => classes.includes(cat)) || 'puzzle';
-          }
-          
-          // 分类加成
-          const categoryMultipliers: Record<string, number> = {
-            'math': 1.8,
-            'science': 1.7, 
-            'language': 1.6,
-            'puzzle': 1.4,
-            'art': 1.3,
-            'sports': 1.2
-          };
-          basePopularity *= (categoryMultipliers[category] || 1.0);
-          
-          // 特色标签加成
-          if (card.querySelector('.feature-tag.featured, .badge.featured')) {
-            basePopularity += 800;
-          }
-          if (card.querySelector('.feature-tag.hot, .badge.trending')) {
-            basePopularity += 600;
-          }
-          if (card.querySelector('.feature-tag.new, .badge.new')) {
-            basePopularity += 400;
-          }
-          
-          // 随机变化（基于游戏名称）
-          let hash = 0;
-          for (let i = 0; i < gameSlug.length; i++) {
-            hash = ((hash << 5) - hash) + gameSlug.charCodeAt(i);
-            hash = hash & hash;
-          }
-          const randomVariation = (Math.abs(hash) % 400) - 200;
-          basePopularity += randomVariation;
-          
-          // 确保合理范围
-          basePopularity = Math.max(Math.floor(basePopularity), 300);
-          basePopularity = Math.min(basePopularity, 8000);
-          
-          // 格式化显示
-          let displayText = basePopularity.toString();
-          if (basePopularity >= 1000000) {
-            displayText = (basePopularity / 1000000).toFixed(1) + 'M';
-          } else if (basePopularity >= 1000) {
-            displayText = (basePopularity / 1000).toFixed(1) + 'K';
-          }
-          
-          // 更新显示
-          popularityElement.textContent = displayText;
-          
-          // 添加样式
-          popularityElement.classList.remove('popularity-hot', 'popularity-high', 'popularity-medium', 'popularity-low');
-          if (basePopularity >= 5000) {
-            popularityElement.classList.add('popularity-hot');
-          } else if (basePopularity >= 2000) {
-            popularityElement.classList.add('popularity-high');
-          } else if (basePopularity >= 500) {
-            popularityElement.classList.add('popularity-medium');
-          } else {
-            popularityElement.classList.add('popularity-low');
-          }
-          
-          updatedCount++;
-          console.log(`✅ 游戏 ${gameSlug} 人气值: ${displayText} (${basePopularity})`);
-        }
-      });
-      
-      console.log(`🔥 已更新 ${updatedCount} 个游戏卡片的人气值`);
-      return updatedCount > 0;
-    }
-    
-    // 立即执行一次
-    console.log('📄 当前document.readyState:', document.readyState);
-    updatePopularityNow();
-    
-    // 页面加载完成后再执行一次
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', function() {
-        console.log('📄 DOMContentLoaded事件触发');
-        updatePopularityNow();
-      });
-    }
-    
-    // 额外保险：延迟执行
-    setTimeout(function() {
-      console.log('⏰ 500ms延迟执行');
-      updatePopularityNow();
-    }, 500);
-    
-    setTimeout(function() {
-      console.log('⏰ 1000ms延迟执行');
-      updatePopularityNow();
-    }, 1000);
-    
-    setTimeout(function() {
-      console.log('⏰ 2000ms延迟执行');
-      updatePopularityNow();
-    }, 2000);
-    
-    console.log('🚀 人气值更新脚本设置完成');
-  </script>
+  <!-- 游戏统计和收藏功能 -->
+  <script src="/js/game-stats-manager.js" defer></script>
 </body>
-
-<style>
-  /* 导航栏样式 */
-  .navbar {
-    background: white;
-    border-bottom: 1px solid #E5E7EB;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(20px);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  }
-
-  .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 2rem;
-    height: 70px;
-    max-width: 1400px;
-    margin: 0 auto;
-    gap: 1rem;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    text-decoration: none;
-    color: #1F2937;
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-    font-size: 1.5rem;
-    flex-shrink: 0;
-  }
-
-  .logo-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s ease;
-  }
-
-  .logo-icon img {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-  }
-
-  .logo:hover .logo-icon {
-    transform: scale(1.05);
-  }
-
-  .nav-menu {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    flex-shrink: 0;
-  }
-
-  /* 面包屑导航样式 */
-  .nav-breadcrumbs {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .breadcrumb-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
-  .breadcrumb-separator {
-    color: #9CA3AF;
-    font-size: 0.75rem;
-  }
-
-  .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 0.75rem 1rem;
-    border-radius: 12px;
-    text-decoration: none;
-    color: #4B5563;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    font-size: 0.95rem;
-    white-space: nowrap;
-  }
-
-  .nav-link:hover {
-    background: #F3F1EE;
-    color: #F59E0B;
-    transform: translateY(-1px);
-  }
-
-  /* 当前页面高亮样式 */
-  .nav-link.current {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-    color: white;
-    font-weight: 600;
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-  }
-
-  .nav-link.current:hover {
-    background: linear-gradient(135deg, #D97706 0%, #B45309 100%);
-    transform: translateY(-1px);
-  }
-
-  /* 分类特定颜色 */
-  .nav-link.math.current {
-    background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%);
-    box-shadow: 0 2px 8px rgba(234, 88, 12, 0.3);
-  }
-
-  .nav-link.science.current {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%);
-    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
-  }
-
-  .nav-link.language.current {
-    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%);
-    box-shadow: 0 2px 8px rgba(192, 38, 211, 0.3);
-  }
-
-  .nav-link.puzzle.current {
-    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%);
-    box-shadow: 0 2px 8px rgba(124, 58, 237, 0.3);
-  }
-
-  .nav-link.sports.current {
-    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
-  }
-
-  .nav-link.art.current {
-    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
-  }
-
-  /* 特殊页面颜色 */
-  .nav-link.red.current {
-    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-  }
-
-  .nav-link.green.current {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-  }
-
-  .nav-link.blue.current {
-    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-  }
-
-  .nav-link.pink.current {
-    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
-    box-shadow: 0 2px 8px rgba(236, 72, 153, 0.3);
-  }
-
-  .nav-link.purple.current {
-    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
-    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
-  }
-
-  .nav-link.orange.current {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
-  }
-
-  /* Support页面特定样式 */
-  .nav-link.support.current {
-    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
-  }
-
-  /* New Games页面特定样式 */
-  .nav-link.new.current {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-  }
-
-  /* 下拉菜单样式 */
-  .nav-dropdown {
-    position: relative;
-  }
-
-  .dropdown-trigger {
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-
-  .dropdown-arrow {
-    font-size: 0.8rem;
-    transition: transform 0.3s ease;
-  }
-
-  .nav-dropdown.show .dropdown-arrow {
-    transform: rotate(180deg);
-  }
-
-  .dropdown-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: white;
-    border: 1px solid #E5E7EB;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0;
-    min-width: 200px;
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-    z-index: 1000;
-  }
-
-  .dropdown-menu.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-  }
-
-  .dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0.75rem 1rem;
-    color: #4B5563;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
-  }
-
-  .dropdown-item:hover {
-    background: #F8F6F3;
-    color: #1F2937;
-  }
-
-  .dropdown-item.math:hover { color: #EA580C; }
-  .dropdown-item.science:hover { color: #059669; }
-  .dropdown-item.coding:hover { color: #2563EB; }
-  .dropdown-item.language:hover { color: #C026D3; }
-  .dropdown-item.puzzle:hover { color: #7C3AED; }
-  .dropdown-item.sports:hover { color: #DC2626; }
-  .dropdown-item.art:hover { color: #EC4899; }
-  .dropdown-item.geography:hover { color: #0891B2; }
-  .dropdown-item.red:hover { color: #EF4444; }
-  .dropdown-item.green:hover { color: #10B981; }
-  .dropdown-item.blue:hover { color: #3B82F6; }
-  .dropdown-item.pink:hover { color: #EC4899; }
-  .dropdown-item.purple:hover { color: #8B5CF6; }
-  .dropdown-item.orange:hover { color: #F59E0B; }
-  .dropdown-item.trending:hover { color: #F97316; }
-  .dropdown-item.recent:hover { color: #6366F1; }
-  .dropdown-item.new:hover { color: #10B981; }
-
-  /* 导航项高亮状态 */
-  .dropdown-item.active {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
-    color: white !important;
-    font-weight: 600;
-  }
-
-  .dropdown-item.active.math {
-    background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%) !important;
-  }
-
-  .dropdown-item.active.science {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
-  }
-
-  .dropdown-item.active.language {
-    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%) !important;
-  }
-
-  .dropdown-item.active.puzzle {
-    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%) !important;
-  }
-
-  .dropdown-item.active.sports {
-    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%) !important;
-  }
-
-  .dropdown-item.active.art {
-    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
-  }
-
-  .dropdown-item.active.red {
-    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%) !important;
-  }
-
-  .dropdown-item.active.green {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-  }
-
-  .dropdown-item.active.blue {
-    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%) !important;
-  }
-
-  .dropdown-item.active.pink {
-    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
-  }
-
-  .dropdown-item.active.purple {
-    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%) !important;
-  }
-
-  .dropdown-item.active.orange {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
-  }
-
-  .dropdown-item.active.trending {
-    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
-  }
-
-  .dropdown-item.active.recent {
-    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%) !important;
-  }
-
-  .dropdown-item.active.new {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-  }
-
-  .dropdown-divider {
-    border: none;
-    border-top: 1px solid #E5E7EB;
-    margin: 0.5rem 0;
-  }
-
-  /* 搜索框样式 */
-  .search-container {
-    position: relative;
-    flex: 1;
-    max-width: 320px;
-    margin: 0 1rem;
-  }
-
-  .search-wrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-    border: 2px solid #E5E7EB;
-    border-radius: 25px;
-    background: #F9FAFB;
-    transition: all 0.3s ease;
-  }
-
-  .search-wrapper:focus-within {
-    border-color: #6366F1;
-    background: white;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
-  }
-
-  .search-box {
-    flex: 1;
-    padding: 12px 12px 12px 45px;
-    border: none;
-    border-radius: 25px;
-    background: transparent;
-    font-size: 0.95rem;
-    color: #1F2937;
-    outline: none;
-  }
-
-  .search-box::placeholder {
-    color: #9CA3AF;
-  }
-
-  .search-icon {
-    position: absolute;
-    left: 16px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #9CA3AF;
-    font-size: 1rem;
-    z-index: 2;
-  }
-
-  .search-button {
-    flex-shrink: 0;
-    background: #F59E0B;
-    border: none;
-    color: white;
-    font-size: 0.85rem;
-    cursor: pointer;
-    padding: 8px 12px;
-    margin: 4px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8);
-    z-index: 3;
-    min-width: 32px;
-    height: 32px;
-  }
-
-  .search-wrapper:focus-within .search-button,
-  .search-wrapper.has-content .search-button {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
-  }
-
-  .search-button:hover {
-    background: #D97706;
-    transform: scale(1.05);
-  }
-
-  .nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    flex-shrink: 0;
-  }
-
-  .nav-btn {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 0.75rem 1rem;
-    border: none;
-    background: #F8F6F3;
-    color: #4B5563;
-    border-radius: 12px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    text-decoration: none !important;
-    outline: none !important;
-  }
-
-  .nav-btn:hover {
-    background: #F59E0B;
-    color: white;
-    transform: translateY(-1px);
-    text-decoration: none !important;
-    -webkit-text-decoration: none !important;
-    -moz-text-decoration: none !important;
-  }
-
-  .favorites-btn:hover {
-    background: #EF4444;
-    text-decoration: none !important;
-    -webkit-text-decoration: none !important;
-    -moz-text-decoration: none !important;
-  }
-
-  .random-btn:hover {
-    background: #8B5CF6;
-    text-decoration: none !important;
-    -webkit-text-decoration: none !important;
-    -moz-text-decoration: none !important;
-  }
-
-  /* 确保导航按钮在任何状态下都不显示下划线 */
-  .nav-btn:link,
-  .nav-btn:visited,
-  .nav-btn:hover,
-  .nav-btn:active,
-  .nav-btn:focus,
-  .nav-btn:focus-visible,
-  .favorites-btn:link,
-  .favorites-btn:visited,
-  .favorites-btn:hover,
-  .favorites-btn:active,
-  .favorites-btn:focus,
-  .favorites-btn:focus-visible {
-    text-decoration: none !important;
-    -webkit-text-decoration: none !important;
-    -moz-text-decoration: none !important;
-    text-decoration-line: none !important;
-    border-bottom: none !important;
-    outline: none !important;
-  }
-
-  .mobile-menu-btn {
-    display: none;
-    padding: 0.75rem;
-    border: none;
-    background: none;
-    color: #4B5563;
-    font-size: 1.2rem;
-    cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.3s ease;
-  }
-
-  .mobile-menu-btn:hover {
-    background: #F3F1EE;
-    color: #F59E0B;
-  }
-
-  /* 移动端菜单样式 */
-  .mobile-menu {
-    position: fixed;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: white;
-    border-bottom: 1px solid #E5E7EB;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    transform: translateY(-100%);
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 999;
-    max-height: calc(100vh - 70px);
-    overflow-y: auto;
-    display: none !important; /* 桌面端默认隐藏 */
-  }
-
-  .mobile-menu.show {
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-  }
-
-  .mobile-menu-content {
-    padding: 1rem;
-  }
-
-  .mobile-menu-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 1rem;
-    color: #4B5563;
-    text-decoration: none;
-    border-radius: 12px;
-    transition: all 0.2s ease;
-    font-weight: 500;
-  }
-
-  .mobile-menu-item:hover {
-    background: #F8F6F3;
-    color: #1F2937;
-  }
-
-  .mobile-menu-item.math:hover { color: #EA580C; }
-  .mobile-menu-item.science:hover { color: #059669; }
-  .mobile-menu-item.coding:hover { color: #2563EB; }
-  .mobile-menu-item.language:hover { color: #C026D3; }
-  .mobile-menu-item.puzzle:hover { color: #7C3AED; }
-  .mobile-menu-item.sports:hover { color: #DC2626; }
-  .mobile-menu-item.art:hover { color: #EC4899; }
-  .mobile-menu-item.geography:hover { color: #0891B2; }
-  .mobile-menu-item.trending:hover { color: #F97316; }
-  .mobile-menu-item.recent:hover { color: #6366F1; }
-  .mobile-menu-item.new:hover { color: #10B981; }
-
-  /* 移动端菜单项高亮状态 */
-  .mobile-menu-item.active {
-    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
-    color: white !important;
-    font-weight: 600;
-  }
-
-  .mobile-menu-item.active.math {
-    background: linear-gradient(135deg, #EA580C 0%, #DC2626 100%) !important;
-  }
-
-  .mobile-menu-item.active.science {
-    background: linear-gradient(135deg, #059669 0%, #047857 100%) !important;
-  }
-
-  .mobile-menu-item.active.language {
-    background: linear-gradient(135deg, #C026D3 0%, #A21CAF 100%) !important;
-  }
-
-  .mobile-menu-item.active.puzzle {
-    background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%) !important;
-  }
-
-  .mobile-menu-item.active.sports {
-    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%) !important;
-  }
-
-  .mobile-menu-item.active.art {
-    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%) !important;
-  }
-
-  .mobile-menu-item.active.trending {
-    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%) !important;
-  }
-
-  .mobile-menu-item.active.recent {
-    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%) !important;
-  }
-
-  .mobile-menu-item.active.new {
-    background: linear-gradient(135deg, #10B981 0%, #059669 100%) !important;
-  }
-
-  .mobile-menu-section {
-    margin-bottom: 1rem;
-  }
-
-  .mobile-menu-title {
-    font-weight: 600;
-    color: #1F2937;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
-
-  /* 页脚样式 */
-  .footer {
-    background: #1F2937;
-    color: white;
-    padding: 3rem 0 1rem;
-  }
-
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
-
-  .footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-bottom: 2rem;
-  }
-
-  .footer-section {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 1rem;
-    font-size: 1.25rem;
-    font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .footer-logo img {
-    border-radius: 10px;
-  }
-
-  .footer-brand {
-    font-size: 1.25rem;
-    font-weight: 700;
-    font-family: 'Space Grotesk', sans-serif;
-  }
-
-  .footer-tagline {
-    font-size: 0.875rem;
-    color: #9CA3AF;
-  }
-
-  .footer-description {
-    color: #D1D5DB;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-  }
-
-  .footer-title {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: white;
-  }
-
-  .footer-links {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .footer-links li {
-    margin-bottom: 0.5rem;
-  }
-
-  .footer-links a {
-    color: #D1D5DB;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .footer-links a:hover {
-    color: #F59E0B;
-  }
-
-  .footer-social {
-    display: flex;
-    gap: 1rem;
-  }
-
-  .footer-social .social-link {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    background: #374151;
-    border-radius: 12px;
-    color: #D1D5DB;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-  }
-
-  .footer-social .social-link:hover {
-    background: #F59E0B;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
-  }
-
-  .footer-bottom {
-    border-top: 1px solid #374151;
-    padding-top: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #9CA3AF;
-  }
-
-  .footer-copyright {
-    text-align: left;
-  }
-
-  /* 响应式设计 */
-  @media (max-width: 1024px) {
-    .nav-container {
-      gap: 0.5rem;
-    }
-    
-    .search-container {
-      max-width: 300px;
-    }
-    
-    .nav-btn-text {
-      display: none;
-    }
-
-    .breadcrumb-separator {
-      margin: 0 0.25rem;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .nav-container {
-      padding: 0 1rem;
-    }
-    
-    .nav-menu {
-      display: none;
-    }
-    
-    .search-container {
-      display: none;
-    }
-    
-    .nav-actions {
-      display: none;
-    }
-    
-    .mobile-menu-btn {
-      display: block;
-    }
-    
-    .mobile-menu {
-      display: block !important; /* 在移动端强制显示 */
-    }
-    
-    .logo {
-      font-size: 1.25rem;
-    }
-
-    /* 移动端面包屑简化 */
-    .nav-breadcrumbs {
-      gap: 0.25rem;
-    }
-
-    .breadcrumb-separator {
-      font-size: 0.7rem;
-      margin: 0 0.1rem;
-    }
-
-    .nav-link {
-      padding: 0.5rem 0.75rem;
-      font-size: 0.85rem;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .footer-content {
-      grid-template-columns: 1fr;
-      text-align: center;
-    }
-    
-    .footer-bottom {
-      flex-direction: column;
-      gap: 1.5rem;
-      text-align: center;
-    }
-    
-    .footer-social {
-      justify-content: center;
-    }
-
-    /* 移动端隐藏面包屑分隔符 */
-    .breadcrumb-separator {
-      display: none;
-    }
-
-    .nav-breadcrumbs {
-      flex-wrap: wrap;
-      gap: 0.25rem;
-    }
-
-    .breadcrumb-item {
-      gap: 0.25rem;
-    }
-  }
-</style>
 </html> 

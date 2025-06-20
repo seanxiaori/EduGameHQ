@@ -40,6 +40,64 @@
     "categories_filter": "Filtrer par catégorie",
     "all_categories": "Toutes les catégories"
   },
+  "game": {
+    "play_now": "Jouer maintenant",
+    "full_screen": "Plein écran",
+    "favorite": "Ajouter aux favoris",
+    "share": "Partager le jeu",
+    "difficulty": "Difficulté",
+    "age_range": "Tranche d'âge",
+    "category": "Catégorie",
+    "tags": "Étiquettes",
+    "description": "Description",
+    "instructions": "Comment jouer",
+    "related": "Jeux similaires",
+    "source": "Source du jeu",
+    "random": "Aléatoire"
+  },
+  "footer": {
+    "tagline": "Rendre l'apprentissage amusant pour tous",
+    "description": "EduGameHQ est votre plateforme de jeux éducatifs qui rend l'apprentissage engageant et efficace.",
+    "quick_links": "Liens rapides",
+    "game_categories": "Catégories de jeux",
+    "support": "Support et informations",
+    "social": "Suivez-nous",
+    "copyright": "© 2025 EduGameHQ. Tous droits réservés.",
+    "made_with_love": "Fait avec ❤️ pour les apprenants du monde entier"
+  },
+  "about": {
+    "title": "À propos d'EduGameHQ",
+    "subtitle": "Où l'apprentissage rencontre le plaisir - Transformer l'éducation grâce aux jeux interactifs",
+    "mission": "Notre mission",
+    "values": "Valeurs fondamentales",
+    "story": "Notre histoire",
+    "team": "Rencontrez notre équipe",
+    "stats": "Notre impact",
+    "contact": "Contactez-nous"
+  },
+  "help": {
+    "title": "Aide et support",
+    "subtitle": "Trouvez des réponses aux questions fréquentes et obtenez l'aide dont vous avez besoin",
+    "faq": "Questions fréquemment posées",
+    "contact_us": "Contactez-nous",
+    "report_issue": "Signaler un problème"
+  },
+  "common": {
+    "loading": "Chargement...",
+    "error": "Quelque chose s'est mal passé",
+    "try_again": "Réessayer",
+    "back": "Retour",
+    "next": "Suivant",
+    "previous": "Précédent",
+    "close": "Fermer",
+    "save": "Enregistrer",
+    "cancel": "Annuler",
+    "confirm": "Confirmer",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "skip_to_content": "Aller au contenu principal"
+  },
   "language": {
     "switch": "Changer de langue",
     "current": "Langue actuelle",

@@ -1,0 +1,343 @@
+/* 语言切换器样式 */
+.language-switcher {
+  position: relative;
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0.75rem 1rem;
+  border: none;
+  background: #F8F6F3;
+  color: #4B5563;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  outline: none;
+  min-width: 80px;
+}
+
+.language-btn:hover {
+  background: #E5E7EB;
+  color: #1F2937;
+  transform: translateY(-1px);
+}
+
+.language-btn:focus {
+  outline: 2px solid #6366F1;
+  outline-offset: 2px;
+}
+
+.language-flag {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
+.language-code {
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  margin-left: auto;
+}
+
+.language-switcher.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* 语言下拉菜单 */
+.language-menu {
+  position: absolute;
+  top: 100%;
+  right: 0; /* 右对齐 */
+  background: white;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 0;
+  min-width: 200px;
+  max-width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+}
+
+.language-switcher.active .language-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.language-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0.75rem 1rem;
+  color: #4B5563;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.language-item:hover {
+  background: #F8F6F3;
+  color: #1F2937;
+}
+
+.language-item.active {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.language-item.active:hover {
+  background: linear-gradient(135deg, #4F46E5 0%, #3730A3 100%);
+}
+
+.language-name {
+  flex: 1;
+  font-weight: 500;
+}
+
+.language-item .fas.fa-check {
+  font-size: 0.8rem;
+  color: #10B981;
+  margin-left: auto;
+}
+
+.language-item.active .fas.fa-check {
+  color: white;
+}
+
+/* RTL语言支持 */
+.language-item[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.language-item[dir="rtl"] .language-flag {
+  order: 3;
+}
+
+.language-item[dir="rtl"] .language-name {
+  order: 2;
+}
+
+.language-item[dir="rtl"] .fas.fa-check {
+  order: 1;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* 移动端语言切换 */
+.mobile-menu .language-item {
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 0.25rem 0;
+}
+
+.mobile-menu .language-item .language-flag {
+  font-size: 1.2rem;
+}
+
+.mobile-menu .language-item .language-name {
+  font-size: 1rem;
+}
+
+.mobile-menu .language-item.active {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .language-btn .language-code {
+    display: none; /* 在中等屏幕隐藏语言代码 */
+  }
+  
+  .language-menu {
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .language-switcher {
+    display: none; /* 在移动端隐藏桌面语言切换器 */
+  }
+  
+  /* 移动端菜单中的语言切换器始终显示 */
+  .mobile-menu .mobile-menu-section .language-item {
+    display: flex;
+  }
+}
+
+/* 动画效果 */
+.language-item {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.language-item:hover {
+  transform: translateX(2px);
+}
+
+.language-item[dir="rtl"]:hover {
+  transform: translateX(-2px);
+}
+
+/* 键盘导航支持 */
+.language-btn:focus-visible {
+  outline: 2px solid #6366F1;
+  outline-offset: 2px;
+}
+
+.language-item:focus-visible {
+  outline: 2px solid #6366F1;
+  outline-offset: -2px;
+  background: #F3F4F6;
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+  .language-btn {
+    border: 2px solid #4B5563;
+  }
+  
+  .language-menu {
+    border: 2px solid #1F2937;
+  }
+  
+  .language-item {
+    border-bottom: 1px solid #E5E7EB;
+  }
+  
+  .language-item:last-child {
+    border-bottom: none;
+  }
+}
+
+/* 减少动画偏好支持 */
+@media (prefers-reduced-motion: reduce) {
+  .language-btn,
+  .language-menu,
+  .language-item,
+  .dropdown-arrow {
+    transition: none;
+  }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+  .language-btn {
+    background: #374151;
+    color: #D1D5DB;
+  }
+  
+  .language-btn:hover {
+    background: #4B5563;
+    color: #F9FAFB;
+  }
+  
+  .language-menu {
+    background: #1F2937;
+    border-color: #374151;
+  }
+  
+  .language-item {
+    color: #D1D5DB;
+  }
+  
+  .language-item:hover {
+    background: #374151;
+    color: #F9FAFB;
+  }
+}
+
+/* 特殊字体支持 */
+.language-item[lang="ar"],
+.language-item[lang="he"] {
+  font-family: 'Noto Sans Arabic', 'Noto Sans Hebrew', system-ui, -apple-system, sans-serif;
+}
+
+.language-item[lang="zh"] {
+  font-family: 'Noto Sans CJK SC', 'PingFang SC', 'Hiragino Sans GB', system-ui, -apple-system, sans-serif;
+}
+
+.language-item[lang="ja"] {
+  font-family: 'Noto Sans CJK JP', 'Hiragino Kaku Gothic Pro', 'Yu Gothic', system-ui, -apple-system, sans-serif;
+}
+
+.language-item[lang="ko"] {
+  font-family: 'Noto Sans CJK KR', 'Malgun Gothic', 'Apple SD Gothic Neo', system-ui, -apple-system, sans-serif;
+}
+
+.language-item[lang="hi"] {
+  font-family: 'Noto Sans Devanagari', 'Mangal', system-ui, -apple-system, sans-serif;
+}
+
+.language-item[lang="ru"] {
+  font-family: 'Noto Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+/* 加载状态 */
+.language-switcher.loading .language-btn {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.language-switcher.loading .dropdown-arrow {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 错误状态 */
+.language-switcher.error .language-btn {
+  border-color: #EF4444;
+  background: #FEF2F2;
+  color: #DC2626;
+}
+
+/* 成功状态 */
+.language-switcher.success .language-btn {
+  border-color: #10B981;
+  background: #ECFDF5;
+  color: #059669;
+}
+
+/* 语言切换动画 */
+.language-switching {
+  position: relative;
+  overflow: hidden;
+}
+
+.language-switching::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 1s ease-in-out;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+} 

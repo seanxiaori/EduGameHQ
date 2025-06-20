@@ -29,6 +29,75 @@
       "free": "Kostenlos"
     }
   },
+  "search": {
+    "title": "Lernspiele suchen",
+    "subtitle": "Finden Sie das perfekte Lernspiel für Ihre Lernreise",
+    "placeholder": "Lernspiele suchen...",
+    "button": "Suchen",
+    "results": "{count} Ergebnisse gefunden",
+    "no_results": "Keine Ergebnisse gefunden",
+    "query_for": "Suchergebnisse für: \"{query}\"",
+    "categories_filter": "Nach Kategorie filtern",
+    "all_categories": "Alle Kategorien"
+  },
+  "game": {
+    "play_now": "Jetzt spielen",
+    "full_screen": "Vollbild",
+    "favorite": "Zu Favoriten hinzufügen",
+    "share": "Spiel teilen",
+    "difficulty": "Schwierigkeit",
+    "age_range": "Altersbereich",
+    "category": "Kategorie",
+    "tags": "Tags",
+    "description": "Beschreibung",
+    "instructions": "Spielanleitung",
+    "related": "Ähnliche Spiele",
+    "source": "Spielquelle",
+    "random": "Zufällig"
+  },
+  "footer": {
+    "tagline": "Lernen für alle unterhaltsam machen",
+    "description": "EduGameHQ ist Ihre Plattform für Lernspiele, die das Lernen ansprechend und effektiv macht.",
+    "quick_links": "Schnelle Links",
+    "game_categories": "Spielkategorien",
+    "support": "Support und Informationen",
+    "social": "Folgen Sie uns",
+    "copyright": "© 2025 EduGameHQ. Alle Rechte vorbehalten.",
+    "made_with_love": "Mit ❤️ für Lernende weltweit gemacht"
+  },
+  "about": {
+    "title": "Über EduGameHQ",
+    "subtitle": "Wo Lernen auf Spaß trifft - Bildung durch interaktive Spiele transformieren",
+    "mission": "Unsere Mission",
+    "values": "Grundwerte",
+    "story": "Unsere Geschichte",
+    "team": "Lernen Sie unser Team kennen",
+    "stats": "Unser Einfluss",
+    "contact": "Kontaktieren Sie uns"
+  },
+  "help": {
+    "title": "Hilfe und Support",
+    "subtitle": "Finden Sie Antworten auf häufige Fragen und erhalten Sie die Hilfe, die Sie benötigen",
+    "faq": "Häufig gestellte Fragen",
+    "contact_us": "Kontaktieren Sie uns",
+    "report_issue": "Problem melden"
+  },
+  "common": {
+    "loading": "Lädt...",
+    "error": "Etwas ist schiefgelaufen",
+    "try_again": "Erneut versuchen",
+    "back": "Zurück",
+    "next": "Weiter",
+    "previous": "Vorherige",
+    "close": "Schließen",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen",
+    "yes": "Ja",
+    "no": "Nein",
+    "ok": "OK",
+    "skip_to_content": "Zum Hauptinhalt springen"
+  },
   "language": {
     "switch": "Sprache wechseln",
     "current": "Aktuelle Sprache",
