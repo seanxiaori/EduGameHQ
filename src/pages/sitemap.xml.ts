@@ -8,7 +8,7 @@ export async function GET() {
   const gamesData = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
   // 基础URL
-  const baseUrl = 'https://edugamehq.com';
+  const baseUrl = 'https://www.edugamehq.com';
   
   // 静态页面URL
   const staticPages = [

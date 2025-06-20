@@ -55,7 +55,7 @@ User-agent: MJ12bot
 Disallow: /
 
 # Sitemap位置
-Sitemap: https://edugamehq.com/sitemap.xml
+Sitemap: https://www.edugamehq.com/sitemap.xml
 
 # 主要页面（提示搜索引擎优先抓取）
 # 首页
@@ -71,4 +71,29 @@ Sitemap: https://edugamehq.com/sitemap.xml
 
 # 特殊页面
 # https://edugamehq.com/trending
-# https://edugamehq.com/new-games 
+# https://edugamehq.com/new-games
+
+# Allow all educational game content
+Allow: /math-games
+Allow: /science-games
+Allow: /language-games
+Allow: /puzzle-games
+Allow: /sports-games
+Allow: /art-games
+Allow: /games/
+
+# Allow important pages
+Allow: /search
+Allow: /trending
+Allow: /new-games
+Allow: /recently-played
+Allow: /favorites
+
+# Block admin or development files (if any)
+Disallow: /admin/
+Disallow: /.env
+Disallow: /src/
+Disallow: /node_modules/
+
+# Educational games platform for students aged 6-18
+# Visit https://www.edugamehq.com for free educational games 
