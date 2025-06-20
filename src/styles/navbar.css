@@ -64,19 +64,29 @@
   display: flex;
   align-items: center;
   margin-left: 2rem;
+  min-width: 0;
+  overflow: hidden;
 }
 
 .nav-breadcrumbs {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.nav-breadcrumbs::-webkit-scrollbar {
+  display: none;
 }
 
 .breadcrumb-item {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  flex-shrink: 0;
 }
 
 .breadcrumb-separator {
@@ -101,6 +111,7 @@
   border: none;
   background: transparent;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .nav-link:hover {
@@ -442,6 +453,19 @@
   
   .nav-menu {
     margin-left: 1rem;
+  }
+  
+  .nav-breadcrumbs {
+    gap: 0.25rem;
+  }
+  
+  .nav-link {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+  }
+  
+  .breadcrumb-separator {
+    margin: 0 0.125rem;
   }
   
   .search-container {
