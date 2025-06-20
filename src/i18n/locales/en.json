@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": "Home",
+    "categories": "Categories",
+    "search": "Search",
+    "favorites": "Favorites",
+    "trending": "Trending",
+    "recent": "Recently Played",
+    "new": "New Games",
+    "about": "About",
+    "help": "Help",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "categories": {
+    "math-games": "Math Games",
+    "science-games": "Science Games", 
+    "language-games": "Language Games",
+    "puzzle-games": "Puzzle Games",
+    "sports-games": "Sports Games",
+    "art-games": "Art Games"
+  },
+  "hero": {
+    "title": "Where Learning Meets Fun",
+    "subtitle": "Discover free educational games designed to make learning engaging and effective for students aged 6-18.",
+    "stats": {
+      "students": "Students",
+      "countries": "Countries",
+      "free": "Free"
+    }
+  },
+  "search": {
+    "title": "Search Educational Games",
+    "subtitle": "Find the perfect educational game for your learning journey",
+    "placeholder": "Search educational games...",
+    "button": "Search",
+    "results": "Found {count} Results",
+    "no_results": "No Results Found",
+    "query_for": "Search results for: \"{query}\"",
+    "categories_filter": "Filter by Category",
+    "all_categories": "All Categories"
+  },
+  "game": {
+    "play_now": "Play Now",
+    "full_screen": "Full Screen",
+    "favorite": "Add to Favorites",
+    "share": "Share Game",
+    "difficulty": "Difficulty",
+    "age_range": "Age Range",
+    "category": "Category",
+    "tags": "Tags",
+    "description": "Description",
+    "instructions": "How to Play",
+    "related": "Related Games",
+    "source": "Game Source"
+  },
+  "footer": {
+    "tagline": "Making Learning Fun for Everyone",
+    "description": "EduGameHQ is your go-to platform for educational games that make learning engaging and effective.",
+    "quick_links": "Quick Links",
+    "game_categories": "Game Categories",
+    "support": "Support & Info",
+    "social": "Follow Us",
+    "copyright": "© 2025 EduGameHQ. All rights reserved.",
+    "made_with_love": "Made with ❤️ for learners worldwide"
+  },
+  "about": {
+    "title": "About EduGameHQ",
+    "subtitle": "Where Learning Meets Fun - Transforming Education Through Interactive Gaming",
+    "mission": "Our Mission",
+    "values": "Core Values",
+    "story": "Our Story",
+    "team": "Meet Our Team",
+    "stats": "Our Impact",
+    "contact": "Get in Touch"
+  },
+  "help": {
+    "title": "Help & Support",
+    "subtitle": "Find answers to common questions and get the help you need",
+    "faq": "Frequently Asked Questions",
+    "contact_us": "Contact Us",
+    "report_issue": "Report an Issue"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "try_again": "Try Again",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK"
+  },
+  "language": {
+    "switch": "Switch Language",
+    "current": "Current Language",
+    "select": "Select Language"
+  }
+} 

@@ -1,0 +1,48 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "categories": "Catégories",
+    "search": "Rechercher",
+    "favorites": "Favoris",
+    "trending": "Tendances",
+    "recent": "Récemment joués",
+    "new": "Nouveaux jeux",
+    "about": "À propos",
+    "help": "Aide",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions d'utilisation"
+  },
+  "categories": {
+    "math-games": "Jeux de Mathématiques",
+    "science-games": "Jeux de Sciences", 
+    "language-games": "Jeux de Langues",
+    "puzzle-games": "Jeux de Puzzle",
+    "sports-games": "Jeux de Sport",
+    "art-games": "Jeux d'Art"
+  },
+  "hero": {
+    "title": "Où l'Apprentissage Rencontre le Plaisir",
+    "subtitle": "Découvrez des jeux éducatifs gratuits conçus pour rendre l'apprentissage engageant et efficace pour les étudiants de 6 à 18 ans.",
+    "stats": {
+      "students": "Étudiants",
+      "countries": "Pays",
+      "free": "Gratuit"
+    }
+  },
+  "search": {
+    "title": "Rechercher des Jeux Éducatifs",
+    "subtitle": "Trouvez le jeu éducatif parfait pour votre parcours d'apprentissage",
+    "placeholder": "Rechercher des jeux éducatifs...",
+    "button": "Rechercher",
+    "results": "{count} résultats trouvés",
+    "no_results": "Aucun résultat trouvé",
+    "query_for": "Résultats de recherche pour : \"{query}\"",
+    "categories_filter": "Filtrer par catégorie",
+    "all_categories": "Toutes les catégories"
+  },
+  "language": {
+    "switch": "Changer de langue",
+    "current": "Langue actuelle",
+    "select": "Sélectionner la langue"
+  }
+} 

@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "categories": "Kategorien",
+    "search": "Suchen",
+    "favorites": "Favoriten",
+    "trending": "Trending",
+    "recent": "Kürzlich gespielt",
+    "new": "Neue Spiele",
+    "about": "Über uns",
+    "help": "Hilfe",
+    "privacy": "Datenschutz",
+    "terms": "Nutzungsbedingungen"
+  },
+  "categories": {
+    "math-games": "Mathe-Spiele",
+    "science-games": "Wissenschaftsspiele", 
+    "language-games": "Sprachspiele",
+    "puzzle-games": "Puzzle-Spiele",
+    "sports-games": "Sportspiele",
+    "art-games": "Kunstspiele"
+  },
+  "hero": {
+    "title": "Wo Lernen auf Spaß trifft",
+    "subtitle": "Entdecken Sie kostenlose Lernspiele, die darauf ausgelegt sind, das Lernen für Schüler von 6-18 Jahren ansprechend und effektiv zu gestalten.",
+    "stats": {
+      "students": "Schüler",
+      "countries": "Länder",
+      "free": "Kostenlos"
+    }
+  },
+  "language": {
+    "switch": "Sprache wechseln",
+    "current": "Aktuelle Sprache",
+    "select": "Sprache auswählen"
+  }
+} 

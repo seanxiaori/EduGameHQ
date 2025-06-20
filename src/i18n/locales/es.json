@@ -1,0 +1,72 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "categories": "Categorías",
+    "search": "Buscar",
+    "favorites": "Favoritos",
+    "trending": "Tendencias",
+    "recent": "Jugados recientemente",
+    "new": "Juegos nuevos",
+    "about": "Acerca de",
+    "help": "Ayuda",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de servicio"
+  },
+  "categories": {
+    "math-games": "Juegos de Matemáticas",
+    "science-games": "Juegos de Ciencias", 
+    "language-games": "Juegos de Idiomas",
+    "puzzle-games": "Juegos de Rompecabezas",
+    "sports-games": "Juegos de Deportes",
+    "art-games": "Juegos de Arte"
+  },
+  "hero": {
+    "title": "Donde el Aprendizaje se Encuentra con la Diversión",
+    "subtitle": "Descubre juegos educativos gratuitos diseñados para hacer el aprendizaje atractivo y efectivo para estudiantes de 6-18 años.",
+    "stats": {
+      "students": "Estudiantes",
+      "countries": "Países",
+      "free": "Gratis"
+    }
+  },
+  "search": {
+    "title": "Buscar Juegos Educativos",
+    "subtitle": "Encuentra el juego educativo perfecto para tu viaje de aprendizaje",
+    "placeholder": "Buscar juegos educativos...",
+    "button": "Buscar",
+    "results": "Se encontraron {count} resultados",
+    "no_results": "No se encontraron resultados",
+    "query_for": "Resultados de búsqueda para: \"{query}\"",
+    "categories_filter": "Filtrar por categoría",
+    "all_categories": "Todas las categorías"
+  },
+  "game": {
+    "play_now": "Jugar ahora",
+    "full_screen": "Pantalla completa",
+    "favorite": "Agregar a favoritos",
+    "share": "Compartir juego",
+    "difficulty": "Dificultad",
+    "age_range": "Rango de edad",
+    "category": "Categoría",
+    "tags": "Etiquetas",
+    "description": "Descripción",
+    "instructions": "Cómo jugar",
+    "related": "Juegos relacionados",
+    "source": "Fuente del juego"
+  },
+  "footer": {
+    "tagline": "Haciendo el aprendizaje divertido para todos",
+    "description": "EduGameHQ es tu plataforma de juegos educativos que hace el aprendizaje atractivo y efectivo.",
+    "quick_links": "Enlaces rápidos",
+    "game_categories": "Categorías de juegos",
+    "support": "Soporte e información",
+    "social": "Síguenos",
+    "copyright": "© 2025 EduGameHQ. Todos los derechos reservados.",
+    "made_with_love": "Hecho con ❤️ para estudiantes de todo el mundo"
+  },
+  "language": {
+    "switch": "Cambiar idioma",
+    "current": "Idioma actual",
+    "select": "Seleccionar idioma"
+  }
+} 

@@ -1,0 +1,37 @@
+{
+  "nav": {
+    "home": "ホーム",
+    "categories": "カテゴリー",
+    "search": "検索",
+    "favorites": "お気に入り",
+    "trending": "トレンド",
+    "recent": "最近プレイした",
+    "new": "新しいゲーム",
+    "about": "私たちについて",
+    "help": "ヘルプ",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約"
+  },
+  "categories": {
+    "math-games": "数学ゲーム",
+    "science-games": "科学ゲーム", 
+    "language-games": "言語ゲーム",
+    "puzzle-games": "パズルゲーム",
+    "sports-games": "スポーツゲーム",
+    "art-games": "アートゲーム"
+  },
+  "hero": {
+    "title": "学習と楽しさが出会う場所",
+    "subtitle": "6-18歳の学生向けに設計された無料の教育ゲームを発見し、学習を魅力的で効果的にしましょう。",
+    "stats": {
+      "students": "学生",
+      "countries": "国",
+      "free": "無料"
+    }
+  },
+  "language": {
+    "switch": "言語を切り替える",
+    "current": "現在の言語",
+    "select": "言語を選択"
+  }
+} 

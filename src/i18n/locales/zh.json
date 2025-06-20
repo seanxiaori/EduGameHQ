@@ -1,0 +1,104 @@
+{
+  "nav": {
+    "home": "首页",
+    "categories": "分类",
+    "search": "搜索",
+    "favorites": "收藏",
+    "trending": "热门",
+    "recent": "最近游玩",
+    "new": "新游戏",
+    "about": "关于我们",
+    "help": "帮助",
+    "privacy": "隐私政策",
+    "terms": "服务条款"
+  },
+  "categories": {
+    "math-games": "数学游戏",
+    "science-games": "科学游戏", 
+    "language-games": "语言游戏",
+    "puzzle-games": "益智游戏",
+    "sports-games": "体育游戏",
+    "art-games": "艺术游戏"
+  },
+  "hero": {
+    "title": "让学习充满乐趣",
+    "subtitle": "发现专为6-18岁学生设计的免费教育游戏，让学习变得有趣而高效。",
+    "stats": {
+      "students": "学生",
+      "countries": "国家",
+      "free": "免费"
+    }
+  },
+  "search": {
+    "title": "搜索教育游戏",
+    "subtitle": "找到最适合你学习之旅的教育游戏",
+    "placeholder": "搜索教育游戏...",
+    "button": "搜索",
+    "results": "找到 {count} 个结果",
+    "no_results": "未找到结果",
+    "query_for": "搜索结果："{query}"",
+    "categories_filter": "按分类筛选",
+    "all_categories": "所有分类"
+  },
+  "game": {
+    "play_now": "立即游玩",
+    "full_screen": "全屏",
+    "favorite": "添加收藏",
+    "share": "分享游戏",
+    "difficulty": "难度",
+    "age_range": "适合年龄",
+    "category": "分类",
+    "tags": "标签",
+    "description": "游戏介绍",
+    "instructions": "游戏说明",
+    "related": "相关游戏",
+    "source": "游戏来源"
+  },
+  "footer": {
+    "tagline": "让每个人的学习都充满乐趣",
+    "description": "EduGameHQ是您的教育游戏平台，让学习变得有趣而高效。",
+    "quick_links": "快速链接",
+    "game_categories": "游戏分类",
+    "support": "支持与信息",
+    "social": "关注我们",
+    "copyright": "© 2025 EduGameHQ. 保留所有权利。",
+    "made_with_love": "用❤️为全球学习者制作"
+  },
+  "about": {
+    "title": "关于EduGameHQ",
+    "subtitle": "让学习充满乐趣 - 通过互动游戏改变教育",
+    "mission": "我们的使命",
+    "values": "核心价值",
+    "story": "我们的故事",
+    "team": "认识我们的团队",
+    "stats": "我们的影响",
+    "contact": "联系我们"
+  },
+  "help": {
+    "title": "帮助与支持",
+    "subtitle": "找到常见问题的答案，获得您需要的帮助",
+    "faq": "常见问题",
+    "contact_us": "联系我们",
+    "report_issue": "报告问题"
+  },
+  "common": {
+    "loading": "加载中...",
+    "error": "出现错误",
+    "try_again": "重试",
+    "back": "返回",
+    "next": "下一个",
+    "previous": "上一个",
+    "close": "关闭",
+    "save": "保存",
+    "cancel": "取消",
+    "confirm": "确认",
+    "yes": "是",
+    "no": "否",
+    "ok": "确定"
+  },
+  "language": {
+    "switch": "切换语言",
+    "current": "当前语言",
+    "select": "选择语言"
+  }
+} 
