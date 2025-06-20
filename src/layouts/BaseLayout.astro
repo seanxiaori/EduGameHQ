@@ -130,16 +130,6 @@ const pageStructure = {
   }
 };
 
-// 读取games.json数据用于客户端
-let gamesData = [];
-try {
-  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  gamesData = JSON.parse(fileContent);
-} catch (error) {
-  console.warn('Unable to read games data file:', error);
-}
-
 // 确定当前页面类型和信息
 const isHomePage = currentPath === '/';
 
@@ -239,6 +229,23 @@ console.log('- 是否首页:', isHomePage);
 console.log('- 当前分类:', currentCategory);
 console.log('- 面包屑数组长度:', breadcrumbs.length);
 console.log('- 面包屑内容:', breadcrumbs);
+
+// 添加页面结构调试信息
+console.log('📋 页面结构调试信息:');
+console.log('- 分类数量:', Object.keys(pageStructure.categories).length);
+console.log('- 分类内容:', pageStructure.categories);
+console.log('- 特殊页面数量:', Object.keys(pageStructure.special).length);
+console.log('- 特殊页面内容:', pageStructure.special);
+
+// 读取games.json数据用于客户端
+let gamesData = [];
+try {
+  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  gamesData = JSON.parse(fileContent);
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
 ---
 
 <!DOCTYPE html>
@@ -272,11 +279,11 @@ console.log('- 面包屑内容:', breadcrumbs);
   <meta name="educational-audience" content="student">
   <meta name="educational-subject" content="mathematics,science,language arts,computer science,physical education,arts">
   
-  <!-- Favicon - 只使用存在的文件 -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-32x32.svg">
-  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.svg">
+  <!-- Favicon - 使用新设计的LOGO -->
+  <link rel="icon" type="image/svg+xml" href="/images/logo/favicon.ico">
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/images/logo/edugamehq-icon.svg">
+  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/images/logo/edugamehq-icon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/edugamehq-icon.svg">
   <link rel="manifest" href="/site.webmanifest">
   
   <!-- Canonical URL -->
@@ -327,7 +334,8 @@ console.log('- 面包屑内容:', breadcrumbs);
   <meta property="linkedin:owner" content="EduGameHQ">
   
   <!-- Preload critical resources -->
-  <link rel="preload" href="/images/logo.svg" as="image">
+  <link rel="preload" href="/images/logo/edugamehq-simple.svg" as="image">
+  <link rel="preload" href="/images/logo/edugamehq-icon.svg" as="image">
   <link rel="preload" href={ogImageUrl} as="image">
   
   <!-- DNS Prefetch for external resources -->
@@ -350,7 +358,7 @@ console.log('- 面包屑内容:', breadcrumbs);
     "alternateName": "Educational Games Headquarters",
     "description": "Free educational games platform for kids aged 6-18",
     "url": "https://edugamehq.com",
-    "logo": "https://edugamehq.com/images/logo.svg",
+    "logo": "https://edugamehq.com/images/logo/edugamehq-logo.svg",
     "sameAs": [
       "https://twitter.com/EduGameHQ",
       "https://facebook.com/EduGameHQ",
@@ -480,12 +488,11 @@ console.log('- 面包屑内容:', breadcrumbs);
     <header class="navbar">
       <div class="nav-container">
         <!-- Logo -->
-        <a href={getLocalizedPath('/', currentLang)} class="logo" aria-label="EduGameHQ Home">
-          <div class="logo-icon">
-            <img src="/images/logo.svg" alt="EduGameHQ Logo" width="40" height="40" />
-          </div>
-          <span>EduGameHQ</span>
-        </a>
+        <div class="nav-logo">
+          <a href={getLocalizedPath('/', currentLang)} class="logo-link">
+            <img src="/images/logo/edugamehq-simple.svg" alt="EduGameHQ Logo" width="200" height="53" />
+          </a>
+        </div>
         
         <!-- 智能面包屑导航 -->
         <nav class="nav-menu" aria-label="Main navigation">
@@ -529,12 +536,12 @@ console.log('- 面包屑内容:', breadcrumbs);
                 <div class="breadcrumb-item">
                   {crumb.isDropdown ? (
                     <div class="nav-dropdown">
-                      <button class="nav-link dropdown-trigger" id={`${crumb.color}Dropdown`}>
+                      <button class="nav-link dropdown-trigger" id={crumb.name === t(translations, 'nav.categories', 'Categories') ? 'categoriesDropdown' : crumb.name === t(translations, 'support', 'Support') ? 'supportDropdown' : 'defaultDropdown'}>
                         <i class={crumb.icon}></i>
                         {crumb.name}
                         <i class="fas fa-chevron-down dropdown-arrow"></i>
                       </button>
-                      <div class="dropdown-menu" id={`${crumb.color}Menu`}>
+                      <div class="dropdown-menu" id={crumb.name === t(translations, 'nav.categories', 'Categories') ? 'categoriesMenu' : crumb.name === t(translations, 'support', 'Support') ? 'supportMenu' : 'defaultMenu'}>
                         {crumb.name === t(translations, 'nav.categories', 'Categories') ? (
                           <>
                         <!-- 游戏分类 -->
@@ -602,7 +609,7 @@ console.log('- 面包屑内容:', breadcrumbs);
         <div class="nav-actions">
           <!-- 语言切换器 -->
           <div class="nav-dropdown language-switcher">
-            <button class="nav-btn language-btn" id="languageDropdown" title={t(translations, 'language.switch', 'Switch Language')}>
+            <button class="nav-btn language-btn dropdown-trigger" id="languageDropdown" title={t(translations, 'language.switch', 'Switch Language')}>
               <span class="language-flag">{langInfo.flag}</span>
               <span class="language-code">{currentLang.toUpperCase()}</span>
               <i class="fas fa-chevron-down dropdown-arrow"></i>
@@ -701,7 +708,7 @@ console.log('- 面包屑内容:', breadcrumbs);
           <!-- Logo和描述 -->
           <div class="footer-section">
             <div class="footer-logo">
-              <img src="/images/logo.svg" alt="EduGameHQ Logo" width="40" height="40" />
+              <img src="/images/logo/edugamehq-icon.svg" alt="EduGameHQ Logo" width="40" height="40" />
               <span>EduGameHQ</span>
             </div>
             <p class="footer-description">
@@ -774,6 +781,8 @@ console.log('- 面包屑内容:', breadcrumbs);
 
     // 回车键搜索
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('🔧 初始化导航栏功能...');
+      
       const searchBox = document.querySelector('.search-box');
       if (searchBox) {
         searchBox.addEventListener('keypress', function(e) {
@@ -783,35 +792,94 @@ console.log('- 面包屑内容:', breadcrumbs);
         });
       }
 
-      // 下拉菜单功能
-      const dropdowns = document.querySelectorAll('.nav-dropdown');
-      dropdowns.forEach(dropdown => {
-        const trigger = dropdown.querySelector('.dropdown-trigger');
-        const menu = dropdown.querySelector('.dropdown-menu');
+      // 下拉菜单功能 - 增强版
+      function initializeDropdowns() {
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        console.log(`🔽 找到 ${dropdowns.length} 个下拉菜单`);
         
-        if (trigger && menu) {
-          trigger.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
+        // 详细检查每个下拉菜单的HTML结构
+        dropdowns.forEach((dropdown, index) => {
+          const trigger = dropdown.querySelector('.dropdown-trigger');
+          const menu = dropdown.querySelector('.dropdown-menu');
+          
+          console.log(`📋 下拉菜单 ${index + 1} 详细信息:`);
+          console.log('- 下拉菜单容器:', dropdown);
+          console.log('- 触发按钮:', trigger);
+          console.log('- 下拉菜单:', menu);
+          console.log('- 触发按钮ID:', trigger?.id || '无ID');
+          console.log('- 下拉菜单ID:', menu?.id || '无ID');
+          console.log('- 菜单项数量:', menu ? menu.querySelectorAll('.dropdown-item').length : 0);
+          console.log('- 完整HTML结构:', dropdown.outerHTML.substring(0, 500) + '...');
+          
+          if (trigger && menu) {
+            // 移除旧的事件监听器（如果存在）
+            trigger.removeEventListener('click', trigger._dropdownHandler);
             
-            // 关闭其他下拉菜单
-            dropdowns.forEach(otherDropdown => {
-              if (otherDropdown !== dropdown) {
-                otherDropdown.classList.remove('active');
-              }
+            // 创建新的事件处理器
+            trigger._dropdownHandler = function(e) {
+              e.preventDefault();
+              e.stopPropagation();
+              
+              console.log(`🖱️ 点击下拉菜单: ${trigger.id || '未知'}`);
+              console.log(`📋 点击前状态:`, {
+                hasActiveClass: dropdown.classList.contains('active'),
+                menuOpacity: getComputedStyle(menu).opacity,
+                menuVisibility: getComputedStyle(menu).visibility,
+                menuDisplay: getComputedStyle(menu).display,
+                menuPointerEvents: getComputedStyle(menu).pointerEvents
+              });
+              
+              // 关闭其他下拉菜单
+              dropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                  otherDropdown.classList.remove('active');
+                }
+              });
+              
+              // 切换当前下拉菜单
+              const wasActive = dropdown.classList.contains('active');
+              dropdown.classList.toggle('active');
+              
+              console.log(`📊 下拉菜单状态: ${wasActive ? '关闭' : '打开'}`);
+              
+              // 检查切换后的状态
+              setTimeout(() => {
+                console.log(`🔍 点击后状态:`, {
+                  hasActiveClass: dropdown.classList.contains('active'),
+                  menuOpacity: getComputedStyle(menu).opacity,
+                  menuVisibility: getComputedStyle(menu).visibility,
+                  menuDisplay: getComputedStyle(menu).display,
+                  menuPointerEvents: getComputedStyle(menu).pointerEvents,
+                  menuZIndex: getComputedStyle(menu).zIndex
+                });
+              }, 100);
+            };
+            
+            // 绑定事件监听器
+            trigger.addEventListener('click', trigger._dropdownHandler);
+            console.log(`✅ 事件监听器已绑定到: ${trigger.id || '未知ID'}`);
+          } else {
+            console.log(`❌ 下拉菜单 ${index + 1} 缺少必要元素:`, {
+              hasTrigger: !!trigger,
+              hasMenu: !!menu
             });
-            
-            // 切换当前下拉菜单
-            dropdown.classList.toggle('active');
-          });
-        }
-      });
+          }
+        });
+      }
+
+      // 初始化下拉菜单
+      initializeDropdowns();
 
       // 点击外部关闭下拉菜单
-      document.addEventListener('click', function() {
-        dropdowns.forEach(dropdown => {
-          dropdown.classList.remove('active');
-        });
+      document.addEventListener('click', function(e) {
+        // 检查点击的元素是否在下拉菜单内
+        const clickedDropdown = e.target.closest('.nav-dropdown');
+        if (!clickedDropdown) {
+          const dropdowns = document.querySelectorAll('.nav-dropdown');
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+        }
       });
 
       // 移动端菜单
@@ -819,11 +887,32 @@ console.log('- 面包屑内容:', breadcrumbs);
       const mobileMenu = document.getElementById('mobileMenu');
       
       if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', function() {
+        mobileMenuBtn.addEventListener('click', function(e) {
+          e.stopPropagation();
           mobileMenu.classList.toggle('active');
           mobileMenuBtn.classList.toggle('active');
+          console.log('📱 移动端菜单切换');
         });
       }
+
+      // 键盘导航支持
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          // ESC键关闭所有下拉菜单
+          const dropdowns = document.querySelectorAll('.nav-dropdown');
+          dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+          });
+          
+          // 关闭移动端菜单
+          if (mobileMenu) {
+            mobileMenu.classList.remove('active');
+            mobileMenuBtn?.classList.remove('active');
+          }
+        }
+      });
+
+      console.log('✅ 导航栏功能初始化完成');
     });
 
     // 随机游戏功能

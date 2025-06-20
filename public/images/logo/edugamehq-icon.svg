@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 学科主题渐变色 -->
+    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#C026D3;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#7C3AED;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 阴影滤镜 -->
+    <filter id="iconShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  
+  <!-- 六边形底座 -->
+  <polygon 
+    points="40,10 15,25 15,55 40,70 65,55 65,25" 
+    fill="url(#iconGradient)" 
+    stroke="#FFFFFF" 
+    stroke-width="2"
+    filter="url(#iconShadow)"
+  />
+  
+  <!-- 游戏手柄 -->
+  <ellipse cx="40" cy="40" rx="12" ry="8" fill="#FFFFFF" opacity="0.95"/>
+  
+  <!-- 手柄把手 -->
+  <rect x="22" y="37" width="6" height="6" rx="3" fill="#FFFFFF" opacity="0.9"/>
+  <rect x="52" y="37" width="6" height="6" rx="3" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- 按钮 -->
+  <circle cx="37" cy="37" r="1.5" fill="#EA580C"/>
+  <circle cx="43" cy="37" r="1.5" fill="#059669"/>
+  <circle cx="37" cy="43" r="1.5" fill="#C026D3"/>
+  <circle cx="43" cy="43" r="1.5" fill="#7C3AED"/>
+  
+  <!-- HQ 文字 -->
+  <text x="40" y="52" font-family="Inter, Arial, sans-serif" font-size="8" font-weight="800" fill="#FFFFFF" text-anchor="middle">
+    HQ
+  </text>
+</svg> 

@@ -1,16 +1,90 @@
 {
   "name": "EduGameHQ - Educational Games Platform",
   "short_name": "EduGameHQ",
-  "description": "Free educational games for kids aged 6-18",
+  "description": "Free educational games for kids aged 6-18. Learn math, science, language, coding, and more through fun interactive games.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#FEFCFB",
-  "theme_color": "#8B5CF6",
+  "background_color": "#FFFFFF",
+  "theme_color": "#F59E0B",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
   "icons": [
     {
-      "src": "/favicon.svg",
+      "src": "/images/logo/edugamehq-icon.svg",
       "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/logo/edugamehq-icon.svg",
+      "sizes": "192x192",
       "type": "image/svg+xml"
+    },
+    {
+      "src": "/images/logo/edugamehq-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": [
+    "education",
+    "games",
+    "entertainment",
+    "kids"
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshots/home-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "platform": "wide",
+      "label": "EduGameHQ Homepage"
+    },
+    {
+      "src": "/images/screenshots/games-mobile.png", 
+      "sizes": "360x640",
+      "type": "image/png",
+      "platform": "narrow",
+      "label": "Educational Games"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Math Games",
+      "short_name": "Math",
+      "description": "Play educational math games",
+      "url": "/math-games",
+      "icons": [
+        {
+          "src": "/images/logo/edugamehq-icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Science Games", 
+      "short_name": "Science",
+      "description": "Explore science through games",
+      "url": "/science-games",
+      "icons": [
+        {
+          "src": "/images/logo/edugamehq-icon.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Trending Games",
+      "short_name": "Trending", 
+      "description": "Most popular games right now",
+      "url": "/trending",
+      "icons": [
+        {
+          "src": "/images/logo/edugamehq-icon.svg",
+          "sizes": "96x96"
+        }
+      ]
     }
   ]
 } 
