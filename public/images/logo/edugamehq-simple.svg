@@ -1,50 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="280" height="80" viewBox="0 0 280 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="280" height="80" viewBox="0 0 280 80" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- 学科主题渐变色 -->
-    <linearGradient id="simpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
-      <stop offset="33%" style="stop-color:#059669;stop-opacity:1" />
-      <stop offset="66%" style="stop-color:#C026D3;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    <!-- 主色调金色渐变 (与首页一致) -->
+    <linearGradient id="primaryGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D97706;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 文字渐变 -->
+    <linearGradient id="textGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#1F2937;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#374151;stop-opacity:1" />
     </linearGradient>
     
     <!-- 阴影滤镜 -->
-    <filter id="simpleShadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="3" stdDeviation="6" flood-color="#000000" flood-opacity="0.15"/>
+    <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#000000" flood-opacity="0.15"/>
     </filter>
   </defs>
   
-  <!-- 六边形徽章 -->
-  <polygon 
-    points="40,15 20,27 20,53 40,65 60,53 60,27" 
-    fill="url(#simpleGradient)" 
-    stroke="#FFFFFF" 
-    stroke-width="2"
-    filter="url(#simpleShadow)"
-  />
+  <!-- 左侧图标区域 -->
+  <g transform="translate(15, 15)">
+    <!-- 主要的猫头鹰/幽灵形状 -->
+    <path d="M 25 0 
+             C 5 0, 0 15, 0 25 
+             C 0 35, 5 50, 25 50
+             C 45 50, 50 35, 50 25
+             C 50 15, 45 0, 25 0 Z" 
+          fill="url(#primaryGradient)" 
+          filter="url(#shadow)"/>
+    
+    <!-- 眼睛 (像引号) -->
+    <text x="18" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" transform="rotate(-15 18 25)">"</text>
+    <text x="32" y="25" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="white" text-anchor="middle" transform="rotate(15 32 25)">"</text>
+  </g>
   
-  <!-- 游戏手柄 -->
-  <ellipse cx="40" cy="40" rx="14" ry="9" fill="#FFFFFF" opacity="0.95"/>
-  
-  <!-- 手柄把手 -->
-  <rect x="22" y="36" width="8" height="8" rx="4" fill="#FFFFFF" opacity="0.9"/>
-  <rect x="50" y="36" width="8" height="8" rx="4" fill="#FFFFFF" opacity="0.9"/>
-  
-  <!-- 游戏按钮 -->
-  <circle cx="36" cy="36" r="2" fill="#EA580C"/>
-  <circle cx="44" cy="36" r="2" fill="#059669"/>
-  <circle cx="36" cy="44" r="2" fill="#C026D3"/>
-  <circle cx="44" cy="44" r="2" fill="#7C3AED"/>
-  
-  <!-- 主标题 -->
-  <text x="85" y="45" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="800" fill="#1F2937">
-    EduGameHQ
-  </text>
-  
-  <!-- HQ 强调 -->
-  <rect x="240" y="30" width="25" height="15" rx="2" fill="#F59E0B" opacity="0.2"/>
-  <text x="245" y="40" font-family="Inter, Arial, sans-serif" font-size="10" font-weight="700" fill="#D97706">
-    HQ
-  </text>
+  <!-- 右侧文字区域 -->
+  <g transform="translate(75, 0)">
+    <!-- 主标题 EduGameHQ -->
+    <text x="0" y="45" font-family="Space Grotesk, Arial, sans-serif" font-size="32" font-weight="700" fill="url(#textGradient)">
+      EduGameHQ
+    </text>
+  </g>
 </svg> 
