@@ -1,45 +1,78 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- 定义渐变和样式 -->
   <defs>
-    <!-- 学科主题渐变色 -->
-    <linearGradient id="iconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#EA580C;stop-opacity:1" />
-      <stop offset="25%" style="stop-color:#059669;stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#C026D3;stop-opacity:1" />
-      <stop offset="75%" style="stop-color:#7C3AED;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DC2626;stop-opacity:1" />
+    <!-- 大脑外轮廓渐变 - 蓝色 -->
+    <linearGradient id="brainOutline" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F8EF7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
     </linearGradient>
     
-    <!-- 阴影滤镜 -->
-    <filter id="iconShadow" x="-50%" y="-50%" width="200%" height="200%">
-      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.2"/>
-    </filter>
+    <!-- 大脑内部电路 - 绿色 -->
+    <linearGradient id="brainCircuit" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 游戏手柄 - 黑色 -->
+    <linearGradient id="gamepadColor" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1F2937;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
+    </linearGradient>
   </defs>
   
-  <!-- 六边形底座 -->
-  <polygon 
-    points="40,10 15,25 15,55 40,70 65,55 65,25" 
-    fill="url(#iconGradient)" 
-    stroke="#FFFFFF" 
-    stroke-width="2"
-    filter="url(#iconShadow)"
-  />
+  <!-- 大脑主体轮廓 -->
+  <path d="M20 25 
+           C15 20, 25 15, 35 18
+           C45 12, 55 15, 60 22
+           C65 25, 62 35, 58 40
+           C60 45, 55 50, 50 48
+           C45 52, 35 50, 30 45
+           C25 48, 15 45, 18 35
+           C12 30, 15 25, 20 25 Z" 
+        fill="url(#brainOutline)" 
+        stroke="#2563EB" 
+        stroke-width="2"/>
+  
+  <!-- 大脑内部电路纹理 -->
+  <g fill="url(#brainCircuit)" opacity="0.8">
+    <!-- 左半球电路 -->
+    <path d="M22 28 L28 32 L25 38 L22 35 Z"/>
+    <path d="M25 30 L32 28 L30 35 L28 32 Z"/>
+    <circle cx="26" cy="33" r="2"/>
+    
+    <!-- 右半球电路 -->
+    <path d="M45 28 L52 30 L50 36 L47 33 Z"/>
+    <path d="M48 32 L55 35 L52 40 L48 38 Z"/>
+    <circle cx="50" cy="34" r="2"/>
+    
+    <!-- 中央连接线 -->
+    <path d="M35 32 L45 32" stroke="url(#brainCircuit)" stroke-width="2" fill="none"/>
+    <path d="M32 36 L48 36" stroke="url(#brainCircuit)" stroke-width="1.5" fill="none"/>
+  </g>
   
   <!-- 游戏手柄 -->
-  <ellipse cx="40" cy="40" rx="12" ry="8" fill="#FFFFFF" opacity="0.95"/>
+  <g transform="translate(45, 50)">
+    <!-- 手柄主体 -->
+    <ellipse cx="0" cy="0" rx="18" ry="12" fill="url(#gamepadColor)" stroke="#000000" stroke-width="1"/>
+    
+    <!-- 左侧方向键 -->
+    <g transform="translate(-10, -2)">
+      <rect x="-1" y="-4" width="2" height="8" rx="1" fill="#FFFFFF"/>
+      <rect x="-4" y="-1" width="8" height="2" rx="1" fill="#FFFFFF"/>
+    </g>
+    
+    <!-- 右侧按钮 -->
+    <circle cx="8" cy="-3" r="2" fill="#34D399"/>
+    <circle cx="12" cy="0" r="2" fill="#34D399"/>
+    <circle cx="8" cy="3" r="2" fill="#34D399"/>
+    <circle cx="4" cy="0" r="2" fill="#34D399"/>
+    
+    <!-- 手柄握把 -->
+    <ellipse cx="-12" cy="8" rx="4" ry="6" fill="url(#gamepadColor)"/>
+    <ellipse cx="12" cy="8" rx="4" ry="6" fill="url(#gamepadColor)"/>
+  </g>
   
-  <!-- 手柄把手 -->
-  <rect x="22" y="37" width="6" height="6" rx="3" fill="#FFFFFF" opacity="0.9"/>
-  <rect x="52" y="37" width="6" height="6" rx="3" fill="#FFFFFF" opacity="0.9"/>
-  
-  <!-- 按钮 -->
-  <circle cx="37" cy="37" r="1.5" fill="#EA580C"/>
-  <circle cx="43" cy="37" r="1.5" fill="#059669"/>
-  <circle cx="37" cy="43" r="1.5" fill="#C026D3"/>
-  <circle cx="43" cy="43" r="1.5" fill="#7C3AED"/>
-  
-  <!-- HQ 文字 -->
-  <text x="40" y="52" font-family="Inter, Arial, sans-serif" font-size="8" font-weight="800" fill="#FFFFFF" text-anchor="middle">
-    HQ
-  </text>
+  <!-- 连接线 - 表示大脑与游戏的结合 -->
+  <path d="M40 42 Q50 48 45 55" stroke="#10B981" stroke-width="2" fill="none" opacity="0.6"/>
 </svg> 

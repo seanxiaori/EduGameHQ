@@ -1,29 +1,30 @@
-<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- EduGameHQ品牌渐变 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B"/>
-      <stop offset="100%" style="stop-color:#D97706"/>
+    <linearGradient id="brainMini" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4F8EF7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
     </linearGradient>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FCD34D"/>
-      <stop offset="100%" style="stop-color:#F59E0B"/>
+    
+    <linearGradient id="circuitMini" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <!-- 圆角矩形背景 -->
-  <rect width="16" height="16" rx="4" fill="url(#brandGradient)"/>
+  <!-- 简化的大脑轮廓 -->
+  <path d="M3 4 C2 3, 4 2, 6 3 C8 2, 10 3, 11 5 C12 6, 11 8, 10 9 C11 10, 9 11, 8 10 C7 11, 5 10, 4 9 C3 10, 2 9, 3 7 C2 6, 3 4, 3 4 Z" 
+        fill="url(#brainMini)" stroke="#2563EB" stroke-width="0.5"/>
   
-  <!-- 教育书本元素 -->
-  <rect x="3" y="4" width="5" height="8" rx="1" fill="white" fill-opacity="0.9"/>
-  <rect x="3" y="4" width="5" height="1.5" rx="1" fill="url(#accentGradient)"/>
+  <!-- 简化的电路 -->
+  <circle cx="5" cy="6" r="0.8" fill="url(#circuitMini)" opacity="0.8"/>
+  <circle cx="9" cy="6" r="0.8" fill="url(#circuitMini)" opacity="0.8"/>
+  <path d="M6 6 L8 6" stroke="url(#circuitMini)" stroke-width="0.5" fill="none"/>
   
-  <!-- 游戏控制器元素 -->
-  <rect x="9" y="6" width="4" height="3" rx="1.5" fill="white" fill-opacity="0.9"/>
-  <circle cx="10.5" cy="7.5" r="0.4" fill="url(#brandGradient)"/>
-  <circle cx="11.5" cy="7.5" r="0.4" fill="url(#brandGradient)"/>
-  
-  <!-- 学习进度点 -->
-  <circle cx="5.5" cy="8" r="0.6" fill="url(#accentGradient)"/>
-  <circle cx="5.5" cy="10" r="0.4" fill="url(#brandGradient)" fill-opacity="0.7"/>
+  <!-- 简化的游戏手柄 -->
+  <ellipse cx="8" cy="12" rx="4" ry="2.5" fill="#1F2937"/>
+  <rect x="6" y="11.5" width="0.5" height="1" fill="#FFFFFF"/>
+  <rect x="5.5" y="11.8" width="1.5" height="0.4" fill="#FFFFFF"/>
+  <circle cx="9.5" cy="11.5" r="0.4" fill="#34D399"/>
+  <circle cx="10.5" cy="12" r="0.4" fill="#34D399"/>
 </svg>
