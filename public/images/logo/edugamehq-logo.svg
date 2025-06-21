@@ -1,96 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="300" height="80" viewBox="0 0 300 80" xmlns="http://www.w3.org/2000/svg">
-  <!-- 定义渐变和样式 -->
+  <!-- 定义渐变 -->
   <defs>
-    <!-- 大脑外轮廓渐变 - 蓝色，增强对比度 -->
-    <linearGradient id="brainOutline" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
-    </linearGradient>
-    
-    <!-- 大脑内部电路 - 绿色，增强对比度 -->
-    <linearGradient id="brainCircuit" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4ADE80;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#22C55E;stop-opacity:1" />
-    </linearGradient>
-    
-    <!-- 游戏手柄 - 深色，增强对比度 -->
-    <linearGradient id="gamepadColor" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#374151;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#1F2937;stop-opacity:1" />
+    <!-- 紫色渐变 -->
+    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <!-- 左侧图标区域 -->
-  <g transform="translate(10, 10)">
-    <!-- 大脑主体轮廓 - 添加白色描边 -->
-    <path d="M10 15 
-             C5 10, 15 5, 25 8
-             C35 2, 45 5, 50 12
-             C55 15, 52 25, 48 30
-             C50 35, 45 40, 40 38
-             C35 42, 25 40, 20 35
-             C15 38, 5 35, 8 25
-             C2 20, 5 15, 10 15 Z" 
-          fill="url(#brainOutline)" 
-          stroke="#FFFFFF" 
-          stroke-width="2"/>
+  <!-- 左侧图标 - 紫色方块 -->
+  <rect x="15" y="15" width="50" height="50" rx="12" ry="12" fill="url(#purpleGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  
+  <!-- 方块内的游戏手柄图标 -->
+  <g transform="translate(40, 40)" fill="#FFFFFF">
+    <!-- 游戏手柄主体 -->
+    <ellipse cx="0" cy="0" rx="12" ry="8"/>
     
-    <!-- 大脑内部电路纹理 -->
-    <g fill="url(#brainCircuit)" opacity="0.9">
-      <!-- 左半球电路 -->
-      <path d="M12 18 L18 22 L15 28 L12 25 Z"/>
-      <path d="M15 20 L22 18 L20 25 L18 22 Z"/>
-      <circle cx="16" cy="23" r="1.5"/>
-      
-      <!-- 右半球电路 -->
-      <path d="M35 18 L42 20 L40 26 L37 23 Z"/>
-      <path d="M38 22 L45 25 L42 30 L38 28 Z"/>
-      <circle cx="40" cy="24" r="1.5"/>
-      
-      <!-- 中央连接线 -->
-      <path d="M25 22 L35 22" stroke="url(#brainCircuit)" stroke-width="1.5" fill="none"/>
-      <path d="M22 26 L38 26" stroke="url(#brainCircuit)" stroke-width="1" fill="none"/>
+    <!-- 左侧方向键 -->
+    <g transform="translate(-7, 0)">
+      <rect x="-0.8" y="-3" width="1.6" height="6" rx="0.8"/>
+      <rect x="-3" y="-0.8" width="6" height="1.6" rx="0.8"/>
     </g>
     
-    <!-- 游戏手柄 - 添加白色描边 -->
-    <g transform="translate(35, 40)">
-      <!-- 手柄主体 -->
-      <ellipse cx="0" cy="0" rx="14" ry="9" fill="url(#gamepadColor)" stroke="#FFFFFF" stroke-width="1.5"/>
-      
-      <!-- 左侧方向键 -->
-      <g transform="translate(-8, -1)">
-        <rect x="-0.8" y="-3" width="1.6" height="6" rx="0.8" fill="#FFFFFF"/>
-        <rect x="-3" y="-0.8" width="6" height="1.6" rx="0.8" fill="#FFFFFF"/>
-      </g>
-      
-      <!-- 右侧按钮 -->
-      <circle cx="6" cy="-2" r="1.5" fill="#4ADE80"/>
-      <circle cx="9" cy="0" r="1.5" fill="#4ADE80"/>
-      <circle cx="6" cy="2" r="1.5" fill="#4ADE80"/>
-      <circle cx="3" cy="0" r="1.5" fill="#4ADE80"/>
-      
-      <!-- 手柄握把 -->
-      <ellipse cx="-9" cy="6" rx="3" ry="4.5" fill="url(#gamepadColor)" stroke="#FFFFFF" stroke-width="1"/>
-      <ellipse cx="9" cy="6" rx="3" ry="4.5" fill="url(#gamepadColor)" stroke="#FFFFFF" stroke-width="1"/>
-    </g>
-    
-    <!-- 连接线 - 表示大脑与游戏的结合 -->
-    <path d="M30 32 Q35 36 35 42" stroke="#22C55E" stroke-width="1.5" fill="none" opacity="0.8"/>
+    <!-- 右侧按钮 -->
+    <circle cx="5" cy="-2.5" r="1.2"/>
+    <circle cx="7.5" cy="0" r="1.2"/>
+    <circle cx="5" cy="2.5" r="1.2"/>
+    <circle cx="2.5" cy="0" r="1.2"/>
   </g>
   
-  <!-- 右侧文字 - EdugameHQ (白色文字，适合深色背景) -->
-  <text x="90" y="45" 
+  <!-- 右侧文字 - EduGameHQ (白色文字，适合深色背景) -->
+  <text x="85" y="45" 
         font-family="'Inter', 'Helvetica', sans-serif" 
         font-size="28" 
         font-weight="700" 
         fill="#FFFFFF" 
-        stroke="#374151"
-        stroke-width="0.5"
-        letter-spacing="-0.5px">EdugameHQ</text>
+        letter-spacing="-0.5px">EduGameHQ</text>
   
   <!-- 副标题 (浅色，适合深色背景) -->
-  <text x="90" y="62" 
+  <text x="85" y="62" 
         font-family="'Inter', sans-serif" 
         font-size="11" 
         font-weight="400" 
