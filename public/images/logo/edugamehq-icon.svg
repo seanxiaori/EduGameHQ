@@ -2,31 +2,54 @@
 <svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
   <!-- 定义渐变 -->
   <defs>
-    <!-- 紫色渐变 -->
-    <linearGradient id="purpleGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#7C3AED;stop-opacity:1" />
+    <!-- 金色渐变背景 - 积极向上的暖色调 -->
+    <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FBBF24;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F97316;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 骰子面的渐变 -->
+    <linearGradient id="diceFace" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#F3F4F6;stop-opacity:0.8" />
+    </linearGradient>
+    
+    <!-- 阴影渐变 -->
+    <linearGradient id="shadowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#000000;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.1" />
     </linearGradient>
   </defs>
   
-  <!-- 紫色方块 -->
-  <rect x="8" y="8" width="64" height="64" rx="16" ry="16" fill="url(#purpleGradient)" stroke="#FFFFFF" stroke-width="2"/>
+  <!-- 金色圆角方块背景 -->
+  <rect x="8" y="8" width="64" height="64" rx="16" ry="16" fill="url(#goldGradient)" stroke="#FFFFFF" stroke-width="2"/>
   
-  <!-- 方块内的游戏手柄图标 -->
-  <g transform="translate(40, 40)" fill="#FFFFFF">
-    <!-- 游戏手柄主体 -->
-    <ellipse cx="0" cy="0" rx="16" ry="11"/>
+  <!-- 圆角方块内的阴影效果 -->
+  <rect x="10" y="10" width="60" height="60" rx="14" ry="14" fill="url(#shadowGradient)"/>
+  
+  <!-- 骰子主体 - 立体效果 -->
+  <g transform="translate(40, 40)">
+    <!-- 骰子正面 -->
+    <rect x="-16" y="-16" width="32" height="32" rx="4" ry="4" fill="url(#diceFace)" stroke="#E5E7EB" stroke-width="1"/>
     
-    <!-- 左侧方向键 -->
-    <g transform="translate(-9, 0)">
-      <rect x="-1" y="-4" width="2" height="8" rx="1"/>
-      <rect x="-4" y="-1" width="8" height="2" rx="1"/>
+    <!-- 骰子上面（立体效果） -->
+    <path d="M -16,-16 L -12,-20 L 20,-20 L 16,-16 Z" fill="#FFFFFF" opacity="0.7"/>
+    
+    <!-- 骰子右侧（立体效果） -->
+    <path d="M 16,-16 L 20,-20 L 20,12 L 16,16 Z" fill="#E5E7EB" opacity="0.8"/>
+    
+    <!-- 骰子点数 - 显示数字6的点数布局 -->
+    <g fill="#374151">
+      <!-- 左列点数 -->
+      <circle cx="-8" cy="-8" r="2.4"/>
+      <circle cx="-8" cy="0" r="2.4"/>
+      <circle cx="-8" cy="8" r="2.4"/>
+      
+      <!-- 右列点数 -->
+      <circle cx="8" cy="-8" r="2.4"/>
+      <circle cx="8" cy="0" r="2.4"/>
+      <circle cx="8" cy="8" r="2.4"/>
     </g>
-    
-    <!-- 右侧按钮 -->
-    <circle cx="7" cy="-3.5" r="1.8"/>
-    <circle cx="10.5" cy="0" r="1.8"/>
-    <circle cx="7" cy="3.5" r="1.8"/>
-    <circle cx="3.5" cy="0" r="1.8"/>
   </g>
 </svg> 
