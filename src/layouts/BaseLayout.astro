@@ -281,9 +281,9 @@ try {
   
   <!-- Favicon - 使用新设计的LOGO -->
   <link rel="icon" type="image/svg+xml" href="/images/logo/favicon.ico">
-  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/images/logo/edugamehq-icon.svg">
-  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/images/logo/edugamehq-icon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/edugamehq-icon.svg">
+      <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/edugamehq-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/edugamehq-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/edugamehq-icon.png">
   <link rel="manifest" href="/site.webmanifest">
   
   <!-- Canonical URL -->
@@ -334,8 +334,8 @@ try {
   <meta property="linkedin:owner" content="EduGameHQ">
   
   <!-- Preload critical resources -->
-  <link rel="preload" href="/images/logo/edugamehq-simple.svg" as="image">
-  <link rel="preload" href="/images/logo/edugamehq-icon.svg" as="image">
+      <link rel="preload" href="/images/logo/edugamehq-logo.png" as="image">
+    <link rel="preload" href="/images/logo/edugamehq-icon.png" as="image">
   <link rel="preload" href={ogImageUrl} as="image">
   
   <!-- DNS Prefetch for external resources -->
@@ -358,7 +358,7 @@ try {
     "alternateName": "Educational Games Headquarters",
     "description": "Free educational games platform for kids aged 6-18",
     "url": "https://edugamehq.com",
-    "logo": "https://edugamehq.com/images/logo/edugamehq-logo.svg",
+          "logo": "https://edugamehq.com/images/logo/edugamehq-logo.png",
     "sameAs": [
       "https://twitter.com/EduGameHQ",
       "https://facebook.com/EduGameHQ",
@@ -490,7 +490,7 @@ try {
         <!-- Logo -->
         <div class="nav-logo">
           <a href={getLocalizedPath('/', currentLang)} class="logo-link">
-            <img src="/images/logo/edugamehq-simple.svg" alt="EduGameHQ Logo" width="400" height="80" />
+            <img src="/images/logo/edugamehq-logo.png" alt="EduGameHQ Logo" width="300" height="80" />
           </a>
         </div>
         
@@ -708,7 +708,7 @@ try {
           <!-- Logo和描述 -->
           <div class="footer-section">
             <div class="footer-logo">
-              <img src="/images/logo/edugamehq-logo.svg" alt="EduGameHQ Logo" width="300" height="80" />
+              <img src="/images/logo/edugamehq-footer.png" alt="EduGameHQ Logo" width="300" height="80" />
             </div>
             <p class="footer-description">
               {t(translations, 'footer.description', 'EduGameHQ is your go-to platform for educational games that make learning engaging and effective.')}

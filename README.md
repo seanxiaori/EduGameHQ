@@ -60,7 +60,7 @@
 ### 本地开发环境
 ```bash
 # 克隆项目
-git clone https://github.com/edugamehq/edugamehq.git
+git clone https://github.com/seanxiaori/EduGameHQ.git
 cd EduGameHQ
 
 # 安装依赖
@@ -462,8 +462,8 @@ npm run crawl-games
 ## 📞 联系方式
 
 - **项目主页**: [EduGameHQ.com](https://edugamehq.com)
-- **GitHub**: [github.com/edugamehq/edugamehq](https://github.com/edugamehq/edugamehq)
-- **问题反馈**: [GitHub Issues](https://github.com/edugamehq/edugamehq/issues)
+- **GitHub**: [github.com/seanxiaori/EduGameHQ](https://github.com/seanxiaori/EduGameHQ)
+- **问题反馈**: [GitHub Issues](https://github.com/seanxiaori/EduGameHQ/issues)
 - **技术文档**: [项目文档](./doc/)
 
 ## 📄 许可证
