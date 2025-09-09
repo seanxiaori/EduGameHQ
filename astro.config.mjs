@@ -4,7 +4,7 @@ import tailwind from '@astrojs/tailwind';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://edugamehq.com',
+  site: 'https://www.edugamehq.com',
   output: 'static',
   
   integrations: [

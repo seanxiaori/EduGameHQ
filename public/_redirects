@@ -1,2 +1,31 @@
+# 301重定向规则 - 统一使用www.edugamehq.com作为主域名
+# 非www -> www 重定向
+https://edugamehq.com/* https://www.edugamehq.com/:splat 301!
+http://edugamehq.com/* https://www.edugamehq.com/:splat 301!
+# HTTP -> HTTPS 重定向
+http://www.edugamehq.com/* https://www.edugamehq.com/:splat 301!
+
+# 旧URL重定向（如果存在）
+/index.html / 301
+/home / 301
+/index.php / 301
+
+# 确保目录URL统一使用尾斜杠
+/math-games /math-games/ 301
+/science-games /science-games/ 301
+/language-games /language-games/ 301
+/puzzle-games /puzzle-games/ 301
+/sports-games /sports-games/ 301
+/art-games /art-games/ 301
+/trending /trending/ 301
+/new-games /new-games/ 301
+/search /search/ 301
+/about /about/ 301
+/help /help/ 301
+/privacy-policy /privacy-policy/ 301
+/terms-of-service /terms-of-service/ 301
+/recently-played /recently-played/ 301
+/favorites /favorites/ 301
+
 # Yandex verification file - direct access without redirect
 /yandex_60fb28260cdeec35.html /yandex_60fb28260cdeec35 200 

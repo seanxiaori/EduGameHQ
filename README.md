@@ -461,7 +461,7 @@ npm run crawl-games
 
 ## 📞 联系方式
 
-- **项目主页**: [EduGameHQ.com](https://edugamehq.com)
+- **项目主页**: [EduGameHQ.com](https://www.edugamehq.com)
 - **GitHub**: [github.com/seanxiaori/EduGameHQ](https://github.com/seanxiaori/EduGameHQ)
 - **问题反馈**: [GitHub Issues](https://github.com/seanxiaori/EduGameHQ/issues)
 - **技术文档**: [项目文档](./doc/)

@@ -38,10 +38,10 @@ export const seoConfig: Record<string, SEOConfig> = {
       "name": "EduGameHQ",
       "alternateName": "Educational Games Headquarters",
       "description": "Free educational games platform for kids aged 6-18. Learn through play with 100+ HTML5 games covering math, science, coding, language arts, sports, art, and geography.",
-      "url": "https://edugamehq.com",
+      "url": "https://www.edugamehq.com",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://edugamehq.com/search?q={search_term_string}",
+        "target": "https://www.edugamehq.com/search?q={search_term_string}",
         "query-input": "required name=search_term_string"
       },
       "publisher": {
@@ -49,7 +49,7 @@ export const seoConfig: Record<string, SEOConfig> = {
         "name": "EduGameHQ",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://edugamehq.com/images/logo.svg"
+          "url": "https://www.edugamehq.com/images/logo.svg"
         }
       }
     }
@@ -81,7 +81,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "@type": "CollectionPage",
       "name": "Math Games for Kids",
       "description": "Collection of free educational math games for children aged 6-18",
-      "url": "https://edugamehq.com/math-games",
+      "url": "https://www.edugamehq.com/math-games",
       "mainEntity": {
         "@type": "ItemList",
         "name": "Math Educational Games",
@@ -114,7 +114,7 @@ export const seoConfig: Record<string, SEOConfig> = {
       "@type": "CollectionPage",
       "name": "Science Games for Students",
       "description": "Interactive science games covering physics, chemistry, biology, and earth sciences",
-      "url": "https://edugamehq.com/science-games"
+      "url": "https://www.edugamehq.com/science-games"
     }
   },
 
@@ -393,7 +393,7 @@ export function generateStructuredData(path: string, gameData?: any) {
       "@type": "Game",
       "name": gameData.title,
       "description": gameData.description,
-      "url": `https://edugamehq.com/games/${gameData.slug}`,
+      "url": `https://www.edugamehq.com/games/${gameData.slug}`,
       "image": gameData.thumbnailUrl || "/images/logo.svg",
       "genre": gameData.categoryName,
       "educationalLevel": gameData.ageRange,

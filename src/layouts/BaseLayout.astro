@@ -41,7 +41,7 @@ const ogImageUrl = getOGImageUrl(currentPath);
 const structuredData = generateStructuredData(currentPath, gameData);
 
 // 构建完整的页面URL
-const canonicalUrl = new URL(currentPath, Astro.site || 'https://edugamehq.com').toString();
+const canonicalUrl = new URL(currentPath, Astro.site || 'https://www.edugamehq.com').toString();
 
 // 定义页面分类和层级结构 - 支持多语言
 const pageStructure = {
@@ -291,9 +291,9 @@ try {
   
   <!-- 多语言Alternate hreflang标签 -->
   {languageSwitchLinks.map(link => (
-    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://edugamehq.com').toString()}>
+    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://www.edugamehq.com').toString()}>
   ))}
-  <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://edugamehq.com').toString()}>
+  <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://www.edugamehq.com').toString()}>
   
   <!-- Fonts - 优化加载 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -308,7 +308,7 @@ try {
   <meta property="og:description" content={pageDescription}>
   <meta property="og:type" content={isGamePage ? "game" : "website"}>
   <meta property="og:url" content={canonicalUrl}>
-  <meta property="og:image" content={new URL(ogImageUrl, Astro.site || 'https://edugamehq.com').toString()}>
+  <meta property="og:image" content={new URL(ogImageUrl, Astro.site || 'https://www.edugamehq.com').toString()}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
@@ -321,7 +321,7 @@ try {
   <meta name="twitter:creator" content="@EduGameHQ">
   <meta name="twitter:title" content={pageTitle}>
   <meta name="twitter:description" content={pageDescription}>
-  <meta name="twitter:image" content={new URL(ogImageUrl, Astro.site || 'https://edugamehq.com').toString()}>
+  <meta name="twitter:image" content={new URL(ogImageUrl, Astro.site || 'https://www.edugamehq.com').toString()}>
   <meta name="twitter:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
   
   <!-- Facebook Meta Tags -->
@@ -357,8 +357,8 @@ try {
     "name": "EduGameHQ",
     "alternateName": "Educational Games Headquarters",
     "description": "Free educational games platform for kids aged 6-18",
-    "url": "https://edugamehq.com",
-          "logo": "https://edugamehq.com/images/logo/edugamehq-logo.png",
+    "url": "https://www.edugamehq.com",
+          "logo": "https://www.edugamehq.com/images/logo/edugamehq-logo.png",
     "sameAs": [
       "https://twitter.com/EduGameHQ",
       "https://facebook.com/EduGameHQ",
