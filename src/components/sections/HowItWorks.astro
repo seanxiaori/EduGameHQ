@@ -1,0 +1,38 @@
+---
+// src/components/sections/HowItWorks.astro
+import { t } from '../../i18n/utils';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<section class="how-it-works-section">
+  <div class="module-header">
+    <div class="module-icon">
+      <i class="fas fa-tasks"></i>
+    </div>
+    <div class="module-text">
+      <h2 class="module-title">{t(translations, 'home.how_it_works.title', 'How EduGameHQ Works')}</h2>
+      <p class="module-description">{t(translations, 'home.how_it_works.description', 'Simple steps to start your learning adventure')}</p>
+    </div>
+  </div>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-icon"><i class="fas fa-search"></i></div>
+      <h3>{t(translations, 'home.how_it_works.step1.title', '1. Create Account')}</h3>
+      <p>{t(translations, 'home.how_it_works.step1.description', 'Sign up for free and get instant access to our game library.')}</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon"><i class="fas fa-mouse-pointer"></i></div>
+      <h3>{t(translations, 'home.how_it_works.step2.title', '2. Explore Games')}</h3>
+      <p>{t(translations, 'home.how_it_works.step2.description', 'Browse by category, age, or subject to find your perfect game.')}</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon"><i class="fas fa-graduation-cap"></i></div>
+      <h3>{t(translations, 'home.how_it_works.step3.title', '3. Learn & Grow')}</h3>
+      <p>{t(translations, 'home.how_it_works.step3.description', 'Play engaging games that reinforce key academic concepts.')}</p>
+    </div>
+  </div>
+</section>

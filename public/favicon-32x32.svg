@@ -1,61 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<!-- EduGameHQ Favicon 32x32 -->
 <svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="brainMedium" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#4F8EF7;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
-    </linearGradient>
-    
-    <linearGradient id="circuitMedium" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#34D399;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#10B981;stop-opacity:1" />
-    </linearGradient>
-    
-    <linearGradient id="gamepadMedium" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#1F2937;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#111827;stop-opacity:1" />
+    <linearGradient id="favicon32-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
     </linearGradient>
   </defs>
-  
-  <!-- 大脑轮廓 -->
-  <path d="M6 8 C4 6, 8 4, 12 5 C16 3, 20 4, 22 7 C24 8, 23 12, 21 14 C22 16, 20 18, 18 17 C16 19, 12 18, 10 16 C8 18, 4 16, 5 12 C3 10, 4 8, 6 8 Z" 
-        fill="url(#brainMedium)" stroke="#2563EB" stroke-width="1"/>
-  
-  <!-- 大脑内部电路 -->
-  <g fill="url(#circuitMedium)" opacity="0.8">
-    <path d="M8 10 L11 12 L9 15 L8 13 Z"/>
-    <path d="M10 11 L14 10 L13 14 L11 12 Z"/>
-    <circle cx="10" cy="12" r="1"/>
-    
-    <path d="M17 10 L20 11 L19 14 L17 13 Z"/>
-    <path d="M18 12 L21 14 L20 16 L18 15 Z"/>
-    <circle cx="19" cy="13" r="1"/>
-    
-    <path d="M12 12 L17 12" stroke="url(#circuitMedium)" stroke-width="1" fill="none"/>
-    <path d="M11 14 L18 14" stroke="url(#circuitMedium)" stroke-width="0.8" fill="none"/>
+  <rect x="4" y="4" width="24" height="24" rx="7" ry="7" fill="url(#favicon32-gradient)"/>
+  <g transform="translate(16, 12)">
+    <path d="M-3.5 -1 L-3.5 4 L0 3 L3.5 4 L3.5 -1 Z" 
+          fill="none" stroke="white" stroke-width="1" stroke-linejoin="round"/>
   </g>
-  
-  <!-- 游戏手柄 -->
-  <g transform="translate(16, 22)">
-    <ellipse cx="0" cy="0" rx="9" ry="6" fill="url(#gamepadMedium)" stroke="#000000" stroke-width="0.5"/>
-    
-    <!-- 方向键 -->
-    <g transform="translate(-5, -1)">
-      <rect x="-0.5" y="-2" width="1" height="4" rx="0.5" fill="#FFFFFF"/>
-      <rect x="-2" y="-0.5" width="4" height="1" rx="0.5" fill="#FFFFFF"/>
-    </g>
-    
-    <!-- 按钮 -->
-    <circle cx="4" cy="-1.5" r="1" fill="#34D399"/>
-    <circle cx="6" cy="0" r="1" fill="#34D399"/>
-    <circle cx="4" cy="1.5" r="1" fill="#34D399"/>
-    <circle cx="2" cy="0" r="1" fill="#34D399"/>
-    
-    <!-- 握把 -->
-    <ellipse cx="-6" cy="4" rx="2" ry="3" fill="url(#gamepadMedium)"/>
-    <ellipse cx="6" cy="4" rx="2" ry="3" fill="url(#gamepadMedium)"/>
+  <g transform="translate(16, 20)">
+    <circle cx="-2" cy="0" r="1" fill="white" opacity="0.9"/>
+    <circle cx="2" cy="0" r="1" fill="white" opacity="0.9"/>
   </g>
-  
-  <!-- 连接线 -->
-  <path d="M15 17 Q18 20 16 23" stroke="#10B981" stroke-width="1" fill="none" opacity="0.6"/>
 </svg>

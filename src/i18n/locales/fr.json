@@ -10,19 +10,21 @@
     "about": "À propos",
     "help": "Aide",
     "privacy": "Politique de confidentialité",
-    "terms": "Conditions d'utilisation"
+    "terms": "Conditions d'utilisation",
+    "special": "Pages spéciales"
   },
   "categories": {
-    "math-games": "Jeux de Mathématiques",
-    "science-games": "Jeux de Sciences", 
-    "language-games": "Jeux de Langues",
-    "puzzle-games": "Jeux de Puzzle",
-    "sports-games": "Jeux de Sport",
-    "art-games": "Jeux d'Art"
+    "math-games": "Jeux de mathématiques",
+    "science-games": "Jeux de sciences",
+    "language-games": "Jeux de langues",
+    "puzzle-games": "Jeux de puzzle",
+    "sports-games": "Jeux de sport",
+    "art-games": "Jeux d'art"
   },
   "hero": {
-    "title": "Où l'Apprentissage Rencontre le Plaisir",
-    "subtitle": "Découvrez des jeux éducatifs gratuits conçus pour rendre l'apprentissage engageant et efficace pour les étudiants de 6 à 18 ans.",
+    "title": "Où l'apprentissage rencontre le plaisir",
+    "title.full": "Où l'apprentissage rencontre le <span class=\"highlight\">plaisir</span>",
+    "subtitle": "Découvrez des jeux éducatifs gratuits conçus pour rendre l'apprentissage attrayant et efficace pour les étudiants de 6-18 ans.",
     "stats": {
       "students": "Étudiants",
       "countries": "Pays",
@@ -30,7 +32,7 @@
     }
   },
   "search": {
-    "title": "Rechercher des Jeux Éducatifs",
+    "title": "Rechercher des jeux éducatifs",
     "subtitle": "Trouvez le jeu éducatif parfait pour votre parcours d'apprentissage",
     "placeholder": "Rechercher des jeux éducatifs...",
     "button": "Rechercher",
@@ -41,66 +43,238 @@
     "all_categories": "Toutes les catégories"
   },
   "game": {
+    "random": "Jeu aléatoire",
     "play_now": "Jouer maintenant",
     "full_screen": "Plein écran",
     "favorite": "Ajouter aux favoris",
+    "add_to_favorites": "Ajouter aux favoris",
     "share": "Partager le jeu",
     "difficulty": "Difficulté",
     "age_range": "Tranche d'âge",
+    "ages": "Âges",
     "category": "Catégorie",
     "tags": "Étiquettes",
     "description": "Description",
     "instructions": "Comment jouer",
     "related": "Jeux similaires",
     "source": "Source du jeu",
-    "random": "Aléatoire"
+    "loading": "Chargement..."
   },
   "footer": {
     "tagline": "Rendre l'apprentissage amusant pour tous",
-    "description": "EduGameHQ est votre plateforme de jeux éducatifs qui rend l'apprentissage engageant et efficace.",
+    "description": "EduGameHQ est votre plateforme de jeux éducatifs qui rend l'apprentissage attrayant et efficace.",
     "quick_links": "Liens rapides",
     "game_categories": "Catégories de jeux",
     "support": "Support et informations",
     "social": "Suivez-nous",
     "copyright": "© 2025 EduGameHQ. Tous droits réservés.",
-    "made_with_love": "Fait avec ❤️ pour les apprenants du monde entier"
-  },
-  "about": {
-    "title": "À propos d'EduGameHQ",
-    "subtitle": "Où l'apprentissage rencontre le plaisir - Transformer l'éducation grâce aux jeux interactifs",
-    "mission": "Notre mission",
-    "values": "Valeurs fondamentales",
-    "story": "Notre histoire",
-    "team": "Rencontrez notre équipe",
-    "stats": "Notre impact",
-    "contact": "Contactez-nous"
-  },
-  "help": {
-    "title": "Aide et support",
-    "subtitle": "Trouvez des réponses aux questions fréquentes et obtenez l'aide dont vous avez besoin",
-    "faq": "Questions fréquemment posées",
-    "contact_us": "Contactez-nous",
-    "report_issue": "Signaler un problème"
+    "made_with_love": "Fait avec ❤️ pour les étudiants du monde entier",
+    "logo_alt": "Logo EduGameHQ",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    }
   },
   "common": {
-    "loading": "Chargement...",
-    "error": "Quelque chose s'est mal passé",
-    "try_again": "Réessayer",
     "back": "Retour",
-    "next": "Suivant",
-    "previous": "Précédent",
-    "close": "Fermer",
-    "save": "Enregistrer",
     "cancel": "Annuler",
+    "close": "Fermer",
     "confirm": "Confirmer",
-    "yes": "Oui",
+    "error": "Erreur",
+    "loading": "Chargement...",
+    "next": "Suivant",
     "no": "Non",
     "ok": "OK",
-    "skip_to_content": "Aller au contenu principal"
+    "previous": "Précédent",
+    "save": "Enregistrer",
+    "try_again": "Réessayer",
+    "yes": "Oui"
   },
   "language": {
     "switch": "Changer de langue",
     "current": "Langue actuelle",
-    "select": "Sélectionner la langue"
+    "select": "Sélectionner une langue"
+  },
+  "help": {
+    "title": "Centre d'aide",
+    "subtitle": "Trouvez des réponses à vos questions",
+    "faq": "Questions fréquemment posées",
+    "contact_us": "Nous contacter",
+    "report_issue": "Signaler un problème"
+  },
+  "home": {
+    "featured_games": {
+      "title": "Jeux recommandés",
+      "description": "Nos jeux les plus populaires et recommandés"
+    },
+    "category_description": {
+      "math": "Maîtrisez les nombres, les équations et les compétences de résolution de problèmes",
+      "science": "Explorez le monde naturel à travers des expériences interactives",
+      "language": "Améliorez les compétences de lecture, d'écriture et de communication",
+      "puzzle": "Développez la pensée critique et les compétences de résolution de problèmes",
+      "sports": "Restez actif tout en apprenant sur le sport et l'exercice",
+      "art": "Exprimez votre créativité à travers l'art numérique et le design"
+    },
+    "explore_by_category": {
+      "title": "Explorer par catégorie",
+      "description": "Trouvez des jeux parfaits pour votre domaine d'intérêt"
+    },
+    "how_it_works": {
+      "title": "Comment ça marche",
+      "description": "Commencer est facile - suivez ces étapes simples",
+      "step1": {
+        "title": "Choisir un jeu",
+        "description": "Sélectionnez un jeu dans une catégorie qui vous intéresse"
+      },
+      "step2": {
+        "title": "Commencer à jouer",
+        "description": "Lancez le jeu en un clic et apprenez en vous amusant"
+      },
+      "step3": {
+        "title": "Suivre les progrès",
+        "description": "Suivez vos progrès d'apprentissage et améliorez vos compétences"
+      }
+    },
+    "benefit": {
+      "safe_environment": {
+        "title": "Environnement sécurisé",
+        "description": "Tous les jeux sont fournis dans un environnement sûr et adapté aux enfants"
+      },
+      "curriculum_aligned": {
+        "title": "Aligné sur le programme",
+        "description": "Contenu de haute qualité aligné sur les normes éducatives"
+      },
+      "no_downloads": {
+        "title": "Aucun téléchargement",
+        "description": "Jouez directement dans le navigateur, aucune installation requise"
+      },
+      "cross_platform": {
+        "title": "Multi-plateforme",
+        "description": "Disponible sur ordinateur, tablette et smartphone"
+      }
+    },
+    "why_choose_us": {
+      "title": "Pourquoi nous choisir",
+      "description": "EduGameHQ est la plateforme de confiance pour l'apprentissage par le jeu"
+    },
+    "testimonials": {
+      "title": "Ce que disent nos utilisateurs",
+      "description": "Expériences réelles d'étudiants, de parents et d'éducateurs"
+    },
+    "testimonial": {
+      "teacher1": {
+        "text": "Mes étudiants adorent apprendre avec les jeux EduGameHQ. Leur concentration et leur compréhension se sont considérablement améliorées.",
+        "author": "Mme Dubois",
+        "role": "Enseignante primaire"
+      },
+      "parent1": {
+        "text": "Mon fils avait des difficultés en mathématiques, mais ces jeux l'ont aidé à apprendre de manière amusante. Ses notes se sont améliorées.",
+        "author": "M. Martin",
+        "role": "Parent"
+      },
+      "parent2": {
+        "text": "Ma fille est passionnée par les jeux de sciences. Elle adore apprendre à travers les expériences et les découvertes.",
+        "author": "Mme Bernard",
+        "role": "Parent"
+      }
+    },
+    "cta": {
+      "title": "Prêt à commencer votre aventure d'apprentissage ?",
+      "description": "Rejoignez des milliers d'étudiants qui apprennent déjà en s'amusant",
+      "button": "Explorer les jeux gratuits"
+    }
+  },
+  "links": {
+    "math_games": "Jeux de mathématiques",
+    "science_games": "Jeux de sciences",
+    "language_games": "Jeux de langues",
+    "puzzle_games": "Jeux de puzzle",
+    "sports_games": "Jeux de sport",
+    "art_games": "Jeux d'art",
+    "new_games": "Nouveaux jeux"
+  },
+  "about_page": {
+    "seo": {
+      "title": "À propos d'EduGameHQ | Plateforme de jeux éducatifs",
+      "description": "Découvrez la mission d'EduGameHQ de rendre l'apprentissage amusant à travers les jeux éducatifs. Explorez notre histoire, nos valeurs et notre engagement envers une éducation de qualité.",
+      "keywords": "à propos d'edugamehq, plateforme éducative, mission de jeux d'apprentissage, technologie éducative"
+    },
+    "header": {
+      "title": "À propos d'EduGameHQ",
+      "subtitle": "Où l'apprentissage rencontre le plaisir - Transformer l'éducation à travers des jeux interactifs",
+      "tagline": "Permettre à chaque enfant d'avoir accès à une éducation de qualité, amusante et engageante"
+    },
+    "sidebar": {
+      "title": "Explorer notre histoire"
+    },
+    "sections": {
+      "mission": "Notre mission",
+      "values": "Valeurs fondamentales",
+      "story": "Notre histoire",
+      "team": "Rencontrer notre équipe",
+      "impact": "Notre impact"
+    },
+    "impact": {
+      "games": "jeux éducatifs",
+      "students": "étudiants actifs",
+      "countries": "pays desservis",
+      "free": "contenu gratuit"
+    },
+    "mission_section": {
+      "title": "Notre mission",
+      "description": "Démocratiser l'accès à une éducation de qualité en fournissant des jeux éducatifs gratuits, amusants et efficaces qui inspirent la curiosité, favorisent la créativité et développent des compétences essentielles pour le 21e siècle.",
+      "vision_title": "Notre vision",
+      "vision_description": "Un monde où chaque enfant a accès à du contenu éducatif de haute qualité, rendant l'apprentissage joyeux, significatif et transformateur."
+    },
+    "values_section": {
+      "title": "Nos valeurs fondamentales",
+      "quality": {
+        "title": "Qualité",
+        "description": "Tous les jeux sont sélectionnés par des experts en éducation et alignés sur les normes éducatives"
+      },
+      "free": {
+        "title": "Accès gratuit",
+        "description": "S'assurer que tous les enfants peuvent apprendre indépendamment des barrières économiques"
+      },
+      "safety": {
+        "title": "Sécurité",
+        "description": "La sécurité et la confidentialité des enfants sont notre priorité absolue"
+      },
+      "reach": {
+        "title": "Portée mondiale",
+        "description": "Fournir des expériences d'apprentissage diversifiées aux étudiants du monde entier"
+      }
+    },
+    "story_section": {
+      "title": "Notre histoire",
+      "beginning": {
+        "title": "Le début",
+        "description": "Commençant par le désir de créer de meilleures expériences d'apprentissage à l'intersection de l'éducation et de la technologie"
+      },
+      "growth": {
+        "title": "Croissance",
+        "description": "Collaboration avec une équipe d'éducateurs, de développeurs et de chercheurs pour créer des jeux éducatifs de haute qualité"
+      },
+      "today": {
+        "title": "Aujourd'hui",
+        "description": "Servir des milliers d'étudiants dans le monde entier et façonner l'avenir de l'apprentissage"
+      }
+    },
+    "team_section": {
+      "title": "Rencontrer notre équipe",
+      "intro": "Notre équipe diversifiée d'éducateurs, de développeurs et de chercheurs travaille ensemble pour créer les meilleures expériences d'apprentissage pour les étudiants du monde entier.",
+      "member1": {
+        "name": "Dr. Marie Dubois",
+        "role": "Directrice de l'éducation",
+        "description": "Experte en éducation avec 15 ans d'expérience dans l'enseignement"
+      },
+      "member2": {
+        "name": "Pierre Martin",
+        "role": "Responsable technique",
+        "description": "Expert en technologie éducative et concepteur d'expériences d'apprentissage interactives"
+      }
+    }
   }
-} 
+}

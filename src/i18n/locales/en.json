@@ -7,6 +7,7 @@
     "trending": "Trending",
     "recent": "Recently Played",
     "new": "New Games",
+    "special": "Special Pages",
     "about": "About",
     "help": "Help",
     "privacy": "Privacy Policy",
@@ -22,6 +23,7 @@
   },
   "hero": {
     "title": "Where Learning Meets Fun",
+    "title.full": "Where Learning Meets <span class=\"highlight\">Fun</span>",
     "subtitle": "Discover free educational games designed to make learning engaging and effective for students aged 6-18.",
     "stats": {
       "students": "Students",
@@ -41,28 +43,28 @@
     "all_categories": "All Categories"
   },
   "game": {
+    "random": "Random Game",
     "play_now": "Play Now",
-    "full_screen": "Full Screen",
-    "favorite": "Add to Favorites",
-    "share": "Share Game",
-    "difficulty": "Difficulty",
-    "age_range": "Age Range",
-    "category": "Category",
-    "tags": "Tags",
-    "description": "Description",
-    "instructions": "How to Play",
-    "related": "Related Games",
-    "source": "Game Source"
+    "add_to_favorites": "Add to favorites",
+    "loading": "Loading...",
+    "ages": "Ages"
   },
   "footer": {
     "tagline": "Making Learning Fun for Everyone",
     "description": "EduGameHQ is your go-to platform for educational games that make learning engaging and effective.",
     "quick_links": "Quick Links",
     "game_categories": "Game Categories",
-    "support": "Support & Info",
+    "support": "Support",
     "social": "Follow Us",
     "copyright": "© 2025 EduGameHQ. All rights reserved.",
-    "made_with_love": "Made with ❤️ for learners worldwide"
+    "made_with_love": "Made with ❤️ for learners worldwide",
+    "logo_alt": "EduGameHQ Logo",
+    "social": {
+      "facebook": "Follow us on Facebook",
+      "twitter": "Follow us on Twitter",
+      "youtube": "Subscribe to our YouTube channel",
+      "instagram": "Follow us on Instagram"
+    }
   },
   "about": {
     "title": "About EduGameHQ",
@@ -100,5 +102,191 @@
     "switch": "Switch Language",
     "current": "Current Language",
     "select": "Select Language"
+  },
+  "home": {
+    "explore_by_category": {
+      "title": "Explore by Category",
+      "description": "Discover educational games organized by subject areas"
+    },
+    "category_description": {
+      "math": "Master numbers, equations and problem-solving",
+      "science": "Explore physics, chemistry and biology",
+      "language": "Improve vocabulary, reading and writing",
+      "puzzle": "Challenge logic and critical thinking",
+      "sports": "Learn teamwork and physical education",
+      "art": "Express creativity through digital art"
+    },
+    "featured_games": {
+      "title": "Featured Games",
+      "description": "Our most popular and recommended educational games"
+    },
+    "why_choose_us": {
+      "title": "Why Choose EduGameHQ?",
+      "description": "Your trusted partner in educational gaming"
+    },
+    "benefit": {
+      "curriculum_aligned": {
+        "title": "Curriculum-Aligned",
+        "description": "Games designed by educators to support learning objectives"
+      },
+      "safe_environment": {
+        "title": "Safe Environment",
+        "description": "Kid-friendly, ad-filtered content with privacy protection"
+      },
+      "cross_platform": {
+        "title": "Cross-Platform",
+        "description": "Works on any device - desktop, tablet, or mobile"
+      },
+      "no_downloads": {
+        "title": "No Downloads",
+        "description": "Instant play in your browser - no installation required"
+      }
+    },
+    "how_it_works": {
+      "title": "How EduGameHQ Works",
+      "description": "Simple steps to start your learning adventure",
+      "step1": {
+        "title": "1. Explore Games",
+        "description": "Browse by category, age, or subject to find your perfect game."
+      },
+      "step2": {
+        "title": "2. Choose & Play",
+        "description": "Select any game you like and start playing instantly in your browser."
+      },
+      "step3": {
+        "title": "3. Learn & Grow",
+        "description": "Enjoy fun gameplay that reinforces key academic concepts."
+      }
+    },
+    "testimonials": {
+      "title": "What Parents & Teachers Say",
+      "description": "Hear from our happy community"
+    },
+    "testimonial": {
+      "parent1": {
+        "text": "EduGameHQ has transformed my child's attitude towards math. He now looks forward to learning!",
+        "author": "Sarah L., Parent"
+      },
+      "teacher1": {
+        "text": "An invaluable resource for my classroom. The games are both fun and academically rigorous.",
+        "author": "Mr. David K., Teacher"
+      },
+      "parent2": {
+        "text": "My daughter's reading skills have improved dramatically thanks to the engaging language games.",
+        "author": "Emily R., Parent"
+      }
+    },
+    "cta": {
+      "title": "Ready to Start the Fun?",
+      "description": "Join EduGameHQ today and unlock a world of educational adventures!",
+      "button": "Start Playing Now"
+    }
+  },
+  "links": {
+    "math_games": "/math-games",
+    "science_games": "/science-games",
+    "language_games": "/language-games",
+    "puzzle_games": "/puzzle-games",
+    "sports_games": "/sports-games",
+    "art_games": "/art-games",
+    "new_games": "/new-games"
+  },
+  "about_page": {
+    "seo": {
+      "title": "About EduGameHQ | Educational Gaming Platform",
+      "description": "Learn about EduGameHQ's mission to make learning fun through educational games. Discover our story, values, and commitment to quality education.",
+      "keywords": "about edugamehq, educational platform, learning games mission, educational technology"
+    },
+    "header": {
+      "title": "About EduGameHQ",
+      "subtitle": "Where Learning Meets Fun - Transforming Education Through Interactive Gaming",
+      "tagline": "Making quality education accessible, engaging, and enjoyable for every child"
+    },
+    "sidebar": {
+      "title": "Explore Our Story"
+    },
+    "sections": {
+      "mission": "Our Mission",
+      "values": "Core Values",
+      "story": "Our Story",
+      "team": "Meet Our Team",
+      "impact": "Our Impact"
+    },
+    "impact": {
+      "games": "Educational Games",
+      "students": "Active Students",
+      "countries": "Countries Served",
+      "free": "Free Content"
+    },
+    "mission_section": {
+      "title": "Our Mission",
+      "description": "To democratize quality education by providing free, engaging, and effective educational games that inspire curiosity, foster creativity, and build essential skills for the 21st century.",
+      "vision_title": "Our Vision",
+      "vision_description": "A world where every child has access to high-quality educational content that makes learning joyful, meaningful, and transformative."
+    },
+    "values_section": {
+      "title": "Our Core Values",
+      "quality": {
+        "title": "Quality First",
+        "description": "Every game is carefully curated and tested by education experts"
+      },
+      "free": {
+        "title": "Always Free",
+        "description": "Education should be accessible to everyone, everywhere"
+      },
+      "safety": {
+        "title": "Safe Environment",
+        "description": "Child-friendly content with strict safety and privacy standards"
+      },
+      "reach": {
+        "title": "Global Reach",
+        "description": "Supporting learners worldwide with multilingual content"
+      }
+    },
+    "story_section": {
+      "title": "Our Story",
+      "beginning": {
+        "title": "The Beginning",
+        "description": "EduGameHQ was born from a simple observation: children learn best when they're having fun. Founded in 2023 by a team of educators, game developers, and child psychologists, we set out to bridge the gap between entertainment and education."
+      },
+      "growth": {
+        "title": "Growth & Expansion",
+        "description": "What started as a small collection of math games has grown into a comprehensive platform serving over 50,000 students worldwide. Our games cover mathematics, science, coding, language arts, and critical thinking skills."
+      },
+      "today": {
+        "title": "Today & Beyond",
+        "description": "Today, EduGameHQ continues to evolve, always guided by our core belief that quality education should be free, accessible, and enjoyable for every child."
+      }
+    },
+    "team_section": {
+      "title": "Meet Our Team",
+      "intro": "Our diverse team of educators, developers, and researchers work together to create the best possible learning experience for students worldwide.",
+      "member1": {
+        "name": "Dr. Sarah Chen",
+        "role": "Educational Director",
+        "description": "Former Stanford professor with 15+ years in educational technology"
+      },
+      "member2": {
+        "name": "Mike Rodriguez",
+        "role": "Game Developer",
+        "description": "Award-winning game designer specializing in educational content"
+      },
+      "member3": {
+        "name": "Lisa Wang",
+        "role": "Child Psychologist",
+        "description": "Expert in child development and learning psychology"
+      },
+      "member4": {
+        "name": "Alex Thompson",
+        "role": "Technology Lead",
+        "description": "Full-stack developer passionate about accessible education"
+      }
+    },
+    "cta": {
+      "title": "Want to Know More?",
+      "description": "We'd love to hear from you! Contact us for partnerships, feedback, or just to say hello.",
+      "button1": "Get in Touch",
+      "button2": "Our Policies"
+    }
   }
 } 

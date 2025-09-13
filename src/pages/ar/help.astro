@@ -1,0 +1,906 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// 甯姪涓績SEO鏁版嵁
+const seoData = {
+  title: "Help Center | EduGameHQ - Support for Educational Games",
+  description: "Get help with EduGameHQ educational games. Find answers to common questions, troubleshooting guides, and support for parents and teachers.",
+  keywords: ["help", "support", "FAQ", "educational games", "troubleshooting", "parent guide", "teacher resources"]
+};
+
+// 甯歌闂鏁版嵁
+const faqCategories = [
+  {
+    title: "Getting Started",
+    icon: "fa-rocket",
+    color: "blue",
+    questions: [
+      {
+        question: "How do I start playing games on EduGameHQ?",
+        answer: "Simply visit our homepage and click on any game that interests you! All games are free to play and work directly in your web browser. No downloads or registrations required."
+      },
+      {
+        question: "Do I need to create an account?",
+        answer: "No account is required to play games! However, creating an account allows you to save favorites, track progress, and access personalized recommendations."
+      },
+      {
+        question: "Are all games really free?",
+        answer: "Yes! All educational games on EduGameHQ are completely free to play. We're funded by family-friendly advertisements that don't interfere with gameplay."
+      }
+    ]
+  },
+  {
+    title: "Technical Support",
+    icon: "fa-cogs",
+    color: "green",
+    questions: [
+      {
+        question: "A game won't load or is running slowly",
+        answer: "Try refreshing the page first. If the problem persists, check your internet connection and make sure you're using an updated web browser. Clear your browser cache if needed."
+      },
+      {
+        question: "Games don't work on my mobile device",
+        answer: "Most games are optimized for tablets and phones. Try rotating your device to landscape mode, or use a larger screen for the best experience."
+      },
+      {
+        question: "The sound isn't working",
+        answer: "Check that your device volume is turned up and not muted. Some browsers require user interaction before playing audio - try clicking anywhere on the game screen."
+      }
+    ]
+  },
+  {
+    title: "For Parents",
+    icon: "fa-users",
+    color: "purple",
+    questions: [
+      {
+        question: "Is EduGameHQ safe for my child?",
+        answer: "Absolutely! We follow strict COPPA guidelines, collect minimal data, and all content is child-appropriate. Our games are designed by educators and reviewed for safety."
+      },
+      {
+        question: "How much screen time is recommended?",
+        answer: "We recommend 15-30 minutes of educational gaming per day for most children. Our games are designed to be engaging but not addictive, with natural stopping points."
+      },
+      {
+        question: "Can I track my child's progress?",
+        answer: "Yes! Visit the 'Recently Played' section to see which games your child has been playing. Look for games marked as 'completed' or with high scores."
+      }
+    ]
+  },
+  {
+    title: "For Teachers",
+    icon: "fa-chalkboard-teacher",
+    color: "orange",
+    questions: [
+      {
+        question: "Can I use EduGameHQ in my classroom?",
+        answer: "Yes! Our games are perfect for classroom use. All games are curriculum-aligned and work on most school devices. No registration required for students."
+      },
+      {
+        question: "How do I find age-appropriate games?",
+        answer: "Each game shows a recommended age range (e.g., 'Ages 8-16'). Browse by subject categories like Math, Science, or Language to find curriculum-specific content."
+      },
+      {
+        question: "Can I suggest games for my curriculum?",
+        answer: "We'd love your input! Contact us at educators@edugamehq.com with your curriculum needs and game suggestions."
+      }
+    ]
+  }
+];
+
+// 蹇€熼摼鎺ユ暟鎹?
+const quickLinks = [
+  {
+    title: "Game Categories",
+    icon: "fa-gamepad",
+    color: "blue",
+    links: [
+      { name: "Math Games", url: "/math-games" },
+      { name: "Science Games", url: "/science-games" },
+      { name: "Language Games", url: "/language-games" },
+      { name: "Puzzle Games", url: "/puzzle-games" },
+      { name: "Sports Games", url: "/sports-games" },
+      { name: "Art & Creativity", url: "/art-games" }
+    ]
+  },
+  {
+    title: "Popular Pages",
+    icon: "fa-star",
+    color: "green",
+    links: [
+      { name: "Recently Played", url: "/recently-played" },
+      { name: "Trending Games", url: "/trending" },
+      { name: "New Games", url: "/new-games" },
+      { name: "Search Games", url: "/search" }
+    ]
+  },
+  {
+    title: "Support Resources",
+    icon: "fa-life-ring",
+    color: "orange",
+    links: [
+      { name: "Privacy Policy", url: "/privacy-policy" },
+      { name: "Terms of Service", url: "/terms-of-service" },
+      { name: "About Us", url: "/about" },
+      { name: "Contact Us", url: "#contact" }
+    ]
+  }
+];
+
+// 鑱旂郴鏂瑰紡鏁版嵁
+const contactMethods = [
+  {
+    title: "General Support",
+    icon: "fa-envelope",
+    contact: "support@edugamehq.com",
+    description: "For general questions, technical issues, or feedback"
+  },
+  {
+    title: "Educators",
+    icon: "fa-chalkboard",
+    contact: "educators@edugamehq.com", 
+    description: "Curriculum questions and classroom resources"
+  },
+  {
+    title: "Parents",
+    icon: "fa-heart",
+    contact: "parents@edugamehq.com",
+    description: "Child safety, content concerns, and parent resources"
+  },
+  {
+    title: "Technical Issues",
+    icon: "fa-wrench",
+    contact: "tech@edugamehq.com",
+    description: "Game problems, bugs, and technical difficulties"
+  }
+];
+---
+
+<BaseLayout title={seoData.title} description={seoData.description} lang="ar">
+  <main class="help-center">
+    <div class="content-wrapper">
+      
+      <!-- 甯姪涓績澶撮儴 -->
+      <section class="help-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon help-icon">
+              <i class="fas fa-question-circle"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">Help Center</h1>
+            <p class="page-description">
+              Find answers, get support, and make the most of your EduGameHQ experience
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 鎼滅储甯姪 -->
+      <section class="help-search">
+        <div class="search-container">
+          <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Search for help articles..." />
+          </div>
+          <p class="search-hint">Try searching for "games won't load" or "how to save progress"</p>
+        </div>
+      </section>
+
+      <!-- 蹇€熼摼鎺?-->
+      <section class="quick-links-section">
+        <h2 class="section-title">Quick Links</h2>
+        <div class="quick-links-grid">
+          {quickLinks.map((category) => (
+            <div class="quick-link-category">
+              <div class="category-header">
+                <div class={`category-icon ${category.color}`}>
+                  <i class={`fas ${category.icon}`}></i>
+                </div>
+                <h3 class="category-title">{category.title}</h3>
+              </div>
+              <ul class="category-links">
+                {category.links.map((link) => (
+                  <li>
+                    <a href={link.url}>{link.name}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 甯歌闂 -->
+      <section class="faq-section">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-categories">
+          {faqCategories.map((category) => (
+            <div class="faq-category">
+              <div class="category-header">
+                <div class={`category-icon ${category.color}`}>
+                  <i class={`fas ${category.icon}`}></i>
+                </div>
+                <h3 class="category-title">{category.title}</h3>
+              </div>
+              <div class="faq-list">
+                {category.questions.map((faq, index) => (
+                  <div class="faq-item">
+                    <button class="faq-question" onclick={`toggleFAQ(${index})`}>
+                      <span>{faq.question}</span>
+                      <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                      <p>{faq.answer}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- 浣跨敤鎸囧崡 -->
+      <section class="guides-section">
+        <h2 class="section-title">How-To Guides</h2>
+        <div class="guides-grid">
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i class="fas fa-play-circle"></i>
+            </div>
+            <h3 class="guide-title">How to Play Games</h3>
+            <p class="guide-description">Learn the basics of playing educational games on EduGameHQ</p>
+            <div class="guide-steps">
+              <ol>
+                <li>Browse games by category or use the search</li>
+                <li>Click on a game that interests you</li>
+                <li>Wait for the game to load (usually 5-10 seconds)</li>
+                <li>Follow the on-screen instructions</li>
+                <li>Have fun learning!</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h3 class="guide-title">Managing Favorites</h3>
+            <p class="guide-description">Save and organize your favorite educational games</p>
+            <div class="guide-steps">
+              <ol>
+                <li>Click the heart icon on any game card</li>
+                <li>Visit the "Favorites" page to see saved games</li>
+                <li>Click the heart again to remove from favorites</li>
+                <li>Your favorites are saved locally on your device</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="guide-item">
+            <div class="guide-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <h3 class="guide-title">Playing on Mobile</h3>
+            <p class="guide-description">Tips for the best mobile gaming experience</p>
+            <div class="guide-steps">
+              <ol>
+                <li>Use landscape orientation for most games</li>
+                <li>Ensure stable internet connection</li>
+                <li>Close other apps to free up memory</li>
+                <li>Use headphones for better audio experience</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 鑱旂郴鏀寔 -->
+      <section class="contact-section" id="contact">
+        <h2 class="section-title">Contact Support</h2>
+        <p class="contact-intro">
+          Can't find what you're looking for? Our support team is here to help!
+        </p>
+        <div class="contact-methods">
+          {contactMethods.map((method) => (
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class={`fas ${method.icon}`}></i>
+              </div>
+              <div class="contact-info">
+                <h3 class="contact-title">{method.title}</h3>
+                <a href={`mailto:${method.contact}`} class="contact-email">{method.contact}</a>
+                <p class="contact-description">{method.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="response-time">
+          <div class="response-info">
+            <i class="fas fa-clock"></i>
+            <div>
+              <h4>Response Time</h4>
+              <p>We typically respond within 24 hours on weekdays</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  // FAQ灞曞紑/鏀惰捣鍔熻兘宸查€氳繃CSS澶勭悊
+  console.log('Help椤甸潰鍔犺浇瀹屾垚');
+
+  // 鎼滅储鍔熻兘锛堢畝鍗曞疄鐜帮級
+  document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.querySelector('.search-box input') as HTMLInputElement;
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    if (searchInput) {
+      searchInput.addEventListener('input', function(this: HTMLInputElement) {
+      const searchTerm = this.value.toLowerCase();
+      
+      faqItems.forEach(item => {
+          const questionElement = item.querySelector('.faq-question span');
+          const answerElement = item.querySelector('.faq-answer p');
+        
+          if (questionElement && answerElement) {
+            const question = questionElement.textContent?.toLowerCase() || '';
+            const answer = answerElement.textContent?.toLowerCase() || '';
+            
+            const itemElement = item as HTMLElement;
+        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+              itemElement.style.display = 'block';
+        } else {
+              itemElement.style.display = searchTerm === '' ? 'block' : 'none';
+            }
+        }
+      });
+    });
+    }
+  });
+</script>
+
+<style>
+  /* 涓昏鍐呭鍖哄煙 */
+  .help-center {
+    width: 100%;
+    background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(34, 197, 94, 0.05) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 甯姪涓績澶撮儴 - 缁胯壊涓婚 */
+  .help-header {
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #10B981 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .help-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .help-icon {
+    background: linear-gradient(135deg, #10B981, #059669);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    color: #065F46;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #047857;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  /* 鎼滅储甯姪 */
+  .help-search {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .search-container {
+    text-align: center;
+  }
+
+  .search-box {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 1rem auto;
+  }
+
+  .search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6B7280;
+    font-size: 1.125rem;
+  }
+
+  .search-box input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3rem;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .search-box input:focus {
+    outline: none;
+    border-color: #10B981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+  }
+
+  .search-hint {
+    color: #6B7280;
+    font-size: 0.875rem;
+    font-style: italic;
+  }
+
+  /* 閫氱敤鍖哄潡鏍峰紡 */
+  .section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 2rem 0;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* 蹇€熼摼鎺?*/
+  .quick-links-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .quick-links-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .quick-link-category {
+    background: #F9FAFB;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #E5E7EB;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.125rem;
+  }
+
+  .category-icon.blue {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+  }
+
+  .category-icon.green {
+    background: linear-gradient(135deg, #10B981, #059669);
+  }
+
+  .category-icon.orange {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .category-icon.purple {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+  }
+
+  .category-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0;
+  }
+
+  .category-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .category-links li {
+    margin-bottom: 0.5rem;
+  }
+
+  .category-links a {
+    color: #4B5563;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .category-links a:hover {
+    color: #10B981;
+  }
+
+  /* FAQ鍖哄潡 */
+  .faq-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .faq-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+  }
+
+  .faq-category {
+    background: #F9FAFB;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #E5E7EB;
+  }
+
+  .faq-list {
+    margin-top: 1rem;
+  }
+
+  .faq-item {
+    border: 1px solid #E5E7EB;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    background: white;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .faq-item:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .faq-item.active {
+    border-color: #10B981;
+  }
+
+  .faq-question {
+    width: 100%;
+    padding: 1rem;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: #1F2937;
+    font-size: 1rem;
+  }
+
+  .faq-question i {
+    transition: transform 0.3s ease;
+    color: #6B7280;
+  }
+
+  .faq-answer {
+    display: none;
+    padding: 0 1rem 1rem 1rem;
+    color: #4B5563;
+    line-height: 1.6;
+  }
+
+  .faq-answer p {
+    margin: 0;
+  }
+
+  /* 浣跨敤鎸囧崡 */
+  .guides-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .guide-item {
+    background: #F9FAFB;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #E5E7EB;
+  }
+
+  .guide-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .guide-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .guide-description {
+    color: #6B7280;
+    margin-bottom: 1rem;
+    font-weight: 500;
+  }
+
+  .guide-steps ol {
+    margin: 0;
+    padding-left: 1.5rem;
+    color: #4B5563;
+  }
+
+  .guide-steps li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  /* 鑱旂郴鏀寔 */
+  .contact-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .contact-intro {
+    text-align: center;
+    color: #6B7280;
+    font-size: 1.125rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-method {
+    background: #F9FAFB;
+    border-radius: 16px;
+    padding: 1.5rem;
+    border: 1px solid #E5E7EB;
+    text-align: center;
+  }
+
+  .contact-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem auto;
+  }
+
+  .contact-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .contact-email {
+    color: #10B981;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .contact-email:hover {
+    text-decoration: underline;
+  }
+
+  .contact-description {
+    color: #6B7280;
+    font-size: 0.875rem;
+    margin: 0.5rem 0 0 0;
+  }
+
+  .response-time {
+    background: #EFF6FF;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border: 1px solid #DBEAFE;
+  }
+
+  .response-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .response-info i {
+    color: #3B82F6;
+    font-size: 1.5rem;
+  }
+
+  .response-info h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0;
+  }
+
+  .response-info p {
+    color: #4B5563;
+    margin: 0;
+    font-size: 0.875rem;
+  }
+
+  /* 鍝嶅簲寮忚璁?*/
+  @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .help-header {
+      padding: 2rem;
+    }
+    
+    .header-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .faq-categories {
+      grid-template-columns: 1fr;
+    }
+
+    .guides-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+    
+    .help-header {
+      padding: 1.5rem;
+    }
+    
+    .page-title {
+      font-size: 2rem;
+    }
+    
+    .quick-links-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .contact-methods {
+      grid-template-columns: 1fr;
+    }
+
+    .response-info {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .search-box {
+      max-width: 100%;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+
+    .quick-link-category,
+    .faq-category,
+    .guide-item,
+    .contact-method {
+      padding: 1rem;
+    }
+  }
+</style> 
+

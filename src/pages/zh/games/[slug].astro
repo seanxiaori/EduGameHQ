@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GameCard from '../../../components/GameCard.astro';
+import ShareModal from '../../../components/ShareModal.astro';
+import type { Game } from '../../../types/game';
+import fs from 'fs';
+import path from 'path';
+
+// ... existing code ...
+const iframeDomain = getIframeDomain(getGameIframeUrl(game));
+---
+
+<BaseLayout 
+  title={dynamicSEO.title} 
+  description={dynamicSEO.description}
+  gameData={game}
+  lang="zh"
+>
+  <!-- 性能优化 - DNS预解析和预连接 -->
+// ... existing code ...
+  )}
+  
+  <!-- 预加载关键资源 -->
+  <link rel="preload" href="/src/styles/game-card.css" as="style">
+  
+  <!-- 引入统一游戏卡片样式 -->
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+
+  <!-- 游戏详情页面内容 -->
+// ... existing code ...
+
+</BaseLayout>

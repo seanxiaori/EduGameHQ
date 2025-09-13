@@ -1,0 +1,35 @@
+---
+// src/components/sections/Testimonials.astro
+import { t } from '../../i18n/utils';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<section class="testimonials-section">
+  <div class="module-header">
+    <div class="module-icon">
+      <i class="fas fa-comments"></i>
+    </div>
+    <div class="module-text">
+      <h2 class="module-title">{t(translations, 'home.testimonials.title', 'What Parents & Teachers Say')}</h2>
+      <p class="module-description">{t(translations, 'home.testimonials.description', 'Hear from our happy community')}</p>
+    </div>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <p class="testimonial-text">"{t(translations, 'home.testimonial.parent1.text', 'EduGameHQ has transformed my child\'s attitude towards math. He now looks forward to learning!')}"</p>
+      <p class="testimonial-author">- {t(translations, 'home.testimonial.parent1.author', 'Sarah L., Parent')}</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">"{t(translations, 'home.testimonial.teacher1.text', 'An invaluable resource for my classroom. The games are both fun and academically rigorous.')}"</p>
+      <p class="testimonial-author">- {t(translations, 'home.testimonial.teacher1.author', 'Mr. David K., Teacher')}</p>
+    </div>
+    <div class="testimonial-card">
+      <p class="testimonial-text">"{t(translations, 'home.testimonial.parent2.text', 'My daughter\'s reading skills have improved dramatically thanks to the engaging language games.')}"</p>
+      <p class="testimonial-author">- {t(translations, 'home.testimonial.parent2.author', 'Emily R., Parent')}</p>
+    </div>
+  </div>
+</section>

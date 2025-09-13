@@ -30,6 +30,12 @@ export async function GET() {
     { url: '/terms-of-service', priority: '0.4', changefreq: 'yearly' }
   ];
 
+  // 为中文版创建对应的静态页面URL
+  const staticPagesZh = staticPages.map(page => ({
+    ...page,
+    url: `/zh${page.url === '/' ? '' : page.url}`
+  }));
+
   // 游戏页面URL
   const gamePages = gamesData.map((game: any) => ({
     url: `/games/${game.slug}`,
@@ -38,8 +44,14 @@ export async function GET() {
     lastmod: game.updatedAt || new Date().toISOString().split('T')[0]
   }));
 
+  // 为中文版创建对应的游戏页面URL
+  const gamePagesZh = gamePages.map(page => ({
+    ...page,
+    url: `/zh${page.url}`
+  }));
+
   // 合并所有URL
-  const allPages = [...staticPages, ...gamePages];
+  const allPages = [...staticPages, ...gamePages, ...staticPagesZh, ...gamePagesZh];
 
   // 生成XML内容
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

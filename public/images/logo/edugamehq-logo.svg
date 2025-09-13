@@ -1,0 +1,29 @@
+<!-- EduGameHQ 完整Logo - 包含图标+文字 -->
+<svg width="300" height="240" viewBox="0 0 300 240" xmlns="http://www.w3.org/2000/svg" aria-label="EduGameHQ Logo">
+  <defs>
+    <!-- 网站主色调渐变 - 暖黄色系 -->
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 现代扁平背景 -->
+  <rect x="20" y="40" width="80" height="80" rx="20" ry="20" fill="url(#bg-gradient)"/>
+  
+  <!-- 极简书本 -->
+  <g transform="translate(60, 66)">
+    <path d="M-12 -2 L-12 14 L0 10 L12 14 L12 -2 Z" 
+          fill="none" stroke="white" stroke-width="3" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- 游戏元素 -->
+  <g transform="translate(60, 96)">
+    <circle cx="-7" cy="0" r="3" fill="white" opacity="0.9"/>
+    <circle cx="7" cy="0" r="3" fill="white" opacity="0.9"/>
+  </g>
+
+  <!-- 品牌名称 - 仅显示EduGameHQ，白色字体，再次缩小字号 -->
+  <text x="130" y="85" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
+        font-size="24" font-weight="800" fill="white">EduGameHQ</text>
+</svg>

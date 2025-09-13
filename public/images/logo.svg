@@ -1,33 +1,25 @@
-<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- EduGameHQ品牌渐变 -->
+<!-- EduGameHQ 主Logo文件 -->
+<svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="EduGameHQ Logo">
   <defs>
-    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B"/>
-      <stop offset="100%" style="stop-color:#D97706"/>
-    </linearGradient>
-    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FCD34D"/>
-      <stop offset="100%" style="stop-color:#F59E0B"/>
+    <!-- 网站主色调渐变 -->
+    <linearGradient id="main-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
     </linearGradient>
   </defs>
+
+  <!-- 现代扁平背景 -->
+  <rect x="6" y="6" width="36" height="36" rx="10" ry="10" fill="url(#main-bg-gradient)"/>
   
-  <!-- 圆角矩形背景 -->
-  <rect width="40" height="40" rx="12" fill="url(#brandGradient)"/>
+  <!-- 极简书本 -->
+  <g transform="translate(24, 18)">
+    <path d="M-5 -1 L-5 6 L0 4.5 L5 6 L5 -1 Z" 
+          fill="none" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+  </g>
   
-  <!-- 教育书本元素 -->
-  <rect x="8" y="12" width="12" height="16" rx="2" fill="white" fill-opacity="0.9"/>
-  <rect x="8" y="12" width="12" height="3" rx="2" fill="url(#accentGradient)"/>
-  
-  <!-- 游戏控制器元素 -->
-  <rect x="22" y="16" width="10" height="6" rx="3" fill="white" fill-opacity="0.9"/>
-  <circle cx="25" cy="18.5" r="1" fill="url(#brandGradient)"/>
-  <circle cx="29" cy="18.5" r="1" fill="url(#brandGradient)"/>
-  
-  <!-- 学习进度点 -->
-  <circle cx="14" cy="18" r="1.5" fill="url(#accentGradient)"/>
-  <circle cx="14" cy="22" r="1" fill="url(#brandGradient)" fill-opacity="0.7"/>
-  <circle cx="14" cy="25" r="1" fill="url(#brandGradient)" fill-opacity="0.5"/>
-  
-  <!-- 游戏星星装饰 -->
-  <path d="M32 10l1.5 3 3 .5-2.2 2 .7 3-2.5-1.5-2.5 1.5.7-3-2.2-2 3-.5z" fill="white" fill-opacity="0.8" transform="scale(0.6)"/>
-</svg> 
+  <!-- 游戏元素 -->
+  <g transform="translate(24, 30)">
+    <circle cx="-3" cy="0" r="1.5" fill="white" opacity="0.9"/>
+    <circle cx="3" cy="0" r="1.5" fill="white" opacity="0.9"/>
+  </g>
+</svg>

@@ -1,0 +1,19 @@
+---
+// src/components/sections/CtaSection.astro
+import { t } from '../../i18n/utils';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<section class="cta-section">
+  <div class="cta-content">
+    <h2 class="cta-title">{t(translations, 'home.cta.title', 'Ready to Start the Fun?')}</h2>
+    <p class="cta-description">{t(translations, 'home.cta.description', 'Join EduGameHQ today and unlock a world of educational adventures!')}</p>
+    <a href={t(translations, 'links.new_games', '/new-games')} class="cta-button">
+      {t(translations, 'home.cta.button', 'Start Playing Now')}
+    </a>
+  </div>
+</section>

@@ -7,6 +7,7 @@
     "trending": "热门",
     "recent": "最近游玩",
     "new": "新游戏",
+    "special": "特别推荐",
     "about": "关于我们",
     "help": "帮助",
     "privacy": "隐私政策",
@@ -14,7 +15,7 @@
   },
   "categories": {
     "math-games": "数学游戏",
-    "science-games": "科学游戏", 
+    "science-games": "科学游戏",
     "language-games": "语言游戏",
     "puzzle-games": "益智游戏",
     "sports-games": "体育游戏",
@@ -22,6 +23,7 @@
   },
   "hero": {
     "title": "让学习充满乐趣",
+    "title.full": "让学习充满<span class=\"highlight\">乐趣</span>",
     "subtitle": "发现专为6-18岁学生设计的免费教育游戏，让学习变得有趣而高效。",
     "stats": {
       "students": "学生",
@@ -36,7 +38,7 @@
     "button": "搜索",
     "results": "找到 {count} 个结果",
     "no_results": "未找到结果",
-    "query_for": "搜索结果："{query}"",
+    "query_for": "搜索结果：\"{query}\"",
     "categories_filter": "按分类筛选",
     "all_categories": "所有分类"
   },
@@ -52,17 +54,27 @@
     "description": "游戏介绍",
     "instructions": "游戏说明",
     "related": "相关游戏",
-    "source": "游戏来源"
+    "source": "游戏来源",
+    "random": "随机游戏",
+    "add_to_favorites": "添加到收藏",
+    "loading": "加载中...",
+    "ages": "年龄"
   },
   "footer": {
     "tagline": "让每个人的学习都充满乐趣",
-    "description": "EduGameHQ是您的教育游戏平台，让学习变得有趣而高效。",
+    "description": "EduGameHQ 是您寻找教育游戏的首选平台，这些游戏能让学习变得有趣而高效。",
     "quick_links": "快速链接",
     "game_categories": "游戏分类",
-    "support": "支持与信息",
-    "social": "关注我们",
-    "copyright": "© 2025 EduGameHQ. 保留所有权利。",
-    "made_with_love": "用❤️为全球学习者制作"
+    "support": "支持",
+    "social": {
+      "facebook": "在 Facebook 上关注我们",
+      "twitter": "在 Twitter 上关注我们",
+      "youtube": "订阅我们的 YouTube 频道",
+      "instagram": "在 Instagram 上关注我们"
+    },
+    "copyright": "© 2025 EduGameHQ. 版权所有.",
+    "made_with_love": "为全球学习者❤️倾心制作",
+    "logo_alt": "EduGameHQ 标志"
   },
   "about": {
     "title": "关于EduGameHQ",
@@ -100,5 +112,191 @@
     "switch": "切换语言",
     "current": "当前语言",
     "select": "选择语言"
+  },
+  "home": {
+    "explore_by_category": {
+      "title": "按分类探索",
+      "description": "发现按学科领域组织的教育游戏"
+    },
+    "category_description": {
+      "math": "掌握数字、方程式和解决问题的能力",
+      "science": "探索物理、化学和生物学的奥秘",
+      "language": "提高词汇量、阅读和写作能力",
+      "puzzle": "挑战逻辑和批判性思维",
+      "sports": "学习团队合作和体育知识",
+      "art": "通过数字艺术表达创造力"
+    },
+    "featured_games": {
+      "title": "特色游戏",
+      "description": "我们最受欢迎和推荐的教育游戏"
+    },
+    "why_choose_us": {
+      "title": "为什么选择EduGameHQ？",
+      "description": "您在教育游戏领域的可靠伙伴"
+    },
+    "benefit": {
+      "curriculum_aligned": {
+        "title": "与课程同步",
+        "description": "由教育工作者设计，旨在支持学习目标"
+      },
+      "safe_environment": {
+        "title": "安全的环境",
+        "description": "儿童友好、广告过滤的内容，保护隐私"
+      },
+      "cross_platform": {
+        "title": "跨平台支持",
+        "description": "可在任何设备上运行 - 电脑、平板或手机"
+      },
+      "no_downloads": {
+        "title": "无需下载",
+        "description": "在浏览器中即时播放 - 无需安装"
+      }
+    },
+    "how_it_works": {
+      "title": "EduGameHQ 是如何运作的",
+      "description": "开启您学习冒险的简单步骤",
+      "step1": {
+        "title": "1. 探索游戏",
+        "description": "按类别、年龄或学科浏览，找到最适合您的游戏。"
+      },
+      "step2": {
+        "title": "2. 选择即玩",
+        "description": "选择任何您喜欢的游戏，并立即在浏览器中开始玩。"
+      },
+      "step3": {
+        "title": "3. 学习与成长",
+        "description": "享受有趣的游戏过程，巩固关键学术概念。"
+      }
+    },
+    "testimonials": {
+      "title": "家长与老师的评价",
+      "description": "听听我们快乐社区的声音"
+    },
+    "testimonial": {
+      "parent1": {
+        "text": "EduGameHQ 改变了我的孩子对数学的态度。他现在盼着学习！",
+        "author": "Sarah L., 家长"
+      },
+      "teacher1": {
+        "text": "这是我课堂上非常宝贵的资源。这些游戏既有趣又严谨。",
+        "author": "David K. 先生, 老师"
+      },
+      "parent2": {
+        "text": "多亏了这些有趣的语言游戏，我女儿的阅读能力有了显著提高。",
+        "author": "Emily R., 家长"
+      }
+    },
+    "cta": {
+      "title": "准备好开始学习的乐趣了吗？",
+      "description": "立即加入 EduGameHQ，开启一个充满教育冒险的世界！",
+      "button": "立即开始游戏"
+    }
+  },
+  "links": {
+    "math_games": "/zh/math-games",
+    "science_games": "/zh/science-games",
+    "language_games": "/zh/language-games",
+    "puzzle_games": "/zh/puzzle-games",
+    "sports_games": "/zh/sports-games",
+    "art_games": "/zh/art-games",
+    "new_games": "/zh/new-games"
+  },
+  "about_page": {
+    "seo": {
+      "title": "关于 EduGameHQ | 教育游戏平台",
+      "description": "了解 EduGameHQ 如何通过教育游戏让学习充满乐趣的使命。探索我们的故事、价值观以及对优质教育的承诺。",
+      "keywords": "关于edugamehq, 教育平台, 学习游戏使命, 教育技术"
+    },
+    "header": {
+      "title": "关于 EduGameHQ",
+      "subtitle": "学习与乐趣相遇的地方 - 通过互动游戏改变教育",
+      "tagline": "让每个孩子都能享受到优质、有趣且引人入胜的教育"
+    },
+    "sidebar": {
+      "title": "探索我们的故事"
+    },
+    "sections": {
+      "mission": "我们的使命",
+      "values": "核心价值观",
+      "story": "我们的故事",
+      "team": "认识我们的团队",
+      "impact": "我们的影响"
+    },
+    "impact": {
+      "games": "款教育游戏",
+      "students": "名活跃学生",
+      "countries": "个服务国家",
+      "free": "免费内容"
+    },
+    "mission_section": {
+      "title": "我们的使命",
+      "description": "通过提供免费、有趣且有效的教育游戏，普及优质教育，激发好奇心，培养创造力，并建立21世纪所需的基本技能。",
+      "vision_title": "我们的愿景",
+      "vision_description": "一个每个孩子都能接触到高质量教育内容的世界，让学习变得快乐、有意义和具有变革性。"
+    },
+    "values_section": {
+      "title": "我们的核心价值观",
+      "quality": {
+        "title": "质量第一",
+        "description": "每款游戏都经过教育专家的精心策划和测试"
+      },
+      "free": {
+        "title": "永久免费",
+        "description": "教育应向世界各地的每个人开放"
+      },
+      "safety": {
+        "title": "安全的环境",
+        "description": "儿童友好的内容，严格的安全和隐私标准"
+      },
+      "reach": {
+        "title": "全球覆盖",
+        "description": "通过多语言内容支持全球学习者"
+      }
+    },
+    "story_section": {
+      "title": "我们的故事",
+      "beginning": {
+        "title": "起点",
+        "description": "EduGameHQ 源于一个简单的观察：孩子们在玩乐时学得最好。我们于2023年由一群教育家、游戏开发者和儿童心理学家创立，旨在弥合娱乐与教育之间的鸿沟。"
+      },
+      "growth": {
+        "title": "成长与扩展",
+        "description": "从最初的一小部分数学游戏开始，我们已发展成为一个为全球超过5万名学生提供服务的综合平台。我们的游戏涵盖数学、科学、编程、语言艺术和批判性思维技能。"
+      },
+      "today": {
+        "title": "今天与未来",
+        "description": "如今，EduGameHQ 仍在不断发展，始终秉持我们的核心信念：优质教育应该对每个孩子免费、易得且充满乐趣。"
+      }
+    },
+    "team_section": {
+      "title": "认识我们的团队",
+      "intro": "我们多元化的教育家、开发者和研究员团队共同努力，为全球学生创造最佳的学习体验。",
+      "member1": {
+        "name": "陈莎拉博士",
+        "role": "教育总监",
+        "description": "前斯坦福大学教授，在教育技术领域拥有超过15年经验"
+      },
+      "member2": {
+        "name": "迈克·罗德里格斯",
+        "role": "游戏开发者",
+        "description": "屡获殊荣的游戏设计师，专注于教育内容"
+      },
+      "member3": {
+        "name": "王子怡",
+        "role": "儿童心理学家",
+        "description": "儿童发展与学习心理学专家"
+      },
+      "member4": {
+        "name": "亚历克斯·汤普森",
+        "role": "技术主管",
+        "description": "对普及教育充满热情的全栈开发者"
+      }
+    },
+    "cta": {
+      "title": "想了解更多吗？",
+      "description": "我们很乐意听到您的声音！无论是寻求合作、提供反馈，还是仅仅打个招呼，都请联系我们。",
+      "button1": "联系我们",
+      "button2": "我们的政策"
+    }
   }
 } 

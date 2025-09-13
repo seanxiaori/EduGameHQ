@@ -1,0 +1,857 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GameCard from '../../components/GameCard.astro';
+import type { Game } from '../../types/game';
+import fs from 'fs';
+import path from 'path';
+
+// 导入样式文件
+import '../../styles/game-card.css';
+
+// 读取游戏数据
+const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+const allGames: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
+
+// 筛选体育游戏
+const sportsGames = allGames.filter(game => game.category === 'sports');
+
+// 体育游戏数据规范化
+const normalizedSportsGames = sportsGames.map((game: any) => {
+  // 兼容旧格式游戏，为它们添加缺失的字段
+  return {
+    ...game,
+    // 如果没有difficulty字段，根据游戏类型设置默认难度
+    difficulty: game.difficulty || (
+      (game.subcategory === 'basketball' || game.subcategory === 'football') ? 'Medium' :
+      (game.subcategory === 'golf' || game.subcategory === 'bowling') ? 'Easy' :
+      'Medium'
+    ) as 'Easy' | 'Medium' | 'Hard',
+    // 如果没有featured字段，手动指定一些热门游戏为featured
+    featured: game.featured || ['basket-random', 'basketbros', 'qb-legend', 'table-tennis-world-tour'].includes(game.slug || game.id || ''),
+    // 确保有slug字段
+    slug: game.slug || game.id || '',
+    // 标准化thumbnailUrl
+    thumbnailUrl: game.thumbnailUrl || game.thumbnail,
+    // 标准化iframeUrl  
+    iframeUrl: game.iframeUrl || game.embedUrl || '',
+    // 标准化tags
+    tags: game.tags || []
+  };
+});
+
+// 按运动类型分组（兼容两种格式）
+const featuredSportsGames = normalizedSportsGames.filter(game => game.featured);
+const basketballGames = normalizedSportsGames.filter(game => 
+  game.subcategory === 'basketball' || 
+  game.tags.includes('basketball') ||
+  game.title.toLowerCase().includes('basketball') ||
+  game.title.toLowerCase().includes('basket')
+);
+const ballGames = normalizedSportsGames.filter(game => 
+  ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(game.subcategory || '') ||
+  game.tags.some((tag: string) => ['football', 'soccer', 'baseball', 'tennis', 'volleyball'].includes(tag)) ||
+  game.title.toLowerCase().includes('football') ||
+  game.title.toLowerCase().includes('baseball')
+);
+const precisionGames = normalizedSportsGames.filter(game => 
+  ['golf', 'bowling', 'archery'].includes(game.subcategory || '') ||
+  game.tags.some((tag: string) => ['golf', 'bowling', 'mini-golf', 'precision'].includes(tag)) ||
+  game.title.toLowerCase().includes('golf') ||
+  game.title.toLowerCase().includes('bowling')
+);
+const individualSports = normalizedSportsGames.filter(game => 
+  ['tennis', 'table-tennis', 'racing', 'athletics'].includes(game.subcategory || '') ||
+  game.tags.some((tag: string) => ['tennis', 'table tennis', 'ping pong', 'racing'].includes(tag)) ||
+  game.title.toLowerCase().includes('tennis') ||
+  game.title.toLowerCase().includes('ping')
+);
+
+// 体育学习建议
+const sportsLearningTips = [
+  {
+    icon: 'fas fa-clock',
+    title: 'Regular Practice',
+    text: 'Spend 30-45 minutes daily practicing sports skills to improve coordination and fitness'
+  },
+  {
+    icon: 'fas fa-users',
+    title: 'Learn Teamwork',
+    text: 'Focus on communication, cooperation, and supporting your teammates'
+  },
+  {
+    icon: 'fas fa-handshake',
+    title: 'Fair Play',
+    text: 'Practice good sportsmanship and respect for rules and opponents'
+  },
+  {
+    icon: 'fas fa-heart',
+    title: 'Stay Active',
+    text: 'Maintain physical health through regular exercise and healthy habits'
+  }
+];
+
+// 体育核心技能
+const sportsCoreSkills = [
+  {
+    icon: 'fas fa-users',
+    title: 'Teamwork',
+    description: 'Learn to work effectively with teammates and support each other'
+  },
+  {
+    icon: 'fas fa-crosshairs',
+    title: 'Coordination',
+    description: 'Develop hand-eye coordination and motor skills'
+  },
+  {
+    icon: 'fas fa-chess',
+    title: 'Strategic Thinking',
+    description: 'Learn tactical thinking and game planning'
+  },
+  {
+    icon: 'fas fa-dumbbell',
+    title: 'Physical Fitness',
+    description: 'Improve strength, endurance, and overall health'
+  },
+  {
+    icon: 'fas fa-medal',
+    title: 'Sportsmanship',
+    description: 'Practice fair play and respect for others'
+  },
+  {
+    icon: 'fas fa-brain',
+    title: 'Mental Toughness',
+    description: 'Build resilience and confidence through challenges'
+  }
+];
+
+console.log('🏃‍♂️ 体育学习建议:', sportsLearningTips.length, '条');
+console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
+---
+
+<BaseLayout lang="zh">
+  <!-- 引入统一游戏卡片样式 -->
+  
+  
+  <main class="main-content">
+    <div class="content-wrapper">
+      
+      <!-- 1. 页面顶部区域 -->
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon sports">
+              <i class="fas fa-running"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">Sports Games</h1>
+            <p class="page-description">
+              Get active and learn through sports games! Combine physical education concepts with fun gameplay, teaching teamwork, strategy, healthy competition, and sportsmanship through virtual athletic challenges.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 特色游戏模块 -->
+      {featuredSportsGames.length > 0 && (
+        <section class="game-module featured-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Sports Games</h2>
+              <p class="module-subtitle">Championship-level games that will test your athletic skills</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {featuredSportsGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 3. 篮球游戏模块 -->
+      {basketballGames.length > 0 && (
+        <section class="game-module difficulty-module basketball-module">
+          <div class="module-header">
+            <div class="module-icon basketball-icon">
+              <i class="fas fa-basketball-ball"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Basketball Games</h2>
+              <p class="module-subtitle">Dribble, shoot, and score with these basketball games</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {basketballGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 4. 球类游戏模块 -->
+      {ballGames.length > 0 && (
+        <section class="game-module difficulty-module ball-module">
+          <div class="module-header">
+            <div class="module-icon ball-icon">
+              <i class="fas fa-futbol"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Ball Games</h2>
+              <p class="module-subtitle">Kick, throw, and catch your way to victory</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {ballGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 5. 精准游戏模块 -->
+      {precisionGames.length > 0 && (
+        <section class="game-module difficulty-module precision-module">
+          <div class="module-header">
+            <div class="module-icon precision-icon">
+              <i class="fas fa-golf-ball"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Precision Games</h2>
+              <p class="module-subtitle">Perfect your technique in these precision sports</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {precisionGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 6. 个人运动模块 -->
+      {individualSports.length > 0 && (
+        <section class="game-module difficulty-module individual-module">
+          <div class="module-header">
+            <div class="module-icon individual-icon">
+              <i class="fas fa-running"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Individual Sports</h2>
+              <p class="module-subtitle">Challenge yourself in these individual sports</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {individualSports.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 7. 学习建议模块 -->
+      <section class="info-module tips-module">
+        <div class="module-header">
+          <div class="module-icon tips-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Sports Gaming Tips</h2>
+            <p class="module-subtitle">Improve your performance and enjoy sports games more</p>
+          </div>
+        </div>
+        
+        <div class="tips-grid">
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Practice Precision</h4>
+              <p class="tip-text">Focus on accuracy over speed to improve your skills</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Master Timing</h4>
+              <p class="tip-text">Learn the perfect moment to act in each sport</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-users"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Learn Teamwork</h4>
+              <p class="tip-text">Understand how to work together in team sports</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Set Goals</h4>
+              <p class="tip-text">Challenge yourself to reach new personal bests</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. 核心技能模块 -->
+      <section class="info-module skills-module">
+        <div class="module-header">
+          <div class="module-icon skills-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Athletic Skills You'll Develop</h2>
+            <p class="module-subtitle">Essential abilities gained through sports gaming</p>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-hand-paper"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Hand-Eye Coordination</h4>
+              <p class="skill-description">Improve reaction time and precision</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-chess"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Strategic Thinking</h4>
+              <p class="skill-description">Plan moves and anticipate opponents</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-heartbeat"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Focus & Concentration</h4>
+              <p class="skill-description">Maintain attention under pressure</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-medal"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Competitive Spirit</h4>
+              <p class="skill-description">Develop healthy competition habits</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-stopwatch"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Quick Decision Making</h4>
+              <p class="skill-description">Learn to act fast and decisively</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-arrows-alt"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Motor Skills</h4>
+              <p class="skill-description">Enhance physical coordination</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 50%, rgba(220, 38, 38, 0.05) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 1. 页面头部区域 */
+  .page-header {
+    background: linear-gradient(135deg, #FECACA 0%, #FCA5A5 50%, rgba(220, 38, 38, 0.08) 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(220, 38, 38, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(220, 38, 38, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(220, 38, 38, 0.3) 50%, transparent 100%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 50%, #991B1B 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 
+      0 8px 24px rgba(220, 38, 38, 0.3),
+      0 4px 12px rgba(220, 38, 38, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .section-icon:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 32px rgba(220, 38, 38, 0.4),
+      0 6px 16px rgba(220, 38, 38, 0.3);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #DC2626 0%, #B91C1C 50%, #991B1B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* 通用模块样式 */
+  .game-module,
+  .info-module {
+    margin-bottom: 3rem;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .featured-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  .easy-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+
+  .medium-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  .hard-icon {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  }
+
+  .tips-icon {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  }
+
+  .skills-icon {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .module-subtitle {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 学习建议模块 */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .tip-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .tip-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .tip-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .tip-content {
+    flex: 1;
+  }
+
+  .tip-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .tip-text {
+    color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  /* 核心技能模块 */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .skill-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
+  }
+
+  .skill-content {
+    flex: 1;
+  }
+
+  .skill-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .skill-description {
+    color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-content {
+      gap: 1.5rem;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 18px;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    .section-icon {
+      width: 64px;
+      height: 64px;
+      font-size: 1.5rem;
+      border-radius: 18px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
+      margin-top: 0;
+    }
+
+    .module-title {
+      font-size: 1.375rem;
+    }
+
+    .module-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .game-module,
+    .info-module {
+      margin-bottom: 2.5rem;
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tip-item,
+    .skill-item {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+    
+    .tip-icon,
+    .skill-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
+    }
+
+    .tip-title,
+    .skill-title {
+      font-size: 0.875rem;
+    }
+
+    .tip-text,
+    .skill-description {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-header {
+      padding: 1.25rem;
+      border-radius: 16px;
+    }
+
+    .header-content {
+      gap: 1rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.25rem;
+      border-radius: 16px;
+    }
+
+    .page-description {
+      font-size: 0.95rem;
+    }
+
+    .module-title {
+      font-size: 1.25rem;
+    }
+
+    .module-header {
+      padding: 1rem;
+    }
+
+    .tip-item,
+    .skill-item {
+      padding: 0.875rem;
+    }
+  }
+</style>
+

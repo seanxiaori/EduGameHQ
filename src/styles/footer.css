@@ -133,12 +133,14 @@
   font-size: 0.875rem;
   color: #6B7280;
   margin: 0;
+  flex-shrink: 0; /* 防止被压缩 */
 }
 
 .footer-tagline {
   font-size: 0.875rem;
   color: #9CA3AF;
   margin: 0;
+  flex-shrink: 0; /* 防止被压缩 */
 }
 
 /* 响应式设计 */
@@ -383,4 +385,50 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* 新增：社交分享链接样式 */
+.footer-social-links {
+  display: flex;
+  gap: 0.75rem;
+  margin: 0; /* 移除外边距 */
+  flex-grow: 1; /* 占据剩余空间 */
+  justify-content: flex-end; /* 靠右对齐 */
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px; /* 调小尺寸以适应底部栏 */
+  height: 36px; /* 调小尺寸以适应底部栏 */
+  background-color: #374151; /* 按钮背景色 */
+  color: #D1D5DB; /* 图标颜色 */
+  border-radius: 10px; /* 调整圆角 */
+  text-decoration: none;
+  font-size: 1rem; /* 调小图标大小 */
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 不同平台的悬停颜色 */
+.social-link.facebook:hover {
+  background-color: #1877F2;
+  color: white;
+}
+.social-link.twitter:hover {
+  background-color: #1DA1F2;
+  color: white;
+}
+.social-link.youtube:hover {
+  background-color: #FF0000;
+  color: white;
+}
+.social-link.instagram:hover {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: white;
 } 

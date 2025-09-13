@@ -1,0 +1,25 @@
+<!-- EduGameHQ 图标版 - 仅图标 -->
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-label="EduGameHQ Icon">
+  <defs>
+    <!-- 网站主色调渐变 -->
+    <linearGradient id="icon-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- 现代扁平背景 -->
+  <rect x="16" y="16" width="96" height="96" rx="28" ry="28" fill="url(#icon-bg-gradient)"/>
+  
+  <!-- 极简书本 -->
+  <g transform="translate(64, 48)">
+    <path d="M-14 -4 L-14 16 L0 12 L14 16 L14 -4 Z" 
+          fill="none" stroke="white" stroke-width="4" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- 游戏元素 -->
+  <g transform="translate(64, 80)">
+    <circle cx="-8" cy="0" r="4" fill="white" opacity="0.9"/>
+    <circle cx="8" cy="0" r="4" fill="white" opacity="0.9"/>
+  </g>
+</svg>

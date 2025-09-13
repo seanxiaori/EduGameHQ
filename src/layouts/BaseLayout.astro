@@ -3,12 +3,18 @@ import { getPageSEO, generateStructuredData, getKeywordsString, getOGImageUrl } 
 import fs from 'fs';
 import path from 'path';
 // 多语言支持导入
-import { getLanguageFromPath, getTranslations, t, getLocalizedPath, isRTL, getLanguageInfo, getLanguageSwitchLinks, type LanguageCode } from '../i18n/utils';
+import { getLanguageFromPath, getTranslations, t, getLocalizedPath, isRTL, getLanguageInfo, getLanguageSwitchLinks, removeLanguagePrefix, type LanguageCode } from '../i18n/utils';
 import { defaultLanguage, languages } from '../i18n/config';
 // 导入样式文件
 import '../styles/language-switcher.css';
 import '../styles/navbar.css';
 import '../styles/footer.css';
+
+// 导入全新的Logo组件
+import Logo from '../components/ui/Logo.astro';
+
+// 获取所有语言的首页路径
+const homePaths = Object.keys(languages).map(lang => getLocalizedPath('/', lang as LanguageCode));
 
 export interface Props {
   title?: string;
@@ -29,8 +35,9 @@ const langInfo = getLanguageInfo(currentLang);
 const translations = await getTranslations(currentLang);
 const isRTLLang = isRTL(currentLang);
 
-// 获取语言切换链接
-const languageSwitchLinks = getLanguageSwitchLinks(currentPath);
+// 获取语言切换链接（使用清理后的路径）
+const cleanPath = removeLanguagePrefix(currentPath);
+const languageSwitchLinks = getLanguageSwitchLinks(cleanPath);
 
 // 获取SEO配置
 const seoConfig = getPageSEO(currentPath);
@@ -131,11 +138,11 @@ const pageStructure = {
 };
 
 // 确定当前页面类型和信息
-const isHomePage = currentPath === '/';
+// 修复：正确判断所有语言的首页
+const isHomePage = homePaths.includes(currentPath);
 
 // 修复路径匹配问题 - 确保在构建时也能正确匹配
-const cleanPath = currentPath.endsWith('/') ? currentPath.slice(0, -1) : currentPath;
-const normalizedPath = cleanPath || currentPath;
+const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
 
 const currentCategory = (pageStructure.categories as Record<string, any>)[normalizedPath] || (pageStructure.categories as Record<string, any>)[currentPath];
 const currentSpecialPage = (pageStructure.special as Record<string, any>)[normalizedPath] || (pageStructure.special as Record<string, any>)[currentPath];
@@ -192,7 +199,7 @@ if (!isHomePage) {
   } else if (currentSupportPage) {
     // Support页面面包屑
     breadcrumbs.push({ 
-      name: t(translations, 'support', 'Support'), 
+      name: t(translations, 'footer.support', 'Support'), 
       url: '#', 
       icon: 'fas fa-life-ring', 
       color: 'support',
@@ -206,17 +213,71 @@ if (!isHomePage) {
       isCurrent: true 
     });
   } else if (isGamePage) {
-    // 游戏页面面包屑 - 需要根据游戏所属分类来确定
+    // 游戏页面面包屑 - 根据游戏所属分类来确定
     breadcrumbs.push({ 
       name: t(translations, 'nav.categories', 'Categories'), 
       url: '#', 
       icon: 'fas fa-gamepad', 
       isDropdown: true 
     });
+    
+    // 获取游戏数据来确定分类
+    let gameCategory = null;
+    let gameTitle = 'Game';
+    
+    // 尝试从gameData prop获取游戏信息
+    if (typeof gameData !== 'undefined' && gameData) {
+      gameCategory = gameData.category;
+      gameTitle = gameData.title || 'Game';
+    } else {
+      // 从URL路径中提取游戏slug，然后查找对应的游戏数据
+      const gameSlug = currentPath.split('/').pop();
+      if (gameSlug && gamesData.length > 0) {
+        const game = gamesData.find((g: any) => g.slug === gameSlug);
+        if (game) {
+          gameCategory = game.category;
+          gameTitle = game.title || 'Game';
+        }
+      }
+    }
+    
+    // 根据游戏分类添加对应的分类页面链接
+    if (gameCategory) {
+      const categoryPath = `/${gameCategory}-games`;
+      const categoryInfo = (pageStructure.categories as Record<string, any>)[categoryPath];
+      
+      if (categoryInfo) {
+        breadcrumbs.push({ 
+          name: categoryInfo.name, 
+          url: getLocalizedPath(categoryPath, currentLang), 
+          icon: categoryInfo.icon,
+          color: categoryInfo.color
+        });
+      } else {
+        // 如果找不到对应的分类页面，使用通用分类名
+        const categoryName = gameCategory.charAt(0).toUpperCase() + gameCategory.slice(1) + ' Games';
+        breadcrumbs.push({ 
+          name: categoryName, 
+          url: getLocalizedPath('/', currentLang), 
+          icon: 'fas fa-gamepad',
+          color: 'primary'
+        });
+      }
+    } else {
+      // 如果无法确定分类，显示通用游戏链接
+      breadcrumbs.push({ 
+        name: t(translations, 'game', 'Games'), 
+        url: getLocalizedPath('/', currentLang), 
+        icon: 'fas fa-gamepad' 
+      });
+    }
+    
+    // 添加当前游戏名称（不链接）
     breadcrumbs.push({ 
-      name: t(translations, 'game', 'Games'), 
-      url: getLocalizedPath('/', currentLang), 
-      icon: 'fas fa-gamepad' 
+      name: gameTitle, 
+      url: '#', 
+      icon: 'fas fa-gamepad',
+      isCurrent: true 
     });
   }
 }
@@ -280,10 +341,10 @@ try {
   <meta name="educational-subject" content="mathematics,science,language arts,computer science,physical education,arts">
   
   <!-- Favicon - 使用新设计的LOGO -->
-  <link rel="icon" type="image/svg+xml" href="/images/logo/favicon.ico">
-      <link rel="icon" type="image/png" sizes="32x32" href="/images/logo/edugamehq-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/images/logo/edugamehq-icon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/logo/edugamehq-icon.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-32x32.svg">
+  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.svg">
   <link rel="manifest" href="/site.webmanifest">
   
   <!-- Canonical URL -->
@@ -334,8 +395,8 @@ try {
   <meta property="linkedin:owner" content="EduGameHQ">
   
   <!-- Preload critical resources -->
-      <link rel="preload" href="/images/logo/edugamehq-logo.png" as="image">
-    <link rel="preload" href="/images/logo/edugamehq-icon.png" as="image">
+  <link rel="preload" href="/images/logo/edugamehq-logo.svg" as="image">
+  <link rel="preload" href="/images/logo/edugamehq-icon.svg" as="image">
   <link rel="preload" href={ogImageUrl} as="image">
   
   <!-- DNS Prefetch for external resources -->
@@ -358,7 +419,7 @@ try {
     "alternateName": "Educational Games Headquarters",
     "description": "Free educational games platform for kids aged 6-18",
     "url": "https://www.edugamehq.com",
-          "logo": "https://www.edugamehq.com/images/logo/edugamehq-logo.png",
+          "logo": "https://www.edugamehq.com/images/logo/edugamehq-logo.svg",
     "sameAs": [
       "https://twitter.com/EduGameHQ",
       "https://facebook.com/EduGameHQ",
@@ -477,6 +538,7 @@ try {
 </head>
 
 <body class={`min-h-screen ${bodyClass} ${isRTLLang ? 'rtl' : 'ltr'}`}>
+  
   <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-gold-500 text-white px-4 py-2 rounded-lg z-50">
     {t(translations, 'common.skip_to_content', 'Skip to main content')}
@@ -488,21 +550,22 @@ try {
     <header class="navbar">
       <div class="nav-container">
         <!-- Logo -->
-        <div class="nav-logo">
-          <a href={getLocalizedPath('/', currentLang)} class="logo-link">
-            <img src="/images/logo/edugamehq-logo.png" alt="EduGameHQ Logo" width="300" height="80" />
-          </a>
-        </div>
+        <a href="/" class="nav-logo flex items-center gap-3">
+          <Logo />
+        </a>
         
-        <!-- 智能面包屑导航 -->
-        <nav class="nav-menu" aria-label="Main navigation">
-          {breadcrumbs.length === 0 ? (
-            <!-- 首页导航 -->
+        <!-- 中间部分容器：包含面包屑和搜索框 -->
+        <div class="nav-center-group">
+          <!-- 智能面包屑导航 -->
+          <nav class="nav-menu" aria-label="Main navigation">
             <div class="nav-breadcrumbs">
-              <a href={getLocalizedPath('/', currentLang)} class="nav-link current" aria-current="page">
+              <!-- Step 1: 始终显示首页链接 -->
+              <a href={getLocalizedPath('/', currentLang)} class={`nav-link ${isHomePage ? 'current' : ''}`} aria-current={isHomePage ? 'page' : 'false'}>
                 <i class="fas fa-home"></i>
                 {t(translations, 'nav.home', 'Home')}
               </a>
+
+              <!-- Step 2: 始终显示分类下拉菜单 -->
               <div class="nav-dropdown">
                 <button class="nav-link dropdown-trigger" id="categoriesDropdown">
                   <i class="fas fa-gamepad"></i>
@@ -528,42 +591,22 @@ try {
                   ))}
                 </div>
               </div>
-            </div>
-          ) : (
-            <!-- 面包屑导航 -->
-            <div class="nav-breadcrumbs">
-              {breadcrumbs.map((crumb, index) => (
+              
+              <!-- Step 3: 如果不是首页，则继续渲染面包屑 -->
+              {!isHomePage && breadcrumbs.slice(1).map((crumb, index) => (
                 <div class="breadcrumb-item">
+                  <i class="fas fa-chevron-right breadcrumb-separator"></i>
                   {crumb.isDropdown ? (
                     <div class="nav-dropdown">
-                      <button class="nav-link dropdown-trigger" id={crumb.name === t(translations, 'nav.categories', 'Categories') ? 'categoriesDropdown' : crumb.name === t(translations, 'support', 'Support') ? 'supportDropdown' : 'defaultDropdown'}>
+                      <button class="nav-link dropdown-trigger" id={crumb.name === t(translations, 'footer.support', 'Support') ? 'supportDropdown' : 'defaultDropdown'}>
                         <i class={crumb.icon}></i>
                         {crumb.name}
                         <i class="fas fa-chevron-down dropdown-arrow"></i>
                       </button>
-                      <div class="dropdown-menu" id={crumb.name === t(translations, 'nav.categories', 'Categories') ? 'categoriesMenu' : crumb.name === t(translations, 'support', 'Support') ? 'supportMenu' : 'defaultMenu'}>
-                        {crumb.name === t(translations, 'nav.categories', 'Categories') ? (
+                      <div class="dropdown-menu" id={crumb.name === t(translations, 'footer.support', 'Support') ? 'supportMenu' : 'defaultMenu'}>
+                        {crumb.name === t(translations, 'footer.support', 'Support') ? (
                           <>
-                        <!-- 游戏分类 -->
-                        {Object.entries(pageStructure.categories).map(([path, info]) => (
-                          <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                            <i class={info.icon}></i>
-                            {info.name}
-                          </a>
-                        ))}
-                        <!-- 分隔线 -->
-                        <hr class="dropdown-divider">
-                        <!-- 特殊页面 -->
-                        {Object.entries(pageStructure.special).map(([path, info]) => (
-                          <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
-                            <i class={info.icon}></i>
-                            {info.name}
-                          </a>
-                        ))}
-                          </>
-                        ) : crumb.name === t(translations, 'support', 'Support') ? (
-                          <>
-                            <!-- Support页面 -->
+                            {/* Support页面 */}
                             {Object.entries(pageStructure.support).map(([path, info]) => (
                               <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                                 <i class={info.icon}></i>
@@ -580,28 +623,25 @@ try {
                       {crumb.name}
                     </a>
                   )}
-                  {index < breadcrumbs.length - 1 && (
-                    <i class="fas fa-chevron-right breadcrumb-separator"></i>
-                  )}
                 </div>
               ))}
             </div>
-          )}
-        </nav>
-        
-        <!-- 搜索区域 -->
-        <div class="search-container">
-          <div class="search-wrapper">
-            <i class="fas fa-search search-icon"></i>
-            <input 
-              type="text" 
-              class="search-box" 
-              placeholder={t(translations, 'search.placeholder', 'Search educational games...')}
-              autocomplete="off"
-            />
-            <button type="button" class="search-button" onclick="performSearch()">
-              <i class="fas fa-arrow-right"></i>
-            </button>
+          </nav>
+          
+          <!-- 搜索区域 -->
+          <div class="search-container">
+            <div class="search-wrapper">
+              <i class="fas fa-search search-icon"></i>
+              <input 
+                type="text" 
+                class="search-box" 
+                placeholder={t(translations, 'search.placeholder', 'Search educational games...')}
+                autocomplete="off"
+              />
+              <button type="button" class="search-button" onclick="performSearch()">
+                <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
           </div>
         </div>
         
@@ -708,7 +748,7 @@ try {
           <!-- Logo和描述 -->
           <div class="footer-section">
             <div class="footer-logo">
-              <img src="/images/logo/edugamehq-footer.png" alt="EduGameHQ Logo" width="300" height="80" />
+              <img src="/images/logo/edugamehq-logo.svg" alt={t(translations, 'footer.logo_alt', 'EduGameHQ Logo')} width="300" height="240" />
             </div>
             <p class="footer-description">
               {t(translations, 'footer.description', 'EduGameHQ is your go-to platform for educational games that make learning engaging and effective.')}
@@ -756,6 +796,23 @@ try {
             <p class="footer-copyright">
               {t(translations, 'footer.copyright', '© 2025 EduGameHQ. All rights reserved.')}
             </p>
+            
+            <!-- 社交分享链接移动到这里 -->
+            <div class="footer-social-links">
+              <a href="https://facebook.com/EduGameHQ" class="social-link facebook" target="_blank" rel="noopener noreferrer" aria-label={t(translations, 'footer.social.facebook', 'Facebook')}>
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="https://twitter.com/EduGameHQ" class="social-link twitter" target="_blank" rel="noopener noreferrer" aria-label={t(translations, 'footer.social.twitter', 'Twitter')}>
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="https://youtube.com/EduGameHQ" class="social-link youtube" target="_blank" rel="noopener noreferrer" aria-label={t(translations, 'footer.social.youtube', 'YouTube')}>
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="https://instagram.com/EduGameHQ" class="social-link instagram" target="_blank" rel="noopener noreferrer" aria-label={t(translations, 'footer.social.instagram', 'Instagram')}>
+                <i class="fab fa-instagram"></i>
+              </a>
+            </div>
+
             <p class="footer-tagline">
               {t(translations, 'footer.made_with_love', 'Made with ❤️ for learners worldwide')}
             </p>
@@ -928,5 +985,6 @@ try {
 
   <!-- 游戏统计和收藏功能 -->
   <script src="/js/game-stats-manager.js" defer></script>
+  
 </body>
 </html> 

@@ -11,20 +11,20 @@
   "lang": "en",
   "icons": [
     {
-      "src": "/images/logo/edugamehq-icon.png",
-      "sizes": "80x80",
-      "type": "image/png",
+      "src": "/images/logo/edugamehq-icon.svg",
+      "sizes": "128x128",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
-      "src": "/images/logo/edugamehq-icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
+      "src": "/apple-touch-icon.svg",
+      "sizes": "180x180",
+      "type": "image/svg+xml"
     },
     {
-      "src": "/images/logo/edugamehq-icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
+      "src": "/favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
     }
   ],
   "categories": [
@@ -57,7 +57,7 @@
       "url": "/math-games",
       "icons": [
         {
-          "src": "/images/logo/edugamehq-icon.png",
+          "src": "/images/logo/edugamehq-icon.svg",
           "sizes": "96x96"
         }
       ]
@@ -69,7 +69,7 @@
       "url": "/science-games",
       "icons": [
         {
-          "src": "/images/logo/edugamehq-icon.png",
+          "src": "/images/logo/edugamehq-icon.svg",
           "sizes": "96x96"
         }
       ]
@@ -81,7 +81,7 @@
       "url": "/trending",
       "icons": [
         {
-          "src": "/images/logo/edugamehq-icon.png",
+          "src": "/images/logo/edugamehq-icon.svg",
           "sizes": "96x96"
         }
       ]

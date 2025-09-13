@@ -1,33 +1,49 @@
 /* 导航栏样式 - EduGameHQ */
 
-/* 主导航栏容器 */
+/* 导航栏主体样式 */
 .navbar {
-  background: linear-gradient(135deg, #FFFFFF 0%, #F8F6F3 100%);
-  border-bottom: 1px solid #E5E7EB;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(10px);
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* 确保导航栏在最上层 */
+  background-color: rgba(255, 255, 255, 0.85); /* 带有透明度的背景 */
+  backdrop-filter: blur(10px); /* 玻璃拟态效果 */
   -webkit-backdrop-filter: blur(10px);
-  overflow: visible; /* 确保下拉菜单不被裁剪 */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  overflow: visible; /* 关键修复：允许下拉菜单溢出 */
+}
+
+.navbar.scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: rgba(255, 255, 255, 0.98);
 }
 
 .nav-container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 2rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  height: 4rem;
-  gap: 1rem;
-  overflow: visible; /* 确保下拉菜单不被裁剪 */
+  justify-content: space-between; /* 子元素之间留有空间 */
+  width: 100%;
+  max-width: 1400px; /* 限制最大宽度 */
+  margin: 0 auto;
+  padding: 0 1rem; /* 左右内边距 */
+  height: 80px; /* 增加导航栏高度 */
+}
+
+/* 新增：用于包裹面包屑和搜索框的中间容器 */
+.nav-center-group {
+  display: flex;
+  flex-grow: 1; /* 占据所有可用空间 */
+  align-items: center;
+  justify-content: flex-start; /* 从左侧开始对齐 */
+  min-width: 0; /* 防止子元素溢出 */
+  margin: 0 1.5rem; /* 与Logo和右侧按钮组保持间距 */
 }
 
 /* Logo样式 - 适配新设计的LOGO */
 .nav-logo {
-  flex-shrink: 0;
+  flex-shrink: 0; /* 防止Logo被压缩 */
   display: flex;
   align-items: center;
 }
@@ -87,12 +103,10 @@
 
 /* 导航菜单 */
 .nav-menu {
-  flex: 1;
   display: flex;
   align-items: center;
-  margin-left: 2rem;
-  min-width: 0;
-  overflow: visible;
+  flex-grow: 1; /* 面包屑/导航占据可用空间 */
+  min-width: 0; /* 防止长面包屑溢出 */
 }
 
 .nav-breadcrumbs {
@@ -100,10 +114,8 @@
   align-items: center;
   gap: 0.5rem;
   flex-wrap: nowrap;
-  overflow-x: visible;
-  overflow-y: visible;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
+  /* 关键修复：移除所有overflow限制，允许下拉菜单显示 */
+  overflow: visible;
   max-width: 100%;
   padding: 0.25rem 0;
 }
@@ -293,6 +305,7 @@
 /* 下拉菜单 */
 .nav-dropdown {
   position: relative;
+  z-index: 1001; /* 关键修复：提升容器本身层级 */
 }
 
 .dropdown-trigger {
@@ -313,6 +326,7 @@
   position: absolute;
   top: 100%;
   left: 0;
+  margin-top: 0.5rem; /* 增加一点与触发按钮的距离 */
   background: white;
   border: 1px solid #E5E7EB;
   border-radius: 12px;
@@ -324,7 +338,7 @@
   visibility: hidden;
   transform: translateY(-10px);
   transition: all 0.3s ease;
-  z-index: 9999;
+  z-index: 9999; /* 关键修复：确保菜单在最顶层 */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   pointer-events: none;
@@ -457,9 +471,12 @@
 
 /* 搜索区域 */
 .search-container {
-  flex: 0 0 auto;
-  max-width: 320px;
-  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0; /* 防止搜索框被压缩 */
+  margin-left: auto; /* 将搜索框推到右边 */
+  width: 100%; /* 默认宽度 */
+  max-width: 320px; /* 限制最大宽度 */
 }
 
 .search-wrapper {

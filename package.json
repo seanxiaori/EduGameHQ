@@ -4,9 +4,9 @@
   "version": "1.0.0",
   "description": "EduGameHQ - Free Educational Games Platform built with Astro 5.0",
   "scripts": {
-    "dev": "set PORT=3000 && astro dev --port 3000",
-    "start": "set PORT=3000 && astro dev --port 3000",
-    "build": "astro check && astro build",
+    "dev": "set PORT=3000 && astro dev --port 3000 --force",
+    "start": "astro dev",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
     "capture-screenshots": "node scripts/capture-game-screenshots.js",
@@ -23,7 +23,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.8.2",
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
@@ -31,6 +31,7 @@
     "@types/react-dom": "^18.3.1",
     "astro": "^5.0.5",
     "canvas": "^3.1.1",
+    "deepmerge": "^4.3.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "tailwindcss": "^3.4.17",

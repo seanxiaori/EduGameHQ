@@ -1,0 +1,1018 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GameCard from '../../components/GameCard.astro';
+import fs from 'fs';
+import path from 'path';
+import { getTranslations, t } from '../../i18n/utils'; // 导入翻译函数
+
+// 导入样式文件
+import '../../styles/game-card.css';
+
+const translations = await getTranslations('ja'); // 获取日语翻译
+
+// 从JSON文件读取游戏数据
+// 注意：此文件已修复所有TypeScript错误，确保Cloudflare Pages构建成功
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData = [];
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent);
+  console.log(`✅ 成功加载 ${allGamesData.length} 个游戏数据`);
+} catch (error) {
+  console.error('❌ 无法读取游戏数据文件:', error);
+}
+
+// 使用JSON数据作为游戏源
+const allGames = allGamesData;
+
+// 分类游戏
+const featuredGames = allGames.filter((game: any) => game.featured);
+console.log(`🌟 找到 ${featuredGames.length} 个特色游戏`);
+
+// 统计数据
+const gameStats = {
+  totalGames: allGamesData.length,
+  mathGames: allGamesData.filter((game: any) => game.category === 'math').length,
+  scienceGames: allGamesData.filter((game: any) => game.category === 'science').length,
+  languageGames: allGamesData.filter((game: any) => game.category === 'language').length,
+  puzzleGames: allGamesData.filter((game: any) => game.category === 'puzzle').length,
+  sportsGames: allGamesData.filter((game: any) => game.category === 'sports').length,
+  artGames: allGamesData.filter((game: any) => game.category === 'art').length
+};
+
+console.log('📊 游戏统计数据:', gameStats);
+---
+
+<BaseLayout lang="ja">
+  <!-- 主要内容 -->
+  <main class="main-content" id="main-content">
+    <div class="content-wrapper">
+      <!-- 英雄区域 -->
+      <section class="hero">
+        <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="hero-title" set:html={t(translations, 'hero.title.full', 'Where Learning Meets <span class="highlight">Fun</span>')}>
+            </h1>
+          <p class="hero-subtitle">
+              {t(translations, 'hero.subtitle', 'Discover free educational games designed to make learning engaging and effective for students aged 6-18.')}
+            </p>
+            <div class="hero-stats">
+              <div class="stat-item">
+          <div class="stat-number">50K+</div>
+                <div class="stat-label">{t(translations, 'hero.stats.students', 'Students')}</div>
+        </div>
+              <div class="stat-item">
+          <div class="stat-number">15+</div>
+                <div class="stat-label">{t(translations, 'hero.stats.countries', 'Countries')}</div>
+        </div>
+              <div class="stat-item">
+          <div class="stat-number">100%</div>
+                <div class="stat-label">{t(translations, 'hero.stats.free', 'Free')}</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-image">
+            <div class="floating-elements">
+              <div class="floating-icon math">
+                <i class="fas fa-calculator"></i>
+              </div>
+              <div class="floating-icon science">
+                <i class="fas fa-flask"></i>
+              </div>
+              <div class="floating-icon coding">
+                <i class="fas fa-code"></i>
+              </div>
+              <div class="floating-icon language">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <div class="floating-icon puzzle">
+                <i class="fas fa-puzzle-piece"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 游戏分类 -->
+      <section id="categories" class="categories-section">
+        <div class="module-header">
+          <div class="module-icon categories">
+            <i class="fas fa-th-large"></i>
+          </div>
+          <div class="module-text">
+            <h2 class="module-title">{t(translations, 'home.explore_by_category.title', 'Explore by Category')}</h2>
+            <p class="module-description">{t(translations, 'home.explore_by_category.description', 'Discover educational games organized by subject areas')}</p>
+          </div>
+        </div>
+        
+        <div class="categories-grid">
+          <!-- 数学游戏 -->
+          <a href={t(translations, 'links.math_games', '/math-games')} class="category-card math">
+            <div class="category-card-header">
+              <div class="category-floating-elements">
+                <span class="floating-symbol">+</span>
+                <span class="floating-symbol">×</span>
+                <span class="floating-symbol">÷</span>
+              </div>
+              <div class="category-card-icon">
+                🧮
+              </div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">{t(translations, 'categories.math-games', 'Math Games')}</h3>
+              <p class="category-card-description">{t(translations, 'home.category_description.math', 'Master numbers, equations and problem-solving')}</p>
+            </div>
+          </a>
+
+          <!-- 科学游戏 -->
+          <a href={t(translations, 'links.science_games', '/science-games')} class="category-card science">
+            <div class="category-card-header">
+              <div class="category-floating-elements">
+                <span class="floating-symbol">🔬</span>
+                <span class="floating-symbol">⚡</span>
+              </div>
+              <div class="category-card-icon">
+                🧪
+              </div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">{t(translations, 'categories.science-games', 'Science Games')}</h3>
+              <p class="category-card-description">{t(translations, 'home.category_description.science', 'Explore physics, chemistry and biology')}</p>
+            </div>
+          </a>
+
+          <!-- 语言游戏 -->
+          <a href={t(translations, 'links.language_games', '/language-games')} class="category-card language">
+            <div class="category-card-header">
+              <div class="category-floating-elements">
+                <span class="floating-symbol">A</span>
+                <span class="floating-symbol">B</span>
+                <span class="floating-symbol">C</span>
+              </div>
+              <div class="category-card-icon">
+                📚
+              </div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">{t(translations, 'categories.language-games', 'Language Games')}</h3>
+              <p class="category-card-description">{t(translations, 'home.category_description.language', 'Improve vocabulary, reading and writing')}</p>
+            </div>
+          </a>
+
+          <!-- 益智游戏 -->
+          <a href={t(translations, 'links.puzzle_games', '/puzzle-games')} class="category-card puzzle">
+            <div class="category-card-header">
+              <div class="category-floating-elements">
+                <span class="floating-symbol">🧩</span>
+                <span class="floating-symbol">🎯</span>
+                <span class="floating-symbol">🔍</span>
+              </div>
+              <div class="category-card-icon">
+                🧩
+              </div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">{t(translations, 'categories.puzzle-games', 'Puzzle Games')}</h3>
+              <p class="category-card-description">{t(translations, 'home.category_description.puzzle', 'Challenge logic and critical thinking')}</p>
+            </div>
+          </a>
+
+          <!-- 体育游戏 -->
+          <a href={t(translations, 'links.sports_games', '/sports-games')} class="category-card sports">
+            <div class="category-card-header">
+              <div class="category-floating-elements">
+                <span class="floating-symbol">⚽</span>
+                <span class="floating-symbol">🏀</span>
+                <span class="floating-symbol">🎾</span>
+              </div>
+              <div class="category-card-icon">
+                ⚽
+              </div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">{t(translations, 'categories.sports-games', 'Sports Games')}</h3>
+              <p class="category-card-description">{t(translations, 'home.category_description.sports', 'Learn teamwork and physical education')}</p>
+              </div>
+          </a>
+
+          <!-- 艺术创意游戏 -->
+          <a href={t(translations, 'links.art_games', '/art-games')} class="category-card art">
+            <div class="category-card-header">
+              <div class="category-floating-elements">
+                <span class="floating-symbol">🎨</span>
+                <span class="floating-symbol">🖌️</span>
+                <span class="floating-symbol">✨</span>
+              </div>
+              <div class="category-card-icon">
+                🎨
+              </div>
+            </div>
+            <div class="category-card-content">
+              <h3 class="category-card-title">{t(translations, 'categories.art-games', 'Art & Creativity')}</h3>
+              <p class="category-card-description">{t(translations, 'home.category_description.art', 'Express creativity through digital art')}</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- 特色游戏 -->
+      <section id="featured" class="featured-section">
+        <div class="module-header">
+          <div class="module-icon featured">
+            <i class="fas fa-star"></i>
+          </div>
+          <div class="module-text">
+            <h2 class="module-title">{t(translations, 'home.featured_games.title', 'Featured Games')}</h2>
+            <p class="module-description">{t(translations, 'home.featured_games.description', 'Our most popular and recommended educational games')}</p>
+          </div>
+        </div>
+        
+        <div class="games-grid">
+          {featuredGames.map((game: any) => (
+            <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+          ))}
+        </div>
+      </section>
+
+      <!-- 为什么选择我们 -->
+      <section class="why-choose-us">
+        <div class="module-header">
+          <div class="module-icon benefits">
+            <i class="fas fa-heart"></i>
+          </div>
+          <div class="module-text">
+            <h2 class="module-title">{t(translations, 'home.why_choose_us.title', 'Why Choose EduGameHQ?')}</h2>
+            <p class="module-description">{t(translations, 'home.why_choose_us.description', 'Your trusted partner in educational gaming')}</p>
+          </div>
+        </div>
+        
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="benefit-content">
+              <h4 class="benefit-title">{t(translations, 'home.benefit.curriculum_aligned.title', 'Curriculum-Aligned')}</h4>
+              <p class="benefit-text">{t(translations, 'home.benefit.curriculum_aligned.description', 'Games designed by educators to support learning objectives')}</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <div class="benefit-content">
+              <h4 class="benefit-title">{t(translations, 'home.benefit.safe_environment.title', 'Safe Environment')}</h4>
+              <p class="benefit-text">{t(translations, 'home.benefit.safe_environment.description', 'Kid-friendly, ad-filtered content with privacy protection')}</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-mobile-alt"></i>
+            </div>
+            <div class="benefit-content">
+              <h4 class="benefit-title">{t(translations, 'home.benefit.cross_platform.title', 'Cross-Platform')}</h4>
+              <p class="benefit-text">{t(translations, 'home.benefit.cross_platform.description', 'Works on any device - desktop, tablet, or mobile')}</p>
+            </div>
+          </div>
+          
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-download"></i>
+            </div>
+            <div class="benefit-content">
+              <h4 class="benefit-title">{t(translations, 'home.benefit.no_downloads.title', 'No Downloads')}</h4>
+              <p class="benefit-text">{t(translations, 'home.benefit.no_downloads.description', 'Instant play in your browser - no installation required')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- 随机游戏功能脚本 -->
+  <script is:inline>
+    // 随机游戏功能 - 定义为全局函数
+    window.playRandomGame = function() {
+      // 使用全局GAMES_DATA而不是重复声明的allGamesList
+      if (window.GAMES_DATA && window.GAMES_DATA.length > 0) {
+        const randomIndex = Math.floor(Math.random() * window.GAMES_DATA.length);
+        const randomGame = window.GAMES_DATA[randomIndex];
+        if (randomGame && randomGame.slug) {
+          window.location.href = `/games/${randomGame.slug}`;
+        }
+      } else {
+        console.warn('⚠️ 游戏数据未加载，无法执行随机游戏功能');
+      }
+    };
+
+    // 页面加载完成后的初始化
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('✅ 首页加载完成，统一游戏卡片系统已启用');
+      console.log('🎮 可用游戏数量:', window.GAMES_DATA ? window.GAMES_DATA.length : 0);
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: #FEFCFB;
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 英雄区域 */
+  .hero {
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, #F59E0B 100%);
+    border-radius: 20px;
+    padding: 4rem 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .hero-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    text-align: left;
+  }
+
+  .hero-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: #92400E;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.1;
+  }
+
+  .hero-title .highlight {
+    color: #DC2626;
+  }
+
+  .hero-subtitle {
+    font-size: 1.25rem;
+    color: #6B7280;
+    margin-bottom: 2rem;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .stat-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #DC2626;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    color: #6B7280;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  .hero-image {
+    position: relative;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .floating-elements {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .floating-icon {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .floating-icon.math {
+    background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+
+  .floating-icon.science {
+    background: linear-gradient(135deg, #10B981, #059669);
+    top: 60%;
+    left: 10%;
+    animation-delay: 1.2s;
+  }
+
+  .floating-icon.coding {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    top: 30%;
+    right: 15%;
+    animation-delay: 2.4s;
+  }
+
+  .floating-icon.language {
+    background: linear-gradient(135deg, #EC4899, #DB2777);
+    top: 70%;
+    right: 25%;
+    animation-delay: 3.6s;
+  }
+
+  .floating-icon.puzzle {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    top: 45%;
+    left: 45%;
+    animation-delay: 4.8s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+
+  /* 模块通用样式 */
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+  }
+
+  .module-icon.categories {
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+  }
+
+  .module-icon.featured {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .module-icon.benefits {
+    background: linear-gradient(135deg, #EC4899, #DB2777);
+  }
+
+  .module-text {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .module-description {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 分类网格 */
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .category-card {
+    display: block;
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 1px solid #F3F4F6;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .category-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    border-color: transparent;
+  }
+
+  .category-card-header {
+    position: relative;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  .category-floating-elements {
+    position: absolute;
+    top: -10px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    z-index: 1;
+  }
+
+  .floating-symbol {
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: floatSymbol 4s ease-in-out infinite;
+  }
+
+  .floating-symbol:nth-child(2) {
+    animation-delay: 1.3s;
+  }
+
+  .floating-symbol:nth-child(3) {
+    animation-delay: 2.6s;
+  }
+
+  @keyframes floatSymbol {
+    0%, 100% {
+      transform: translateY(0px);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateY(-10px);
+      opacity: 0.6;
+    }
+  }
+
+  .category-card-icon {
+    font-size: 3rem;
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    animation: pulse 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .category-card-content {
+    text-align: center;
+  }
+
+  .category-card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* 分类特定颜色 */
+  .category-card.math:hover {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  }
+
+  .category-card.science:hover {
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+  }
+
+  .category-card.language:hover {
+    background: linear-gradient(135deg, #FDF4FF, #FAE8FF);
+  }
+
+  .category-card.puzzle:hover {
+    background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  }
+
+  .category-card.sports:hover {
+    background: linear-gradient(135deg, #FEF2F2, #FEE2E2);
+  }
+
+  .category-card.art:hover {
+    background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
+  }
+
+  /* 特色游戏区域 */
+  .featured-section {
+    margin-bottom: 3rem;
+  }
+
+  /* 游戏网格样式 - 补充缺失的样式 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* 为什么选择我们部分样式 - 新增 */
+  .why-choose-us {
+    margin-bottom: 3rem;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+  }
+
+  .benefit-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #E5E7EB;
+  }
+
+  .benefit-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .benefit-item:nth-child(1) .benefit-icon {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .benefit-item:nth-child(2) .benefit-icon {
+    background: linear-gradient(135deg, #10B981, #059669);
+  }
+
+  .benefit-item:nth-child(3) .benefit-icon {
+    background: linear-gradient(135deg, #6366F1, #4F46E5);
+  }
+
+  .benefit-item:nth-child(4) .benefit-icon {
+    background: linear-gradient(135deg, #EC4899, #DB2777);
+  }
+
+  .benefit-content {
+    flex: 1;
+  }
+
+  .benefit-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.3;
+  }
+
+  .benefit-text {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .hero-container {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .hero {
+      padding: 3rem 2rem;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .categories-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .floating-icon {
+      width: 60px;
+      height: 60px;
+      font-size: 1.5rem;
+    }
+
+    /* 游戏网格响应式 */
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+
+    /* 优势网格响应式 */
+    .benefits-grid {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.25rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .hero {
+      padding: 2rem 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 16px;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+      text-align: center;
+    }
+
+    .hero-subtitle {
+      font-size: 1.125rem;
+      text-align: center;
+    }
+
+    .hero-stats {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .stat-item {
+      padding: 0.75rem;
+    }
+
+    .stat-number {
+      font-size: 1.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+    }
+
+    .hero-image {
+      height: 300px;
+      order: -1;
+    }
+
+    .floating-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 1.25rem;
+    }
+
+    .categories-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .category-card {
+      padding: 1.5rem;
+      border-radius: 16px;
+    }
+
+    .category-card-icon {
+      font-size: 2.5rem;
+    }
+
+    .category-card-title {
+      font-size: 1.125rem;
+    }
+
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
+    }
+
+    .module-title {
+      font-size: 1.375rem;
+    }
+
+    .module-description {
+      font-size: 0.875rem;
+    }
+
+    .featured-section {
+      margin-bottom: 2.5rem;
+    }
+
+    /* 移动端游戏网格 */
+    .games-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    /* 移动端优势网格 */
+    .benefits-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .benefit-item {
+      padding: 1.5rem;
+      border-radius: 14px;
+    }
+
+    .benefit-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 1.25rem;
+    }
+
+    .benefit-title {
+      font-size: 1rem;
+    }
+
+    .benefit-text {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      padding: 1.5rem 1rem;
+      border-radius: 14px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+    }
+
+    .hero-image {
+      height: 250px;
+    }
+
+    .floating-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .category-card {
+      padding: 1.25rem;
+    }
+
+    .category-card-icon {
+      font-size: 2rem;
+    }
+
+    .category-card-title {
+      font-size: 1rem;
+    }
+
+    .module-header {
+      padding: 1rem;
+    }
+
+    .module-title {
+      font-size: 1.25rem;
+    }
+
+    /* 小屏幕游戏网格优化 */
+    .games-grid {
+      gap: 0.75rem;
+    }
+
+    /* 小屏幕优势部分优化 */
+    .benefits-grid {
+      gap: 0.75rem;
+    }
+
+    .benefit-item {
+      padding: 1.25rem;
+      border-radius: 12px;
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+    }
+
+    .benefit-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
+      align-self: center;
+    }
+
+    .benefit-title {
+      font-size: 0.9rem;
+    }
+
+    .benefit-text {
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+  }
+</style> 
+
+

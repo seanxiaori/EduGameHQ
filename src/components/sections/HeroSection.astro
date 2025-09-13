@@ -1,0 +1,53 @@
+---
+// src/components/sections/HeroSection.astro
+import { t } from '../../i18n/utils';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<section class="hero">
+  <div class="hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title" set:html={t(translations, 'home.hero.title.full', 'Where Learning Meets <span class="highlight">Fun</span>')} />
+      <p class="hero-subtitle">
+        {t(translations, 'home.hero.subtitle', 'Discover free educational games designed to make learning engaging and effective for students aged 6-18.')}
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">{t(translations, 'home.hero.stats.students', 'Students')}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">{t(translations, 'home.hero.stats.countries', 'Countries')}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">{t(translations, 'home.hero.stats.free', 'Free')}</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-image">
+      <div class="floating-elements">
+        <div class="floating-icon math">
+          <i class="fas fa-calculator"></i>
+        </div>
+        <div class="floating-icon science">
+          <i class="fas fa-flask"></i>
+        </div>
+        <div class="floating-icon coding">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="floating-icon language">
+          <i class="fas fa-book-open"></i>
+        </div>
+        <div class="floating-icon puzzle">
+          <i class="fas fa-puzzle-piece"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

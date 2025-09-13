@@ -1,0 +1,63 @@
+---
+// src/components/sections/WhyChooseUs.astro
+import { t } from '../../i18n/utils';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<section class="why-choose-us">
+  <div class="module-header">
+    <div class="module-icon benefits">
+      <i class="fas fa-heart"></i>
+    </div>
+    <div class="module-text">
+      <h2 class="module-title">{t(translations, 'home.why_choose_us.title', 'Why Choose EduGameHQ?')}</h2>
+      <p class="module-description">{t(translations, 'home.why_choose_us.description', 'Your trusted partner in educational gaming')}</p>
+    </div>
+  </div>
+  
+  <div class="benefits-grid">
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <i class="fas fa-graduation-cap"></i>
+      </div>
+      <div class="benefit-content">
+        <h4 class="benefit-title">{t(translations, 'home.benefit.curriculum_aligned.title', 'Curriculum-Aligned')}</h4>
+        <p class="benefit-text">{t(translations, 'home.benefit.curriculum_aligned.description', 'Games designed by educators to support learning objectives')}</p>
+      </div>
+    </div>
+    
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <div class="benefit-content">
+        <h4 class="benefit-title">{t(translations, 'home.benefit.safe_environment.title', 'Safe Environment')}</h4>
+        <p class="benefit-text">{t(translations, 'home.benefit.safe_environment.description', 'Kid-friendly, ad-filtered content with privacy protection')}</p>
+      </div>
+    </div>
+    
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <i class="fas fa-mobile-alt"></i>
+      </div>
+      <div class="benefit-content">
+        <h4 class="benefit-title">{t(translations, 'home.benefit.cross_platform.title', 'Cross-Platform')}</h4>
+        <p class="benefit-text">{t(translations, 'home.benefit.cross_platform.description', 'Works on any device - desktop, tablet, or mobile')}</p>
+      </div>
+    </div>
+    
+    <div class="benefit-item">
+      <div class="benefit-icon">
+        <i class="fas fa-download"></i>
+      </div>
+      <div class="benefit-content">
+        <h4 class="benefit-title">{t(translations, 'home.benefit.no_downloads.title', 'No Downloads')}</h4>
+        <p class="benefit-text">{t(translations, 'home.benefit.no_downloads.description', 'Instant play in your browser - no installation required')}</p>
+      </div>
+    </div>
+  </div>
+</section>

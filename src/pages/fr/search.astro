@@ -1,0 +1,870 @@
+﻿---
+// 瀹㈡埛绔悳绱㈤〉闈?- 鏀寔闈欐€佹瀯寤?
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GameCard from '../../components/GameCard.astro';
+import type { Game } from '../../types/game';
+import fs from 'fs';
+import path from 'path';
+import '../../styles/game-card.css';
+
+// 浠嶫SON鏂囦欢璇诲彇娓告垙鏁版嵁
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData = [];
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent);
+  console.log(`鉁?鎼滅储椤甸潰鎴愬姛鍔犺浇 ${allGamesData.length} 涓父鎴忔暟鎹甡);
+} catch (error) {
+  console.error('鉂?鎼滅储椤甸潰鏃犳硶璇诲彇娓告垙鏁版嵁鏂囦欢:', error);
+}
+
+// 浣跨敤JSON鏁版嵁浣滀负娓告垙婧?
+const allGames: Game[] = allGamesData;
+
+// 鑾峰彇鎺ㄨ崘鐨勭儹闂ㄦ父鎴?
+const popularGames = allGames
+  .filter((game: any) => game.featured || (game.popularity && game.popularity > 800))
+  .slice(0, 12);
+
+console.log(`馃攳 鎼滅储椤甸潰鎵惧埌 ${popularGames.length} 涓帹鑽愭父鎴廯);
+console.log(`馃搳 鎼滅储椤甸潰娓告垙鎬绘暟: ${allGames.length}`);
+
+// 浠嶶RL鑾峰彇鎼滅储鏌ヨ
+const url = Astro.url;
+const searchQuery = url.searchParams.get('q') || '';
+
+// 璇︾粏璋冭瘯淇℃伅
+console.log(`馃攳 === 璇︾粏URL璋冭瘯淇℃伅 ===`);
+console.log(`馃攳 瀹屾暣URL: ${url.toString()}`);
+console.log(`馃攳 URL璺緞: ${url.pathname}`);
+console.log(`馃攳 URL鍙傛暟瀛楃涓? "${url.search}"`);
+console.log(`馃攳 URL鍙傛暟瀵硅薄:`, url.searchParams);
+console.log(`馃攳 鎵€鏈塙RL鍙傛暟:`, [...url.searchParams.entries()]);
+console.log(`馃攳 鎼滅储鏌ヨ q: "${searchQuery}"`);
+console.log(`馃攳 鎼滅储鏌ヨ闀垮害: ${searchQuery.length}`);
+console.log(`馃攳 === 璋冭瘯淇℃伅缁撴潫 ===`);
+
+// 鎵ц鎼滅储锛堝鏋滄湁鏌ヨ璇嶏級
+let searchResults: Game[] = [];
+if (searchQuery) {
+  const searchTerm = searchQuery.toLowerCase().trim();
+  console.log(`馃攳 澶勭悊鍚庣殑鎼滅储璇? "${searchTerm}"`);
+  
+  searchResults = allGames.filter((game: any) => 
+    game.title.toLowerCase().includes(searchTerm) ||
+    game.description.toLowerCase().includes(searchTerm) ||
+    game.category.toLowerCase().includes(searchTerm) ||
+    (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
+  );
+  console.log(`馃攳 鎼滅储"${searchQuery}"鎵惧埌 ${searchResults.length} 涓粨鏋渀);
+  
+  // 鏄剧ず鍓嶅嚑涓尮閰嶇殑娓告垙
+  if (searchResults.length > 0) {
+    console.log(`馃幃 鍖归厤鐨勬父鎴忕ず渚?`);
+    searchResults.slice(0, 3).forEach((game, index) => {
+      console.log(`  ${index + 1}. ${game.title} (${game.category})`);
+    });
+  }
+} else {
+  console.log(`馃攳 娌℃湁鎼滅储鏌ヨ锛屾樉绀洪粯璁ら〉闈);
+}
+
+// 鐑棬鎼滅储鍏抽敭璇?
+const popularSearchTerms = [
+  { term: 'math', icon: 'fa-calculator', color: 'blue' },
+  { term: 'science', icon: 'fa-flask', color: 'green' },
+  { term: 'puzzle', icon: 'fa-puzzle-piece', color: 'orange' },
+  { term: 'language', icon: 'fa-language', color: 'red' },
+  { term: 'sports', icon: 'fa-futbol', color: 'purple' },
+  { term: 'art', icon: 'fa-palette', color: 'teal' }
+];
+
+// SEO鏁版嵁
+const seoData = {
+  title: searchQuery ? `Search Results for "${searchQuery}" - EduGameHQ` : 'Search Educational Games - EduGameHQ',
+  description: searchQuery ? `Found ${searchResults.length} educational games matching "${searchQuery}". Play fun learning games for kids.` : 'Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.',
+  keywords: ['search games', 'educational games', 'learning games', 'find games', 'game search']
+};
+---
+
+<BaseLayout title={seoData.title} description={seoData.description} lang="fr">
+  <main class="main-content">
+    <div class="content-wrapper">
+      
+      <!-- 鎼滅储澶撮儴 -->
+      <section class="search-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon search">
+              <i class="fas fa-search"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <div>
+              {searchQuery ? (
+                searchResults.length > 0 ? (
+                  <>
+                    <h1 class="page-title">Found {searchResults.length} Results</h1>
+                    <p class="page-description">Search results for: <strong>"{searchQuery}"</strong></p>
+                  </>
+                ) : (
+                  <>
+                    <h1 class="page-title">No Results Found</h1>
+                    <p class="page-description">Search results for: <strong>"{searchQuery}"</strong></p>
+                  </>
+                )
+              ) : (
+                <>
+                  <h1 class="page-title">Search Educational Games</h1>
+                  <p class="page-description">Find the perfect educational game for your learning journey</p>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 鎼滅储缁撴灉 -->
+      {searchQuery && searchResults.length > 0 && (
+        <section class="search-results">
+          <div class="module-header">
+            <div class="module-icon results-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Search Results</h2>
+              <p class="module-subtitle">Found {searchResults.length} games matching "{searchQuery}"</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {searchResults.map((game: any) => (
+              <GameCard 
+                game={game} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 鏃犳悳绱㈢粨鏋?-->
+      {searchQuery && searchResults.length === 0 && (
+        <section class="no-results">
+          <div class="module-header">
+            <div class="module-icon no-results-icon">
+              <i class="fas fa-search"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">No Games Found</h2>
+              <p class="module-subtitle">Sorry, we couldn't find any games matching "{searchQuery}"</p>
+            </div>
+          </div>
+          
+          <div class="search-suggestions">
+            <h3 class="section-title">Try searching for:</h3>
+            <div class="search-tags">
+              {popularSearchTerms.map(item => (
+                <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
+                  <i class={`fas ${item.icon}`}></i>
+                  <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)} Games</span>
+                </a>
+              ))}
+            </div>
+          </div>
+          
+          <div class="module-header" style="margin-top: 3rem;">
+            <div class="module-icon recommendations-icon">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">You Might Like These Games</h2>
+              <p class="module-subtitle">Try these popular games instead</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {popularGames.map((game: any) => (
+              <GameCard 
+                game={game} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 榛樿瑙嗗浘锛堟病鏈夋悳绱㈡椂锛?-->
+      {!searchQuery && (
+        <>
+          <section class="search-prompt">
+            <div class="module-header">
+              <div class="module-icon prompt-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <div class="module-title-group">
+                <h2 class="module-title">Start Your Learning Adventure</h2>
+                <p class="module-subtitle">Use the search bar above to find educational games by subject, difficulty, or keywords</p>
+              </div>
+            </div>
+            
+            <div class="popular-searches">
+              <h3 class="section-title">Popular Searches</h3>
+              <div class="search-tags">
+                {popularSearchTerms.map(item => (
+                  <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
+                    <i class={`fas ${item.icon}`}></i>
+                    <span>{item.term.charAt(0).toUpperCase() + item.term.slice(1)}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section class="recommendations">
+            <div class="module-header">
+              <div class="module-icon recommendations-icon">
+                <i class="fas fa-star"></i>
+              </div>
+              <div class="module-title-group">
+                <h2 class="module-title">Popular Educational Games</h2>
+                <p class="module-subtitle">Start with our most loved educational games</p>
+              </div>
+            </div>
+            
+            <div class="games-grid">
+              {popularGames.map((game: any) => (
+                <GameCard 
+                  game={game} 
+                  showPopularity={true} 
+                  showFavorite={true} 
+                  showDeveloper={false}
+                />
+              ))}
+            </div>
+          </section>
+        </>
+      )}
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 涓昏鍐呭鍖哄煙 */
+  .main-content {
+    width: 100%;
+    background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(245, 158, 11, 0.05) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 鎼滅储澶撮儴 - 姗欒壊涓婚 */
+  .search-header {
+    background: linear-gradient(135deg, #FEF3E2 0%, #FED7AA 50%, #F59E0B 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(245, 158, 11, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .search-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .section-icon.search {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    color: #92400E;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #78350F;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .page-description strong {
+    color: #92400E;
+    font-weight: 700;
+  }
+
+  /* 閫氱敤妯″潡鏍峰紡 */
+  .search-prompt,
+  .recommendations,
+  .search-results,
+  .no-results {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+  }
+
+  .prompt-icon {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+  }
+
+  .recommendations-icon {
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+  }
+
+  .results-icon {
+    background: linear-gradient(135deg, #059669, #047857);
+  }
+
+  .no-results-icon {
+    background: linear-gradient(135deg, #6B7280, #4B5563);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .module-subtitle {
+    font-size: 1rem;
+    color: #6B7280;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  /* 鎼滅储鏍囩 */
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1.5rem 0;
+    text-align: center;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  .search-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .search-tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 12px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
+
+  /* 鎼滅储鏍囩棰滆壊鍙樹綋 */
+  .search-tag.blue {
+    background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+    color: #1D4ED8;
+  }
+
+  .search-tag.blue:hover {
+    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  }
+
+  .search-tag.green {
+    background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+    color: #059669;
+  }
+
+  .search-tag.green:hover {
+    background: linear-gradient(135deg, #10B981, #059669);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+  }
+
+  .search-tag.purple {
+    background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+    color: #7C3AED;
+  }
+
+  .search-tag.purple:hover {
+    background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+  }
+
+  .search-tag.orange {
+    background: linear-gradient(135deg, #FED7AA, #FDBA74);
+    color: #D97706;
+  }
+
+  .search-tag.orange:hover {
+    background: linear-gradient(135deg, #F59E0B, #D97706);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+  }
+
+  .search-tag.red {
+    background: linear-gradient(135deg, #FEE2E2, #FECACA);
+    color: #DC2626;
+  }
+
+  .search-tag.red:hover {
+    background: linear-gradient(135deg, #EF4444, #DC2626);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  }
+
+  .search-tag.teal {
+    background: linear-gradient(135deg, #CCFBF1, #99F6E4);
+    color: #0F766E;
+  }
+
+  .search-tag.teal:hover {
+    background: linear-gradient(135deg, #14B8A6, #0F766E);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
+  }
+
+  /* 娓告垙缃戞牸 */
+  .games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* 鎼滅储寤鸿鍜岀儹闂ㄦ悳绱?*/
+  .popular-searches {
+    padding: 1.5rem 0;
+  }
+
+  .search-suggestions {
+    margin-bottom: 2rem;
+  }
+
+  /* 鍝嶅簲寮忚璁?*/
+  @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+    
+    .search-header {
+      padding: 2rem;
+    }
+    
+    .header-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+    
+    .search-header {
+      padding: 1.5rem;
+    }
+    
+    .page-title {
+      font-size: 2rem;
+    }
+    
+    .games-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+    
+    .search-prompt,
+    .recommendations,
+    .search-results,
+    .no-results {
+      padding: 1.5rem;
+    }
+    
+    .search-tags {
+      gap: 0.75rem;
+    }
+    
+    .search-tag {
+      padding: 0.625rem 1rem;
+      font-size: 0.9rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .games-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .search-tags {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .search-tag {
+      width: 100%;
+      max-width: 240px;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  // 瀹㈡埛绔悳绱㈠姛鑳?
+  console.log('馃攳 鎼滅储椤甸潰瀹㈡埛绔剼鏈紑濮嬫墽琛?);
+  
+  // 绛夊緟椤甸潰鍜孏AMES_DATA鍔犺浇瀹屾垚
+  document.addEventListener('DOMContentLoaded', function() {
+    console.log('馃攳 DOM鍔犺浇瀹屾垚锛屽紑濮嬪垵濮嬪寲鎼滅储鍔熻兘');
+    
+    // 妫€鏌ュ叏灞€娓告垙鏁版嵁
+    if (!window.GAMES_DATA || !Array.isArray(window.GAMES_DATA)) {
+      console.error('鉂?GAMES_DATA鏈壘鍒版垨鏍煎紡閿欒');
+      return;
+    }
+    
+    console.log(`鉁?鎵惧埌 ${window.GAMES_DATA.length} 涓父鎴忔暟鎹甡);
+    
+    // 浠嶶RL鑾峰彇鎼滅储鍙傛暟
+    const urlParams = new URLSearchParams(window.location.search);
+    const searchQuery = urlParams.get('q') || '';
+    
+    console.log(`馃攳 瀹㈡埛绔悳绱㈡煡璇? "${searchQuery}"`);
+    
+    // 璁剧疆鎼滅储妗嗗€?
+    const searchInput = document.querySelector('input[name="q"]') as HTMLInputElement;
+    if (searchInput) {
+      searchInput.value = searchQuery;
+      console.log('鉁?鎼滅储妗嗗€煎凡璁剧疆');
+    }
+    
+    // 濡傛灉鏈夋悳绱㈡煡璇紝鎵ц鎼滅储
+    if (searchQuery && searchQuery.trim().length > 0) {
+      console.log('馃幆 鎵ц瀹㈡埛绔悳绱?..');
+      performClientSearch(searchQuery.trim());
+    } else {
+      console.log('馃彔 鏄剧ず榛樿椤甸潰');
+    }
+    
+    // 鎼滅储寤鸿鍔熻兘
+    if (searchInput) {
+      searchInput.addEventListener('input', function() {
+        const query = this.value.trim();
+        if (query.length >= 2) {
+          console.log(`姝ｅ湪鎼滅储: ${query}`);
+          // 鍙互鍦ㄨ繖閲屾坊鍔犲疄鏃舵悳绱㈠缓璁?
+        }
+      });
+    }
+  });
+  
+  // 瀹㈡埛绔悳绱㈠嚱鏁?
+  function performClientSearch(query: string) {
+    console.log(`馃攳 寮€濮嬪鎴风鎼滅储: "${query}"`);
+    
+    const searchTerm = query.toLowerCase();
+    const allGames = window.GAMES_DATA || [];
+    
+    // 鎵ц鎼滅储閫昏緫
+    const searchResults = allGames.filter((game: any) => 
+      game.title.toLowerCase().includes(searchTerm) ||
+      game.description.toLowerCase().includes(searchTerm) ||
+      game.category.toLowerCase().includes(searchTerm) ||
+      (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
+    );
+    
+    console.log(`馃幃 鎼滅储"${query}"鎵惧埌 ${searchResults.length} 涓粨鏋渀);
+    
+    // 鏇存柊椤甸潰鍐呭
+    updateSearchResults(query, searchResults);
+  }
+  
+  // 鏇存柊鎼滅储缁撴灉鏄剧ず
+  function updateSearchResults(query: string, results: any[]) {
+    console.log('馃帹 鏇存柊鎼滅储缁撴灉鏄剧ず');
+    
+    // 鑾峰彇椤甸潰鍏冪礌
+    const searchHeader = document.querySelector('.search-header .header-text > div');
+    const contentWrapper = document.querySelector('.content-wrapper');
+    
+    if (!searchHeader || !contentWrapper) {
+      console.error('鉂?椤甸潰鍏冪礌鏈壘鍒?);
+      return;
+    }
+    
+    // 鏇存柊鏍囬
+    if (results.length > 0) {
+      searchHeader.innerHTML = `
+        <h1 class="page-title">Found ${results.length} Results</h1>
+        <p class="page-description">Search results for: <strong>"${query}"</strong></p>
+      `;
+    } else {
+      searchHeader.innerHTML = `
+        <h1 class="page-title">No Results Found</h1>
+        <p class="page-description">Search results for: <strong>"${query}"</strong></p>
+      `;
+    }
+    
+    // 绉婚櫎鐜版湁鐨勬悳绱㈢粨鏋滃拰榛樿鍐呭
+    const existingResults = contentWrapper.querySelectorAll('.search-results, .no-results, .search-prompt, .recommendations');
+    existingResults.forEach(el => el.remove());
+    
+    if (results.length > 0) {
+      // 鏄剧ず鎼滅储缁撴灉
+      const resultsSection = createResultsSection(query, results);
+      contentWrapper.appendChild(resultsSection);
+    } else {
+      // 鏄剧ず鏃犵粨鏋滈〉闈?
+      const noResultsSection = createNoResultsSection(query);
+      contentWrapper.appendChild(noResultsSection);
+    }
+    
+    console.log('鉁?鎼滅储缁撴灉鏄剧ず鏇存柊瀹屾垚');
+  }
+  
+  // 鍒涘缓鎼滅储缁撴灉鍖哄煙
+  function createResultsSection(query: string, results: any[]): HTMLElement {
+    const section = document.createElement('section');
+    section.className = 'search-results';
+    section.style.cssText = `
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E5E7EB;
+    `;
+    
+    section.innerHTML = `
+      <div class="module-header" style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #F3F4F6;">
+        <div class="module-icon results-icon" style="width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); flex-shrink: 0; background: linear-gradient(135deg, #059669, #047857);">
+          <i class="fas fa-gamepad"></i>
+        </div>
+        <div class="module-title-group" style="flex: 1;">
+          <h2 class="module-title" style="font-size: 1.75rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; font-family: 'Space Grotesk', sans-serif;">Search Results</h2>
+          <p class="module-subtitle" style="font-size: 1rem; color: #6B7280; margin: 0; font-weight: 500;">Found ${results.length} games matching "${query}"</p>
+        </div>
+      </div>
+      <div class="games-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem;">
+        ${results.map(game => createGameCard(game)).join('')}
+      </div>
+    `;
+    
+    return section;
+  }
+  
+  // 鍒涘缓鏃犵粨鏋滃尯鍩?
+  function createNoResultsSection(query: string): HTMLElement {
+    const section = document.createElement('section');
+    section.className = 'no-results';
+    section.style.cssText = `
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      border: 1px solid #E5E7EB;
+    `;
+    
+    // 鑾峰彇鐑棬鎼滅储璇?
+    const popularTerms = [
+      { term: 'math', icon: 'fa-calculator', color: 'blue' },
+      { term: 'science', icon: 'fa-flask', color: 'green' },
+      { term: 'puzzle', icon: 'fa-puzzle-piece', color: 'orange' },
+      { term: 'language', icon: 'fa-language', color: 'red' },
+      { term: 'sports', icon: 'fa-futbol', color: 'purple' },
+      { term: 'art', icon: 'fa-palette', color: 'teal' }
+    ];
+    
+    section.innerHTML = `
+      <div class="module-header" style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid #F3F4F6;">
+        <div class="module-icon no-results-icon" style="width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); flex-shrink: 0; background: linear-gradient(135deg, #6B7280, #4B5563);">
+          <i class="fas fa-search"></i>
+        </div>
+        <div class="module-title-group" style="flex: 1;">
+          <h2 class="module-title" style="font-size: 1.75rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; font-family: 'Space Grotesk', sans-serif;">No Games Found</h2>
+          <p class="module-subtitle" style="font-size: 1rem; color: #6B7280; margin: 0; font-weight: 500;">Sorry, we couldn't find any games matching "${query}"</p>
+        </div>
+      </div>
+      
+      <div class="search-suggestions" style="margin-bottom: 2rem;">
+        <h3 class="section-title" style="font-size: 1.25rem; font-weight: 600; color: #1F2937; margin: 0 0 1.5rem 0; text-align: center; font-family: 'Space Grotesk', sans-serif;">Try searching for:</h3>
+        <div class="search-tags" style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center;">
+          ${popularTerms.map(item => `
+            <a href="/search?q=${item.term}" class="search-tag ${item.color}" style="display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.25rem; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 0.95rem; transition: all 0.3s ease; border: 2px solid transparent;">
+              <i class="fas ${item.icon}"></i>
+              <span>${item.term.charAt(0).toUpperCase() + item.term.slice(1)} Games</span>
+            </a>
+          `).join('')}
+        </div>
+      </div>
+    `;
+    
+    return section;
+  }
+  
+  // 鍒涘缓娓告垙鍗＄墖
+  function createGameCard(game: any): string {
+    const gameUrl = `/games/${game.slug}`;
+    const thumbnailUrl = game.thumbnailUrl || '/images/logo.svg';
+    
+    return `
+      <div class="game-card ${game.category}-theme animate-fadeInUp" data-game-id="${game.slug}">
+        <div class="game-image-container">
+          <div class="image-wrapper">
+            <img 
+              src="${thumbnailUrl}"
+              alt="${game.title}"
+              class="game-image"
+              loading="lazy"
+              onerror="this.src='/images/logo.svg'"
+            />
+          </div>
+          
+          <a href="${gameUrl}" class="play-button">
+            <i class="fas fa-play"></i>
+            <span>Play Now</span>
+          </a>
+          
+          <div class="game-badges">
+            ${game.trending ? '<span class="badge trending">HOT</span>' : ''}
+            ${game.featured ? '<span class="badge featured">FEATURED</span>' : ''}
+            ${game.isNew ? '<span class="badge new">NEW</span>' : ''}
+          </div>
+          
+          <button class="favorite-heart-btn" data-game-slug="${game.slug}" aria-label="Add to favorites">
+            <i class="far fa-heart"></i>
+          </button>
+          
+          <div class="played-badge-container" data-game-slug="${game.slug}"></div>
+        </div>
+        
+        <div class="game-info">
+          <h3 class="game-title">
+            <a href="${gameUrl}">${game.title}</a>
+          </h3>
+          
+          <p class="game-description">${game.description}</p>
+          
+          <div class="game-tags">
+            <span class="category-tag ${game.category}">
+              ${game.categoryName || (game.category && game.category.charAt(0).toUpperCase() + game.category.slice(1))}
+            </span>
+            ${game.featured ? '<span class="feature-tag featured">FEATURED</span>' : ''}
+            ${game.trending ? '<span class="feature-tag hot">HOT</span>' : ''}
+            ${game.isNew ? '<span class="feature-tag new">NEW</span>' : ''}
+            <span class="difficulty-tag ${game.difficulty ? game.difficulty.toLowerCase() : 'medium'}">${game.difficulty ? game.difficulty.toUpperCase() : 'MEDIUM'}</span>
+          </div>
+          
+          <div class="game-stats">
+            <div class="stat popularity-stat" data-game-slug="${game.slug}">
+              <i class="fas fa-fire"></i>
+              <span class="popularity-count">Loading...</span>
+            </div>
+            <div class="stat">
+              <i class="fas fa-child"></i>
+              <span>Ages ${game.ageRange || '6-12'}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+</script>
+
+
+

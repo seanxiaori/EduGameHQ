@@ -1,0 +1,130 @@
+---
+// src/components/sections/GameCategories.astro
+import { t } from '../../i18n/utils';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<section id="categories" class="categories-section">
+  <div class="module-header">
+    <div class="module-icon categories">
+      <i class="fas fa-th-large"></i>
+    </div>
+    <div class="module-text">
+      <h2 class="module-title">{t(translations, 'home.explore_by_category.title', 'Explore by Category')}</h2>
+      <p class="module-description">{t(translations, 'home.explore_by_category.description', 'Discover educational games organized by subject areas')}</p>
+    </div>
+  </div>
+  
+  <div class="categories-grid">
+    <!-- 数学游戏 -->
+    <a href="/math-games" class="category-card math">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">+</span>
+          <span class="floating-symbol">×</span>
+          <span class="floating-symbol">÷</span>
+        </div>
+        <div class="category-card-icon">
+          🧮
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.math-games', 'Math Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.math', 'Master numbers, equations and problem-solving')}</p>
+      </div>
+    </a>
+
+    <!-- 科学游戏 -->
+    <a href="/science-games" class="category-card science">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🔬</span>
+          <span class="floating-symbol">⚡</span>
+        </div>
+        <div class="category-card-icon">
+          🧪
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.science-games', 'Science Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.science', 'Explore physics, chemistry and biology')}</p>
+      </div>
+    </a>
+
+    <!-- 语言游戏 -->
+    <a href="/language-games" class="category-card language">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">A</span>
+          <span class="floating-symbol">B</span>
+          <span class="floating-symbol">C</span>
+        </div>
+        <div class="category-card-icon">
+          📚
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.language-games', 'Language Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.language', 'Improve vocabulary, reading and writing')}</p>
+      </div>
+    </a>
+
+    <!-- 益智游戏 -->
+    <a href="/puzzle-games" class="category-card puzzle">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🧩</span>
+          <span class="floating-symbol">🎯</span>
+          <span class="floating-symbol">🔍</span>
+        </div>
+        <div class="category-card-icon">
+          🧩
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.puzzle-games', 'Puzzle Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.puzzle', 'Challenge logic and critical thinking')}</p>
+      </div>
+    </a>
+
+    <!-- 体育游戏 -->
+    <a href="/sports-games" class="category-card sports">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">⚽</span>
+          <span class="floating-symbol">🏀</span>
+          <span class="floating-symbol">🎾</span>
+        </div>
+        <div class="category-card-icon">
+          ⚽
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.sports-games', 'Sports Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.sports', 'Learn teamwork and physical education')}</p>
+        </div>
+    </a>
+
+    <!-- 艺术创意游戏 -->
+    <a href="/art-games" class="category-card art">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🎨</span>
+          <span class="floating-symbol">🖌️</span>
+          <span class="floating-symbol">✨</span>
+        </div>
+        <div class="category-card-icon">
+          🎨
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.art-games', 'Art & Creativity')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.art', 'Express creativity through digital art')}</p>
+      </div>
+    </a>
+  </div>
+</section>

@@ -6,11 +6,12 @@
     "favorites": "즐겨찾기",
     "trending": "인기",
     "recent": "최근 플레이",
-    "new": "새 게임",
+    "new": "신규 게임",
     "about": "소개",
     "help": "도움말",
-    "privacy": "개인정보 처리방침",
-    "terms": "서비스 약관"
+    "privacy": "개인정보 보호정책",
+    "terms": "서비스 약관",
+    "special": "특별 페이지"
   },
   "categories": {
     "math-games": "수학 게임",
@@ -22,83 +23,275 @@
   },
   "hero": {
     "title": "학습과 재미가 만나는 곳",
-    "subtitle": "6-18세 학생들을 위해 설계된 무료 교육 게임을 발견하여 학습을 흥미롭고 효과적으로 만드세요.",
+    "title.full": "학습과 <span class=\"highlight\">재미</span>가 만나는 곳",
+    "subtitle": "6-18세 학생들을 위해 설계된 매력적이고 효과적인 학습을 위한 무료 교육 게임을 발견하세요.",
     "stats": {
       "students": "학생",
       "countries": "국가",
       "free": "무료"
     }
   },
-  "search": {
-    "title": "교육 게임 검색",
-    "subtitle": "당신의 학습 여정에 완벽한 교육 게임을 찾아보세요",
-    "placeholder": "교육 게임 검색...",
-    "button": "검색",
-    "results": "{count}개 결과 발견",
-    "no_results": "결과를 찾을 수 없습니다",
-    "query_for": "\"{query}\" 검색 결과",
-    "categories_filter": "카테고리별 필터",
-    "all_categories": "모든 카테고리"
+  "featured_games": {
+    "title": "추천 게임",
+    "subtitle": "가장 인기 있는 교육 게임들을 탐색하세요"
   },
-  "game": {
+  "category_description": {
+    "math-games": "수학 개념을 재미있게 배우세요",
+    "science-games": "과학의 신비를 탐험하세요",
+    "language-games": "언어 능력을 향상시키세요",
+    "puzzle-games": "논리적 사고력을 개발하세요",
+    "sports-games": "운동과 건강을 배우세요",
+    "art-games": "창의성과 예술적 표현을 탐구하세요"
+  },
+  "common": {
     "play_now": "지금 플레이",
-    "full_screen": "전체 화면",
-    "favorite": "즐겨찾기 추가",
-    "share": "게임 공유",
-    "difficulty": "난이도",
-    "age_range": "연령대",
-    "category": "카테고리",
-    "tags": "태그",
-    "description": "설명",
-    "instructions": "게임 방법",
-    "related": "관련 게임",
-    "source": "게임 출처"
+    "learn_more": "더 알아보기",
+    "back_to_home": "홈으로 돌아가기",
+    "loading": "로딩 중...",
+    "error": "오류가 발생했습니다",
+    "try_again": "다시 시도",
+    "no_results": "결과가 없습니다",
+    "search_placeholder": "게임 검색...",
+    "filter_by_category": "카테고리별 필터",
+    "sort_by": "정렬 기준",
+    "popularity": "인기도",
+    "newest": "최신순",
+    "oldest": "오래된 순"
   },
   "footer": {
-    "tagline": "모든 사람을 위한 재미있는 학습",
-    "description": "EduGameHQ는 학습을 흥미롭고 효과적으로 만드는 교육 게임 플랫폼입니다.",
+    "description": "EduGameHQ는 전 세계 학생들을 위한 최고의 교육 게임 플랫폼입니다.",
     "quick_links": "빠른 링크",
-    "game_categories": "게임 카테고리",
-    "support": "지원 및 정보",
-    "social": "팔로우하기",
-    "copyright": "© 2025 EduGameHQ. 모든 권리 보유.",
-    "made_with_love": "전 세계 학습자를 위해 ❤️로 제작"
+    "categories": "카테고리",
+    "support": "지원",
+    "legal": "법적 고지",
+    "follow_us": "팔로우하기",
+    "copyright": "© 2024 EduGameHQ. 모든 권리 보유.",
+    "logo_alt": "EduGameHQ 로고",
+    "social": {
+      "facebook": "Facebook에서 팔로우",
+      "twitter": "Twitter에서 팔로우",
+      "instagram": "Instagram에서 팔로우",
+      "youtube": "YouTube에서 구독"
+    }
+  },
+  "search": {
+    "title": "게임 검색",
+    "subtitle": "원하는 교육 게임을 찾아보세요",
+    "query_for": "검색 결과: \"{query}\"",
+    "no_results": "검색 결과가 없습니다",
+    "try_different": "다른 키워드로 시도해보세요"
   },
   "about": {
     "title": "EduGameHQ 소개",
-    "subtitle": "학습과 재미가 만나는 곳 - 인터랙티브 게임을 통한 교육 혁신",
-    "mission": "우리의 사명",
-    "values": "핵심 가치",
-    "story": "우리의 이야기",
-    "team": "팀 소개",
-    "stats": "우리의 영향",
-    "contact": "문의하기"
+    "subtitle": "교육과 재미의 완벽한 조화",
+    "mission": {
+      "title": "우리의 미션",
+      "content": "EduGameHQ는 모든 연령대의 학습자들이 즐겁고 효과적으로 학습할 수 있도록 고품질의 교육 게임을 제공하는 것을 목표로 합니다."
+    },
+    "vision": {
+      "title": "우리의 비전", 
+      "content": "교육 게임을 통해 전 세계의 모든 아이들이 학습에 대한 사랑을 발견하고, 지식과 기술을 자연스럽게 습득할 수 있는 미래를 만들어가고 있습니다."
+    },
+    "values": {
+      "title": "우리의 가치",
+      "content": "우리는 교육의 접근성, 품질, 그리고 재미를 최우선으로 생각합니다. 모든 게임은 교육적 가치와 엔터테인먼트를 균형있게 제공합니다."
+    }
   },
   "help": {
-    "title": "도움말 및 지원",
-    "subtitle": "자주 묻는 질문에 대한 답변을 찾고 필요한 도움을 받으세요",
-    "faq": "자주 묻는 질문",
-    "contact_us": "문의하기",
-    "report_issue": "문제 신고"
+    "title": "도움말",
+    "subtitle": "EduGameHQ 사용 방법",
+    "faq": {
+      "title": "자주 묻는 질문",
+      "q1": "게임을 어떻게 플레이하나요?",
+      "a1": "원하는 게임을 클릭하면 바로 플레이할 수 있습니다. 별도의 다운로드나 설치가 필요하지 않습니다.",
+      "q2": "게임이 로드되지 않으면 어떻게 하나요?",
+      "a2": "브라우저를 새로고침하거나 다른 브라우저를 시도해보세요. 문제가 지속되면 지원팀에 문의하세요.",
+      "q3": "모든 게임이 무료인가요?",
+      "a3": "네, EduGameHQ의 모든 게임은 완전히 무료입니다.",
+      "q4": "게임을 즐겨찾기에 추가할 수 있나요?",
+      "a4": "네, 각 게임 페이지에서 즐겨찾기 버튼을 클릭하여 나중에 쉽게 접근할 수 있습니다."
+    },
+    "contact": {
+      "title": "문의하기",
+      "email": "이메일: support@edugamehq.com",
+      "response": "24시간 내에 답변드리겠습니다."
+    }
   },
-  "common": {
-    "loading": "로딩 중...",
-    "error": "문제가 발생했습니다",
-    "try_again": "다시 시도",
-    "back": "뒤로",
-    "next": "다음",
-    "previous": "이전",
+  "privacy": {
+    "title": "개인정보 보호정책",
+    "subtitle": "귀하의 개인정보 보호에 대한 우리의 약속",
+    "last_updated": "마지막 업데이트: 2024년 1월 1일",
+    "introduction": "EduGameHQ는 사용자의 개인정보 보호를 매우 중요하게 생각합니다. 이 정책은 우리가 수집하고 사용하는 정보에 대해 설명합니다.",
+    "data_collection": {
+      "title": "정보 수집",
+      "content": "우리는 게임 플레이 통계와 기본적인 사용 패턴만 수집합니다. 개인을 식별할 수 있는 정보는 수집하지 않습니다."
+    },
+    "data_usage": {
+      "title": "정보 사용",
+      "content": "수집된 정보는 서비스 개선과 새로운 게임 추천을 위해 사용됩니다."
+    },
+    "data_protection": {
+      "title": "정보 보호",
+      "content": "우리는 업계 표준 보안 조치를 사용하여 귀하의 정보를 보호합니다."
+    },
+    "contact": {
+      "title": "문의",
+      "content": "개인정보 보호에 대한 질문이 있으시면 privacy@edugamehq.com으로 연락하세요."
+    }
+  },
+  "terms": {
+    "title": "서비스 약관",
+    "subtitle": "EduGameHQ 사용 조건",
+    "last_updated": "마지막 업데이트: 2024년 1월 1일",
+    "acceptance": {
+      "title": "약관 수락",
+      "content": "EduGameHQ를 사용함으로써 이 약관에 동의하는 것으로 간주됩니다."
+    },
+    "usage": {
+      "title": "사용 조건",
+      "content": "이 서비스는 교육 목적으로만 사용되어야 합니다. 상업적 목적으로 사용할 수 없습니다."
+    },
+    "liability": {
+      "title": "책임 제한",
+      "content": "EduGameHQ는 서비스 사용으로 인한 직접적 또는 간접적 손해에 대해 책임지지 않습니다."
+    },
+    "modifications": {
+      "title": "약관 변경",
+      "content": "우리는 언제든지 이 약관을 수정할 수 있습니다. 변경사항은 웹사이트에 게시됩니다."
+    }
+  },
+  "games": {
+    "play": "플레이",
+    "favorite": "즐겨찾기",
+    "share": "공유",
+    "description": "설명",
+    "instructions": "게임 방법",
+    "age_range": "연령대",
+    "difficulty": "난이도",
+    "duration": "플레이 시간",
+    "tags": "태그",
+    "related_games": "관련 게임",
+    "no_description": "설명이 없습니다",
+    "no_instructions": "게임 방법이 없습니다"
+  },
+  "breadcrumbs": {
+    "home": "홈",
+    "categories": "카테고리",
+    "search": "검색",
+    "about": "소개",
+    "help": "도움말",
+    "privacy": "개인정보 보호정책",
+    "terms": "서비스 약관"
+  },
+  "language_switcher": {
+    "title": "언어 선택",
+    "current": "현재 언어"
+  },
+  "accessibility": {
+    "skip_to_content": "본문으로 건너뛰기",
     "close": "닫기",
-    "save": "저장",
-    "cancel": "취소",
-    "confirm": "확인",
-    "yes": "예",
-    "no": "아니오",
-    "ok": "확인"
+    "menu": "메뉴",
+    "search": "검색",
+    "play_game": "게임 플레이",
+    "add_to_favorites": "즐겨찾기에 추가",
+    "remove_from_favorites": "즐겨찾기에서 제거"
   },
-  "language": {
-    "switch": "언어 변경",
-    "current": "현재 언어",
-    "select": "언어 선택"
+  "about_page": {
+    "seo": {
+      "title": "EduGameHQ 소개 | 교육 게임 플랫폼",
+      "description": "EduGameHQ의 교육 게임을 통한 학습 재미화 미션에 대해 알아보세요. 우리의 스토리, 가치, 그리고 품질 교육에 대한 약속을 발견하세요.",
+      "keywords": "edugamehq 소개, 교육 플랫폼, 학습 게임 미션, 교육 기술"
+    },
+    "header": {
+      "title": "EduGameHQ 소개",
+      "subtitle": "학습과 재미가 만나는 곳 - 인터랙티브 게임을 통한 교육 혁신",
+      "tagline": "모든 아이를 위한 고품질 교육을 접근 가능하고 매력적이며 즐겁게 만들기"
+    },
+    "sidebar": {
+      "title": "우리의 스토리 탐색"
+    },
+    "sections": {
+      "mission": "우리의 미션",
+      "values": "핵심 가치",
+      "story": "우리의 스토리",
+      "team": "팀 소개",
+      "impact": "우리의 영향"
+    },
+    "impact": {
+      "games": "교육 게임",
+      "students": "활성 학생",
+      "countries": "서비스 국가",
+      "free": "무료 콘텐츠"
+    },
+    "mission_section": {
+      "title": "우리의 미션",
+      "description": "호기심을 불러일으키고, 창의성을 키우며, 21세기 필수 기술을 구축하는 무료이고 매력적이며 효과적인 교육 게임을 제공하여 고품질 교육을 민주화하는 것입니다.",
+      "vision_title": "우리의 비전",
+      "vision_description": "모든 아이가 학습을 즐겁고 의미 있으며 변화를 가져오는 고품질 교육 콘텐츠에 접근할 수 있는 세상."
+    },
+    "values_section": {
+      "title": "우리의 핵심 가치",
+      "quality": {
+        "title": "품질 우선",
+        "description": "모든 게임은 교육 전문가들이 신중하게 선별하고 테스트합니다"
+      },
+      "free": {
+        "title": "항상 무료",
+        "description": "교육은 모든 곳의 모든 사람에게 접근 가능해야 합니다"
+      },
+      "safety": {
+        "title": "안전한 환경",
+        "description": "엄격한 안전 및 개인정보 보호 기준을 가진 아동 친화적 콘텐츠"
+      },
+      "reach": {
+        "title": "글로벌 도달",
+        "description": "다국어 콘텐츠로 전 세계 학습자 지원"
+      }
+    },
+    "story_section": {
+      "title": "우리의 스토리",
+      "beginning": {
+        "title": "시작",
+        "description": "EduGameHQ는 간단한 관찰에서 시작되었습니다: 아이들은 재미있을 때 가장 잘 배웁니다. 2023년 교육자, 게임 개발자, 아동 심리학자 팀에 의해 설립되어 엔터테인먼트와 교육 사이의 격차를 메우려고 했습니다."
+      },
+      "growth": {
+        "title": "성장과 확장",
+        "description": "소규모 수학 게임 컬렉션으로 시작한 것이 전 세계 50,000명 이상의 학생들에게 서비스하는 포괄적인 플랫폼으로 성장했습니다. 우리의 게임은 수학, 과학, 코딩, 언어 예술, 비판적 사고 기술을 다룹니다."
+      },
+      "today": {
+        "title": "오늘과 미래",
+        "description": "오늘날 EduGameHQ는 모든 아이를 위한 고품질 교육이 무료이고 접근 가능하며 즐거워야 한다는 핵심 신념에 항상 안내받으며 계속 발전하고 있습니다."
+      }
+    },
+    "team_section": {
+      "title": "우리 팀 소개",
+      "intro": "교육자, 개발자, 연구자로 구성된 우리의 다양한 팀이 전 세계 학생들을 위한 최고의 학습 경험을 만들기 위해 함께 일합니다.",
+      "member1": {
+        "name": "Dr. Sarah Chen",
+        "role": "교육 디렉터",
+        "description": "교육 기술 분야에서 15년 이상 경험을 가진 전 스탠포드 교수"
+      },
+      "member2": {
+        "name": "Mike Rodriguez",
+        "role": "게임 개발자",
+        "description": "교육 콘텐츠 전문 수상 경력 게임 디자이너"
+      },
+      "member3": {
+        "name": "Lisa Wang",
+        "role": "아동 심리학자",
+        "description": "아동 발달 및 학습 심리학 전문가"
+      },
+      "member4": {
+        "name": "Alex Thompson",
+        "role": "기술 리드",
+        "description": "접근 가능한 교육에 열정적인 풀스택 개발자"
+      }
+    },
+    "cta": {
+      "title": "더 알고 싶으신가요?",
+      "description": "여러분의 소식을 듣고 싶습니다! 파트너십, 피드백, 또는 단순히 인사를 위해 연락주세요.",
+      "button1": "연락하기",
+      "button2": "우리의 정책"
+    }
   }
-} 
+}

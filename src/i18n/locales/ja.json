@@ -5,16 +5,17 @@
     "search": "検索",
     "favorites": "お気に入り",
     "trending": "トレンド",
-    "recent": "最近プレイした",
-    "new": "新しいゲーム",
-    "about": "私たちについて",
+    "recent": "最近プレイ",
+    "new": "新着ゲーム",
+    "about": "について",
     "help": "ヘルプ",
     "privacy": "プライバシーポリシー",
-    "terms": "利用規約"
+    "terms": "利用規約",
+    "special": "特別ページ"
   },
   "categories": {
     "math-games": "数学ゲーム",
-    "science-games": "科学ゲーム", 
+    "science-games": "科学ゲーム",
     "language-games": "言語ゲーム",
     "puzzle-games": "パズルゲーム",
     "sports-games": "スポーツゲーム",
@@ -22,7 +23,8 @@
   },
   "hero": {
     "title": "学習と楽しさが出会う場所",
-    "subtitle": "6-18歳の学生向けに設計された無料の教育ゲームを発見し、学習を魅力的で効果的にしましょう。",
+    "title.full": "学習と<span class=\"highlight\">楽しさ</span>が出会う場所",
+    "subtitle": "6-18歳の学生向けに設計された、魅力的で効果的な学習を実現する無料の教育ゲームを発見してください。",
     "stats": {
       "students": "学生",
       "countries": "国",
@@ -31,76 +33,248 @@
   },
   "search": {
     "title": "教育ゲームを検索",
-    "subtitle": "あなたの学習の旅にぴったりの教育ゲームを見つけてください",
+    "subtitle": "あなたの学習の旅に最適な教育ゲームを見つけましょう",
     "placeholder": "教育ゲームを検索...",
     "button": "検索",
     "results": "{count}件の結果が見つかりました",
     "no_results": "結果が見つかりませんでした",
-    "query_for": "\"{query}\"の検索結果",
+    "query_for": "検索結果: \"{query}\"",
     "categories_filter": "カテゴリーでフィルター",
     "all_categories": "すべてのカテゴリー"
   },
   "game": {
+    "random": "ランダムゲーム",
     "play_now": "今すぐプレイ",
     "full_screen": "フルスクリーン",
     "favorite": "お気に入りに追加",
-    "share": "ゲームをシェア",
+    "add_to_favorites": "お気に入りに追加",
+    "share": "ゲームを共有",
     "difficulty": "難易度",
-    "age_range": "対象年齢",
+    "age_range": "年齢範囲",
+    "ages": "年齢",
     "category": "カテゴリー",
     "tags": "タグ",
     "description": "説明",
     "instructions": "遊び方",
     "related": "関連ゲーム",
-    "source": "ゲームソース",
-    "random": "ランダム"
+    "source": "ゲームのソース",
+    "loading": "読み込み中..."
   },
   "footer": {
-    "tagline": "すべての人の学習を楽しくする",
-    "description": "EduGameHQは学習を魅力的で効果的にする教育ゲームプラットフォームです。",
+    "tagline": "すべての人に楽しい学習を",
+    "description": "EduGameHQは、学習を魅力的で効果的にする教育ゲームプラットフォームです。",
     "quick_links": "クイックリンク",
     "game_categories": "ゲームカテゴリー",
     "support": "サポートと情報",
     "social": "フォローする",
     "copyright": "© 2025 EduGameHQ. 全著作権所有。",
-    "made_with_love": "世界中の学習者のために❤️で作られました"
+    "made_with_love": "世界中の学生のために❤️で作られました",
+    "logo_alt": "EduGameHQ ロゴ",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    }
   },
-  "about": {
-    "title": "EduGameHQについて",
-    "subtitle": "学習と楽しさが出会う場所 - インタラクティブゲームによる教育の変革",
-    "mission": "私たちの使命",
-    "values": "コアバリュー",
-    "story": "私たちのストーリー",
-    "team": "チームに会う",
-    "stats": "私たちの影響",
-    "contact": "お問い合わせ"
+  "common": {
+    "back": "戻る",
+    "cancel": "キャンセル",
+    "close": "閉じる",
+    "confirm": "確認",
+    "error": "エラー",
+    "loading": "読み込み中...",
+    "next": "次へ",
+    "no": "いいえ",
+    "ok": "OK",
+    "previous": "前へ",
+    "save": "保存",
+    "try_again": "再試行",
+    "yes": "はい"
+  },
+  "language": {
+    "switch": "言語を切り替え",
+    "current": "現在の言語",
+    "select": "言語を選択"
   },
   "help": {
-    "title": "ヘルプとサポート",
-    "subtitle": "よくある質問への回答を見つけて、必要なヘルプを得てください",
+    "title": "ヘルプセンター",
+    "subtitle": "質問への回答を見つけましょう",
     "faq": "よくある質問",
     "contact_us": "お問い合わせ",
     "report_issue": "問題を報告"
   },
-  "common": {
-    "loading": "読み込み中...",
-    "error": "何かが間違っています",
-    "try_again": "もう一度試す",
-    "back": "戻る",
-    "next": "次へ",
-    "previous": "前へ",
-    "close": "閉じる",
-    "save": "保存",
-    "cancel": "キャンセル",
-    "confirm": "確認",
-    "yes": "はい",
-    "no": "いいえ",
-    "ok": "OK",
-    "skip_to_content": "メインコンテンツにスキップ"
+  "home": {
+    "featured_games": {
+      "title": "おすすめゲーム",
+      "description": "最も人気で推奨されるゲーム"
+    },
+    "category_description": {
+      "math": "数字、方程式、問題解決スキルをマスターする",
+      "science": "インタラクティブな実験を通じて自然世界を探索する",
+      "language": "読書、ライティング、コミュニケーションスキルを向上させる",
+      "puzzle": "批判的思考と問題解決スキルを開発する",
+      "sports": "スポーツと運動について学びながらアクティブに過ごす",
+      "art": "デジタルアートとデザインを通じて創造性を表現する"
+    },
+    "explore_by_category": {
+      "title": "カテゴリー別に探索",
+      "description": "あなたの興味のある分野に最適なゲームを見つけましょう"
+    },
+    "how_it_works": {
+      "title": "使い方",
+      "description": "始めるのは簡単です - これらの簡単な手順に従ってください",
+      "step1": {
+        "title": "ゲームを選択",
+        "description": "興味のあるカテゴリーからゲームを選びます"
+      },
+      "step2": {
+        "title": "プレイ開始",
+        "description": "ワンクリックでゲームを開始し、楽しみながら学習します"
+      },
+      "step3": {
+        "title": "進歩を追跡",
+        "description": "あなたの学習進歩を追跡し、スキルを向上させます"
+      }
+    },
+    "benefit": {
+      "safe_environment": {
+        "title": "安全な環境",
+        "description": "すべてのゲームは子供に適した安全な環境で提供されます"
+      },
+      "curriculum_aligned": {
+        "title": "カリキュラム連携",
+        "description": "教育基準に沿った高品質なコンテンツ"
+      },
+      "no_downloads": {
+        "title": "ダウンロード不要",
+        "description": "ブラウザで直接プレイ、インストール不要"
+      },
+      "cross_platform": {
+        "title": "クロスプラットフォーム",
+        "description": "デスクトップ、タブレット、スマートフォンで利用可能"
+      }
+    },
+    "why_choose_us": {
+      "title": "なぜ私たちを選ぶのか",
+      "description": "EduGameHQはゲーム学習の信頼できるプラットフォームです"
+    },
+    "testimonials": {
+      "title": "ユーザーの声",
+      "description": "学生、保護者、教育者からの実際の体験談"
+    },
+    "testimonial": {
+      "teacher1": {
+        "text": "私の学生たちはEduGameHQのゲームで学習することを愛しています。彼らの集中力と理解力が大幅に向上しました。",
+        "author": "田中先生",
+        "role": "小学校教師"
+      },
+      "parent1": {
+        "text": "息子は数学が苦手でしたが、これらのゲームで楽しく学ぶようになりました。成績も向上しています。",
+        "author": "佐藤さん",
+        "role": "保護者"
+      },
+      "parent2": {
+        "text": "娘は科学ゲームに夢中です。実験や発見を通じて学習するのが大好きです。",
+        "author": "山田さん",
+        "role": "保護者"
+      }
+    },
+    "cta": {
+      "title": "学習の冒険を始める準備はできましたか？",
+      "description": "すでに楽しく学習している何千もの学生に参加しましょう",
+      "button": "無料ゲームを探索"
+    }
   },
-  "language": {
-    "switch": "言語を切り替える",
-    "current": "現在の言語",
-    "select": "言語を選択"
+  "links": {
+    "math_games": "数学ゲーム",
+    "science_games": "科学ゲーム",
+    "language_games": "言語ゲーム",
+    "puzzle_games": "パズルゲーム",
+    "sports_games": "スポーツゲーム",
+    "art_games": "アートゲーム",
+    "new_games": "新着ゲーム"
+  },
+  "about_page": {
+    "seo": {
+      "title": "EduGameHQについて | 教育ゲームプラットフォーム",
+      "description": "EduGameHQの教育ゲームを通じて学習を楽しくする使命について学びましょう。私たちの歴史、価値観、質の高い教育への取り組みを探索してください。",
+      "keywords": "edugamehqについて, 教育プラットフォーム, 学習ゲームの使命, 教育技術"
+    },
+    "header": {
+      "title": "EduGameHQについて",
+      "subtitle": "学習と楽しさが出会う場所 - インタラクティブなゲームを通じて教育を変革",
+      "tagline": "すべての子供が質の高い、楽しく魅力的な教育にアクセスできるようにする"
+    },
+    "sidebar": {
+      "title": "私たちの歴史を探索"
+    },
+    "sections": {
+      "mission": "私たちの使命",
+      "values": "基本価値観",
+      "story": "私たちの歴史",
+      "team": "チームを知る",
+      "impact": "私たちの影響"
+    },
+    "impact": {
+      "games": "教育ゲーム",
+      "students": "アクティブな学生",
+      "countries": "サービス提供国",
+      "free": "無料コンテンツ"
+    },
+    "mission_section": {
+      "title": "私たちの使命",
+      "description": "好奇心を刺激し、創造性を育み、21世紀の必須スキルを開発する、無料で楽しく効果的な教育ゲームを提供することで、質の高い教育へのアクセスを民主化することです。",
+      "vision_title": "私たちのビジョン",
+      "vision_description": "すべての子供が高品質な教育コンテンツにアクセスでき、学習を喜びに満ちた、意味のある、変革的なものにする世界。"
+    },
+    "values_section": {
+      "title": "私たちの基本価値観",
+      "quality": {
+        "title": "品質",
+        "description": "すべてのゲームは教育専門家によって厳選され、教育基準に沿っています"
+      },
+      "free": {
+        "title": "無料アクセス",
+        "description": "経済的障壁に関係なく、すべての子供が学習できるようにします"
+      },
+      "safety": {
+        "title": "安全性",
+        "description": "子供の安全とプライバシーを最優先に考えます"
+      },
+      "reach": {
+        "title": "グローバルリーチ",
+        "description": "世界中の学生に多様な学習体験を提供します"
+      }
+    },
+    "story_section": {
+      "title": "私たちの歴史",
+      "beginning": {
+        "title": "始まり",
+        "description": "教育とテクノロジーの交差点で、より良い学習体験を作りたいという願いから始まりました"
+      },
+      "growth": {
+        "title": "成長",
+        "description": "教育者、開発者、研究者のチームと共に、質の高い教育ゲームを開発してきました"
+      },
+      "today": {
+        "title": "今日",
+        "description": "世界中の何千もの学生にサービスを提供し、学習の未来を形作っています"
+      }
+    },
+    "team_section": {
+      "title": "チームを知る",
+      "intro": "教育者、開発者、研究者の多様なチームが協力して、世界中の学生に最高の学習体験を作り出しています。",
+      "member1": {
+        "name": "田中太郎",
+        "role": "教育ディレクター",
+        "description": "15年の教育経験を持つ教育専門家"
+      },
+      "member2": {
+        "name": "佐藤花子",
+        "role": "技術リード",
+        "description": "教育技術の専門家で、インタラクティブな学習体験の設計者"
+      }
+    }
   }
-} 
+}

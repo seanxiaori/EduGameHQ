@@ -1,0 +1,30 @@
+---
+// src/components/pages/HomePage.astro
+import HeroSection from '../sections/HeroSection.astro';
+import FeaturedGames from '../sections/FeaturedGames.astro';
+import GameCategories from '../sections/GameCategories.astro';
+import HowItWorks from '../sections/HowItWorks.astro';
+import WhyChooseUs from '../sections/WhyChooseUs.astro';
+import Testimonials from '../sections/Testimonials.astro';
+import CtaSection from '../sections/CtaSection.astro';
+
+// 导入页面专属样式
+import '../../styles/home-page.css';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+---
+<div class="main-content">
+  <div class="content-wrapper">
+    <HeroSection translations={translations} />
+    <GameCategories translations={translations} />
+    <FeaturedGames translations={translations} />
+    <HowItWorks translations={translations} />
+    <WhyChooseUs translations={translations} />
+    <Testimonials translations={translations} />
+    <CtaSection translations={translations} />
+  </div>
+</div>

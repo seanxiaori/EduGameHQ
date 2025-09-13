@@ -1,4 +1,5 @@
 import { languages, defaultLanguage, supportedLanguages, rtlLanguages, type LanguageCode } from './config';
+import deepmerge from 'deepmerge';
 
 // 翻译数据类型
 export interface TranslationData {
@@ -45,11 +46,19 @@ export async function getTranslations(lang: LanguageCode): Promise<TranslationDa
     const translations = await import(`./locales/${lang}.json`);
     const data = translations.default || translations;
     
-    // 缓存翻译数据
-    translationCache.set(cacheKey, data);
+    // 获取已有的缓存数据，如果没有则为空对象
+    const existingData = translationCache.get(cacheKey) || {};
+    // 将新旧数据深度合并
+    const mergedData = deepmerge(existingData, data);
     
-    return data;
+    // 缓存合并后的翻译数据
+    translationCache.set(cacheKey, mergedData);
+    
+    return mergedData;
   } catch (error) {
+    console.error(`--- [深度调试] 加载 '${lang}.json' 失败 ---`);
+    console.error('根本错误原因:', error);
+    console.error(`--- [深度调试] 结束 ---`);
     console.warn(`Failed to load translations for ${lang}, falling back to ${defaultLanguage}`);
     
     // 回退到默认语言

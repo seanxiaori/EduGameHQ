@@ -10,19 +10,21 @@
     "about": "Über uns",
     "help": "Hilfe",
     "privacy": "Datenschutz",
-    "terms": "Nutzungsbedingungen"
+    "terms": "Nutzungsbedingungen",
+    "special": "Spezielle Seiten"
   },
   "categories": {
-    "math-games": "Mathe-Spiele",
-    "science-games": "Wissenschaftsspiele", 
-    "language-games": "Sprachspiele",
+    "math-games": "Mathematik-Spiele",
+    "science-games": "Wissenschafts-Spiele",
+    "language-games": "Sprach-Spiele",
     "puzzle-games": "Puzzle-Spiele",
-    "sports-games": "Sportspiele",
-    "art-games": "Kunstspiele"
+    "sports-games": "Sport-Spiele",
+    "art-games": "Kunst-Spiele"
   },
   "hero": {
     "title": "Wo Lernen auf Spaß trifft",
-    "subtitle": "Entdecken Sie kostenlose Lernspiele, die darauf ausgelegt sind, das Lernen für Schüler von 6-18 Jahren ansprechend und effektiv zu gestalten.",
+    "title.full": "Wo Lernen auf <span class=\"highlight\">Spaß</span> trifft",
+    "subtitle": "Entdecken Sie kostenlose Bildungsspiele, die darauf ausgelegt sind, das Lernen für Schüler im Alter von 6-18 Jahren attraktiv und effektiv zu gestalten.",
     "stats": {
       "students": "Schüler",
       "countries": "Länder",
@@ -30,9 +32,9 @@
     }
   },
   "search": {
-    "title": "Lernspiele suchen",
-    "subtitle": "Finden Sie das perfekte Lernspiel für Ihre Lernreise",
-    "placeholder": "Lernspiele suchen...",
+    "title": "Bildungsspiele suchen",
+    "subtitle": "Finden Sie das perfekte Bildungsspiel für Ihre Lernreise",
+    "placeholder": "Bildungsspiele suchen...",
     "button": "Suchen",
     "results": "{count} Ergebnisse gefunden",
     "no_results": "Keine Ergebnisse gefunden",
@@ -41,66 +43,238 @@
     "all_categories": "Alle Kategorien"
   },
   "game": {
+    "random": "Zufälliges Spiel",
     "play_now": "Jetzt spielen",
     "full_screen": "Vollbild",
     "favorite": "Zu Favoriten hinzufügen",
+    "add_to_favorites": "Zu Favoriten hinzufügen",
     "share": "Spiel teilen",
     "difficulty": "Schwierigkeit",
     "age_range": "Altersbereich",
+    "ages": "Alter",
     "category": "Kategorie",
     "tags": "Tags",
     "description": "Beschreibung",
     "instructions": "Spielanleitung",
     "related": "Ähnliche Spiele",
     "source": "Spielquelle",
-    "random": "Zufällig"
+    "loading": "Lädt..."
   },
   "footer": {
-    "tagline": "Lernen für alle unterhaltsam machen",
-    "description": "EduGameHQ ist Ihre Plattform für Lernspiele, die das Lernen ansprechend und effektiv macht.",
-    "quick_links": "Schnelle Links",
+    "tagline": "Lernen für alle zum Vergnügen machen",
+    "description": "EduGameHQ ist Ihre Bildungsspiel-Plattform, die Lernen attraktiv und effektiv macht.",
+    "quick_links": "Schnelllinks",
     "game_categories": "Spielkategorien",
     "support": "Support und Informationen",
     "social": "Folgen Sie uns",
     "copyright": "© 2025 EduGameHQ. Alle Rechte vorbehalten.",
-    "made_with_love": "Mit ❤️ für Lernende weltweit gemacht"
-  },
-  "about": {
-    "title": "Über EduGameHQ",
-    "subtitle": "Wo Lernen auf Spaß trifft - Bildung durch interaktive Spiele transformieren",
-    "mission": "Unsere Mission",
-    "values": "Grundwerte",
-    "story": "Unsere Geschichte",
-    "team": "Lernen Sie unser Team kennen",
-    "stats": "Unser Einfluss",
-    "contact": "Kontaktieren Sie uns"
-  },
-  "help": {
-    "title": "Hilfe und Support",
-    "subtitle": "Finden Sie Antworten auf häufige Fragen und erhalten Sie die Hilfe, die Sie benötigen",
-    "faq": "Häufig gestellte Fragen",
-    "contact_us": "Kontaktieren Sie uns",
-    "report_issue": "Problem melden"
+    "made_with_love": "Mit ❤️ für Schüler auf der ganzen Welt gemacht",
+    "logo_alt": "EduGameHQ Logo",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    }
   },
   "common": {
-    "loading": "Lädt...",
-    "error": "Etwas ist schiefgelaufen",
-    "try_again": "Erneut versuchen",
     "back": "Zurück",
-    "next": "Weiter",
-    "previous": "Vorherige",
-    "close": "Schließen",
-    "save": "Speichern",
     "cancel": "Abbrechen",
+    "close": "Schließen",
     "confirm": "Bestätigen",
-    "yes": "Ja",
+    "error": "Fehler",
+    "loading": "Lädt...",
+    "next": "Weiter",
     "no": "Nein",
     "ok": "OK",
-    "skip_to_content": "Zum Hauptinhalt springen"
+    "previous": "Vorherige",
+    "save": "Speichern",
+    "try_again": "Erneut versuchen",
+    "yes": "Ja"
   },
   "language": {
     "switch": "Sprache wechseln",
     "current": "Aktuelle Sprache",
     "select": "Sprache auswählen"
+  },
+  "help": {
+    "title": "Hilfezentrum",
+    "subtitle": "Finden Sie Antworten auf Ihre Fragen",
+    "faq": "Häufig gestellte Fragen",
+    "contact_us": "Kontaktieren Sie uns",
+    "report_issue": "Problem melden"
+  },
+  "home": {
+    "featured_games": {
+      "title": "Empfohlene Spiele",
+      "description": "Unsere beliebtesten und empfohlenen Spiele"
+    },
+    "category_description": {
+      "math": "Meistern Sie Zahlen, Gleichungen und Problemlösungsfähigkeiten",
+      "science": "Erkunden Sie die natürliche Welt durch interaktive Experimente",
+      "language": "Verbessern Sie Lese-, Schreib- und Kommunikationsfähigkeiten",
+      "puzzle": "Entwickeln Sie kritisches Denken und Problemlösungsfähigkeiten",
+      "sports": "Bleiben Sie aktiv, während Sie über Sport und Bewegung lernen",
+      "art": "Drücken Sie Ihre Kreativität durch digitale Kunst und Design aus"
+    },
+    "explore_by_category": {
+      "title": "Nach Kategorie erkunden",
+      "description": "Finden Sie perfekte Spiele für Ihr Interessengebiet"
+    },
+    "how_it_works": {
+      "title": "Wie es funktioniert",
+      "description": "Anfangen ist einfach - folgen Sie diesen einfachen Schritten",
+      "step1": {
+        "title": "Spiel auswählen",
+        "description": "Wählen Sie ein Spiel aus einer Kategorie, die Sie interessiert"
+      },
+      "step2": {
+        "title": "Spielen beginnen",
+        "description": "Starten Sie das Spiel mit einem Klick und lernen Sie spielend"
+      },
+      "step3": {
+        "title": "Fortschritt verfolgen",
+        "description": "Verfolgen Sie Ihren Lernfortschritt und verbessern Sie Ihre Fähigkeiten"
+      }
+    },
+    "benefit": {
+      "safe_environment": {
+        "title": "Sichere Umgebung",
+        "description": "Alle Spiele werden in einer sicheren, kindgerechten Umgebung bereitgestellt"
+      },
+      "curriculum_aligned": {
+        "title": "Lehrplanorientiert",
+        "description": "Hochwertige Inhalte, die an Bildungsstandards ausgerichtet sind"
+      },
+      "no_downloads": {
+        "title": "Keine Downloads",
+        "description": "Direkt im Browser spielen, keine Installation erforderlich"
+      },
+      "cross_platform": {
+        "title": "Plattformübergreifend",
+        "description": "Verfügbar auf Desktop, Tablet und Smartphone"
+      }
+    },
+    "why_choose_us": {
+      "title": "Warum uns wählen",
+      "description": "EduGameHQ ist die vertrauenswürdige Plattform für spielbasiertes Lernen"
+    },
+    "testimonials": {
+      "title": "Was unsere Nutzer sagen",
+      "description": "Echte Erfahrungen von Schülern, Eltern und Pädagogen"
+    },
+    "testimonial": {
+      "teacher1": {
+        "text": "Meine Schüler lieben es, mit EduGameHQ-Spielen zu lernen. Ihre Konzentration und ihr Verständnis haben sich erheblich verbessert.",
+        "author": "Herr Müller",
+        "role": "Grundschullehrer"
+      },
+      "parent1": {
+        "text": "Mein Sohn hatte Schwierigkeiten mit Mathematik, aber diese Spiele haben ihm geholfen, es auf unterhaltsame Weise zu lernen. Seine Noten haben sich verbessert.",
+        "author": "Frau Schmidt",
+        "role": "Elternteil"
+      },
+      "parent2": {
+        "text": "Meine Tochter ist begeistert von den Wissenschaftsspielen. Sie liebt es, durch Experimente und Entdeckungen zu lernen.",
+        "author": "Herr Weber",
+        "role": "Elternteil"
+      }
+    },
+    "cta": {
+      "title": "Bereit, Ihr Lernabenteuer zu beginnen?",
+      "description": "Schließen Sie sich Tausenden von Schülern an, die bereits spielend lernen",
+      "button": "Kostenlose Spiele erkunden"
+    }
+  },
+  "links": {
+    "math_games": "Mathematik-Spiele",
+    "science_games": "Wissenschafts-Spiele",
+    "language_games": "Sprach-Spiele",
+    "puzzle_games": "Puzzle-Spiele",
+    "sports_games": "Sport-Spiele",
+    "art_games": "Kunst-Spiele",
+    "new_games": "Neue Spiele"
+  },
+  "about_page": {
+    "seo": {
+      "title": "Über EduGameHQ | Bildungsspiel-Plattform",
+      "description": "Lernen Sie EduGameHQs Mission kennen, Lernen durch Bildungsspiele unterhaltsam zu gestalten. Erkunden Sie unsere Geschichte, Werte und unser Engagement für qualitativ hochwertige Bildung.",
+      "keywords": "über edugamehq, Bildungsplattform, Lernspiel-Mission, Bildungstechnologie"
+    },
+    "header": {
+      "title": "Über EduGameHQ",
+      "subtitle": "Wo Lernen auf Spaß trifft - Bildung durch interaktive Spiele transformieren",
+      "tagline": "Jedes Kind soll Zugang zu qualitativ hochwertiger, unterhaltsamer und ansprechender Bildung haben"
+    },
+    "sidebar": {
+      "title": "Unsere Geschichte erkunden"
+    },
+    "sections": {
+      "mission": "Unsere Mission",
+      "values": "Grundwerte",
+      "story": "Unsere Geschichte",
+      "team": "Unser Team kennenlernen",
+      "impact": "Unser Einfluss"
+    },
+    "impact": {
+      "games": "Bildungsspiele",
+      "students": "aktive Schüler",
+      "countries": "bediente Länder",
+      "free": "kostenlose Inhalte"
+    },
+    "mission_section": {
+      "title": "Unsere Mission",
+      "description": "Den Zugang zu qualitativ hochwertiger Bildung zu demokratisieren, indem wir kostenlose, unterhaltsame und effektive Bildungsspiele bereitstellen, die Neugier wecken, Kreativität fördern und wesentliche Fähigkeiten für das 21. Jahrhundert entwickeln.",
+      "vision_title": "Unsere Vision",
+      "vision_description": "Eine Welt, in der jedes Kind Zugang zu hochwertigen Bildungsinhalten hat und Lernen zu einer freudigen, bedeutungsvollen und transformativen Erfahrung macht."
+    },
+    "values_section": {
+      "title": "Unsere Grundwerte",
+      "quality": {
+        "title": "Qualität",
+        "description": "Alle Spiele werden von Bildungsexperten kuratiert und sind an Bildungsstandards ausgerichtet"
+      },
+      "free": {
+        "title": "Kostenloser Zugang",
+        "description": "Sicherstellen, dass alle Kinder unabhängig von wirtschaftlichen Barrieren lernen können"
+      },
+      "safety": {
+        "title": "Sicherheit",
+        "description": "Kindersicherheit und Datenschutz haben oberste Priorität"
+      },
+      "reach": {
+        "title": "Globale Reichweite",
+        "description": "Vielfältige Lernerfahrungen für Schüler weltweit bieten"
+      }
+    },
+    "story_section": {
+      "title": "Unsere Geschichte",
+      "beginning": {
+        "title": "Der Anfang",
+        "description": "Begonnen mit dem Wunsch, bessere Lernerfahrungen an der Schnittstelle von Bildung und Technologie zu schaffen"
+      },
+      "growth": {
+        "title": "Wachstum",
+        "description": "Zusammenarbeit mit einem Team von Pädagogen, Entwicklern und Forschern zur Entwicklung hochwertiger Bildungsspiele"
+      },
+      "today": {
+        "title": "Heute",
+        "description": "Bedienung Tausender Schüler weltweit und Gestaltung der Zukunft des Lernens"
+      }
+    },
+    "team_section": {
+      "title": "Unser Team kennenlernen",
+      "intro": "Unser vielfältiges Team von Pädagogen, Entwicklern und Forschern arbeitet zusammen daran, die besten Lernerfahrungen für Schüler auf der ganzen Welt zu schaffen.",
+      "member1": {
+        "name": "Dr. Hans Müller",
+        "role": "Bildungsdirektor",
+        "description": "Bildungsexperte mit 15 Jahren Erfahrung im Unterrichtswesen"
+      },
+      "member2": {
+        "name": "Anna Schmidt",
+        "role": "Technische Leiterin",
+        "description": "Expertin für Bildungstechnologie und Designerin interaktiver Lernerfahrungen"
+      }
+    }
   }
-} 
+}

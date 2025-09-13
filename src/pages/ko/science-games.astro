@@ -1,0 +1,737 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GameCard from '../../components/GameCard.astro';
+import type { Game } from '../../types/game';
+import fs from 'fs';
+import path from 'path';
+
+// 导入样式文件
+import '../../styles/game-card.css';
+
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
+// 筛选科学游戏
+const scienceGames = allGamesData.filter(game => game.category === 'science');
+
+// 按难度和特色分组游戏
+const featuredGames = scienceGames.filter(game => game.featured);
+const easyGames = scienceGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = scienceGames.filter(game => game.difficulty === 'Medium');
+const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
+---
+
+<BaseLayout lang="ko">
+  <!-- 引入统一游戏卡片样式 -->
+  
+  
+  <main class="main-content">
+    <div class="content-wrapper">
+
+      <!-- 1. 页面顶部区域 -->
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon science">
+              <i class="fas fa-flask"></i>
+            </div>
+          </div>
+          <div class="header-text">
+          <h1 class="page-title">Science Games</h1>
+          <p class="page-description">
+              Explore the wonders of science with interactive games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists who want to discover how the world works through hands-on experimentation and observation.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. 特色游戏模块 -->
+      {featuredGames.length > 0 && (
+        <section class="game-module featured-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon">
+                  <i class="fas fa-star"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Science Games</h2>
+              <p class="module-subtitle">Our most popular and recommended science games</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {featuredGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 3. 容易难度游戏模块 -->
+      {easyGames.length > 0 && (
+        <section class="game-module difficulty-module easy-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon">
+              <i class="fas fa-smile"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Easy Level Games</h2>
+              <p class="module-subtitle">Perfect for beginners and young scientists</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {easyGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 4. 中等难度游戏模块 -->
+      {mediumGames.length > 0 && (
+        <section class="game-module difficulty-module medium-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon">
+              <i class="fas fa-meh"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Medium Level Games</h2>
+              <p class="module-subtitle">Challenge yourself with intermediate scientific concepts</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {mediumGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 5. 困难游戏模块 -->
+      {hardGames.length > 0 && (
+        <section class="game-module difficulty-module hard-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon">
+              <i class="fas fa-frown"></i>
+            </div>
+            <div class="module-title-group">
+              <h2 class="module-title">Hard Level Games</h2>
+              <p class="module-subtitle">Advanced challenges for science experts</p>
+            </div>
+          </div>
+          
+          <div class="games-grid">
+            {hardGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- 6. 学习建议模块 -->
+      <section class="info-module tips-module">
+        <div class="module-header">
+          <div class="module-icon tips-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Science Learning Tips</h2>
+            <p class="module-subtitle">Expert advice to improve your scientific thinking</p>
+          </div>
+        </div>
+        
+        <div class="tips-grid">
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Observe Everything</h4>
+              <p class="tip-text">Pay attention to the world around you and ask "why" and "how"</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Experiment Safely</h4>
+              <p class="tip-text">Test your hypotheses through controlled experiments and observations</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Keep a Science Journal</h4>
+              <p class="tip-text">Record your observations, questions, and discoveries</p>
+            </div>
+          </div>
+          
+          <div class="tip-item">
+            <div class="tip-icon">
+              <i class="fas fa-link"></i>
+            </div>
+            <div class="tip-content">
+              <h4 class="tip-title">Connect to Real Life</h4>
+              <p class="tip-text">Relate scientific concepts to everyday phenomena and experiences</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. 核心技能模块 -->
+      <section class="info-module skills-module">
+        <div class="module-header">
+          <div class="module-icon skills-icon">
+            <i class="fas fa-brain"></i>
+          </div>
+          <div class="module-title-group">
+            <h2 class="module-title">Core Skills You'll Develop</h2>
+            <p class="module-subtitle">Essential scientific abilities gained through gameplay</p>
+          </div>
+        </div>
+
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Scientific Method</h4>
+              <p class="skill-description">Learn observation and experimentation</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-atom"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Physics Concepts</h4>
+              <p class="skill-description">Understand forces and motion</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-dna"></i>
+              </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Biology Basics</h4>
+              <p class="skill-description">Explore living organisms</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-vial"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Chemistry</h4>
+              <p class="skill-description">Discover elements and reactions</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-globe"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Earth Science</h4>
+              <p class="skill-description">Study our planet and environment</p>
+            </div>
+          </div>
+          
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-cog"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">Critical Thinking</h4>
+              <p class="skill-description">Develop logical reasoning skills</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .main-content {
+    width: 100%;
+    background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(5, 150, 105, 0.05) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 1. 页面头部区域 */
+  .page-header {
+    background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 50%, rgba(5, 150, 105, 0.08) 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(5, 150, 105, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(5, 150, 105, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(5, 150, 105, 0.3) 50%, transparent 100%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065F46 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 
+      0 8px 24px rgba(5, 150, 105, 0.3),
+      0 4px 12px rgba(5, 150, 105, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .section-icon:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 
+      0 12px 32px rgba(5, 150, 105, 0.4),
+      0 6px 16px rgba(5, 150, 105, 0.3);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #059669 0%, #047857 50%, #065F46 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #64748B;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* 通用模块样式 */
+  .game-module,
+  .info-module {
+    margin-bottom: 3rem;
+  }
+
+  .module-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .module-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .featured-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  .easy-icon {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+
+  .medium-icon {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  .hard-icon {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+  }
+
+  .tips-icon {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  }
+
+  .skills-icon {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  }
+
+  .module-title-group {
+    flex: 1;
+  }
+
+  .module-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .module-subtitle {
+    color: #6B7280;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  /* 学习建议模块 */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+
+  .tip-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .tip-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 92, 246, 0.2);
+  }
+
+  .tip-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .tip-content {
+    flex: 1;
+  }
+
+  .tip-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .tip-text {
+    color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  /* 核心技能模块 */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .skill-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .skill-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-color: rgba(236, 72, 153, 0.2);
+  }
+
+  .skill-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 1px;
+    box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3);
+  }
+
+  .skill-content {
+    flex: 1;
+  }
+
+  .skill-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+  }
+
+  .skill-description {
+    color: #6B7280;
+    line-height: 1.4;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+
+  /* 动画效果 */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fadeInUp {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-content {
+      gap: 1.5rem;
+    }
+
+    .page-title {
+      font-size: 2.25rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .page-header {
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border-radius: 18px;
+    }
+
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.25rem;
+    }
+
+    .header-text {
+      text-align: center;
+    }
+
+    .section-icon {
+      width: 64px;
+      height: 64px;
+      font-size: 1.5rem;
+      border-radius: 18px;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .page-description {
+      font-size: 1rem;
+    }
+
+    .module-header {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.75rem;
+      padding: 1.25rem;
+    }
+
+    .module-icon {
+      width: 44px;
+      height: 44px;
+      font-size: 1.125rem;
+      margin-top: 0;
+    }
+
+    .module-title {
+      font-size: 1.375rem;
+    }
+
+    .module-subtitle {
+      font-size: 0.875rem;
+    }
+
+    .game-module,
+    .info-module {
+      margin-bottom: 2.5rem;
+    }
+
+    .tips-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .tip-item,
+    .skill-item {
+      padding: 1rem;
+      gap: 0.75rem;
+    }
+    
+    .tip-icon,
+    .skill-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
+    }
+
+    .tip-title,
+    .skill-title {
+      font-size: 0.875rem;
+    }
+
+    .tip-text,
+    .skill-description {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-header {
+      padding: 1.25rem;
+      border-radius: 16px;
+    }
+
+    .header-content {
+      gap: 1rem;
+    }
+
+    .page-title {
+      font-size: 1.75rem;
+    }
+
+    .section-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.25rem;
+      border-radius: 16px;
+    }
+
+    .page-description {
+      font-size: 0.95rem;
+    }
+
+    .module-title {
+      font-size: 1.25rem;
+    }
+
+    .module-header {
+      padding: 1rem;
+    }
+
+    .tip-item,
+    .skill-item {
+      padding: 0.875rem;
+    }
+  }
+</style> 
+

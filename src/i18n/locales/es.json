@@ -10,7 +10,8 @@
     "about": "Acerca de",
     "help": "Ayuda",
     "privacy": "Política de privacidad",
-    "terms": "Términos de servicio"
+    "terms": "Términos de servicio",
+    "special": "Páginas Especiales"
   },
   "categories": {
     "math-games": "Juegos de Matemáticas",
@@ -22,6 +23,7 @@
   },
   "hero": {
     "title": "Donde el Aprendizaje se Encuentra con la Diversión",
+    "title.full": "Donde el Aprendizaje se Encuentra con la <span class=\"highlight\">Diversión</span>",
     "subtitle": "Descubre juegos educativos gratuitos diseñados para hacer el aprendizaje atractivo y efectivo para estudiantes de 6-18 años.",
     "stats": {
       "students": "Estudiantes",
@@ -41,18 +43,22 @@
     "all_categories": "Todas las categorías"
   },
   "game": {
+    "random": "Juego Aleatorio",
     "play_now": "Jugar ahora",
     "full_screen": "Pantalla completa",
     "favorite": "Agregar a favoritos",
+    "add_to_favorites": "Agregar a favoritos",
     "share": "Compartir juego",
     "difficulty": "Dificultad",
     "age_range": "Rango de edad",
+    "ages": "Edades",
     "category": "Categoría",
     "tags": "Etiquetas",
     "description": "Descripción",
     "instructions": "Cómo jugar",
     "related": "Juegos relacionados",
-    "source": "Fuente del juego"
+    "source": "Fuente del juego",
+    "loading": "Cargando..."
   },
   "footer": {
     "tagline": "Haciendo el aprendizaje divertido para todos",
@@ -62,11 +68,210 @@
     "support": "Soporte e información",
     "social": "Síguenos",
     "copyright": "© 2025 EduGameHQ. Todos los derechos reservados.",
-    "made_with_love": "Hecho con ❤️ para estudiantes de todo el mundo"
+    "made_with_love": "Hecho con ❤️ para estudiantes de todo el mundo",
+    "logo_alt": "EduGameHQ Logo",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter", 
+      "youtube": "YouTube",
+      "instagram": "Instagram"
+    }
+  },
+  "common": {
+    "back": "Atrás",
+    "cancel": "Cancelar",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "error": "Error",
+    "loading": "Cargando...",
+    "next": "Siguiente",
+    "no": "No",
+    "ok": "Aceptar",
+    "previous": "Anterior",
+    "save": "Guardar",
+    "try_again": "Intentar de nuevo",
+    "yes": "Sí"
   },
   "language": {
     "switch": "Cambiar idioma",
     "current": "Idioma actual",
     "select": "Seleccionar idioma"
+  },
+  "help": {
+    "title": "Centro de Ayuda",
+    "subtitle": "Encuentra respuestas a tus preguntas",
+    "faq": "Preguntas Frecuentes",
+    "contact_us": "Contáctanos",
+    "report_issue": "Reportar un Problema"
+  },
+  "home": {
+    "featured_games": {
+      "title": "Juegos Destacados",
+      "description": "Nuestros juegos más populares y recomendados"
+    },
+    "category_description": {
+      "math": "Domina números, ecuaciones y habilidades de resolución de problemas",
+      "science": "Explora el mundo natural a través de experimentos interactivos",
+      "language": "Mejora la lectura, escritura y habilidades de comunicación",
+      "puzzle": "Desarrolla el pensamiento crítico y las habilidades de resolución de problemas",
+      "sports": "Mantente activo mientras aprendes sobre deportes y ejercicio",
+      "art": "Expresa tu creatividad a través del arte digital y el diseño"
+    },
+    "explore_by_category": {
+      "title": "Explorar por Categoría",
+      "description": "Encuentra juegos perfectos para tu área de interés"
+    },
+    "how_it_works": {
+      "title": "Cómo Funciona",
+      "description": "Comenzar es fácil - sigue estos simples pasos",
+      "step1": {
+        "title": "Elige una Categoría",
+        "description": "Selecciona tu área de aprendizaje favorita"
+      },
+      "step2": {
+        "title": "Selecciona un Juego",
+        "description": "Explora nuestra colección curada de juegos educativos"
+      },
+      "step3": {
+        "title": "¡Juega y Aprende!",
+        "description": "Disfruta aprendiendo a tu propio ritmo"
+      }
+    },
+    "benefit": {
+      "safe_environment": {
+        "title": "Entorno Seguro",
+        "description": "Contenido apropiado para niños con estrictos estándares de seguridad"
+      },
+      "curriculum_aligned": {
+        "title": "Alineado con el Currículo",
+        "description": "Juegos diseñados para complementar el aprendizaje en el aula"
+      },
+      "no_downloads": {
+        "title": "Sin Descargas",
+        "description": "Juega instantáneamente en cualquier dispositivo con un navegador web"
+      },
+      "cross_platform": {
+        "title": "Multiplataforma",
+        "description": "Funciona perfectamente en computadoras, tabletas y teléfonos"
+      }
+    },
+    "why_choose_us": {
+      "title": "Por Qué Elegirnos",
+      "description": "EduGameHQ es la plataforma de confianza para el aprendizaje a través de juegos"
+    },
+    "testimonials": {
+      "title": "Lo Que Dicen Nuestros Usuarios",
+      "description": "Experiencias reales de estudiantes, padres y educadores"
+    },
+    "testimonial": {
+      "teacher1": {
+        "text": "Mis estudiantes están más comprometidos que nunca. Estos juegos hacen que conceptos difíciles sean accesibles.",
+        "author": "María González, Profesora de 4to Grado"
+      },
+      "parent1": {
+        "text": "Mi hijo realmente disfruta el tiempo de aprendizaje ahora. Es increíble ver cómo retiene la información.",
+        "author": "Carlos Rodríguez, Padre"
+      },
+      "parent2": {
+        "text": "Finalmente, una plataforma educativa que es tanto divertida como efectiva. ¡Altamente recomendada!",
+        "author": "Ana Martínez, Madre"
+      }
+    },
+    "cta": {
+      "title": "¿Listo para Comenzar tu Aventura de Aprendizaje?",
+      "description": "Únete a miles de estudiantes que ya están aprendiendo de manera divertida",
+      "button": "Explorar Juegos Gratis"
+    }
+  },
+  "links": {
+    "math_games": "Juegos de Matemáticas",
+    "science_games": "Juegos de Ciencias",
+    "language_games": "Juegos de Idiomas",
+    "puzzle_games": "Juegos de Rompecabezas",
+    "sports_games": "Juegos de Deportes",
+    "art_games": "Juegos de Arte",
+    "new_games": "Juegos Nuevos"
+  },
+  "about_page": {
+    "seo": {
+      "title": "Acerca de EduGameHQ | Plataforma de Juegos Educativos",
+      "description": "Conoce la misión de EduGameHQ de hacer el aprendizaje divertido a través de juegos educativos. Explora nuestra historia, valores y compromiso con la educación de calidad.",
+      "keywords": "acerca de edugamehq, plataforma educativa, misión de juegos de aprendizaje, tecnología educativa"
+    },
+    "header": {
+      "title": "Acerca de EduGameHQ",
+      "subtitle": "Donde el aprendizaje se encuentra con la diversión - Transformando la educación a través de juegos interactivos",
+      "tagline": "Haciendo que cada niño tenga acceso a una educación de calidad, divertida y atractiva"
+    },
+    "sidebar": {
+      "title": "Explora nuestra historia"
+    },
+    "sections": {
+      "mission": "Nuestra Misión",
+      "values": "Valores Fundamentales",
+      "story": "Nuestra Historia",
+      "team": "Conoce a Nuestro Equipo",
+      "impact": "Nuestro Impacto"
+    },
+    "impact": {
+      "games": "juegos educativos",
+      "students": "estudiantes activos",
+      "countries": "países atendidos",
+      "free": "contenido gratuito"
+    },
+    "mission_section": {
+      "title": "Nuestra Misión",
+      "description": "Democratizar el acceso a una educación de calidad proporcionando juegos educativos gratuitos, divertidos y efectivos que inspiren curiosidad, fomenten la creatividad y desarrollen habilidades esenciales para el siglo XXI.",
+      "vision_title": "Nuestra Visión",
+      "vision_description": "Un mundo donde cada niño tenga acceso a contenido educativo de alta calidad, haciendo que el aprendizaje sea alegre, significativo y transformador."
+    },
+    "values_section": {
+      "title": "Nuestros Valores Fundamentales",
+      "quality": {
+        "title": "Calidad Primero",
+        "description": "Cada juego es cuidadosamente curado y probado por expertos en educación"
+      },
+      "free": {
+        "title": "Siempre Gratis",
+        "description": "La educación debe ser accesible para todos, en todas partes del mundo"
+      },
+      "safety": {
+        "title": "Entorno Seguro",
+        "description": "Contenido apto para niños con estrictos estándares de seguridad y privacidad"
+      },
+      "reach": {
+        "title": "Alcance Global",
+        "description": "Apoyando a estudiantes globales a través de contenido multilingüe"
+      }
+    },
+    "story_section": {
+      "title": "Nuestra Historia",
+      "beginning": {
+        "title": "Los Comienzos",
+        "description": "EduGameHQ nació de una observación simple: los niños aprenden mejor cuando se divierten. Fundada en 2023 por un grupo de educadores, desarrolladores de juegos y psicólogos infantiles, nos propusimos cerrar la brecha entre el entretenimiento y la educación."
+      },
+      "growth": {
+        "title": "Crecimiento y Expansión",
+        "description": "Lo que comenzó como una pequeña colección de juegos de matemáticas ha crecido hasta convertirse en una plataforma integral que sirve a más de 50,000 estudiantes en todo el mundo. Nuestros juegos ahora abarcan matemáticas, ciencias, programación, artes del lenguaje y habilidades de pensamiento crítico."
+      },
+      "today": {
+        "title": "Hoy y el Futuro",
+        "description": "Hoy, EduGameHQ continúa evolucionando, siempre manteniéndonos fieles a nuestra creencia fundamental: que la educación de calidad debe ser gratuita, accesible y divertida para cada niño."
+      }
+    },
+    "team_section": {
+      "title": "Conoce a Nuestro Equipo",
+      "intro": "Nuestro diverso equipo de educadores, desarrolladores e investigadores trabaja juntos para crear las mejores experiencias de aprendizaje para estudiantes de todo el mundo.",
+      "member1": {
+        "name": "Dra. Sarah Chen",
+        "role": "Directora de Educación",
+        "description": "Ex profesora de Stanford con más de 15 años de experiencia en tecnología educativa"
+      },
+      "member2": {
+        "name": "Mike Rodriguez",
+        "role": "Desarrollador de Juegos",
+        "description": "Diseñador de juegos galardonado especializado en contenido educativo"
+      }
+    }
   }
 } 
