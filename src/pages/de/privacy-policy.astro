@@ -1,14 +1,14 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// 闅愮鏀跨瓥SEO鏁版嵁
+// 隐私政策SEO数据
 const seoData = {
   title: "Privacy Policy | EduGameHQ - Protecting Your Privacy",
   description: "Learn how EduGameHQ protects your privacy and keeps children safe online. COPPA and GDPR compliant educational gaming platform.",
   keywords: ["privacy policy", "child safety", "COPPA compliance", "data protection", "educational games privacy"]
 };
 
-// 闅愮鏀跨瓥绔犺妭鏁版嵁
+// 隐私政策章节数据
 const policySections = [
   {
     id: "introduction",
@@ -142,11 +142,11 @@ const policySections = [
 ];
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="de">
+<BaseLayout title={seoData.title} description={seoData.description}>
   <main class="privacy-policy-page">
     <div class="content-wrapper">
       
-      <!-- 闅愮鏀跨瓥澶撮儴 -->
+      <!-- 隐私政策头部 -->
       <section class="policy-header">
         <div class="header-content">
           <div class="header-icon">
@@ -165,7 +165,7 @@ const policySections = [
       </section>
 
       <div class="policy-content">
-        <!-- 渚ц竟鏍忕洰褰?-->
+        <!-- 侧边栏目录 -->
         <aside class="policy-sidebar">
           <div class="sidebar-header">
             <h3>Quick Navigation</h3>
@@ -184,7 +184,7 @@ const policySections = [
           </nav>
         </aside>
 
-        <!-- 涓昏鍐呭鍖哄煙 -->
+        <!-- 主要内容区域 -->
         <div class="policy-main">
           {policySections.map((section) => (
             <section class="policy-section" id={section.id}>
@@ -278,7 +278,7 @@ const policySections = [
             </section>
           ))}
 
-          <!-- 鑱旂郴琛屽姩鍖哄煙 -->
+          <!-- 联系行动区域 -->
           <section class="contact-cta">
             <div class="cta-content">
               <div class="cta-icon">
@@ -301,7 +301,7 @@ const policySections = [
 </BaseLayout>
 
 <script>
-  // 骞虫粦婊氬姩鍒伴敋鐐?
+  // 平滑滚动到锚点
   document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -309,30 +309,30 @@ const policySections = [
       link.addEventListener('click', function(this: HTMLElement, e: Event) {
         const href = this.getAttribute('href');
         
-        // 鍙椤甸潰鍐呴敋鐐归摼鎺ワ紙浠?寮€澶达級鎵цpreventDefault锛屼笉褰卞搷澶栭儴閾炬帴
+        // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接
         if (href && href.startsWith('#')) {
           e.preventDefault();
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           
           if (targetElement) {
-            // 绉婚櫎鎵€鏈夋椿鍔ㄧ姸鎬?
+            // 移除所有活动状态
             navLinks.forEach(nl => nl.classList.remove('active'));
-            // 娣诲姞褰撳墠娲诲姩鐘舵€?
+            // 添加当前活动状态
             this.classList.add('active');
             
-            // 骞虫粦婊氬姩
+            // 平滑滚动
             targetElement.scrollIntoView({
               behavior: 'smooth',
               block: 'start'
             });
           }
         }
-        // 瀵逛簬澶栭儴閾炬帴锛堝/銆?help绛夛級锛岃娴忚鍣ㄦ甯稿鐞?
+        // 对于外部链接（如/、/help等），让浏览器正常处理
       });
     });
 
-    // 婊氬姩鐩戝惉锛岄珮浜綋鍓嶇珷鑺?
+    // 滚动监听，高亮当前章节
     const sections = document.querySelectorAll('.policy-section');
     const options = {
       threshold: 0.3,
@@ -345,10 +345,10 @@ const policySections = [
           const sectionId = entry.target.id;
           const correspondingNavLink = document.querySelector(`a[href="#${sectionId}"]`);
           
-          // 绉婚櫎鎵€鏈夋椿鍔ㄧ姸鎬?
+          // 移除所有活动状态
           navLinks.forEach(nl => nl.classList.remove('active'));
           
-          // 娣诲姞褰撳墠娲诲姩鐘舵€?
+          // 添加当前活动状态
           if (correspondingNavLink) {
             correspondingNavLink.classList.add('active');
           }
@@ -363,7 +363,7 @@ const policySections = [
 </script>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .privacy-policy-page {
     width: 100%;
     background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(34, 197, 94, 0.05) 100%);
@@ -376,7 +376,7 @@ const policySections = [
     padding: 2rem;
   }
 
-  /* 闅愮鏀跨瓥澶撮儴 - 缁胯壊涓婚 */
+  /* 隐私政策头部 - 绿色主题 */
   .policy-header {
     background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #10B981 100%);
     border-radius: 20px;
@@ -455,7 +455,7 @@ const policySections = [
     opacity: 0.8;
   }
 
-  /* 鍐呭甯冨眬 */
+  /* 内容布局 */
   .policy-content {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -463,7 +463,7 @@ const policySections = [
     align-items: start;
   }
 
-  /* 渚ц竟鏍?*/
+  /* 侧边栏 */
   .policy-sidebar {
     background: white;
     border-radius: 16px;
@@ -530,7 +530,7 @@ const policySections = [
     color: #10B981;
   }
 
-  /* 涓昏鍐呭 */
+  /* 主要内容 */
   .policy-main {
     background: white;
     border-radius: 20px;
@@ -603,7 +603,7 @@ const policySections = [
   }
 
   .policy-list li:before {
-    content: '鉁?;
+    content: '✓';
     position: absolute;
     left: 0;
     color: #10B981;
@@ -614,7 +614,7 @@ const policySections = [
     border-bottom: none;
   }
 
-  /* 瀛愮珷鑺?*/
+  /* 子章节 */
   .subsection {
     margin: 2rem 0;
   }
@@ -632,7 +632,7 @@ const policySections = [
     line-height: 1.7;
   }
 
-  /* 楂樹寒妗?*/
+  /* 高亮框 */
   .highlight-box {
     background: #F9FAFB;
     border-radius: 12px;
@@ -684,7 +684,7 @@ const policySections = [
     margin-bottom: 0.5rem;
   }
 
-  /* 鏀跨瓥鎻愮ず */
+  /* 政策提示 */
   .policy-note {
     background: #EFF6FF;
     border: 1px solid #DBEAFE;
@@ -708,7 +708,7 @@ const policySections = [
     font-size: 0.875rem;
   }
 
-  /* 鑱旂郴琛屽姩鍖哄煙 */
+  /* 联系行动区域 */
   .contact-cta {
     background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
     border-radius: 16px;
@@ -790,7 +790,7 @@ const policySections = [
     color: white;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .content-wrapper {
       padding: 1.5rem;
@@ -863,5 +863,4 @@ const policySections = [
     }
   }
 </style> 
-
 

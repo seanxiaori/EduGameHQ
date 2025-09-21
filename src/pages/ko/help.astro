@@ -1,14 +1,14 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-// 甯姪涓績SEO鏁版嵁
+// 帮助中心SEO数据
 const seoData = {
   title: "Help Center | EduGameHQ - Support for Educational Games",
   description: "Get help with EduGameHQ educational games. Find answers to common questions, troubleshooting guides, and support for parents and teachers.",
   keywords: ["help", "support", "FAQ", "educational games", "troubleshooting", "parent guide", "teacher resources"]
 };
 
-// 甯歌闂鏁版嵁
+// 常见问题数据
 const faqCategories = [
   {
     title: "Getting Started",
@@ -88,7 +88,7 @@ const faqCategories = [
   }
 ];
 
-// 蹇€熼摼鎺ユ暟鎹?
+// 快速链接数据
 const quickLinks = [
   {
     title: "Game Categories",
@@ -127,7 +127,7 @@ const quickLinks = [
   }
 ];
 
-// 鑱旂郴鏂瑰紡鏁版嵁
+// 联系方式数据
 const contactMethods = [
   {
     title: "General Support",
@@ -156,11 +156,11 @@ const contactMethods = [
 ];
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="ko">
+<BaseLayout title={seoData.title} description={seoData.description}>
   <main class="help-center">
     <div class="content-wrapper">
       
-      <!-- 甯姪涓績澶撮儴 -->
+      <!-- 帮助中心头部 -->
       <section class="help-header">
         <div class="header-content">
           <div class="header-icon">
@@ -177,7 +177,7 @@ const contactMethods = [
         </div>
       </section>
 
-      <!-- 鎼滅储甯姪 -->
+      <!-- 搜索帮助 -->
       <section class="help-search">
         <div class="search-container">
           <div class="search-box">
@@ -188,7 +188,7 @@ const contactMethods = [
         </div>
       </section>
 
-      <!-- 蹇€熼摼鎺?-->
+      <!-- 快速链接 -->
       <section class="quick-links-section">
         <h2 class="section-title">Quick Links</h2>
         <div class="quick-links-grid">
@@ -212,7 +212,7 @@ const contactMethods = [
         </div>
       </section>
 
-      <!-- 甯歌闂 -->
+      <!-- 常见问题 -->
       <section class="faq-section">
         <h2 class="section-title">Frequently Asked Questions</h2>
         <div class="faq-categories">
@@ -242,7 +242,7 @@ const contactMethods = [
         </div>
       </section>
 
-      <!-- 浣跨敤鎸囧崡 -->
+      <!-- 使用指南 -->
       <section class="guides-section">
         <h2 class="section-title">How-To Guides</h2>
         <div class="guides-grid">
@@ -297,7 +297,7 @@ const contactMethods = [
         </div>
       </section>
 
-      <!-- 鑱旂郴鏀寔 -->
+      <!-- 联系支持 -->
       <section class="contact-section" id="contact">
         <h2 class="section-title">Contact Support</h2>
         <p class="contact-intro">
@@ -334,10 +334,10 @@ const contactMethods = [
 </BaseLayout>
 
 <script>
-  // FAQ灞曞紑/鏀惰捣鍔熻兘宸查€氳繃CSS澶勭悊
-  console.log('Help椤甸潰鍔犺浇瀹屾垚');
+  // FAQ展开/收起功能已通过CSS处理
+  console.log('Help页面加载完成');
 
-  // 鎼滅储鍔熻兘锛堢畝鍗曞疄鐜帮級
+  // 搜索功能（简单实现）
   document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.querySelector('.search-box input') as HTMLInputElement;
     const faqItems = document.querySelectorAll('.faq-item');
@@ -368,7 +368,7 @@ const contactMethods = [
 </script>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .help-center {
     width: 100%;
     background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(34, 197, 94, 0.05) 100%);
@@ -381,7 +381,7 @@ const contactMethods = [
     padding: 2rem;
   }
 
-  /* 甯姪涓績澶撮儴 - 缁胯壊涓婚 */
+  /* 帮助中心头部 - 绿色主题 */
   .help-header {
     background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #10B981 100%);
     border-radius: 20px;
@@ -452,7 +452,7 @@ const contactMethods = [
     line-height: 1.6;
   }
 
-  /* 鎼滅储甯姪 */
+  /* 搜索帮助 */
   .help-search {
     background: white;
     border-radius: 20px;
@@ -502,7 +502,7 @@ const contactMethods = [
     font-style: italic;
   }
 
-  /* 閫氱敤鍖哄潡鏍峰紡 */
+  /* 通用区块样式 */
   .section-title {
     font-size: 2rem;
     font-weight: 700;
@@ -512,7 +512,7 @@ const contactMethods = [
     font-family: 'Space Grotesk', sans-serif;
   }
 
-  /* 蹇€熼摼鎺?*/
+  /* 快速链接 */
   .quick-links-section {
     background: white;
     border-radius: 20px;
@@ -597,7 +597,7 @@ const contactMethods = [
     color: #10B981;
   }
 
-  /* FAQ鍖哄潡 */
+  /* FAQ区块 */
   .faq-section {
     background: white;
     border-radius: 20px;
@@ -672,7 +672,7 @@ const contactMethods = [
     margin: 0;
   }
 
-  /* 浣跨敤鎸囧崡 */
+  /* 使用指南 */
   .guides-section {
     background: white;
     border-radius: 20px;
@@ -732,7 +732,7 @@ const contactMethods = [
     line-height: 1.5;
   }
 
-  /* 鑱旂郴鏀寔 */
+  /* 联系支持 */
   .contact-section {
     background: white;
     border-radius: 20px;
@@ -834,7 +834,7 @@ const contactMethods = [
     font-size: 0.875rem;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .content-wrapper {
       padding: 1.5rem;
@@ -903,4 +903,3 @@ const contactMethods = [
     }
   }
 </style> 
-

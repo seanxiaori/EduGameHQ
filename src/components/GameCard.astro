@@ -1,6 +1,7 @@
 ---
 // 导入类型定义
 import type { Game } from '../types/game';
+import { getLanguageFromPath, getLocalizedPath } from '../i18n/utils';
 
 // 组件属性接口
 interface Props {
@@ -37,8 +38,21 @@ const safeGame = {
   thumbnailUrl: game.thumbnailUrl || '/images/logo.svg'
 };
 
-// 游戏URL
-const gameUrl = `/games/${safeGame.slug}`;
+// 格式化人气值显示 - 构建时静态渲染
+function formatPopularity(num) {
+  if (!num || num === 0) return '0';
+  if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
+  if (num >= 1000) return (num / 1000).toFixed(1) + 'K';
+  return num.toString();
+}
+
+// 计算显示的人气值 - 使用games.json中的playCount数据
+const rawPopularity = safeGame.playCount || 1200;
+const formattedPopularity = formatPopularity(rawPopularity);
+
+// 获取当前语言并生成正确的游戏URL
+const currentLang = getLanguageFromPath(Astro.url.pathname);
+const gameUrl = getLocalizedPath(`/games/${safeGame.slug}`, currentLang);
 ---
 
 <div class={`game-card ${safeGame.category}-theme animate-fadeInUp`} data-game-id={safeGame.slug}>
@@ -103,7 +117,7 @@ const gameUrl = `/games/${safeGame.slug}`;
       {showPopularity && (
         <div class="stat popularity-stat" data-game-slug={safeGame.slug}>
           <i class="fas fa-fire"></i>
-          <span class="popularity-count">Loading...</span>
+          <span class="popularity-count">{formattedPopularity}</span>
         </div>
       )}
       <div class="stat">

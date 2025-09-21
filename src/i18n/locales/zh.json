@@ -60,6 +60,28 @@
     "loading": "加载中...",
     "ages": "年龄"
   },
+  "game_detail": {
+    "loading_game": "正在加载 {gameTitle}...",
+    "preparing_experience": "准备您的教育游戏体验",
+    "start_game": "开始游戏",
+    "fullscreen": "全屏",
+    "restart": "重新开始",
+    "favorite": "收藏",
+    "share": "分享",
+    "game_information": "游戏信息",
+    "how_to_play": "如何游戏",
+    "game_controls": "游戏控制",
+    "tips_tricks": "技巧与窍门",
+    "developer": "开发者",
+    "source": "来源",
+    "type": "类型",
+    "release_date": "发布日期",
+    "more_games": "更多 {category} 游戏",
+    "free": "免费",
+    "mouse": "鼠标",
+    "keyboard": "键盘",
+    "touch": "触控"
+  },
   "footer": {
     "tagline": "让每个人的学习都充满乐趣",
     "description": "EduGameHQ 是您寻找教育游戏的首选平台，这些游戏能让学习变得有趣而高效。",

@@ -1,11 +1,11 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
-// 瀵煎叆鏍峰紡鏂囦欢
+// 导入样式文件
 import '../../styles/game-card.css';
 
 const seoData = {
@@ -15,7 +15,7 @@ const seoData = {
   ogImage: "/images/new-games-og.jpg"
 };
 
-// 浠嶫SON鏂囦欢璇诲彇娓告垙鏁版嵁
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -26,7 +26,7 @@ try {
   console.error('Error reading games data:', error);
 }
 
-// 鑾峰彇鏂版父鎴忥紙妯℃嫙鏃堕棿鍒嗙被 - 闅忔満鍒嗛厤鍒颁笉鍚屾椂闂存锛?
+// 获取新游戏（模拟时间分类 - 随机分配到不同时间段）
 const shuffledGames = [...allGamesData].sort(() => Math.random() - 0.5);
 
 const todayGames = shuffledGames.slice(0, 4);
@@ -35,14 +35,14 @@ const thisMonthGames = shuffledGames.slice(8, 12);
 const recentlyUpdatedGames = shuffledGames.slice(12, 16);
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="ru">
-  <!-- 寮曞叆缁熶竴娓告垙鍗＄墖鏍峰紡 -->
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
   
   
   <main class="main-content">
     <div class="content-wrapper">
 
-      <!-- 1. 椤甸潰椤堕儴鍖哄煙 -->
+      <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -60,7 +60,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
         </div>
       </section>
 
-      <!-- 2. 浠婃棩鏂板娓告垙妯″潡 -->
+      <!-- 2. 今日新增游戏模块 -->
       {todayGames.length > 0 && (
         <section class="game-module today-module">
         <div class="module-header">
@@ -81,7 +81,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
       </section>
       )}
 
-      <!-- 3. 鏈懆鏂板娓告垙妯″潡 -->
+      <!-- 3. 本周新增游戏模块 -->
       {thisWeekGames.length > 0 && (
         <section class="game-module week-module">
         <div class="module-header">
@@ -102,7 +102,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
       </section>
       )}
 
-      <!-- 4. 鏈湀鏂板娓告垙妯″潡 -->
+      <!-- 4. 本月新增游戏模块 -->
       {thisMonthGames.length > 0 && (
         <section class="game-module month-module">
         <div class="module-header">
@@ -123,7 +123,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
       </section>
       )}
 
-      <!-- 5. 鏈€杩戞洿鏂版父鎴忔ā鍧?-->
+      <!-- 5. 最近更新游戏模块 -->
       {recentlyUpdatedGames.length > 0 && (
         <section class="game-module updated-module">
         <div class="module-header">
@@ -147,28 +147,28 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
     </div>
   </main>
 
-  <!-- 绠€鍖栫殑鏂版父鎴忕鐞咼avaScript -->
+  <!-- 简化的新游戏管理JavaScript -->
   <script is:inline>
-    // 绠€鍖栫殑鏂版父鎴忕鐞?
+    // 简化的新游戏管理
     class NewGamesManager {
       constructor() {
         this.init();
       }
 
-      // 鍒濆鍖?
+      // 初始化
       init() {
         this.updateNewGamesDisplay();
-        console.log('猸?鏂版父鎴忕鐞嗗櫒鍒濆鍖栧畬鎴?);
+        console.log('⭐ 新游戏管理器初始化完成');
       }
 
-      // 鏇存柊鏂版父鎴忔樉绀?
+      // 更新新游戏显示
       updateNewGamesDisplay() {
-        // 杩欓噷鍙互鏍规嵁瀹為檯鏁版嵁鏇存柊鏂版父鎴忔樉绀?
-        console.log('鏂版父鎴忔樉绀哄凡鏇存柊');
+        // 这里可以根据实际数据更新新游戏显示
+        console.log('新游戏显示已更新');
       }
     }
 
-    // 椤甸潰鍔犺浇瀹屾垚鍚庡垵濮嬪寲
+    // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
       window.newGamesManager = new NewGamesManager();
     });
@@ -176,7 +176,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
 </BaseLayout>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.05) 100%);
@@ -189,7 +189,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
     padding: 2rem;
   }
 
-  /* 1. 椤甸潰澶撮儴鍖哄煙 */
+  /* 1. 页面头部区域 */
   .page-header {
     background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 50%, rgba(34, 197, 94, 0.08) 100%);
     border-radius: 20px;
@@ -269,7 +269,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
     line-height: 1.6;
   }
 
-  /* 閫氱敤妯″潡鏍峰紡 */
+  /* 通用模块样式 */
   .game-module {
     margin-bottom: 3rem;
   }
@@ -336,7 +336,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
     line-height: 1.4;
   }
 
-  /* 鍔ㄧ敾鏁堟灉 */
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -352,7 +352,7 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .header-content {
       gap: 1.5rem;
@@ -467,5 +467,4 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
     }
   }
 </style> 
-
 

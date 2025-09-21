@@ -1,18 +1,14 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import { getTranslations, t } from '../../i18n/utils';
 
-// 瀵煎叆鏍峰紡鏂囦欢
+// 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
 
-// 鑾峰彇涓枃缈昏瘧
-const translations = await getTranslations('ar');
-
-// 浠嶫SON鏂囦欢璇诲彇娓告垙鏁版嵁
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -23,21 +19,21 @@ try {
   console.warn('Unable to read games data file:', error);
 }
 
-// 绛涢€夋暟瀛︽父鎴?
+// 筛选数学游戏
 const mathGames = allGamesData.filter(game => game.category === 'math');
 
-// 鎸夐毦搴﹀拰鐗硅壊鍒嗙粍娓告垙
+// 按难度和特色分组游戏
 const featuredGames = mathGames.filter(game => game.featured);
 const easyGames = mathGames.filter(game => game.difficulty === 'Easy');
 const mediumGames = mathGames.filter(game => game.difficulty === 'Medium');
 const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
 ---
 
-<BaseLayout lang="ar">
+<BaseLayout>
   <main class="main-content">
     <div class="content-wrapper">
 
-      <!-- 1. 椤甸潰椤堕儴鍖哄煙 -->
+      <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -46,15 +42,15 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">{t(translations, 'categories.math-games', '鏁板娓告垙')}</h1>
+            <h1 class="page-title">Math Games</h1>
             <p class="page-description">
-              {t(translations, 'home.category_description.math', '鎺屾彙鏁板瓧銆佹柟绋嬪紡鍜岃В鍐抽棶棰樼殑鑳藉姏')} 閫氳繃浜掑姩娓告垙浣撻獙锛岃鏁板瀛︿範鍙樺緱鏈夎叮鑰岄珮鏁堬紒
+              Master mathematics through play! Our collection of math games makes learning arithmetic, algebra, geometry, and problem-solving skills fun and engaging for all grade levels. From basic counting to advanced calculus concepts, discover the joy of learning math through interactive gameplay.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 2. 鐗硅壊娓告垙妯″潡 -->
+      <!-- 2. 特色游戏模块 -->
       {featuredGames.length > 0 && (
         <section class="game-module featured-module">
           <div class="module-header">
@@ -62,8 +58,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t(translations, 'home.featured_games.title', '鐗硅壊鏁板娓告垙')}</h2>
-              <p class="module-subtitle">{t(translations, 'home.featured_games.description', '鎴戜滑鏈€鍙楁杩庡拰鎺ㄨ崘鐨勬暟瀛︽父鎴?)}</p>
+              <h2 class="module-title">Featured Math Games</h2>
+              <p class="module-subtitle">Our most popular and recommended math games</p>
             </div>
           </div>
           
@@ -75,7 +71,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         </section>
       )}
 
-      <!-- 3. 瀹规槗闅惧害娓告垙妯″潡 -->
+      <!-- 3. 容易难度游戏模块 -->
       {easyGames.length > 0 && (
         <section class="game-module difficulty-module easy-module">
           <div class="module-header">
@@ -96,7 +92,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         </section>
       )}
 
-      <!-- 4. 涓瓑闅惧害娓告垙妯″潡 -->
+      <!-- 4. 中等难度游戏模块 -->
       {mediumGames.length > 0 && (
         <section class="game-module difficulty-module medium-module">
           <div class="module-header">
@@ -117,7 +113,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         </section>
       )}
 
-      <!-- 5. 鍥伴毦娓告垙妯″潡 -->
+      <!-- 5. 困难游戏模块 -->
       {hardGames.length > 0 && (
         <section class="game-module difficulty-module hard-module">
           <div class="module-header">
@@ -138,7 +134,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         </section>
       )}
 
-      <!-- 6. 瀛︿範寤鸿妯″潡 -->
+      <!-- 6. 学习建议模块 -->
       <section class="info-module tips-module">
         <div class="module-header">
           <div class="module-icon tips-icon">
@@ -193,7 +189,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
         </div>
       </section>
 
-      <!-- 7. 鏍稿績鎶€鑳芥ā鍧?-->
+      <!-- 7. 核心技能模块 -->
       <section class="info-module skills-module">
         <div class="module-header">
           <div class="module-icon skills-icon">
@@ -273,7 +269,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
 </BaseLayout>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: linear-gradient(135deg, #FEFCFB 0%, #F8F6F3 50%, #FFF7ED 100%);
@@ -286,7 +282,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     padding: 2rem;
   }
 
-  /* 1. 椤甸潰澶撮儴鍖哄煙 */
+  /* 1. 页面头部区域 */
   .page-header {
     background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 50%, rgba(234, 88, 12, 0.08) 100%);
     border-radius: 20px;
@@ -366,7 +362,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     line-height: 1.6;
   }
 
-  /* 閫氱敤妯″潡鏍峰紡 */
+  /* 通用模块样式 */
   .game-module,
   .info-module {
     margin-bottom: 3rem;
@@ -442,7 +438,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     line-height: 1.4;
   }
 
-  /* 瀛︿範寤鸿妯″潡 */
+  /* 学习建议模块 */
   .tips-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -501,7 +497,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     font-size: 0.8rem;
   }
 
-  /* 鏍稿績鎶€鑳芥ā鍧?*/
+  /* 核心技能模块 */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -562,7 +558,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     font-size: 0.8rem;
   }
 
-  /* 鍔ㄧ敾鏁堟灉 */
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -578,7 +574,7 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .tips-grid {
       grid-template-columns: 1fr;
@@ -755,5 +751,4 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style>
-
 

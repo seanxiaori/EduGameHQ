@@ -12,7 +12,7 @@ foreach ($lang in $languages) {
     # 创建目录（如果不存在）
     if (!(Test-Path $targetDir)) {
         New-Item -ItemType Directory -Path $targetDir -Force
-        Write-Host "创建目录: $targetDir"
+        Write-Host "Created directory: $targetDir"
     }
     
     # 修改模板内容以适配不同语言
@@ -56,7 +56,7 @@ foreach ($lang in $languages) {
     # 写入文件
     $targetFile = "$targetDir/[slug].astro"
     $modifiedContent | Out-File -FilePath $targetFile -Encoding UTF8
-    Write-Host "创建文件: $targetFile"
+    Write-Host "Created file: $targetFile"
 }
 
-Write-Host "所有语言的游戏详情页创建完成！"
+Write-Host "All language game detail pages created successfully!"

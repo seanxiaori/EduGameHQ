@@ -2,7 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import GameCard from '../../../components/GameCard.astro';
 import ShareModal from '../../../components/ShareModal.astro';
-import type { Game } from '../../../types/game';
+import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
@@ -37,6 +37,7 @@ const relatedGames = gamesData
 
 // 游戏来源检测函数
 function getGameSource(url: string | undefined | null): string {
+  // 处理undefined或null的情况
   if (!url || typeof url !== 'string') {
     return 'Unknown';
   }
@@ -50,12 +51,12 @@ function getGameSource(url: string | undefined | null): string {
   return 'External';
 }
 
-// 获取游戏的iframe URL
+// 获取游戏的iframe URL - 兼容两种字段名
 function getGameIframeUrl(game: Game): string {
   return game.iframeUrl || game.embedUrl || '';
 }
 
-// 获取游戏的源URL
+// 获取游戏的源URL - 兼容不同字段名
 function getGameSourceUrl(game: Game): string {
   return game.sourceUrl || game.url || '';
 }
@@ -76,6 +77,7 @@ const gameDescription = game.description || `Play ${game.title} online for free.
 const categoryName = game.category.charAt(0).toUpperCase() + game.category.slice(1);
 const ageRange = `Ages ${game.minAge || 6}-${game.maxAge || 18}`;
 
+// 构建动态SEO信息
 const dynamicSEO = {
   title: `${gameTitle} - Free ${categoryName} Game | EduGameHQ`,
   description: `${gameDescription} Perfect for students ${ageRange}. Play instantly in your browser - no downloads required!`,
@@ -92,6 +94,7 @@ const dynamicSEO = {
   ].filter(Boolean)
 };
 
+// 获取iframe域名
 const iframeDomain = getIframeDomain(getGameIframeUrl(game));
 ---
 
@@ -99,9 +102,8 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   title={dynamicSEO.title} 
   description={dynamicSEO.description}
   gameData={game}
-  lang="es"
 >
-  <!-- 性能优化 -->
+  <!-- 性能优化 - DNS预解析和预连接 -->
   {iframeDomain && (
     <>
       <link rel="dns-prefetch" href={`//${iframeDomain}`}>
@@ -109,7 +111,10 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     </>
   )}
   
+  <!-- 预加载关键资源 -->
   <link rel="preload" href="/src/styles/game-card.css" as="style">
+  
+  <!-- 引入统一游戏卡片样式 -->
   <link rel="stylesheet" href="/src/styles/game-card.css">
 
   <!-- 游戏详情页面内容 -->
@@ -119,10 +124,12 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       <!-- 游戏标题区域 -->
       <section class="game-title-section">
         <div class="title-content">
+          <!-- 游戏图标 -->
           <div class="game-icon">
             <i class="fas fa-gamepad"></i>
           </div>
           
+          <!-- 标题和标签 -->
           <div class="title-and-tags">
             <h1 class="game-main-title">{game.title}</h1>
             <div class="game-meta-tags">
@@ -141,10 +148,12 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         </div>
       </section>
 
-      <!-- 游戏播放器区域 -->
+      <!-- 游戏播放器区域 - 优化版本 -->
       <section class="game-player-section">
         <div class="game-player-container">
+          <!-- 游戏iframe加载容器 -->
           <div class="game-iframe-wrapper" id="gameIframeWrapper">
+            <!-- 加载占位符 -->
             <div class="iframe-placeholder" id="iframePlaceholder">
               <div class="placeholder-content">
                 <div class="loading-spinner"></div>
@@ -157,16 +166,18 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
               </div>
             </div>
             
-            <iframe 
-                data-src={getGameIframeUrl(game)}
-                class="game-iframe hidden"
-                id="gameIframe"
-              title={game.title}
-              allowfullscreen
-              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
-            ></iframe>
+            <!-- 实际的游戏iframe（懒加载） -->
+          <iframe 
+              data-src={getGameIframeUrl(game)}
+              class="game-iframe hidden"
+              id="gameIframe"
+            title={game.title}
+            allowfullscreen
+            sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+          ></iframe>
           </div>
           
+          <!-- 游戏控制按钮 -->
           <div class="game-controls">
             <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()">
               <i class="fas fa-expand"></i>
@@ -204,12 +215,15 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         </div>
 
         <div class="info-content">
+          
+          <!-- 游戏描述 -->
           <div class="info-block">
             <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
           </div>
 
           {game.gameGuide && (
             <>
+              <!-- 如何游戏 -->
               {game.gameGuide.howToPlay && game.gameGuide.howToPlay.length > 0 && (
                 <div class="info-block">
                   <h3 class="guide-title">
@@ -224,6 +238,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
                 </div>
               )}
 
+              <!-- 控制方式 -->
               {game.gameGuide.controls && Object.keys(game.gameGuide.controls).length > 0 && (
                 <div class="info-block">
                   <h3 class="guide-title">
@@ -246,6 +261,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
                 </div>
               )}
 
+              <!-- 游戏技巧 -->
               {game.gameGuide.tips && game.gameGuide.tips.length > 0 && (
                 <div class="info-block">
                   <h3 class="guide-title">
@@ -261,6 +277,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
               )}
             </>
           )}
+
         </div>
       </section>
 
@@ -297,7 +314,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         </div>
       </section>
 
-      <!-- 相关游戏推荐 -->
+      <!-- 相关游戏推荐 - 使用统一GameCard组件 -->
       {relatedGames.length > 0 && (
         <section class="related-games-section">
           <div class="section-header">
@@ -323,13 +340,1553 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   </div>
 </BaseLayout>
 
+<style>
+  /* 游戏详情页面样式 */
+  .game-detail-page {
+    width: 100%;
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, #F0F9FF 100%);
+    min-height: 100vh;
+  }
+
+  .game-detail-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 游戏标题区域 */
+  .game-title-section {
+    margin-bottom: 2rem;
+  }
+
+  .title-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .game-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.3);
+    flex-shrink: 0;
+  }
+
+  .title-and-tags {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .game-main-title {
+    font-size: 3rem;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #1F2937 0%, #4B5563 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .game-meta-tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .category-tag, .difficulty-tag {
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .category-tag {
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+  }
+
+  .difficulty-tag {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  }
+
+  /* Tags标签样式 - 丰富的颜色方案 */
+  .tag-badge {
+    padding: 0.375rem 0.875rem;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    text-transform: capitalize;
+    letter-spacing: 0.025em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .tag-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  /* 根据标签内容自动分配颜色 */
+  .tag-badge:nth-child(1) {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); /* 紫色 */
+  }
+
+  .tag-badge:nth-child(2) {
+    background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); /* 青色 */
+  }
+
+  .tag-badge:nth-child(3) {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%); /* 绿色 */
+  }
+
+  .tag-badge:nth-child(4) {
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); /* 橙色 */
+  }
+
+  .tag-badge:nth-child(5) {
+    background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); /* 红色 */
+  }
+
+  .tag-badge:nth-child(6) {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%); /* 循环回紫色 */
+  }
+
+  /* 特定类型标签的颜色定制 */
+  .tag-badge[data-type="puzzle"] {
+    background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
+  }
+
+  .tag-badge[data-type="physics"] {
+    background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
+  }
+
+  .tag-badge[data-type="cute"] {
+    background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  }
+
+  .tag-badge[data-type="problem-solving"] {
+    background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+  }
+
+  /* 游戏播放器区域 */
+  .game-player-section {
+    margin-bottom: 2rem;
+  }
+
+  .game-player-container {
+    background: white;
+    border-radius: 20px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .game-iframe-wrapper {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #F8FAFC;
+    border: 1px solid #E5E7EB;
+  }
+
+  .iframe-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+  }
+
+  .placeholder-content {
+    text-align: center;
+    padding: 2rem;
+    max-width: 400px;
+  }
+
+  .placeholder-content h3 {
+    color: #1F2937;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 1rem 0 0.5rem 0;
+  }
+
+  .placeholder-content p {
+    color: #6B7280;
+    font-size: 1rem;
+    margin: 0 0 2rem 0;
+    line-height: 1.6;
+  }
+
+  .loading-spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #E5E7EB;
+    border-top-color: #6366F1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 1rem auto;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .load-game-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .load-game-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.4);
+    background: linear-gradient(135deg, #4F46E5 0%, #3730A3 100%);
+  }
+
+  .load-game-btn:active {
+    transform: translateY(0);
+  }
+
+  .load-game-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+  }
+
+  .load-game-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .load-game-btn:hover::before {
+    left: 100%;
+  }
+
+  .iframe-error {
+    margin-top: 1rem;
+    padding: 1rem;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    border-radius: 8px;
+    color: #DC2626;
+    font-size: 0.9rem;
+  }
+
+  .game-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    transition: opacity 0.3s ease;
+  }
+
+  .game-iframe.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .game-controls {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .control-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: #6366F1;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+  }
+
+  .control-btn:hover {
+    background: #4F46E5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+
+  .restart-btn { background: #F59E0B; }
+  .restart-btn:hover { background: #D97706; }
+
+  .favorite-btn { background: #EF4444; }
+  .favorite-btn:hover { background: #DC2626; }
+
+  .share-btn { background: #10B981; }
+  .share-btn:hover { background: #059669; }
+
+  /* 统一的区域标题样式 - 参考截图的矩形框设计 */
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: white;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+    line-height: 1.2;
+  }
+
+  /* 游戏信息区域 */
+  .game-info-section {
+    margin-bottom: 2rem;
+  }
+
+  .info-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
+  }
+
+  .info-block {
+    margin-bottom: 2rem;
+  }
+
+  .info-block:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-block p {
+    color: #374151;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-align: left;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+
+  .info-block p:last-child {
+    margin-bottom: 0;
+  }
+
+  .info-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .info-block li {
+    padding: 0.5rem 0;
+    color: #4B5563;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+
+  .info-block li:before {
+    content: "•";
+    color: #6366F1;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+
+  .game-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .detail-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #F3F4F6;
+  }
+
+  .detail-item:last-child {
+    border-bottom: none;
+  }
+
+  .detail-label {
+    font-weight: 600;
+    color: #6B7280;
+  }
+
+  .detail-value {
+    color: #1F2937;
+    font-weight: 500;
+  }
+
+  /* 开发者信息区域 */
+  .developer-info-section {
+    margin-bottom: 2rem;
+  }
+
+  .developer-content {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
+  }
+
+  .developer-details {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+  }
+
+  .developer-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #F1F5F9;
+    min-width: 140px;
+    flex: 1;
+  }
+
+  .developer-item:last-child {
+    border-bottom: none;
+  }
+
+  .detail-label {
+    font-weight: 600;
+    color: #6B7280;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .detail-value {
+    color: #1F2937;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  /* 相关游戏推荐 */
+  .related-games-section {
+    margin-bottom: 2rem;
+  }
+
+  .related-games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #E5E7EB;
+  }
+
+  /* GameGuide样式 - 完全重写，去除蓝色小点，增加美观设计 */
+  .guide-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #1F2937;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+    border-radius: 12px;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  }
+
+  .guide-title i {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    color: white;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+  }
+
+  /* 重写guide-list和tips-list样式，完全去除蓝色小点 */
+  .guide-list, .tips-list {
+    list-style: none !important;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .guide-list li, .tips-list li {
+    /* 完全重置所有继承的样式 */
+    all: unset;
+    display: block;
+    padding: 1.5rem 2rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 100%);
+    border-radius: 16px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    color: #374151;
+    font-weight: 500;
+    line-height: 1.7;
+    font-size: 1rem;
+    position: relative;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1);
+    cursor: default;
+    margin: 0;
+    /* 确保没有任何伪元素 */
+  }
+
+  /* 明确移除所有可能的伪元素 */
+  .guide-list li:before, 
+  .guide-list li:after,
+  .tips-list li:before,
+  .tips-list li:after {
+    display: none !important;
+    content: none !important;
+  }
+
+  .guide-list li:hover, .tips-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15), 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-color: #6366F1;
+    background: linear-gradient(135deg, #FFFFFF 0%, #F0F7FF 100%);
+  }
+
+  /* 为guide-list添加特殊的序号样式 */
+  .guide-list {
+    counter-reset: step-counter;
+  }
+
+  .guide-list li {
+    counter-increment: step-counter;
+    padding-left: 4rem;
+  }
+
+  .guide-list li:before {
+    display: flex !important;
+    content: counter(step-counter) !important;
+    position: absolute;
+    left: 1.25rem;
+    top: 1.25rem;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.875rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .guide-list li:hover:before {
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+  }
+
+  /* 为tips-list添加特殊的图标样式 */
+  .tips-list li {
+    padding-left: 4rem;
+  }
+
+  .tips-list li:before {
+    display: flex !important;
+    content: "💡" !important;
+    position: absolute;
+    left: 1.25rem;
+    top: 1.25rem;
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+    border-radius: 50%;
+    font-size: 1rem;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  .tips-list li:hover:before {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+  }
+
+  .tips-list li:hover {
+    border-color: #F59E0B;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFFBEB 100%);
+  }
+
+  /* 控制方式网格样式 - 更精美的设计 */
+  .controls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+  }
+
+  .control-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 16px;
+    border: 2px solid #F1F5F9;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .control-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(99, 102, 241, 0.15);
+    border-color: #6366F1;
+  }
+
+  .control-type {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    color: #1F2937;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .control-type i {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    color: white;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+  }
+
+  .control-instruction {
+    color: #4B5563;
+    font-weight: 500;
+    line-height: 1.6;
+    font-size: 1rem;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .game-detail-container {
+      padding: 1.5rem;
+    }
+    
+    .game-icon {
+      width: 56px;
+      height: 56px;
+      font-size: 1.5rem;
+    }
+    
+    .game-main-title {
+      font-size: 2.5rem;
+    }
+    
+    .section-header {
+      padding: 1.25rem 1.5rem;
+    }
+    
+    .info-content, .developer-content, .related-games-grid {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .game-detail-container {
+      padding: 1rem;
+    }
+    
+    .title-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
+    }
+    
+    .title-and-tags {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+    
+    .game-icon {
+      width: 48px;
+      height: 48px;
+      font-size: 1.25rem;
+    }
+    
+    .game-main-title {
+      font-size: 2rem;
+    }
+    
+    .game-iframe {
+      height: 400px;
+    }
+    
+    .section-header {
+      padding: 1rem;
+    }
+    
+    .section-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+    }
+    
+    .info-content, .developer-content {
+      padding: 1rem;
+    }
+    
+    .info-block p {
+      font-size: 1rem;
+      padding: 1rem;
+    }
+    
+    .developer-details {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1rem;
+    }
+    
+    .developer-item {
+      min-width: auto;
+    }
+    
+    .related-games-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .related-games-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .game-controls {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .control-btn {
+      width: 100%;
+      max-width: 200px;
+      justify-content: center;
+    }
+  }
+
+  /* 游戏通知样式 */
+  .game-notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10000;
+    min-width: 300px;
+    max-width: 400px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transform: translateX(100%);
+    animation: slideIn 0.3s ease forwards;
+  }
+
+  @keyframes slideIn {
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .notification-close {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0.25rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+  }
+
+  .notification-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  .game-notification-success {
+    background: #10B981;
+    color: white;
+  }
+
+  .game-notification-error {
+    background: #EF4444;
+    color: white;
+  }
+
+  .game-notification-warning {
+    background: #F59E0B;
+    color: white;
+  }
+
+  .game-notification-info {
+    background: #3B82F6;
+    color: white;
+  }
+</style>
+
+<script>
+  // 游戏控制函数
+  function toggleFullscreen() {
+    const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
+    if (iframe) {
+      if (document.fullscreenElement) {
+        document.exitFullscreen();
+      } else {
+        iframe.requestFullscreen();
+      }
+    }
+  }
+
+  function restartGame() {
+    const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
+    if (iframe) {
+      // 先记录当前游戏结束
+      recordGameEnd();
+      
+      // 重置交互计数器
+      iframeInteractionCount = 0;
+      lastIframeInteraction = null;
+      
+      // 重新加载游戏
+      iframe.src = iframe.src;
+      
+      // 重新开始统计
+      setTimeout(() => {
+        initializeGameStats();
+      }, 1000);
+      
+      console.log('🔄 游戏重启，统计数据已重置');
+    }
+  }
+
+  function toggleFavorite() {
+    // 获取当前游戏的slug
+    const gameSlug = window.location.pathname.split('/').pop();
+    if (!gameSlug) return;
+
+    try {
+      // 从localStorage获取收藏列表
+      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      const favoriteBtn = document.querySelector('.favorite-btn');
+      const heartIcon = favoriteBtn?.querySelector('i');
+      
+      // 检查是否已收藏
+      const isFavorited = favorites.includes(gameSlug);
+      
+      if (isFavorited) {
+        // 移除收藏
+        const index = favorites.indexOf(gameSlug);
+        favorites.splice(index, 1);
+        
+        // 更新UI
+        if (heartIcon) {
+          heartIcon.className = 'far fa-heart';
+        }
+        if (favoriteBtn) {
+          favoriteBtn.style.background = '#6B7280';
+          favoriteBtn.style.color = 'white';
+        }
+        
+        console.log(`已移除 ${gameSlug} 从收藏列表`);
+        
+        // 显示提示
+        showNotification('Removed from favorites', 'removed');
+      } else {
+        // 添加收藏
+        favorites.push(gameSlug);
+        
+        // 更新UI
+        if (heartIcon) {
+          heartIcon.className = 'fas fa-heart';
+        }
+        if (favoriteBtn) {
+          favoriteBtn.style.background = '#EC4899';
+          favoriteBtn.style.color = 'white';
+        }
+        
+        console.log(`已添加 ${gameSlug} 到收藏列表`);
+        
+        // 显示提示
+        showNotification('Added to favorites', 'added');
+      }
+      
+      // 保存到localStorage
+      localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+      
+      // 触发全局事件，通知其他组件
+      window.dispatchEvent(new CustomEvent('favoritesChanged', {
+        detail: { gameSlug, isFavorite: !isFavorited }
+      }));
+      
+    } catch (error) {
+      console.error('收藏操作失败:', error);
+      showNotification('Something went wrong', 'error');
+    }
+  }
+
+  function handleShareClick(button: HTMLElement): void {
+    const title = button.getAttribute('data-game-title') || '';
+    const description = button.getAttribute('data-game-description') || '';
+    const image = button.getAttribute('data-game-image') || '';
+    const url = window.location.href;
+    
+    // 调用ShareModal的全局openShareModal函数
+    if (typeof window.openShareModal === 'function') {
+      window.openShareModal(title, url, description, image);
+    } else {
+      // 回退方案
+      shareGameFallback(title, url);
+    }
+  }
+
+  function shareGameFallback(title: string, url: string): void {
+    // 直接调用ShareModal的全局函数
+    if (navigator.share) {
+      navigator.share({
+        title: title,
+        url: url
+      });
+    } else {
+      navigator.clipboard.writeText(url);
+      showNotification('Game link copied to clipboard!', 'info');
+    }
+  }
+
+  // 显示通知函数
+  function showNotification(message: string, type: string = 'info'): void {
+    // 移除现有通知
+    const existingNotification = document.querySelector('.favorite-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // 创建通知元素
+    const notification = document.createElement('div');
+    notification.className = `favorite-notification ${type}`;
+    notification.innerHTML = `
+      <div class="notification-content">
+        <i class="fas ${type === 'added' ? 'fa-heart' : type === 'removed' ? 'fa-heart-broken' : 'fa-exclamation-triangle'}"></i>
+        <span>${message}</span>
+      </div>
+    `;
+
+    // 添加样式
+    Object.assign(notification.style, {
+      position: 'fixed',
+      top: '20px',
+      right: '20px',
+      zIndex: '9999',
+      padding: '1rem 1.5rem',
+      borderRadius: '12px',
+      background: type === 'added' ? '#10B981' : type === 'removed' ? '#EF4444' : '#F59E0B',
+      color: 'white',
+      fontWeight: '600',
+      fontSize: '0.9rem',
+      boxShadow: '0 8px 24px rgba(0, 0, 0, 0.15)',
+      transform: 'translateX(100%)',
+      transition: 'transform 0.3s ease',
+      backdropFilter: 'blur(10px)'
+    });
+
+    // 添加到页面
+    document.body.appendChild(notification);
+
+    // 动画显示
+    setTimeout(() => {
+      notification.style.transform = 'translateX(0)';
+    }, 100);
+
+    // 3秒后自动隐藏
+    setTimeout(() => {
+      notification.style.transform = 'translateX(100%)';
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 300);
+    }, 3000);
+  }
+
+  // 初始化收藏状态
+  function initializeFavoriteState(): void {
+    const gameSlug = window.location.pathname.split('/').pop();
+    if (!gameSlug) return;
+
+    try {
+      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      const isFavorited = favorites.includes(gameSlug);
+      
+      const favoriteBtn = document.querySelector('.favorite-btn') as HTMLElement;
+      const heartIcon = favoriteBtn?.querySelector('i');
+      
+      if (isFavorited) {
+        if (heartIcon) {
+          heartIcon.className = 'fas fa-heart';
+        }
+        if (favoriteBtn) {
+          favoriteBtn.style.background = '#EC4899';
+          favoriteBtn.style.color = 'white';
+        }
+      } else {
+        if (heartIcon) {
+          heartIcon.className = 'far fa-heart';
+        }
+        if (favoriteBtn) {
+          favoriteBtn.style.background = '#6B7280';
+          favoriteBtn.style.color = 'white';
+        }
+      }
+    } catch (error) {
+      console.error('初始化收藏状态失败:', error);
+    }
+  }
+
+  // 将函数绑定到全局作用域
+  (window as any).toggleFullscreen = toggleFullscreen;
+  (window as any).restartGame = restartGame;
+  (window as any).toggleFavorite = toggleFavorite;
+  (window as any).handleShareClick = handleShareClick;
+
+  // 游戏统计数据记录功能 (iframe优化版)
+  let gameStartTime: number | null = null;
+  let gameSlug: string | null = null;
+  let iframeInteractionCount = 0;
+  let lastIframeInteraction: any = null;
+
+  function initializeGameStats(): void {
+    gameSlug = window.location.pathname.split('/').pop() || null;
+    if (!gameSlug) return;
+
+    // 等待统计管理器加载
+    if (typeof window.gameStatsManager === 'undefined') {
+      setTimeout(initializeGameStats, 100);
+      return;
+    }
+
+    // 记录游戏开始播放
+    const gameInfo = {
+      title: document.querySelector('.game-main-title')?.textContent || gameSlug,
+      category: document.querySelector('.category-tag')?.textContent?.toLowerCase() || 'unknown'
+    };
+
+    window.gameStatsManager.recordGameStart(gameSlug, gameInfo);
+    gameStartTime = Date.now();
+
+    // 设置iframe交互监听
+    setupIframeInteractionTracking();
+
+    console.log(`🎮 开始记录游戏统计 (iframe优化): ${gameSlug}`);
+  }
+
+  function setupIframeInteractionTracking(): void {
+    const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
+    if (!iframe) return;
+
+    // 监听iframe的鼠标事件
+    iframe.addEventListener('mouseenter', () => {
+      console.log('🖱️ 鼠标进入iframe');
+      recordIframeInteraction('mouseenter');
+    });
+
+    iframe.addEventListener('mouseleave', () => {
+      console.log('🖱️ 鼠标离开iframe');
+      recordIframeInteraction('mouseleave');
+    });
+
+    // 监听iframe的点击事件
+    iframe.addEventListener('click', () => {
+      console.log('🖱️ 点击iframe');
+      recordIframeInteraction('click');
+    });
+
+    // 监听iframe的焦点事件
+    iframe.addEventListener('focus', () => {
+      console.log('🎯 iframe获得焦点');
+      recordIframeInteraction('focus');
+    });
+
+    iframe.addEventListener('blur', () => {
+      console.log('🎯 iframe失去焦点');
+      recordIframeInteraction('blur');
+    });
+
+    // 尝试监听iframe内的PostMessage事件
+    window.addEventListener('message', (event) => {
+      // 检查消息来源是否为游戏iframe
+      if (event.source === iframe.contentWindow) {
+        console.log('📨 收到iframe内部消息:', event.data);
+        recordIframeInteraction('postmessage', event.data);
+      }
+    });
+
+    // 监听键盘事件（当iframe有焦点时）
+    document.addEventListener('keydown', (event) => {
+      if (document.activeElement === iframe) {
+        console.log('⌨️ iframe内键盘按下:', event.key);
+        recordIframeInteraction('keydown', event.key);
+      }
+    });
+
+    // 定期检查iframe是否还在加载
+    let loadCheckInterval = setInterval(() => {
+      try {
+        // 尝试访问iframe的contentDocument来检测加载状态
+        if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+          console.log('✅ iframe游戏完全加载完成');
+          recordIframeInteraction('loaded');
+          clearInterval(loadCheckInterval);
+          
+          // 尝试注入交互监听脚本到iframe
+          injectInteractionScript(iframe);
+        }
+      } catch (e) {
+        // 跨域限制，无法访问iframe内容，这是正常的
+        console.log('🔒 iframe跨域限制，使用外部监听');
+        clearInterval(loadCheckInterval);
+      }
+    }, 1000);
+
+    console.log('👂 iframe交互监听已设置');
+  }
+
+  function recordIframeInteraction(type: string, data: any = null): void {
+    iframeInteractionCount++;
+    lastIframeInteraction = {
+      type: type,
+      timestamp: Date.now(),
+      data: data
+    };
+
+    // 通知统计管理器用户正在与游戏交互
+    if (window.gameStatsManager && gameSlug) {
+      window.gameStatsManager.updateGameActivity(gameSlug);
+    }
+
+    console.log(`🎯 iframe交互记录: ${type}`, data);
+  }
+
+  function injectInteractionScript(iframe: HTMLIFrameElement): void {
+    try {
+      // 尝试向iframe注入交互监听脚本
+      const script = iframe.contentDocument!.createElement('script');
+      script.textContent = `
+        // 游戏内交互监听脚本
+        let interactionCount = 0;
+        
+        function reportInteraction(type, detail) {
+          interactionCount++;
+          window.parent.postMessage({
+            type: 'gameInteraction',
+            action: type,
+            detail: detail,
+            count: interactionCount,
+            timestamp: Date.now()
+          }, '*');
+        }
+        
+        // 监听各种游戏交互
+        ['click', 'mousedown', 'mouseup', 'keydown', 'keyup', 'touchstart', 'touchend'].forEach(eventType => {
+          document.addEventListener(eventType, (e) => {
+            reportInteraction(eventType, {
+              target: e.target.tagName,
+              x: e.clientX || (e.touches && e.touches[0] && e.touches[0].clientX),
+              y: e.clientY || (e.touches && e.touches[0] && e.touches[0].clientY)
+            });
+          }, true);
+        });
+        
+        // 监听游戏特定事件（如果游戏支持）
+        window.addEventListener('gameEvent', (e) => {
+          reportInteraction('gameEvent', e.detail);
+        });
+        
+        console.log('🎮 游戏内交互监听脚本已注入');
+      `;
+      
+      iframe.contentDocument!.head.appendChild(script);
+      console.log('✅ 成功注入iframe交互监听脚本');
+    } catch (error: any) {
+      console.log('❌ 无法注入iframe脚本 (跨域限制):', error.message);
+    }
+  }
+
+  function recordGameEnd(): void {
+    if (!gameSlug || !gameStartTime || typeof window.gameStatsManager === 'undefined') return;
+
+    const playTime = Math.floor((Date.now() - gameStartTime) / 1000); // 转换为秒
+    
+    // 计算交互密度（每分钟交互次数）
+    const interactionDensity = playTime > 0 ? (iframeInteractionCount / (playTime / 60)) : 0;
+    
+    // 将交互数据传递给统计管理器
+    window.gameStatsManager.recordGameEnd(gameSlug, playTime);
+    
+    // 记录iframe特定统计
+    if (window.gameStatsManager?.iframeStats?.[gameSlug]) {
+      const iframeStatsForGame = window.gameStatsManager.iframeStats[gameSlug];
+      if (iframeStatsForGame) {
+        iframeStatsForGame.interactionCount = iframeInteractionCount;
+        iframeStatsForGame.interactionDensity = interactionDensity;
+        iframeStatsForGame.lastInteraction = lastIframeInteraction;
+      }
+    }
+
+    console.log(`🎮 记录游戏结束 (iframe优化): ${gameSlug}, 游戏时长: ${playTime}秒, 交互次数: ${iframeInteractionCount}, 交互密度: ${interactionDensity.toFixed(2)}/分钟`);
+  }
+
+  // 页面加载后初始化收藏状态和游戏统计
+  document.addEventListener('DOMContentLoaded', () => {
+    initializeFavoriteState();
+    
+    // 初始化iframe懒加载
+    initializeIframeLazyLoading();
+    
+    // 延迟初始化游戏统计，确保游戏已开始加载
+    setTimeout(() => {
+      initializeGameStats();
+    }, 2000);
+  });
+
+  // 🚀 iframe懒加载优化函数
+  function initializeIframeLazyLoading() {
+    const placeholder = document.getElementById('iframePlaceholder');
+    const iframe = document.getElementById('gameIframe');
+    const loadGameBtn = document.getElementById('loadGameBtn');
+    
+    if (!placeholder || !iframe || !loadGameBtn) {
+      console.warn('❌ iframe懒加载初始化失败：找不到必要元素');
+      return;
+    }
+
+    // 设置Intersection Observer来检测何时显示加载按钮
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // 用户滚动到游戏区域，自动显示加载按钮
+          loadGameBtn.style.transform = 'scale(1.05)';
+          loadGameBtn.style.boxShadow = '0 4px 20px rgba(99, 102, 241, 0.4)';
+          
+          // 3秒后自动加载游戏（可选）
+          setTimeout(() => {
+            if (placeholder.style.display !== 'none') {
+              autoLoadGame();
+            }
+          }, 3000);
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.5 // 当50%的游戏区域可见时触发
+    });
+
+    const gameIframeWrapper = document.getElementById('gameIframeWrapper');
+    if (gameIframeWrapper) {
+      observer.observe(gameIframeWrapper);
+    }
+
+    console.log('👁️ iframe懒加载观察器已设置');
+  }
+
+  // 🎮 手动加载游戏iframe
+  window.loadGameIframe = function(): void {
+    const placeholder = document.getElementById('iframePlaceholder');
+    const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
+    const loadGameBtn = document.getElementById('loadGameBtn') as HTMLButtonElement;
+    
+    if (!placeholder || !iframe) {
+      console.error('❌ 找不到iframe元素');
+      return;
+    }
+
+    // 显示加载状态
+    loadGameBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+    loadGameBtn.disabled = true;
+
+    // 开始加载iframe
+    const iframeSrc = iframe.getAttribute('data-src');
+    if (iframeSrc) {
+      console.log('🚀 开始加载游戏iframe:', iframeSrc);
+      
+      // 记录加载开始时间
+      const loadStartTime = Date.now();
+      
+      // 设置iframe src触发加载
+      iframe.src = iframeSrc;
+      
+      // 监听iframe加载事件
+      iframe.onload = function() {
+        const loadTime = Date.now() - loadStartTime;
+        console.log(`✅ iframe加载完成，耗时: ${loadTime}ms`);
+        
+        // 隐藏占位符，显示iframe
+        placeholder.style.opacity = '0';
+        iframe.classList.remove('hidden');
+        
+        setTimeout(() => {
+          placeholder.style.display = 'none';
+        }, 300);
+        
+        // 记录性能数据
+        if (window.gameStatsManager) {
+          window.gameStatsManager.recordIframeLoadTime(gameSlug!, loadTime);
+        }
+      };
+      
+      // 监听iframe加载错误
+      iframe.onerror = function() {
+        console.error('❌ iframe加载失败');
+        loadGameBtn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Load Failed - Retry';
+        loadGameBtn.disabled = false;
+        
+        // 显示错误提示
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'iframe-error';
+        errorMsg.innerHTML = '⚠️ Game failed to load. Please try again or check your connection.';
+        const placeholderContent = placeholder.querySelector('.placeholder-content');
+        if (placeholderContent) {
+          placeholderContent.appendChild(errorMsg);
+        }
+      };
+    }
+  };
+
+  // 🤖 自动加载游戏（用户滚动到游戏区域后自动触发）
+  function autoLoadGame(): void {
+    const placeholder = document.getElementById('iframePlaceholder');
+    const loadGameBtn = document.getElementById('loadGameBtn') as HTMLButtonElement;
+    
+    if (placeholder && placeholder.style.display !== 'none') {
+      console.log('🤖 自动加载游戏iframe');
+      
+      // 添加自动加载提示
+      loadGameBtn.innerHTML = '<i class="fas fa-rocket"></i> Auto Loading...';
+      
+      setTimeout(() => {
+        if (window.loadGameIframe) {
+          window.loadGameIframe();
+        }
+      }, 1000);
+    }
+  }
+
+  // 🔄 重启游戏优化
+  window.restartGame = function(): void {
+    const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
+    if (iframe && iframe.src) {
+      console.log('🔄 重启游戏');
+      
+      // 记录重启事件
+      if (window.gameStatsManager && gameSlug) {
+        window.gameStatsManager.recordGameRestart(gameSlug);
+      }
+      
+      // 重新加载iframe
+      iframe.src = iframe.src;
+      
+      // 显示重启提示
+      showGameNotification('🔄 Game Restarted', 'success');
+    } else {
+      console.warn('⚠️ 游戏尚未加载，无法重启');
+      showGameNotification('⚠️ Please load the game first', 'warning');
+    }
+  };
+
+  // 📺 全屏功能优化
+  window.toggleFullscreen = function(): void {
+    const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
+    if (!iframe) {
+      showGameNotification('⚠️ Please load the game first', 'warning');
+      return;
+    }
+
+    if (!document.fullscreenElement) {
+      iframe.requestFullscreen().then(() => {
+        console.log('📺 进入全屏模式');
+        showGameNotification('📺 Fullscreen Mode Enabled', 'success');
+        
+        // 记录全屏事件
+        if (window.gameStatsManager && gameSlug) {
+          window.gameStatsManager.recordGameFullscreen(gameSlug, true);
+        }
+      }).catch(err => {
+        console.error('❌ 无法进入全屏:', err);
+        showGameNotification('❌ Fullscreen not supported', 'error');
+      });
+    } else {
+      document.exitFullscreen().then(() => {
+        console.log('📱 退出全屏模式');
+        showGameNotification('📱 Fullscreen Mode Disabled', 'info');
+        
+        // 记录全屏事件
+        if (window.gameStatsManager && gameSlug) {
+          window.gameStatsManager.recordGameFullscreen(gameSlug, false);
+        }
+      });
+    }
+  };
+
+  // 🎮 显示游戏通知
+  function showGameNotification(message: string, type: string = 'info'): void {
+    // 移除现有通知
+    const existingNotification = document.querySelector('.game-notification');
+    if (existingNotification) {
+      existingNotification.remove();
+    }
+
+    // 创建通知元素
+    const notification = document.createElement('div');
+    notification.className = `game-notification game-notification-${type}`;
+    notification.innerHTML = `
+      <div class="notification-content">
+        <span>${message}</span>
+        <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+    `;
+
+    // 添加到页面
+    document.body.appendChild(notification);
+
+    // 3秒后自动移除
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.remove();
+      }
+    }, 3000);
+  }
+</script> 
+
 <!-- 分享模态框组件 -->
 <ShareModal 
   gameTitle={game.title}
-  gameUrl={`${Astro.site || 'https://edugamehq.com'}/es/games/${game.slug}`}
+  gameUrl={`${Astro.site || 'https://edugamehq.com'}/games/${game.slug}`}
   gameDescription={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
   gameImage={game.thumbnailUrl || ''}
 />
-
-<!-- 引入游戏详情页的JavaScript功能 -->
-<script src="/src/pages/games/[slug].astro" type="module"></script>

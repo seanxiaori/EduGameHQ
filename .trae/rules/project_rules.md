@@ -1,0 +1,193 @@
+# EduGameHQ.com - Educational Games Platform Development Rules (Sean专属版本)
+
+## Sean的个人偏好与工作流程
+- **对话语言**: 永远使用中文回复，像小白一样教导所有基础理论知识
+- **代码注释**: 必须使用中文注释，但网页文案内容保持英文
+- **端口配置**: 固定使用3000端口，不新增其他端口，保持服务器持续运行
+- **文件操作**: 绝不能擅自删除任何文件，删改文件必须先确认后执行
+- **Git工作流**: 每次修改等我确认没有问题后，再提交到main分支，写好commit messages
+- **确认机制**: 修改代码前必须告知修改文件并获得确认
+- **解释方式**: 通过讲故事的通俗方式解释复杂概念
+- **全局思维**: 修改代码要考虑全局，不能影响其他正常功能模块
+- **工具思维**: 我设置了一些MCP服务，遇到相关问题时，可以调用这些MCP服务；
+
+## 修复三律 (Sean's Debug Philosophy)
+1⃣ **精**: 复杂度≤原方案80%  
+2⃣ **准**: 直击根本原因  
+3⃣ **净**: 0技术债务(SonarQube✔)
+
+### 三步走调试流程
+① **溯源**: 函数调用链 → 错误触发路径  
+② **拆解**: 给出3个SOLID++方案，充分讨论本质原因  
+③ **执行**: 确认修改方案后才动手改代码
+
+## Project Context
+You are working on EduGameHQ.com, a global educational games aggregation platform targeting English-speaking users aged 6-18. The platform focuses on free HTML5 educational games with ad monetization.
+
+## Tech Stack (扩展版)
+- **Framework**: Astro 5.0 + React 19 (主要) / Next.js App Router (备用)
+- **Styling**: Tailwind CSS v4.0
+- **UI Components**: Shadcn UI + Radix UI (可选)
+- **Language**: TypeScript
+- **Hosting**: Cloudflare Pages
+- **CMS**: Git-based JSON files
+- **Environment**: Windows PowerShell (不支持&&命令)
+
+## Code Style & Standards
+
+### TypeScript Rules (增强版)
+- Use strict TypeScript configuration with accurate examples
+- Prefer interfaces over types for object shapes
+- Use proper typing for all props and state
+- Implement proper error handling with typed errors
+- Use const assertions where appropriate
+- Avoid enums; use maps instead
+- Use functional and declarative programming patterns; avoid classes
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError)
+- Structure files: exported component, subcomponents, helpers, static content, types
+
+### React Best Practices
+- Use React 19 features (Server Components, Actions)
+- Prefer functional components with hooks over classes
+- Use proper key props for lists
+- Implement proper error boundaries
+- Use React.memo for performance optimization when needed
+- Favor named exports for components
+- 注意: 添加"use client"指令时，不能同时导出metadata
+
+### Astro Specific Rules
+- Use Astro components for static content
+- Implement proper island architecture
+- Use Astro's built-in optimizations (image, CSS)
+- Prefer static generation over SSR when possible
+- Use proper frontmatter for metadata
+- Use Astro's zero-JS by default approach
+
+### Tailwind CSS Guidelines
+- Use Tailwind v4.0 syntax and features
+- Implement mobile-first responsive design
+- Use semantic class combinations
+- Create reusable component classes
+- Follow accessibility color contrast standards
+
+## Educational Platform Specific Rules
+
+### SEO Optimization
+- Include proper meta tags for each page
+- Use semantic HTML structure
+- Implement structured data (JSON-LD) for games
+- Optimize images with proper alt text
+- Use descriptive URLs and headings
+
+### Performance Requirements
+- Target Core Web Vitals: LCP < 2.5s, FID < 100ms, CLS < 0.1
+- Implement lazy loading for game iframes
+- Optimize images (WebP format, proper sizing)
+- Minimize JavaScript bundle size
+- Use Astro's zero-JS by default approach
+
+### Accessibility Standards
+- Follow WCAG 2.1 AA guidelines
+- Implement proper ARIA labels
+- Ensure keyboard navigation support
+- Use sufficient color contrast ratios
+- Provide alternative text for all media
+
+### Child Safety & COPPA Compliance
+- Implement minimal data collection
+- Use secure iframe sandboxing for games
+- Ensure all content is child-appropriate
+- Implement proper privacy controls
+- Use secure HTTPS connections
+
+## File Structure & Naming Conventions
+
+### Directory Structure
+```
+src/
+├── components/ # 可复用UI组件
+│ ├── ui/ # 基础UI元素
+│ ├── games/ # 游戏相关组件
+│ └── layout/ # 布局组件
+├── pages/ # Astro页面 (路由)
+├── layouts/ # 页面布局
+├── content/ # 内容集合 (游戏数据)
+├── styles/ # 全局样式
+└── utils/ # 工具函数
+```
+
+### Naming Conventions
+- Use lowercase with dashes for directories (e.g., components/auth-wizard)
+- Use PascalCase for component names
+- Use descriptive, semantic names
+- Prefix game-related components with "Game"
+- Use "Layout" suffix for layout components
+- Favor named exports for components
+
+## Data Management
+- Store game metadata in JSON files
+- Use TypeScript interfaces for data shapes
+- Implement proper validation for game data
+- Use content collections for structured data
+
+## Ad Integration Rules
+- Implement non-intrusive ad placement
+- Ensure ads don't interfere with gameplay
+- Use proper ad loading strategies
+- Implement ad-blocker detection gracefully
+- Follow Google AdSense policies
+
+## Internationalization
+- Structure code for future i18n support
+- Use semantic text keys
+- Implement proper date/number formatting
+- Consider RTL language support structure
+
+## Error Handling & Debugging
+- Implement graceful fallbacks for failed game loads
+- Use proper error boundaries in React
+- Log errors appropriately for debugging
+- Provide user-friendly error messages
+- 遇到复杂问题时打印函数和程序调用链进行分析
+- 不基于任何假设前提条件，必须查看实际代码文件
+
+## Testing Guidelines
+- Write unit tests for utility functions
+- Test responsive design across devices
+- Validate game iframe security
+- Test ad integration functionality
+
+## Git Commit Standards (Sean版本)
+- Use conventional commit format
+- Include scope (feat, fix, docs, style, refactor)
+- Write clear, descriptive commit messages in Chinese
+- Reference issues when applicable
+- 每次修改后自动Git push到master分支
+- 不需要更新README，直接提交代码
+
+## PowerShell适配 (Windows环境)
+- PowerShell不支持&&连接命令，使用单个命令
+- 使用分号;或单独执行命令
+- 避免使用Linux/Mac特有的命令语法
+
+## Code Review Checklist
+- [ ] SEO meta tags implemented
+- [ ] Responsive design tested
+- [ ] Accessibility standards met
+- [ ] Performance metrics acceptable
+- [ ] Child safety measures in place
+- [ ] TypeScript types properly defined
+- [ ] Error handling implemented
+- [ ] 中文注释已添加
+- [ ] 3000端口配置正确
+- [ ] Sean确认了文件修改
+
+## Development Workflow (Sean专属)
+1. **深度分析**: 先查看所有相关文件，理解问题本质
+2. **方案讨论**: 提供3个解决方案，充分讨论
+3. **确认修改**: 明确告知要修改的文件，获得确认
+4. **执行修改**: 按确认的方案修改代码
+5. **确认修复**: 每个问题都需要问我问题是否已经修复；
+5. **自动提交**: 修改完成后自动Git提交
+
+Remember: 这是一个儿童教育平台。始终优先考虑安全性、性能和教育价值。所有操作都要先跟Sean确认，用中文解释，像教小白一样耐心。 

@@ -5,7 +5,7 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import '../../styles/game-card.css';
+import '../../styles/game-card.css';;
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -87,7 +87,7 @@ const seoData = {
 };
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="zh">
+<BaseLayout title={seoData.title} description={seoData.description}>
   <main class="main-content">
     <div class="content-wrapper">
       

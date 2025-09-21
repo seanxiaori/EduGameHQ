@@ -1,45 +1,45 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
-// 瀵煎叆鏍峰紡鏂囦欢
+// 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
 
-// 璇诲彇娓告垙鏁版嵁
+// 读取游戏数据
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
 const allGames: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
-// 绛涢€変綋鑲叉父鎴?
+// 筛选体育游戏
 const sportsGames = allGames.filter(game => game.category === 'sports');
 
-// 浣撹偛娓告垙鏁版嵁瑙勮寖鍖?
+// 体育游戏数据规范化
 const normalizedSportsGames = sportsGames.map((game: any) => {
-  // 鍏煎鏃ф牸寮忔父鎴忥紝涓哄畠浠坊鍔犵己澶辩殑瀛楁
+  // 兼容旧格式游戏，为它们添加缺失的字段
   return {
     ...game,
-    // 濡傛灉娌℃湁difficulty瀛楁锛屾牴鎹父鎴忕被鍨嬭缃粯璁ら毦搴?
+    // 如果没有difficulty字段，根据游戏类型设置默认难度
     difficulty: game.difficulty || (
       (game.subcategory === 'basketball' || game.subcategory === 'football') ? 'Medium' :
       (game.subcategory === 'golf' || game.subcategory === 'bowling') ? 'Easy' :
       'Medium'
     ) as 'Easy' | 'Medium' | 'Hard',
-    // 濡傛灉娌℃湁featured瀛楁锛屾墜鍔ㄦ寚瀹氫竴浜涚儹闂ㄦ父鎴忎负featured
+    // 如果没有featured字段，手动指定一些热门游戏为featured
     featured: game.featured || ['basket-random', 'basketbros', 'qb-legend', 'table-tennis-world-tour'].includes(game.slug || game.id || ''),
-    // 纭繚鏈塻lug瀛楁
+    // 确保有slug字段
     slug: game.slug || game.id || '',
-    // 鏍囧噯鍖杢humbnailUrl
+    // 标准化thumbnailUrl
     thumbnailUrl: game.thumbnailUrl || game.thumbnail,
-    // 鏍囧噯鍖杋frameUrl  
+    // 标准化iframeUrl  
     iframeUrl: game.iframeUrl || game.embedUrl || '',
-    // 鏍囧噯鍖杢ags
+    // 标准化tags
     tags: game.tags || []
   };
 });
 
-// 鎸夎繍鍔ㄧ被鍨嬪垎缁勶紙鍏煎涓ょ鏍煎紡锛?
+// 按运动类型分组（兼容两种格式）
 const featuredSportsGames = normalizedSportsGames.filter(game => game.featured);
 const basketballGames = normalizedSportsGames.filter(game => 
   game.subcategory === 'basketball' || 
@@ -66,7 +66,7 @@ const individualSports = normalizedSportsGames.filter(game =>
   game.title.toLowerCase().includes('ping')
 );
 
-// 浣撹偛瀛︿範寤鸿
+// 体育学习建议
 const sportsLearningTips = [
   {
     icon: 'fas fa-clock',
@@ -90,7 +90,7 @@ const sportsLearningTips = [
   }
 ];
 
-// 浣撹偛鏍稿績鎶€鑳?
+// 体育核心技能
 const sportsCoreSkills = [
   {
     icon: 'fas fa-users',
@@ -124,18 +124,18 @@ const sportsCoreSkills = [
   }
 ];
 
-console.log('馃弮鈥嶁檪锔?浣撹偛瀛︿範寤鸿:', sportsLearningTips.length, '鏉?);
-console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤?);
+console.log('🏃‍♂️ 体育学习建议:', sportsLearningTips.length, '条');
+console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
 ---
 
-<BaseLayout lang="ar">
-  <!-- 寮曞叆缁熶竴娓告垙鍗＄墖鏍峰紡 -->
+<BaseLayout>
+  <!-- 引入统一游戏卡片样式 -->
   
   
   <main class="main-content">
     <div class="content-wrapper">
       
-      <!-- 1. 椤甸潰椤堕儴鍖哄煙 -->
+      <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -152,7 +152,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </div>
       </section>
 
-      <!-- 2. 鐗硅壊娓告垙妯″潡 -->
+      <!-- 2. 特色游戏模块 -->
       {featuredSportsGames.length > 0 && (
         <section class="game-module featured-module">
           <div class="module-header">
@@ -173,7 +173,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </section>
       )}
 
-      <!-- 3. 绡悆娓告垙妯″潡 -->
+      <!-- 3. 篮球游戏模块 -->
       {basketballGames.length > 0 && (
         <section class="game-module difficulty-module basketball-module">
           <div class="module-header">
@@ -194,7 +194,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </section>
       )}
 
-      <!-- 4. 鐞冪被娓告垙妯″潡 -->
+      <!-- 4. 球类游戏模块 -->
       {ballGames.length > 0 && (
         <section class="game-module difficulty-module ball-module">
           <div class="module-header">
@@ -215,7 +215,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </section>
       )}
 
-      <!-- 5. 绮惧噯娓告垙妯″潡 -->
+      <!-- 5. 精准游戏模块 -->
       {precisionGames.length > 0 && (
         <section class="game-module difficulty-module precision-module">
           <div class="module-header">
@@ -236,7 +236,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </section>
       )}
 
-      <!-- 6. 涓汉杩愬姩妯″潡 -->
+      <!-- 6. 个人运动模块 -->
       {individualSports.length > 0 && (
         <section class="game-module difficulty-module individual-module">
           <div class="module-header">
@@ -257,7 +257,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </section>
       )}
 
-      <!-- 7. 瀛︿範寤鸿妯″潡 -->
+      <!-- 7. 学习建议模块 -->
       <section class="info-module tips-module">
         <div class="module-header">
           <div class="module-icon tips-icon">
@@ -312,7 +312,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
         </div>
       </section>
 
-      <!-- 8. 鏍稿績鎶€鑳芥ā鍧?-->
+      <!-- 8. 核心技能模块 -->
       <section class="info-module skills-module">
         <div class="module-header">
           <div class="module-icon skills-icon">
@@ -392,7 +392,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
 </BaseLayout>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 50%, rgba(220, 38, 38, 0.05) 100%);
@@ -405,7 +405,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     padding: 2rem;
   }
 
-  /* 1. 椤甸潰澶撮儴鍖哄煙 */
+  /* 1. 页面头部区域 */
   .page-header {
     background: linear-gradient(135deg, #FECACA 0%, #FCA5A5 50%, rgba(220, 38, 38, 0.08) 100%);
     border-radius: 20px;
@@ -485,7 +485,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     line-height: 1.6;
   }
 
-  /* 閫氱敤妯″潡鏍峰紡 */
+  /* 通用模块样式 */
   .game-module,
   .info-module {
     margin-bottom: 3rem;
@@ -561,7 +561,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     line-height: 1.4;
   }
 
-  /* 瀛︿範寤鸿妯″潡 */
+  /* 学习建议模块 */
   .tips-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -620,7 +620,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     font-size: 0.8rem;
   }
 
-  /* 鏍稿績鎶€鑳芥ā鍧?*/
+  /* 核心技能模块 */
   .skills-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -681,7 +681,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     font-size: 0.8rem;
   }
 
-  /* 鍔ㄧ敾鏁堟灉 */
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -697,7 +697,7 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .tips-grid {
       grid-template-columns: 1fr;
@@ -854,5 +854,4 @@ console.log('馃 浣撹偛鏍稿績鎶€鑳?', sportsCoreSkills.length, '椤
     }
   }
 </style>
-
 

@@ -1,54 +1,54 @@
-﻿---
-// 瀹㈡埛绔悳绱㈤〉闈?- 鏀寔闈欐€佹瀯寤?
+---
+// 客户端搜索页面 - 支持静态构建
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import '../../styles/game-card.css';
+import '../../styles/game-card.css';;
 
-// 浠嶫SON鏂囦欢璇诲彇娓告垙鏁版嵁
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData = [];
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
   allGamesData = JSON.parse(fileContent);
-  console.log(`鉁?鎼滅储椤甸潰鎴愬姛鍔犺浇 ${allGamesData.length} 涓父鎴忔暟鎹甡);
+  console.log(`✅ 搜索页面成功加载 ${allGamesData.length} 个游戏数据`);
 } catch (error) {
-  console.error('鉂?鎼滅储椤甸潰鏃犳硶璇诲彇娓告垙鏁版嵁鏂囦欢:', error);
+  console.error('❌ 搜索页面无法读取游戏数据文件:', error);
 }
 
-// 浣跨敤JSON鏁版嵁浣滀负娓告垙婧?
+// 使用JSON数据作为游戏源
 const allGames: Game[] = allGamesData;
 
-// 鑾峰彇鎺ㄨ崘鐨勭儹闂ㄦ父鎴?
+// 获取推荐的热门游戏
 const popularGames = allGames
   .filter((game: any) => game.featured || (game.popularity && game.popularity > 800))
   .slice(0, 12);
 
-console.log(`馃攳 鎼滅储椤甸潰鎵惧埌 ${popularGames.length} 涓帹鑽愭父鎴廯);
-console.log(`馃搳 鎼滅储椤甸潰娓告垙鎬绘暟: ${allGames.length}`);
+console.log(`🔍 搜索页面找到 ${popularGames.length} 个推荐游戏`);
+console.log(`📊 搜索页面游戏总数: ${allGames.length}`);
 
-// 浠嶶RL鑾峰彇鎼滅储鏌ヨ
+// 从URL获取搜索查询
 const url = Astro.url;
 const searchQuery = url.searchParams.get('q') || '';
 
-// 璇︾粏璋冭瘯淇℃伅
-console.log(`馃攳 === 璇︾粏URL璋冭瘯淇℃伅 ===`);
-console.log(`馃攳 瀹屾暣URL: ${url.toString()}`);
-console.log(`馃攳 URL璺緞: ${url.pathname}`);
-console.log(`馃攳 URL鍙傛暟瀛楃涓? "${url.search}"`);
-console.log(`馃攳 URL鍙傛暟瀵硅薄:`, url.searchParams);
-console.log(`馃攳 鎵€鏈塙RL鍙傛暟:`, [...url.searchParams.entries()]);
-console.log(`馃攳 鎼滅储鏌ヨ q: "${searchQuery}"`);
-console.log(`馃攳 鎼滅储鏌ヨ闀垮害: ${searchQuery.length}`);
-console.log(`馃攳 === 璋冭瘯淇℃伅缁撴潫 ===`);
+// 详细调试信息
+console.log(`🔍 === 详细URL调试信息 ===`);
+console.log(`🔍 完整URL: ${url.toString()}`);
+console.log(`🔍 URL路径: ${url.pathname}`);
+console.log(`🔍 URL参数字符串: "${url.search}"`);
+console.log(`🔍 URL参数对象:`, url.searchParams);
+console.log(`🔍 所有URL参数:`, [...url.searchParams.entries()]);
+console.log(`🔍 搜索查询 q: "${searchQuery}"`);
+console.log(`🔍 搜索查询长度: ${searchQuery.length}`);
+console.log(`🔍 === 调试信息结束 ===`);
 
-// 鎵ц鎼滅储锛堝鏋滄湁鏌ヨ璇嶏級
+// 执行搜索（如果有查询词）
 let searchResults: Game[] = [];
 if (searchQuery) {
   const searchTerm = searchQuery.toLowerCase().trim();
-  console.log(`馃攳 澶勭悊鍚庣殑鎼滅储璇? "${searchTerm}"`);
+  console.log(`🔍 处理后的搜索词: "${searchTerm}"`);
   
   searchResults = allGames.filter((game: any) => 
     game.title.toLowerCase().includes(searchTerm) ||
@@ -56,20 +56,20 @@ if (searchQuery) {
     game.category.toLowerCase().includes(searchTerm) ||
     (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
   );
-  console.log(`馃攳 鎼滅储"${searchQuery}"鎵惧埌 ${searchResults.length} 涓粨鏋渀);
+  console.log(`🔍 搜索"${searchQuery}"找到 ${searchResults.length} 个结果`);
   
-  // 鏄剧ず鍓嶅嚑涓尮閰嶇殑娓告垙
+  // 显示前几个匹配的游戏
   if (searchResults.length > 0) {
-    console.log(`馃幃 鍖归厤鐨勬父鎴忕ず渚?`);
+    console.log(`🎮 匹配的游戏示例:`);
     searchResults.slice(0, 3).forEach((game, index) => {
       console.log(`  ${index + 1}. ${game.title} (${game.category})`);
     });
   }
 } else {
-  console.log(`馃攳 娌℃湁鎼滅储鏌ヨ锛屾樉绀洪粯璁ら〉闈);
+  console.log(`🔍 没有搜索查询，显示默认页面`);
 }
 
-// 鐑棬鎼滅储鍏抽敭璇?
+// 热门搜索关键词
 const popularSearchTerms = [
   { term: 'math', icon: 'fa-calculator', color: 'blue' },
   { term: 'science', icon: 'fa-flask', color: 'green' },
@@ -79,7 +79,7 @@ const popularSearchTerms = [
   { term: 'art', icon: 'fa-palette', color: 'teal' }
 ];
 
-// SEO鏁版嵁
+// SEO数据
 const seoData = {
   title: searchQuery ? `Search Results for "${searchQuery}" - EduGameHQ` : 'Search Educational Games - EduGameHQ',
   description: searchQuery ? `Found ${searchResults.length} educational games matching "${searchQuery}". Play fun learning games for kids.` : 'Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.',
@@ -87,11 +87,11 @@ const seoData = {
 };
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="es">
+<BaseLayout title={seoData.title} description={seoData.description}>
   <main class="main-content">
     <div class="content-wrapper">
       
-      <!-- 鎼滅储澶撮儴 -->
+      <!-- 搜索头部 -->
       <section class="search-header">
         <div class="header-content">
           <div class="header-icon">
@@ -124,7 +124,7 @@ const seoData = {
         </div>
       </section>
 
-      <!-- 鎼滅储缁撴灉 -->
+      <!-- 搜索结果 -->
       {searchQuery && searchResults.length > 0 && (
         <section class="search-results">
           <div class="module-header">
@@ -150,7 +150,7 @@ const seoData = {
         </section>
       )}
 
-      <!-- 鏃犳悳绱㈢粨鏋?-->
+      <!-- 无搜索结果 -->
       {searchQuery && searchResults.length === 0 && (
         <section class="no-results">
           <div class="module-header">
@@ -198,7 +198,7 @@ const seoData = {
         </section>
       )}
 
-      <!-- 榛樿瑙嗗浘锛堟病鏈夋悳绱㈡椂锛?-->
+      <!-- 默认视图（没有搜索时） -->
       {!searchQuery && (
         <>
           <section class="search-prompt">
@@ -255,7 +255,7 @@ const seoData = {
 </BaseLayout>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(245, 158, 11, 0.05) 100%);
@@ -268,7 +268,7 @@ const seoData = {
     padding: 2rem;
   }
 
-  /* 鎼滅储澶撮儴 - 姗欒壊涓婚 */
+  /* 搜索头部 - 橙色主题 */
   .search-header {
     background: linear-gradient(135deg, #FEF3E2 0%, #FED7AA 50%, #F59E0B 100%);
     border-radius: 20px;
@@ -344,7 +344,7 @@ const seoData = {
     font-weight: 700;
   }
 
-  /* 閫氱敤妯″潡鏍峰紡 */
+  /* 通用模块样式 */
   .search-prompt,
   .recommendations,
   .search-results,
@@ -414,7 +414,7 @@ const seoData = {
     font-weight: 500;
   }
 
-  /* 鎼滅储鏍囩 */
+  /* 搜索标签 */
   .section-title {
     font-size: 1.25rem;
     font-weight: 600;
@@ -444,7 +444,7 @@ const seoData = {
     border: 2px solid transparent;
   }
 
-  /* 鎼滅储鏍囩棰滆壊鍙樹綋 */
+  /* 搜索标签颜色变体 */
   .search-tag.blue {
     background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
     color: #1D4ED8;
@@ -517,14 +517,14 @@ const seoData = {
     box-shadow: 0 4px 12px rgba(20, 184, 166, 0.3);
   }
 
-  /* 娓告垙缃戞牸 */
+  /* 游戏网格 */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
   }
 
-  /* 鎼滅储寤鸿鍜岀儹闂ㄦ悳绱?*/
+  /* 搜索建议和热门搜索 */
   .popular-searches {
     padding: 1.5rem 0;
   }
@@ -533,7 +533,7 @@ const seoData = {
     margin-bottom: 2rem;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .content-wrapper {
       padding: 1.5rem;
@@ -604,62 +604,62 @@ const seoData = {
 </style>
 
 <script>
-  // 瀹㈡埛绔悳绱㈠姛鑳?
-  console.log('馃攳 鎼滅储椤甸潰瀹㈡埛绔剼鏈紑濮嬫墽琛?);
+  // 客户端搜索功能
+  console.log('🔍 搜索页面客户端脚本开始执行');
   
-  // 绛夊緟椤甸潰鍜孏AMES_DATA鍔犺浇瀹屾垚
+  // 等待页面和GAMES_DATA加载完成
   document.addEventListener('DOMContentLoaded', function() {
-    console.log('馃攳 DOM鍔犺浇瀹屾垚锛屽紑濮嬪垵濮嬪寲鎼滅储鍔熻兘');
+    console.log('🔍 DOM加载完成，开始初始化搜索功能');
     
-    // 妫€鏌ュ叏灞€娓告垙鏁版嵁
+    // 检查全局游戏数据
     if (!window.GAMES_DATA || !Array.isArray(window.GAMES_DATA)) {
-      console.error('鉂?GAMES_DATA鏈壘鍒版垨鏍煎紡閿欒');
+      console.error('❌ GAMES_DATA未找到或格式错误');
       return;
     }
     
-    console.log(`鉁?鎵惧埌 ${window.GAMES_DATA.length} 涓父鎴忔暟鎹甡);
+    console.log(`✅ 找到 ${window.GAMES_DATA.length} 个游戏数据`);
     
-    // 浠嶶RL鑾峰彇鎼滅储鍙傛暟
+    // 从URL获取搜索参数
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get('q') || '';
     
-    console.log(`馃攳 瀹㈡埛绔悳绱㈡煡璇? "${searchQuery}"`);
+    console.log(`🔍 客户端搜索查询: "${searchQuery}"`);
     
-    // 璁剧疆鎼滅储妗嗗€?
+    // 设置搜索框值
     const searchInput = document.querySelector('input[name="q"]') as HTMLInputElement;
     if (searchInput) {
       searchInput.value = searchQuery;
-      console.log('鉁?鎼滅储妗嗗€煎凡璁剧疆');
+      console.log('✅ 搜索框值已设置');
     }
     
-    // 濡傛灉鏈夋悳绱㈡煡璇紝鎵ц鎼滅储
+    // 如果有搜索查询，执行搜索
     if (searchQuery && searchQuery.trim().length > 0) {
-      console.log('馃幆 鎵ц瀹㈡埛绔悳绱?..');
+      console.log('🎯 执行客户端搜索...');
       performClientSearch(searchQuery.trim());
     } else {
-      console.log('馃彔 鏄剧ず榛樿椤甸潰');
+      console.log('🏠 显示默认页面');
     }
     
-    // 鎼滅储寤鸿鍔熻兘
+    // 搜索建议功能
     if (searchInput) {
       searchInput.addEventListener('input', function() {
         const query = this.value.trim();
         if (query.length >= 2) {
-          console.log(`姝ｅ湪鎼滅储: ${query}`);
-          // 鍙互鍦ㄨ繖閲屾坊鍔犲疄鏃舵悳绱㈠缓璁?
+          console.log(`正在搜索: ${query}`);
+          // 可以在这里添加实时搜索建议
         }
       });
     }
   });
   
-  // 瀹㈡埛绔悳绱㈠嚱鏁?
+  // 客户端搜索函数
   function performClientSearch(query: string) {
-    console.log(`馃攳 寮€濮嬪鎴风鎼滅储: "${query}"`);
+    console.log(`🔍 开始客户端搜索: "${query}"`);
     
     const searchTerm = query.toLowerCase();
     const allGames = window.GAMES_DATA || [];
     
-    // 鎵ц鎼滅储閫昏緫
+    // 执行搜索逻辑
     const searchResults = allGames.filter((game: any) => 
       game.title.toLowerCase().includes(searchTerm) ||
       game.description.toLowerCase().includes(searchTerm) ||
@@ -667,26 +667,26 @@ const seoData = {
       (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
     );
     
-    console.log(`馃幃 鎼滅储"${query}"鎵惧埌 ${searchResults.length} 涓粨鏋渀);
+    console.log(`🎮 搜索"${query}"找到 ${searchResults.length} 个结果`);
     
-    // 鏇存柊椤甸潰鍐呭
+    // 更新页面内容
     updateSearchResults(query, searchResults);
   }
   
-  // 鏇存柊鎼滅储缁撴灉鏄剧ず
+  // 更新搜索结果显示
   function updateSearchResults(query: string, results: any[]) {
-    console.log('馃帹 鏇存柊鎼滅储缁撴灉鏄剧ず');
+    console.log('🎨 更新搜索结果显示');
     
-    // 鑾峰彇椤甸潰鍏冪礌
+    // 获取页面元素
     const searchHeader = document.querySelector('.search-header .header-text > div');
     const contentWrapper = document.querySelector('.content-wrapper');
     
     if (!searchHeader || !contentWrapper) {
-      console.error('鉂?椤甸潰鍏冪礌鏈壘鍒?);
+      console.error('❌ 页面元素未找到');
       return;
     }
     
-    // 鏇存柊鏍囬
+    // 更新标题
     if (results.length > 0) {
       searchHeader.innerHTML = `
         <h1 class="page-title">Found ${results.length} Results</h1>
@@ -699,24 +699,24 @@ const seoData = {
       `;
     }
     
-    // 绉婚櫎鐜版湁鐨勬悳绱㈢粨鏋滃拰榛樿鍐呭
+    // 移除现有的搜索结果和默认内容
     const existingResults = contentWrapper.querySelectorAll('.search-results, .no-results, .search-prompt, .recommendations');
     existingResults.forEach(el => el.remove());
     
     if (results.length > 0) {
-      // 鏄剧ず鎼滅储缁撴灉
+      // 显示搜索结果
       const resultsSection = createResultsSection(query, results);
       contentWrapper.appendChild(resultsSection);
     } else {
-      // 鏄剧ず鏃犵粨鏋滈〉闈?
+      // 显示无结果页面
       const noResultsSection = createNoResultsSection(query);
       contentWrapper.appendChild(noResultsSection);
     }
     
-    console.log('鉁?鎼滅储缁撴灉鏄剧ず鏇存柊瀹屾垚');
+    console.log('✅ 搜索结果显示更新完成');
   }
   
-  // 鍒涘缓鎼滅储缁撴灉鍖哄煙
+  // 创建搜索结果区域
   function createResultsSection(query: string, results: any[]): HTMLElement {
     const section = document.createElement('section');
     section.className = 'search-results';
@@ -747,7 +747,7 @@ const seoData = {
     return section;
   }
   
-  // 鍒涘缓鏃犵粨鏋滃尯鍩?
+  // 创建无结果区域
   function createNoResultsSection(query: string): HTMLElement {
     const section = document.createElement('section');
     section.className = 'no-results';
@@ -760,7 +760,7 @@ const seoData = {
       border: 1px solid #E5E7EB;
     `;
     
-    // 鑾峰彇鐑棬鎼滅储璇?
+    // 获取热门搜索词
     const popularTerms = [
       { term: 'math', icon: 'fa-calculator', color: 'blue' },
       { term: 'science', icon: 'fa-flask', color: 'green' },
@@ -797,7 +797,7 @@ const seoData = {
     return section;
   }
   
-  // 鍒涘缓娓告垙鍗＄墖
+  // 创建游戏卡片
   function createGameCard(game: any): string {
     const gameUrl = `/games/${game.slug}`;
     const thumbnailUrl = game.thumbnailUrl || '/images/logo.svg';
@@ -865,6 +865,5 @@ const seoData = {
     `;
   }
 </script>
-
 
 

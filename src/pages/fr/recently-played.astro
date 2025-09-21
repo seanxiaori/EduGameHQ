@@ -1,12 +1,12 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
-// 瀵煎叆鏍峰紡鏂囦欢
-import '../../styles/game-card.css';
+// 导入样式文件
+import '../../styles/game-card.css';;
 
 const seoData = {
   title: "Recently Played Games | Your Game History | EduGameHQ",
@@ -15,7 +15,7 @@ const seoData = {
   ogImage: "/images/recently-played-og.jpg"
 };
 
-// 浠嶫SON鏂囦欢璇诲彇娓告垙鏁版嵁
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -26,20 +26,20 @@ try {
   console.warn('Unable to read games data file:', error);
 }
 
-// 鑾峰彇鏈€杩戠帺杩囩殑娓告垙锛堟ā鎷熸暟鎹?- 闅忔満閫夋嫨锛?
+// 获取最近玩过的游戏（模拟数据 - 随机选择）
 const recentlyPlayedGames = allGamesData
-  .filter(() => Math.random() > 0.7) // 闅忔満閫夋嫨30%鐨勬父鎴忎綔涓?鏈€杩戠帺杩?
+  .filter(() => Math.random() > 0.7) // 随机选择30%的游戏作为"最近玩过"
   .slice(0, 12);
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="fr">
-  <!-- 寮曞叆缁熶竴娓告垙鍗＄墖鏍峰紡 -->
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
   
   
   <main class="main-content">
     <div class="content-wrapper">
 
-      <!-- 1. 椤甸潰椤堕儴鍖哄煙 -->
+      <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -63,7 +63,7 @@ const recentlyPlayedGames = allGamesData
         </div>
       </section>
 
-      <!-- 2. 鏈€杩戞父鎴忓垪琛?-->
+      <!-- 2. 最近游戏列表 -->
       {recentlyPlayedGames.length > 0 && (
         <section class="game-module recent-module">
         <div class="module-header">
@@ -84,7 +84,7 @@ const recentlyPlayedGames = allGamesData
       </section>
       )}
 
-      <!-- 3. 瀛︿範寤鸿妯″潡 -->
+      <!-- 3. 学习建议模块 -->
       <section class="info-module tips-module">
         <div class="module-header">
           <div class="module-icon tips-icon">
@@ -142,18 +142,18 @@ const recentlyPlayedGames = allGamesData
     </div>
   </main>
 
-  <!-- 鏈€杩戞父鎴忕鐞嗗櫒 -->
+  <!-- 最近游戏管理器 -->
   <script is:inline>
-    // 澧炲己鐨勬渶杩戞父鎴忕鐞嗗櫒 - 闆嗘垚鐪熷疄缁熻鏁版嵁
+    // 增强的最近游戏管理器 - 集成真实统计数据
     class RecentlyPlayedManager {
       constructor() {
         this.storageKey = 'gameHistory';
         this.init();
       }
 
-      // 鍒濆鍖?
+      // 初始化
       init() {
-        // 绛夊緟缁熻绠＄悊鍣ㄥ姞杞?
+        // 等待统计管理器加载
         if (typeof window.gameStatsManager === 'undefined') {
           setTimeout(() => this.init(), 100);
           return;
@@ -162,63 +162,63 @@ const recentlyPlayedGames = allGamesData
         this.loadRecentGames();
         this.setupEventListeners();
         this.setupRealTimeUpdates();
-        console.log('鈴憋笍 鏈€杩戞父鎴忕鐞嗗櫒鍒濆鍖栧畬鎴?);
+        console.log('⏱️ 最近游戏管理器初始化完成');
       }
 
-      // 鍔犺浇鏈€杩戞父鎴?- 浣跨敤鐪熷疄鏁版嵁
+      // 加载最近游戏 - 使用真实数据
       loadRecentGames() {
         if (typeof window.gameStatsManager === 'undefined') return;
 
-        // 鑾峰彇鐪熷疄鐨勬渶杩戞父鎴忔暟鎹?
+        // 获取真实的最近游戏数据
         const recentGames = window.gameStatsManager.getRecentGames(20);
         
-        console.log('馃搳 鏈€杩戞父鎴忔暟鎹?', recentGames);
+        console.log('📊 最近游戏数据:', recentGames);
         
         if (recentGames.length === 0) {
           this.showEmptyState();
           return;
         }
 
-        // 闅愯棌绌虹姸鎬?
+        // 隐藏空状态
         this.hideEmptyState();
 
-        // 鏇存柊椤甸潰鏄剧ず
+        // 更新页面显示
         this.updateRecentGamesDisplay(recentGames);
         this.updatePageStats(recentGames);
       }
 
-      // 鏇存柊鏈€杩戞父鎴忔樉绀?
+      // 更新最近游戏显示
       updateRecentGamesDisplay(recentGames) {
         const gamesGrid = document.querySelector('.games-grid');
         if (!gamesGrid) return;
 
-        // 鑾峰彇褰撳墠鏄剧ず鐨勬父鎴忓崱鐗?
+        // 获取当前显示的游戏卡片
         const existingCards = gamesGrid.querySelectorAll('.game-card');
         
-        // 鏇存柊鐜版湁鍗＄墖鐨勫巻鍙叉爣绛惧拰浜烘皵鍊?
+        // 更新现有卡片的历史标签和人气值
         existingCards.forEach(card => {
           const gameSlug = card.dataset.gameId;
           if (!gameSlug) return;
 
-          // 鏌ユ壘瀵瑰簲鐨勫巻鍙叉暟鎹?
+          // 查找对应的历史数据
           const gameHistory = recentGames.find(g => g.slug === gameSlug);
           if (gameHistory) {
-            // 鏇存柊鍘嗗彶鏍囩
+            // 更新历史标签
             this.updateHistoryLabel(card, gameHistory);
             
-            // 鏇存柊浜烘皵鍊?
+            // 更新人气值
             this.updatePopularity(card, gameSlug);
 
-            // 娣诲姞鏈€杩戞挱鏀炬爣璇?
+            // 添加最近播放标识
             this.addRecentBadge(card, gameHistory);
           }
         });
         
-        // 閲嶆柊鎺掑簭鍗＄墖锛堟牴鎹渶杩戞挱鏀炬椂闂达級
+        // 重新排序卡片（根据最近播放时间）
         this.reorderCardsByRecency(gamesGrid, recentGames);
       }
 
-      // 鏇存柊鍘嗗彶鏍囩
+      // 更新历史标签
       updateHistoryLabel(card, gameHistory) {
         const badgeContainer = card.querySelector('.played-badge-container');
         if (!badgeContainer) return;
@@ -230,7 +230,7 @@ const recentlyPlayedGames = allGamesData
         }
       }
 
-      // 鏇存柊浜烘皵鍊?
+      // 更新人气值
       updatePopularity(card, gameSlug) {
         const popularityStat = card.querySelector('.popularity-stat .popularity-count');
         if (popularityStat) {
@@ -239,30 +239,30 @@ const recentlyPlayedGames = allGamesData
           }
       }
 
-      // 娣诲姞鏈€杩戞挱鏀炬爣璇?
+      // 添加最近播放标识
       addRecentBadge(card, gameHistory) {
         const badgesContainer = card.querySelector('.game-badges');
         if (!badgesContainer) return;
         
-        // 绉婚櫎鐜版湁鐨勬渶杩戞挱鏀炬爣璇?
+        // 移除现有的最近播放标识
         const existingBadge = badgesContainer.querySelector('.badge.recent');
         if (existingBadge) {
           existingBadge.remove();
         }
         
-        // 鏍规嵁鎾斁鏃堕棿娣诲姞鐩稿簲鏍囪瘑
+        // 根据播放时间添加相应标识
         const playDate = new Date(gameHistory.timestamp);
         const now = new Date();
         const diffHours = (now - playDate) / (1000 * 60 * 60);
 
         if (diffHours <= 1) {
-          // 1灏忔椂鍐呮挱鏀?
+          // 1小时内播放
           const recentBadge = document.createElement('span');
           recentBadge.className = 'badge recent';
           recentBadge.textContent = 'JUST PLAYED';
           badgesContainer.appendChild(recentBadge);
         } else if (diffHours <= 24) {
-          // 24灏忔椂鍐呮挱鏀?
+          // 24小时内播放
           const recentBadge = document.createElement('span');
           recentBadge.className = 'badge recent-today';
           recentBadge.textContent = 'TODAY';
@@ -270,11 +270,11 @@ const recentlyPlayedGames = allGamesData
         }
       }
 
-      // 閲嶆柊鎺掑簭鍗＄墖
+      // 重新排序卡片
       reorderCardsByRecency(gamesGrid, recentGames) {
         const cards = Array.from(gamesGrid.querySelectorAll('.game-card'));
         
-        // 鎸夋渶杩戞挱鏀炬椂闂存帓搴?
+        // 按最近播放时间排序
         cards.sort((a, b) => {
           const slugA = a.dataset.gameId;
           const slugB = b.dataset.gameId;
@@ -289,15 +289,15 @@ const recentlyPlayedGames = allGamesData
           return new Date(gameB.timestamp) - new Date(gameA.timestamp);
         });
 
-        // 閲嶆柊鎻掑叆鎺掑簭鍚庣殑鍗＄墖
+        // 重新插入排序后的卡片
         cards.forEach(card => {
           gamesGrid.appendChild(card);
         });
       }
 
-      // 鏇存柊椤甸潰缁熻淇℃伅
+      // 更新页面统计信息
       updatePageStats(recentGames) {
-        // 鏇存柊椤甸潰鎻忚堪涓殑缁熻淇℃伅
+        // 更新页面描述中的统计信息
         const pageDescription = document.querySelector('.page-description');
         if (pageDescription && recentGames.length > 0) {
           const totalGames = recentGames.length;
@@ -311,15 +311,15 @@ const recentlyPlayedGames = allGamesData
           pageDescription.textContent = newDescription;
         }
 
-        // 鏇存柊娲诲姩缁熻妯″潡
+        // 更新活动统计模块
         this.updateActivityStats(recentGames);
       }
 
-      // 鏇存柊娲诲姩缁熻
+      // 更新活动统计
       updateActivityStats(recentGames) {
         const userStats = window.gameStatsManager.getUserStats();
         
-        // 鏇存柊缁熻鏁板瓧
+        // 更新统计数字
         const statElements = {
           '.stat-total-games .stat-number': userStats.totalGamesInLibrary,
           '.stat-play-time .stat-number': this.formatPlayTime(userStats.totalPlayTime),
@@ -335,7 +335,7 @@ const recentlyPlayedGames = allGamesData
         });
       }
 
-      // 鏄剧ず绌虹姸鎬?
+      // 显示空状态
       showEmptyState() {
         const emptyState = document.querySelector('.empty-state');
         const gamesModule = document.querySelector('.game-module');
@@ -348,7 +348,7 @@ const recentlyPlayedGames = allGamesData
         }
       }
         
-      // 闅愯棌绌虹姸鎬?
+      // 隐藏空状态
       hideEmptyState() {
         const emptyState = document.querySelector('.empty-state');
         const gamesModule = document.querySelector('.game-module');
@@ -361,9 +361,9 @@ const recentlyPlayedGames = allGamesData
         }
       }
 
-      // 璁剧疆瀹炴椂鏇存柊
+      // 设置实时更新
       setupRealTimeUpdates() {
-        // 鐩戝惉缁熻鏁版嵁鏇存柊
+        // 监听统计数据更新
         window.addEventListener('gameStatsUpdated', (e) => {
           if (e.detail.action === 'gameStart' || e.detail.action === 'storageChange') {
                 setTimeout(() => {
@@ -372,7 +372,7 @@ const recentlyPlayedGames = allGamesData
           }
         });
 
-        // 鐩戝惉椤甸潰鍙鎬у彉鍖栵紝鍒锋柊鏁版嵁
+        // 监听页面可见性变化，刷新数据
         document.addEventListener('visibilitychange', () => {
           if (!document.hidden) {
             this.loadRecentGames();
@@ -380,9 +380,9 @@ const recentlyPlayedGames = allGamesData
         });
       }
 
-      // 璁剧疆浜嬩欢鐩戝惉鍣?
+      // 设置事件监听器
       setupEventListeners() {
-        // 娓呴櫎鍘嗗彶鎸夐挳
+        // 清除历史按钮
         const clearBtn = document.querySelector('.clear-history-btn');
         if (clearBtn) {
           clearBtn.addEventListener('click', () => {
@@ -390,7 +390,7 @@ const recentlyPlayedGames = allGamesData
         });
         }
 
-        // 鍒锋柊鎸夐挳
+        // 刷新按钮
         const refreshBtn = document.querySelector('.refresh-btn');
         if (refreshBtn) {
           refreshBtn.addEventListener('click', () => {
@@ -399,22 +399,22 @@ const recentlyPlayedGames = allGamesData
         }
       }
         
-      // 娓呴櫎鍘嗗彶璁板綍
+      // 清除历史记录
       clearHistory() {
         if (confirm('Are you sure you want to clear your game history? This action cannot be undone.')) {
           if (window.gameStatsManager) {
             window.gameStatsManager.clearAllStats();
       }
 
-          // 鏄剧ず绌虹姸鎬?
+          // 显示空状态
           this.showEmptyState();
           
-          // 鏄剧ず閫氱煡
+          // 显示通知
           this.showNotification('Game history cleared successfully', 'success');
         }
       }
 
-      // 宸ュ叿鍑芥暟
+      // 工具函数
       getHistoryBadgeClass(label) {
         switch (label) {
           case 'Today': return 'today';
@@ -444,7 +444,7 @@ const recentlyPlayedGames = allGamesData
         return `${minutes}m`;
         }
         
-      // 鏄剧ず閫氱煡
+      // 显示通知
       showNotification(message, type = 'info') {
         const notification = document.createElement('div');
         notification.className = `notification ${type}`;
@@ -481,7 +481,7 @@ const recentlyPlayedGames = allGamesData
       }
     }
 
-    // 椤甸潰鍔犺浇瀹屾垚鍚庡垵濮嬪寲
+    // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
       window.recentlyPlayedManager = new RecentlyPlayedManager();
     });
@@ -489,7 +489,7 @@ const recentlyPlayedGames = allGamesData
 </BaseLayout>
 
   <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
     .main-content {
     width: 100%;
     background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, rgba(14, 165, 233, 0.05) 100%);
@@ -502,7 +502,7 @@ const recentlyPlayedGames = allGamesData
     padding: 2rem;
     }
 
-  /* 1. 椤甸潰澶撮儴鍖哄煙 */
+  /* 1. 页面头部区域 */
     .page-header {
     background: linear-gradient(135deg, #E0F2FE 0%, #BAE6FD 50%, rgba(14, 165, 233, 0.08) 100%);
       border-radius: 20px;
@@ -611,7 +611,7 @@ const recentlyPlayedGames = allGamesData
       background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
     }
 
-  /* 閫氱敤妯″潡鏍峰紡 */
+  /* 通用模块样式 */
   .game-module,
   .info-module {
       margin-bottom: 3rem;
@@ -671,7 +671,7 @@ const recentlyPlayedGames = allGamesData
     line-height: 1.4;
     }
 
-  /* 瀛︿範寤鸿妯″潡 */
+  /* 学习建议模块 */
   .tips-grid {
       display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -730,7 +730,7 @@ const recentlyPlayedGames = allGamesData
     font-size: 0.8rem;
   }
 
-  /* 鍔ㄧ敾鏁堟灉 */
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -746,7 +746,7 @@ const recentlyPlayedGames = allGamesData
     animation: fadeInUp 0.6s ease-out forwards;
     }
 
-    /* 鑷畾涔夌‘璁ゅ璇濇鏍峰紡 */
+    /* 自定义确认对话框样式 */
     .custom-confirm-overlay {
       position: fixed;
       top: 0;
@@ -874,7 +874,7 @@ const recentlyPlayedGames = allGamesData
       box-shadow: 0 6px 16px rgba(239, 68, 68, 0.4);
     }
 
-    /* 绉诲姩绔€傞厤 */
+    /* 移动端适配 */
     @media (max-width: 768px) {
       .custom-confirm-dialog {
         max-width: 90%;
@@ -921,7 +921,7 @@ const recentlyPlayedGames = allGamesData
       }
     }
 
-    /* 鍝嶅簲寮忚璁?*/
+    /* 响应式设计 */
     @media (max-width: 1024px) {
       .tips-grid {
         grid-template-columns: 1fr;
@@ -1078,6 +1078,5 @@ const recentlyPlayedGames = allGamesData
     }
     }
   </style>
-
 
 

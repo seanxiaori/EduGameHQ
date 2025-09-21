@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../../styles/game-card.css';
+import '../../styles/game-card.css';;
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -29,7 +29,7 @@ const mediumGames = languageGames.filter(game => game.difficulty === 'Medium');
 const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
 ---
 
-<BaseLayout lang="zh">
+<BaseLayout>
   <!-- 引入统一游戏卡片样式 -->
   
   

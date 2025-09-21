@@ -29,6 +29,10 @@ const { title, description, bodyClass = "", gameData, lang } = Astro.props;
 // 获取当前页面路径，用于导航高亮和SEO配置
 const currentPath = Astro.url.pathname;
 
+// 调试信息
+console.log('🏠 首页路径列表:', homePaths);
+console.log('🌍 当前路径:', currentPath);
+
 // 多语言配置
 const currentLang = lang || getLanguageFromPath(currentPath);
 const langInfo = getLanguageInfo(currentLang);
@@ -46,6 +50,62 @@ const pageDescription = description || seoConfig.description;
 const pageKeywords = getKeywordsString(currentPath);
 const ogImageUrl = getOGImageUrl(currentPath);
 const structuredData = generateStructuredData(currentPath, gameData);
+
+// 教育机构结构化数据
+const educationalOrgData = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "EduGameHQ",
+  "alternateName": "Educational Games Headquarters",
+  "description": "Free educational games platform for kids aged 6-18",
+  "url": "https://www.edugamehq.com",
+  "logo": "https://www.edugamehq.com/images/logo/edugamehq-logo.svg",
+  "sameAs": [
+    "https://twitter.com/EduGameHQ",
+    "https://facebook.com/EduGameHQ",
+    "https://youtube.com/EduGameHQ"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer support",
+    "email": "support@edugamehq.com"
+  },
+  "educationalCredentialAwarded": "None",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Educational Games",
+    "itemListElement": [
+      {
+        "@type": "OfferCategory",
+        "name": "Math Games"
+      },
+      {
+        "@type": "OfferCategory", 
+        "name": "Science Games"
+      },
+      {
+        "@type": "OfferCategory",
+        "name": "Language Games"
+      },
+      {
+        "@type": "OfferCategory",
+        "name": "Coding Games"
+      },
+      {
+        "@type": "OfferCategory",
+        "name": "Puzzle Games"
+      },
+      {
+        "@type": "OfferCategory",
+        "name": "Sports Games"
+      },
+      {
+        "@type": "OfferCategory",
+        "name": "Art Games"
+      }
+    ]
+  }
+};
 
 // 构建完整的页面URL
 const canonicalUrl = new URL(currentPath, Astro.site || 'https://www.edugamehq.com').toString();
@@ -138,8 +198,13 @@ const pageStructure = {
 };
 
 // 确定当前页面类型和信息
-// 修复：正确判断所有语言的首页
-const isHomePage = homePaths.includes(currentPath);
+// 修复：正确判断所有语言的首页（处理尾部斜杠问题）
+const normalizedCurrentPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
+const isHomePage = homePaths.includes(normalizedCurrentPath);
+
+// 调试信息
+console.log('🔧 标准化路径:', normalizedCurrentPath);
+console.log('✅ 是否为首页:', isHomePage);
 
 // 修复路径匹配问题 - 确保在构建时也能正确匹配
 const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
@@ -315,15 +380,15 @@ try {
 <!DOCTYPE html>
 <html lang={currentLang} dir={isRTLLang ? 'rtl' : 'ltr'}>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- 页面标题和描述 -->
   <title>{pageTitle}</title>
-  <meta name="description" content={pageDescription}>
+  <meta name="description" content={pageDescription} />
   
   <!-- SEO关键词 -->
-  <meta name="keywords" content={pageKeywords}>
+  <meta name="keywords" content={pageKeywords} />
   
   <!-- 其他SEO元标签 -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -344,28 +409,28 @@ try {
   <meta name="educational-subject" content="mathematics,science,language arts,computer science,physical education,arts">
   
   <!-- Favicon - 使用新设计的LOGO -->
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-32x32.svg">
-  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.svg">
-  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/svg+xml" sizes="32x32" href="/favicon-32x32.svg" />
+  <link rel="icon" type="image/svg+xml" sizes="16x16" href="/favicon-16x16.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.svg" />
+  <link rel="manifest" href="/site.webmanifest" />
   
   <!-- Canonical URL -->
-  <link rel="canonical" href={canonicalUrl}>
+  <link rel="canonical" href={canonicalUrl} />
   
   <!-- 多语言Alternate hreflang标签 -->
   {languageSwitchLinks.map(link => (
-    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://www.edugamehq.com').toString()}>
+    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://www.edugamehq.com').toString()} key={link.code} />
   ))}
-  <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://www.edugamehq.com').toString()}>
+  <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://www.edugamehq.com').toString()} />
   
   <!-- Fonts - 优化加载 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content={pageTitle}>
@@ -375,9 +440,9 @@ try {
   <meta property="og:image" content={new URL(ogImageUrl, Astro.site || 'https://www.edugamehq.com').toString()}>
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
+  <meta property="og:image:alt" content={pageTitle + ' - EduGameHQ Educational Games'}>
   <meta property="og:site_name" content="EduGameHQ">
-  <meta property="og:locale" content={currentLang === 'en' ? 'en_US' : `${currentLang}_${currentLang.toUpperCase()}`}>
+  <meta property="og:locale" content={currentLang === 'en' ? 'en_US' : currentLang + '_' + currentLang.toUpperCase()}>
   
   <!-- Twitter Card Meta Tags -->
   <meta name="twitter:card" content="summary_large_image">
@@ -386,7 +451,7 @@ try {
   <meta name="twitter:title" content={pageTitle}>
   <meta name="twitter:description" content={pageDescription}>
   <meta name="twitter:image" content={new URL(ogImageUrl, Astro.site || 'https://www.edugamehq.com').toString()}>
-  <meta name="twitter:image:alt" content={`${pageTitle} - EduGameHQ Educational Games`}>
+  <meta name="twitter:image:alt" content={pageTitle + ' - EduGameHQ Educational Games'}>
   
   <!-- Facebook Meta Tags -->
   <meta property="fb:app_id" content="your-facebook-app-id">
@@ -398,81 +463,26 @@ try {
   <meta property="linkedin:owner" content="EduGameHQ">
   
   <!-- Preload critical resources -->
-  <link rel="preload" href="/images/logo/edugamehq-logo.svg" as="image">
-  <link rel="preload" href="/images/logo/edugamehq-icon.svg" as="image">
-  <link rel="preload" href={ogImageUrl} as="image">
+  <link rel="preload" href="/images/logo/edugamehq-logo.svg" as="image" />
+  <link rel="preload" href="/images/logo/edugamehq-icon.svg" as="image" />
+  <!-- <link rel="preload" href={ogImageUrl} as="image"> -->
   
   <!-- DNS Prefetch for external resources -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//fonts.gstatic.com">
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="//www.googletagmanager.com">
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
   
   <!-- Structured Data (JSON-LD) -->
   {structuredData && (
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} is:inline />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
   )}
   
   <!-- Additional structured data for educational content -->
-  <script type="application/ld+json" is:inline>
-  {
-    "@context": "https://schema.org",
-    "@type": "EducationalOrganization",
-    "name": "EduGameHQ",
-    "alternateName": "Educational Games Headquarters",
-    "description": "Free educational games platform for kids aged 6-18",
-    "url": "https://www.edugamehq.com",
-          "logo": "https://www.edugamehq.com/images/logo/edugamehq-logo.svg",
-    "sameAs": [
-      "https://twitter.com/EduGameHQ",
-      "https://facebook.com/EduGameHQ",
-      "https://youtube.com/EduGameHQ"
-    ],
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "contactType": "customer support",
-      "email": "support@edugamehq.com"
-    },
-    "educationalCredentialAwarded": "None",
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "Educational Games",
-      "itemListElement": [
-        {
-          "@type": "OfferCategory",
-          "name": "Math Games"
-        },
-        {
-          "@type": "OfferCategory", 
-          "name": "Science Games"
-        },
-        {
-          "@type": "OfferCategory",
-          "name": "Language Games"
-        },
-        {
-          "@type": "OfferCategory",
-          "name": "Coding Games"
-        },
-        {
-          "@type": "OfferCategory",
-          "name": "Puzzle Games"
-        },
-        {
-          "@type": "OfferCategory",
-          "name": "Sports Games"
-        },
-        {
-          "@type": "OfferCategory",
-          "name": "Art Games"
-        }
-      ]
-    }
-  }
-  </script>
+  <script type="application/ld+json" set:html={JSON.stringify(educationalOrgData)} />
   
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RR1NHJ49F5" is:inline></script>
+  <!-- Google Analytics 4 - 暂时注释掉用于诊断 -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RR1NHJ49F5" is:inline></script>
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -486,7 +496,7 @@ try {
         'dimension2': 'user_type'
       }
     });
-  </script>
+  </script> -->
   
   <!-- Google Search Console Verification -->
   <!-- 请将下面的验证代码替换为Google Search Console提供的真实验证代码 -->
@@ -503,13 +513,13 @@ try {
   <meta name="msapplication-TileColor" content="#F59E0B">
   
   <!-- PWA Manifest -->
-  <link rel="manifest" href="/manifest.json">
+  <link rel="manifest" href="/manifest.json" />
   
   <!-- 性能优化 -->
-  <link rel="dns-prefetch" href="//fonts.googleapis.com">
-  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-  <link rel="dns-prefetch" href="//www.googletagmanager.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
   <!-- 游戏统计管理器 - 全局加载 -->
   <script src="/js/game-stats-manager.js" defer is:inline></script>
@@ -525,8 +535,6 @@ try {
     console.log('📊 GAMES_DATA内容样例:', window.GAMES_DATA.slice(0, 2));
   </script>
   
-  <!-- FontAwesome样式表 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   
   <!-- RTL样式支持 -->
   {isRTLLang && (
@@ -568,36 +576,36 @@ try {
                 {t(translations, 'nav.home', 'Home')}
               </a>
 
-              <!-- Step 2: 始终显示分类下拉菜单（仅在首页）或渲染面包屑（非首页） -->
-              {isHomePage ? (
-                <div class="nav-dropdown">
-                  <button class="nav-link dropdown-trigger" id="categoriesDropdown">
-                    <i class="fas fa-gamepad"></i>
-                    {t(translations, 'nav.categories', 'Categories')}
-                    <i class="fas fa-chevron-down dropdown-arrow"></i>
-                  </button>
-                  <div class="dropdown-menu" id="categoriesMenu">
-                    <!-- 游戏分类 -->
-                    {Object.entries(pageStructure.categories).map(([path, info]) => (
-                      <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
-                        <i class={info.icon}></i>
-                        {info.name}
-                      </a>
-                    ))}
-                    <!-- 分隔线 -->
-                    <hr class="dropdown-divider">
-                    <!-- 特殊页面 -->
-                    {Object.entries(pageStructure.special).map(([path, info]) => (
-                      <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
-                        <i class={info.icon}></i>
-                        {info.name}
-                      </a>
-                    ))}
-                  </div>
+              <!-- Step 2: 始终显示分类下拉菜单 -->
+              <div class="nav-dropdown">
+                <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                  <i class="fas fa-gamepad"></i>
+                  {t(translations, 'nav.categories', 'Categories')}
+                  <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </button>
+                <div class="dropdown-menu" id="categoriesMenu">
+                  <!-- 游戏分类 -->
+                  {Object.entries(pageStructure.categories).map(([path, info]) => (
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`} key={path}>
+                      <i class={info.icon}></i>
+                      {info.name}
+                    </a>
+                  ))}
+                  <!-- 分隔线 -->
+                  <hr class="dropdown-divider">
+                  <!-- 特殊页面 -->
+                  {Object.entries(pageStructure.special).map(([path, info]) => (
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`} key={path}>
+                      <i class={info.icon}></i>
+                      {info.name}
+                    </a>
+                  ))}
                 </div>
-              ) : (
-                breadcrumbs.slice(1).map((crumb, index) => (
-                <div class="breadcrumb-item">
+              </div>
+
+              <!-- Step 3: 非首页时显示面包屑导航 -->
+              {!isHomePage && breadcrumbs.slice(1).map((crumb, index) => (
+                <div class="breadcrumb-item" key={index}>
                   <i class="fas fa-chevron-right breadcrumb-separator"></i>
                   {crumb.isDropdown ? (
                     <div class="nav-dropdown">
@@ -611,7 +619,7 @@ try {
                           <>
                             {/* Support页面 */}
                             {Object.entries(pageStructure.support).map(([path, info]) => (
-                              <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+                              <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                                 <i class={info.icon}></i>
                                 {info.name}
                               </a>
@@ -631,8 +639,7 @@ try {
                     </a>
                   )}
                 </div>
-              ))
-              )}
+              ))}
             </div>
           </nav>
           
@@ -664,7 +671,7 @@ try {
             </button>
             <div class="dropdown-menu language-menu" id="languageMenu">
               {languageSwitchLinks.map(link => (
-                <a href={link.url} class={`dropdown-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir}>
+                <a href={link.url} class={`dropdown-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir} key={link.code}>
                   <span class="language-flag">{link.flag}</span>
                   <span class="language-name">{link.nativeName}</span>
                   {link.code === currentLang && <i class="fas fa-check"></i>}
@@ -702,7 +709,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'footer.game_categories', 'Game Categories')}</div>
             {Object.entries(pageStructure.categories).map(([path, info]) => (
-              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                 <i class={info.icon}></i>
                 {info.name}
               </a>
@@ -712,7 +719,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'nav.special', 'Special Pages')}</div>
             {Object.entries(pageStructure.special).map(([path, info]) => (
-              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                 <i class={info.icon}></i>
                 {info.name}
               </a>
@@ -722,7 +729,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'footer.support', 'Support')}</div>
             {Object.entries(pageStructure.support).map(([path, info]) => (
-              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                 <i class={info.icon}></i>
                 {info.name}
               </a>
@@ -733,7 +740,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'language.switch', 'Language')}</div>
             {languageSwitchLinks.map(link => (
-              <a href={link.url} class={`mobile-menu-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir}>
+              <a href={link.url} class={`mobile-menu-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir} key={link.code}>
                 <span class="language-flag">{link.flag}</span>
                 <span class="language-name">{link.nativeName}</span>
                 {link.code === currentLang && <i class="fas fa-check"></i>}
@@ -985,7 +992,8 @@ try {
       if (games.length > 0) {
         const randomGame = games[Math.floor(Math.random() * games.length)];
         const currentLang = window.CURRENT_LANG || 'en';
-        const gamePath = currentLang === 'en' ? `/games/${randomGame.slug}` : `/${currentLang}/games/${randomGame.slug}`;
+        // 修复：所有语言都使用统一的路径格式 /${language}/games/${slug}
+        const gamePath = `/${currentLang}/games/${randomGame.slug}`;
         window.location.href = gamePath;
       }
     }

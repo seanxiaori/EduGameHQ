@@ -4,13 +4,9 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import { getTranslations, t } from '../../i18n/utils';
 
-// 导入样式文件
+// 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
-
-// 获取中文翻译
-const translations = await getTranslations('ja');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -33,7 +29,7 @@ const mediumGames = mathGames.filter(game => game.difficulty === 'Medium');
 const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
 ---
 
-<BaseLayout lang="ja">
+<BaseLayout>
   <main class="main-content">
     <div class="content-wrapper">
 
@@ -46,9 +42,9 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">{t(translations, 'categories.math-games', '数学游戏')}</h1>
+            <h1 class="page-title">Math Games</h1>
             <p class="page-description">
-              {t(translations, 'home.category_description.math', '掌握数字、方程式和解决问题的能力')} 通过互动游戏体验，让数学学习变得有趣而高效！
+              Master mathematics through play! Our collection of math games makes learning arithmetic, algebra, geometry, and problem-solving skills fun and engaging for all grade levels. From basic counting to advanced calculus concepts, discover the joy of learning math through interactive gameplay.
             </p>
           </div>
         </div>
@@ -62,8 +58,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t(translations, 'home.featured_games.title', '特色数学游戏')}</h2>
-              <p class="module-subtitle">{t(translations, 'home.featured_games.description', '我们最受欢迎和推荐的数学游戏')}</p>
+              <h2 class="module-title">Featured Math Games</h2>
+              <p class="module-subtitle">Our most popular and recommended math games</p>
             </div>
           </div>
           

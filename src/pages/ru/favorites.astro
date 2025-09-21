@@ -1,38 +1,38 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
-// 瀵煎叆鏍峰紡鏂囦欢
-import '../../styles/game-card.css';
+// 导入样式文件
+import '../../styles/game-card.css';;
 
-// 璇诲彇娓告垙鏁版嵁
+// 读取游戏数据
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
 const allGamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
-// SEO鏁版嵁
+// SEO数据
 const seoData = {
   title: 'Your Favorite Games - EduGameHQ',
   description: 'Your personal collection of favorite educational games. Keep playing the games you love most and discover new ones!',
   keywords: ['favorite games', 'educational games collection', 'saved games', 'bookmarked games', 'learning games favorites']
 };
 
-// 鑾峰彇涓€浜涚ず渚嬫帹鑽愭父鎴忥紙涓嶅悓鍒嗙被鐨勭儹闂ㄦ父鎴忥級
+// 获取一些示例推荐游戏（不同分类的热门游戏）
 const recommendedGames = allGamesData
   .filter(game => game.featured || (game.popularity && game.popularity > 500))
   .slice(0, 6);
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="ru">
-  <!-- 寮曞叆缁熶竴娓告垙鍗＄墖鏍峰紡 -->
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
   
   
-  <!-- 涓昏鍐呭 -->
+  <!-- 主要内容 -->
   <main class="main-content">
     <div class="content-wrapper">
-      <!-- 椤甸潰澶撮儴 -->
+      <!-- 页面头部 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -48,7 +48,7 @@ const recommendedGames = allGamesData
           </div>
         </div>
         
-        <!-- 绠＄悊鎿嶄綔 -->
+        <!-- 管理操作 -->
         <div class="header-actions">
           <button id="clearFavoritesBtn" class="clear-favorites-btn">
             <i class="fas fa-trash-alt"></i>
@@ -57,7 +57,7 @@ const recommendedGames = allGamesData
         </div>
       </section>
 
-      <!-- 鏀惰棌缁熻 -->
+      <!-- 收藏统计 -->
       <section class="favorites-stats">
         <div class="stat-card">
           <div class="stat-icon">
@@ -90,9 +90,9 @@ const recommendedGames = allGamesData
         </div>
       </section>
 
-      <!-- 鏀惰棌娓告垙鍒楄〃 -->
+      <!-- 收藏游戏列表 -->
       <section class="favorites-section">
-        <!-- 鏈夋敹钘忔父鎴忔椂鏄剧ず -->
+        <!-- 有收藏游戏时显示 -->
         <div id="favoritesWithGames" class="favorites-content" style="display: none;">
           <div class="module-header">
             <div class="module-icon favorites-icon">
@@ -104,7 +104,7 @@ const recommendedGames = allGamesData
             </div>
           </div>
           
-          <!-- 浣跨敤缁熶竴GameCard缁勪欢棰勬覆鏌撴墍鏈夋父鎴忥紝JavaScript鎺у埗鏄剧ず/闅愯棌 -->
+          <!-- 使用统一GameCard组件预渲染所有游戏，JavaScript控制显示/隐藏 -->
           <div class="games-grid" id="favoritesGrid">
             {allGamesData.map((game) => (
               <div class="favorite-game-card" data-game-slug={game.slug} style="display: none;">
@@ -119,7 +119,7 @@ const recommendedGames = allGamesData
           </div>
         </div>
 
-        <!-- 鏃犳敹钘忔父鎴忔椂鏄剧ず -->
+        <!-- 无收藏游戏时显示 -->
         <div id="emptyFavorites" class="empty-state">
           <div class="empty-icon">
             <i class="fas fa-heart-broken"></i>
@@ -127,7 +127,7 @@ const recommendedGames = allGamesData
           <div class="empty-content">
             <h3 class="empty-title">No Favorite Games Yet</h3>
             <p class="empty-description">
-              Start exploring our educational games and click the 鉂わ笍 button to add games to your favorites!
+              Start exploring our educational games and click the ❤️ button to add games to your favorites!
             </p>
             <div class="empty-actions">
               <a href="/" class="action-btn primary">
@@ -143,7 +143,7 @@ const recommendedGames = allGamesData
         </div>
       </section>
 
-      <!-- 鎺ㄨ崘娓告垙 -->
+      <!-- 推荐游戏 -->
       <section class="recommendations-section">
         <div class="module-header">
           <div class="module-icon recommendations-icon">
@@ -164,46 +164,46 @@ const recommendedGames = allGamesData
     </div>
   </main>
 
-  <!-- 绠€鍖栫殑鏀惰棌绠＄悊JavaScript -->
+  <!-- 简化的收藏管理JavaScript -->
   <script is:inline>
-    // 鏋佺畝鐨勬敹钘忕鐞嗙被 - 鍙礋璐ｆ樉绀?闅愯棌棰勬覆鏌撶殑GameCard
+    // 极简的收藏管理类 - 只负责显示/隐藏预渲染的GameCard
     class SimpleFavoritesManager {
       constructor() {
         this.favoriteGameIds = new Set();
         this.init();
       }
 
-      // 鍒濆鍖?
+      // 初始化
       init() {
         this.loadFavorites();
         this.updateDisplay();
         this.initializeEventListeners();
-        console.log('鉁?鏀惰棌绠＄悊鍣ㄥ垵濮嬪寲瀹屾垚');
+        console.log('✅ 收藏管理器初始化完成');
       }
 
-      // 浠巐ocalStorage鍔犺浇鏀惰棌鍒楄〃
+      // 从localStorage加载收藏列表
       loadFavorites() {
         try {
           const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
           this.favoriteGameIds = new Set(favorites);
         } catch (error) {
-          console.error('鍔犺浇鏀惰棌鍒楄〃澶辫触:', error);
+          console.error('加载收藏列表失败:', error);
           this.favoriteGameIds = new Set();
         }
       }
 
-      // 鏇存柊鏄剧ず鐘舵€?
+      // 更新显示状态
       updateDisplay() {
         const favoritesWithGames = document.getElementById('favoritesWithGames');
         const emptyFavorites = document.getElementById('emptyFavorites');
         const favoriteCards = document.querySelectorAll('.favorite-game-card');
 
-        // 闅愯棌鎵€鏈夋父鎴忓崱鐗?
+        // 隐藏所有游戏卡片
         favoriteCards.forEach(card => {
           card.style.display = 'none';
         });
 
-        // 鏄剧ず鏀惰棌鐨勬父鎴忓崱鐗?
+        // 显示收藏的游戏卡片
         let visibleCount = 0;
         this.favoriteGameIds.forEach(gameSlug => {
           const card = document.querySelector(`[data-game-slug="${gameSlug}"]`);
@@ -213,7 +213,7 @@ const recommendedGames = allGamesData
           }
         });
 
-        // 鏍规嵁鏄惁鏈夋敹钘忔父鎴忔樉绀轰笉鍚屽唴瀹?
+        // 根据是否有收藏游戏显示不同内容
         if (visibleCount > 0) {
           favoritesWithGames.style.display = 'block';
           emptyFavorites.style.display = 'none';
@@ -222,20 +222,20 @@ const recommendedGames = allGamesData
           emptyFavorites.style.display = 'block';
         }
 
-        // 鏇存柊缁熻淇℃伅
+        // 更新统计信息
         this.updateStats();
       }
 
-      // 鏇存柊缁熻淇℃伅
+      // 更新统计信息
       updateStats() {
         const favoritesCount = this.favoriteGameIds.size;
         
-        // 璁＄畻鏀惰棌娓告垙鐨勫垎绫绘暟閲?
+        // 计算收藏游戏的分类数量
         const categories = new Set();
         this.favoriteGameIds.forEach(gameSlug => {
           const card = document.querySelector(`[data-game-slug="${gameSlug}"]`);
           if (card) {
-            // 浠嶨ameCard涓彁鍙栧垎绫讳俊鎭紙閫氳繃鏌ユ壘category-tag锛?
+            // 从GameCard中提取分类信息（通过查找category-tag）
             const categoryTag = card.querySelector('.category-tag');
             if (categoryTag) {
               categories.add(categoryTag.textContent.trim());
@@ -243,17 +243,17 @@ const recommendedGames = allGamesData
           }
         });
 
-        // 鏇存柊缁熻鏄剧ず
+        // 更新统计显示
         document.getElementById('favoritesCount').textContent = favoritesCount;
         document.getElementById('categoriesCount').textContent = categories.size;
         document.getElementById('totalPlayTime').textContent = Math.floor(favoritesCount * 0.5) + 'h';
       }
 
-      // 娓呯┖鎵€鏈夋敹钘?
+      // 清空所有收藏
       clearAllFavorites() {
-        console.log('馃棏锔?clearAllFavorites鍑芥暟琚皟鐢?);
+        console.log('🗑️ clearAllFavorites函数被调用');
         
-        // 鍒涘缓鑷畾涔夌‘璁ゅ璇濇
+        // 创建自定义确认对话框
         this.showCustomConfirm(
           'Clear All Favorites?',
           'Are you sure you want to remove all games from your favorites? This action cannot be undone.',
@@ -263,15 +263,15 @@ const recommendedGames = allGamesData
             
             this.updateDisplay();
             
-            // 瑙﹀彂鍏ㄥ眬鏀惰棌鍙樺寲浜嬩欢
+            // 触发全局收藏变化事件
             window.dispatchEvent(new CustomEvent('favoritesChanged'));
             
-            console.log('馃棏锔?宸叉竻绌烘墍鏈夋敹钘忔父鎴?);
+            console.log('🗑️ 已清空所有收藏游戏');
             
-            // 鏄剧ず鎴愬姛鎻愮ず
+            // 显示成功提示
             this.showSuccessMessage('All favorite games have been removed successfully!');
             
-            // 寤惰繜鍒锋柊椤甸潰
+            // 延迟刷新页面
             setTimeout(() => {
               location.reload();
             }, 1500);
@@ -279,18 +279,18 @@ const recommendedGames = allGamesData
         );
       }
 
-      // 鏄剧ず鑷畾涔夌‘璁ゅ璇濇
+      // 显示自定义确认对话框
       showCustomConfirm(title, message, onConfirm) {
-        console.log('馃摑 showCustomConfirm鍑芥暟琚皟鐢?);
-        console.log('鍙傛暟:', { title, message, onConfirm });
+        console.log('📝 showCustomConfirm函数被调用');
+        console.log('参数:', { title, message, onConfirm });
         
-        // 绉婚櫎宸插瓨鍦ㄧ殑瀵硅瘽妗?
+        // 移除已存在的对话框
         const existingOverlay = document.querySelector('.custom-confirm-overlay');
         if (existingOverlay) {
           existingOverlay.remove();
         }
         
-        // 鍒涘缓閬僵灞?
+        // 创建遮罩层
         const overlay = document.createElement('div');
         overlay.className = 'custom-confirm-overlay';
         overlay.style.cssText = `
@@ -310,7 +310,7 @@ const recommendedGames = allGamesData
           backdrop-filter: blur(4px) !important;
         `;
         
-        // 鍒涘缓瀵硅瘽妗?
+        // 创建对话框
         const dialog = document.createElement('div');
         dialog.className = 'custom-confirm-dialog';
         dialog.style.cssText = `
@@ -349,22 +349,22 @@ const recommendedGames = allGamesData
         overlay.appendChild(dialog);
         document.body.appendChild(overlay);
         
-        console.log('鉁?瀵硅瘽妗嗗凡娣诲姞鍒癉OM');
+        console.log('✅ 对话框已添加到DOM');
         
-        // 娣诲姞鍔ㄧ敾
+        // 添加动画
         setTimeout(() => {
           overlay.style.opacity = '1';
           overlay.style.visibility = 'visible';
           dialog.style.transform = 'scale(1) translateY(0)';
-          console.log('鉁?瀵硅瘽妗嗗姩鐢诲凡瑙﹀彂');
+          console.log('✅ 对话框动画已触发');
         }, 10);
         
-        // 缁戝畾浜嬩欢
+        // 绑定事件
         const cancelBtn = dialog.querySelector('#confirmCancel');
         const yesBtn = dialog.querySelector('#confirmYes');
         
         const closeDialog = () => {
-          console.log('馃敀 鍏抽棴瀵硅瘽妗?);
+          console.log('🔒 关闭对话框');
           overlay.style.opacity = '0';
           overlay.style.visibility = 'hidden';
           setTimeout(() => {
@@ -376,19 +376,19 @@ const recommendedGames = allGamesData
         
         cancelBtn.addEventListener('click', closeDialog);
         yesBtn.addEventListener('click', () => {
-          console.log('鉁?鐢ㄦ埛纭娓呴櫎鏀惰棌');
+          console.log('✅ 用户确认清除收藏');
           closeDialog();
           onConfirm();
         });
         
-        // 鐐瑰嚮閬僵灞傚叧闂?
+        // 点击遮罩层关闭
         overlay.addEventListener('click', (e) => {
           if (e.target === overlay) {
             closeDialog();
           }
         });
         
-        // ESC閿叧闂?
+        // ESC键关闭
         const handleEsc = (e) => {
           if (e.key === 'Escape') {
             closeDialog();
@@ -398,11 +398,11 @@ const recommendedGames = allGamesData
         document.addEventListener('keydown', handleEsc);
       }
 
-      // 鏄剧ず鎴愬姛鎻愮ず
+      // 显示成功提示
       showSuccessMessage(message) {
-        console.log('馃帀 鏄剧ず鎴愬姛鎻愮ず:', message);
+        console.log('🎉 显示成功提示:', message);
         
-        // 绉婚櫎宸插瓨鍦ㄧ殑鎻愮ず
+        // 移除已存在的提示
         const existingToast = document.querySelector('.success-toast');
         if (existingToast) {
           existingToast.remove();
@@ -437,37 +437,37 @@ const recommendedGames = allGamesData
         `;
         
         document.body.appendChild(toast);
-        console.log('鉁?鎴愬姛鎻愮ず宸叉坊鍔犲埌DOM');
+        console.log('✅ 成功提示已添加到DOM');
         
-        // 娣诲姞鍔ㄧ敾
+        // 添加动画
         setTimeout(() => {
           toast.style.transform = 'translateX(0)';
           toast.style.opacity = '1';
-          console.log('鉁?鎴愬姛鎻愮ず鍔ㄧ敾宸茶Е鍙?);
+          console.log('✅ 成功提示动画已触发');
         }, 10);
         
-        // 鑷姩绉婚櫎
+        // 自动移除
         setTimeout(() => {
           toast.style.transform = 'translateX(100%)';
           toast.style.opacity = '0';
           setTimeout(() => {
             if (document.body.contains(toast)) {
               document.body.removeChild(toast);
-              console.log('鉁?鎴愬姛鎻愮ず宸茬Щ闄?);
+              console.log('✅ 成功提示已移除');
             }
           }, 300);
         }, 3000);
       }
 
-      // 鍒濆鍖栦簨浠剁洃鍚櫒
+      // 初始化事件监听器
       initializeEventListeners() {
-        // 娓呯┖鏀惰棌鎸夐挳
+        // 清空收藏按钮
         const clearBtn = document.getElementById('clearFavoritesBtn');
         if (clearBtn) {
           clearBtn.addEventListener('click', () => this.clearAllFavorites());
         }
 
-        // 鐩戝惉鏀惰棌鐘舵€佸彉鍖栵紙鏉ヨ嚜GameCard缁勪欢锛?
+        // 监听收藏状态变化（来自GameCard组件）
         window.addEventListener('favoritesChanged', () => {
           this.loadFavorites();
           this.updateDisplay();
@@ -475,7 +475,7 @@ const recommendedGames = allGamesData
       }
     }
 
-    // 椤甸潰鍔犺浇瀹屾垚鍚庡垵濮嬪寲
+    // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
       window.simpleFavoritesManager = new SimpleFavoritesManager();
     });
@@ -483,7 +483,7 @@ const recommendedGames = allGamesData
 </BaseLayout>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: #FEFCFB;
@@ -496,7 +496,7 @@ const recommendedGames = allGamesData
     padding: 2rem;
   }
 
-  /* 椤甸潰澶撮儴 - 绾㈣壊涓婚 */
+  /* 页面头部 - 红色主题 */
   .page-header {
     background: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 50%, #DC2626 100%);
     border-radius: 20px;
@@ -599,7 +599,7 @@ const recommendedGames = allGamesData
     box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
   }
 
-  /* 鏀惰棌缁熻 */
+  /* 收藏统计 */
   .favorites-stats {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -660,7 +660,7 @@ const recommendedGames = allGamesData
     letter-spacing: 0.05em;
   }
 
-  /* 鏀惰棌娓告垙鍖哄煙 */
+  /* 收藏游戏区域 */
   .favorites-section {
     margin-bottom: 3rem;
   }
@@ -673,7 +673,7 @@ const recommendedGames = allGamesData
     border: 1px solid #E5E7EB;
   }
 
-  /* 妯″潡澶撮儴 */
+  /* 模块头部 */
   .module-header {
     display: flex;
     align-items: center;
@@ -723,19 +723,19 @@ const recommendedGames = allGamesData
     font-weight: 500;
   }
 
-  /* 娓告垙缃戞牸 */
+  /* 游戏网格 */
   .games-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1.5rem;
   }
 
-  /* 绠€鍖杅avorite-game-card鏍峰紡锛屽洜涓哄唴閮ㄤ娇鐢℅ameCard缁勪欢 */
+  /* 简化favorite-game-card样式，因为内部使用GameCard组件 */
   .favorite-game-card {
-    /* GameCard缁勪欢鑷甫鏍峰紡锛岃繖閲屼笉闇€瑕侀澶栨牱寮?*/
+    /* GameCard组件自带样式，这里不需要额外样式 */
   }
 
-  /* 绌虹姸鎬?*/
+  /* 空状态 */
   .empty-state {
     background: white;
     border-radius: 20px;
@@ -821,7 +821,7 @@ const recommendedGames = allGamesData
     box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
   }
 
-  /* 鎺ㄨ崘娓告垙鍖哄煙 */
+  /* 推荐游戏区域 */
   .recommendations-section {
     background: white;
     border-radius: 20px;
@@ -830,7 +830,7 @@ const recommendedGames = allGamesData
     border: 1px solid #E5E7EB;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .content-wrapper {
       padding: 1.5rem;
@@ -916,4 +916,3 @@ const recommendedGames = allGamesData
     }
   }
 </style> 
-

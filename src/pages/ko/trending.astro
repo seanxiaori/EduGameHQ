@@ -1,12 +1,12 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
 
-// 瀵煎叆鏍峰紡鏂囦欢
-import '../../styles/game-card.css';
+// 导入样式文件
+import '../../styles/game-card.css';;
 
 const seoData = {
   title: "Trending Games | Popular Educational Games | EduGameHQ",
@@ -15,7 +15,7 @@ const seoData = {
   ogImage: "/images/trending-games-og.jpg"
 };
 
-// 浠嶫SON鏂囦欢璇诲彇娓告垙鏁版嵁
+// 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
 let allGamesData: Game[] = [];
 
@@ -26,7 +26,7 @@ try {
   console.warn('Unable to read games data file:', error);
 }
 
-// 鑾峰彇鐑棬娓告垙锛堟寜playCount鎺掑簭锛屽苟娣诲姞涓€浜涢殢鏈烘€э級
+// 获取热门游戏（按playCount排序，并添加一些随机性）
 const trendingGames = allGamesData
   .map(game => ({
     ...game,
@@ -36,14 +36,14 @@ const trendingGames = allGamesData
   .slice(0, 20);
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description} lang="ko">
-  <!-- 寮曞叆缁熶竴娓告垙鍗＄墖鏍峰紡 -->
+<BaseLayout title={seoData.title} description={seoData.description}>
+  <!-- 引入统一游戏卡片样式 -->
   
 
   <main class="main-content">
     <div class="content-wrapper">
 
-      <!-- 1. 椤甸潰椤堕儴鍖哄煙 -->
+      <!-- 1. 页面顶部区域 -->
       <section class="page-header">
         <div class="header-content">
           <div class="header-icon">
@@ -61,7 +61,7 @@ const trendingGames = allGamesData
         </div>
       </section>
 
-      <!-- 2. 鐑棬娓告垙鍒楄〃 -->
+      <!-- 2. 热门游戏列表 -->
       {trendingGames.length > 0 && (
         <section class="game-module trending-module">
           <div class="module-header">
@@ -82,7 +82,7 @@ const trendingGames = allGamesData
         </section>
       )}
 
-      <!-- 3. 瓒嬪娍鍒嗘瀽妯″潡 -->
+      <!-- 3. 趋势分析模块 -->
       <section class="info-module trend-analysis">
         <div class="module-header">
           <div class="module-icon analytics-icon">
@@ -103,7 +103,7 @@ const trendingGames = allGamesData
               <h4 class="trend-title">Math Games</h4>
               <p class="trend-text">Problem-solving games are trending up 25% this week</p>
               <div class="trend-indicator">
-                <span class="trend-arrow up">鈫?/span>
+                <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+25%</span>
               </div>
             </div>
@@ -117,7 +117,7 @@ const trendingGames = allGamesData
               <h4 class="trend-title">Science Games</h4>
               <p class="trend-text">Physics simulations gaining popularity among students</p>
               <div class="trend-indicator">
-                <span class="trend-arrow up">鈫?/span>
+                <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+18%</span>
               </div>
             </div>
@@ -131,7 +131,7 @@ const trendingGames = allGamesData
               <h4 class="trend-title">Coding Games</h4>
               <p class="trend-text">Programming challenges seeing 40% increase in plays</p>
               <div class="trend-indicator">
-                <span class="trend-arrow up">鈫?/span>
+                <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+40%</span>
               </div>
             </div>
@@ -145,7 +145,7 @@ const trendingGames = allGamesData
               <h4 class="trend-title">Language Games</h4>
               <p class="trend-text">Vocabulary builders are extremely popular this month</p>
               <div class="trend-indicator">
-                <span class="trend-arrow up">鈫?/span>
+                <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+32%</span>
               </div>
             </div>
@@ -156,17 +156,17 @@ const trendingGames = allGamesData
     </div>
   </main>
 
-  <!-- 绠€鍖栫殑鐑棬娓告垙绠＄悊JavaScript -->
+  <!-- 简化的热门游戏管理JavaScript -->
   <script is:inline>
-    // 澧炲己鐨勭儹闂ㄦ父鎴忕鐞嗗櫒 - 闆嗘垚鐪熷疄缁熻鏁版嵁
+    // 增强的热门游戏管理器 - 集成真实统计数据
     class TrendingGamesManager {
       constructor() {
         this.init();
       }
 
-      // 鍒濆鍖?
+      // 初始化
       init() {
-        // 绛夊緟缁熻绠＄悊鍣ㄥ姞杞?
+        // 等待统计管理器加载
         if (typeof window.gameStatsManager === 'undefined') {
           setTimeout(() => this.init(), 100);
           return;
@@ -175,45 +175,45 @@ const trendingGames = allGamesData
         this.updateTrendingDisplay();
         this.initializeAnimations();
         this.setupRealTimeUpdates();
-        console.log('馃敟 鐑棬娓告垙绠＄悊鍣ㄥ垵濮嬪寲瀹屾垚');
+        console.log('🔥 热门游戏管理器初始化完成');
       }
 
-      // 鏇存柊鐑棬娓告垙鏄剧ず - 浣跨敤鐪熷疄鏁版嵁
+      // 更新热门游戏显示 - 使用真实数据
       updateTrendingDisplay() {
         if (typeof window.gameStatsManager === 'undefined') return;
 
-        // 鑾峰彇鐪熷疄鐨勭儹闂ㄦ父鎴忔暟鎹?
+        // 获取真实的热门游戏数据
         const trendingGames = window.gameStatsManager.getTrendingGames(20);
         
-        // 鏇存柊椤甸潰涓婄殑娓告垙鍗＄墖
+        // 更新页面上的游戏卡片
         const gameCards = document.querySelectorAll('.game-card[data-game-id]');
         gameCards.forEach(card => {
           const gameSlug = card.dataset.gameId;
           if (!gameSlug) return;
 
-          // 鏌ユ壘瀵瑰簲鐨勭粺璁℃暟鎹?
+          // 查找对应的统计数据
           const gameStats = trendingGames.find(g => g.slug === gameSlug);
           if (gameStats) {
-            // 鏇存柊浜烘皵鍊兼樉绀?
+            // 更新人气值显示
             const popularityStat = card.querySelector('.popularity-stat .popularity-count');
             if (popularityStat) {
               popularityStat.textContent = this.formatPopularity(gameStats.popularity) + ' popular';
             }
 
-            // 娣诲姞鐑棬鏍囪瘑
+            // 添加热门标识
             if (gameStats.recentActivity >= 8) {
               this.addHotBadge(card);
             }
           }
         });
 
-        // 鏇存柊瓒嬪娍鍒嗘瀽鏁版嵁
+        // 更新趋势分析数据
         this.updateTrendAnalysis();
 
-        console.log('馃敟 鐑棬娓告垙鏄剧ず宸叉洿鏂帮紝鍩轰簬鐪熷疄缁熻鏁版嵁');
+        console.log('🔥 热门游戏显示已更新，基于真实统计数据');
       }
 
-      // 娣诲姞鐑棬鏍囪瘑
+      // 添加热门标识
       addHotBadge(card) {
         const badgesContainer = card.querySelector('.game-badges');
         if (badgesContainer && !badgesContainer.querySelector('.badge.trending')) {
@@ -224,21 +224,21 @@ const trendingGames = allGamesData
         }
       }
 
-      // 鏇存柊瓒嬪娍鍒嗘瀽
+      // 更新趋势分析
       updateTrendAnalysis() {
         if (typeof window.gameStatsManager === 'undefined') return;
 
         const userStats = window.gameStatsManager.getUserStats();
         const trendingGames = window.gameStatsManager.getTrendingGames(50);
 
-        // 璁＄畻鍚勫垎绫荤殑鐑害
+        // 计算各分类的热度
         const categoryStats = this.calculateCategoryTrends(trendingGames);
 
-        // 鏇存柊瓒嬪娍鎸囨爣
+        // 更新趋势指标
         this.updateTrendIndicators(categoryStats);
       }
 
-      // 璁＄畻鍒嗙被瓒嬪娍
+      // 计算分类趋势
       calculateCategoryTrends(games) {
         const categories = {
           math: { count: 0, totalPopularity: 0, trend: 0 },
@@ -256,7 +256,7 @@ const trendingGames = allGamesData
           }
         });
 
-        // 璁＄畻骞冲潎鐑害鍜岃秼鍔?
+        // 计算平均热度和趋势
         Object.keys(categories).forEach(cat => {
           const data = categories[cat];
           if (data.count > 0) {
@@ -268,7 +268,7 @@ const trendingGames = allGamesData
         return categories;
       }
 
-      // 鏇存柊瓒嬪娍鎸囨爣
+      // 更新趋势指标
       updateTrendIndicators(categoryStats) {
         const trendItems = document.querySelectorAll('.trend-item');
         
@@ -279,7 +279,7 @@ const trendingGames = allGamesData
           if (icon.classList.contains('math-icon')) category = 'math';
           else if (icon.classList.contains('science-icon')) category = 'science';
           else if (icon.classList.contains('language-icon')) category = 'language';
-          else if (icon.classList.contains('coding-icon')) category = 'puzzle'; // 缂栫▼褰掔被涓虹泭鏅?
+          else if (icon.classList.contains('coding-icon')) category = 'puzzle'; // 编程归类为益智
 
           const stats = categoryStats[category];
           if (stats && stats.count > 0) {
@@ -288,7 +288,7 @@ const trendingGames = allGamesData
               percentageElement.textContent = `+${stats.trendPercentage}%`;
             }
 
-            // 鏇存柊瓒嬪娍鎻忚堪
+            // 更新趋势描述
             const trendText = item.querySelector('.trend-text');
             if (trendText && stats.count > 0) {
               const descriptions = {
@@ -303,22 +303,22 @@ const trendingGames = allGamesData
         });
       }
 
-      // 璁剧疆瀹炴椂鏇存柊
+      // 设置实时更新
       setupRealTimeUpdates() {
-        // 鐩戝惉缁熻鏁版嵁鏇存柊
+        // 监听统计数据更新
         window.addEventListener('gameStatsUpdated', () => {
           setTimeout(() => {
             this.updateTrendingDisplay();
           }, 500);
         });
 
-        // 瀹氭湡鏇存柊锛堟瘡30绉掞級
+        // 定期更新（每30秒）
         setInterval(() => {
           this.updateTrendingDisplay();
         }, 30000);
       }
 
-      // 鏍煎紡鍖栦汉姘旀暟瀛?
+      // 格式化人气数字
       formatPopularity(num) {
         if (!num || num === 0) return '0';
         if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
@@ -326,7 +326,7 @@ const trendingGames = allGamesData
         return num.toString();
       }
 
-      // 鍒濆鍖栧姩鐢绘晥鏋?
+      // 初始化动画效果
       initializeAnimations() {
         const cards = document.querySelectorAll('.animate-fadeInUp');
         cards.forEach((card, index) => {
@@ -338,7 +338,7 @@ const trendingGames = allGamesData
       }
     }
 
-    // 椤甸潰鍔犺浇瀹屾垚鍚庡垵濮嬪寲
+    // 页面加载完成后初始化
     document.addEventListener('DOMContentLoaded', function() {
       window.trendingGamesManager = new TrendingGamesManager();
     });
@@ -346,7 +346,7 @@ const trendingGames = allGamesData
 </BaseLayout>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .main-content {
     width: 100%;
     background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 50%, rgba(239, 68, 68, 0.05) 100%);
@@ -359,7 +359,7 @@ const trendingGames = allGamesData
     padding: 2rem;
   }
 
-  /* 1. 椤甸潰澶撮儴鍖哄煙 */
+  /* 1. 页面头部区域 */
   .page-header {
     background: linear-gradient(135deg, #FEF2F2 0%, #FECACA 50%, rgba(239, 68, 68, 0.08) 100%);
     border-radius: 20px;
@@ -441,7 +441,7 @@ const trendingGames = allGamesData
     line-height: 1.6;
   }
 
-  /* 閫氱敤妯″潡鏍峰紡 */
+  /* 通用模块样式 */
   .game-module,
   .info-module {
     margin-bottom: 3rem;
@@ -501,7 +501,7 @@ const trendingGames = allGamesData
     line-height: 1.4;
   }
 
-  /* 瓒嬪娍鍒嗘瀽妯″潡 */
+  /* 趋势分析模块 */
   .trend-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -601,7 +601,7 @@ const trendingGames = allGamesData
     box-shadow: 0 1px 3px rgba(16, 185, 129, 0.1);
   }
 
-  /* 鍔ㄧ敾鏁堟灉 */
+  /* 动画效果 */
   @keyframes fadeInUp {
     from {
       opacity: 0;
@@ -617,7 +617,7 @@ const trendingGames = allGamesData
     animation: fadeInUp 0.6s ease-out forwards;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .trend-grid {
       grid-template-columns: 1fr;
@@ -764,5 +764,4 @@ const trendingGames = allGamesData
     }
   }
 </style> 
-
 

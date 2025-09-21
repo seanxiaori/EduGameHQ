@@ -1,67 +1,89 @@
-﻿---
+---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getTranslations, t } from '../../i18n/utils';
 
-const translations = await getTranslations('hi');
-
-const t_seo = (key: string) => t(translations, `about_page.seo.${key}`);
-const t_header = (key: string) => t(translations, `about_page.header.${key}`);
-const t_sidebar = (key: string) => t(translations, `about_page.sidebar.${key}`);
-const t_sections = (key: string) => t(translations, `about_page.sections.${key}`);
-const t_impact = (key: string) => t(translations, `about_page.impact.${key}`);
-const t_mission = (key: string) => t(translations, `about_page.mission_section.${key}`);
-const t_values = (key: string) => t(translations, `about_page.values_section.${key}`);
-const t_story = (key: string) => t(translations, `about_page.story_section.${key}`);
-const t_team = (key: string) => t(translations, `about_page.team_section.${key}`);
-const t_cta = (key: string) => t(translations, `about_page.cta.${key}`);
-
-// SEO鏁版嵁
+// 关于我们SEO数据
 const seoData = {
-  title: t_seo('title'),
-  description: t_seo('description'),
-  keywords: t_seo('keywords').split(', '),
+  title: "About EduGameHQ | Educational Gaming Platform",
+  description: "Learn about EduGameHQ's mission to make learning fun through educational games. Discover our story, values, and commitment to quality education.",
+  keywords: ["about edugamehq", "educational platform", "learning games mission", "educational technology"],
   ogImage: "/images/about-og.jpg"
 };
 
-// 鍥㈤槦鎴愬憳鏁版嵁
+// 团队成员数据
 const teamMembers = [
-  { name: t_team('member1.name'), role: t_team('member1.role'), description: t_team('member1.description'), icon: "fas fa-user-graduate" },
-  { name: t_team('member2.name'), role: t_team('member2.role'), description: t_team('member2.description'), icon: "fas fa-gamepad" },
-  { name: t_team('member3.name'), role: t_team('member3.role'), description: t_team('member3.description'), icon: "fas fa-brain" },
-  { name: t_team('member4.name'), role: t_team('member4.role'), description: t_team('member4.description'), icon: "fas fa-code" }
+  {
+    name: "Dr. Sarah Chen",
+    role: "Educational Director",
+    description: "Former Stanford professor with 15+ years in educational technology",
+    icon: "fas fa-user-graduate"
+  },
+  {
+    name: "Mike Rodriguez",
+    role: "Game Developer",
+    description: "Award-winning game designer specializing in educational content",
+    icon: "fas fa-gamepad"
+  },
+  {
+    name: "Lisa Wang",
+    role: "Child Psychologist",
+    description: "Expert in child development and learning psychology",
+    icon: "fas fa-brain"
+  },
+  {
+    name: "Alex Thompson",
+    role: "Technology Lead",
+    description: "Full-stack developer passionate about accessible education",
+    icon: "fas fa-code"
+  }
 ];
 
-// 缁熻鏁版嵁
+// 统计数据
 const stats = [
-  { number: "100+", label: t_impact('games'), icon: "fas fa-gamepad" },
-  { number: "50K+", label: t_impact('students'), icon: "fas fa-users" },
-  { number: "15+", label: t_impact('countries'), icon: "fas fa-globe" },
-  { number: "100%", label: t_impact('free'), icon: "fas fa-heart" }
+  { number: "100+", label: "Educational Games", icon: "fas fa-gamepad" },
+  { number: "50K+", label: "Active Students", icon: "fas fa-users" },
+  { number: "15+", label: "Countries Served", icon: "fas fa-globe" },
+  { number: "100%", label: "Free Content", icon: "fas fa-heart" }
 ];
 
-// 浠峰€间富寮?
+// 价值主张
 const values = [
-  { title: t_values('quality.title'), description: t_values('quality.description'), icon: "fas fa-star" },
-  { title: t_values('free.title'), description: t_values('free.description'), icon: "fas fa-gift" },
-  { title: t_values('safety.title'), description: t_values('safety.description'), icon: "fas fa-shield-alt" },
-  { title: t_values('reach.title'), description: t_values('reach.description'), icon: "fas fa-globe" }
+  {
+    title: "Quality First",
+    description: "Every game is carefully curated and tested by education experts",
+    icon: "fas fa-star"
+  },
+  {
+    title: "Always Free",
+    description: "Education should be accessible to everyone, everywhere",
+    icon: "fas fa-gift"
+  },
+  {
+    title: "Safe Environment",
+    description: "Child-friendly content with strict safety and privacy standards",
+    icon: "fas fa-shield-alt"
+  },
+  {
+    title: "Global Reach",
+    description: "Supporting learners worldwide with multilingual content",
+    icon: "fas fa-world"
+  }
 ];
 
-// 鍏充簬鎴戜滑绔犺妭鏁版嵁
+// 关于我们章节数据（用于目录导航）
 const aboutSections = [
-  { id: "mission", title: t_sections('mission'), icon: "fa-bullseye" },
-  { id: "values", title: t_sections('values'), icon: "fa-heart" },
-  { id: "story", title: t_sections('story'), icon: "fa-book" },
-  { id: "team", title: t_sections('team'), icon: "fa-users" },
-  { id: "stats", title: t_sections('impact'), icon: "fa-chart-line" }
+  { id: "mission", title: "Our Mission", icon: "fa-bullseye" },
+  { id: "values", title: "Core Values", icon: "fa-heart" },
+  { id: "story", title: "Our Story", icon: "fa-book" },
+  { id: "team", title: "Meet Our Team", icon: "fa-users" },
+  { id: "stats", title: "Our Impact", icon: "fa-chart-line" }
 ];
 ---
 
-<BaseLayout {...seoData} lang="hi">
+<BaseLayout {...seoData}>
   <main class="about-page">
     <div class="content-wrapper">
       
-      <!-- 鍏充簬鎴戜滑澶撮儴 -->
+      <!-- 关于我们头部 -->
       <section class="about-header">
         <div class="header-content">
           <div class="header-icon">
@@ -70,18 +92,22 @@ const aboutSections = [
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">{t_header('title')}</h1>
-            <p class="page-description">{t_header('subtitle')}</p>
-            <p class="company-subtitle">{t_header('tagline')}</p>
+            <h1 class="page-title">About EduGameHQ</h1>
+            <p class="page-description">
+              Where Learning Meets Fun - Transforming Education Through Interactive Gaming
+            </p>
+            <p class="company-subtitle">
+              Making quality education accessible, engaging, and enjoyable for every child
+            </p>
           </div>
         </div>
       </section>
 
       <div class="about-content">
-        <!-- 渚ц竟鏍忕洰褰?-->
+        <!-- 侧边栏目录 -->
         <aside class="about-sidebar">
           <div class="sidebar-header">
-            <h3>{t_sidebar('title')}</h3>
+            <h3>Explore Our Story</h3>
           </div>
           <nav class="about-nav">
             <ul>
@@ -97,16 +123,16 @@ const aboutSections = [
           </nav>
         </aside>
 
-        <!-- 涓昏鍐呭鍖哄煙 -->
+        <!-- 主要内容区域 -->
         <div class="about-main">
 
-          <!-- 缁熻鏁版嵁 -->
+          <!-- 统计数据 -->
           <section class="stats-section" id="stats">
             <div class="section-header">
               <div class="section-icon-small">
                 <i class="fas fa-chart-line"></i>
               </div>
-              <h2 class="section-title">{t_sections('impact')}</h2>
+              <h2 class="section-title">Our Impact</h2>
             </div>
             <div class="stats-grid">
               {stats.map((stat) => (
@@ -121,21 +147,28 @@ const aboutSections = [
             </div>
           </section>
 
-          <!-- 浣垮懡鎰挎櫙 -->
+          <!-- 使命愿景 -->
           <section class="mission-section" id="mission">
             <div class="section-header">
               <div class="section-icon-small">
                 <i class="fas fa-bullseye"></i>
               </div>
-              <h2 class="section-title">{t_mission('title')}</h2>
+              <h2 class="section-title">Our Mission</h2>
             </div>
             <div class="mission-content">
               <div class="mission-text">
-                <p class="mission-description">{t_mission('description')}</p>
+                <p class="mission-description">
+                  To democratize quality education by providing free, engaging, and effective 
+                  educational games that inspire curiosity, foster creativity, and build 
+                  essential skills for the 21st century.
+                </p>
                 
                 <div class="vision-section">
-                  <h3 class="subsection-title">{t_mission('vision_title')}</h3>
-                  <p class="vision-description">{t_mission('vision_description')}</p>
+                  <h3 class="subsection-title">Our Vision</h3>
+                  <p class="vision-description">
+                    A world where every child has access to high-quality educational content 
+                    that makes learning joyful, meaningful, and transformative.
+                  </p>
                 </div>
               </div>
               
@@ -147,13 +180,13 @@ const aboutSections = [
             </div>
           </section>
 
-          <!-- 浠峰€间富寮?-->
+          <!-- 价值主张 -->
           <section class="values-section" id="values">
             <div class="section-header">
               <div class="section-icon-small">
                 <i class="fas fa-heart"></i>
               </div>
-              <h2 class="section-title">{t_values('title')}</h2>
+              <h2 class="section-title">Our Core Values</h2>
             </div>
             <div class="values-grid">
               {values.map((value) => (
@@ -168,13 +201,13 @@ const aboutSections = [
             </div>
           </section>
 
-          <!-- 鎴戜滑鐨勬晠浜?-->
+          <!-- 我们的故事 -->
           <section class="story-section" id="story">
             <div class="section-header">
               <div class="section-icon-small">
                 <i class="fas fa-book"></i>
               </div>
-              <h2 class="section-title">{t_story('title')}</h2>
+              <h2 class="section-title">Our Story</h2>
             </div>
             <div class="story-content">
               <div class="story-timeline">
@@ -183,8 +216,12 @@ const aboutSections = [
                     <i class="fas fa-lightbulb"></i>
                   </div>
                   <div class="timeline-content">
-                    <h4>{t_story('beginning.title')}</h4>
-                    <p>{t_story('beginning.description')}</p>
+                    <h4>The Beginning</h4>
+                    <p>
+                      EduGameHQ was born from a simple observation: children learn best when they're having fun. 
+                      Founded in 2023 by a team of educators, game developers, and child psychologists, 
+                      we set out to bridge the gap between entertainment and education.
+                    </p>
                   </div>
                 </div>
 
@@ -193,8 +230,12 @@ const aboutSections = [
                     <i class="fas fa-rocket"></i>
                   </div>
                   <div class="timeline-content">
-                    <h4>{t_story('growth.title')}</h4>
-                    <p>{t_story('growth.description')}</p>
+                    <h4>Growth & Expansion</h4>
+                    <p>
+                      What started as a small collection of math games has grown into a comprehensive 
+                      platform serving over 50,000 students worldwide. Our games cover mathematics, 
+                      science, coding, language arts, and critical thinking skills.
+                    </p>
                   </div>
                 </div>
 
@@ -203,23 +244,29 @@ const aboutSections = [
                     <i class="fas fa-globe"></i>
                   </div>
                   <div class="timeline-content">
-                    <h4>{t_story('today.title')}</h4>
-                    <p>{t_story('today.description')}</p>
+                    <h4>Today & Beyond</h4>
+                    <p>
+                      Today, EduGameHQ continues to evolve, always guided by our core belief that 
+                      quality education should be free, accessible, and enjoyable for every child.
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </section>
 
-          <!-- 鍥㈤槦浠嬬粛 -->
+          <!-- 团队介绍 -->
           <section class="team-section" id="team">
             <div class="section-header">
               <div class="section-icon-small">
                 <i class="fas fa-users"></i>
               </div>
-              <h2 class="section-title">{t_team('title')}</h2>
+              <h2 class="section-title">Meet Our Team</h2>
             </div>
-            <p class="team-intro">{t_team('intro')}</p>
+            <p class="team-intro">
+              Our diverse team of educators, developers, and researchers work together 
+              to create the best possible learning experience for students worldwide.
+            </p>
             
             <div class="team-grid">
               {teamMembers.map((member) => (
@@ -235,19 +282,19 @@ const aboutSections = [
             </div>
           </section>
 
-          <!-- 鑱旂郴琛屽姩鍖哄煙 -->
+          <!-- 联系行动区域 -->
           <section class="contact-cta">
             <div class="cta-content">
               <div class="cta-icon">
                 <i class="fas fa-envelope"></i>
               </div>
               <div class="cta-text">
-                <h3>{t_cta('title')}</h3>
-                <p>{t_cta('description')}</p>
+                <h3>Want to Know More?</h3>
+                <p>We'd love to hear from you! Contact us for partnerships, feedback, or just to say hello.</p>
               </div>
               <div class="cta-actions">
-                <a href={t('links.help', '/help')} class="btn-primary">{t_cta('button1')}</a>
-                <a href={t('links.privacy', '/privacy-policy')} class="btn-secondary">{t_cta('button2')}</a>
+                <a href="/help" class="btn-primary">Get in Touch</a>
+                <a href="/privacy-policy" class="btn-secondary">Our Policies</a>
               </div>
             </div>
           </section>
@@ -258,7 +305,7 @@ const aboutSections = [
 </BaseLayout>
 
 <script>
-  // 骞虫粦婊氬姩鍒伴敋鐐?
+  // 平滑滚动到锚点
   document.addEventListener('DOMContentLoaded', function() {
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -266,30 +313,30 @@ const aboutSections = [
       link.addEventListener('click', function(this: HTMLElement, e: Event) {
         const href = this.getAttribute('href');
         
-        // 鍙椤甸潰鍐呴敋鐐归摼鎺ワ紙浠?寮€澶达級鎵цpreventDefault锛屼笉褰卞搷澶栭儴閾炬帴
+        // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接
         if (href && href.startsWith('#')) {
           e.preventDefault();
           const targetId = href.substring(1);
           const targetElement = document.getElementById(targetId);
           
           if (targetElement) {
-            // 绉婚櫎鎵€鏈夋椿鍔ㄧ姸鎬?
+            // 移除所有活动状态
             navLinks.forEach(nl => nl.classList.remove('active'));
-            // 娣诲姞褰撳墠娲诲姩鐘舵€?
+            // 添加当前活动状态
             this.classList.add('active');
             
-            // 骞虫粦婊氬姩
+            // 平滑滚动
             targetElement.scrollIntoView({
               behavior: 'smooth',
               block: 'start'
             });
           }
         }
-        // 瀵逛簬澶栭儴閾炬帴锛堝/銆?help绛夛級锛岃娴忚鍣ㄦ甯稿鐞?
+        // 对于外部链接（如/、/help等），让浏览器正常处理
       });
     });
 
-    // 婊氬姩鐩戝惉锛岄珮浜綋鍓嶇珷鑺?
+    // 滚动监听，高亮当前章节
     const sections = document.querySelectorAll('section[id]');
     const options = {
       threshold: 0.3,
@@ -302,10 +349,10 @@ const aboutSections = [
           const sectionId = entry.target.id;
           const correspondingNavLink = document.querySelector(`a[href="#${sectionId}"]`);
           
-          // 绉婚櫎鎵€鏈夋椿鍔ㄧ姸鎬?
+          // 移除所有活动状态
           navLinks.forEach(nl => nl.classList.remove('active'));
           
-          // 娣诲姞褰撳墠娲诲姩鐘舵€?
+          // 添加当前活动状态
           if (correspondingNavLink) {
             correspondingNavLink.classList.add('active');
           }
@@ -320,7 +367,7 @@ const aboutSections = [
 </script>
 
 <style>
-  /* 涓昏鍐呭鍖哄煙 */
+  /* 主要内容区域 */
   .about-page {
     width: 100%;
     background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(34, 197, 94, 0.05) 100%);
@@ -333,7 +380,7 @@ const aboutSections = [
     padding: 2rem;
   }
 
-  /* 鍏充簬鎴戜滑澶撮儴 - 缁胯壊涓婚 */
+  /* 关于我们头部 - 绿色主题 */
   .about-header {
     background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #10B981 100%);
     border-radius: 20px;
@@ -412,7 +459,7 @@ const aboutSections = [
     opacity: 0.8;
   }
 
-  /* 鍐呭甯冨眬 */
+  /* 内容布局 */
   .about-content {
     display: grid;
     grid-template-columns: 300px 1fr;
@@ -420,7 +467,7 @@ const aboutSections = [
     align-items: start;
   }
 
-  /* 渚ц竟鏍?*/
+  /* 侧边栏 */
   .about-sidebar {
     background: white;
     border-radius: 16px;
@@ -487,7 +534,7 @@ const aboutSections = [
     color: #10B981;
   }
 
-  /* 涓昏鍐呭 */
+  /* 主要内容 */
   .about-main {
     background: white;
     border-radius: 20px;
@@ -534,7 +581,7 @@ const aboutSections = [
     font-family: 'Space Grotesk', sans-serif;
   }
 
-  /* 缁熻鏁版嵁 */
+  /* 统计数据 */
   .stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -583,7 +630,7 @@ const aboutSections = [
     font-size: 0.875rem;
   }
 
-  /* 浣垮懡鎰挎櫙 */
+  /* 使命愿景 */
   .mission-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -640,7 +687,7 @@ const aboutSections = [
     box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
   }
 
-  /* 浠峰€间富寮?*/
+  /* 价值主张 */
   .values-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -689,7 +736,7 @@ const aboutSections = [
     line-height: 1.6;
   }
 
-  /* 鏁呬簨鏃堕棿杞?*/
+  /* 故事时间轴 */
   .story-timeline {
     margin-top: 1.5rem;
   }
@@ -739,7 +786,7 @@ const aboutSections = [
     line-height: 1.7;
   }
 
-  /* 鍥㈤槦浠嬬粛 */
+  /* 团队介绍 */
   .team-intro {
     color: #4B5563;
     font-size: 1rem;
@@ -804,7 +851,7 @@ const aboutSections = [
     line-height: 1.6;
   }
 
-  /* 鑱旂郴琛屽姩鍖哄煙 */
+  /* 联系行动区域 */
   .contact-cta {
     background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
     border-radius: 16px;
@@ -886,7 +933,7 @@ const aboutSections = [
     color: white;
   }
 
-  /* 鍝嶅簲寮忚璁?*/
+  /* 响应式设计 */
   @media (max-width: 1024px) {
     .content-wrapper {
       padding: 1.5rem;
@@ -981,5 +1028,4 @@ const aboutSections = [
     }
   }
 </style> 
-
 
