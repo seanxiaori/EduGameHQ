@@ -1,0 +1,335 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GameCard from '../../../components/GameCard.astro';
+import ShareModal from '../../../components/ShareModal.astro';
+import type { Game } from '../../../types/game';
+import fs from 'fs';
+import path from 'path';
+
+// 导出getStaticPaths函数用于动态路由
+export async function getStaticPaths() {
+  // 读取游戏数据
+  const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+  const gamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
+  
+  return gamesData.map((game: Game) => ({
+    params: { slug: game.slug },
+    props: { game }
+  }));
+}
+
+// 定义Props接口
+interface Props {
+  game: Game;
+}
+
+// 获取当前游戏数据
+const { game }: Props = Astro.props;
+
+// 读取所有游戏数据用于相关游戏推荐
+const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
+const gamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
+
+// 获取相关游戏（同分类的其他游戏，最多4个）
+const relatedGames = gamesData
+  .filter((gameData: Game) => gameData.slug !== game.slug && gameData.category === game.category)
+  .slice(0, 4);
+
+// 游戏来源检测函数
+function getGameSource(url: string | undefined | null): string {
+  if (!url || typeof url !== 'string') {
+    return 'Unknown';
+  }
+  
+  if (url.includes('crazygames.com')) return 'CrazyGames';
+  if (url.includes('miniplay.com')) return 'Miniplay';
+  if (url.includes('gamedistribution.com')) return 'GameDistribution';
+  if (url.includes('scratch.mit.edu')) return 'Scratch MIT';
+  if (url.includes('itch.io')) return 'itch.io';
+  if (url.includes('github')) return 'GitHub Open Source';
+  return 'External';
+}
+
+// 获取游戏的iframe URL
+function getGameIframeUrl(game: Game): string {
+  return game.iframeUrl || game.embedUrl || '';
+}
+
+// 获取游戏的源URL
+function getGameSourceUrl(game: Game): string {
+  return game.sourceUrl || game.url || '';
+}
+
+// 提取iframe域名用于DNS预解析
+function getIframeDomain(url: string): string {
+  try {
+    const urlObj = new URL(url);
+    return urlObj.hostname;
+  } catch {
+    return '';
+  }
+}
+
+// 动态生成SEO数据
+const gameTitle = game.title;
+const gameDescription = game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`;
+const categoryName = game.category.charAt(0).toUpperCase() + game.category.slice(1);
+const ageRange = `Ages ${game.minAge || 6}-${game.maxAge || 18}`;
+
+const dynamicSEO = {
+  title: `${gameTitle} - Free ${categoryName} Game | EduGameHQ`,
+  description: `${gameDescription} Perfect for students ${ageRange}. Play instantly in your browser - no downloads required!`,
+  keywords: [
+    game.title.toLowerCase(),
+    `${game.category} game`,
+    `educational ${game.category} game`,
+    `free ${game.category} game`,
+    `${game.category} games for kids`,
+    `online ${game.category} game`,
+    `interactive ${game.category} game`,
+    `learning ${game.category} game`,
+    ...((game.tags || []).slice(0, 5))
+  ].filter(Boolean)
+};
+
+const iframeDomain = getIframeDomain(getGameIframeUrl(game));
+---
+
+<BaseLayout 
+  title={dynamicSEO.title} 
+  description={dynamicSEO.description}
+  gameData={game}
+  lang="es"
+>
+  <!-- 性能优化 -->
+  {iframeDomain && (
+    <>
+      <link rel="dns-prefetch" href={`//${iframeDomain}`}>
+      <link rel="preconnect" href={`https://${iframeDomain}`} crossorigin>
+    </>
+  )}
+  
+  <link rel="preload" href="/src/styles/game-card.css" as="style">
+  <link rel="stylesheet" href="/src/styles/game-card.css">
+
+  <!-- 游戏详情页面内容 -->
+  <div class="game-detail-page">
+    <div class="game-detail-container">
+      
+      <!-- 游戏标题区域 -->
+      <section class="game-title-section">
+        <div class="title-content">
+          <div class="game-icon">
+            <i class="fas fa-gamepad"></i>
+          </div>
+          
+          <div class="title-and-tags">
+            <h1 class="game-main-title">{game.title}</h1>
+            <div class="game-meta-tags">
+              {game.tags && game.tags.length > 0 ? (
+                game.tags.slice(0, 4).map((tag: string) => (
+                  <span class="tag-badge">{tag}</span>
+                ))
+              ) : (
+                <>
+              <span class="category-tag">{game.category}</span>
+              <span class="difficulty-tag">{game.difficulty || 'Medium'}</span>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 游戏播放器区域 -->
+      <section class="game-player-section">
+        <div class="game-player-container">
+          <div class="game-iframe-wrapper" id="gameIframeWrapper">
+            <div class="iframe-placeholder" id="iframePlaceholder">
+              <div class="placeholder-content">
+                <div class="loading-spinner"></div>
+                <h3>Loading {game.title}...</h3>
+                <p>Preparing your educational game experience</p>
+                <button class="load-game-btn" onclick="loadGameIframe()" id="loadGameBtn">
+                  <i class="fas fa-play"></i>
+                  Start Game
+                </button>
+              </div>
+            </div>
+            
+            <iframe 
+                data-src={getGameIframeUrl(game)}
+                class="game-iframe hidden"
+                id="gameIframe"
+              title={game.title}
+              allowfullscreen
+              sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+            ></iframe>
+          </div>
+          
+          <div class="game-controls">
+            <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()">
+              <i class="fas fa-expand"></i>
+              Fullscreen
+            </button>
+            <button class="control-btn restart-btn" onclick="restartGame()">
+              <i class="fas fa-redo"></i>
+              Restart
+            </button>
+            <button class="control-btn favorite-btn" onclick="toggleFavorite()">
+              <i class="fas fa-heart"></i>
+              Favorite
+            </button>
+            <button 
+              class="control-btn share-btn" 
+              data-game-title={game.title}
+              data-game-description={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+              data-game-image={game.thumbnailUrl || ''}
+              onclick="handleShareClick(this)"
+            >
+              <i class="fas fa-share"></i>
+              Share
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 游戏信息区域 -->
+      <section class="game-info-section">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-info-circle"></i>
+          </div>
+          <h2 class="section-title">Game Information</h2>
+        </div>
+
+        <div class="info-content">
+          <div class="info-block">
+            <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
+          </div>
+
+          {game.gameGuide && (
+            <>
+              {game.gameGuide.howToPlay && game.gameGuide.howToPlay.length > 0 && (
+                <div class="info-block">
+                  <h3 class="guide-title">
+                    <i class="fas fa-play-circle"></i>
+                    How to Play
+                  </h3>
+                  <ul class="guide-list">
+                    {game.gameGuide.howToPlay.map((step: string) => (
+                      <li>{step}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {game.gameGuide.controls && Object.keys(game.gameGuide.controls).length > 0 && (
+                <div class="info-block">
+                  <h3 class="guide-title">
+                    <i class="fas fa-keyboard"></i>
+                    Game Controls
+                  </h3>
+                  <div class="controls-grid">
+                    {Object.entries(game.gameGuide.controls).map(([type, instruction]: [string, string]) => (
+                      <div class="control-item">
+                        <span class="control-type">
+                          {type === 'mouse' && <i class="fas fa-computer-mouse"></i>}
+                          {type === 'keyboard' && <i class="fas fa-keyboard"></i>}
+                          {type === 'touch' && <i class="fas fa-hand-paper"></i>}
+                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                        </span>
+                        <span class="control-instruction">{instruction}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {game.gameGuide.tips && game.gameGuide.tips.length > 0 && (
+                <div class="info-block">
+                  <h3 class="guide-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Tips & Tricks
+                  </h3>
+                  <ul class="tips-list">
+                    {game.gameGuide.tips.map((tip: string) => (
+                      <li>{tip}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      </section>
+
+      <!-- 开发者信息区域 -->
+      <section class="developer-info-section">
+        <div class="section-header">
+          <div class="section-icon">
+            <i class="fas fa-user-tie"></i>
+          </div>
+          <h2 class="section-title">Developer Information</h2>
+        </div>
+
+        <div class="developer-content">
+          <div class="developer-details">
+            <div class="developer-item">
+              <span class="detail-label">Developer:</span>
+              <span class="detail-value">{game.developer || getGameSource(getGameSourceUrl(game)) + ' Team'}</span>
+            </div>
+            <div class="developer-item">
+              <span class="detail-label">Source:</span>
+              <span class="detail-value">{getGameSource(getGameSourceUrl(game))}</span>
+            </div>
+            <div class="developer-item">
+              <span class="detail-label">Type:</span>
+              <span class="detail-value">Free</span>
+            </div>
+            {game.releaseDate && (
+              <div class="developer-item">
+                <span class="detail-label">Release Date:</span>
+                <span class="detail-value">{game.releaseDate}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <!-- 相关游戏推荐 -->
+      {relatedGames.length > 0 && (
+        <section class="related-games-section">
+          <div class="section-header">
+            <div class="section-icon">
+              <i class="fas fa-gamepad"></i>
+            </div>
+            <h2 class="section-title">More {game.category} Games</h2>
+          </div>
+          
+          <div class="related-games-grid">
+            {relatedGames.map((relatedGame: Game) => (
+              <GameCard 
+                game={relatedGame} 
+                showPopularity={true} 
+                showFavorite={true} 
+                showDeveloper={false}
+              />
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<!-- 分享模态框组件 -->
+<ShareModal 
+  gameTitle={game.title}
+  gameUrl={`${Astro.site || 'https://edugamehq.com'}/es/games/${game.slug}`}
+  gameDescription={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+  gameImage={game.thumbnailUrl || ''}
+/>
+
+<!-- 引入游戏详情页的JavaScript功能 -->
+<script src="/src/pages/games/[slug].astro" type="module"></script>
