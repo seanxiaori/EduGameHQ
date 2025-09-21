@@ -1,18 +1,26 @@
-<!-- EduGameHQ Apple Touch Icon -->
+<!-- EduGameHQ Apple Touch Icon SVG - 与新Logo设计保持一致，适配iOS设备 -->
 <svg width="180" height="180" viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="apple-icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- 网站主色调渐变 - 暖黄色系 -->
+    <linearGradient id="apple-touch-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
       <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect x="18" y="18" width="144" height="144" rx="42" ry="42" fill="url(#apple-icon-gradient)"/>
-  <g transform="translate(90, 72)">
-    <path d="M-21 -6 L-21 24 L0 18 L21 24 L21 -6 Z" 
+
+  <!-- 现代扁平背景 - iOS风格圆角 -->
+  <rect x="10" y="10" width="160" height="160" rx="35" ry="35" 
+        fill="url(#apple-touch-gradient)"/>
+  
+  <!-- 极简书本 -->
+  <g transform="translate(90, 70)">
+    <path d="M-24 -6 L-24 26 L0 20 L24 26 L24 -6 Z" 
           fill="none" stroke="white" stroke-width="6" stroke-linejoin="round"/>
   </g>
-  <g transform="translate(90, 120)">
-    <circle cx="-12" cy="0" r="6" fill="white" opacity="0.9"/>
-    <circle cx="12" cy="0" r="6" fill="white" opacity="0.9"/>
+  
+  <!-- 游戏元素 -->
+  <g transform="translate(90, 125)">
+    <circle cx="-14" cy="0" r="7" fill="white" opacity="0.9"/>
+    <circle cx="14" cy="0" r="7" fill="white" opacity="0.9"/>
   </g>
 </svg>

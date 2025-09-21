@@ -1,18 +1,26 @@
-<!-- EduGameHQ Favicon 16x16 -->
+<!-- EduGameHQ Favicon 16x16 SVG - 与新Logo设计保持一致 -->
 <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="favicon16-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <!-- 网站主色调渐变 - 暖黄色系 -->
+    <linearGradient id="favicon-16-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
       <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
     </linearGradient>
   </defs>
-  <rect x="2" y="2" width="12" height="12" rx="3" ry="3" fill="url(#favicon16-gradient)"/>
-  <g transform="translate(8, 6)">
-    <path d="M-1.5 -0.5 L-1.5 2 L0 1.5 L1.5 2 L1.5 -0.5 Z" 
-          fill="none" stroke="white" stroke-width="0.5" stroke-linejoin="round"/>
+
+  <!-- 现代扁平背景 -->
+  <rect x="1" y="1" width="14" height="14" rx="4" ry="4" 
+        fill="url(#favicon-16-gradient)"/>
+  
+  <!-- 极简书本 -->
+  <g transform="translate(8, 6.5)">
+    <path d="M-2 -0.5 L-2 2.5 L0 2 L2 2.5 L2 -0.5 Z" 
+          fill="none" stroke="white" stroke-width="0.8" stroke-linejoin="round"/>
   </g>
-  <g transform="translate(8, 10)">
-    <circle cx="-1" cy="0" r="0.5" fill="white"/>
-    <circle cx="1" cy="0" r="0.5" fill="white"/>
+  
+  <!-- 游戏元素 -->
+  <g transform="translate(8, 11)">
+    <circle cx="-1.2" cy="0" r="0.6" fill="white" opacity="0.9"/>
+    <circle cx="1.2" cy="0" r="0.6" fill="white" opacity="0.9"/>
   </g>
 </svg>
