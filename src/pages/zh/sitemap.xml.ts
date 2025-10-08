@@ -45,7 +45,7 @@ export async function GET() {
   }));
 
   // 为中文版创建对应的游戏页面URL
-  const gamePagesZh = gamePages.map(page => ({
+  const gamePagesZh = gamePages.map((page: any) => ({
     ...page,
     url: `/zh${page.url}`
   }));
@@ -72,4 +72,4 @@ ${allPages.map(page => `  <url>
       'Cache-Control': 'public, max-age=3600' // 缓存1小时
     }
   });
-} 
+}

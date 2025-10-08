@@ -1,6 +1,9 @@
 import { languages, defaultLanguage, supportedLanguages, rtlLanguages, type LanguageCode } from './config';
 import deepmerge from 'deepmerge';
 
+// 重新导出 LanguageCode 类型
+export type { LanguageCode };
+
 // 翻译数据类型
 export interface TranslationData {
   [key: string]: string | TranslationData;

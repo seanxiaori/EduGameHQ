@@ -3,7 +3,7 @@
  * 用于从翻译文件获取本地化的SEO元数据
  */
 
-import { getTranslations, type LanguageCode } from '../i18n/utils';
+import { getTranslations, type LanguageCode, type TranslationData } from '../i18n/utils';
 import { getPageSEO } from '../data/seo-config';
 
 export interface LocalizedSEOData {
@@ -98,9 +98,9 @@ export async function getLocalizedSEO(path: string, lang: LanguageCode): Promise
  * @param seoKey SEO键路径
  * @returns SEO数据或null
  */
-function getSEOFromTranslations(translations: any, seoKey: string): LocalizedSEOData | null {
+function getSEOFromTranslations(translations: TranslationData, seoKey: string): LocalizedSEOData | null {
   const keys = seoKey.split('.');
-  let current = translations;
+  let current: any = translations;
   
   // 遍历键路径
   for (const key of keys) {
@@ -114,10 +114,11 @@ function getSEOFromTranslations(translations: any, seoKey: string): LocalizedSEO
   // 检查是否包含必要的SEO字段
   if (current && typeof current === 'object' && 
       'title' in current && 'description' in current && 'keywords' in current) {
+    const seoData = current as any;
     return {
-      title: current.title,
-      description: current.description,
-      keywords: current.keywords
+      title: String(seoData.title),
+      description: String(seoData.description),
+      keywords: String(seoData.keywords)
     };
   }
   
@@ -132,7 +133,9 @@ function getSEOFromTranslations(translations: any, seoKey: string): LocalizedSEO
  */
 export async function getLocalizedPageTitle(baseTitle: string, lang: LanguageCode): Promise<string> {
   const translations = await getTranslations(lang);
-  const siteName = translations?.general?.site_name || 'EduGameHQ';
+  // 安全地访问嵌套属性
+  const general = translations?.general as any;
+  const siteName = general?.site_name || 'EduGameHQ';
   
   return `${baseTitle} | ${siteName}`;
 }
@@ -140,10 +143,9 @@ export async function getLocalizedPageTitle(baseTitle: string, lang: LanguageCod
 /**
  * 获取本地化的关键词字符串
  * @param keywords 关键词数组或字符串
- * @param lang 语言代码
  * @returns 关键词字符串
  */
-export function getLocalizedKeywords(keywords: string[] | string, lang: LanguageCode): string {
+export function getLocalizedKeywords(keywords: string[] | string): string {
   if (Array.isArray(keywords)) {
     return keywords.join(', ');
   }
