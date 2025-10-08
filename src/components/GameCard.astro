@@ -1,11 +1,12 @@
 ---
 // 导入类型定义
 import type { Game } from '../types/game';
-import { getLanguageFromPath, getLocalizedPath } from '../i18n/utils';
+import { getLanguageFromPath, getLocalizedPath, t } from '../i18n/utils';
 
 // 组件属性接口
 interface Props {
   game: Game;
+  translations?: Record<string, any>;
   showTrending?: boolean;
   showFeatured?: boolean;
   showNew?: boolean;
@@ -19,6 +20,7 @@ interface Props {
 // 解构属性并设置默认值
 const { 
   game, 
+  translations,
   showTrending = false, 
   showFeatured = false, 
   showNew = false,
@@ -28,13 +30,36 @@ const {
   showDeveloper = false
 } = Astro.props;
 
+// 翻译游戏数据的函数
+function getTranslatedGameData(game: Game, translations?: Record<string, any>) {
+  if (!translations) {
+    return {
+      title: game.title,
+      description: game.description
+    };
+  }
+  
+  // 尝试从翻译文件中获取游戏数据翻译
+  const gameKey = game.slug || game.title?.toLowerCase().replace(/\s+/g, '_');
+  const translatedTitle = t(translations, `games_data.${gameKey}.title`, game.title);
+  const translatedDescription = t(translations, `games_data.${gameKey}.description`, game.description);
+  
+  return {
+    title: translatedTitle,
+    description: translatedDescription
+  };
+}
+
+// 获取翻译后的游戏数据
+const translatedGameData = getTranslatedGameData(game, translations);
+
 // 确保游戏对象有效 - 修复类型不匹配问题
 const safeGame = {
   ...game,
   // 只覆盖需要默认值的关键字段
   slug: game.slug || '',
-  title: game.title || 'Unknown Game',
-  description: game.description || 'No description available',
+  title: translatedGameData.title || 'Unknown Game',
+  description: translatedGameData.description || 'No description available',
   thumbnailUrl: game.thumbnailUrl || '/images/logo.svg'
 };
 

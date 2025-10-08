@@ -2,8 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
+
+// 获取英语翻译
+const translations = await getTranslations('en');
 
 // 导入样式文件
 import '../../styles/game-card.css';
@@ -45,9 +49,9 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Puzzle Games</h1>
+            <h1 class="page-title">{t(translations, 'category_pages.puzzle_games.title', 'Puzzle Games')}</h1>
             <p class="page-description">
-              Challenge your mind with our collection of educational puzzle games! Develop critical thinking, problem-solving skills, logic, and spatial reasoning through engaging brain teasers and mind-bending challenges.
+              {t(translations, 'category_pages.puzzle_games.description', 'Challenge your mind with our collection of educational puzzle games! Develop critical thinking, problem-solving skills, logic, and spatial reasoning through engaging brain teasers and mind-bending challenges.')}
             </p>
           </div>
         </div>
@@ -61,8 +65,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Puzzle Games</h2>
-              <p class="module-subtitle">Mind-bending puzzles to challenge your thinking skills</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.featured_section.title', 'Featured Puzzle Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.featured_section.description', 'Mind-bending puzzles to challenge your thinking skills')}</p>
             </div>
           </div>
           
@@ -82,8 +86,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.easy.title', 'Easy Level Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.easy.description', 'Perfect for beginners and young puzzle solvers')}</p>
             </div>
           </div>
           
@@ -733,5 +737,5 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

@@ -3,8 +3,12 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import GameCard from '../../../components/GameCard.astro';
 import ShareModal from '../../../components/ShareModal.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
+
+// 获取中文翻译
+const translations = await getTranslations('zh');
 
 // 导出getStaticPaths函数用于动态路由
 export async function getStaticPaths() {
@@ -71,25 +75,25 @@ function getIframeDomain(url: string): string {
   }
 }
 
-// 动态生成SEO数据
+// 动态生成本地化SEO数据
 const gameTitle = game.title;
-const gameDescription = game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`;
-const categoryName = game.category.charAt(0).toUpperCase() + game.category.slice(1);
-const ageRange = `Ages ${game.minAge || 6}-${game.maxAge || 18}`;
+const localizedCategory = t(translations, `categories.${game.category}`, game.category);
+const gameDescription = game.description || `免费在线游玩 ${game.title}。专为学习设计的教育${localizedCategory}游戏。`;
+const ageRange = `适合 ${game.minAge || 6}-${game.maxAge || 18} 岁`;
 
-// 构建动态SEO信息
+// 构建动态本地化SEO信息
 const dynamicSEO = {
-  title: `${gameTitle} - Free ${categoryName} Game | EduGameHQ`,
-  description: `${gameDescription} Perfect for students ${ageRange}. Play instantly in your browser - no downloads required!`,
+  title: `${gameTitle} - 免费${localizedCategory}游戏 | EduGameHQ`,
+  description: `${gameDescription} 适合${ageRange}的学生。在浏览器中即时游玩 - 无需下载！`,
   keywords: [
     game.title.toLowerCase(),
-    `${game.category} game`,
-    `educational ${game.category} game`,
-    `free ${game.category} game`,
-    `${game.category} games for kids`,
-    `online ${game.category} game`,
-    `interactive ${game.category} game`,
-    `learning ${game.category} game`,
+    `${localizedCategory}游戏`,
+    `教育${localizedCategory}游戏`,
+    `免费${localizedCategory}游戏`,
+    `儿童${localizedCategory}游戏`,
+    `在线${localizedCategory}游戏`,
+    `互动${localizedCategory}游戏`,
+    `学习${localizedCategory}游戏`,
     ...((game.tags || []).slice(0, 5))
   ].filter(Boolean)
 };
@@ -157,11 +161,11 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
             <div class="iframe-placeholder" id="iframePlaceholder">
               <div class="placeholder-content">
                 <div class="loading-spinner"></div>
-                <h3>Loading {game.title}...</h3>
-                <p>Preparing your educational game experience</p>
+                <h3>{t(translations, 'game_detail.loading_game', 'Loading {gameTitle}...').replace('{gameTitle}', game.title)}</h3>
+                <p>{t(translations, 'game_detail.preparing_experience', '准备您的教育游戏体验')}</p>
                 <button class="load-game-btn" onclick="loadGameIframe()" id="loadGameBtn">
                   <i class="fas fa-play"></i>
-                  Start Game
+                  {t(translations, 'game_detail.start_game', '开始游戏')}
                 </button>
               </div>
             </div>
@@ -181,25 +185,25 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           <div class="game-controls">
             <button class="control-btn fullscreen-btn" onclick="toggleFullscreen()">
               <i class="fas fa-expand"></i>
-              Fullscreen
+              {t(translations, 'game_detail.fullscreen', '全屏')}
             </button>
             <button class="control-btn restart-btn" onclick="restartGame()">
               <i class="fas fa-redo"></i>
-              Restart
+              {t(translations, 'game_detail.restart', '重新开始')}
             </button>
             <button class="control-btn favorite-btn" onclick="toggleFavorite()">
               <i class="fas fa-heart"></i>
-              Favorite
+              {t(translations, 'game_detail.favorite', '收藏')}
             </button>
             <button 
               class="control-btn share-btn" 
               data-game-title={game.title}
-              data-game-description={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+              data-game-description={game.description || `免费在线游玩 ${game.title}。专为学习设计的教育${localizedCategory}游戏。`}
               data-game-image={game.thumbnailUrl || ''}
               onclick="handleShareClick(this)"
             >
               <i class="fas fa-share"></i>
-              Share
+              {t(translations, 'game_detail.share', '分享')}
             </button>
           </div>
         </div>
@@ -211,14 +215,14 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           <div class="section-icon">
             <i class="fas fa-info-circle"></i>
           </div>
-          <h2 class="section-title">Game Information</h2>
+          <h2 class="section-title">{t(translations, 'game_detail.game_information', '游戏信息')}</h2>
         </div>
 
         <div class="info-content">
           
           <!-- 游戏描述 -->
           <div class="info-block">
-            <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
+            <p>{game.description || `免费在线游玩 ${game.title}。专为学习设计的教育${localizedCategory}游戏。`}</p>
           </div>
 
           {game.gameGuide && (
@@ -228,7 +232,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
                 <div class="info-block">
                   <h3 class="guide-title">
                     <i class="fas fa-play-circle"></i>
-                    How to Play
+                    {t(translations, 'game_detail.how_to_play', '如何游戏')}
                   </h3>
                   <ul class="guide-list">
                     {game.gameGuide.howToPlay.map((step: string) => (
@@ -243,7 +247,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
                 <div class="info-block">
                   <h3 class="guide-title">
                     <i class="fas fa-keyboard"></i>
-                    Game Controls
+                    {t(translations, 'game_detail.game_controls', '游戏控制')}
                   </h3>
                   <div class="controls-grid">
                     {Object.entries(game.gameGuide.controls).map(([type, instruction]: [string, string]) => (
@@ -252,7 +256,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
                           {type === 'mouse' && <i class="fas fa-computer-mouse"></i>}
                           {type === 'keyboard' && <i class="fas fa-keyboard"></i>}
                           {type === 'touch' && <i class="fas fa-hand-paper"></i>}
-                          {type.charAt(0).toUpperCase() + type.slice(1)}
+                          {t(translations, `game_detail.${type}`, type.charAt(0).toUpperCase() + type.slice(1))}
                         </span>
                         <span class="control-instruction">{instruction}</span>
                       </div>
@@ -266,7 +270,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
                 <div class="info-block">
                   <h3 class="guide-title">
                     <i class="fas fa-lightbulb"></i>
-                    Tips & Tricks
+                    {t(translations, 'game_detail.tips_tricks', '技巧与窍门')}
                   </h3>
                   <ul class="tips-list">
                     {game.gameGuide.tips.map((tip: string) => (
@@ -287,26 +291,26 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           <div class="section-icon">
             <i class="fas fa-user-tie"></i>
           </div>
-          <h2 class="section-title">Developer Information</h2>
+          <h2 class="section-title">{t(translations, 'game_detail.developer_information', '开发者信息')}</h2>
         </div>
 
         <div class="developer-content">
           <div class="developer-details">
             <div class="developer-item">
-              <span class="detail-label">Developer:</span>
-              <span class="detail-value">{game.developer || getGameSource(getGameSourceUrl(game)) + ' Team'}</span>
+              <span class="detail-label">{t(translations, 'game_detail.developer', '开发者')}:</span>
+              <span class="detail-value">{game.developer || getGameSource(getGameSourceUrl(game)) + ' 团队'}</span>
             </div>
             <div class="developer-item">
-              <span class="detail-label">Source:</span>
+              <span class="detail-label">{t(translations, 'game_detail.source', '来源')}:</span>
               <span class="detail-value">{getGameSource(getGameSourceUrl(game))}</span>
             </div>
             <div class="developer-item">
-              <span class="detail-label">Type:</span>
-              <span class="detail-value">Free</span>
+              <span class="detail-label">{t(translations, 'game_detail.type', '类型')}:</span>
+              <span class="detail-value">{t(translations, 'game_detail.free', '免费')}</span>
             </div>
             {game.releaseDate && (
               <div class="developer-item">
-                <span class="detail-label">Release Date:</span>
+                <span class="detail-label">{t(translations, 'game_detail.release_date', '发布日期')}:</span>
                 <span class="detail-value">{game.releaseDate}</span>
               </div>
             )}
@@ -321,7 +325,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
             <div class="section-icon">
               <i class="fas fa-gamepad"></i>
             </div>
-            <h2 class="section-title">More {game.category} Games</h2>
+            <h2 class="section-title">{t(translations, 'game_detail.more_games', '更多')} {localizedCategory} {t(translations, 'game_detail.games', '游戏')}</h2>
           </div>
           
           <div class="related-games-grid">

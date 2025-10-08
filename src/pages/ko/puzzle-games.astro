@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
+
+// 获取韩语翻译数据
+const translations = await getTranslations('ko');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -45,9 +49,9 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Puzzle Games</h1>
+            <h1 class="page-title">{t(translations, 'category_pages.puzzle_games.title', '퍼즐 게임')}</h1>
             <p class="page-description">
-              Challenge your mind with our collection of educational puzzle games! Develop critical thinking, problem-solving skills, logic, and spatial reasoning through engaging brain teasers and mind-bending challenges.
+              {t(translations, 'category_pages.puzzle_games.description', '교육적인 퍼즐 게임 컬렉션으로 두뇌에 도전하세요! 매력적인 퍼즐과 자극적인 도전을 통해 비판적 사고, 문제 해결 능력, 논리력, 공간 추론 능력을 개발하세요.')}
             </p>
           </div>
         </div>
@@ -61,8 +65,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Puzzle Games</h2>
-              <p class="module-subtitle">Mind-bending puzzles to challenge your thinking skills</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.featured_section.title', '추천 퍼즐 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.featured_section.description', '사고력을 기르는 흥미진진한 퍼즐 게임')}</p>
             </div>
           </div>
           
@@ -82,8 +86,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.easy.title', '쉬운 퍼즐 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.easy.description', '초보자를 위한 간단하고 재미있는 퍼즐')}</p>
             </div>
           </div>
           
@@ -103,8 +107,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for developing problem solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.medium.title', '중간 퍼즐 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.medium.description', '적당한 도전을 원하는 플레이어를 위한 퍼즐')}</p>
             </div>
           </div>
           
@@ -124,8 +128,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Expert challenges for master puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.hard.title', '어려운 퍼즐 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.hard.description', '고급 플레이어를 위한 도전적인 퍼즐')}</p>
             </div>
           </div>
           
@@ -144,8 +148,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Puzzle Solving Tips</h2>
-            <p class="module-subtitle">Effective strategies to enhance your problem-solving abilities</p>
+            <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.learning_tips.title', '학습 팁')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.learning_tips.subtitle', '퍼즐 게임을 통해 더 효과적으로 학습하는 방법')}</p>
           </div>
         </div>
         
@@ -155,8 +159,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brain"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Think Step by Step</h4>
-              <p class="tip-text">Break complex problems into smaller, manageable pieces</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.learning_tips.tip1.title', '천천히 시작하세요')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.learning_tips.tip1.description', '쉬운 퍼즐부터 시작해서 점차 어려운 문제로 넘어가세요. 기초를 탄탄히 하는 것이 중요합니다.')}</p>
             </div>
           </div>
           
@@ -165,8 +169,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-search"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Look for Patterns</h4>
-              <p class="tip-text">Identify recurring elements and relationships in puzzles</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.learning_tips.tip2.title', '패턴을 찾아보세요')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.learning_tips.tip2.description', '대부분의 퍼즐에는 숨겨진 패턴이나 규칙이 있습니다. 주의 깊게 관찰하고 패턴을 찾아보세요.')}</p>
             </div>
           </div>
           
@@ -175,8 +179,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Take Your Time</h4>
-              <p class="tip-text">Don't rush - careful observation leads to better solutions</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.learning_tips.tip3.title', '시간을 두고 생각하세요')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.learning_tips.tip3.description', '급하게 서두르지 마세요. 충분한 시간을 두고 문제를 분석하면 더 좋은 해결책을 찾을 수 있습니다.')}</p>
             </div>
           </div>
           
@@ -185,8 +189,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-redo"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Regularly</h4>
-              <p class="tip-text">Daily puzzle solving improves logical thinking skills</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.learning_tips.tip4.title', '다시 시도해보세요')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.learning_tips.tip4.description', '실패를 두려워하지 마세요. 다른 접근 방법을 시도해보고 실수에서 배우는 것이 중요합니다.')}</p>
             </div>
           </div>
         </div>
@@ -199,8 +203,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Cognitive Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential mental abilities gained through puzzle gaming</p>
+            <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.skills.title', '개발되는 기술')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.skills.subtitle', '퍼즐 게임을 통해 향상시킬 수 있는 핵심 능력들')}</p>
           </div>
         </div>
 
@@ -210,8 +214,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brain"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Logic & Reasoning</h4>
-              <p class="skill-description">Develop systematic thinking and deduction skills</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.skill1.title', '논리적 사고')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.skill1.description', '체계적이고 논리적으로 문제를 분석하고 해결하는 능력을 기릅니다.')}</p>
             </div>
           </div>
 
@@ -220,8 +224,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-search"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Pattern Recognition</h4>
-              <p class="skill-description">Identify relationships and sequences</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.skill2.title', '문제 해결')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.skill2.description', '복잡한 문제를 단계별로 분해하고 효과적인 해결책을 찾는 능력을 향상시킵니다.')}</p>
             </div>
           </div>
 
@@ -230,8 +234,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Problem Solving</h4>
-              <p class="skill-description">Learn strategic approaches to challenges</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.skill3.title', '창의적 사고')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.skill3.description', '기존의 틀을 벗어나 새로운 관점에서 문제를 바라보는 창의력을 기릅니다.')}</p>
             </div>
           </div>
 
@@ -240,8 +244,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-eye"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Attention to Detail</h4>
-              <p class="skill-description">Improve focus and observation skills</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.skill4.title', '공간 인식')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.skill4.description', '3차원 공간에서의 형태와 위치 관계를 이해하고 조작하는 능력을 개발합니다.')}</p>
             </div>
           </div>
           
@@ -250,8 +254,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-memory"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Memory Enhancement</h4>
-              <p class="skill-description">Strengthen working and visual memory</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.skill5.title', '기억력 향상')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.skill5.description', '패턴과 정보를 기억하고 활용하는 능력을 강화합니다.')}</p>
             </div>
           </div>
           
@@ -260,8 +264,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-cogs"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Mental Flexibility</h4>
-              <p class="skill-description">Adapt thinking strategies for different tasks</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.skill6.title', '집중력 강화')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.skill6.description', '한 가지 과제에 오랫동안 집중하고 몰입하는 능력을 기릅니다.')}</p>
             </div>
           </div>
         </div>
@@ -733,5 +737,5 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

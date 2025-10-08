@@ -58,6 +58,30 @@
     "newest": "최신순",
     "oldest": "오래된 순"
   },
+  "game_detail": {
+    "loading_game": "{gameTitle} 로딩 중...",
+    "preparing_experience": "교육 게임 경험을 준비 중",
+    "start_game": "게임 시작",
+    "fullscreen": "전체 화면",
+    "restart": "다시 시작",
+    "favorite": "즐겨찾기",
+    "share": "공유",
+    "game_information": "게임 정보",
+    "how_to_play": "게임 방법",
+    "game_controls": "게임 조작",
+    "tips_tricks": "팁과 요령",
+    "developer_information": "개발자 정보",
+    "developer": "개발자",
+    "source": "소스",
+    "type": "유형",
+    "release_date": "출시일",
+    "more_games": "더 많은",
+    "games": "게임",
+    "free": "무료",
+    "mouse": "마우스",
+    "keyboard": "키보드",
+    "touch": "터치"
+  },
   "footer": {
     "description": "EduGameHQ는 전 세계 학생들을 위한 최고의 교육 게임 플랫폼입니다.",
     "quick_links": "빠른 링크",
@@ -72,6 +96,142 @@
       "twitter": "Twitter에서 팔로우",
       "instagram": "Instagram에서 팔로우",
       "youtube": "YouTube에서 구독"
+    }
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "수학 게임",
+      "description": "재미있고 상호작용적인 수학 게임으로 수학 실력을 향상시키세요! 덧셈과 뺄셈부터 고급 대수와 기하학까지, 우리의 게임들은 모든 연령대와 실력 수준의 학습자들이 수학 개념을 마스터하는 데 도움을 줍니다.",
+      "featured_section": {
+        "title": "추천 수학 게임",
+        "description": "학습을 재미있게 만드는 최고의 수학 게임들"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 수학 게임",
+          "description": "초보자와 어린 학습자들에게 완벽한 게임들"
+        },
+        "medium": {
+          "title": "중간 수학 게임",
+          "description": "발전하는 수학 실력을 위한 도전적인 게임들"
+        },
+        "hard": {
+          "title": "어려운 수학 게임",
+          "description": "고급 학습자들을 위한 복잡한 수학 문제들"
+        }
+      },
+      "learning_tips": {
+        "title": "수학 학습 팁",
+        "subtitle": "수학 실력 향상을 위한 효과적인 전략들"
+      },
+      "core_skills": {
+        "title": "개발할 핵심 기술",
+        "subtitle": "게임플레이를 통해 습득하는 필수 수학 능력",
+        "skills": {
+          "addition_subtraction": {
+            "title": "덧셈과 뺄셈",
+            "description": "기본 산술 연산 마스터하기"
+          },
+          "multiplication_division": {
+            "title": "곱셈과 나눗셈",
+            "description": "고급 연산의 유창성 구축하기"
+          },
+          "fractions_decimals": {
+            "title": "분수와 소수",
+            "description": "부분과 전체 이해하기"
+          },
+          "geometry": {
+            "title": "기하학",
+            "description": "도형과 공간 추론 탐구하기"
+          },
+          "algebra": {
+            "title": "대수학",
+            "description": "방정식 풀기와 변수 다루기"
+          },
+          "problem_solving": {
+            "title": "문제 해결",
+            "description": "비판적 사고 능력 개발하기"
+          }
+        }
+      }
+    },
+    "science_games": {
+      "title": "과학 게임",
+      "description": "매력적인 과학 게임으로 자연 세계의 경이로움을 탐험하세요! 물리학과 화학부터 생물학과 지구과학까지, 우리의 상호작용적인 게임들은 복잡한 과학 개념을 재미있고 이해하기 쉽게 만듭니다.",
+      "featured_section": {
+        "title": "추천 과학 게임",
+        "description": "과학적 호기심을 자극하는 흥미진진한 게임들"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 과학 게임",
+          "description": "어린 과학자들을 위한 기초 과학 개념들"
+        },
+        "medium": {
+          "title": "중간 과학 게임",
+          "description": "중급 학습자들을 위한 도전적인 과학 탐험"
+        },
+        "hard": {
+          "title": "어려운 과학 게임",
+          "description": "고급 과학 학습자들을 위한 복잡한 실험들"
+        }
+      },
+      "learning_tips": {
+        "title": "과학 학습 팁",
+        "subtitle": "과학적 이해를 향상시키는 방법들"
+      }
+    },
+    "language_games": {
+      "title": "언어 게임",
+      "description": "상호작용적인 언어 게임으로 의사소통 능력을 향상시키세요! 어휘 구축과 문법부터 읽기 이해와 창의적 글쓰기까지, 우리의 게임들은 언어 학습을 즐겁고 효과적으로 만듭니다.",
+      "featured_section": {
+        "title": "추천 언어 게임",
+        "description": "언어 능력을 향상시키는 매력적인 게임들"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 언어 게임",
+          "description": "초보 독자와 작가들에게 완벽한 게임들"
+        },
+        "medium": {
+          "title": "중간 언어 게임",
+          "description": "발전하는 언어 능력을 위한 도전적인 활동들"
+        },
+        "hard": {
+          "title": "어려운 언어 게임",
+          "description": "고급 학습자들을 위한 복잡한 언어 과제들"
+        }
+      },
+      "learning_tips": {
+        "title": "언어 학습 팁",
+        "subtitle": "언어 능력 향상을 위한 효과적인 전략들"
+      }
+    },
+    "puzzle_games": {
+      "title": "퍼즐 게임",
+      "description": "교육적인 퍼즐 게임 컬렉션으로 두뇌에 도전하세요! 매력적인 퍼즐과 자극적인 도전을 통해 비판적 사고, 문제 해결 능력, 논리력, 공간 추론 능력을 개발하세요.",
+      "featured_section": {
+        "title": "추천 퍼즐 게임",
+        "description": "사고력에 도전하는 자극적인 퍼즐들"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 퍼즐 게임",
+          "description": "초보자와 어린 퍼즐 해결사들에게 이상적"
+        },
+        "medium": {
+          "title": "중간 퍼즐 게임",
+          "description": "발전하는 두뇌를 위한 적당한 도전"
+        },
+        "hard": {
+          "title": "어려운 퍼즐 게임",
+          "description": "마스터 문제 해결사들을 위한 고급 퍼즐들"
+        }
+      },
+      "learning_tips": {
+        "title": "퍼즐 해결 팁",
+        "subtitle": "문제 해결 능력 향상을 위한 전략들"
+      }
     }
   },
   "search": {
@@ -174,6 +334,94 @@
     "no_description": "설명이 없습니다",
     "no_instructions": "게임 방법이 없습니다"
   },
+  "home": {
+    "explore_by_category": {
+      "title": "카테고리별 탐색",
+      "description": "주제 영역별로 정리된 교육 게임을 발견하세요"
+    },
+    "category_description": {
+      "math": "숫자, 방정식 및 문제 해결 마스터하기",
+      "science": "물리학, 화학 및 생물학 탐험하기",
+      "language": "어휘, 읽기 및 쓰기 실력 향상하기",
+      "puzzle": "논리와 비판적 사고력 도전하기",
+      "sports": "팀워크와 체육 배우기",
+      "art": "디지털 아트를 통한 창의성 표현하기"
+    },
+    "featured_games": {
+      "title": "추천 게임",
+      "description": "가장 인기 있고 추천하는 교육 게임들"
+    },
+    "why_choose_us": {
+      "title": "왜 EduGameHQ를 선택해야 할까요?",
+      "description": "교육 게임 분야의 신뢰할 수 있는 파트너"
+    },
+    "benefit": {
+      "curriculum_aligned": {
+        "title": "교육과정 연계",
+        "description": "학습 목표를 지원하도록 교육자들이 설계한 게임"
+      },
+      "safe_environment": {
+        "title": "안전한 환경",
+        "description": "개인정보 보호가 포함된 아동 친화적, 광고 필터링 콘텐츠"
+      },
+      "cross_platform": {
+        "title": "크로스 플랫폼",
+        "description": "데스크톱, 태블릿, 모바일 등 모든 기기에서 작동"
+      },
+      "no_downloads": {
+        "title": "다운로드 불필요",
+        "description": "브라우저에서 즉시 플레이 - 설치 필요 없음"
+      }
+    },
+    "how_it_works": {
+      "title": "EduGameHQ 작동 방식",
+      "description": "학습 모험을 시작하는 간단한 단계",
+      "step1": {
+        "title": "1. 게임 탐색",
+        "description": "카테고리, 연령 또는 주제별로 탐색하여 완벽한 게임을 찾으세요."
+      },
+      "step2": {
+        "title": "2. 선택 및 플레이",
+        "description": "원하는 게임을 선택하고 브라우저에서 즉시 플레이를 시작하세요."
+      },
+      "step3": {
+        "title": "3. 학습 및 성장",
+        "description": "핵심 학업 개념을 강화하는 재미있는 게임플레이를 즐기세요."
+      }
+    },
+    "testimonials": {
+      "title": "학부모와 교사들의 평가",
+      "description": "행복한 커뮤니티의 목소리를 들어보세요"
+    },
+    "testimonial": {
+      "parent1": {
+        "text": "EduGameHQ는 우리 아이의 수학에 대한 태도를 완전히 바꿔놓았습니다. 이제 학습을 기대하고 있어요!",
+        "author": "Sarah L., 학부모"
+      },
+      "teacher1": {
+        "text": "우리 교실에 없어서는 안 될 자료입니다. 게임들이 재미있으면서도 학업적으로 엄격해요.",
+        "author": "Mr. David K., 교사"
+      },
+      "parent2": {
+        "text": "매력적인 언어 게임 덕분에 우리 딸의 읽기 실력이 극적으로 향상되었습니다.",
+        "author": "Emily R., 학부모"
+      }
+    },
+    "cta": {
+      "title": "재미를 시작할 준비가 되셨나요?",
+      "description": "오늘 EduGameHQ에 가입하고 교육 모험의 세계를 열어보세요!",
+      "button": "지금 플레이 시작하기"
+    }
+  },
+  "links": {
+    "math_games": "/math-games",
+    "science_games": "/science-games",
+    "language_games": "/language-games",
+    "puzzle_games": "/puzzle-games",
+    "sports_games": "/sports-games",
+    "art_games": "/art-games",
+    "new_games": "/new-games"
+  },
   "breadcrumbs": {
     "home": "홈",
     "categories": "카테고리",
@@ -195,6 +443,96 @@
     "play_game": "게임 플레이",
     "add_to_favorites": "즐겨찾기에 추가",
     "remove_from_favorites": "즐겨찾기에서 제거"
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "수학 게임",
+      "description": "수학 학습을 재미있고 상호작용적으로 만들도록 설계된 매력적인 수학 게임 컬렉션을 탐험해보세요. 기본 산술부터 고급 문제 해결까지, 이 게임들은 학생들이 수학에서 자신감과 기술을 쌓는 데 도움을 줍니다.",
+      "featured_section": {
+        "title": "추천 수학 게임",
+        "description": "가장 인기 있고 추천하는 수학 게임"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 레벨 게임",
+          "description": "초보자와 어린 학습자에게 완벽"
+        },
+        "medium": {
+          "title": "중간 레벨 게임",
+          "description": "중급 학생들에게 훌륭함"
+        },
+        "hard": {
+          "title": "어려운 레벨 게임",
+          "description": "고급 학습자를 위한 도전적인 게임"
+        }
+      },
+      "learning_tips": {
+        "title": "수학 학습 팁",
+        "subtitle": "수학 실력 향상을 위한 전문가 조언",
+        "tips": [
+          {
+            "title": "매일 연습하기",
+            "description": "게임을 통해 수학 개념을 매일 15-20분 연습하세요"
+          },
+          {
+            "title": "단계적으로 진행하기",
+            "description": "쉬운 게임부터 시작해서 점차 어려운 도전으로 나아가세요"
+          },
+          {
+            "title": "실수 받아들이기",
+            "description": "실수를 두려워하지 마세요 - 그것들은 학습 과정의 일부입니다"
+          },
+          {
+            "title": "이유 이해하기",
+            "description": "각 해결책 뒤에 있는 논리를 이해하는 데 집중하세요"
+          }
+        ]
+      }
+    },
+    "science_games": {
+      "title": "과학 게임",
+      "description": "복잡한 개념을 이해하기 쉽고 탐험하기 재미있게 만드는 상호작용 게임을 통해 과학의 경이로움을 발견하세요.",
+      "featured_section": {
+        "title": "추천 과학 게임",
+        "description": "가장 인기 있고 추천하는 과학 게임"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 레벨 게임",
+          "description": "초보자와 어린 학습자에게 완벽"
+        },
+        "medium": {
+          "title": "중간 레벨 게임",
+          "description": "중급 학생들에게 훌륭함"
+        },
+        "hard": {
+          "title": "어려운 레벨 게임",
+          "description": "고급 학습자를 위한 도전적인 게임"
+        }
+      }
+    },
+    "language_games": {
+      "title": "언어 게임",
+      "description": "매력적인 단어 게임, 어휘 구축기, 독해 활동의 컬렉션으로 언어 기술을 향상시키세요.",
+      "featured_section": {
+        "title": "추천 언어 게임",
+        "description": "가장 인기 있고 추천하는 언어 게임"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 레벨 게임",
+          "description": "초보자와 어린 학습자에게 완벽"
+        },
+        "medium": {
+          "title": "중간 레벨 게임",
+          "description": "중급 학생들에게 훌륭함"
+        },
+        "hard": {
+          "title": "어려운 레벨 게임",
+          "description": "고급 학습자를 위한 도전적인 게임"
+        }
+      }
+    }
   },
   "about_page": {
     "seo": {
@@ -287,11 +625,264 @@
         "description": "접근 가능한 교육에 열정적인 풀스택 개발자"
       }
     },
-    "cta": {
+    "contact_cta": {
       "title": "더 알고 싶으신가요?",
       "description": "여러분의 소식을 듣고 싶습니다! 파트너십, 피드백, 또는 단순히 인사를 위해 연락주세요.",
-      "button1": "연락하기",
-      "button2": "우리의 정책"
+      "get_in_touch": "연락하기",
+      "our_policies": "우리의 정책"
+    }
+  },
+  "pages": {
+    "science": {
+      "title": "과학 게임",
+      "description": "물리학, 화학, 생물학, 지구과학을 다루는 상호작용 게임으로 과학의 경이로움을 발견하세요. 호기심 많은 마음과 실습 실험과 관찰을 통해 세상이 어떻게 작동하는지 발견하고 싶어하는 미래의 과학자들에게 완벽합니다.",
+      "featured": {
+        "title": "추천 과학 게임",
+        "subtitle": "가장 인기 있고 추천하는 과학 게임"
+      },
+      "easy": {
+        "title": "쉬운 게임",
+        "subtitle": "초보자와 어린 과학자들에게 완벽"
+      },
+      "medium": {
+        "title": "중급 게임",
+        "subtitle": "중급 과학 개념으로 자신에게 도전하세요"
+      },
+      "hard": {
+        "title": "어려운 게임",
+        "subtitle": "과학 전문가를 위한 고급 도전"
+      },
+      "learning_tips": {
+        "title": "과학 학습 팁",
+        "subtitle": "과학적 사고 향상을 위한 전문가 조언",
+        "tips": {
+          "observe": {
+            "title": "모든 것을 관찰하기",
+            "description": "주변 세상에 주의를 기울이고 '왜'와 '어떻게'를 질문하세요"
+          },
+          "experiment": {
+            "title": "안전하게 실험하기",
+            "description": "통제된 실험과 관찰을 통해 가설을 테스트하세요"
+          },
+          "journal": {
+            "title": "과학 일지 작성하기",
+            "description": "관찰, 질문, 발견을 기록하세요"
+          },
+          "connect": {
+            "title": "실생활과 연결하기",
+            "description": "과학 개념을 일상의 사건과 경험에 연결하세요"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "개발할 핵심 기술",
+        "subtitle": "게임플레이를 통해 습득하는 필수 과학 기술",
+        "skills": {
+          "scientific_method": {
+            "title": "과학적 방법",
+            "description": "관찰과 실험 학습"
+          },
+          "physics": {
+            "title": "물리학 개념",
+            "description": "힘과 운동 이해"
+          },
+          "biology": {
+            "title": "생물학 기초",
+            "description": "생명체 탐구"
+          },
+          "chemistry": {
+            "title": "화학",
+            "description": "원소와 반응 발견"
+          },
+          "earth_science": {
+            "title": "지구과학",
+            "description": "우리 행성과 환경 연구"
+          },
+          "critical_thinking": {
+            "title": "비판적 사고",
+            "description": "논리적 추론 기술 개발"
+          }
+        }
+      }
+    }
+  },
+  "art_games": {
+    "seo": {
+      "title": "예술 및 창의성 게임 | EduGameHQ",
+      "description": "창의적인 예술 게임으로 상상력을 발휘하세요. 그리기, 색칠하기, 음악 만들기 등 다양한 창의적 활동을 통해 예술적 재능을 개발하세요.",
+      "keywords": "예술 게임, 창의성 게임, 그리기 게임, 색칠하기 게임, 음악 게임, 창의적 학습"
+    },
+    "title": "예술 및 창의성 게임",
+    "description": "창의적인 예술 게임으로 상상력을 발휘하고 예술적 재능을 개발하세요",
+    "featured": {
+      "title": "추천 예술 게임",
+      "subtitle": "커뮤니티가 선택한 가장 인기 있는 창의적 게임들"
+    },
+    "difficulty": {
+      "easy": {
+        "title": "쉬운 난이도 게임",
+        "subtitle": "초보자와 어린 예술가들에게 완벽한 게임"
+      },
+      "medium": {
+        "title": "중간 난이도 게임",
+        "subtitle": "발전하는 예술가들을 위한 중급 도전"
+      },
+      "hard": {
+        "title": "어려운 난이도 게임",
+        "subtitle": "숙련된 창작자들을 위한 고급 프로젝트"
+      }
+    },
+    "tips": {
+      "title": "창의적 학습 팁",
+      "subtitle": "예술적 능력을 향상시키는 효과적인 전략",
+      "observe": {
+        "title": "관찰하고 스케치하기",
+        "description": "주변 세계를 관찰하고 간단한 스케치로 시작하여 관찰력을 기르세요"
+      },
+      "experiment": {
+        "title": "색상 실험",
+        "description": "다양한 색상 조합을 시도하고 색채 이론의 기본을 배우세요"
+      },
+      "express": {
+        "title": "아이디어 표현",
+        "description": "예술을 통해 자신의 생각과 감정을 자유롭게 표현하세요"
+      },
+      "share": {
+        "title": "공유하고 피드백 받기",
+        "description": "작품을 다른 사람들과 공유하고 건설적인 피드백을 받아보세요"
+      }
+    },
+    "skills": {
+      "title": "개발할 수 있는 창의적 기술",
+      "subtitle": "창의적 게임을 통해 얻을 수 있는 필수 예술적 능력",
+      "visual_arts": {
+        "title": "시각 예술",
+        "description": "그리기, 그림 그리기, 디자인 원리를 배우세요"
+      },
+      "musical_expression": {
+        "title": "음악적 표현",
+        "description": "리듬, 멜로디, 작곡을 탐험하세요"
+      },
+      "creative_thinking": {
+        "title": "창의적 사고",
+        "description": "혁신적인 문제 해결 접근법을 개발하세요"
+      },
+      "visual_perception": {
+        "title": "시각적 인식",
+        "description": "관찰력과 공간 인식을 향상시키세요"
+      },
+      "color_theory": {
+        "title": "색채 이론",
+        "description": "색상 관계와 조화를 이해하세요"
+      },
+      "emotional_expression": {
+        "title": "감정 표현",
+        "description": "예술을 통해 감정을 전달하는 방법을 배우세요"
+      }
+    }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "인기 게임 | 인기 교육 게임 | EduGameHQ",
+      "description": "지금 인기 있는 최고의 교육 게임을 플레이하세요. 가장 인기 있는 수학, 과학, 코딩, 언어 게임을 통해 학습하는 수천 명의 학생들과 함께하세요.",
+      "keywords": "인기 게임, 인기 있는 게임, 핫한 교육 게임, 가장 많이 플레이된 게임, 트렌딩 학습 게임, 인기 교육 콘텐츠"
+    },
+    "hero": {
+      "title": "인기 게임",
+      "description": "지금 가장 인기 있는 학습 게임을 발견하세요! 이 트렌딩 게임들은 전 세계 학생들이 사랑하며 모든 과목에서 매력적인 학습 경험을 제공합니다."
+    },
+    "featured": {
+      "title": "인기 게임",
+      "subtitle": "지금 가장 인기 있는 학습 게임"
+    },
+    "categories": {
+      "title": "인기 카테고리",
+      "subtitle": "인기 과목 및 학습 트렌드",
+      "math": {
+        "title": "수학 게임",
+        "description": "숫자와 방정식 마스터하기"
+      },
+      "science": {
+        "title": "과학 게임",
+        "description": "실험과 발견"
+      },
+      "coding": {
+        "title": "코딩 게임",
+        "description": "프로그래밍과 논리 학습"
+      },
+      "language": {
+        "title": "언어 게임",
+        "description": "어휘와 의사소통"
+      }
+    },
+    "metrics": {
+      "plays": "플레이 수",
+      "students": "학생",
+      "trending_score": "트렌드 점수",
+      "popularity": "인기도"
+    }
+  },
+  "trending_tips": {
+    "title": "이 게임들이 인기 있는 이유",
+    "subtitle": "이 학습 게임들을 특별하게 만드는 요소를 발견하세요",
+    "tips": [
+      {
+        "title": "매력적인 게임플레이",
+        "description": "학습을 재미있게 만드는 상호작용적 메커니즘"
+      },
+      {
+        "title": "검증된 학습 결과",
+        "description": "교육자들이 테스트하고 학생들이 사랑하는"
+      },
+      {
+        "title": "사회적 학습",
+        "description": "성취를 공유하고 친구들과 함께 학습"
+      }
+    ]
+  },
+  "recently_played": {
+    "seo": {
+      "title": "최근 플레이한 게임 | 게임 기록 | EduGameHQ",
+      "description": "최근 플레이한 교육 게임을 확인하고 학습 여정을 계속하세요. 수학, 과학, 코딩, 언어 게임에서의 진행 상황을 추적하세요.",
+      "keywords": "최근 플레이한 게임, 게임 기록, 계속 플레이, 진행 상황 추적, 학습 기록, 교육 게임 기록"
+    },
+    "hero": {
+      "title": "최근 플레이",
+      "description": "학습 여정을 계속하세요! 최근 플레이한 교육 게임에서 중단했던 곳부터 다시 시작하세요."
+    },
+    "actions": {
+      "clear_history": "기록 지우기"
+    },
+    "recent_games": {
+      "title": "최근 게임",
+      "subtitle": "중단했던 곳부터 계속하세요"
+    },
+    "learning_tips": {
+      "title": "학습 팁",
+      "subtitle": "교육 게임 경험을 극대화하세요",
+      "tips": [
+        {
+          "title": "계속 학습하세요!",
+          "description": "정기적인 연습은 학습을 강화하는 데 도움이 됩니다. 최상의 결과를 위해 매일 15-20분간 교육 게임을 플레이해 보세요."
+        },
+        {
+          "title": "목표 설정",
+          "description": "하루에 하나의 게임을 완료하거나 반복 연습을 통해 특정 기술을 마스터하는 것에 도전해 보세요."
+        },
+        {
+          "title": "진행 상황 추적",
+          "description": "게임 기록은 학습 여정을 확인하고 향상된 영역을 식별하는 데 도움이 됩니다."
+        },
+        {
+          "title": "계속 연습하세요",
+          "description": "이전에 플레이한 게임으로 돌아가서 학습을 강화하고 시간이 지남에 따라 기술을 향상시키세요."
+        }
+      ]
+    },
+    "empty_state": {
+      "title": "아직 플레이한 게임이 없습니다",
+      "description": "컬렉션에서 게임을 선택하여 학습 여정을 시작하세요!",
+      "action": "게임 탐색"
     }
   }
 }

@@ -4,14 +4,17 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../../i18n/utils';
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
+
+const translations = await getTranslations('es');
 
 const seoData = {
-  title: "Trending Games | Popular Educational Games | EduGameHQ",
-  description: "Play the most popular educational games trending now. Join thousands of students learning through the hottest math, science, coding, and language games.",
-  keywords: ["trending games", "popular games", "hot educational games", "most played games", "trending learning games", "popular educational content"],
+  title: t(translations, 'trending_games.seo.title', 'Juegos Populares | Juegos Educativos Más Populares | EduGameHQ'),
+  description: t(translations, 'trending_games.seo.description', 'Juega los juegos educativos más populares que están en tendencia ahora. Únete a miles de estudiantes aprendiendo a través de los juegos más populares de matemáticas, ciencias, programación e idiomas.'),
+  keywords: t(translations, 'trending_games.seo.keywords', 'juegos populares, juegos en tendencia, juegos educativos populares, juegos más jugados, juegos de aprendizaje populares, contenido educativo popular'),
   ogImage: "/images/trending-games-og.jpg"
 };
 
@@ -52,12 +55,11 @@ const trendingGames = allGamesData
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Trending Games</h1>
-            <p class="page-description">
-              Discover the hottest educational games right now! These trending games are loved by students worldwide 
-              and are perfect for engaging learning experiences across all subjects.
-            </p>
-          </div>
+              <h1 class="page-title">{t(translations, 'trending_games.hero.title', 'Juegos Populares')}</h1>
+              <p class="page-description">
+                {t(translations, 'trending_games.hero.subtitle', '¡Descubre los juegos educativos más populares en este momento! Estos juegos en tendencia son amados por estudiantes de todo el mundo y ofrecen experiencias de aprendizaje atractivas en todas las materias.')}
+              </p>
+            </div>
         </div>
       </section>
 
@@ -69,9 +71,9 @@ const trendingGames = allGamesData
               <i class="fas fa-fire"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Trending Games</h2>
-              <p class="module-subtitle">The hottest educational games right now</p>
-            </div>
+                <h2 class="module-title">{t(translations, 'trending_games.featured.title', 'Juegos Destacados')}</h2>
+                <p class="module-subtitle">{t(translations, 'trending_games.featured.subtitle', 'Los juegos educativos más populares en este momento')}</p>
+              </div>
           </div>
           
           <div class="games-grid">
@@ -89,9 +91,9 @@ const trendingGames = allGamesData
             <i class="fas fa-chart-line"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Trending Categories</h2>
-            <p class="module-subtitle">Popular subjects and learning trends</p>
-          </div>
+              <h2 class="module-title">{t(translations, 'trending_games.categories.title', 'Categorías Populares')}</h2>
+              <p class="module-subtitle">{t(translations, 'trending_games.categories.subtitle', 'Materias populares y tendencias de aprendizaje')}</p>
+            </div>
         </div>
         
         <div class="trend-grid">
@@ -100,8 +102,8 @@ const trendingGames = allGamesData
               <i class="fas fa-calculator"></i>
             </div>
             <div class="trend-content">
-              <h4 class="trend-title">Math Games</h4>
-              <p class="trend-text">Problem-solving games are trending up 25% this week</p>
+              <h4 class="trend-title">{t(translations, 'trending_games.categories.math.title', 'Juegos de Matemáticas')}</h4>
+              <p class="trend-text">{t(translations, 'trending_games.categories.math.description', 'Los juegos de resolución de problemas han aumentado un 25% esta semana')}</p>
               <div class="trend-indicator">
                 <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+25%</span>
@@ -114,8 +116,8 @@ const trendingGames = allGamesData
               <i class="fas fa-flask"></i>
             </div>
             <div class="trend-content">
-              <h4 class="trend-title">Science Games</h4>
-              <p class="trend-text">Physics simulations gaining popularity among students</p>
+              <h4 class="trend-title">{t(translations, 'trending_games.categories.science.title', 'Juegos de Ciencias')}</h4>
+              <p class="trend-text">{t(translations, 'trending_games.categories.science.description', 'Las simulaciones de física están ganando popularidad entre los estudiantes')}</p>
               <div class="trend-indicator">
                 <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+18%</span>
@@ -128,8 +130,8 @@ const trendingGames = allGamesData
               <i class="fas fa-code"></i>
             </div>
             <div class="trend-content">
-              <h4 class="trend-title">Coding Games</h4>
-              <p class="trend-text">Programming challenges seeing 40% increase in plays</p>
+              <h4 class="trend-title">{t(translations, 'trending_games.categories.coding.title', 'Juegos de Programación')}</h4>
+              <p class="trend-text">{t(translations, 'trending_games.categories.coding.description', 'Los desafíos de programación han visto un aumento del 40% en reproducciones')}</p>
               <div class="trend-indicator">
                 <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+40%</span>
@@ -142,8 +144,8 @@ const trendingGames = allGamesData
               <i class="fas fa-language"></i>
             </div>
             <div class="trend-content">
-              <h4 class="trend-title">Language Games</h4>
-              <p class="trend-text">Vocabulary builders are extremely popular this month</p>
+              <h4 class="trend-title">{t(translations, 'trending_games.categories.language.title', 'Juegos de Idiomas')}</h4>
+              <p class="trend-text">{t(translations, 'trending_games.categories.language.description', 'Los constructores de vocabulario son extremadamente populares este mes')}</p>
               <div class="trend-indicator">
                 <span class="trend-arrow up">↗</span>
                 <span class="trend-percentage">+32%</span>
@@ -763,5 +765,5 @@ const trendingGames = allGamesData
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

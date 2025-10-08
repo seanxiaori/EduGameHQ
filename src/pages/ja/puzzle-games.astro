@@ -2,11 +2,12 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -27,6 +28,44 @@ const featuredGames = puzzleGames.filter(game => game.featured);
 const easyGames = puzzleGames.filter(game => game.difficulty === 'Easy');
 const mediumGames = puzzleGames.filter(game => game.difficulty === 'Medium');
 const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
+
+// 日语翻译配置
+const translations = {
+  page_title: 'パズルゲーム',
+  page_description: '教育的なパズルゲームのコレクションで頭脳を鍛えましょう！魅力的な頭の体操と心を曲げる挑戦を通じて、批判的思考、問題解決スキル、論理、空間推理を発達させます。',
+  featured_games: '注目のパズルゲーム',
+  featured_games_subtitle: '思考スキルに挑戦する頭脳を曲げるパズル',
+  easy_level: '簡単レベル',
+  easy_level_subtitle: '初心者と若いパズル解決者に最適',
+  medium_level: '中級レベル',
+  medium_level_subtitle: '経験豊富なプレイヤー向けの挑戦的なパズル',
+  hard_level: '上級レベル',
+  hard_level_subtitle: 'パズルマスター向けの極限の挑戦',
+  learning_tips: '学習のコツ',
+  learning_tips_subtitle: 'パズル解決能力を向上させる戦略',
+  break_down: '分解する',
+  break_down_desc: '複雑な問題を小さく管理しやすい部分に分けます',
+  find_patterns: 'パターンを見つける',
+  find_patterns_desc: 'パズルの中で繰り返される要素と関係を特定します',
+  take_time: '時間をかける',
+  take_time_desc: '急がないで - 注意深い観察がより良い解決策につながります',
+  practice_regularly: '定期的に練習',
+  practice_regularly_desc: '毎日のパズル解決は論理的思考スキルを向上させます',
+  core_skills: 'コアスキル',
+  core_skills_subtitle: 'パズルゲームを通じて重要な精神的能力',
+  logic_reasoning: '論理と推論',
+  logic_reasoning_desc: '体系的思考と演繹スキルを発達させます',
+  pattern_recognition: 'パターン認識',
+  pattern_recognition_desc: '関係とシーケンスを特定します',
+  problem_solving: '問題解決',
+  problem_solving_desc: '挑戦への戦略的アプローチを学びます',
+  attention_detail: '細部への注意',
+  attention_detail_desc: '集中力と観察スキルを向上させます',
+  memory_enhancement: '記憶力向上',
+  memory_enhancement_desc: '作業記憶と視覚記憶を強化します',
+  mental_flexibility: '精神的柔軟性',
+  mental_flexibility_desc: '異なるタスクに対する思考戦略を適応させます'
+};
 ---
 
 <BaseLayout>
@@ -45,9 +84,9 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Puzzle Games</h1>
+            <h1 class="page-title">{t(translations, 'page_title', 'パズルゲーム')}</h1>
             <p class="page-description">
-              Challenge your mind with our collection of educational puzzle games! Develop critical thinking, problem-solving skills, logic, and spatial reasoning through engaging brain teasers and mind-bending challenges.
+              {t(translations, 'page_description', '教育的なパズルゲームのコレクションで頭脳を鍛えましょう！魅力的な頭の体操と心を曲げる挑戦を通じて、批判的思考、問題解決スキル、論理、空間推理を発達させます。')}
             </p>
           </div>
         </div>
@@ -61,8 +100,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Puzzle Games</h2>
-              <p class="module-subtitle">Mind-bending puzzles to challenge your thinking skills</p>
+              <h2 class="module-title">{t(translations, 'featured_games', '注目のパズルゲーム')}</h2>
+              <p class="module-subtitle">{t(translations, 'featured_games_subtitle', '思考スキルに挑戦する頭脳を曲げるパズル')}</p>
             </div>
           </div>
           
@@ -82,8 +121,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'easy_level', '簡単レベル')}</h2>
+              <p class="module-subtitle">{t(translations, 'easy_level_subtitle', '初心者と若いパズル解決者に最適')}</p>
             </div>
           </div>
           
@@ -103,8 +142,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for developing problem solvers</p>
+              <h2 class="module-title">{t(translations, 'medium_level', '中級レベル')}</h2>
+              <p class="module-subtitle">{t(translations, 'medium_level_subtitle', '経験豊富なプレイヤー向けの挑戦的なパズル')}</p>
             </div>
           </div>
           
@@ -124,8 +163,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Expert challenges for master puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'hard_level', '上級レベル')}</h2>
+              <p class="module-subtitle">{t(translations, 'hard_level_subtitle', 'パズルマスター向けの極限の挑戦')}</p>
             </div>
           </div>
           
@@ -144,8 +183,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Puzzle Solving Tips</h2>
-            <p class="module-subtitle">Effective strategies to enhance your problem-solving abilities</p>
+            <h2 class="module-title">{t(translations, 'learning_tips', '学習のコツ')}</h2>
+            <p class="module-subtitle">{t(translations, 'learning_tips_subtitle', 'パズル解決能力を向上させる戦略')}</p>
           </div>
         </div>
         
@@ -155,8 +194,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brain"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Think Step by Step</h4>
-              <p class="tip-text">Break complex problems into smaller, manageable pieces</p>
+              <h4 class="tip-title">{t(translations, 'break_down', '分解する')}</h4>
+              <p class="tip-text">{t(translations, 'break_down_desc', '複雑な問題を小さく管理しやすい部分に分けます')}</p>
             </div>
           </div>
           
@@ -165,8 +204,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-search"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Look for Patterns</h4>
-              <p class="tip-text">Identify recurring elements and relationships in puzzles</p>
+              <h4 class="tip-title">{t(translations, 'find_patterns', 'パターンを見つける')}</h4>
+              <p class="tip-text">{t(translations, 'find_patterns_desc', 'パズルの中で繰り返される要素と関係を特定します')}</p>
             </div>
           </div>
           
@@ -175,8 +214,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Take Your Time</h4>
-              <p class="tip-text">Don't rush - careful observation leads to better solutions</p>
+              <h4 class="tip-title">{t(translations, 'take_time', '時間をかける')}</h4>
+              <p class="tip-text">{t(translations, 'take_time_desc', '急がないで - 注意深い観察がより良い解決策につながります')}</p>
             </div>
           </div>
           
@@ -185,8 +224,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-redo"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Regularly</h4>
-              <p class="tip-text">Daily puzzle solving improves logical thinking skills</p>
+              <h4 class="tip-title">{t(translations, 'practice_regularly', '定期的に練習')}</h4>
+              <p class="tip-text">{t(translations, 'practice_regularly_desc', '毎日のパズル解決は論理的思考スキルを向上させます')}</p>
             </div>
           </div>
         </div>
@@ -199,8 +238,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Cognitive Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential mental abilities gained through puzzle gaming</p>
+            <h2 class="module-title">{t(translations, 'core_skills', 'コアスキル')}</h2>
+            <p class="module-subtitle">{t(translations, 'core_skills_subtitle', 'パズルゲームを通じて重要な精神的能力')}</p>
           </div>
         </div>
 
@@ -210,8 +249,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brain"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Logic & Reasoning</h4>
-              <p class="skill-description">Develop systematic thinking and deduction skills</p>
+              <h4 class="skill-title">{t(translations, 'logic_reasoning', '論理と推論')}</h4>
+              <p class="skill-description">{t(translations, 'logic_reasoning_desc', '体系的思考と演繹スキルを発達させます')}</p>
             </div>
           </div>
 
@@ -220,8 +259,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-search"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Pattern Recognition</h4>
-              <p class="skill-description">Identify relationships and sequences</p>
+              <h4 class="skill-title">{t(translations, 'pattern_recognition', 'パターン認識')}</h4>
+              <p class="skill-description">{t(translations, 'pattern_recognition_desc', '関係とシーケンスを特定します')}</p>
             </div>
           </div>
 
@@ -230,8 +269,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Problem Solving</h4>
-              <p class="skill-description">Learn strategic approaches to challenges</p>
+              <h4 class="skill-title">{t(translations, 'problem_solving', '問題解決')}</h4>
+              <p class="skill-description">{t(translations, 'problem_solving_desc', '挑戦への戦略的アプローチを学びます')}</p>
             </div>
           </div>
 
@@ -240,8 +279,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-eye"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Attention to Detail</h4>
-              <p class="skill-description">Improve focus and observation skills</p>
+              <h4 class="skill-title">{t(translations, 'attention_detail', '細部への注意')}</h4>
+              <p class="skill-description">{t(translations, 'attention_detail_desc', '集中力と観察スキルを向上させます')}</p>
             </div>
           </div>
           
@@ -250,8 +289,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-memory"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Memory Enhancement</h4>
-              <p class="skill-description">Strengthen working and visual memory</p>
+              <h4 class="skill-title">{t(translations, 'memory_enhancement', '記憶力向上')}</h4>
+              <p class="skill-description">{t(translations, 'memory_enhancement_desc', '作業記憶と視覚記憶を強化します')}</p>
             </div>
           </div>
           
@@ -260,8 +299,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-cogs"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Mental Flexibility</h4>
-              <p class="skill-description">Adapt thinking strategies for different tasks</p>
+              <h4 class="skill-title">{t(translations, 'mental_flexibility', '精神的柔軟性')}</h4>
+              <p class="skill-description">{t(translations, 'mental_flexibility_desc', '異なるタスクに対する思考戦略を適応させます')}</p>
             </div>
           </div>
         </div>
@@ -733,5 +772,5 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

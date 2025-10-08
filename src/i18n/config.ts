@@ -77,7 +77,8 @@ export const languages = {
     nativeName: 'עברית',
     flag: '🇮🇱',
     dir: 'rtl'
-  }
+  },
+
 } as const;
 
 export type LanguageCode = keyof typeof languages;
@@ -104,4 +105,4 @@ export const languagePathMap = {
   ko: '/ko',
   ar: '/ar',
   he: '/he'
-} as const; 
+} as const;

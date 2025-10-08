@@ -4,9 +4,13 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../../i18n/utils';
+
+// 获取韩语翻译数据
+const translations = await getTranslations('ko');
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -45,9 +49,9 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Language Games</h1>
+            <h1 class="page-title">{t(translations, 'pages.language_games.title', '언어 게임')}</h1>
             <p class="page-description">
-              Master language skills through engaging games! Our collection focuses on reading, writing, vocabulary, grammar, and communication skills. Perfect for English learners of all levels, from basic literacy to advanced language arts.
+              {t(translations, 'pages.language_games.description', '매력적인 게임을 통해 언어 실력을 마스터하세요! 우리의 컬렉션은 읽기, 쓰기, 어휘, 문법, 의사소통 기술에 중점을 둡니다. 기초 문해력부터 고급 언어 예술까지 모든 수준의 영어 학습자에게 완벽합니다.')}
             </p>
           </div>
         </div>
@@ -61,8 +65,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Language Games</h2>
-              <p class="module-subtitle">Popular games to boost your communication skills</p>
+              <h2 class="module-title">{t(translations, 'pages.language_games.featured.title', '추천 언어 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.language_games.featured.subtitle', '의사소통 능력을 향상시키는 인기 게임')}</p>
             </div>
           </div>
           
@@ -82,8 +86,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for language learning beginners</p>
+              <h2 class="module-title">{t(translations, 'pages.language_games.easy.title', '쉬운 레벨 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.language_games.easy.subtitle', '언어 학습 초보자에게 완벽함')}</p>
             </div>
           </div>
           
@@ -103,8 +107,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for growing vocabularies</p>
+              <h2 class="module-title">{t(translations, 'pages.language_games.medium.title', '중간 레벨 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.language_games.medium.subtitle', '어휘력 향상을 위한 중급 도전')}</p>
             </div>
           </div>
           
@@ -124,8 +128,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Advanced challenges for language masters</p>
+              <h2 class="module-title">{t(translations, 'pages.language_games.hard.title', '어려운 레벨 게임')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.language_games.hard.subtitle', '언어 마스터를 위한 고급 도전')}</p>
             </div>
           </div>
           
@@ -144,8 +148,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Language Learning Tips</h2>
-            <p class="module-subtitle">Effective strategies to improve your language skills</p>
+            <h2 class="module-title">{t(translations, 'pages.language_games.learning_tips.title', '언어 학습 팁')}</h2>
+            <p class="module-subtitle">{t(translations, 'pages.language_games.learning_tips.subtitle', '언어 실력 향상을 위한 효과적인 전략')}</p>
           </div>
         </div>
         
@@ -155,8 +159,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-book-reader"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Read Daily</h4>
-              <p class="tip-text">Practice reading different types of texts to expand vocabulary</p>
+              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.read.title', '매일 읽기')}</h4>
+              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.read.description', '어휘력 확장을 위해 다양한 유형의 텍스트 읽기 연습')}</p>
             </div>
           </div>
           
@@ -165,8 +169,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-spell-check"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Spelling</h4>
-              <p class="tip-text">Regular spelling practice improves writing confidence</p>
+              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.spelling.title', '철자 연습')}</h4>
+              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.spelling.description', '정기적인 철자 연습으로 쓰기 자신감 향상')}</p>
             </div>
           </div>
           
@@ -175,8 +179,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-comments"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Use New Words</h4>
-              <p class="tip-text">Apply newly learned words in conversations and writing</p>
+              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.vocabulary.title', '새로운 단어 사용')}</h4>
+              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.vocabulary.description', '새로 배운 단어를 대화와 글쓰기에 적용')}</p>
             </div>
           </div>
           
@@ -185,8 +189,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-edit"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Write Stories</h4>
-              <p class="tip-text">Creative writing helps consolidate language learning</p>
+              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.writing.title', '이야기 쓰기')}</h4>
+              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.writing.description', '창의적 글쓰기는 언어 학습을 강화하는 데 도움')}</p>
             </div>
           </div>
         </div>
@@ -199,8 +203,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Language Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential communication abilities gained through gameplay</p>
+            <h2 class="module-title">{t(translations, 'pages.language_games.skills.title', '핵심 언어 기술')}</h2>
+            <p class="module-subtitle">{t(translations, 'pages.language_games.skills.subtitle', '언어 숙달을 위한 필수 능력')}</p>
           </div>
         </div>
 
@@ -210,8 +214,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-font"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Vocabulary Building</h4>
-              <p class="skill-description">Learn new words and their meanings</p>
+              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.vocabulary.title', '어휘력 구축')}</h4>
+              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.vocabulary.description', '인터랙티브 게임을 통해 새로운 단어와 의미 학습')}</p>
             </div>
           </div>
 
@@ -220,8 +224,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-spell-check"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Spelling Accuracy</h4>
-              <p class="skill-description">Master correct spelling patterns</p>
+              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.spelling.title', '철자 정확성')}</h4>
+              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.spelling.description', '연습과 반복을 통한 철자 실력 향상')}</p>
             </div>
           </div>
 
@@ -230,8 +234,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-book-open"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Reading Comprehension</h4>
-              <p class="skill-description">Understand and analyze text meaning</p>
+              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.reading.title', '독해력')}</h4>
+              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.reading.description', '서면 내용을 효과적으로 이해하고 분석')}</p>
             </div>
           </div>
 
@@ -240,8 +244,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-pen-nib"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Writing Skills</h4>
-              <p class="skill-description">Express ideas clearly in writing</p>
+              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.writing.title', '쓰기 기술')}</h4>
+              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.writing.description', '서면 의사소통을 통해 아이디어를 명확하게 표현')}</p>
             </div>
           </div>
           
@@ -250,8 +254,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-language"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Grammar Knowledge</h4>
-              <p class="skill-description">Understand sentence structure and rules</p>
+              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.grammar.title', '문법 지식')}</h4>
+              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.grammar.description', '언어 규칙과 문장 구조 숙달')}</p>
             </div>
           </div>
           
@@ -260,8 +264,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-microphone-alt"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Communication</h4>
-              <p class="skill-description">Develop effective speaking abilities</p>
+              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.communication.title', '의사소통')}</h4>
+              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.communication.description', '효과적인 말하기 능력 개발')}</p>
             </div>
           </div>
         </div>
@@ -733,5 +737,5 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

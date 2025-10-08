@@ -5,6 +5,8 @@ import path from 'path';
 // 多语言支持导入
 import { getLanguageFromPath, getTranslations, t, getLocalizedPath, isRTL, getLanguageInfo, getLanguageSwitchLinks, removeLanguagePrefix, type LanguageCode } from '../i18n/utils';
 import { defaultLanguage, languages } from '../i18n/config';
+// SEO国际化工具导入
+import { getLocalizedSEO, getLocalizedPageTitle, getLocalizedKeywords } from '../utils/seo-i18n';
 // 导入样式文件
 import '../styles/language-switcher.css';
 import '../styles/navbar.css';
@@ -43,11 +45,13 @@ const isRTLLang = isRTL(currentLang);
 const cleanPath = removeLanguagePrefix(currentPath);
 const languageSwitchLinks = getLanguageSwitchLinks(cleanPath);
 
-// 获取SEO配置
-const seoConfig = getPageSEO(currentPath);
-const pageTitle = title || seoConfig.title;
-const pageDescription = description || seoConfig.description;
-const pageKeywords = getKeywordsString(currentPath);
+// 获取本地化的SEO配置
+const localizedSEO = await getLocalizedSEO(currentPath, currentLang);
+const pageTitle = title || localizedSEO.title;
+
+
+const pageDescription = description || localizedSEO.description;
+const pageKeywords = localizedSEO.keywords;
 const ogImageUrl = getOGImageUrl(currentPath);
 const structuredData = generateStructuredData(currentPath, gameData);
 
@@ -111,86 +115,102 @@ const educationalOrgData = {
 const canonicalUrl = new URL(currentPath, Astro.site || 'https://www.edugamehq.com').toString();
 
 // 定义页面分类和层级结构 - 支持多语言
+// 页面结构定义 - 不包含翻译，翻译在渲染时进行
 const pageStructure = {
   categories: {
     '/math-games': { 
-      name: t(translations, 'categories.math-games', 'Math Games'), 
+      translationKey: 'categories.math-games',
+      fallback: 'Math Games',
       icon: 'fas fa-calculator', 
       color: 'math' 
     },
     '/science-games': { 
-      name: t(translations, 'categories.science-games', 'Science Games'), 
+      translationKey: 'categories.science-games',
+      fallback: 'Science Games',
       icon: 'fas fa-flask', 
       color: 'science' 
     },
     '/language-games': { 
-      name: t(translations, 'categories.language-games', 'Language Games'), 
+      translationKey: 'categories.language-games',
+      fallback: 'Language Games',
       icon: 'fas fa-book-open', 
       color: 'language' 
     },
     '/puzzle-games': { 
-      name: t(translations, 'categories.puzzle-games', 'Puzzle Games'), 
+      translationKey: 'categories.puzzle-games',
+      fallback: 'Puzzle Games',
       icon: 'fas fa-puzzle-piece', 
       color: 'puzzle' 
     },
     '/sports-games': { 
-      name: t(translations, 'categories.sports-games', 'Sports Games'), 
+      translationKey: 'categories.sports-games',
+      fallback: 'Sports Games',
       icon: 'fas fa-futbol', 
       color: 'sports' 
     },
     '/art-games': { 
-      name: t(translations, 'categories.art-games', 'Art Games'), 
+      translationKey: 'categories.art-games',
+      fallback: 'Art Games',
       icon: 'fas fa-palette', 
       color: 'art' 
     }
   },
   special: {
     '/trending': { 
-      name: t(translations, 'nav.trending', 'Trending'), 
+      translationKey: 'nav.trending',
+      fallback: 'Trending',
       icon: 'fas fa-fire', 
       color: 'trending' 
     },
     '/recently-played': { 
-      name: t(translations, 'nav.recent', 'Recently Played'), 
+      translationKey: 'nav.recent',
+      fallback: 'Recently Played',
       icon: 'fas fa-history', 
       color: 'recent' 
     },
     '/new-games': { 
-      name: t(translations, 'nav.new', 'New Games'), 
+      translationKey: 'nav.new',
+      fallback: 'New Games',
       icon: 'fas fa-plus-circle', 
       color: 'new' 
     }
   },
   system: {
     '/favorites': { 
-      name: t(translations, 'nav.favorites', 'Favorites'), 
+      translationKey: 'nav.favorites',
+      fallback: 'Favorites',
       icon: 'fas fa-heart', 
       color: 'favorites' 
     },
     '/search': { 
-      name: t(translations, 'nav.search', 'Search'), 
+      translationKey: 'nav.search',
+      fallback: 'Search',
       icon: 'fas fa-search', 
       color: 'search' 
     }
   },
   support: {
     '/privacy-policy': { 
-      name: t(translations, 'nav.privacy', 'Privacy Policy'), 
+      translationKey: 'nav.privacy',
+      fallback: 'Privacy Policy',
       icon: 'fas fa-shield-alt', 
       color: 'support' 
     },
     '/terms-of-service': { 
-      name: t(translations, 'nav.terms', 'Terms of Service'), 
+      translationKey: 'nav.terms',
+      fallback: 'Terms of Service',
       icon: 'fas fa-file-contract', 
       color: 'support' 
     },
     '/help': { 
-      name: t(translations, 'nav.help', 'Help & Support'), 
+      translationKey: 'nav.help',
+      fallback: 'Help & Support',
       icon: 'fas fa-life-ring', 
       color: 'support' 
     },
     '/about': { 
-      name: t(translations, 'nav.about', 'About'), 
+      translationKey: 'nav.about',
+      fallback: 'About',
       icon: 'fas fa-info-circle', 
       color: 'support' 
     }
@@ -232,7 +252,7 @@ if (!isHomePage) {
       isDropdown: true 
     });
     breadcrumbs.push({ 
-      name: currentCategory.name, 
+      name: t(translations, currentCategory.translationKey, currentCategory.fallback), 
       url: getLocalizedPath(currentPath, currentLang), 
       icon: currentCategory.icon,
       color: currentCategory.color,
@@ -246,7 +266,7 @@ if (!isHomePage) {
       isDropdown: true 
     });
     breadcrumbs.push({ 
-      name: currentSpecialPage.name, 
+      name: t(translations, currentSpecialPage.translationKey, currentSpecialPage.fallback), 
       url: getLocalizedPath(currentPath, currentLang), 
       icon: currentSpecialPage.icon,
       color: currentSpecialPage.color,
@@ -255,7 +275,7 @@ if (!isHomePage) {
   } else if (currentSystemPage) {
     // 系统页面面包屑（如收藏、搜索等）
     breadcrumbs.push({ 
-      name: currentSystemPage.name, 
+      name: t(translations, currentSystemPage.translationKey, currentSystemPage.fallback), 
       url: getLocalizedPath(currentPath, currentLang), 
       icon: currentSystemPage.icon,
       color: currentSystemPage.color,
@@ -271,7 +291,7 @@ if (!isHomePage) {
       isDropdown: true 
     });
     breadcrumbs.push({ 
-      name: currentSupportPage.name, 
+      name: t(translations, currentSupportPage.translationKey, currentSupportPage.fallback), 
       url: getLocalizedPath(currentPath, currentLang), 
       icon: currentSupportPage.icon,
       color: currentSupportPage.color,
@@ -550,6 +570,8 @@ try {
 
 <body class={`min-h-screen ${bodyClass} ${isRTLLang ? 'rtl' : 'ltr'}`}>
   
+
+  
   <!-- Skip to main content for accessibility -->
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-gold-500 text-white px-4 py-2 rounded-lg z-50">
     {t(translations, 'common.skip_to_content', 'Skip to main content')}
@@ -588,7 +610,7 @@ try {
                   {Object.entries(pageStructure.categories).map(([path, info]) => (
                     <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`} key={path}>
                       <i class={info.icon}></i>
-                      {info.name}
+                      {t(translations, info.translationKey, info.fallback)}
                     </a>
                   ))}
                   <!-- 分隔线 -->
@@ -597,7 +619,7 @@ try {
                   {Object.entries(pageStructure.special).map(([path, info]) => (
                     <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`} key={path}>
                       <i class={info.icon}></i>
-                      {info.name}
+                      {t(translations, info.translationKey, info.fallback)}
                     </a>
                   ))}
                 </div>
@@ -621,7 +643,7 @@ try {
                             {Object.entries(pageStructure.support).map(([path, info]) => (
                               <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                                 <i class={info.icon}></i>
-                                {info.name}
+                                {t(translations, info.translationKey, info.fallback)}
                               </a>
                             ))}
                           </>
@@ -711,7 +733,7 @@ try {
             {Object.entries(pageStructure.categories).map(([path, info]) => (
               <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                 <i class={info.icon}></i>
-                {info.name}
+                {t(translations, info.translationKey, info.fallback)}
               </a>
             ))}
           </div>
@@ -721,7 +743,7 @@ try {
             {Object.entries(pageStructure.special).map(([path, info]) => (
               <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                 <i class={info.icon}></i>
-                {info.name}
+                {t(translations, info.translationKey, info.fallback)}
               </a>
             ))}
           </div>
@@ -731,7 +753,7 @@ try {
             {Object.entries(pageStructure.support).map(([path, info]) => (
               <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
                 <i class={info.icon}></i>
-                {info.name}
+                {t(translations, info.translationKey, info.fallback)}
               </a>
             ))}
           </div>
@@ -998,9 +1020,6 @@ try {
       }
     }
   </script>
-
-  <!-- 游戏统计和收藏功能 -->
-  <script src="/js/game-stats-manager.js" defer></script>
   
 </body>
-</html> 
+</html>

@@ -60,13 +60,36 @@
     "source": "Spielquelle",
     "loading": "Lädt..."
   },
+  "game_detail": {
+    "loading_game": "{gameTitle} wird geladen...",
+    "preparing_experience": "Ihr Bildungsspiel-Erlebnis wird vorbereitet",
+    "start_game": "Spiel Starten",
+    "fullscreen": "Vollbild",
+    "restart": "Neustart",
+    "favorite": "Favorit",
+    "share": "Teilen",
+    "game_information": "Spiel-Informationen",
+    "how_to_play": "Spielanleitung",
+    "game_controls": "Spielsteuerung",
+    "tips_tricks": "Tipps & Tricks",
+    "developer_information": "Entwickler-Informationen",
+    "developer": "Entwickler",
+    "source": "Quelle",
+    "type": "Typ",
+    "release_date": "Veröffentlichungsdatum",
+    "more_games": "Mehr",
+    "games": "Spiele",
+    "free": "Kostenlos",
+    "mouse": "Maus",
+    "keyboard": "Tastatur",
+    "touch": "Touch"
+  },
   "footer": {
     "tagline": "Lernen für alle zum Vergnügen machen",
     "description": "EduGameHQ ist Ihre Bildungsspiel-Plattform, die Lernen attraktiv und effektiv macht.",
     "quick_links": "Schnelllinks",
     "game_categories": "Spielkategorien",
     "support": "Support und Informationen",
-    "social": "Folgen Sie uns",
     "copyright": "© 2025 EduGameHQ. Alle Rechte vorbehalten.",
     "made_with_love": "Mit ❤️ für Schüler auf der ganzen Welt gemacht",
     "logo_alt": "EduGameHQ Logo",
@@ -103,6 +126,156 @@
     "faq": "Häufig gestellte Fragen",
     "contact_us": "Kontaktieren Sie uns",
     "report_issue": "Problem melden"
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "Mathematik-Spiele",
+      "description": "Entdecken Sie unsere Sammlung fesselnder Mathematik-Spiele, die das Lernen von Mathematik unterhaltsam und interaktiv gestalten. Von grundlegender Arithmetik bis hin zur fortgeschrittenen Problemlösung helfen diese Spiele Schülern, Vertrauen und Fähigkeiten in Mathematik aufzubauen.",
+      "featured_section": {
+        "title": "Empfohlene Mathematik-Spiele",
+        "description": "Unsere beliebtesten und empfohlenen Mathematik-Spiele"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfache Level-Spiele",
+          "description": "Perfekt für Anfänger und junge Lernende"
+        },
+        "medium": {
+          "title": "Mittlere Level-Spiele",
+          "description": "Großartig für fortgeschrittene Schüler"
+        },
+        "hard": {
+          "title": "Schwere Level-Spiele",
+          "description": "Herausfordernde Spiele für fortgeschrittene Lernende"
+        }
+      },
+      "learning_tips": {
+        "title": "Mathematik-Lerntipps",
+        "subtitle": "Expertenratschläge zur Verbesserung Ihrer mathematischen Fähigkeiten",
+        "tips": [
+          {
+            "title": "Täglich Üben",
+            "description": "Verbringen Sie täglich 15-20 Minuten damit, mathematische Konzepte durch Spiele zu üben"
+          },
+          {
+            "title": "Schrittweise Fortschreiten",
+            "description": "Beginnen Sie mit einfacheren Spielen und arbeiten Sie sich schrittweise zu schwierigeren Herausforderungen vor"
+          },
+          {
+            "title": "Fehler Akzeptieren",
+            "description": "Haben Sie keine Angst vor Fehlern - sie sind Teil des Lernprozesses"
+          },
+          {
+            "title": "Das Warum Verstehen",
+            "description": "Konzentrieren Sie sich darauf, die Begründung hinter jeder Lösung zu verstehen"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Kernfähigkeiten, die Sie entwickeln werden",
+        "subtitle": "Grundlegende mathematische Fähigkeiten durch Gameplay erworben",
+        "skills": {
+          "addition_subtraction": {
+            "title": "Addition & Subtraktion",
+            "description": "Grundlegende arithmetische Operationen meistern"
+          },
+          "multiplication_division": {
+            "title": "Multiplikation & Division",
+            "description": "Flüssigkeit in fortgeschrittenen Operationen aufbauen"
+          },
+          "fractions_decimals": {
+            "title": "Brüche & Dezimalzahlen",
+            "description": "Teile und Ganzes verstehen"
+          },
+          "geometry": {
+            "title": "Geometrie",
+            "description": "Formen und räumliches Denken erkunden"
+          },
+          "algebra": {
+            "title": "Algebra",
+            "description": "Gleichungen lösen und mit Variablen arbeiten"
+          },
+          "problem_solving": {
+            "title": "Problemlösung",
+            "description": "Kritische Denkfähigkeiten entwickeln"
+          }
+        }
+      }
+    },
+    "science_games": {
+      "title": "Wissenschafts-Spiele",
+      "description": "Entdecken Sie die Wunder der Wissenschaft durch interaktive Spiele, die komplexe Konzepte leicht verständlich und unterhaltsam zu erkunden machen.",
+      "featured_section": {
+        "title": "Empfohlene Wissenschafts-Spiele",
+        "description": "Unsere beliebtesten und empfohlenen Wissenschafts-Spiele"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfache Level-Spiele",
+          "description": "Perfekt für Anfänger und junge Lernende"
+        },
+        "medium": {
+          "title": "Mittlere Level-Spiele",
+          "description": "Großartig für fortgeschrittene Schüler"
+        },
+        "hard": {
+          "title": "Schwere Level-Spiele",
+          "description": "Herausfordernde Spiele für fortgeschrittene Lernende"
+        }
+      }
+    },
+    "language_games": {
+      "title": "Sprach-Spiele",
+      "description": "Verbessern Sie Ihre Sprachfähigkeiten mit unserer Sammlung fesselnder Wortspiele, Vokabeltrainer und Leseverständnisaktivitäten.",
+      "featured_section": {
+        "title": "Empfohlene Sprach-Spiele",
+        "description": "Unsere beliebtesten und empfohlenen Sprach-Spiele"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfache Level-Spiele",
+          "description": "Perfekt für Anfänger und junge Lernende"
+        },
+        "medium": {
+          "title": "Mittlere Level-Spiele",
+          "description": "Großartig für fortgeschrittene Schüler"
+        },
+        "hard": {
+          "title": "Schwere Level-Spiele",
+          "description": "Herausfordernde Spiele für fortgeschrittene Lernende"
+        }
+      },
+      "learning_tips": {
+        "title": "Sprach-Lerntipps",
+        "subtitle": "Effektive Strategien zur Verbesserung Ihrer Sprachfähigkeiten"
+      }
+    },
+    "puzzle_games": {
+      "title": "Puzzle-Spiele",
+      "description": "Fordern Sie Ihren Geist mit unserer Sammlung von Bildungs-Puzzlespielen heraus! Entwickeln Sie kritisches Denken, Problemlösungsfähigkeiten, Logik und räumliches Denken durch fesselnde Rätsel und anregende Herausforderungen.",
+      "featured_section": {
+        "title": "Empfohlene Puzzle-Spiele",
+        "description": "Anregende Puzzles, um Ihre Denkfähigkeiten herauszufordern"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfache Level-Spiele",
+          "description": "Perfekt für Anfänger und junge Puzzle-Löser"
+        },
+        "medium": {
+          "title": "Mittlere Level-Spiele",
+          "description": "Mittlere Herausforderungen für sich entwickelnde Köpfe"
+        },
+        "hard": {
+          "title": "Schwere Level-Spiele",
+          "description": "Fortgeschrittene Puzzles für Meister-Problemlöser"
+        }
+      },
+      "learning_tips": {
+        "title": "Puzzle-Lösungstipps",
+        "subtitle": "Strategien zur Verbesserung Ihrer Problemlösungsfähigkeiten"
+      }
+    }
   },
   "home": {
     "featured_games": {
@@ -196,6 +369,10 @@
     "new_games": "Neue Spiele"
   },
   "about_page": {
+    "meta": {
+      "title": "Über EduGameHQ | Bildungsspiel-Plattform",
+      "description": "Lernen Sie EduGameHQs Mission kennen, Lernen durch Bildungsspiele unterhaltsam zu gestalten. Erkunden Sie unsere Geschichte, Werte und unser Engagement für qualitativ hochwertige Bildung."
+    },
     "seo": {
       "title": "Über EduGameHQ | Bildungsspiel-Plattform",
       "description": "Lernen Sie EduGameHQs Mission kennen, Lernen durch Bildungsspiele unterhaltsam zu gestalten. Erkunden Sie unsere Geschichte, Werte und unser Engagement für qualitativ hochwertige Bildung.",
@@ -217,6 +394,7 @@
       "impact": "Unser Einfluss"
     },
     "impact": {
+      "title": "Unser Einfluss",
       "games": "Bildungsspiele",
       "students": "aktive Schüler",
       "countries": "bediente Länder",
@@ -224,8 +402,10 @@
     },
     "mission_section": {
       "title": "Unsere Mission",
+      "mission": "Den Zugang zu qualitativ hochwertiger Bildung zu demokratisieren, indem wir kostenlose, unterhaltsame und effektive Bildungsspiele bereitstellen, die Neugier wecken, Kreativität fördern und wesentliche Fähigkeiten für das 21. Jahrhundert entwickeln.",
       "description": "Den Zugang zu qualitativ hochwertiger Bildung zu demokratisieren, indem wir kostenlose, unterhaltsame und effektive Bildungsspiele bereitstellen, die Neugier wecken, Kreativität fördern und wesentliche Fähigkeiten für das 21. Jahrhundert entwickeln.",
       "vision_title": "Unsere Vision",
+      "vision": "Eine Welt, in der jedes Kind Zugang zu hochwertigen Bildungsinhalten hat und Lernen zu einer freudigen, bedeutungsvollen und transformativen Erfahrung macht.",
       "vision_description": "Eine Welt, in der jedes Kind Zugang zu hochwertigen Bildungsinhalten hat und Lernen zu einer freudigen, bedeutungsvollen und transformativen Erfahrung macht."
     },
     "values_section": {
@@ -264,6 +444,7 @@
     },
     "team_section": {
       "title": "Unser Team kennenlernen",
+      "description": "Unser vielfältiges Team von Pädagogen, Entwicklern und Forschern arbeitet zusammen daran, die besten Lernerfahrungen für Schüler auf der ganzen Welt zu schaffen.",
       "intro": "Unser vielfältiges Team von Pädagogen, Entwicklern und Forschern arbeitet zusammen daran, die besten Lernerfahrungen für Schüler auf der ganzen Welt zu schaffen.",
       "member1": {
         "name": "Dr. Hans Müller",
@@ -274,7 +455,201 @@
         "name": "Anna Schmidt",
         "role": "Technische Leiterin",
         "description": "Expertin für Bildungstechnologie und Designerin interaktiver Lernerfahrungen"
+      },
+      "member3": {
+        "name": "Lisa Wang",
+        "role": "Kinderpsychologin",
+        "description": "Expertin für Kinderentwicklung und Lernpsychologie"
+      },
+      "member4": {
+        "name": "Alex Thompson",
+        "role": "Technischer Leiter",
+        "description": "Full-Stack-Entwickler mit Leidenschaft für zugängliche Bildung"
+      }
+    },
+    "cta": {
+      "title": "Möchten Sie mehr erfahren?",
+      "description": "Wir würden gerne von Ihnen hören! Kontaktieren Sie uns für Partnerschaften, Feedback oder einfach nur um Hallo zu sagen.",
+      "contact_button": "Kontakt aufnehmen",
+      "policies_button": "Unsere Richtlinien"
+    }
+  },
+  "pages": {
+    "science": {
+      "title": "Wissenschaftsspiele",
+      "description": "Entdecken Sie die Wunder der Wissenschaft mit interaktiven Spielen zu Physik, Chemie, Biologie und Erdwissenschaften. Perfekt für neugierige Köpfe und zukünftige Wissenschaftler, die durch praktische Experimente und Beobachtungen entdecken möchten, wie die Welt funktioniert.",
+      "featured": {
+        "title": "Ausgewählte Wissenschaftsspiele",
+        "subtitle": "Unsere beliebtesten und empfohlenen Wissenschaftsspiele"
+      },
+      "easy": {
+        "title": "Einfache Spiele",
+        "subtitle": "Perfekt für Anfänger und junge Wissenschaftler"
+      },
+      "medium": {
+        "title": "Mittlere Spiele",
+        "subtitle": "Fordern Sie sich mit mittleren wissenschaftlichen Konzepten heraus"
+      },
+      "hard": {
+        "title": "Schwere Spiele",
+        "subtitle": "Fortgeschrittene Herausforderungen für Wissenschaftsexperten"
+      },
+      "learning_tips": {
+        "title": "Wissenschaftliche Lerntipps",
+        "subtitle": "Expertenrat zur Verbesserung Ihres wissenschaftlichen Denkens",
+        "tips": {
+          "observe": {
+            "title": "Alles beobachten",
+            "description": "Achten Sie auf die Welt um Sie herum und fragen Sie \"warum\" und \"wie\""
+          },
+          "experiment": {
+            "title": "Sicher experimentieren",
+            "description": "Testen Sie Ihre Hypothesen durch kontrollierte Experimente und Beobachtungen"
+          },
+          "journal": {
+            "title": "Wissenschaftstagebuch führen",
+            "description": "Notieren Sie Ihre Beobachtungen, Fragen und Entdeckungen"
+          },
+          "connect": {
+            "title": "Mit dem echten Leben verbinden",
+            "description": "Verknüpfen Sie wissenschaftliche Konzepte mit alltäglichen Ereignissen und Erfahrungen"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Kernfähigkeiten, die Sie entwickeln werden",
+        "subtitle": "Wesentliche wissenschaftliche Fähigkeiten durch Gameplay erworben",
+        "skills": {
+          "scientific_method": {
+            "title": "Wissenschaftliche Methode",
+            "description": "Beobachtung und Experimentieren lernen"
+          },
+          "physics": {
+            "title": "Physikkonzepte",
+            "description": "Kräfte und Bewegung verstehen"
+          },
+          "biology": {
+            "title": "Biologische Grundlagen",
+            "description": "Lebende Organismen erforschen"
+          },
+          "chemistry": {
+            "title": "Chemie",
+            "description": "Elemente und Reaktionen entdecken"
+          },
+          "earth_science": {
+            "title": "Erdwissenschaften",
+            "description": "Unseren Planeten und die Umwelt studieren"
+          },
+          "critical_thinking": {
+            "title": "Kritisches Denken",
+            "description": "Logische Denkfähigkeiten entwickeln"
+          }
+        }
       }
     }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "Trending Spiele | Beliebte Lernspiele | EduGameHQ",
+      "description": "Spiele die beliebtesten Lernspiele, die gerade im Trend liegen. Schließe dich Tausenden von Schülern an, die durch die angesagtesten Mathe-, Wissenschafts-, Programmier- und Sprachspiele lernen.",
+      "keywords": "Trending Spiele, beliebte Spiele, angesagte Lernspiele, meistgespielte Spiele, Trend-Lernspiele, beliebte Lerninhalte"
+    },
+    "hero": {
+      "title": "Trending Spiele",
+      "description": "Entdecke die angesagtesten Lernspiele im Moment! Diese Trend-Spiele werden von Schülern weltweit geliebt und sind perfekt für fesselnde Lernerfahrungen in allen Fächern."
+    },
+    "featured": {
+      "title": "Trending Spiele",
+      "subtitle": "Die angesagtesten Lernspiele im Moment"
+    },
+    "categories": {
+      "title": "Trending Kategorien",
+      "subtitle": "Beliebte Fächer und Lerntrends",
+      "math": {
+        "title": "Mathe-Spiele",
+        "description": "Zahlen und Gleichungen meistern"
+      },
+      "science": {
+        "title": "Wissenschafts-Spiele",
+        "description": "Experimente und Entdeckungen"
+      },
+      "coding": {
+        "title": "Programmier-Spiele",
+        "description": "Programmierung und Logik lernen"
+      },
+      "language": {
+        "title": "Sprach-Spiele",
+        "description": "Wortschatz und Kommunikation"
+      }
+    },
+    "metrics": {
+      "plays": "Aufrufe",
+      "students": "Schüler",
+      "trending_score": "Trend-Bewertung",
+      "popularity": "Beliebtheit"
+    }
+  },
+  "recently_played": {
+    "seo": {
+      "title": "Kürzlich gespielte Spiele | Ihre Spielhistorie | EduGameHQ",
+      "description": "Sehen Sie Ihre kürzlich gespielten Lernspiele und setzen Sie Ihre Lernreise fort. Verfolgen Sie Ihren Fortschritt in Mathematik, Naturwissenschaften, Programmierung und Sprachspielen.",
+      "keywords": "kürzlich gespielte Spiele, Spielhistorie, weiterspielen, Fortschritt verfolgen, Lernhistorie, Lernspiele Historie"
+    },
+    "hero": {
+      "title": "Kürzlich gespielt",
+      "description": "Setzen Sie Ihre Lernreise fort! Machen Sie dort weiter, wo Sie aufgehört haben, mit Ihren kürzlich gespielten Lernspielen."
+    },
+    "actions": {
+      "clear_history": "Verlauf löschen"
+    },
+    "recent_games": {
+      "title": "Ihre kürzlichen Spiele",
+      "subtitle": "Machen Sie dort weiter, wo Sie aufgehört haben"
+    },
+    "learning_tips": {
+      "title": "Lerntipps",
+      "subtitle": "Maximieren Sie Ihre Lernspiel-Erfahrung",
+      "tips": [
+        {
+          "title": "Weiter lernen!",
+          "description": "Regelmäßiges Üben hilft beim Festigen des Gelernten. Versuchen Sie, täglich 15-20 Minuten Lernspiele zu spielen, um die besten Ergebnisse zu erzielen."
+        },
+        {
+          "title": "Ziele setzen",
+          "description": "Fordern Sie sich heraus, ein Spiel pro Tag zu schaffen oder eine bestimmte Fähigkeit durch wiederholtes Üben zu meistern."
+        },
+        {
+          "title": "Fortschritt verfolgen",
+          "description": "Ihre Spielhistorie hilft Ihnen, Ihre Lernreise zu sehen und Bereiche zu identifizieren, in denen Sie sich verbessert haben."
+        },
+        {
+          "title": "Weiter üben",
+          "description": "Kehren Sie zu Spielen zurück, die Sie schon einmal gespielt haben, um das Gelernte zu festigen und Ihre Fähigkeiten im Laufe der Zeit zu verbessern."
+        }
+      ]
+    },
+    "empty_state": {
+      "title": "Noch keine Spiele gespielt",
+      "description": "Beginnen Sie Ihre Lernreise, indem Sie ein Spiel aus unserer Sammlung auswählen!",
+      "action": "Spiele entdecken"
+    }
+  },
+  "trending_tips": {
+    "title": "Warum diese Spiele im Trend liegen",
+    "subtitle": "Entdecke, was diese Lernspiele so beliebt macht",
+    "tips": [
+      {
+        "title": "Fesselndes Gameplay",
+        "description": "Interaktive Mechaniken, die das Lernen unterhaltsam machen"
+      },
+      {
+        "title": "Bewährte Lernergebnisse",
+        "description": "Von Pädagogen getestet und von Schülern geliebt"
+      },
+      {
+        "title": "Soziales Lernen",
+        "description": "Teile Erfolge und lerne mit Freunden"
+      }
+    ]
   }
 }

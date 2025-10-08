@@ -4,14 +4,18 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../../i18n/utils';
 
 // 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
 
+// 获取德语翻译
+const translations = await getTranslations('de');
+
 const seoData = {
-  title: "Recently Played Games | Your Game History | EduGameHQ",
-  description: "View your recently played educational games and continue your learning journey. Track your progress across math, science, coding, and language games.",
-  keywords: ["recently played games", "game history", "continue playing", "track progress", "learning history", "educational games history"],
+  title: t(translations, 'recently_played.seo.title'),
+  description: t(translations, 'recently_played.seo.description'),
+  keywords: [t(translations, 'recently_played.seo.keywords')],
   ogImage: "/images/recently-played-og.jpg"
 };
 
@@ -48,9 +52,9 @@ const recentlyPlayedGames = allGamesData
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Recently Played</h1>
+            <h1 class="page-title">{t(translations, 'recently_played.hero.title')}</h1>
             <p class="page-description">
-              Continue your learning journey! Pick up where you left off with your recently played educational games.
+              {t(translations, 'recently_played.hero.description')}
             </p>
           </div>
         </div>
@@ -58,7 +62,7 @@ const recentlyPlayedGames = allGamesData
         <div class="header-actions">
           <button id="clearHistoryBtn" class="clear-history-btn">
             <i class="fas fa-trash-alt"></i>
-            <span>Clear History</span>
+            <span>{t(translations, 'recently_played.actions.clear_history')}</span>
           </button>
         </div>
       </section>
@@ -71,8 +75,8 @@ const recentlyPlayedGames = allGamesData
             <i class="fas fa-gamepad"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Your Recent Games</h2>
-            <p class="module-subtitle">Continue where you left off</p>
+            <h2 class="module-title">{t(translations, 'recently_played.recent_games.title')}</h2>
+            <p class="module-subtitle">{t(translations, 'recently_played.recent_games.subtitle')}</p>
           </div>
         </div>
         
@@ -91,8 +95,8 @@ const recentlyPlayedGames = allGamesData
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Learning Tips</h2>
-            <p class="module-subtitle">Maximize your educational gaming experience</p>
+            <h2 class="module-title">{t(translations, 'recently_played.learning_tips.title')}</h2>
+            <p class="module-subtitle">{t(translations, 'recently_played.learning_tips.subtitle')}</p>
           </div>
         </div>
         
@@ -102,8 +106,8 @@ const recentlyPlayedGames = allGamesData
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Keep Learning!</h4>
-              <p class="tip-text">Regular practice helps reinforce learning. Try to play educational games for 15-20 minutes daily for best results.</p>
+              <h4 class="tip-title">{t(translations, 'recently_played.learning_tips.tips.0.title')}</h4>
+              <p class="tip-text">{t(translations, 'recently_played.learning_tips.tips.0.description')}</p>
             </div>
           </div>
           
@@ -112,8 +116,8 @@ const recentlyPlayedGames = allGamesData
               <i class="fas fa-bullseye"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Set Goals</h4>
-              <p class="tip-text">Challenge yourself to complete one game per day or master a specific skill through repeated practice.</p>
+              <h4 class="tip-title">{t(translations, 'recently_played.learning_tips.tips.1.title')}</h4>
+              <p class="tip-text">{t(translations, 'recently_played.learning_tips.tips.1.description')}</p>
             </div>
           </div>
           
@@ -122,8 +126,8 @@ const recentlyPlayedGames = allGamesData
               <i class="fas fa-chart-line"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Track Progress</h4>
-              <p class="tip-text">Your game history helps you see your learning journey and identify areas where you've improved.</p>
+              <h4 class="tip-title">{t(translations, 'recently_played.learning_tips.tips.2.title')}</h4>
+              <p class="tip-text">{t(translations, 'recently_played.learning_tips.tips.2.description')}</p>
             </div>
           </div>
           
@@ -132,8 +136,8 @@ const recentlyPlayedGames = allGamesData
               <i class="fas fa-redo"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Keep Practicing</h4>
-              <p class="tip-text">Return to games you've played before to reinforce learning and improve your skills over time.</p>
+              <h4 class="tip-title">{t(translations, 'recently_played.learning_tips.tips.3.title')}</h4>
+              <p class="tip-text">{t(translations, 'recently_played.learning_tips.tips.3.description')}</p>
             </div>
           </div>
         </div>

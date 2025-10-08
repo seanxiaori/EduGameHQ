@@ -1,85 +1,83 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../../i18n/utils';
 
-// 关于我们SEO数据
-const seoData = {
-  title: "About EduGameHQ | Educational Gaming Platform",
-  description: "Learn about EduGameHQ's mission to make learning fun through educational games. Discover our story, values, and commitment to quality education.",
-  keywords: ["about edugamehq", "educational platform", "learning games mission", "educational technology"],
-  ogImage: "/images/about-og.jpg"
-};
+// 获取西班牙语翻译
+const translations = await getTranslations('es');
+
+// 移除硬编码的SEO数据，让BaseLayout使用翻译文件中的本地化SEO数据
 
 // 团队成员数据
 const teamMembers = [
   {
-    name: "Dr. Sarah Chen",
-    role: "Educational Director",
-    description: "Former Stanford professor with 15+ years in educational technology",
+    name: t(translations, 'about_page.team_section.member1.name'),
+    role: t(translations, 'about_page.team_section.member1.role'),
+    description: t(translations, 'about_page.team_section.member1.description'),
     icon: "fas fa-user-graduate"
   },
   {
-    name: "Mike Rodriguez",
-    role: "Game Developer",
-    description: "Award-winning game designer specializing in educational content",
+    name: t(translations, 'about_page.team_section.member2.name'),
+    role: t(translations, 'about_page.team_section.member2.role'),
+    description: t(translations, 'about_page.team_section.member2.description'),
     icon: "fas fa-gamepad"
   },
   {
-    name: "Lisa Wang",
-    role: "Child Psychologist",
-    description: "Expert in child development and learning psychology",
+    name: t(translations, 'about_page.team_section.member3.name'),
+    role: t(translations, 'about_page.team_section.member3.role'),
+    description: t(translations, 'about_page.team_section.member3.description'),
     icon: "fas fa-brain"
   },
   {
-    name: "Alex Thompson",
-    role: "Technology Lead",
-    description: "Full-stack developer passionate about accessible education",
+    name: t(translations, 'about_page.team_section.member4.name'),
+    role: t(translations, 'about_page.team_section.member4.role'),
+    description: t(translations, 'about_page.team_section.member4.description'),
     icon: "fas fa-code"
   }
 ];
 
 // 统计数据
 const stats = [
-  { number: "100+", label: "Educational Games", icon: "fas fa-gamepad" },
-  { number: "50K+", label: "Active Students", icon: "fas fa-users" },
-  { number: "15+", label: "Countries Served", icon: "fas fa-globe" },
-  { number: "100%", label: "Free Content", icon: "fas fa-heart" }
+  { number: "500+", label: t(translations, 'about_page.impact.games'), icon: "fas fa-gamepad" },
+  { number: "50,000+", label: t(translations, 'about_page.impact.students'), icon: "fas fa-users" },
+  { number: "120+", label: t(translations, 'about_page.impact.countries'), icon: "fas fa-globe" },
+  { number: "100%", label: t(translations, 'about_page.impact.free'), icon: "fas fa-heart" }
 ];
 
 // 价值主张
 const values = [
   {
-    title: "Quality First",
-    description: "Every game is carefully curated and tested by education experts",
+    title: t(translations, 'about_page.values_section.quality.title'),
+    description: t(translations, 'about_page.values_section.quality.description'),
     icon: "fas fa-star"
   },
   {
-    title: "Always Free",
-    description: "Education should be accessible to everyone, everywhere",
+    title: t(translations, 'about_page.values_section.free.title'),
+    description: t(translations, 'about_page.values_section.free.description'),
     icon: "fas fa-gift"
   },
   {
-    title: "Safe Environment",
-    description: "Child-friendly content with strict safety and privacy standards",
+    title: t(translations, 'about_page.values_section.safety.title'),
+    description: t(translations, 'about_page.values_section.safety.description'),
     icon: "fas fa-shield-alt"
   },
   {
-    title: "Global Reach",
-    description: "Supporting learners worldwide with multilingual content",
+    title: t(translations, 'about_page.values_section.reach.title'),
+    description: t(translations, 'about_page.values_section.reach.description'),
     icon: "fas fa-world"
   }
 ];
 
 // 关于我们章节数据（用于目录导航）
 const aboutSections = [
-  { id: "mission", title: "Our Mission", icon: "fa-bullseye" },
-  { id: "values", title: "Core Values", icon: "fa-heart" },
-  { id: "story", title: "Our Story", icon: "fa-book" },
-  { id: "team", title: "Meet Our Team", icon: "fa-users" },
-  { id: "stats", title: "Our Impact", icon: "fa-chart-line" }
+  { id: "mission", title: t(translations, 'about_page.sections.mission'), icon: "fa-bullseye" },
+  { id: "values", title: t(translations, 'about_page.sections.values'), icon: "fa-heart" },
+  { id: "story", title: t(translations, 'about_page.sections.story'), icon: "fa-book" },
+  { id: "team", title: t(translations, 'about_page.sections.team'), icon: "fa-users" },
+  { id: "stats", title: t(translations, 'about_page.sections.impact'), icon: "fa-chart-line" }
 ];
 ---
 
-<BaseLayout {...seoData}>
+<BaseLayout>
   <main class="about-page">
     <div class="content-wrapper">
       
@@ -92,12 +90,12 @@ const aboutSections = [
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">About EduGameHQ</h1>
+            <h1 class="page-title">{t(translations, 'about_page.header.title')}</h1>
             <p class="page-description">
-              Where Learning Meets Fun - Transforming Education Through Interactive Gaming
+              {t(translations, 'about_page.header.subtitle')}
             </p>
             <p class="company-subtitle">
-              Making quality education accessible, engaging, and enjoyable for every child
+              {t(translations, 'about_page.header.tagline')}
             </p>
           </div>
         </div>
@@ -107,7 +105,7 @@ const aboutSections = [
         <!-- 侧边栏目录 -->
         <aside class="about-sidebar">
           <div class="sidebar-header">
-            <h3>Explore Our Story</h3>
+            <h3>{t(translations, 'about_page.sidebar.title')}</h3>
           </div>
           <nav class="about-nav">
             <ul>
@@ -132,7 +130,7 @@ const aboutSections = [
               <div class="section-icon-small">
                 <i class="fas fa-chart-line"></i>
               </div>
-              <h2 class="section-title">Our Impact</h2>
+              <h2 class="section-title">{t(translations, 'about_page.sections.impact')}</h2>
             </div>
             <div class="stats-grid">
               {stats.map((stat) => (
@@ -153,21 +151,18 @@ const aboutSections = [
               <div class="section-icon-small">
                 <i class="fas fa-bullseye"></i>
               </div>
-              <h2 class="section-title">Our Mission</h2>
+              <h2 class="section-title">{t(translations, 'about_page.sections.mission')}</h2>
             </div>
             <div class="mission-content">
               <div class="mission-text">
                 <p class="mission-description">
-                  To democratize quality education by providing free, engaging, and effective 
-                  educational games that inspire curiosity, foster creativity, and build 
-                  essential skills for the 21st century.
+                  {t(translations, 'about_page.mission_section.description')}
                 </p>
                 
                 <div class="vision-section">
-                  <h3 class="subsection-title">Our Vision</h3>
+                  <h3 class="subsection-title">{t(translations, 'about_page.mission_section.vision_title')}</h3>
                   <p class="vision-description">
-                    A world where every child has access to high-quality educational content 
-                    that makes learning joyful, meaningful, and transformative.
+                    {t(translations, 'about_page.mission_section.vision_description')}
                   </p>
                 </div>
               </div>
@@ -186,7 +181,7 @@ const aboutSections = [
               <div class="section-icon-small">
                 <i class="fas fa-heart"></i>
               </div>
-              <h2 class="section-title">Our Core Values</h2>
+              <h2 class="section-title">{t(translations, 'about_page.values_section.title')}</h2>
             </div>
             <div class="values-grid">
               {values.map((value) => (
@@ -207,7 +202,7 @@ const aboutSections = [
               <div class="section-icon-small">
                 <i class="fas fa-book"></i>
               </div>
-              <h2 class="section-title">Our Story</h2>
+              <h2 class="section-title">{t(translations, 'about_page.sections.story')}</h2>
             </div>
             <div class="story-content">
               <div class="story-timeline">
@@ -216,11 +211,9 @@ const aboutSections = [
                     <i class="fas fa-lightbulb"></i>
                   </div>
                   <div class="timeline-content">
-                    <h4>The Beginning</h4>
+                    <h4>{t(translations, 'about_page.story_section.beginning.title')}</h4>
                     <p>
-                      EduGameHQ was born from a simple observation: children learn best when they're having fun. 
-                      Founded in 2023 by a team of educators, game developers, and child psychologists, 
-                      we set out to bridge the gap between entertainment and education.
+                      {t(translations, 'about_page.story_section.beginning.description')}
                     </p>
                   </div>
                 </div>
@@ -230,11 +223,9 @@ const aboutSections = [
                     <i class="fas fa-rocket"></i>
                   </div>
                   <div class="timeline-content">
-                    <h4>Growth & Expansion</h4>
+                    <h4>{t(translations, 'about_page.story_section.growth.title')}</h4>
                     <p>
-                      What started as a small collection of math games has grown into a comprehensive 
-                      platform serving over 50,000 students worldwide. Our games cover mathematics, 
-                      science, coding, language arts, and critical thinking skills.
+                      {t(translations, 'about_page.story_section.growth.description')}
                     </p>
                   </div>
                 </div>
@@ -244,10 +235,9 @@ const aboutSections = [
                     <i class="fas fa-globe"></i>
                   </div>
                   <div class="timeline-content">
-                    <h4>Today & Beyond</h4>
+                    <h4>{t(translations, 'about_page.story_section.today.title')}</h4>
                     <p>
-                      Today, EduGameHQ continues to evolve, always guided by our core belief that 
-                      quality education should be free, accessible, and enjoyable for every child.
+                      {t(translations, 'about_page.story_section.today.description')}
                     </p>
                   </div>
                 </div>
@@ -261,11 +251,10 @@ const aboutSections = [
               <div class="section-icon-small">
                 <i class="fas fa-users"></i>
               </div>
-              <h2 class="section-title">Meet Our Team</h2>
+              <h2 class="section-title">{t(translations, 'about_page.sections.team')}</h2>
             </div>
             <p class="team-intro">
-              Our diverse team of educators, developers, and researchers work together 
-              to create the best possible learning experience for students worldwide.
+              {t(translations, 'about_page.team_section.intro')}
             </p>
             
             <div class="team-grid">
@@ -289,12 +278,12 @@ const aboutSections = [
                 <i class="fas fa-envelope"></i>
               </div>
               <div class="cta-text">
-                <h3>Want to Know More?</h3>
-                <p>We'd love to hear from you! Contact us for partnerships, feedback, or just to say hello.</p>
+                <h3>{t(translations, 'about_page.cta.title')}</h3>
+                <p>{t(translations, 'about_page.cta.description')}</p>
               </div>
               <div class="cta-actions">
-                <a href="/help" class="btn-primary">Get in Touch</a>
-                <a href="/privacy-policy" class="btn-secondary">Our Policies</a>
+                <a href="/help" class="btn-primary">{t(translations, 'about_page.cta.button1')}</a>
+                <a href="/privacy-policy" class="btn-secondary">{t(translations, 'about_page.cta.button2')}</a>
               </div>
             </div>
           </section>
@@ -1027,5 +1016,5 @@ const aboutSections = [
       text-align: center;
     }
   }
-</style> 
+</style>
 

@@ -210,6 +210,52 @@ class GameStatsManager {
   }
 
   /**
+   * 监听用户交互行为
+   */
+  monitorUserInteraction() {
+    // 监听iframe内的用户交互
+    const gameSlug = this.extractGameSlugFromUrl(window.location.pathname);
+    if (!gameSlug) return;
+
+    // 监听iframe点击事件
+    document.addEventListener('click', (event) => {
+      if (event.target.tagName === 'IFRAME') {
+        this.recordUserInteraction(gameSlug, 'iframe_click');
+      }
+    });
+
+    // 监听iframe焦点事件
+    document.addEventListener('focusin', (event) => {
+      if (event.target.tagName === 'IFRAME') {
+        this.recordUserInteraction(gameSlug, 'iframe_focus');
+      }
+    });
+  }
+
+  /**
+   * 记录用户交互行为
+   */
+  recordUserInteraction(gameSlug, interactionType) {
+    if (!this.userInteractions) {
+      this.userInteractions = {};
+    }
+
+    if (!this.userInteractions[gameSlug]) {
+      this.userInteractions[gameSlug] = [];
+    }
+
+    this.userInteractions[gameSlug].push({
+      type: interactionType,
+      timestamp: new Date().toISOString()
+    });
+
+    // 只保留最近50个交互记录
+    if (this.userInteractions[gameSlug].length > 50) {
+      this.userInteractions[gameSlug] = this.userInteractions[gameSlug].slice(-50);
+    }
+  }
+
+  /**
    * 智能时间追踪设置
    */
   setupSmartTimeTracking() {
@@ -1082,4 +1128,4 @@ window.gameStatsManager = new GameStatsManager();
 // 导出供其他模块使用
 if (typeof module !== 'undefined' && module.exports) {
   module.exports = GameStatsManager;
-} 
+}

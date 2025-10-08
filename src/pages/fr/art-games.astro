@@ -4,9 +4,21 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../../i18n/utils';
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
+
+// 获取法语翻译
+const translations = await getTranslations('fr');
+
+// SEO数据配置
+const seoData = {
+  title: t(translations, 'art_games.seo.title', 'Jeux d\'Art et de Créativité'),
+  description: t(translations, 'art_games.seo.description', 'Libérez votre créativité avec notre collection de jeux d\'art et de créativité. Explorez les arts visuels, la musique, le design et l\'expression créative.'),
+  keywords: t(translations, 'art_games.seo.keywords', 'jeux d\'art, créativité, dessin, peinture, musique, design, expression artistique'),
+  ogImage: '/images/og/art-games-fr.jpg'
+};
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -29,7 +41,12 @@ const mediumGames = artGames.filter(game => game.difficulty === 'Medium');
 const hardGames = artGames.filter(game => game.difficulty === 'Hard');
 ---
 
-<BaseLayout>
+<BaseLayout 
+  title={seoData.title}
+  description={seoData.description}
+  keywords={seoData.keywords}
+  ogImage={seoData.ogImage}
+>
   <!-- 引入统一游戏卡片样式 -->
   
   
@@ -45,9 +62,9 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Art & Creativity Games</h1>
+            <h1 class="page-title">{t(translations, 'art_games.page.title', 'Jeux d\'Art et de Créativité')}</h1>
             <p class="page-description">
-              Unleash your creativity with our collection of art and creativity games! Explore visual arts, music, design, and creative expression through interactive games that inspire imagination and artistic skills.
+              {t(translations, 'art_games.page.description', 'Libérez votre créativité avec notre collection de jeux d\'art et de créativité ! Explorez les arts visuels, la musique, le design et l\'expression créative à travers des jeux interactifs qui inspirent l\'imagination et les compétences artistiques.')}
             </p>
           </div>
         </div>
@@ -61,8 +78,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Art Games</h2>
-              <p class="module-subtitle">Most popular creative games chosen by our community</p>
+              <h2 class="module-title">{t(translations, 'art_games.featured.title', 'Jeux d\'Art en Vedette')}</h2>
+              <p class="module-subtitle">{t(translations, 'art_games.featured.subtitle', 'Les jeux créatifs les plus populaires choisis par notre communauté')}</p>
             </div>
           </div>
           
@@ -82,8 +99,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young artists</p>
+              <h2 class="module-title">{t(translations, 'art_games.easy.title', 'Jeux Niveau Facile')}</h2>
+              <p class="module-subtitle">{t(translations, 'art_games.easy.subtitle', 'Parfait pour les débutants et les jeunes artistes')}</p>
             </div>
           </div>
           
@@ -103,8 +120,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for developing artists</p>
+              <h2 class="module-title">{t(translations, 'art_games.medium.title', 'Jeux Niveau Moyen')}</h2>
+              <p class="module-subtitle">{t(translations, 'art_games.medium.subtitle', 'Défis intermédiaires pour les artistes en développement')}</p>
             </div>
           </div>
           
@@ -124,8 +141,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Advanced challenges for master artists</p>
+              <h2 class="module-title">{t(translations, 'art_games.hard.title', 'Jeux Niveau Difficile')}</h2>
+              <p class="module-subtitle">{t(translations, 'art_games.hard.subtitle', 'Défis avancés pour les artistes maîtres')}</p>
             </div>
           </div>
           
@@ -144,8 +161,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Creative Learning Tips</h2>
-            <p class="module-subtitle">Effective strategies to enhance your artistic abilities</p>
+            <h2 class="module-title">{t(translations, 'art_games.tips.title', 'Conseils d\'Apprentissage Créatif')}</h2>
+            <p class="module-subtitle">{t(translations, 'art_games.tips.subtitle', 'Stratégies efficaces pour améliorer vos capacités artistiques')}</p>
           </div>
         </div>
         
@@ -155,8 +172,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-eye"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Observe & Sketch</h4>
-              <p class="tip-text">Practice drawing what you see around you to improve observation skills</p>
+              <h4 class="tip-title">{t(translations, 'art_games.tips.observe.title', 'Observer et Dessiner')}</h4>
+              <p class="tip-text">{t(translations, 'art_games.tips.observe.text', 'Pratiquez le dessin de ce que vous voyez autour de vous pour améliorer vos compétences d\'observation')}</p>
             </div>
           </div>
           
@@ -165,8 +182,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-palette"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Experiment with Colors</h4>
-              <p class="tip-text">Try different color combinations to understand color theory</p>
+              <h4 class="tip-title">{t(translations, 'art_games.tips.colors.title', 'Expérimenter avec les Couleurs')}</h4>
+              <p class="tip-text">{t(translations, 'art_games.tips.colors.text', 'Essayez différentes combinaisons de couleurs pour comprendre la théorie des couleurs')}</p>
             </div>
           </div>
           
@@ -175,8 +192,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Express Ideas</h4>
-              <p class="tip-text">Use art to communicate feelings and tell stories</p>
+              <h4 class="tip-title">{t(translations, 'art_games.tips.express.title', 'Exprimer des Idées')}</h4>
+              <p class="tip-text">{t(translations, 'art_games.tips.express.text', 'Utilisez l\'art pour communiquer des sentiments et raconter des histoires')}</p>
             </div>
           </div>
           
@@ -185,8 +202,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-users"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Share & Get Feedback</h4>
-              <p class="tip-text">Show your artwork to others and learn from their perspectives</p>
+              <h4 class="tip-title">{t(translations, 'art_games.tips.share.title', 'Partager et Recevoir des Commentaires')}</h4>
+              <p class="tip-text">{t(translations, 'art_games.tips.share.text', 'Montrez vos œuvres d\'art aux autres et apprenez de leurs perspectives')}</p>
             </div>
           </div>
         </div>
@@ -199,8 +216,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Creative Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential artistic abilities gained through creative gaming</p>
+            <h2 class="module-title">{t(translations, 'art_games.skills.title', 'Compétences Créatives que Vous Développerez')}</h2>
+            <p class="module-subtitle">{t(translations, 'art_games.skills.subtitle', 'Capacités artistiques essentielles acquises grâce aux jeux créatifs')}</p>
           </div>
         </div>
 
@@ -210,8 +227,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brush"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Visual Arts</h4>
-              <p class="skill-description">Learn drawing, painting, and design principles</p>
+              <h4 class="skill-title">{t(translations, 'art_games.skills.visual.title', 'Arts Visuels')}</h4>
+              <p class="skill-description">{t(translations, 'art_games.skills.visual.description', 'Apprenez les principes du dessin, de la peinture et du design')}</p>
             </div>
           </div>
 
@@ -220,8 +237,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-music"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Musical Expression</h4>
-              <p class="skill-description">Explore rhythm, melody, and composition</p>
+              <h4 class="skill-title">{t(translations, 'art_games.skills.music.title', 'Expression Musicale')}</h4>
+              <p class="skill-description">{t(translations, 'art_games.skills.music.description', 'Explorez le rythme, la mélodie et la composition')}</p>
             </div>
           </div>
 
@@ -230,8 +247,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Creative Thinking</h4>
-              <p class="skill-description">Develop innovative problem-solving approaches</p>
+              <h4 class="skill-title">{t(translations, 'art_games.skills.thinking.title', 'Pensée Créative')}</h4>
+              <p class="skill-description">{t(translations, 'art_games.skills.thinking.description', 'Développez des approches innovantes de résolution de problèmes')}</p>
             </div>
           </div>
 
@@ -240,8 +257,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-eye"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Visual Perception</h4>
-              <p class="skill-description">Improve observation and spatial awareness</p>
+              <h4 class="skill-title">{t(translations, 'art_games.skills.perception.title', 'Perception Visuelle')}</h4>
+              <p class="skill-description">{t(translations, 'art_games.skills.perception.description', 'Améliorez l\'observation et la conscience spatiale')}</p>
             </div>
           </div>
           
@@ -250,8 +267,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-palette"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Color Theory</h4>
-              <p class="skill-description">Understand color relationships and harmony</p>
+              <h4 class="skill-title">{t(translations, 'art_games.skills.color.title', 'Théorie des Couleurs')}</h4>
+              <p class="skill-description">{t(translations, 'art_games.skills.color.description', 'Comprenez les relations et l\'harmonie des couleurs')}</p>
             </div>
           </div>
           
@@ -260,8 +277,8 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-heart"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Emotional Expression</h4>
-              <p class="skill-description">Learn to convey feelings through art</p>
+              <h4 class="skill-title">{t(translations, 'art_games.skills.emotion.title', 'Expression Émotionnelle')}</h4>
+              <p class="skill-description">{t(translations, 'art_games.skills.emotion.description', 'Apprenez à transmettre des sentiments à travers l\'art')}</p>
             </div>
           </div>
         </div>

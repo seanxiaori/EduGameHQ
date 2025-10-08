@@ -60,13 +60,36 @@
     "source": "Source du jeu",
     "loading": "Chargement..."
   },
+  "game_detail": {
+    "loading_game": "Chargement de {gameTitle}...",
+    "preparing_experience": "Préparation de votre expérience de jeu éducatif",
+    "start_game": "Commencer le Jeu",
+    "fullscreen": "Plein Écran",
+    "restart": "Redémarrer",
+    "favorite": "Favori",
+    "share": "Partager",
+    "game_information": "Informations du Jeu",
+    "how_to_play": "Comment Jouer",
+    "game_controls": "Contrôles du Jeu",
+    "tips_tricks": "Conseils et Astuces",
+    "developer_information": "Informations du Développeur",
+    "developer": "Développeur",
+    "source": "Source",
+    "type": "Type",
+    "release_date": "Date de Sortie",
+    "more_games": "Plus de",
+    "games": "Jeux",
+    "free": "Gratuit",
+    "mouse": "Souris",
+    "keyboard": "Clavier",
+    "touch": "Tactile"
+  },
   "footer": {
     "tagline": "Rendre l'apprentissage amusant pour tous",
     "description": "EduGameHQ est votre plateforme de jeux éducatifs qui rend l'apprentissage attrayant et efficace.",
     "quick_links": "Liens rapides",
     "game_categories": "Catégories de jeux",
     "support": "Support et informations",
-    "social": "Suivez-nous",
     "copyright": "© 2025 EduGameHQ. Tous droits réservés.",
     "made_with_love": "Fait avec ❤️ pour les étudiants du monde entier",
     "logo_alt": "Logo EduGameHQ",
@@ -103,6 +126,156 @@
     "faq": "Questions fréquemment posées",
     "contact_us": "Nous contacter",
     "report_issue": "Signaler un problème"
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "Jeux de Mathématiques",
+      "description": "Explorez notre collection de jeux de mathématiques engageants conçus pour rendre l'apprentissage des mathématiques amusant et interactif. De l'arithmétique de base à la résolution avancée de problèmes, ces jeux aident les étudiants à développer confiance et compétences en mathématiques.",
+      "featured_section": {
+        "title": "Jeux de Mathématiques Recommandés",
+        "description": "Nos jeux de mathématiques les plus populaires et recommandés"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes apprenants"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Excellent pour les étudiants intermédiaires"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Jeux stimulants pour les apprenants avancés"
+        }
+      },
+      "learning_tips": {
+        "title": "Conseils d'Apprentissage des Mathématiques",
+        "subtitle": "Conseils d'experts pour améliorer vos compétences en mathématiques",
+        "tips": [
+          {
+            "title": "Pratiquez Quotidiennement",
+            "description": "Consacrez 15-20 minutes par jour à pratiquer les concepts mathématiques à travers les jeux"
+          },
+          {
+            "title": "Progressez Graduellement",
+            "description": "Commencez par des jeux plus faciles et progressez graduellement vers des défis plus difficiles"
+          },
+          {
+            "title": "Acceptez les Erreurs",
+            "description": "N'ayez pas peur de faire des erreurs - elles font partie du processus d'apprentissage"
+          },
+          {
+            "title": "Comprenez le Pourquoi",
+            "description": "Concentrez-vous sur la compréhension du raisonnement derrière chaque solution"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Compétences Fondamentales que Vous Développerez",
+        "subtitle": "Capacités mathématiques essentielles acquises par le jeu",
+        "skills": {
+          "addition_subtraction": {
+            "title": "Addition et Soustraction",
+            "description": "Maîtriser les opérations arithmétiques de base"
+          },
+          "multiplication_division": {
+            "title": "Multiplication et Division",
+            "description": "Développer la fluidité dans les opérations avancées"
+          },
+          "fractions_decimals": {
+            "title": "Fractions et Décimales",
+            "description": "Comprendre les parties et le tout"
+          },
+          "geometry": {
+            "title": "Géométrie",
+            "description": "Explorer les formes et le raisonnement spatial"
+          },
+          "algebra": {
+            "title": "Algèbre",
+            "description": "Résoudre des équations et travailler avec des variables"
+          },
+          "problem_solving": {
+            "title": "Résolution de Problèmes",
+            "description": "Développer les compétences de pensée critique"
+          }
+        }
+      }
+    },
+    "science_games": {
+      "title": "Jeux de Sciences",
+      "description": "Découvrez les merveilles de la science à travers des jeux interactifs qui rendent les concepts complexes faciles à comprendre et amusants à explorer.",
+      "featured_section": {
+        "title": "Jeux de Sciences Recommandés",
+        "description": "Nos jeux de sciences les plus populaires et recommandés"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes apprenants"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Excellent pour les étudiants intermédiaires"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Jeux stimulants pour les apprenants avancés"
+        }
+      }
+    },
+    "language_games": {
+      "title": "Jeux de Langues",
+      "description": "Améliorez vos compétences linguistiques avec notre collection de jeux de mots engageants, de constructeurs de vocabulaire et d'activités de compréhension de lecture.",
+      "featured_section": {
+        "title": "Jeux de Langues Recommandés",
+        "description": "Nos jeux de langues les plus populaires et recommandés"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes apprenants"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Excellent pour les étudiants intermédiaires"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Jeux stimulants pour les apprenants avancés"
+        }
+      },
+      "learning_tips": {
+        "title": "Conseils d'Apprentissage des Langues",
+        "subtitle": "Stratégies efficaces pour améliorer vos compétences linguistiques"
+      }
+    },
+    "puzzle_games": {
+      "title": "Jeux de Puzzle",
+      "description": "Défiez votre esprit avec notre collection de jeux de puzzle éducatifs ! Développez la pensée critique, les compétences de résolution de problèmes, la logique et le raisonnement spatial à travers des casse-têtes engageants et des défis stimulants.",
+      "featured_section": {
+        "title": "Jeux de Puzzle Recommandés",
+        "description": "Des puzzles stimulants pour défier vos compétences de réflexion"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes résolveurs de puzzles"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Défis intermédiaires pour les esprits en développement"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Puzzles avancés pour les maîtres résolveurs de problèmes"
+        }
+      },
+      "learning_tips": {
+        "title": "Conseils de Résolution de Puzzles",
+        "subtitle": "Stratégies pour améliorer vos compétences de résolution de problèmes"
+      }
+    }
   },
   "home": {
     "featured_games": {
@@ -274,7 +447,190 @@
         "name": "Pierre Martin",
         "role": "Responsable technique",
         "description": "Expert en technologie éducative et concepteur d'expériences d'apprentissage interactives"
+      },
+      "member3": {
+        "name": "Lisa Wang",
+        "role": "Psychologue pour enfants",
+        "description": "Experte en développement de l'enfant et psychologie de l'apprentissage"
+      },
+      "member4": {
+        "name": "Alex Thompson",
+        "role": "Responsable technologique",
+        "description": "Développeur full-stack passionné par l'éducation accessible"
       }
+    },
+    "cta": {
+      "title": "Vous voulez en savoir plus ?",
+      "description": "Nous aimerions avoir de vos nouvelles ! Contactez-nous pour des partenariats, des commentaires ou simplement pour dire bonjour.",
+      "button1": "Nous contacter",
+      "button2": "Nos politiques"
+    }
+  },
+  "pages": {
+    "science": {
+      "title": "Jeux de Sciences",
+      "description": "Découvrez les merveilles de la science avec des jeux interactifs couvrant la physique, la chimie, la biologie et les sciences de la Terre. Parfait pour les esprits curieux et les futurs scientifiques qui veulent découvrir comment le monde fonctionne à travers l'expérimentation pratique et l'observation.",
+      "featured": {
+        "title": "Jeux de Sciences en Vedette",
+        "subtitle": "Nos jeux de sciences les plus populaires et recommandés"
+      },
+      "easy": {
+        "title": "Jeux Faciles",
+        "subtitle": "Parfait pour les débutants et les jeunes scientifiques"
+      },
+      "medium": {
+        "title": "Jeux Moyens",
+        "subtitle": "Défiez-vous avec des concepts scientifiques de niveau intermédiaire"
+      },
+      "hard": {
+        "title": "Jeux Difficiles",
+        "subtitle": "Défis avancés pour les experts en sciences"
+      },
+      "learning_tips": {
+        "title": "Conseils d'Apprentissage Scientifique",
+        "subtitle": "Conseils d'experts pour améliorer votre pensée scientifique",
+        "tips": {
+          "observe": {
+            "title": "Observer Tout",
+            "description": "Faites attention au monde qui vous entoure et demandez-vous 'pourquoi' et 'comment'"
+          },
+          "experiment": {
+            "title": "Expérimenter en Sécurité",
+            "description": "Testez vos hypothèses par des expériences contrôlées et des observations"
+          },
+          "journal": {
+            "title": "Tenir un Journal Scientifique",
+            "description": "Enregistrez vos observations, questions et découvertes"
+          },
+          "connect": {
+            "title": "Connecter à la Vraie Vie",
+            "description": "Reliez les concepts scientifiques aux événements et expériences quotidiennes"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Compétences Clés que Vous Développerez",
+        "subtitle": "Compétences scientifiques essentielles acquises par le jeu",
+        "skills": {
+          "scientific_method": {
+            "title": "Méthode Scientifique",
+            "description": "Apprendre l'observation et l'expérimentation"
+          },
+          "physics": {
+            "title": "Concepts de Physique",
+            "description": "Comprendre les forces et le mouvement"
+          },
+          "biology": {
+            "title": "Bases de Biologie",
+            "description": "Explorer les organismes vivants"
+          },
+          "chemistry": {
+            "title": "Chimie",
+            "description": "Découvrir les éléments et les réactions"
+          },
+          "earth_science": {
+            "title": "Sciences de la Terre",
+            "description": "Étudier notre planète et l'environnement"
+          },
+          "critical_thinking": {
+            "title": "Pensée Critique",
+            "description": "Développer des compétences de raisonnement logique"
+          }
+        }
+      }
+    }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "Jeux Populaires | Jeux Éducatifs Les Plus Populaires | EduGameHQ",
+      "description": "Jouez aux jeux éducatifs les plus populaires en ce moment. Rejoignez des milliers d'étudiants qui apprennent grâce aux jeux de mathématiques, sciences, programmation et langues les plus tendance.",
+      "keywords": ["jeux populaires", "jeux tendance", "jeux éducatifs populaires", "jeux les plus joués", "jeux d'apprentissage tendance", "contenu éducatif populaire"]
+    },
+    "hero": {
+      "title": "Jeux Populaires",
+      "subtitle": "Découvrez les jeux éducatifs les plus populaires en ce moment ! Ces jeux tendance sont adorés par les étudiants du monde entier et sont parfaits pour des expériences d'apprentissage engageantes dans toutes les matières."
+    },
+    "featured": {
+      "title": "Jeux Populaires",
+      "subtitle": "Les jeux éducatifs les plus populaires en ce moment"
+    },
+    "categories": {
+      "title": "Catégories Populaires",
+      "subtitle": "Matières populaires et tendances d'apprentissage",
+      "math": {
+        "title": "Jeux de Mathématiques",
+        "description": "Maîtriser les nombres et résoudre des problèmes"
+      },
+      "science": {
+        "title": "Jeux de Sciences",
+        "description": "Explorer le monde naturel et les découvertes"
+      },
+      "coding": {
+        "title": "Jeux de Programmation",
+        "description": "Apprendre la logique de programmation et la résolution de problèmes"
+      },
+      "language": {
+        "title": "Jeux de Langues",
+        "description": "Améliorer les compétences en lecture, écriture et communication"
+      }
+    },
+    "metrics": {
+      "popularity": "Popularité",
+      "growth": "Croissance",
+      "engagement": "Engagement",
+      "learning_impact": "Impact d'Apprentissage"
+    },
+    "tips": {
+      "title": "Conseils d'Apprentissage",
+      "subtitle": "Maximisez votre expérience d'apprentissage",
+      "tip1": "Jouez régulièrement pour de meilleurs résultats",
+      "tip2": "Essayez différentes catégories pour un apprentissage équilibré",
+      "tip3": "Suivez vos progrès et célébrez les réussites"
+    }
+  },
+  "recently_played": {
+    "seo": {
+      "title": "Jeux Récemment Joués | Votre Historique de Jeux | EduGameHQ",
+      "description": "Consultez vos jeux éducatifs récemment joués et continuez votre parcours d'apprentissage. Suivez vos progrès en mathématiques, sciences, programmation et langues.",
+      "keywords": ["jeux récemment joués", "historique de jeux", "continuer à jouer", "suivre les progrès", "historique d'apprentissage", "historique des jeux éducatifs"]
+    },
+    "hero": {
+      "title": "Jeux Récemment Joués",
+      "description": "Continuez votre parcours d'apprentissage ! Reprenez là où vous vous êtes arrêté avec vos jeux éducatifs récemment joués."
+    },
+    "actions": {
+      "clear_history": "Effacer l'historique"
+    },
+    "recent_games": {
+      "title": "Vos Jeux Récents",
+      "subtitle": "Continuez là où vous vous êtes arrêté"
+    },
+    "learning_tips": {
+      "title": "Conseils d'Apprentissage",
+      "subtitle": "Maximisez votre expérience de jeu éducatif",
+      "tips": [
+        {
+          "title": "Continuez à Apprendre !",
+          "description": "La pratique régulière aide à renforcer l'apprentissage. Essayez de jouer à des jeux éducatifs pendant 15-20 minutes par jour pour de meilleurs résultats."
+        },
+        {
+          "title": "Fixez-vous des Objectifs",
+          "description": "Défiez-vous de terminer un jeu par jour ou de maîtriser une compétence spécifique grâce à la pratique répétée."
+        },
+        {
+          "title": "Suivez vos Progrès",
+          "description": "Votre historique de jeux vous aide à voir votre parcours d'apprentissage et à identifier les domaines où vous vous êtes amélioré."
+        },
+        {
+          "title": "Continuez à Pratiquer",
+          "description": "Retournez aux jeux auxquels vous avez déjà joué pour renforcer l'apprentissage et améliorer vos compétences au fil du temps."
+        }
+      ]
+    },
+    "empty_state": {
+      "title": "Aucun jeu récent",
+      "description": "Vous n'avez pas encore joué à des jeux. Commencez à explorer nos jeux éducatifs !",
+      "action": "Explorer les jeux"
     }
   }
 }

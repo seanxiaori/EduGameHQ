@@ -6,7 +6,7 @@ import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
 
 // 读取游戏数据
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
@@ -126,6 +126,75 @@ const sportsCoreSkills = [
 
 console.log('🏃‍♂️ 体育学习建议:', sportsLearningTips.length, '条');
 console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
+
+// SEO数据
+const seoData = {
+  title: "Jeux de Sport - Jeux Sportifs et Athlétiques Gratuits en Ligne",
+  description: "Restez actif et apprenez avec des jeux de sport gratuits en ligne. Basketball, football, tennis et plus. Jeux éducatifs enseignant le travail d'équipe, la stratégie et l'esprit sportif.",
+  keywords: ["jeux de sport", "jeux sportifs", "jeux de basketball", "jeux de football", "jeux en ligne", "jeux éducatifs", "jeux d'équipe", "jeux athlétiques", "jeux gratuits", "jeux pour enfants"]
+};
+
+// Configuration de traduction française
+const translations = {
+  // Données SEO
+  page_title: "Jeux de Sport - Jeux Sportifs et Athlétiques Gratuits en Ligne",
+  page_description: "Restez actif et apprenez avec des jeux de sport gratuits en ligne. Basketball, football, tennis et plus. Jeux éducatifs enseignant le travail d'équipe, la stratégie et l'esprit sportif.",
+  
+  // Titre principal et description
+  main_title: "Jeux de Sport",
+  main_description: "Restez actif et apprenez grâce aux jeux de sport ! Combinez les concepts d'éducation physique avec un gameplay amusant, enseignant le travail d'équipe, la stratégie, la compétition saine et l'esprit sportif à travers des défis athlétiques virtuels.",
+  
+  // Module des jeux en vedette
+  featured_games: "Jeux de Sport en Vedette",
+  featured_subtitle: "Jeux de niveau championnat qui testeront vos compétences athlétiques",
+  
+  // Catégories de jeux
+  basketball_games: "Jeux de Basketball",
+  basketball_subtitle: "Dribblez, tirez et marquez avec ces jeux de basketball",
+  ball_games: "Jeux de Ballon",
+  ball_subtitle: "Donnez des coups de pied, lancez et attrapez pour remporter la victoire",
+  precision_games: "Jeux de Précision",
+  precision_subtitle: "Perfectionnez votre technique dans ces sports de précision",
+  individual_sports: "Sports Individuels",
+  individual_subtitle: "Défiez-vous dans ces sports individuels",
+  
+  // Module de conseils
+  sports_learning_tips: "Conseils de Jeu Sportif",
+  tips_subtitle: "Améliorez vos performances et profitez davantage des jeux de sport",
+  
+  // Quatre conseils
+  practice_precision: "Pratiquez la Précision",
+  precision_description: "Concentrez-vous sur la précision plutôt que sur la vitesse pour améliorer vos compétences",
+  master_timing: "Maîtrisez le Timing",
+  timing_description: "Apprenez le moment parfait pour agir dans chaque sport",
+  learn_teamwork: "Apprenez le Travail d'Équipe",
+  teamwork_description: "Comprenez comment travailler ensemble dans les sports d'équipe",
+  stay_focused: "Restez Concentré",
+  focus_description: "Maintenez votre concentration pour de meilleures performances",
+  
+  // Module de compétences
+  sports_core_skills: "Compétences Sportives que Vous Développerez",
+  skills_subtitle: "Compétences athlétiques et de vie essentielles améliorées grâce au jeu sportif",
+  
+  // Six compétences principales
+  teamwork: "Travail d'Équipe",
+  teamwork_desc: "Apprenez à travailler efficacement avec vos coéquipiers et à vous soutenir mutuellement",
+  coordination: "Coordination",
+  coordination_desc: "Développez la coordination œil-main et les compétences motrices",
+  strategic_thinking: "Pensée Stratégique",
+  strategic_desc: "Apprenez la pensée tactique et la planification de jeu",
+  physical_fitness: "Condition Physique",
+  fitness_desc: "Améliorez la force, l'endurance et la santé globale",
+  sportsmanship: "Esprit Sportif",
+  sportsmanship_desc: "Pratiquez le fair-play et le respect des autres",
+  mental_toughness: "Résistance Mentale",
+  mental_desc: "Développez la résilience et la confiance à travers les défis"
+};
+
+// Fonction d'aide à la traduction
+function t(translations: Record<string, string>, key: string, fallback: string = ''): string {
+  return translations[key] || fallback;
+}
 ---
 
 <BaseLayout>
@@ -144,9 +213,9 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Sports Games</h1>
+            <h1 class="page-title">{t(translations, "main_title", "Jeux de Sport")}</h1>
             <p class="page-description">
-              Get active and learn through sports games! Combine physical education concepts with fun gameplay, teaching teamwork, strategy, healthy competition, and sportsmanship through virtual athletic challenges.
+              {t(translations, "main_description", "Restez actif et apprenez grâce aux jeux de sport ! Combinez les concepts d'éducation physique avec un gameplay amusant, enseignant le travail d'équipe, la stratégie, la compétition saine et l'esprit sportif à travers des défis athlétiques virtuels.")}
             </p>
           </div>
         </div>
@@ -160,8 +229,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Sports Games</h2>
-              <p class="module-subtitle">Championship-level games that will test your athletic skills</p>
+              <h2 class="module-title">{t(translations, "featured_games", "Jeux de Sport en Vedette")}</h2>
+              <p class="module-subtitle">{t(translations, "featured_subtitle", "Jeux de niveau championnat qui testeront vos compétences athlétiques")}</p>
             </div>
           </div>
           
@@ -181,8 +250,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-basketball-ball"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Basketball Games</h2>
-              <p class="module-subtitle">Dribble, shoot, and score with these basketball games</p>
+              <h2 class="module-title">{t(translations, "basketball_games", "Jeux de Basketball")}</h2>
+              <p class="module-subtitle">{t(translations, "basketball_subtitle", "Dribblez, tirez et marquez avec ces jeux de basketball")}</p>
             </div>
           </div>
           
@@ -202,8 +271,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-futbol"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Ball Games</h2>
-              <p class="module-subtitle">Kick, throw, and catch your way to victory</p>
+              <h2 class="module-title">{t(translations, "ball_games", "Jeux de Ballon")}</h2>
+              <p class="module-subtitle">{t(translations, "ball_subtitle", "Donnez des coups de pied, lancez et attrapez pour remporter la victoire")}</p>
             </div>
           </div>
           
@@ -223,8 +292,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-golf-ball"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Precision Games</h2>
-              <p class="module-subtitle">Perfect your technique in these precision sports</p>
+              <h2 class="module-title">{t(translations, "precision_games", "Jeux de Précision")}</h2>
+              <p class="module-subtitle">{t(translations, "precision_subtitle", "Perfectionnez votre technique dans ces sports de précision")}</p>
             </div>
           </div>
           
@@ -244,8 +313,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-running"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Individual Sports</h2>
-              <p class="module-subtitle">Challenge yourself in these individual sports</p>
+              <h2 class="module-title">{t(translations, "individual_sports", "Sports Individuels")}</h2>
+              <p class="module-subtitle">{t(translations, "individual_subtitle", "Défiez-vous dans ces sports individuels")}</p>
             </div>
           </div>
           
@@ -264,8 +333,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Sports Gaming Tips</h2>
-            <p class="module-subtitle">Improve your performance and enjoy sports games more</p>
+            <h2 class="module-title">{t(translations, "sports_learning_tips", "Conseils de Jeu Sportif")}</h2>
+            <p class="module-subtitle">{t(translations, "tips_subtitle", "Améliorez vos performances et profitez davantage des jeux de sport")}</p>
           </div>
         </div>
         
@@ -275,8 +344,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-bullseye"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Precision</h4>
-              <p class="tip-text">Focus on accuracy over speed to improve your skills</p>
+              <h4 class="tip-title">{t(translations, "practice_precision", "Pratiquez la Précision")}</h4>
+              <p class="tip-text">{t(translations, "precision_description", "Concentrez-vous sur la précision plutôt que sur la vitesse pour améliorer vos compétences")}</p>
             </div>
           </div>
           
@@ -285,8 +354,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Master Timing</h4>
-              <p class="tip-text">Learn the perfect moment to act in each sport</p>
+              <h4 class="tip-title">{t(translations, "master_timing", "Maîtrisez le Timing")}</h4>
+              <p class="tip-text">{t(translations, "timing_description", "Apprenez le moment parfait pour agir dans chaque sport")}</p>
             </div>
           </div>
           
@@ -295,8 +364,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-users"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Learn Teamwork</h4>
-              <p class="tip-text">Understand how to work together in team sports</p>
+              <h4 class="tip-title">{t(translations, "learn_teamwork", "Apprenez le Travail d'Équipe")}</h4>
+              <p class="tip-text">{t(translations, "teamwork_description", "Comprenez comment travailler ensemble dans les sports d'équipe")}</p>
             </div>
           </div>
           
@@ -305,8 +374,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-trophy"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Set Goals</h4>
-              <p class="tip-text">Challenge yourself to reach new personal bests</p>
+              <h4 class="tip-title">{t(translations, "stay_focused", "Restez Concentré")}</h4>
+              <p class="tip-text">{t(translations, "focus_description", "Maintenez votre concentration pour de meilleures performances")}</p>
             </div>
           </div>
         </div>
@@ -319,19 +388,29 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Athletic Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential abilities gained through sports gaming</p>
+            <h2 class="module-title">{t(translations, "sports_core_skills", "Compétences Sportives que Vous Développerez")}</h2>
+            <p class="module-subtitle">{t(translations, "skills_subtitle", "Compétences athlétiques et de vie essentielles améliorées grâce au jeu sportif")}</p>
           </div>
         </div>
 
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-icon">
-              <i class="fas fa-hand-paper"></i>
+              <i class="fas fa-users"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Hand-Eye Coordination</h4>
-              <p class="skill-description">Improve reaction time and precision</p>
+              <h4 class="skill-title">{t(translations, "teamwork", "Travail d'Équipe")}</h4>
+              <p class="skill-description">{t(translations, "teamwork_desc", "Apprenez à travailler efficacement avec vos coéquipiers et à vous soutenir mutuellement")}</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-crosshairs"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">{t(translations, "coordination", "Coordination")}</h4>
+              <p class="skill-description">{t(translations, "coordination_desc", "Développez la coordination œil-main et les compétences motrices")}</p>
             </div>
           </div>
 
@@ -340,48 +419,38 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-chess"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Strategic Thinking</h4>
-              <p class="skill-description">Plan moves and anticipate opponents</p>
+              <h4 class="skill-title">{t(translations, "strategic_thinking", "Pensée Stratégique")}</h4>
+              <p class="skill-description">{t(translations, "strategic_desc", "Apprenez la pensée tactique et la planification de jeu")}</p>
             </div>
           </div>
 
           <div class="skill-item">
             <div class="skill-icon">
-              <i class="fas fa-heartbeat"></i>
+              <i class="fas fa-dumbbell"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Focus & Concentration</h4>
-              <p class="skill-description">Maintain attention under pressure</p>
+              <h4 class="skill-title">{t(translations, "physical_fitness", "Condition Physique")}</h4>
+              <p class="skill-description">{t(translations, "fitness_desc", "Améliorez la force, l'endurance et la santé globale")}</p>
             </div>
           </div>
-
+          
           <div class="skill-item">
             <div class="skill-icon">
               <i class="fas fa-medal"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Competitive Spirit</h4>
-              <p class="skill-description">Develop healthy competition habits</p>
+              <h4 class="skill-title">{t(translations, "sportsmanship", "Esprit Sportif")}</h4>
+              <p class="skill-description">{t(translations, "sportsmanship_desc", "Pratiquez le fair-play et le respect des autres")}</p>
             </div>
           </div>
           
           <div class="skill-item">
             <div class="skill-icon">
-              <i class="fas fa-stopwatch"></i>
+              <i class="fas fa-brain"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Quick Decision Making</h4>
-              <p class="skill-description">Learn to act fast and decisively</p>
-            </div>
-          </div>
-          
-          <div class="skill-item">
-            <div class="skill-icon">
-              <i class="fas fa-arrows-alt"></i>
-            </div>
-            <div class="skill-content">
-              <h4 class="skill-title">Motor Skills</h4>
-              <p class="skill-description">Enhance physical coordination</p>
+              <h4 class="skill-title">{t(translations, "mental_toughness", "Résistance Mentale")}</h4>
+              <p class="skill-description">{t(translations, "mental_desc", "Développez la résilience et la confiance à travers les défis")}</p>
             </div>
           </div>
         </div>
@@ -539,6 +608,23 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
 
   .skills-icon {
     background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  }
+
+  /* 体育类别图标样式 */
+  .basketball-icon {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  }
+
+  .ball-icon {
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  }
+
+  .precision-icon {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  }
+
+  .individual-icon {
+    background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%);
   }
 
   .module-title-group {

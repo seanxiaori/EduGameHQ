@@ -49,13 +49,36 @@
     "loading": "Loading...",
     "ages": "Ages"
   },
+  "game_detail": {
+    "loading_game": "Loading {gameTitle}...",
+    "preparing_experience": "Preparing your educational game experience",
+    "start_game": "Start Game",
+    "fullscreen": "Fullscreen",
+    "restart": "Restart",
+    "favorite": "Favorite",
+    "share": "Share",
+    "game_information": "Game Information",
+    "how_to_play": "How to Play",
+    "game_controls": "Game Controls",
+    "tips_tricks": "Tips & Tricks",
+    "developer_information": "Developer Information",
+    "developer": "Developer",
+    "source": "Source",
+    "type": "Type",
+    "release_date": "Release Date",
+    "more_games": "More",
+    "games": "Games",
+    "free": "Free",
+    "mouse": "Mouse",
+    "keyboard": "Keyboard",
+    "touch": "Touch"
+  },
   "footer": {
     "tagline": "Making Learning Fun for Everyone",
     "description": "EduGameHQ is your go-to platform for educational games that make learning engaging and effective.",
     "quick_links": "Quick Links",
     "game_categories": "Game Categories",
     "support": "Support",
-    "social": "Follow Us",
     "copyright": "© 2025 EduGameHQ. All rights reserved.",
     "made_with_love": "Made with ❤️ for learners worldwide",
     "logo_alt": "EduGameHQ Logo",
@@ -66,15 +89,217 @@
       "instagram": "Follow us on Instagram"
     }
   },
+  "category_pages": {
+    "math_games": {
+      "title": "Math Games",
+      "description": "Explore our collection of engaging math games designed to make learning mathematics fun and interactive. From basic arithmetic to advanced problem-solving, these games help students build confidence and skills in mathematics.",
+      "featured_section": {
+        "title": "Featured Math Games",
+        "description": "Our most popular and recommended math games"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Games",
+          "description": "Perfect for beginners and young learners"
+        },
+        "medium": {
+          "title": "Medium Level Games", 
+          "description": "Great for intermediate students"
+        },
+        "hard": {
+          "title": "Hard Level Games",
+          "description": "Challenging games for advanced learners"
+        }
+      },
+      "learning_tips": {
+        "title": "Math Learning Tips",
+        "subtitle": "Expert advice to improve your math skills",
+        "tips": [
+          {
+            "title": "Practice Daily",
+            "description": "Spend 15-20 minutes daily practicing math concepts through games"
+          },
+          {
+            "title": "Progress Gradually",
+            "description": "Start with easier games and gradually move to more challenging ones"
+          },
+          {
+            "title": "Embrace Mistakes",
+            "description": "Don't be afraid to make mistakes - they're part of the learning process"
+          },
+          {
+            "title": "Understand Why",
+            "description": "Focus on understanding the reasoning behind each solution"
+          }
+        ]
+      }
+    },
+    "science_games": {
+      "title": "Science Games",
+      "description": "Discover the wonders of science through interactive games that make complex concepts easy to understand and fun to explore.",
+      "featured_section": {
+        "title": "Featured Science Games",
+        "description": "Our most popular and recommended science games"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Games",
+          "description": "Perfect for beginners and young learners"
+        },
+        "medium": {
+          "title": "Medium Level Games",
+          "description": "Great for intermediate students"
+        },
+        "hard": {
+          "title": "Hard Level Games",
+          "description": "Challenging games for advanced learners"
+        }
+      }
+    },
+    "language_games": {
+      "title": "Language Games",
+      "description": "Improve your language skills with our collection of engaging word games, vocabulary builders, and reading comprehension activities.",
+      "featured_section": {
+        "title": "Featured Language Games",
+        "description": "Our most popular and recommended language games"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Games",
+          "description": "Perfect for beginners and young learners"
+        },
+        "medium": {
+          "title": "Medium Level Games",
+          "description": "Great for intermediate students"
+        },
+        "hard": {
+          "title": "Hard Level Games",
+          "description": "Challenging games for advanced learners"
+        }
+      },
+      "learning_tips": {
+        "title": "Language Learning Tips",
+        "subtitle": "Effective strategies to improve your language skills"
+      }
+    },
+    "puzzle_games": {
+      "title": "Puzzle Games",
+      "description": "Challenge your mind with our collection of educational puzzle games! Develop critical thinking, problem-solving skills, logic, and spatial reasoning through engaging brain teasers and mind-bending challenges.",
+      "featured_section": {
+        "title": "Featured Puzzle Games",
+        "description": "Mind-bending puzzles to challenge your thinking skills"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Games",
+          "description": "Perfect for beginners and young puzzle solvers"
+        },
+        "medium": {
+          "title": "Medium Level Games",
+          "description": "Intermediate challenges for developing minds"
+        },
+        "hard": {
+          "title": "Hard Level Games",
+          "description": "Advanced puzzles for master problem solvers"
+        }
+      },
+      "learning_tips": {
+        "title": "Puzzle Solving Tips",
+        "subtitle": "Strategies to improve your problem-solving skills"
+      }
+    }
+  },
   "about": {
     "title": "About EduGameHQ",
     "subtitle": "Where Learning Meets Fun - Transforming Education Through Interactive Gaming",
-    "mission": "Our Mission",
-    "values": "Core Values",
-    "story": "Our Story",
-    "team": "Meet Our Team",
-    "stats": "Our Impact",
-    "contact": "Get in Touch"
+    "company_subtitle": "Making quality education accessible, engaging, and enjoyable for every child",
+    "explore_our_story": "Explore Our Story",
+    "navigation": {
+      "mission": "Our Mission",
+      "values": "Core Values", 
+      "story": "Our Story",
+      "team": "Meet Our Team",
+      "stats": "Our Impact"
+    },
+    "stats": {
+      "title": "Our Impact",
+      "educational_games": "Educational Games",
+      "active_students": "Active Students",
+      "countries_served": "Countries Served",
+      "free_content": "Free Content"
+    },
+    "mission": {
+      "title": "Our Mission",
+      "description": "To democratize quality education by providing free, engaging, and effective educational games that inspire curiosity, foster creativity, and build essential skills for the 21st century.",
+      "vision_title": "Our Vision",
+      "vision_description": "A world where every child has access to high-quality educational content that makes learning joyful, meaningful, and transformative."
+    },
+    "values": {
+      "title": "Our Core Values",
+      "quality_first": {
+        "title": "Quality First",
+        "description": "Every game is carefully curated and tested by education experts"
+      },
+      "always_free": {
+        "title": "Always Free",
+        "description": "Education should be accessible to everyone, everywhere"
+      },
+      "safe_environment": {
+        "title": "Safe Environment",
+        "description": "Child-friendly content with strict safety and privacy standards"
+      },
+      "global_reach": {
+        "title": "Global Reach",
+        "description": "Supporting learners worldwide with multilingual content"
+      }
+    },
+    "story": {
+      "title": "Our Story",
+      "beginning": {
+        "title": "The Beginning",
+        "description": "EduGameHQ was born from a simple observation: children learn best when they're having fun. Founded in 2023 by a team of educators, game developers, and child psychologists, we set out to bridge the gap between entertainment and education."
+      },
+      "growth": {
+        "title": "Growth & Expansion",
+        "description": "What started as a small collection of math games has grown into a comprehensive platform serving over 50,000 students worldwide. Our games cover mathematics, science, coding, language arts, and critical thinking skills."
+      },
+      "today": {
+        "title": "Today & Beyond",
+        "description": "Today, EduGameHQ continues to evolve, always guided by our core belief that quality education should be free, accessible, and enjoyable for every child."
+      }
+    },
+    "team": {
+      "title": "Meet Our Team",
+      "intro": "Our diverse team of educators, developers, and researchers work together to create the best possible learning experience for students worldwide.",
+      "members": {
+        "sarah_chen": {
+          "name": "Dr. Sarah Chen",
+          "role": "Educational Director",
+          "description": "Former Stanford professor with 15+ years in educational technology"
+        },
+        "mike_rodriguez": {
+          "name": "Mike Rodriguez", 
+          "role": "Game Developer",
+          "description": "Award-winning game designer specializing in educational content"
+        },
+        "lisa_wang": {
+          "name": "Lisa Wang",
+          "role": "Child Psychologist",
+          "description": "Expert in child development and learning psychology"
+        },
+        "alex_thompson": {
+          "name": "Alex Thompson",
+          "role": "Technology Lead",
+          "description": "Full-stack developer passionate about accessible education"
+        }
+      }
+    },
+    "contact_cta": {
+      "title": "Want to Know More?",
+      "description": "We'd love to hear from you! Contact us for partnerships, feedback, or just to say hello.",
+      "get_in_touch": "Get in Touch",
+      "our_policies": "Our Policies"
+    }
   },
   "help": {
     "title": "Help & Support",
@@ -288,5 +513,79 @@
       "button1": "Get in Touch",
       "button2": "Our Policies"
     }
+  },
+  "pages": {
+    "science": {
+      "title": "Science Games",
+      "description": "Explore the wonders of science with interactive games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists who want to discover how the world works through hands-on experimentation and observation.",
+      "featured": {
+        "title": "Featured Science Games",
+        "subtitle": "Our most popular and recommended science games"
+      },
+      "easy": {
+        "title": "Easy Level Games",
+        "subtitle": "Perfect for beginners and young scientists"
+      },
+      "medium": {
+        "title": "Medium Level Games",
+        "subtitle": "Challenge yourself with intermediate scientific concepts"
+      },
+      "hard": {
+        "title": "Hard Level Games",
+        "subtitle": "Advanced challenges for science experts"
+      },
+      "learning_tips": {
+        "title": "Science Learning Tips",
+        "subtitle": "Expert advice to improve your scientific thinking",
+        "tips": {
+          "observe": {
+            "title": "Observe Everything",
+            "description": "Pay attention to the world around you and ask \"why\" and \"how\""
+          },
+          "experiment": {
+            "title": "Experiment Safely",
+            "description": "Test your hypotheses through controlled experiments and observations"
+          },
+          "journal": {
+            "title": "Keep a Science Journal",
+            "description": "Record your observations, questions, and discoveries"
+          },
+          "connect": {
+            "title": "Connect to Real Life",
+            "description": "Link scientific concepts to everyday events and experiences"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Core Skills You'll Develop",
+        "subtitle": "Essential scientific abilities gained through gameplay",
+        "skills": {
+          "scientific_method": {
+            "title": "Scientific Method",
+            "description": "Learn observation and experimentation"
+          },
+          "physics": {
+            "title": "Physics Concepts",
+            "description": "Understand forces and motion"
+          },
+          "biology": {
+            "title": "Biology Basics",
+            "description": "Explore living organisms"
+          },
+          "chemistry": {
+            "title": "Chemistry",
+            "description": "Discover elements and reactions"
+          },
+          "earth_science": {
+            "title": "Earth Science",
+            "description": "Study our planet and environment"
+          },
+          "critical_thinking": {
+            "title": "Critical Thinking",
+            "description": "Develop logical reasoning skills"
+          }
+        }
+      }
+    }
   }
-} 
+}

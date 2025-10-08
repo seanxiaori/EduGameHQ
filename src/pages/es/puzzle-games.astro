@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
+
+// 获取西班牙语翻译数据
+const translations = await getTranslations('es');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -45,9 +49,9 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Puzzle Games</h1>
+            <h1 class="page-title">{t(translations, 'category_pages.puzzle_games.title', 'Juegos de Rompecabezas')}</h1>
             <p class="page-description">
-              Challenge your mind with our collection of educational puzzle games! Develop critical thinking, problem-solving skills, logic, and spatial reasoning through engaging brain teasers and mind-bending challenges.
+              {t(translations, 'category_pages.puzzle_games.description', '¡Desafía tu mente con nuestra colección de juegos educativos de rompecabezas! Desarrolla el pensamiento crítico, habilidades de resolución de problemas, lógica y razonamiento espacial a través de acertijos atractivos y desafíos que doblan la mente.')}
             </p>
           </div>
         </div>
@@ -61,8 +65,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Puzzle Games</h2>
-              <p class="module-subtitle">Mind-bending puzzles to challenge your thinking skills</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.featured.title', 'Juegos de Rompecabezas Destacados')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.featured.subtitle', 'Rompecabezas que desafían la mente para poner a prueba tus habilidades de pensamiento')}</p>
             </div>
           </div>
           
@@ -82,8 +86,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.easy.title', 'Juegos de Nivel Fácil')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.easy.description', 'Perfecto para principiantes y jóvenes solucionadores de rompecabezas')}</p>
             </div>
           </div>
           
@@ -103,8 +107,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for developing problem solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.medium.title', 'Juegos de Nivel Medio')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.medium.description', 'Desafíos intermedios para solucionadores de problemas en desarrollo')}</p>
             </div>
           </div>
           
@@ -124,8 +128,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Expert challenges for master puzzle solvers</p>
+              <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.difficulty_levels.hard.title', 'Juegos de Nivel Difícil')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.difficulty_levels.hard.description', 'Desafíos expertos para maestros solucionadores de rompecabezas')}</p>
             </div>
           </div>
           
@@ -144,8 +148,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Puzzle Solving Tips</h2>
-            <p class="module-subtitle">Effective strategies to enhance your problem-solving abilities</p>
+            <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.tips.title', 'Consejos para Resolver Rompecabezas')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.tips.subtitle', 'Estrategias efectivas para mejorar tus habilidades de resolución de problemas')}</p>
           </div>
         </div>
         
@@ -155,8 +159,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brain"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Think Step by Step</h4>
-              <p class="tip-text">Break complex problems into smaller, manageable pieces</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.tips.items.think_step_by_step.title', 'Piensa Paso a Paso')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.tips.items.think_step_by_step.description', 'Divide los problemas complejos en piezas más pequeñas y manejables')}</p>
             </div>
           </div>
           
@@ -165,8 +169,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-search"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Look for Patterns</h4>
-              <p class="tip-text">Identify recurring elements and relationships in puzzles</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.tips.items.look_for_patterns.title', 'Busca Patrones')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.tips.items.look_for_patterns.description', 'Identifica elementos recurrentes y relaciones en los rompecabezas')}</p>
             </div>
           </div>
           
@@ -175,8 +179,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Take Your Time</h4>
-              <p class="tip-text">Don't rush - careful observation leads to better solutions</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.tips.items.take_your_time.title', 'Tómate Tu Tiempo')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.tips.items.take_your_time.description', 'No te apresures - la observación cuidadosa lleva a mejores soluciones')}</p>
             </div>
           </div>
           
@@ -185,8 +189,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-redo"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Regularly</h4>
-              <p class="tip-text">Daily puzzle solving improves logical thinking skills</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.puzzle_games.tips.items.practice_regularly.title', 'Practica Regularmente')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.puzzle_games.tips.items.practice_regularly.description', 'Resolver rompecabezas diariamente mejora las habilidades de pensamiento lógico')}</p>
             </div>
           </div>
         </div>
@@ -199,8 +203,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Cognitive Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential mental abilities gained through puzzle gaming</p>
+            <h2 class="module-title">{t(translations, 'category_pages.puzzle_games.skills.title', 'Habilidades Cognitivas que Desarrollarás')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.puzzle_games.skills.subtitle', 'Habilidades mentales esenciales obtenidas a través de los juegos de rompecabezas')}</p>
           </div>
         </div>
 
@@ -210,8 +214,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-brain"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Logic & Reasoning</h4>
-              <p class="skill-description">Develop systematic thinking and deduction skills</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.items.logic_reasoning.title', 'Lógica y Razonamiento')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.items.logic_reasoning.description', 'Desarrolla el pensamiento sistemático y las habilidades de deducción')}</p>
             </div>
           </div>
 
@@ -220,8 +224,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-search"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Pattern Recognition</h4>
-              <p class="skill-description">Identify relationships and sequences</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.items.pattern_recognition.title', 'Reconocimiento de Patrones')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.items.pattern_recognition.description', 'Identifica relaciones y secuencias')}</p>
             </div>
           </div>
 
@@ -230,8 +234,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Problem Solving</h4>
-              <p class="skill-description">Learn strategic approaches to challenges</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.items.problem_solving.title', 'Resolución de Problemas')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.items.problem_solving.description', 'Aprende enfoques estratégicos para los desafíos')}</p>
             </div>
           </div>
 
@@ -240,8 +244,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-eye"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Attention to Detail</h4>
-              <p class="skill-description">Improve focus and observation skills</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.items.attention_to_detail.title', 'Atención al Detalle')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.items.attention_to_detail.description', 'Mejora las habilidades de concentración y observación')}</p>
             </div>
           </div>
           
@@ -250,8 +254,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-memory"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Memory Enhancement</h4>
-              <p class="skill-description">Strengthen working and visual memory</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.items.memory_enhancement.title', 'Mejora de la Memoria')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.items.memory_enhancement.description', 'Fortalece la memoria de trabajo y visual')}</p>
             </div>
           </div>
           
@@ -260,8 +264,8 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-cogs"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Mental Flexibility</h4>
-              <p class="skill-description">Adapt thinking strategies for different tasks</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.puzzle_games.skills.items.mental_flexibility.title', 'Flexibilidad Mental')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.puzzle_games.skills.items.mental_flexibility.description', 'Adapta las estrategias de pensamiento para diferentes tareas')}</p>
             </div>
           </div>
         </div>
@@ -733,5 +737,5 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

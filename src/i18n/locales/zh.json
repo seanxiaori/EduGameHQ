@@ -72,11 +72,13 @@
     "how_to_play": "如何游戏",
     "game_controls": "游戏控制",
     "tips_tricks": "技巧与窍门",
+    "developer_information": "开发者信息",
     "developer": "开发者",
     "source": "来源",
     "type": "类型",
     "release_date": "发布日期",
-    "more_games": "更多 {category} 游戏",
+    "more_games": "更多",
+    "games": "游戏",
     "free": "免费",
     "mouse": "鼠标",
     "keyboard": "键盘",
@@ -101,12 +103,94 @@
   "about": {
     "title": "关于EduGameHQ",
     "subtitle": "让学习充满乐趣 - 通过互动游戏改变教育",
-    "mission": "我们的使命",
-    "values": "核心价值",
-    "story": "我们的故事",
-    "team": "认识我们的团队",
-    "stats": "我们的影响",
-    "contact": "联系我们"
+    "company_subtitle": "让优质教育变得易获得、有趣且愉快，为每个孩子服务",
+    "explore_our_story": "探索我们的故事",
+    "navigation": {
+      "mission": "我们的使命",
+      "values": "核心价值",
+      "story": "我们的故事", 
+      "team": "认识我们的团队",
+      "stats": "我们的影响"
+    },
+    "stats": {
+      "title": "我们的影响",
+      "educational_games": "教育游戏",
+      "active_students": "活跃学生",
+      "countries_served": "服务国家",
+      "free_content": "免费内容"
+    },
+    "mission": {
+      "title": "我们的使命",
+      "description": "通过提供免费、有趣且有效的教育游戏来普及优质教育，激发好奇心，培养创造力，建立21世纪必备技能。",
+      "vision_title": "我们的愿景",
+      "vision_description": "一个每个孩子都能获得高质量教育内容的世界，让学习变得快乐、有意义且具有变革性。"
+    },
+    "values": {
+      "title": "我们的核心价值",
+      "quality_first": {
+        "title": "质量第一",
+        "description": "每个游戏都经过教育专家的精心策划和测试"
+      },
+      "always_free": {
+        "title": "永远免费",
+        "description": "教育应该对每个人、每个地方都是可获得的"
+      },
+      "safe_environment": {
+        "title": "安全环境",
+        "description": "儿童友好的内容，严格的安全和隐私标准"
+      },
+      "global_reach": {
+        "title": "全球覆盖",
+        "description": "通过多语言内容支持全世界的学习者"
+      }
+    },
+    "story": {
+      "title": "我们的故事",
+      "beginning": {
+        "title": "起源",
+        "description": "EduGameHQ诞生于一个简单的观察：孩子们在玩乐时学得最好。2023年由教育工作者、游戏开发者和儿童心理学家团队创立，我们致力于弥合娱乐与教育之间的差距。"
+      },
+      "growth": {
+        "title": "成长与扩展",
+        "description": "从最初的小型数学游戏集合，发展成为服务全球超过5万名学生的综合平台。我们的游戏涵盖数学、科学、编程、语言艺术和批判性思维技能。"
+      },
+      "today": {
+        "title": "今天与未来",
+        "description": "今天，EduGameHQ继续发展，始终以我们的核心信念为指导：优质教育应该是免费的、可获得的，并且对每个孩子来说都是愉快的。"
+      }
+    },
+    "team": {
+      "title": "认识我们的团队",
+      "intro": "我们多元化的教育工作者、开发者和研究人员团队共同努力，为全世界的学生创造最佳的学习体验。",
+      "members": {
+        "sarah_chen": {
+          "name": "陈莎拉博士",
+          "role": "教育总监",
+          "description": "前斯坦福大学教授，在教育技术领域拥有15年以上经验"
+        },
+        "mike_rodriguez": {
+          "name": "迈克·罗德里格斯",
+          "role": "游戏开发者",
+          "description": "专注于教育内容的获奖游戏设计师"
+        },
+        "lisa_wang": {
+          "name": "王丽莎",
+          "role": "儿童心理学家",
+          "description": "儿童发展和学习心理学专家"
+        },
+        "alex_thompson": {
+          "name": "亚历克斯·汤普森",
+          "role": "技术负责人",
+          "description": "热衷于无障碍教育的全栈开发者"
+        }
+      }
+    },
+    "contact_cta": {
+      "title": "想了解更多？",
+      "description": "我们很乐意听到您的声音！联系我们进行合作、反馈或只是打个招呼。",
+      "get_in_touch": "联系我们",
+      "our_policies": "我们的政策"
+    }
   },
   "help": {
     "title": "帮助与支持",
@@ -134,6 +218,350 @@
     "switch": "切换语言",
     "current": "当前语言",
     "select": "选择语言"
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "数学游戏",
+      "description": "探索我们精心设计的数学游戏集合，让数学学习变得有趣且互动。从基础算术到高级问题解决，这些游戏帮助学生建立数学信心和技能。",
+      "featured_section": {
+        "title": "精选数学游戏",
+        "description": "我们最受欢迎和推荐的数学游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻学习者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级学生"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合高级学习者的挑战性游戏"
+        }
+      },
+      "learning_tips": {
+        "title": "数学学习技巧",
+        "subtitle": "专家建议，帮助您提高数学技能",
+        "tips": [
+          {
+            "title": "每日练习",
+            "description": "每天花15-20分钟通过游戏练习数学概念"
+          },
+          {
+            "title": "循序渐进",
+            "description": "从简单的游戏开始，逐渐挑战更难的内容"
+          },
+          {
+            "title": "拥抱错误",
+            "description": "不要害怕犯错误——它们是学习过程的一部分"
+          },
+          {
+            "title": "理解原理",
+            "description": "专注于理解每个解决方案背后的推理过程"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "您将培养的核心技能",
+        "subtitle": "通过游戏获得的基本数学能力",
+        "skills": {
+          "addition_subtraction": {
+            "title": "加法与减法",
+            "description": "掌握基础算术运算"
+          },
+          "multiplication_division": {
+            "title": "乘法与除法",
+            "description": "建立高级运算的流畅性"
+          },
+          "fractions_decimals": {
+            "title": "分数与小数",
+            "description": "理解部分与整体"
+          },
+          "geometry": {
+            "title": "几何",
+            "description": "探索形状和空间推理"
+          },
+          "algebra": {
+            "title": "代数",
+            "description": "解方程和处理变量"
+          },
+          "problem_solving": {
+            "title": "问题解决",
+            "description": "培养批判性思维能力"
+          }
+        }
+      }
+    },
+    "science_games": {
+      "title": "科学游戏",
+      "description": "通过互动游戏探索科学的奇妙世界，让复杂的概念变得易于理解和有趣探索。",
+      "featured_section": {
+        "title": "精选科学游戏",
+        "description": "我们最受欢迎和推荐的科学游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻学习者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级学生"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合高级学习者的挑战性游戏"
+        }
+      },
+      "learning_tips": {
+        "title": "科学学习技巧",
+        "subtitle": "提高科学思维的专家建议",
+        "tips": {
+          "observe": {
+            "title": "观察一切",
+            "description": "关注周围的世界，多问\"为什么\"和\"怎么样\""
+          },
+          "experiment": {
+            "title": "安全实验",
+            "description": "通过受控实验和观察来验证你的假设"
+          },
+          "journal": {
+            "title": "记录科学日志",
+            "description": "记录你的观察、问题和发现"
+          },
+          "connect": {
+            "title": "联系现实生活",
+            "description": "将科学概念与日常现象和经验联系起来"
+          }
+        }
+      },
+      "core_skills": {
+         "title": "你将培养的核心技能",
+         "subtitle": "通过游戏获得的基本科学能力",
+         "scientific_method": {
+           "title": "科学方法",
+           "description": "学习观察和实验"
+         },
+         "physics": {
+           "title": "物理概念",
+           "description": "理解力和运动"
+         },
+         "biology": {
+           "title": "生物学",
+           "description": "了解生命系统"
+         },
+         "chemistry": {
+           "title": "化学基础",
+           "description": "探索物质变化"
+         },
+         "earth_science": {
+           "title": "地球科学",
+           "description": "认识我们的星球"
+         },
+         "astronomy": {
+           "title": "天文学",
+           "description": "探索宇宙奥秘"
+         },
+         "critical_thinking": {
+           "title": "批判性思维",
+           "description": "培养逻辑推理能力"
+         }
+       }
+    },
+    "language_games": {
+      "title": "语言游戏",
+      "description": "通过我们精彩的文字游戏、词汇构建器和阅读理解活动来提高您的语言技能。",
+      "featured_section": {
+        "title": "精选语言游戏",
+        "description": "我们最受欢迎和推荐的语言游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻学习者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级学生"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合高级学习者的挑战性游戏"
+        }
+      },
+      "learning_tips": {
+        "title": "语言学习技巧",
+        "subtitle": "提高语言技能的有效策略"
+      }
+    },
+    "puzzle_games": {
+      "title": "益智游戏",
+      "description": "通过我们精心收集的教育益智游戏挑战您的思维！通过引人入胜的脑力激荡和令人费解的挑战，培养批判性思维、解决问题的技能、逻辑和空间推理能力。",
+      "featured_section": {
+        "title": "精选益智游戏",
+        "description": "挑战您思维技能的烧脑益智游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻的益智游戏爱好者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合发展中思维的中级挑战"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合解题高手的高级益智游戏"
+        }
+      },
+      "learning_tips": {
+        "title": "益智解题技巧",
+        "subtitle": "提高解决问题技能的策略",
+        "tips": {
+          "step_by_step": {
+            "title": "逐步思考",
+            "description": "将复杂问题分解为更小、更易管理的部分"
+          },
+          "patterns": {
+            "title": "寻找规律",
+            "description": "识别谜题中的重复元素和关系"
+          },
+          "take_time": {
+            "title": "慢慢来",
+            "description": "不要急躁 - 仔细观察能找到更好的解决方案"
+          },
+          "practice": {
+            "title": "定期练习",
+            "description": "每日解谜能提升逻辑思维能力"
+          }
+        }
+      },
+      "cognitive_skills": {
+        "title": "你将培养的认知技能",
+        "subtitle": "通过益智游戏获得的基本心理能力",
+        "skills": {
+          "logic": {
+            "title": "逻辑与推理",
+            "description": "培养系统性思维和推理能力"
+          },
+          "pattern": {
+            "title": "模式识别",
+            "description": "识别关系和序列"
+          },
+          "problem_solving": {
+            "title": "问题解决",
+            "description": "学习应对挑战的策略方法"
+          },
+          "attention": {
+            "title": "注意细节",
+            "description": "提升专注力和观察技能"
+          },
+          "memory": {
+            "title": "记忆增强",
+            "description": "强化工作记忆和视觉记忆"
+          },
+          "flexibility": {
+            "title": "思维灵活性",
+            "description": "为不同任务调整思维策略"
+          }
+        }
+      }
+    },
+    "sports_games": {
+      "title": "体育游戏",
+      "description": "通过我们精彩的体育游戏集合学习团队合作、体育技能和健康生活方式。从篮球到足球，从网球到高尔夫，这些游戏帮助培养运动技能、协调能力和体育精神。",
+      "featured_section": {
+        "title": "精选体育游戏",
+        "description": "我们最受欢迎和推荐的体育游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻运动爱好者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级运动员的挑战"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合高级运动员的专业挑战"
+        }
+      },
+      "sport_categories": {
+        "basketball": {
+          "title": "篮球游戏",
+          "description": "学习投篮、运球和团队战术"
+        },
+        "ball_sports": {
+          "title": "球类运动",
+          "description": "足球、棒球、网球等各种球类游戏"
+        },
+        "precision_sports": {
+          "title": "精准运动",
+          "description": "高尔夫、保龄球等需要精确控制的运动"
+        },
+        "individual_sports": {
+          "title": "个人运动",
+          "description": "乒乓球、赛车等个人技能运动"
+        }
+      },
+      "learning_tips": {
+        "title": "体育学习技巧",
+        "subtitle": "提高运动技能和体育精神的专家建议",
+        "tips": {
+          "practice": {
+            "title": "定期练习",
+            "description": "每天花30-45分钟练习运动技能，提高协调性和体能"
+          },
+          "teamwork": {
+            "title": "学习团队合作",
+            "description": "专注于沟通、合作和支持队友"
+          },
+          "fair_play": {
+            "title": "公平竞赛",
+            "description": "练习良好的体育精神，尊重规则和对手"
+          },
+          "stay_active": {
+            "title": "保持活跃",
+            "description": "通过定期锻炼和健康习惯保持身体健康"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "你将培养的核心技能",
+        "subtitle": "通过体育游戏获得的基本运动能力",
+        "skills": {
+          "teamwork": {
+            "title": "团队合作",
+            "description": "学会与队友有效合作并相互支持"
+          },
+          "coordination": {
+            "title": "手眼协调",
+            "description": "提高精确控制和反应能力"
+          },
+          "strategy": {
+            "title": "战略思维",
+            "description": "学习游戏策略和战术规划"
+          },
+          "fitness": {
+            "title": "体能素质",
+            "description": "培养耐力、力量和灵活性"
+          },
+          "sportsmanship": {
+            "title": "体育精神",
+            "description": "学习公平竞赛和尊重对手"
+          },
+          "leadership": {
+            "title": "领导能力",
+            "description": "在团队中承担责任和指导他人"
+          }
+        }
+      }
+    }
   },
   "home": {
     "explore_by_category": {
@@ -320,5 +748,207 @@
       "button1": "联系我们",
       "button2": "我们的政策"
     }
+  },
+  "pages": {
+    "science": {
+      "title": "科学游戏",
+      "description": "通过涵盖物理、化学、生物和地球科学的互动游戏探索科学的奇妙世界。非常适合好奇心强的孩子和未来的科学家，他们想要通过实践实验和观察来发现世界是如何运作的。",
+      "featured": {
+        "title": "精选科学游戏",
+        "subtitle": "最受欢迎和推荐的科学游戏"
+      },
+      "easy": {
+        "title": "简单游戏",
+        "subtitle": "非常适合初学者和年轻科学家"
+      },
+      "medium": {
+        "title": "中级游戏",
+        "subtitle": "用中级科学概念挑战自己"
+      },
+      "hard": {
+        "title": "困难游戏",
+        "subtitle": "为科学专家提供的高级挑战"
+      },
+      "learning_tips": {
+        "title": "科学学习技巧",
+        "subtitle": "提高科学思维的专家建议",
+        "tips": {
+          "observe": {
+            "title": "观察一切",
+            "description": "注意周围的世界，问'为什么'和'如何'"
+          },
+          "experiment": {
+            "title": "安全实验",
+            "description": "通过受控实验和观察测试假设"
+          },
+          "journal": {
+            "title": "记录科学日志",
+            "description": "记录你的观察、问题和发现"
+          },
+          "connect": {
+            "title": "联系现实生活",
+            "description": "将科学概念与日常事件和经历联系起来"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "要培养的核心技能",
+        "subtitle": "通过游戏获得的基本科学技能",
+        "skills": {
+          "scientific_method": {
+            "title": "科学方法",
+            "description": "学习观察和实验"
+          },
+          "physics": {
+            "title": "物理概念",
+            "description": "理解力和运动"
+          },
+          "biology": {
+            "title": "生物学基础",
+            "description": "探索生命体"
+          },
+          "chemistry": {
+            "title": "化学",
+            "description": "发现元素和反应"
+          },
+          "earth_science": {
+            "title": "地球科学",
+            "description": "研究我们的星球和环境"
+          },
+          "critical_thinking": {
+            "title": "批判性思维",
+            "description": "发展逻辑推理技能"
+          }
+        }
+      }
+    }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "热门游戏 | 最受欢迎的教育游戏 | EduGameHQ",
+      "description": "玩最受欢迎的热门教育游戏。加入成千上万的学生，通过最热门的数学、科学、编程和语言游戏进行学习。",
+      "keywords": "热门游戏, 流行游戏, 热门教育游戏, 最受欢迎游戏, 热门学习游戏, 流行教育内容"
+    },
+    "hero": {
+      "title": "热门游戏",
+      "subtitle": "发现现在最热门的教育游戏！这些热门游戏深受全世界学生喜爱，是各学科引人入胜的学习体验的完美选择。"
+    },
+    "featured": {
+      "title": "热门游戏",
+      "subtitle": "现在最热门的教育游戏"
+    },
+    "trend_analysis": {
+      "title": "热门分类",
+      "subtitle": "热门学科和学习趋势"
+    },
+    "categories": {
+      "math": {
+        "title": "数学游戏",
+        "description": "数学概念和解题技能",
+        "trend": "上升 15%"
+      },
+      "science": {
+        "title": "科学游戏", 
+        "description": "科学探索和实验",
+        "trend": "上升 12%"
+      },
+      "coding": {
+        "title": "编程游戏",
+        "description": "编程逻辑和计算思维",
+        "trend": "上升 25%"
+      },
+      "language": {
+        "title": "语言游戏",
+        "description": "词汇和阅读理解",
+        "trend": "上升 8%"
+      }
+    },
+    "popularity_metrics": {
+      "title": "热门指标",
+      "subtitle": "了解什么让这些游戏如此受欢迎",
+      "engagement": {
+        "title": "参与度",
+        "description": "平均游戏时长 25 分钟"
+      },
+      "completion": {
+        "title": "完成率",
+        "description": "85% 的学生完成游戏"
+      },
+      "retention": {
+        "title": "留存率",
+        "description": "70% 的学生会重复游玩"
+      },
+      "satisfaction": {
+        "title": "满意度",
+        "description": "4.8/5 星平均评分"
+      }
+    },
+    "trending_tips": {
+      "title": "热门游戏学习建议",
+      "subtitle": "充分利用热门教育游戏的专家建议",
+      "tips": [
+        {
+          "title": "跟随趋势",
+          "description": "尝试热门游戏，了解其他学生正在学习什么"
+        },
+        {
+          "title": "多样化学习",
+          "description": "探索不同类别的热门游戏，拓宽知识面"
+        },
+        {
+          "title": "与朋友分享",
+          "description": "与同学分享你最喜欢的热门游戏"
+        },
+        {
+          "title": "定期检查",
+          "description": "经常回来查看新的热门游戏和趋势"
+        }
+      ]
+    }
+  },
+  "recently_played": {
+    "seo": {
+      "title": "最近游玩的游戏 | 游戏历史记录 | EduGameHQ",
+      "description": "查看您最近游玩的教育游戏，继续您的学习之旅。跟踪您在数学、科学、编程和语言游戏中的进度。",
+      "keywords": "最近游玩的游戏, 游戏历史, 继续游玩, 跟踪进度, 学习历史, 教育游戏历史"
+    },
+    "hero": {
+      "title": "最近游玩",
+      "description": "继续您的学习之旅！从您最近游玩的教育游戏中继续学习。"
+    },
+    "actions": {
+      "clear_history": "清除历史"
+    },
+    "recent_games": {
+      "title": "您的最近游戏",
+      "subtitle": "从上次停下的地方继续"
+    },
+    "learning_tips": {
+      "title": "学习建议",
+      "subtitle": "最大化您的教育游戏体验",
+      "tips": [
+        {
+          "title": "坚持学习！",
+          "description": "定期练习有助于巩固学习。建议每天游玩教育游戏15-20分钟以获得最佳效果。"
+        },
+        {
+          "title": "设定目标",
+          "description": "挑战自己每天完成一个游戏，或通过反复练习掌握特定技能。"
+        },
+        {
+          "title": "跟踪进度",
+          "description": "您的游戏历史帮助您了解学习历程，识别已经改进的领域。"
+        },
+        {
+          "title": "持续练习",
+          "description": "重新游玩之前玩过的游戏，巩固学习并随时间提高技能。"
+        }
+      ]
+    },
+    "empty_state": {
+      "title": "还没有游戏历史",
+      "description": "开始游玩一些教育游戏，它们会出现在这里！",
+      "action": "浏览游戏"
+    }
   }
-} 
+}

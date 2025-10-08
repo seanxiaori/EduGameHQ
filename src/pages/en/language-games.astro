@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
 import '../../styles/game-card.css';
+
+// 获取英语翻译
+const translations = await getTranslations('en');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -45,9 +49,9 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Language Games</h1>
+            <h1 class="page-title">{t(translations, 'category_pages.language_games.title', 'Language Games')}</h1>
             <p class="page-description">
-              Master language skills through engaging games! Our collection focuses on reading, writing, vocabulary, grammar, and communication skills. Perfect for English learners of all levels, from basic literacy to advanced language arts.
+              {t(translations, 'category_pages.language_games.description', 'Master language skills through engaging games! Our collection focuses on reading, writing, vocabulary, grammar, and communication skills. Perfect for English learners of all levels, from basic literacy to advanced language arts.')}
             </p>
           </div>
         </div>
@@ -61,8 +65,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Language Games</h2>
-              <p class="module-subtitle">Popular games to boost your communication skills</p>
+              <h2 class="module-title">{t(translations, 'category_pages.language_games.featured_section.title', 'Featured Language Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.language_games.featured_section.description', 'Popular games to boost your communication skills')}</p>
             </div>
           </div>
           
@@ -82,8 +86,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for language learning beginners</p>
+              <h2 class="module-title">{t(translations, 'category_pages.language_games.difficulty_levels.easy.title', 'Easy Level Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.language_games.difficulty_levels.easy.description', 'Perfect for language learning beginners')}</p>
             </div>
           </div>
           
@@ -103,8 +107,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Intermediate challenges for growing vocabularies</p>
+              <h2 class="module-title">{t(translations, 'category_pages.language_games.difficulty_levels.medium.title', 'Medium Level Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.language_games.difficulty_levels.medium.description', 'Intermediate challenges for growing vocabularies')}</p>
             </div>
           </div>
           
@@ -124,8 +128,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Advanced challenges for language masters</p>
+              <h2 class="module-title">{t(translations, 'category_pages.language_games.difficulty_levels.hard.title', 'Hard Level Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.language_games.difficulty_levels.hard.description', 'Advanced challenges for language masters')}</p>
             </div>
           </div>
           
@@ -144,8 +148,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Language Learning Tips</h2>
-            <p class="module-subtitle">Effective strategies to improve your language skills</p>
+            <h2 class="module-title">{t(translations, 'category_pages.language_games.learning_tips.title', 'Language Learning Tips')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.language_games.learning_tips.subtitle', 'Effective strategies to improve your language skills')}</p>
           </div>
         </div>
         
@@ -733,5 +737,5 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

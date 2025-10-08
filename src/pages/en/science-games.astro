@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
 import '../../styles/game-card.css';
+
+// 获取翻译数据
+const translations = await getTranslations('en');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -45,9 +49,9 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-          <h1 class="page-title">Science Games</h1>
+          <h1 class="page-title">{t(translations, 'category_pages.science_games.title', 'Science Games')}</h1>
           <p class="page-description">
-              Explore the wonders of science with interactive games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists who want to discover how the world works through hands-on experimentation and observation.
+              {t(translations, 'category_pages.science_games.description', 'Explore the wonders of science with interactive games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists who want to discover how the world works through hands-on experimentation and observation.')}
             </p>
           </div>
         </div>
@@ -61,8 +65,8 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
                   <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Science Games</h2>
-              <p class="module-subtitle">Our most popular and recommended science games</p>
+              <h2 class="module-title">{t(translations, 'category_pages.science_games.featured_section.title', 'Featured Science Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.science_games.featured_section.description', 'Our most popular and recommended science games')}</p>
             </div>
           </div>
           
@@ -82,8 +86,8 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young scientists</p>
+              <h2 class="module-title">{t(translations, 'category_pages.science_games.difficulty_levels.easy.title', 'Easy Level Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.science_games.difficulty_levels.easy.description', 'Perfect for beginners and young scientists')}</p>
             </div>
           </div>
           
@@ -733,5 +737,5 @@ const hardGames = scienceGames.filter(game => game.difficulty === 'Hard');
       padding: 0.875rem;
     }
   }
-</style> 
+</style>
 

@@ -2,11 +2,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
+
+// 获取翻译数据
+const translations = await getTranslations('fr');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -42,9 +46,9 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Math Games</h1>
+            <h1 class="page-title">{t(translations, 'category_pages.math_games.title', 'Jeux de Mathématiques')}</h1>
             <p class="page-description">
-              Master mathematics through play! Our collection of math games makes learning arithmetic, algebra, geometry, and problem-solving skills fun and engaging for all grade levels. From basic counting to advanced calculus concepts, discover the joy of learning math through interactive gameplay.
+              {t(translations, 'category_pages.math_games.description', 'Maîtrisez les mathématiques en jouant ! Notre collection de jeux de mathématiques rend l\'apprentissage de l\'arithmétique, de l\'algèbre, de la géométrie et des compétences de résolution de problèmes amusant et engageant pour tous les niveaux scolaires. Du comptage de base aux concepts avancés de calcul, découvrez la joie d\'apprendre les mathématiques grâce au jeu interactif.')}
             </p>
           </div>
         </div>
@@ -58,8 +62,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Math Games</h2>
-              <p class="module-subtitle">Our most popular and recommended math games</p>
+              <h2 class="module-title">{t(translations, 'category_pages.math_games.featured_title', 'Jeux de Mathématiques en Vedette')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.math_games.featured_subtitle', 'Nos jeux de mathématiques les plus populaires et recommandés')}</p>
             </div>
           </div>
           
@@ -79,8 +83,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Easy Level Games</h2>
-              <p class="module-subtitle">Perfect for beginners and young learners</p>
+              <h2 class="module-title">{t(translations, 'category_pages.math_games.easy_title', 'Jeux de Niveau Facile')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.math_games.easy_subtitle', 'Parfait pour les débutants et les jeunes apprenants')}</p>
             </div>
           </div>
           
@@ -100,8 +104,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Medium Level Games</h2>
-              <p class="module-subtitle">Challenge yourself with intermediate concepts</p>
+              <h2 class="module-title">{t(translations, 'category_pages.math_games.medium_title', 'Jeux de Niveau Moyen')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.math_games.medium_subtitle', 'Défiez-vous avec des concepts intermédiaires')}</p>
             </div>
           </div>
           
@@ -121,8 +125,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Hard Level Games</h2>
-              <p class="module-subtitle">Advanced challenges for math experts</p>
+              <h2 class="module-title">{t(translations, 'category_pages.math_games.hard_title', 'Jeux de Niveau Difficile')}</h2>
+              <p class="module-subtitle">{t(translations, 'category_pages.math_games.hard_subtitle', 'Défis avancés pour les experts en mathématiques')}</p>
             </div>
           </div>
           
@@ -141,8 +145,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Math Learning Tips</h2>
-            <p class="module-subtitle">Expert advice to improve your math skills</p>
+            <h2 class="module-title">{t(translations, 'category_pages.math_games.tips_title', 'Conseils d\'Apprentissage des Mathématiques')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.math_games.tips_subtitle', 'Conseils d\'experts pour améliorer vos compétences en mathématiques')}</p>
           </div>
         </div>
         
@@ -152,8 +156,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Daily</h4>
-              <p class="tip-text">Spend 15-20 minutes daily practicing math concepts through games</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.math_games.tips.practice_daily.title', 'Pratiquez Quotidiennement')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.math_games.tips.practice_daily.description', 'Consacrez 15-20 minutes par jour à pratiquer les concepts mathématiques à travers les jeux')}</p>
             </div>
           </div>
           
@@ -162,8 +166,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-chart-line"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Progress Gradually</h4>
-              <p class="tip-text">Start with easier games and gradually move to more challenging ones</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.math_games.tips.progress_gradually.title', 'Progressez Graduellement')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.math_games.tips.progress_gradually.description', 'Commencez par des jeux plus faciles et passez progressivement à des défis plus difficiles')}</p>
             </div>
           </div>
           
@@ -172,8 +176,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-heart"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Embrace Mistakes</h4>
-              <p class="tip-text">Don't be afraid to make mistakes - they're part of the learning process</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.math_games.tips.embrace_mistakes.title', 'Acceptez les Erreurs')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.math_games.tips.embrace_mistakes.description', 'N\'ayez pas peur de faire des erreurs - elles font partie du processus d\'apprentissage')}</p>
             </div>
           </div>
           
@@ -182,8 +186,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-question-circle"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Understand Why</h4>
-              <p class="tip-text">Focus on understanding the reasoning behind each solution</p>
+              <h4 class="tip-title">{t(translations, 'category_pages.math_games.tips.understand_why.title', 'Comprenez le Pourquoi')}</h4>
+              <p class="tip-text">{t(translations, 'category_pages.math_games.tips.understand_why.description', 'Concentrez-vous sur la compréhension du raisonnement derrière chaque solution')}</p>
             </div>
           </div>
         </div>
@@ -196,8 +200,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Core Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential mathematical abilities gained through gameplay</p>
+            <h2 class="module-title">{t(translations, 'category_pages.math_games.core_skills.title', 'Compétences Clés que Vous Développerez')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.math_games.core_skills.subtitle', 'Capacités mathématiques essentielles acquises par le jeu')}</p>
           </div>
         </div>
 
@@ -207,8 +211,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-plus"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Addition & Subtraction</h4>
-              <p class="skill-description">Master basic arithmetic operations</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.math_games.core_skills.skills.addition_subtraction.title', 'Addition et Soustraction')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.math_games.core_skills.skills.addition_subtraction.description', 'Maîtriser les opérations arithmétiques de base')}</p>
             </div>
           </div>
 
@@ -217,8 +221,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-times"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Multiplication & Division</h4>
-              <p class="skill-description">Build fluency in advanced operations</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.math_games.core_skills.skills.multiplication_division.title', 'Multiplication et Division')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.math_games.core_skills.skills.multiplication_division.description', 'Développer la fluidité dans les opérations avancées')}</p>
             </div>
           </div>
 
@@ -227,8 +231,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-percentage"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Fractions & Decimals</h4>
-              <p class="skill-description">Understand parts and wholes</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.math_games.core_skills.skills.fractions_decimals.title', 'Fractions et Décimales')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.math_games.core_skills.skills.fractions_decimals.description', 'Comprendre les parties et les ensembles')}</p>
             </div>
           </div>
 
@@ -237,8 +241,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-shapes"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Geometry</h4>
-              <p class="skill-description">Explore shapes and spatial reasoning</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.math_games.core_skills.skills.geometry.title', 'Géométrie')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.math_games.core_skills.skills.geometry.description', 'Explorer les formes et le raisonnement spatial')}</p>
             </div>
           </div>
 
@@ -247,8 +251,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-function"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Algebra</h4>
-              <p class="skill-description">Solve equations and work with variables</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.math_games.core_skills.skills.algebra.title', 'Algèbre')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.math_games.core_skills.skills.algebra.description', 'Résoudre des équations et travailler avec des variables')}</p>
             </div>
           </div>
           
@@ -257,8 +261,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-puzzle-piece"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Problem Solving</h4>
-              <p class="skill-description">Develop critical thinking abilities</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.math_games.core_skills.skills.problem_solving.title', 'Résolution de Problèmes')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.math_games.core_skills.skills.problem_solving.description', 'Développer les capacités de pensée critique')}</p>
             </div>
           </div>
         </div>

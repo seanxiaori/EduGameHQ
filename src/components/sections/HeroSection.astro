@@ -11,22 +11,22 @@ const { translations } = Astro.props;
 <section class="hero">
   <div class="hero-container">
     <div class="hero-content">
-      <h1 class="hero-title" set:html={t(translations, 'home.hero.title.full', 'Where Learning Meets <span class="highlight">Fun</span>')} />
+      <h1 class="hero-title" set:html={translations.hero?.['title.full'] || 'Where Learning Meets <span class="highlight">Fun</span>'} />
       <p class="hero-subtitle">
-        {t(translations, 'home.hero.subtitle', 'Discover free educational games designed to make learning engaging and effective for students aged 6-18.')}
+        {t(translations, 'hero.subtitle', 'Discover free educational games designed to make learning engaging and effective for students aged 6-18.')}
       </p>
       <div class="hero-stats">
         <div class="stat-item">
           <div class="stat-number">50K+</div>
-          <div class="stat-label">{t(translations, 'home.hero.stats.students', 'Students')}</div>
+          <div class="stat-label">{t(translations, 'hero.stats.students', 'Students')}</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">15+</div>
-          <div class="stat-label">{t(translations, 'home.hero.stats.countries', 'Countries')}</div>
+          <div class="stat-label">{t(translations, 'hero.stats.countries', 'Countries')}</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">100%</div>
-          <div class="stat-label">{t(translations, 'home.hero.stats.free', 'Free')}</div>
+          <div class="stat-label">{t(translations, 'hero.stats.free', 'Free')}</div>
         </div>
       </div>
     </div>

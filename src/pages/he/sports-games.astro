@@ -4,9 +4,13 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../../i18n/utils';
+
+// 获取希伯来语翻译
+const translations = await getTranslations('he');
 
 // 导入样式文件
-import '../../styles/game-card.css';;
+import '../../styles/game-card.css';
 
 // 读取游戏数据
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
@@ -126,9 +130,17 @@ const sportsCoreSkills = [
 
 console.log('🏃‍♂️ 体育学习建议:', sportsLearningTips.length, '条');
 console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
+
+// SEO数据配置
+const seoData = {
+  title: t(translations, 'pages.sports_games.seo.title', 'משחקי ספורט חינוכיים - EduGameHQ'),
+  description: t(translations, 'pages.sports_games.seo.description', 'גלה משחקי ספורט חינוכיים מהנים לילדים. פתח כישורי קואורדינציה, עבודת צוות וחשיבה אסטרטגית דרך משחק.'),
+  keywords: t(translations, 'pages.sports_games.seo.keywords', 'משחקי ספורט, חינוך, ילדים, כדורסל, כדורגל, טניס, קואורדינציה'),
+  ogImage: '/images/sports-games-og.jpg'
+};
 ---
 
-<BaseLayout>
+<BaseLayout title={seoData.title} description={seoData.description}>
   <!-- 引入统一游戏卡片样式 -->
   
   
@@ -144,9 +156,9 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Sports Games</h1>
+            <h1 class="page-title">{t(translations, 'pages.sports_games.title', 'משחקי ספורט')}</h1>
             <p class="page-description">
-              Get active and learn through sports games! Combine physical education concepts with fun gameplay, teaching teamwork, strategy, healthy competition, and sportsmanship through virtual athletic challenges.
+              {t(translations, 'pages.sports_games.description', 'התחילו לפעול ולמדו דרך משחקי ספורט! שלבו מושגי חינוך גופני עם משחק מהנה, ללמד עבודת צוות, אסטרטגיה, תחרות בריאה וספורטיביות דרך אתגרים אתלטיים וירטואליים.')}
             </p>
           </div>
         </div>
@@ -160,8 +172,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Featured Sports Games</h2>
-              <p class="module-subtitle">Championship-level games that will test your athletic skills</p>
+              <h2 class="module-title">{t(translations, 'pages.sports_games.featured.title', 'משחקי ספורט מובחרים')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.sports_games.featured.subtitle', 'משחקים ברמת אליפות שיבדקו את הכישורים האתלטיים שלכם')}</p>
             </div>
           </div>
           
@@ -181,8 +193,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-basketball-ball"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Basketball Games</h2>
-              <p class="module-subtitle">Dribble, shoot, and score with these basketball games</p>
+              <h2 class="module-title">{t(translations, 'pages.sports_games.basketball.title', 'משחקי כדורסל')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.sports_games.basketball.subtitle', 'כדרור, זרוק וקלע עם משחקי הכדורסל האלה')}</p>
             </div>
           </div>
           
@@ -202,8 +214,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-futbol"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Ball Games</h2>
-              <p class="module-subtitle">Kick, throw, and catch your way to victory</p>
+              <h2 class="module-title">{t(translations, 'pages.sports_games.ball_games.title', 'משחקי כדור')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.sports_games.ball_games.subtitle', 'בעטו, זרקו ותפסו את דרככם לניצחון')}</p>
             </div>
           </div>
           
@@ -223,8 +235,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-golf-ball"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Precision Games</h2>
-              <p class="module-subtitle">Perfect your technique in these precision sports</p>
+              <h2 class="module-title">{t(translations, 'pages.sports_games.precision.title', 'משחקי דיוק')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.sports_games.precision.subtitle', 'שכללו את הטכניקה שלכם בספורט הדיוק האלה')}</p>
             </div>
           </div>
           
@@ -244,8 +256,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-running"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Individual Sports</h2>
-              <p class="module-subtitle">Challenge yourself in these individual sports</p>
+              <h2 class="module-title">{t(translations, 'pages.sports_games.individual.title', 'ספורט אישי')}</h2>
+              <p class="module-subtitle">{t(translations, 'pages.sports_games.individual.subtitle', 'אתגרו את עצמכם בספורט האישי הזה')}</p>
             </div>
           </div>
           
@@ -264,8 +276,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Sports Gaming Tips</h2>
-            <p class="module-subtitle">Improve your performance and enjoy sports games more</p>
+            <h2 class="module-title">{t(translations, 'pages.sports_games.tips.title', 'טיפים למשחקי ספורט')}</h2>
+            <p class="module-subtitle">{t(translations, 'pages.sports_games.tips.subtitle', 'שפרו את הביצועים שלכם ותהנו יותר ממשחקי ספורט')}</p>
           </div>
         </div>
         
@@ -275,8 +287,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-bullseye"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Practice Precision</h4>
-              <p class="tip-text">Focus on accuracy over speed to improve your skills</p>
+              <h4 class="tip-title">{t(translations, 'pages.sports_games.tips.precision.title', 'תרגלו דיוק')}</h4>
+              <p class="tip-text">{t(translations, 'pages.sports_games.tips.precision.description', 'התמקדו בדיוק על פני מהירות כדי לשפר את הכישורים שלכם')}</p>
             </div>
           </div>
           
@@ -285,8 +297,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Master Timing</h4>
-              <p class="tip-text">Learn the perfect moment to act in each sport</p>
+              <h4 class="tip-title">{t(translations, 'pages.sports_games.tips.timing.title', 'שלטו בתזמון')}</h4>
+              <p class="tip-text">{t(translations, 'pages.sports_games.tips.timing.description', 'למדו את הרגע המושלם לפעול בכל ספורט')}</p>
             </div>
           </div>
           
@@ -295,8 +307,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-users"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Learn Teamwork</h4>
-              <p class="tip-text">Understand how to work together in team sports</p>
+              <h4 class="tip-title">{t(translations, 'pages.sports_games.tips.teamwork.title', 'למדו עבודת צוות')}</h4>
+              <p class="tip-text">{t(translations, 'pages.sports_games.tips.teamwork.description', 'הבינו איך לעבוד יחד בספורט קבוצתי')}</p>
             </div>
           </div>
           
@@ -305,8 +317,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-trophy"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">Set Goals</h4>
-              <p class="tip-text">Challenge yourself to reach new personal bests</p>
+              <h4 class="tip-title">{t(translations, 'pages.sports_games.tips.goals.title', 'הציבו מטרות')}</h4>
+              <p class="tip-text">{t(translations, 'pages.sports_games.tips.goals.description', 'אתגרו את עצמכם להגיע לשיאים אישיים חדשים')}</p>
             </div>
           </div>
         </div>
@@ -319,8 +331,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Athletic Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential abilities gained through sports gaming</p>
+            <h2 class="module-title">{t(translations, 'pages.sports_games.core_skills.title', 'כישורים אתלטיים שתפתחו')}</h2>
+            <p class="module-subtitle">{t(translations, 'pages.sports_games.core_skills.subtitle', 'יכולות חיוניות שנרכשות דרך משחקי ספורט')}</p>
           </div>
         </div>
 
@@ -330,8 +342,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-hand-paper"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Hand-Eye Coordination</h4>
-              <p class="skill-description">Improve reaction time and precision</p>
+              <h4 class="skill-title">{t(translations, 'pages.sports_games.core_skills.hand_eye.title', 'תיאום יד-עין')}</h4>
+              <p class="skill-description">{t(translations, 'pages.sports_games.core_skills.hand_eye.description', 'שפרו זמן תגובה ודיוק')}</p>
             </div>
           </div>
 
@@ -340,8 +352,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-chess"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Strategic Thinking</h4>
-              <p class="skill-description">Plan moves and anticipate opponents</p>
+              <h4 class="skill-title">{t(translations, 'pages.sports_games.core_skills.strategic.title', 'חשיבה אסטרטגית')}</h4>
+              <p class="skill-description">{t(translations, 'pages.sports_games.core_skills.strategic.description', 'תכננו מהלכים וצפו יריבים')}</p>
             </div>
           </div>
 
@@ -350,8 +362,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-heartbeat"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Focus & Concentration</h4>
-              <p class="skill-description">Maintain attention under pressure</p>
+              <h4 class="skill-title">{t(translations, 'pages.sports_games.core_skills.focus.title', 'מיקוד וריכוז')}</h4>
+              <p class="skill-description">{t(translations, 'pages.sports_games.core_skills.focus.description', 'שמרו על קשב תחת לחץ')}</p>
             </div>
           </div>
 
@@ -360,8 +372,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-medal"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Competitive Spirit</h4>
-              <p class="skill-description">Develop healthy competition habits</p>
+              <h4 class="skill-title">{t(translations, 'pages.sports_games.core_skills.competitive.title', 'רוח תחרותית')}</h4>
+              <p class="skill-description">{t(translations, 'pages.sports_games.core_skills.competitive.description', 'פתחו הרגלי תחרות בריאים')}</p>
             </div>
           </div>
           
@@ -370,8 +382,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-stopwatch"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Quick Decision Making</h4>
-              <p class="skill-description">Learn to act fast and decisively</p>
+              <h4 class="skill-title">{t(translations, 'pages.sports_games.core_skills.decision.title', 'קבלת החלטות מהירה')}</h4>
+              <p class="skill-description">{t(translations, 'pages.sports_games.core_skills.decision.description', 'למדו לפעול מהר ובהחלטיות')}</p>
             </div>
           </div>
           
@@ -380,8 +392,8 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
               <i class="fas fa-arrows-alt"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Motor Skills</h4>
-              <p class="skill-description">Enhance physical coordination</p>
+              <h4 class="skill-title">{t(translations, 'pages.sports_games.core_skills.motor.title', 'כישורים מוטוריים')}</h4>
+              <p class="skill-description">{t(translations, 'pages.sports_games.core_skills.motor.description', 'שפרו תיאום פיזי')}</p>
             </div>
           </div>
         </div>
@@ -539,6 +551,23 @@ console.log('🧠 体育核心技能:', sportsCoreSkills.length, '项');
 
   .skills-icon {
     background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+  }
+
+  /* 体育类别图标样式 */
+  .basketball-icon {
+    background: linear-gradient(135deg, #F97316 0%, #EA580C 100%);
+  }
+
+  .ball-icon {
+    background: linear-gradient(135deg, #22C55E 0%, #16A34A 100%);
+  }
+
+  .precision-icon {
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+  }
+
+  .individual-icon {
+    background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%);
   }
 
   .module-title-group {

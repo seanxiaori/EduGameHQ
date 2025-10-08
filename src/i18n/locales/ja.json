@@ -60,13 +60,36 @@
     "source": "ゲームのソース",
     "loading": "読み込み中..."
   },
+  "game_detail": {
+    "loading_game": "{gameTitle}を読み込み中...",
+    "preparing_experience": "教育ゲーム体験を準備中",
+    "start_game": "ゲーム開始",
+    "fullscreen": "フルスクリーン",
+    "restart": "再開",
+    "favorite": "お気に入り",
+    "share": "共有",
+    "game_information": "ゲーム情報",
+    "how_to_play": "遊び方",
+    "game_controls": "ゲーム操作",
+    "tips_tricks": "コツとヒント",
+    "developer_information": "開発者情報",
+    "developer": "開発者",
+    "source": "ソース",
+    "type": "タイプ",
+    "release_date": "リリース日",
+    "more_games": "もっと",
+    "games": "ゲーム",
+    "free": "無料",
+    "mouse": "マウス",
+    "keyboard": "キーボード",
+    "touch": "タッチ"
+  },
   "footer": {
     "tagline": "すべての人に楽しい学習を",
     "description": "EduGameHQは、学習を魅力的で効果的にする教育ゲームプラットフォームです。",
     "quick_links": "クイックリンク",
     "game_categories": "ゲームカテゴリー",
     "support": "サポートと情報",
-    "social": "フォローする",
     "copyright": "© 2025 EduGameHQ. 全著作権所有。",
     "made_with_love": "世界中の学生のために❤️で作られました",
     "logo_alt": "EduGameHQ ロゴ",
@@ -103,6 +126,156 @@
     "faq": "よくある質問",
     "contact_us": "お問い合わせ",
     "report_issue": "問題を報告"
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "数学ゲーム",
+      "description": "数学の学習を楽しくインタラクティブにするために設計された魅力的な数学ゲームのコレクションを探索してください。基本的な算数から高度な問題解決まで、これらのゲームは学生が数学に自信とスキルを身につけるのに役立ちます。",
+      "featured_section": {
+        "title": "おすすめ数学ゲーム",
+        "description": "最も人気で推奨される数学ゲーム"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単レベルゲーム",
+          "description": "初心者と若い学習者に最適"
+        },
+        "medium": {
+          "title": "中級レベルゲーム",
+          "description": "中級学生に最適"
+        },
+        "hard": {
+          "title": "上級レベルゲーム",
+          "description": "上級学習者向けの挑戦的なゲーム"
+        }
+      },
+      "learning_tips": {
+        "title": "数学学習のコツ",
+        "subtitle": "数学スキルを向上させるための専門家のアドバイス",
+        "tips": [
+          {
+            "title": "毎日練習する",
+            "description": "ゲームを通じて数学の概念を毎日15-20分練習しましょう"
+          },
+          {
+            "title": "段階的に進歩する",
+            "description": "簡単なゲームから始めて、徐々により困難な挑戦に進みましょう"
+          },
+          {
+            "title": "間違いを受け入れる",
+            "description": "間違いを恐れないでください - それらは学習プロセスの一部です"
+          },
+          {
+            "title": "理由を理解する",
+            "description": "各解決策の背後にある推論を理解することに焦点を当てましょう"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "身につけるコアスキル",
+        "subtitle": "ゲームプレイを通じて習得する基本的な数学能力",
+        "skills": {
+          "addition_subtraction": {
+            "title": "足し算と引き算",
+            "description": "基本的な算術演算をマスターする"
+          },
+          "multiplication_division": {
+            "title": "掛け算と割り算",
+            "description": "高度な演算の流暢性を構築する"
+          },
+          "fractions_decimals": {
+            "title": "分数と小数",
+            "description": "部分と全体を理解する"
+          },
+          "geometry": {
+            "title": "幾何学",
+            "description": "形と空間推理を探求する"
+          },
+          "algebra": {
+            "title": "代数",
+            "description": "方程式を解き、変数を扱う"
+          },
+          "problem_solving": {
+            "title": "問題解決",
+            "description": "批判的思考スキルを発達させる"
+          }
+        }
+      }
+    },
+    "science_games": {
+      "title": "科学ゲーム",
+      "description": "複雑な概念を理解しやすく、探索を楽しくするインタラクティブなゲームを通じて科学の驚異を発見してください。",
+      "featured_section": {
+        "title": "おすすめ科学ゲーム",
+        "description": "最も人気で推奨される科学ゲーム"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単レベルゲーム",
+          "description": "初心者と若い学習者に最適"
+        },
+        "medium": {
+          "title": "中級レベルゲーム",
+          "description": "中級学生に最適"
+        },
+        "hard": {
+          "title": "上級レベルゲーム",
+          "description": "上級学習者向けの挑戦的なゲーム"
+        }
+      }
+    },
+    "language_games": {
+      "title": "言語ゲーム",
+      "description": "魅力的な単語ゲーム、語彙ビルダー、読解活動のコレクションで言語スキルを向上させましょう。",
+      "featured_section": {
+        "title": "おすすめ言語ゲーム",
+        "description": "最も人気で推奨される言語ゲーム"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単レベルゲーム",
+          "description": "初心者と若い学習者に最適"
+        },
+        "medium": {
+          "title": "中級レベルゲーム",
+          "description": "中級学生に最適"
+        },
+        "hard": {
+          "title": "上級レベルゲーム",
+          "description": "上級学習者向けの挑戦的なゲーム"
+        }
+      },
+      "learning_tips": {
+        "title": "言語学習のコツ",
+        "subtitle": "言語スキル向上のための効果的な戦略"
+      }
+    },
+    "puzzle_games": {
+      "title": "パズルゲーム",
+      "description": "教育的なパズルゲームのコレクションで心を鍛えましょう！魅力的なパズルと刺激的なチャレンジを通じて、批判的思考、問題解決スキル、論理、空間推理を発達させます。",
+      "featured_section": {
+        "title": "おすすめパズルゲーム",
+        "description": "思考スキルに挑戦する刺激的なパズル"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単レベルゲーム",
+          "description": "初心者と若いパズル解決者に最適"
+        },
+        "medium": {
+          "title": "中級レベルゲーム",
+          "description": "発達中の心のための中級チャレンジ"
+        },
+        "hard": {
+          "title": "上級レベルゲーム",
+          "description": "マスター問題解決者のための上級パズル"
+        }
+      },
+      "learning_tips": {
+        "title": "パズル解決のコツ",
+        "subtitle": "問題解決スキル向上のための戦略"
+      }
+    }
   },
   "home": {
     "featured_games": {
@@ -274,7 +447,186 @@
         "name": "佐藤花子",
         "role": "技術リード",
         "description": "教育技術の専門家で、インタラクティブな学習体験の設計者"
+      },
+      "member3": {
+        "name": "Lisa Wang",
+        "role": "児童心理学者",
+        "description": "児童発達と学習心理学の専門家"
+      },
+      "member4": {
+        "name": "Alex Thompson",
+        "role": "技術責任者",
+        "description": "アクセシブルな教育に情熱を持つフルスタック開発者"
       }
+    },
+    "contact_cta": {
+      "title": "もっと知りたいですか？",
+      "description": "ぜひお聞かせください！パートナーシップ、フィードバック、またはただのご挨拶でもお気軽にお問い合わせください。",
+      "get_in_touch": "お問い合わせ",
+      "our_policies": "ポリシー"
+    }
+  },
+  "pages": {
+    "science": {
+      "title": "科学ゲーム",
+      "description": "物理学、化学、生物学、地球科学をカバーするインタラクティブなゲームで科学の不思議を発見しましょう。好奇心旺盛な心と、実践的な実験と観察を通して世界がどのように機能するかを発見したい未来の科学者に最適です。",
+      "featured": {
+        "title": "注目の科学ゲーム",
+        "subtitle": "最も人気があり、おすすめの科学ゲーム"
+      },
+      "easy": {
+        "title": "簡単なゲーム",
+        "subtitle": "初心者と若い科学者に最適"
+      },
+      "medium": {
+        "title": "中級ゲーム",
+        "subtitle": "中級レベルの科学概念で自分に挑戦"
+      },
+      "hard": {
+        "title": "上級ゲーム",
+        "subtitle": "科学の専門家向けの高度な挑戦"
+      },
+      "learning_tips": {
+        "title": "科学学習のコツ",
+        "subtitle": "科学的思考を向上させる専門家のアドバイス",
+        "tips": {
+          "observe": {
+            "title": "すべてを観察する",
+            "description": "周りの世界に注意を払い、「なぜ」と「どのように」を問いかける"
+          },
+          "experiment": {
+            "title": "安全に実験する",
+            "description": "制御された実験と観察を通して仮説をテストする"
+          },
+          "journal": {
+            "title": "科学日記をつける",
+            "description": "観察、質問、発見を記録する"
+          },
+          "connect": {
+            "title": "実生活と結びつける",
+            "description": "科学的概念を日常の出来事や体験と関連付ける"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "身につく主要スキル",
+        "subtitle": "ゲームプレイを通して習得する重要な科学スキル",
+        "skills": {
+          "scientific_method": {
+            "title": "科学的方法",
+            "description": "観察と実験を学ぶ"
+          },
+          "physics": {
+            "title": "物理学の概念",
+            "description": "力と運動を理解する"
+          },
+          "biology": {
+            "title": "生物学の基礎",
+            "description": "生物を探求する"
+          },
+          "chemistry": {
+            "title": "化学",
+            "description": "元素と反応を発見する"
+          },
+          "earth_science": {
+            "title": "地球科学",
+            "description": "私たちの惑星と環境を学ぶ"
+          },
+          "critical_thinking": {
+            "title": "批判的思考",
+            "description": "論理的推論スキルを発達させる"
+          }
+        }
+      }
+    }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "トレンドゲーム | 人気の教育ゲーム | EduGameHQ",
+      "description": "今最も人気の教育ゲームをプレイしよう。数千人の学生が最新の数学、科学、プログラミング、言語ゲームで学習しています。",
+      "keywords": "トレンドゲーム, 人気ゲーム, 話題の教育ゲーム, 最も遊ばれているゲーム, トレンド学習ゲーム, 人気教育コンテンツ"
+    },
+    "hero": {
+      "title": "トレンドゲーム",
+      "description": "今最も話題の教育ゲームを発見しよう！これらのトレンドゲームは世界中の学生に愛され、すべての科目で魅力的な学習体験を提供します。"
+    },
+    "featured": {
+      "title": "トレンドゲーム",
+      "subtitle": "今最も話題の教育ゲーム"
+    },
+    "categories": {
+      "title": "トレンドカテゴリ",
+      "subtitle": "人気の科目と学習トレンド",
+      "math": {
+        "title": "数学ゲーム",
+        "description": "数字と方程式をマスターしよう"
+      },
+      "science": {
+        "title": "科学ゲーム", 
+        "description": "実験と発見を楽しもう"
+      },
+      "coding": {
+        "title": "プログラミングゲーム",
+        "description": "プログラミングと論理を学ぼう"
+      },
+      "language": {
+        "title": "言語ゲーム",
+        "description": "語彙とコミュニケーションを向上させよう"
+      }
+    },
+    "metrics": {
+      "play_count": "プレイ回数",
+      "trending_score": "トレンドスコア",
+      "popularity": "人気度"
+    },
+    "trending_tips": {
+      "title": "トレンドのヒント",
+      "tip1": "毎日新しいトレンドゲームをチェックしよう",
+      "tip2": "友達と人気ゲームをシェアしよう",
+      "tip3": "様々なカテゴリのトレンドを探索しよう"
+    }
+  },
+  "recently_played": {
+    "seo": {
+      "title": "最近プレイしたゲーム | ゲーム履歴 | EduGameHQ",
+      "description": "最近プレイした教育ゲームを確認し、学習の旅を続けましょう。数学、科学、プログラミング、言語ゲームでの進歩を追跡できます。",
+      "keywords": "最近プレイしたゲーム, ゲーム履歴, 続きからプレイ, 進歩追跡, 学習履歴, 教育ゲーム履歴"
+    },
+    "hero": {
+      "title": "最近プレイしたゲーム",
+      "description": "学習の旅を続けましょう！最近プレイした教育ゲームで中断したところから再開できます。"
+    },
+    "actions": {
+      "clear_history": "履歴をクリア"
+    },
+    "recent_games": {
+      "title": "最近のゲーム",
+      "subtitle": "中断したところから続けましょう"
+    },
+    "learning_tips": {
+      "title": "学習のヒント",
+      "subtitle": "教育ゲーム体験を最大化しましょう",
+      "tip1": {
+        "title": "学習を続けよう！",
+        "description": "定期的にプレイして学習習慣を身につけましょう"
+      },
+      "tip2": {
+        "title": "目標を設定しよう",
+        "description": "各ゲームセッションで達成したい目標を設定しましょう"
+      },
+      "tip3": {
+        "title": "進歩を追跡しよう",
+        "description": "時間をかけて自分の改善を確認し、成果を祝いましょう"
+      },
+      "tip4": {
+        "title": "練習を続けよう",
+        "description": "一貫した練習が習得への鍵です"
+      }
+    },
+    "empty_state": {
+      "title": "まだゲームをプレイしていません",
+      "description": "教育ゲームをプレイし始めると、ここに履歴が表示されます。",
+      "action": "ゲームを探す"
     }
   }
 }

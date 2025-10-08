@@ -60,13 +60,36 @@
     "source": "Fuente del juego",
     "loading": "Cargando..."
   },
+  "game_detail": {
+    "loading_game": "Cargando {gameTitle}...",
+    "preparing_experience": "Preparando tu experiencia de juego educativo",
+    "start_game": "Comenzar Juego",
+    "fullscreen": "Pantalla Completa",
+    "restart": "Reiniciar",
+    "favorite": "Favorito",
+    "share": "Compartir",
+    "game_information": "Información del Juego",
+    "how_to_play": "Cómo Jugar",
+    "game_controls": "Controles del Juego",
+    "tips_tricks": "Consejos y Trucos",
+    "developer_information": "Información del Desarrollador",
+    "developer": "Desarrollador",
+    "source": "Fuente",
+    "type": "Tipo",
+    "release_date": "Fecha de Lanzamiento",
+    "more_games": "Más",
+    "games": "Juegos",
+    "free": "Gratis",
+    "mouse": "Ratón",
+    "keyboard": "Teclado",
+    "touch": "Táctil"
+  },
   "footer": {
     "tagline": "Haciendo el aprendizaje divertido para todos",
     "description": "EduGameHQ es tu plataforma de juegos educativos que hace el aprendizaje atractivo y efectivo.",
     "quick_links": "Enlaces rápidos",
     "game_categories": "Categorías de juegos",
     "support": "Soporte e información",
-    "social": "Síguenos",
     "copyright": "© 2025 EduGameHQ. Todos los derechos reservados.",
     "made_with_love": "Hecho con ❤️ para estudiantes de todo el mundo",
     "logo_alt": "EduGameHQ Logo",
@@ -75,6 +98,98 @@
       "twitter": "Twitter", 
       "youtube": "YouTube",
       "instagram": "Instagram"
+    }
+  },
+  "about": {
+    "title": "Acerca de EduGameHQ",
+    "subtitle": "Donde el Aprendizaje se Encuentra con la Diversión - Transformando la Educación a través de Juegos Interactivos",
+    "company_subtitle": "Haciendo que la educación de calidad sea accesible, atractiva y divertida para cada niño",
+    "explore_our_story": "Explora Nuestra Historia",
+    "navigation": {
+      "mission": "Nuestra Misión",
+      "values": "Valores Fundamentales", 
+      "story": "Nuestra Historia",
+      "team": "Conoce a Nuestro Equipo",
+      "stats": "Nuestro Impacto"
+    },
+    "stats": {
+      "title": "Nuestro Impacto",
+      "educational_games": "Juegos Educativos",
+      "active_students": "Estudiantes Activos",
+      "countries_served": "Países Atendidos",
+      "free_content": "Contenido Gratuito"
+    },
+    "mission": {
+      "title": "Nuestra Misión",
+      "description": "Democratizar la educación de calidad proporcionando juegos educativos gratuitos, atractivos y efectivos que inspiren curiosidad, fomenten la creatividad y desarrollen habilidades esenciales para el siglo XXI.",
+      "vision_title": "Nuestra Visión",
+      "vision_description": "Un mundo donde cada niño tenga acceso a contenido educativo de alta calidad que haga el aprendizaje alegre, significativo y transformador."
+    },
+    "values": {
+      "title": "Nuestros Valores Fundamentales",
+      "quality_first": {
+        "title": "Calidad Primero",
+        "description": "Cada juego es cuidadosamente seleccionado y probado por expertos en educación"
+      },
+      "always_free": {
+        "title": "Siempre Gratuito",
+        "description": "La educación debe ser accesible para todos, en todas partes"
+      },
+      "safe_environment": {
+        "title": "Entorno Seguro",
+        "description": "Contenido amigable para niños con estrictos estándares de seguridad y privacidad"
+      },
+      "global_reach": {
+        "title": "Alcance Global",
+        "description": "Apoyando a estudiantes de todo el mundo con contenido multilingüe"
+      }
+    },
+    "story": {
+      "title": "Nuestra Historia",
+      "beginning": {
+        "title": "El Comienzo",
+        "description": "EduGameHQ nació de una observación simple: los niños aprenden mejor cuando se divierten. Fundado en 2023 por un equipo de educadores, desarrolladores de juegos y psicólogos infantiles, nos propusimos cerrar la brecha entre entretenimiento y educación."
+      },
+      "growth": {
+        "title": "Crecimiento y Expansión",
+        "description": "Lo que comenzó como una pequeña colección de juegos de matemáticas ha crecido hasta convertirse en una plataforma integral que sirve a más de 50,000 estudiantes en todo el mundo. Nuestros juegos cubren matemáticas, ciencias, programación, artes del lenguaje y habilidades de pensamiento crítico."
+      },
+      "today": {
+        "title": "Hoy y Más Allá",
+        "description": "Hoy, EduGameHQ continúa evolucionando, siempre guiado por nuestra creencia fundamental de que la educación de calidad debe ser gratuita, accesible y divertida para cada niño."
+      }
+    },
+    "team": {
+      "title": "Conoce a Nuestro Equipo",
+      "intro": "Nuestro diverso equipo de educadores, desarrolladores e investigadores trabajan juntos para crear la mejor experiencia de aprendizaje posible para estudiantes de todo el mundo.",
+      "members": {
+        "sarah_chen": {
+          "name": "Dra. Sarah Chen",
+          "role": "Directora Educativa",
+          "description": "Ex profesora de Stanford con más de 15 años en tecnología educativa"
+        },
+        "mike_rodriguez": {
+          "name": "Mike Rodriguez", 
+          "role": "Desarrollador de Juegos",
+          "description": "Diseñador de juegos galardonado especializado en contenido educativo"
+        },
+        "lisa_wang": {
+          "name": "Lisa Wang",
+          "role": "Psicóloga Infantil",
+          "description": "Experta en desarrollo infantil y psicología del aprendizaje"
+        },
+        "alex_thompson": {
+          "name": "Alex Thompson",
+          "role": "Líder de Tecnología",
+          "description": "Desarrollador full-stack apasionado por la educación accesible"
+        }
+      }
+    },
+    "contact_cta": {
+      "title": "¿Quieres Saber Más?",
+      "description": "¡Nos encantaría saber de ti! Contáctanos para asociaciones, comentarios o simplemente para saludar.",
+      "get_in_touch": "Ponte en Contacto",
+      "our_policies": "Nuestras Políticas"
     }
   },
   "common": {
@@ -103,6 +218,206 @@
     "faq": "Preguntas Frecuentes",
     "contact_us": "Contáctanos",
     "report_issue": "Reportar un Problema"
+  },
+  "category_pages": {
+    "math_games": {
+      "title": "Juegos de Matemáticas",
+      "description": "Explora nuestra colección de juegos de matemáticas atractivos diseñados para hacer que el aprendizaje de las matemáticas sea divertido e interactivo. Desde aritmética básica hasta resolución avanzada de problemas, estos juegos ayudan a los estudiantes a desarrollar confianza y habilidades en matemáticas.",
+      "featured_section": {
+        "title": "Juegos de Matemáticas Destacados",
+        "description": "Nuestros juegos de matemáticas más populares y recomendados"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Juegos de Nivel Fácil",
+          "description": "Perfecto para principiantes y estudiantes jóvenes"
+        },
+        "medium": {
+          "title": "Juegos de Nivel Medio",
+          "description": "Excelente para estudiantes intermedios"
+        },
+        "hard": {
+          "title": "Juegos de Nivel Difícil",
+          "description": "Juegos desafiantes para estudiantes avanzados"
+        }
+      },
+      "learning_tips": {
+        "title": "Consejos de Aprendizaje de Matemáticas",
+        "subtitle": "Consejos de expertos para mejorar tus habilidades matemáticas",
+        "tips": [
+          {
+            "title": "Practica Diariamente",
+            "description": "Dedica 15-20 minutos diarios a practicar conceptos matemáticos a través de juegos"
+          },
+          {
+            "title": "Progresa Gradualmente",
+            "description": "Comienza con juegos más fáciles y avanza gradualmente a desafíos más difíciles"
+          },
+          {
+            "title": "Acepta los Errores",
+            "description": "No tengas miedo de cometer errores: son parte del proceso de aprendizaje"
+          },
+          {
+            "title": "Entiende el Por Qué",
+            "description": "Enfócate en entender el razonamiento detrás de cada solución"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Habilidades Básicas que Desarrollarás",
+        "subtitle": "Habilidades matemáticas esenciales adquiridas a través del juego",
+        "skills": {
+          "addition_subtraction": {
+            "title": "Suma y Resta",
+            "description": "Dominar las operaciones aritméticas básicas"
+          },
+          "multiplication_division": {
+            "title": "Multiplicación y División",
+            "description": "Desarrollar fluidez en operaciones avanzadas"
+          },
+          "fractions_decimals": {
+            "title": "Fracciones y Decimales",
+            "description": "Entender las partes y el todo"
+          },
+          "geometry": {
+            "title": "Geometría",
+            "description": "Explorar formas y razonamiento espacial"
+          },
+          "algebra": {
+            "title": "Álgebra",
+            "description": "Resolver ecuaciones y trabajar con variables"
+          },
+          "problem_solving": {
+            "title": "Resolución de Problemas",
+            "description": "Desarrollar habilidades de pensamiento crítico"
+          }
+        }
+      }
+    },
+    "science_games": {
+      "title": "Juegos de Ciencias",
+      "description": "Descubre las maravillas de la ciencia a través de juegos interactivos que hacen que los conceptos complejos sean fáciles de entender y divertidos de explorar.",
+      "featured_section": {
+        "title": "Juegos de Ciencias Destacados",
+        "description": "Nuestros juegos de ciencias más populares y recomendados"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Juegos de Nivel Fácil",
+          "description": "Perfecto para principiantes y estudiantes jóvenes"
+        },
+        "medium": {
+          "title": "Juegos de Nivel Medio",
+          "description": "Excelente para estudiantes intermedios"
+        },
+        "hard": {
+          "title": "Juegos de Nivel Difícil",
+          "description": "Juegos desafiantes para estudiantes avanzados"
+        }
+      },
+      "learning_tips": {
+        "title": "Consejos de Aprendizaje de Ciencias",
+        "subtitle": "Consejos de expertos para mejorar tu pensamiento científico",
+        "tips": {
+          "observe": {
+            "title": "Observa Todo",
+            "description": "Presta atención al mundo que te rodea y pregunta \"por qué\" y \"cómo\""
+          },
+          "experiment": {
+            "title": "Experimenta de Forma Segura",
+            "description": "Prueba tus hipótesis a través de experimentos controlados y observación"
+          },
+          "journal": {
+            "title": "Lleva un Diario Científico",
+            "description": "Registra tus observaciones, preguntas y descubrimientos"
+          },
+          "connect": {
+            "title": "Conecta con la Vida Real",
+            "description": "Relaciona los conceptos científicos con fenómenos y experiencias cotidianas"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Habilidades Básicas que Desarrollarás",
+        "subtitle": "Capacidades científicas esenciales adquiridas a través del juego",
+        "scientific_method": {
+          "title": "Método Científico",
+          "description": "Aprende observación y experimentación"
+        },
+        "physics": {
+          "title": "Conceptos de Física",
+          "description": "Comprende fuerzas y movimiento"
+        },
+        "biology": {
+          "title": "Fundamentos de Biología",
+          "description": "Explora organismos vivos"
+        },
+        "chemistry": {
+          "title": "Química",
+          "description": "Descubre elementos y reacciones"
+        },
+        "earth_science": {
+          "title": "Ciencias de la Tierra",
+          "description": "Estudia nuestro planeta y el medio ambiente"
+        },
+        "critical_thinking": {
+          "title": "Pensamiento Crítico",
+          "description": "Desarrolla habilidades de razonamiento lógico"
+        }
+      }
+    },
+    "language_games": {
+      "title": "Juegos de Idiomas",
+      "description": "Mejora tus habilidades lingüísticas con nuestra colección de juegos de palabras atractivos, constructores de vocabulario y actividades de comprensión de lectura.",
+      "featured_section": {
+        "title": "Juegos de Idiomas Destacados",
+        "description": "Nuestros juegos de idiomas más populares y recomendados"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Juegos de Nivel Fácil",
+          "description": "Perfecto para principiantes y estudiantes jóvenes"
+        },
+        "medium": {
+          "title": "Juegos de Nivel Medio",
+          "description": "Excelente para estudiantes intermedios"
+        },
+        "hard": {
+          "title": "Juegos de Nivel Difícil",
+          "description": "Juegos desafiantes para estudiantes avanzados"
+        }
+      },
+      "learning_tips": {
+        "title": "Consejos de Aprendizaje de Idiomas",
+        "subtitle": "Estrategias efectivas para mejorar tus habilidades lingüísticas"
+      }
+    },
+    "puzzle_games": {
+      "title": "Juegos de Rompecabezas",
+      "description": "¡Desafía tu mente con nuestra colección de juegos de rompecabezas educativos! Desarrolla el pensamiento crítico, habilidades de resolución de problemas, lógica y razonamiento espacial a través de acertijos atractivos y desafíos estimulantes.",
+      "featured_section": {
+        "title": "Juegos de Rompecabezas Destacados",
+        "description": "Rompecabezas estimulantes para desafiar tus habilidades de pensamiento"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Juegos de Nivel Fácil",
+          "description": "Perfecto para principiantes y jóvenes solucionadores de rompecabezas"
+        },
+        "medium": {
+          "title": "Juegos de Nivel Medio",
+          "description": "Desafíos intermedios para mentes en desarrollo"
+        },
+        "hard": {
+          "title": "Juegos de Nivel Difícil",
+          "description": "Rompecabezas avanzados para maestros solucionadores de problemas"
+        }
+      },
+      "learning_tips": {
+        "title": "Consejos para Resolver Rompecabezas",
+        "subtitle": "Estrategias para mejorar tus habilidades de resolución de problemas"
+      }
+    }
   },
   "home": {
     "featured_games": {
@@ -271,7 +586,389 @@
         "name": "Mike Rodriguez",
         "role": "Desarrollador de Juegos",
         "description": "Diseñador de juegos galardonado especializado en contenido educativo"
+      },
+      "member3": {
+        "name": "Lisa Wang",
+        "role": "Psicóloga Infantil",
+        "description": "Experta en desarrollo infantil y psicología del aprendizaje"
+      },
+      "member4": {
+        "name": "Alex Thompson",
+        "role": "Líder de Tecnología",
+        "description": "Desarrollador full-stack apasionado por la educación accesible"
+      }
+    },
+    "cta": {
+      "title": "¿Quieres saber más?",
+      "description": "¡Nos encantaría saber de ti! Contáctanos para asociaciones, comentarios o simplemente para saludar.",
+      "button1": "Ponte en contacto",
+      "button2": "Nuestras políticas"
+    }
+  },
+  "pages": {
+    "science": {
+      "title": "Juegos de Ciencias",
+      "description": "Descubre las maravillas de la ciencia con juegos interactivos que cubren física, química, biología y ciencias de la Tierra. Perfecto para mentes curiosas y futuros científicos que quieren descubrir cómo funciona el mundo a través de la experimentación práctica y la observación.",
+      "featured": {
+        "title": "Juegos de Ciencias Destacados",
+        "subtitle": "Nuestros juegos de ciencias más populares y recomendados"
+      },
+      "easy": {
+        "title": "Juegos Fáciles",
+        "subtitle": "Perfecto para principiantes y jóvenes científicos"
+      },
+      "medium": {
+        "title": "Juegos Intermedios",
+        "subtitle": "Desafíate con conceptos científicos de nivel intermedio"
+      },
+      "hard": {
+        "title": "Juegos Difíciles",
+        "subtitle": "Desafíos avanzados para expertos en ciencias"
+      },
+      "learning_tips": {
+        "title": "Consejos de Aprendizaje Científico",
+        "subtitle": "Consejos de expertos para mejorar tu pensamiento científico",
+        "tips": {
+          "observe": {
+            "title": "Observar Todo",
+            "description": "Presta atención al mundo que te rodea y pregúntate 'por qué' y 'cómo'"
+          },
+          "experiment": {
+            "title": "Experimentar de Forma Segura",
+            "description": "Prueba tus hipótesis a través de experimentos controlados y observaciones"
+          },
+          "journal": {
+            "title": "Llevar un Diario Científico",
+            "description": "Registra tus observaciones, preguntas y descubrimientos"
+          },
+          "connect": {
+            "title": "Conectar con la Vida Real",
+            "description": "Relaciona los conceptos científicos con eventos y experiencias cotidianas"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Habilidades Clave que Desarrollarás",
+        "subtitle": "Habilidades científicas esenciales adquiridas a través del juego",
+        "skills": {
+          "scientific_method": {
+            "title": "Método Científico",
+            "description": "Aprender observación y experimentación"
+          },
+          "physics": {
+            "title": "Conceptos de Física",
+            "description": "Entender fuerzas y movimiento"
+          },
+          "biology": {
+            "title": "Fundamentos de Biología",
+            "description": "Explorar organismos vivos"
+          },
+          "chemistry": {
+            "title": "Química",
+            "description": "Descubrir elementos y reacciones"
+          },
+          "earth_science": {
+            "title": "Ciencias de la Tierra",
+            "description": "Estudiar nuestro planeta y el medio ambiente"
+          },
+          "critical_thinking": {
+            "title": "Pensamiento Crítico",
+            "description": "Desarrollar habilidades de razonamiento lógico"
+          }
+        }
+      }
+    },
+    "sports": {
+      "title": "Juegos de Deportes",
+      "description": "Desarrolla habilidades atléticas y coordinación con juegos deportivos interactivos que cubren baloncesto, fútbol, tenis y más. Perfecto para jóvenes atletas que quieren mejorar sus habilidades deportivas mientras se divierten.",
+      "featured": {
+        "title": "Juegos de Deportes Destacados",
+        "subtitle": "Nuestros juegos deportivos más populares y recomendados"
+      },
+      "easy": {
+        "title": "Juegos Fáciles",
+        "subtitle": "Perfecto para principiantes y jóvenes atletas"
+      },
+      "medium": {
+        "title": "Juegos Intermedios",
+        "subtitle": "Desafíate con deportes de nivel intermedio"
+      },
+      "hard": {
+        "title": "Juegos Difíciles",
+        "subtitle": "Desafíos avanzados para atletas expertos"
+      },
+      "learning_tips": {
+        "title": "Consejos de Juegos Deportivos",
+        "subtitle": "Consejos de expertos para mejorar tus habilidades deportivas",
+        "tips": {
+          "practice": {
+            "title": "Practicar Precisión",
+            "description": "Enfócate en la precisión antes que en la velocidad para desarrollar técnica"
+          },
+          "timing": {
+            "title": "Dominar el Tiempo",
+            "description": "Aprende el momento perfecto para cada movimiento y acción"
+          },
+          "teamwork": {
+            "title": "Aprender Trabajo en Equipo",
+            "description": "Desarrolla habilidades de cooperación y comunicación"
+          },
+          "goals": {
+            "title": "Establecer Metas",
+            "description": "Fija objetivos alcanzables y celebra tus logros"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Habilidades Atléticas que Desarrollarás",
+        "subtitle": "Habilidades deportivas esenciales adquiridas a través del juego",
+        "skills": {
+          "coordination": {
+            "title": "Coordinación Ojo-Mano",
+            "description": "Mejorar la coordinación y los reflejos"
+          },
+          "strategy": {
+            "title": "Pensamiento Estratégico",
+            "description": "Desarrollar tácticas y planificación de juego"
+          },
+          "focus": {
+            "title": "Concentración y Enfoque",
+            "description": "Mantener la atención bajo presión"
+          },
+          "competitive": {
+            "title": "Espíritu Competitivo",
+            "description": "Desarrollar mentalidad ganadora saludable"
+          },
+          "decision": {
+            "title": "Toma de Decisiones Rápidas",
+            "description": "Hacer elecciones inteligentes bajo presión"
+          },
+          "motor": {
+            "title": "Habilidades Motoras",
+            "description": "Desarrollar control físico y agilidad"
+          }
+        }
       }
     }
+  },
+  "category_pages": {
+    "sports_games": {
+      "title": "Juegos de Deportes",
+      "description": "Desarrolla habilidades atléticas y coordinación con juegos deportivos interactivos que cubren baloncesto, fútbol, tenis y más. Perfecto para jóvenes atletas que quieren mejorar sus habilidades deportivas mientras se divierten.",
+      "featured_section": {
+        "title": "Juegos de Deportes Destacados",
+        "subtitle": "Nuestros juegos deportivos más populares y recomendados"
+      },
+      "basketball_section": {
+        "title": "Juegos de Baloncesto",
+        "subtitle": "Domina la cancha con estos emocionantes juegos de baloncesto"
+      },
+      "difficulty_sections": {
+        "easy": {
+          "title": "Juegos Fáciles",
+          "subtitle": "Perfecto para principiantes y jóvenes atletas"
+        },
+        "medium": {
+          "title": "Juegos Intermedios", 
+          "subtitle": "Desafíate con deportes de nivel intermedio"
+        },
+        "hard": {
+          "title": "Juegos Difíciles",
+          "subtitle": "Desafíos avanzados para atletas expertos"
+        }
+      },
+      "sport_categories": {
+        "ball_sports": {
+          "title": "Deportes de Pelota",
+          "description": "Juegos que involucran pelotas como baloncesto, fútbol y voleibol"
+        },
+        "precision_sports": {
+          "title": "Deportes de Precisión",
+          "description": "Deportes que requieren precisión y puntería como golf y tiro con arco"
+        },
+        "individual_sports": {
+          "title": "Deportes Individuales",
+          "description": "Deportes centrados en el rendimiento individual como tenis y atletismo"
+        }
+      },
+      "learning_tips": {
+        "title": "Consejos de Juegos Deportivos",
+        "subtitle": "Consejos de expertos para mejorar tus habilidades deportivas",
+        "tips": {
+          "practice": {
+            "title": "Practicar Precisión",
+            "description": "Enfócate en la precisión antes que en la velocidad para desarrollar técnica"
+          },
+          "timing": {
+            "title": "Dominar el Tiempo",
+            "description": "Aprende el momento perfecto para cada movimiento y acción"
+          },
+          "teamwork": {
+            "title": "Aprender Trabajo en Equipo",
+            "description": "Desarrolla habilidades de cooperación y comunicación"
+          },
+          "goals": {
+            "title": "Establecer Metas",
+            "description": "Fija objetivos alcanzables y celebra tus logros"
+          }
+        }
+      },
+      "core_skills": {
+        "title": "Habilidades Atléticas que Desarrollarás",
+        "subtitle": "Habilidades deportivas esenciales adquiridas a través del juego",
+        "skills": {
+          "coordination": {
+            "title": "Coordinación Ojo-Mano",
+            "description": "Mejorar la coordinación y los reflejos"
+          },
+          "strategy": {
+            "title": "Pensamiento Estratégico",
+            "description": "Desarrollar tácticas y planificación de juego"
+          },
+          "focus": {
+            "title": "Concentración y Enfoque",
+            "description": "Mantener la atención bajo presión"
+          },
+          "competitive": {
+            "title": "Espíritu Competitivo",
+            "description": "Desarrollar mentalidad ganadora saludable"
+          },
+          "decision": {
+            "title": "Toma de Decisiones Rápidas",
+            "description": "Hacer elecciones inteligentes bajo presión"
+          },
+          "motor": {
+            "title": "Habilidades Motoras",
+            "description": "Desarrollar control físico y agilidad"
+          }
+        }
+      }
+    }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "Juegos Populares | Juegos Educativos Más Populares | EduGameHQ",
+      "description": "Juega los juegos educativos más populares que están en tendencia ahora. Únete a miles de estudiantes aprendiendo a través de los juegos más populares de matemáticas, ciencias, programación e idiomas.",
+      "keywords": "juegos populares, juegos en tendencia, juegos educativos populares, juegos más jugados, juegos de aprendizaje populares, contenido educativo popular"
+    },
+    "hero": {
+      "title": "Juegos Populares",
+      "subtitle": "¡Descubre los juegos educativos más populares en este momento! Estos juegos en tendencia son amados por estudiantes de todo el mundo y ofrecen experiencias de aprendizaje atractivas en todas las materias."
+    },
+    "featured": {
+      "title": "Juegos Destacados",
+      "subtitle": "Los juegos educativos más populares en este momento"
+    },
+    "categories": {
+       "title": "Categorías Populares",
+       "subtitle": "Materias populares y tendencias de aprendizaje",
+       "math": {
+         "title": "Juegos de Matemáticas",
+         "description": "Los juegos de resolución de problemas han aumentado un 25% esta semana",
+         "trend": "Subiendo 15%"
+       },
+       "science": {
+         "title": "Juegos de Ciencias", 
+         "description": "Las simulaciones de física están ganando popularidad entre los estudiantes",
+         "trend": "Subiendo 12%"
+       },
+       "coding": {
+         "title": "Juegos de Programación",
+         "description": "Los desafíos de programación han visto un aumento del 40% en reproducciones",
+         "trend": "Subiendo 25%"
+       },
+       "language": {
+         "title": "Juegos de Idiomas",
+         "description": "Los constructores de vocabulario son extremadamente populares este mes",
+         "trend": "Subiendo 8%"
+       }
+     },
+    "popularity_metrics": {
+      "title": "Métricas de Popularidad",
+      "subtitle": "Comprende qué hace que estos juegos sean tan populares",
+      "engagement": {
+        "title": "Participación",
+        "description": "Tiempo promedio de juego 25 minutos"
+      },
+      "completion": {
+        "title": "Tasa de Finalización",
+        "description": "85% de los estudiantes completan el juego"
+      },
+      "retention": {
+        "title": "Retención",
+        "description": "70% de los estudiantes vuelven a jugar"
+      },
+      "satisfaction": {
+        "title": "Satisfacción",
+        "description": "Calificación promedio de 4.8/5 estrellas"
+      }
+    },
+    "trending_tips": {
+      "title": "Consejos para Juegos Populares",
+      "subtitle": "Consejos de expertos para aprovechar al máximo los juegos educativos populares",
+      "tips": [
+        {
+          "title": "Sigue las Tendencias",
+          "description": "Prueba juegos populares para ver qué están aprendiendo otros estudiantes"
+        },
+        {
+          "title": "Diversifica tu Aprendizaje",
+          "description": "Explora juegos populares de diferentes categorías para ampliar tu conocimiento"
+        },
+        {
+          "title": "Comparte con Amigos",
+          "description": "Comparte tus juegos populares favoritos con compañeros de clase"
+        },
+        {
+          "title": "Revisa Regularmente",
+          "description": "Vuelve frecuentemente para ver nuevos juegos populares y tendencias"
+        }
+      ]
+    }
+  },
+  "recently_played": {
+    "seo": {
+      "title": "Juegos Jugados Recientemente | Tu Historial de Juegos | EduGameHQ",
+      "description": "Ve tus juegos educativos jugados recientemente y continúa tu viaje de aprendizaje. Rastrea tu progreso en matemáticas, ciencias, programación y juegos de idiomas.",
+      "keywords": "juegos jugados recientemente, historial de juegos, continuar jugando, rastrear progreso, historial de aprendizaje, historial de juegos educativos"
+    },
+    "hero": {
+      "title": "Jugados Recientemente",
+      "description": "¡Continúa tu viaje de aprendizaje! Retoma donde lo dejaste con tus juegos educativos jugados recientemente."
+    },
+    "actions": {
+      "clear_history": "Limpiar Historial"
+    },
+    "recent_games": {
+      "title": "Tus Juegos Recientes",
+      "subtitle": "Continúa donde lo dejaste"
+    },
+    "learning_tips": {
+      "title": "Consejos de Aprendizaje",
+      "subtitle": "Maximiza tu experiencia con juegos educativos",
+      "tips": [
+        {
+          "title": "¡Sigue Aprendiendo!",
+          "description": "La práctica regular ayuda a reforzar el aprendizaje. Intenta jugar juegos educativos durante 15-20 minutos diarios para obtener mejores resultados."
+        },
+        {
+          "title": "Establece Metas",
+          "description": "Desafíate a completar un juego por día, o domina una habilidad específica a través de la práctica repetida."
+        },
+        {
+          "title": "Rastrea el Progreso",
+          "description": "Tu historial de juegos te ayuda a ver tu viaje de aprendizaje e identificar áreas donde has mejorado."
+        },
+        {
+          "title": "Sigue Practicando",
+          "description": "Vuelve a jugar juegos que has jugado antes para reforzar el aprendizaje y mejorar tus habilidades con el tiempo."
+        }
+      ]
+    },
+    "empty_state": {
+      "title": "Aún no hay historial de juegos",
+      "description": "¡Comienza a jugar algunos juegos educativos y aparecerán aquí!",
+      "action": "Explorar Juegos"
+    }
   }
-} 
+}
