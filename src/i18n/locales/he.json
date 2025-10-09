@@ -725,166 +725,166 @@
     },
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+        "title": "קבלת התנאים",
+        "content": "על ידי גישה ושימוש ב-EduGameHQ.com ('השירות'), אתה מקבל ומסכים להיות מחויב לתנאים והוראות של הסכם זה. אם אינך מסכים לאמור לעיל, אנא אל תשתמש בשירות זה."
       },
       "service_description": {
-        "title": "Description of Service",
-        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "title": "תיאור השירות",
+        "content": "EduGameHQ.com היא פלטפורמת משחקים חינוכיים חינמית המספקת גישה למשחקים חינוכיים לילדים בגילאי 6-18. השירות שלנו כולל:",
         "items": [
-          "Access to curated educational games",
-          "Game progress tracking (stored locally)",
-          "Educational content and resources",
-          "Safe, child-friendly gaming environment"
+          "גישה למשחקים חינוכיים נבחרים",
+          "מעקב אחר התקדמות המשחק (מאוחסן מקומית)",
+          "תוכן ומשאבים חינוכיים",
+          "סביבת משחק בטוחה וידידותית לילדים"
         ]
       },
       "user_eligibility": {
-        "title": "User Eligibility",
+        "title": "זכאות משתמש",
         "subsections": {
           "age_requirements": {
-            "title": "Age Requirements",
+            "title": "דרישות גיל",
             "items": [
-              "Our service is designed for children aged 6-18",
-              "Children under 13 should use this service with parental supervision",
-              "We do not require account registration"
+              "השירות שלנו מיועד לילדים בגילאי 6-18",
+              "ילדים מתחת לגיל 13 צריכים להשתמש בשירות זה תחת השגחת הורים",
+              "אנחנו לא דורשים רישום חשבון"
             ]
           },
           "parental_consent": {
-            "title": "Parental Consent",
-            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+            "title": "הסכמת הורים",
+            "content": "למשתמשים מתחת לגיל 13, אנו ממליצים על השגחה והסכמה הורית לפני השימוש בשירות שלנו."
           }
         }
       },
       "acceptable_use": {
-        "title": "Acceptable Use",
+        "title": "שימוש מקובל",
         "subsections": {
           "permitted": {
-            "title": "Permitted Uses",
+            "title": "שימושים מותרים",
             "items": [
-              "Educational and learning purposes",
-              "Personal, non-commercial use",
-              "Sharing with family and friends for educational purposes",
-              "Use in classroom settings with proper supervision"
+              "מטרות חינוכיות ולמידה",
+              "שימוש אישי, לא מסחרי",
+              "שיתוף עם משפחה וחברים למטרות חינוכיות",
+              "שימוש בכיתות עם השגחה מתאימה"
             ]
           },
           "prohibited": {
-            "title": "Prohibited Uses",
+            "title": "שימושים אסורים",
             "items": [
-              "Commercial redistribution of games",
-              "Attempting to hack or disrupt the service",
-              "Using the service for any illegal activities",
-              "Circumventing any security measures",
-              "Uploading malicious content or viruses"
+              "הפצה מסחרית מחדש של משחקים",
+              "ניסיון לפרוץ או לשבש את השירות",
+              "שימוש בשירות לפעילויות בלתי חוקיות",
+              "עקיפת אמצעי אבטחה",
+              "העלאת תוכן זדוני או וירוסים"
             ]
           }
         }
       },
       "third_party_content": {
-        "title": "Third-Party Content",
-        "content": "Our platform includes games and content from third-party providers:",
+        "title": "תוכן צד שלישי",
+        "content": "הפלטפורמה שלנו כוללת משחקים ותוכן מספקי צד שלישי:",
         "items": [
-          "We do not own all games displayed on our platform",
-          "Third-party games are subject to their own terms and conditions",
-          "We strive to ensure all content is appropriate for children",
-          "We are not responsible for third-party content or services"
+          "אנחנו לא הבעלים של כל המשחקים המוצגים בפלטפורמה שלנו",
+          "משחקי צד שלישי כפופים לתנאים והגבלות משלהם",
+          "אנו שואפים להבטיח שכל התוכן מתאים לילדים",
+          "אנחנו לא אחראים לתוכן או שירותי צד שלישי"
         ]
       },
       "intellectual_property": {
-        "title": "Intellectual Property",
+        "title": "קניין רוחני",
         "subsections": {
           "our_content": {
-            "title": "Our Content",
-            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+            "title": "התוכן שלנו",
+            "content": "העיצוב, הפריסה והתוכן המקורי של אתר EduGameHQ מוגנים על ידי זכויות יוצרים וחוקי קניין רוחני אחרים."
           },
           "third_party": {
-            "title": "Third-Party Content",
-            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+            "title": "תוכן צד שלישי",
+            "content": "כל המשחקים והתוכן של צד שלישי נשארים בבעלות הבעלים המתאימים שלהם. אנו מציגים תוכן זה תחת שימוש הוגן או עם אישור."
           }
         }
       },
       "privacy_data": {
-        "title": "Privacy and Data Protection",
-        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "title": "פרטיות והגנת מידע",
+        "content": "הפרטיות שלך חשובה לנו. אנא עיין במדיניות הפרטיות שלנו כדי להבין כיצד אנו אוספים, משתמשים ומגנים על המידע שלך.",
         "items": [
-          "We do not collect personal information from children",
-          "Game progress is stored locally on your device",
-          "We use minimal cookies for functionality",
-          "We comply with COPPA and GDPR requirements"
+          "אנחנו לא אוספים מידע אישי מילדים",
+          "התקדמות המשחק נשמרת מקומית במכשיר שלך",
+          "אנו משתמשים בעוגיות מינימליות לפונקציונליות",
+          "אנו עומדים בדרישות COPPA ו-GDPR"
         ],
-        "note": "For complete details, please read our Privacy Policy."
+        "note": "לפרטים מלאים, אנא קרא את מדיניות הפרטיות שלנו."
       },
       "disclaimers": {
-        "title": "Disclaimers",
+        "title": "הצהרות כלליות",
         "subsections": {
           "educational_value": {
-            "title": "Educational Value",
-            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+            "title": "ערך חינוכי",
+            "content": "למרות שאנו שואפים לספק תוכן חינוכי, איננו מבטיחים תוצאות למידה ספציפיות או יעילות חינוכית."
           },
           "service_availability": {
-            "title": "Service Availability",
-            "content": "We provide our service 'as is' and make no warranties about:",
+            "title": "זמינות השירות",
+            "content": "אנו מספקים את השירות שלנו 'כמות שהוא' ואיננו מבטיחים:",
             "items": [
-              "Continuous availability of the service",
-              "Compatibility with all devices",
-              "Error-free operation",
-              "Third-party game functionality"
+              "זמינות רציפה של השירות",
+              "תאימות לכל המכשירים",
+              "פעולה ללא שגיאות",
+              "פונקציונליות של משחקי צד שלישי"
             ]
           }
         }
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "To the fullest extent permitted by law:",
+        "title": "הגבלת אחריות",
+        "content": "במידה המרבית המותרת בחוק:",
         "items": [
-          "We are not liable for any indirect, incidental, or consequential damages",
-          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
-          "We are not responsible for third-party content or services",
-          "Parents are responsible for supervising their children's use of our service"
+          "איננו אחראים לנזקים עקיפים, מקריים או תוצאתיים",
+          "האחריות הכוללת שלנו לא תעלה על הסכום ששילמת עבור שימוש בשירות שלנו (שהוא ₪0 למשתמשים חינמיים)",
+          "אנחנו לא אחראים לתוכן או שירותי צד שלישי",
+          "הורים אחראים לפיקוח על השימוש של ילדיהם בשירות שלנו"
         ]
       },
       "advertising": {
-        "title": "Advertising",
-        "content": "Our service is supported by advertising:",
+        "title": "פרסום",
+        "content": "השירות שלנו נתמך על ידי פרסום:",
         "items": [
-          "We display family-friendly advertisements",
-          "Ads are non-personalized for children's content",
-          "We use Google AdSense and other advertising partners",
-          "Ad content is subject to our content policies"
+          "אנו מציגים פרסומות ידידותיות למשפחה",
+          "פרסומות אינן מותאמות אישית לתוכן ילדים",
+          "אנו משתמשים ב-Google AdSense ובשותפי פרסום אחרים",
+          "תוכן הפרסום כפוף למדיניות התוכן שלנו"
         ]
       },
       "modifications": {
-        "title": "Modifications to Service",
-        "content": "We reserve the right to:",
+        "title": "שינויים בשירות",
+        "content": "אנו שומרים לעצמנו את הזכות:",
         "items": [
-          "Modify or discontinue any part of our service",
-          "Update our game collection",
-          "Change these terms with notice",
-          "Improve our platform and features"
+          "לשנות או להפסיק כל חלק מהשירות שלנו",
+          "לעדכן את אוסף המשחקים שלנו",
+          "לשנות תנאים אלה עם הודעה מוקדמת",
+          "לשפר את הפלטפורמה והתכונות שלנו"
         ]
       },
       "termination": {
-        "title": "Termination",
-        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+        "title": "סיום",
+        "content": "אנו רשאים לסיים או להשעות את הגישה לשירות שלנו באופן מיידי, ללא הודעה מוקדמת, בגין התנהגות שאנו מאמינים שמפרה את תנאי השירות הללו או מזיקה למשתמשים אחרים, לנו או לצדדים שלישיים."
       },
       "governing_law": {
-        "title": "Governing Law",
-        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+        "title": "חוק מחייב",
+        "content": "תנאים אלה יפורשו וינוהלו על פי חוקי תחום השיפוט בו פועל השירות שלנו, ללא התחשבות בהוראות ניגוד דינים."
       },
       "contact_changes": {
-        "title": "Contact & Changes",
+        "title": "יצירת קשר ושינויים",
         "subsections": {
           "contact": {
-            "title": "Contact Information",
-            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "title": "פרטי התקשרות",
+            "content": "אם יש לך שאלות כלשהן לגבי תנאי השירות הללו, אנא צור איתנו קשר:",
             "items": [
-              "Email: legal@edugamehq.com",
-              "Website: Contact Form"
+              "דוא\"ל: legal@edugamehq.com",
+              "אתר אינטרנט: טופס יצירת קשר"
             ]
           },
           "changes": {
-            "title": "Changes to Terms",
-            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
-            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+            "title": "שינויים בתנאים",
+            "content": "אנו שומרים לעצמנו את הזכות לעדכן את תנאי השירות הללו בכל עת. נודיע למשתמשים על כל שינוי מהותי על ידי פרסום תנאי השירות החדשים בעמוד זה עם תאריך 'עדכון אחרון' מעודכן.",
+            "note": "השימוש המתמשך שלך בשירות לאחר שינויים כאלה מהווה את הסכמתך לתנאי השירות החדשים."
           }
         }
       }

@@ -565,166 +565,166 @@
     },
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+        "title": "Принятие Условий",
+        "content": "Получая доступ и используя EduGameHQ.com ('Сервис'), вы принимаете и соглашаетесь соблюдать условия и положения данного соглашения. Если вы не согласны с вышеизложенным, пожалуйста, не используйте данный сервис."
       },
       "service_description": {
-        "title": "Description of Service",
-        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "title": "Описание Сервиса",
+        "content": "EduGameHQ.com - это бесплатная платформа образовательных игр, которая предоставляет доступ к образовательным играм для детей в возрасте 6-18 лет. Наш сервис включает:",
         "items": [
-          "Access to curated educational games",
-          "Game progress tracking (stored locally)",
-          "Educational content and resources",
-          "Safe, child-friendly gaming environment"
+          "Доступ к отобранным образовательным играм",
+          "Отслеживание прогресса игры (хранится локально)",
+          "Образовательный контент и ресурсы",
+          "Безопасная, детская игровая среда"
         ]
       },
       "user_eligibility": {
-        "title": "User Eligibility",
+        "title": "Право на Использование",
         "subsections": {
           "age_requirements": {
-            "title": "Age Requirements",
+            "title": "Возрастные Требования",
             "items": [
-              "Our service is designed for children aged 6-18",
-              "Children under 13 should use this service with parental supervision",
-              "We do not require account registration"
+              "Наш сервис предназначен для детей в возрасте 6-18 лет",
+              "Дети младше 13 лет должны использовать этот сервис под родительским надзором",
+              "Мы не требуем регистрации аккаунта"
             ]
           },
           "parental_consent": {
-            "title": "Parental Consent",
-            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+            "title": "Согласие Родителей",
+            "content": "Для пользователей младше 13 лет мы рекомендуем родительский надзор и согласие перед использованием нашего сервиса."
           }
         }
       },
       "acceptable_use": {
-        "title": "Acceptable Use",
+        "title": "Допустимое Использование",
         "subsections": {
           "permitted": {
-            "title": "Permitted Uses",
+            "title": "Разрешенное Использование",
             "items": [
-              "Educational and learning purposes",
-              "Personal, non-commercial use",
-              "Sharing with family and friends for educational purposes",
-              "Use in classroom settings with proper supervision"
+              "Образовательные и учебные цели",
+              "Личное, некоммерческое использование",
+              "Обмен с семьей и друзьями в образовательных целях",
+              "Использование в классах с надлежащим надзором"
             ]
           },
           "prohibited": {
-            "title": "Prohibited Uses",
+            "title": "Запрещенное Использование",
             "items": [
-              "Commercial redistribution of games",
-              "Attempting to hack or disrupt the service",
-              "Using the service for any illegal activities",
-              "Circumventing any security measures",
-              "Uploading malicious content or viruses"
+              "Коммерческое распространение игр",
+              "Попытка взломать или нарушить работу сервиса",
+              "Использование сервиса для незаконной деятельности",
+              "Обход мер безопасности",
+              "Загрузка вредоносного контента или вирусов"
             ]
           }
         }
       },
       "third_party_content": {
-        "title": "Third-Party Content",
-        "content": "Our platform includes games and content from third-party providers:",
+        "title": "Контент Третьих Лиц",
+        "content": "Наша платформа включает игры и контент от сторонних поставщиков:",
         "items": [
-          "We do not own all games displayed on our platform",
-          "Third-party games are subject to their own terms and conditions",
-          "We strive to ensure all content is appropriate for children",
-          "We are not responsible for third-party content or services"
+          "Мы не владеем всеми играми, отображаемыми на нашей платформе",
+          "Игры третьих лиц подчиняются их собственным условиям",
+          "Мы стремимся обеспечить, чтобы весь контент был подходящим для детей",
+          "Мы не несем ответственности за контент или услуги третьих лиц"
         ]
       },
       "intellectual_property": {
-        "title": "Intellectual Property",
+        "title": "Интеллектуальная Собственность",
         "subsections": {
           "our_content": {
-            "title": "Our Content",
-            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+            "title": "Наш Контент",
+            "content": "Дизайн, макет и оригинальный контент веб-сайта EduGameHQ защищены авторским правом и другими законами об интеллектуальной собственности."
           },
           "third_party": {
-            "title": "Third-Party Content",
-            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+            "title": "Контент Третьих Лиц",
+            "content": "Все игры и контент третьих лиц остаются собственностью их соответствующих владельцев. Мы отображаем этот контент в рамках добросовестного использования или с разрешения."
           }
         }
       },
       "privacy_data": {
-        "title": "Privacy and Data Protection",
-        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "title": "Конфиденциальность и Защита Данных",
+        "content": "Ваша конфиденциальность важна для нас. Пожалуйста, ознакомьтесь с нашей Политикой Конфиденциальности, чтобы понять, как мы собираем, используем и защищаем вашу информацию.",
         "items": [
-          "We do not collect personal information from children",
-          "Game progress is stored locally on your device",
-          "We use minimal cookies for functionality",
-          "We comply with COPPA and GDPR requirements"
+          "Мы не собираем личную информацию у детей",
+          "Прогресс игры хранится локально на вашем устройстве",
+          "Мы используем минимальное количество файлов cookie для функциональности",
+          "Мы соблюдаем требования COPPA и GDPR"
         ],
-        "note": "For complete details, please read our Privacy Policy."
+        "note": "Для получения полной информации, пожалуйста, прочитайте нашу Политику Конфиденциальности."
       },
       "disclaimers": {
-        "title": "Disclaimers",
+        "title": "Отказ от Ответственности",
         "subsections": {
           "educational_value": {
-            "title": "Educational Value",
-            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+            "title": "Образовательная Ценность",
+            "content": "Хотя мы стремимся предоставлять образовательный контент, мы не гарантируем конкретных результатов обучения или образовательной эффективности."
           },
           "service_availability": {
-            "title": "Service Availability",
-            "content": "We provide our service 'as is' and make no warranties about:",
+            "title": "Доступность Сервиса",
+            "content": "Мы предоставляем наш сервис 'как есть' и не даем гарантий относительно:",
             "items": [
-              "Continuous availability of the service",
-              "Compatibility with all devices",
-              "Error-free operation",
-              "Third-party game functionality"
+              "Непрерывной доступности сервиса",
+              "Совместимости со всеми устройствами",
+              "Работы без ошибок",
+              "Функциональности игр третьих лиц"
             ]
           }
         }
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "To the fullest extent permitted by law:",
+        "title": "Ограничение Ответственности",
+        "content": "В максимальной степени, разрешенной законом:",
         "items": [
-          "We are not liable for any indirect, incidental, or consequential damages",
-          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
-          "We are not responsible for third-party content or services",
-          "Parents are responsible for supervising their children's use of our service"
+          "Мы не несем ответственности за косвенные, случайные или последующие убытки",
+          "Наша общая ответственность не превысит сумму, которую вы заплатили за использование нашего сервиса (это 0₽ для бесплатных пользователей)",
+          "Мы не несем ответственности за контент или услуги третьих лиц",
+          "Родители несут ответственность за надзор за использованием нашего сервиса их детьми"
         ]
       },
       "advertising": {
-        "title": "Advertising",
-        "content": "Our service is supported by advertising:",
+        "title": "Реклама",
+        "content": "Наш сервис поддерживается рекламой:",
         "items": [
-          "We display family-friendly advertisements",
-          "Ads are non-personalized for children's content",
-          "We use Google AdSense and other advertising partners",
-          "Ad content is subject to our content policies"
+          "Мы показываем семейную рекламу",
+          "Реклама не персонализирована для детского контента",
+          "Мы используем Google AdSense и других рекламных партнеров",
+          "Рекламный контент подчиняется нашим политикам контента"
         ]
       },
       "modifications": {
-        "title": "Modifications to Service",
-        "content": "We reserve the right to:",
+        "title": "Изменения в Сервисе",
+        "content": "Мы оставляем за собой право:",
         "items": [
-          "Modify or discontinue any part of our service",
-          "Update our game collection",
-          "Change these terms with notice",
-          "Improve our platform and features"
+          "Изменять или прекращать любую часть нашего сервиса",
+          "Обновлять нашу коллекцию игр",
+          "Изменять эти условия с уведомлением",
+          "Улучшать нашу платформу и функции"
         ]
       },
       "termination": {
-        "title": "Termination",
-        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+        "title": "Прекращение",
+        "content": "Мы можем немедленно прекратить или приостановить доступ к нашему сервису без предварительного уведомления за поведение, которое, по нашему мнению, нарушает эти Условия Обслуживания или вредит другим пользователям, нам или третьим лицам."
       },
       "governing_law": {
-        "title": "Governing Law",
-        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+        "title": "Применимое Законодательство",
+        "content": "Эти Условия будут толковаться и регулироваться законами юрисдикции, где работает наш сервис, без учета положений о коллизии права."
       },
       "contact_changes": {
-        "title": "Contact & Changes",
+        "title": "Контакты и Изменения",
         "subsections": {
           "contact": {
-            "title": "Contact Information",
-            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "title": "Контактная Информация",
+            "content": "Если у вас есть вопросы по этим Условиям Обслуживания, свяжитесь с нами:",
             "items": [
               "Email: legal@edugamehq.com",
-              "Website: Contact Form"
+              "Веб-сайт: Контактная форма"
             ]
           },
           "changes": {
-            "title": "Changes to Terms",
-            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
-            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+            "title": "Изменения в Условиях",
+            "content": "Мы оставляем за собой право обновлять эти Условия Обслуживания в любое время. Мы уведомим пользователей о любых существенных изменениях, разместив новые Условия Обслуживания на этой странице с обновленной датой 'Последнее обновление'.",
+            "note": "Ваше дальнейшее использование сервиса после таких изменений означает ваше согласие с новыми Условиями Обслуживания."
           }
         }
       }

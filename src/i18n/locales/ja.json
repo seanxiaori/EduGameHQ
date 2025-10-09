@@ -645,166 +645,166 @@
     },
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+        "title": "規約の承諾",
+        "content": "EduGameHQ.com（「本サービス」）にアクセスし使用することにより、本契約の条件および規定に拘束されることに同意します。上記に同意しない場合は、本サービスを使用しないでください。"
       },
       "service_description": {
-        "title": "Description of Service",
-        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "title": "サービスの説明",
+        "content": "EduGameHQ.comは、6〜18歳の子供向けの教育ゲームへのアクセスを提供する無料の教育ゲームプラットフォームです。当サービスには以下が含まれます：",
         "items": [
-          "Access to curated educational games",
-          "Game progress tracking (stored locally)",
-          "Educational content and resources",
-          "Safe, child-friendly gaming environment"
+          "厳選された教育ゲームへのアクセス",
+          "ゲーム進行状況の追跡（ローカル保存）",
+          "教育コンテンツとリソース",
+          "安全で子供に優しいゲーム環境"
         ]
       },
       "user_eligibility": {
-        "title": "User Eligibility",
+        "title": "ユーザー資格",
         "subsections": {
           "age_requirements": {
-            "title": "Age Requirements",
+            "title": "年齢要件",
             "items": [
-              "Our service is designed for children aged 6-18",
-              "Children under 13 should use this service with parental supervision",
-              "We do not require account registration"
+              "当サービスは6〜18歳の子供向けに設計されています",
+              "13歳未満の子供は保護者の監督下で本サービスを使用する必要があります",
+              "アカウント登録は不要です"
             ]
           },
           "parental_consent": {
-            "title": "Parental Consent",
-            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+            "title": "保護者の同意",
+            "content": "13歳未満のユーザーには、本サービスを使用する前に保護者の監督と同意を推奨します。"
           }
         }
       },
       "acceptable_use": {
-        "title": "Acceptable Use",
+        "title": "利用規定",
         "subsections": {
           "permitted": {
-            "title": "Permitted Uses",
+            "title": "許可される使用",
             "items": [
-              "Educational and learning purposes",
-              "Personal, non-commercial use",
-              "Sharing with family and friends for educational purposes",
-              "Use in classroom settings with proper supervision"
+              "教育および学習目的",
+              "個人的、非商業的使用",
+              "教育目的での家族や友人との共有",
+              "適切な監督下での教室での使用"
             ]
           },
           "prohibited": {
-            "title": "Prohibited Uses",
+            "title": "禁止される使用",
             "items": [
-              "Commercial redistribution of games",
-              "Attempting to hack or disrupt the service",
-              "Using the service for any illegal activities",
-              "Circumventing any security measures",
-              "Uploading malicious content or viruses"
+              "ゲームの商業的再配布",
+              "サービスのハッキングまたは妨害の試み",
+              "違法行為へのサービスの使用",
+              "セキュリティ対策の回避",
+              "悪意のあるコンテンツやウイルスのアップロード"
             ]
           }
         }
       },
       "third_party_content": {
-        "title": "Third-Party Content",
-        "content": "Our platform includes games and content from third-party providers:",
+        "title": "第三者コンテンツ",
+        "content": "当プラットフォームには第三者プロバイダーのゲームとコンテンツが含まれています：",
         "items": [
-          "We do not own all games displayed on our platform",
-          "Third-party games are subject to their own terms and conditions",
-          "We strive to ensure all content is appropriate for children",
-          "We are not responsible for third-party content or services"
+          "プラットフォームに表示されているすべてのゲームを所有しているわけではありません",
+          "第三者のゲームは独自の利用規約の対象となります",
+          "すべてのコンテンツが子供に適していることを確保するよう努めています",
+          "第三者のコンテンツやサービスについて責任を負いません"
         ]
       },
       "intellectual_property": {
-        "title": "Intellectual Property",
+        "title": "知的財産",
         "subsections": {
           "our_content": {
-            "title": "Our Content",
-            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+            "title": "当社のコンテンツ",
+            "content": "EduGameHQウェブサイトのデザイン、レイアウト、およびオリジナルコンテンツは、著作権およびその他の知的財産法によって保護されています。"
           },
           "third_party": {
-            "title": "Third-Party Content",
-            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+            "title": "第三者コンテンツ",
+            "content": "すべてのゲームおよび第三者コンテンツは、それぞれの所有者の財産のままです。当社は、フェアユースまたは許可の下でこのコンテンツを表示します。"
           }
         }
       },
       "privacy_data": {
-        "title": "Privacy and Data Protection",
-        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "title": "プライバシーとデータ保護",
+        "content": "お客様のプライバシーは当社にとって重要です。当社がお客様の情報をどのように収集、使用、保護するかを理解するために、プライバシーポリシーをご確認ください。",
         "items": [
-          "We do not collect personal information from children",
-          "Game progress is stored locally on your device",
-          "We use minimal cookies for functionality",
-          "We comply with COPPA and GDPR requirements"
+          "子供から個人情報を収集しません",
+          "ゲームの進行状況はデバイスにローカル保存されます",
+          "機能のために最小限のクッキーを使用します",
+          "COPPAおよびGDPR要件に準拠しています"
         ],
-        "note": "For complete details, please read our Privacy Policy."
+        "note": "詳細については、プライバシーポリシーをお読みください。"
       },
       "disclaimers": {
-        "title": "Disclaimers",
+        "title": "免責事項",
         "subsections": {
           "educational_value": {
-            "title": "Educational Value",
-            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+            "title": "教育的価値",
+            "content": "教育的コンテンツの提供に努めていますが、特定の学習成果や教育的効果を保証するものではありません。"
           },
           "service_availability": {
-            "title": "Service Availability",
-            "content": "We provide our service 'as is' and make no warranties about:",
+            "title": "サービスの可用性",
+            "content": "当サービスは「現状のまま」提供され、以下について保証しません：",
             "items": [
-              "Continuous availability of the service",
-              "Compatibility with all devices",
-              "Error-free operation",
-              "Third-party game functionality"
+              "サービスの継続的な可用性",
+              "すべてのデバイスとの互換性",
+              "エラーのない動作",
+              "第三者ゲームの機能性"
             ]
           }
         }
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "To the fullest extent permitted by law:",
+        "title": "責任の制限",
+        "content": "法律で許可される最大限の範囲で：",
         "items": [
-          "We are not liable for any indirect, incidental, or consequential damages",
-          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
-          "We are not responsible for third-party content or services",
-          "Parents are responsible for supervising their children's use of our service"
+          "間接的、偶発的、または結果的損害について責任を負いません",
+          "当社の総責任は、本サービスの使用のためにお支払いいただいた金額を超えません（無料ユーザーの場合は0円）",
+          "第三者のコンテンツまたはサービスについて責任を負いません",
+          "保護者は子供による当サービスの使用を監督する責任があります"
         ]
       },
       "advertising": {
-        "title": "Advertising",
-        "content": "Our service is supported by advertising:",
+        "title": "広告",
+        "content": "当サービスは広告によってサポートされています：",
         "items": [
-          "We display family-friendly advertisements",
-          "Ads are non-personalized for children's content",
-          "We use Google AdSense and other advertising partners",
-          "Ad content is subject to our content policies"
+          "家族向けの広告を表示します",
+          "子供向けコンテンツの広告はパーソナライズされていません",
+          "Google AdSenseおよびその他の広告パートナーを使用します",
+          "広告コンテンツは当社のコンテンツポリシーに従います"
         ]
       },
       "modifications": {
-        "title": "Modifications to Service",
-        "content": "We reserve the right to:",
+        "title": "サービスの変更",
+        "content": "当社は以下の権利を留保します：",
         "items": [
-          "Modify or discontinue any part of our service",
-          "Update our game collection",
-          "Change these terms with notice",
-          "Improve our platform and features"
+          "サービスの一部を変更または中止する",
+          "ゲームコレクションを更新する",
+          "通知を伴ってこれらの条件を変更する",
+          "プラットフォームと機能を改善する"
         ]
       },
       "termination": {
-        "title": "Termination",
-        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+        "title": "終了",
+        "content": "当社の利用規約に違反する、または他のユーザー、当社、または第三者に有害であると当社が判断する行為について、事前通知なしに直ちに当サービスへのアクセスを終了または停止することができます。"
       },
       "governing_law": {
-        "title": "Governing Law",
-        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+        "title": "準拠法",
+        "content": "本規約は、抵触法の規定にかかわらず、当サービスが運営される管轄区域の法律に従って解釈され、管轄されます。"
       },
       "contact_changes": {
-        "title": "Contact & Changes",
+        "title": "連絡先と変更",
         "subsections": {
           "contact": {
-            "title": "Contact Information",
-            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "title": "連絡先情報",
+            "content": "本利用規約についてご質問がある場合は、お問い合わせください：",
             "items": [
-              "Email: legal@edugamehq.com",
-              "Website: Contact Form"
+              "メール：legal@edugamehq.com",
+              "ウェブサイト：お問い合わせフォーム"
             ]
           },
           "changes": {
-            "title": "Changes to Terms",
-            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
-            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+            "title": "規約の変更",
+            "content": "当社は、いつでも本利用規約を更新する権利を留保します。重要な変更については、このページに新しい利用規約を掲載し、「最終更新」日を更新することでユーザーに通知します。",
+            "note": "そのような変更後のサービスの継続的な使用は、新しい利用規約への同意を構成します。"
           }
         }
       }

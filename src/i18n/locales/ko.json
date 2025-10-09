@@ -765,166 +765,166 @@
     },
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+        "title": "약관 동의",
+        "content": "EduGameHQ.com('서비스')에 접근하고 사용함으로써, 귀하는 본 계약의 조건 및 규정을 준수하는 데 동의합니다. 위 내용에 동의하지 않는 경우 본 서비스를 사용하지 마십시오."
       },
       "service_description": {
-        "title": "Description of Service",
-        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "title": "서비스 설명",
+        "content": "EduGameHQ.com은 6-18세 어린이를 위한 교육 게임에 대한 액세스를 제공하는 무료 교육 게임 플랫폼입니다. 우리의 서비스는 다음을 포함합니다:",
         "items": [
-          "Access to curated educational games",
-          "Game progress tracking (stored locally)",
-          "Educational content and resources",
-          "Safe, child-friendly gaming environment"
+          "선별된 교육 게임에 대한 액세스",
+          "게임 진행 상황 추적(로컬 저장)",
+          "교육 콘텐츠 및 리소스",
+          "안전하고 어린이 친화적인 게임 환경"
         ]
       },
       "user_eligibility": {
-        "title": "User Eligibility",
+        "title": "사용자 자격",
         "subsections": {
           "age_requirements": {
-            "title": "Age Requirements",
+            "title": "연령 요구사항",
             "items": [
-              "Our service is designed for children aged 6-18",
-              "Children under 13 should use this service with parental supervision",
-              "We do not require account registration"
+              "우리 서비스는 6-18세 어린이를 위해 설계되었습니다",
+              "13세 미만 어린이는 부모의 감독 하에 이 서비스를 사용해야 합니다",
+              "계정 등록이 필요하지 않습니다"
             ]
           },
           "parental_consent": {
-            "title": "Parental Consent",
-            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+            "title": "부모 동의",
+            "content": "13세 미만 사용자의 경우, 서비스 사용 전에 부모의 감독 및 동의를 권장합니다."
           }
         }
       },
       "acceptable_use": {
-        "title": "Acceptable Use",
+        "title": "허용되는 사용",
         "subsections": {
           "permitted": {
-            "title": "Permitted Uses",
+            "title": "허용되는 용도",
             "items": [
-              "Educational and learning purposes",
-              "Personal, non-commercial use",
-              "Sharing with family and friends for educational purposes",
-              "Use in classroom settings with proper supervision"
+              "교육 및 학습 목적",
+              "개인적, 비상업적 사용",
+              "교육 목적으로 가족 및 친구와 공유",
+              "적절한 감독 하의 교실 환경에서 사용"
             ]
           },
           "prohibited": {
-            "title": "Prohibited Uses",
+            "title": "금지되는 용도",
             "items": [
-              "Commercial redistribution of games",
-              "Attempting to hack or disrupt the service",
-              "Using the service for any illegal activities",
-              "Circumventing any security measures",
-              "Uploading malicious content or viruses"
+              "게임의 상업적 재배포",
+              "서비스 해킹 또는 방해 시도",
+              "불법 활동에 서비스 사용",
+              "보안 조치 우회",
+              "악성 콘텐츠 또는 바이러스 업로드"
             ]
           }
         }
       },
       "third_party_content": {
-        "title": "Third-Party Content",
-        "content": "Our platform includes games and content from third-party providers:",
+        "title": "제3자 콘텐츠",
+        "content": "우리 플랫폼에는 제3자 제공업체의 게임 및 콘텐츠가 포함되어 있습니다:",
         "items": [
-          "We do not own all games displayed on our platform",
-          "Third-party games are subject to their own terms and conditions",
-          "We strive to ensure all content is appropriate for children",
-          "We are not responsible for third-party content or services"
+          "플랫폼에 표시된 모든 게임을 소유하지 않습니다",
+          "제3자 게임은 자체 이용 약관의 적용을 받습니다",
+          "모든 콘텐츠가 어린이에게 적합하도록 노력합니다",
+          "제3자 콘텐츠 또는 서비스에 대해 책임지지 않습니다"
         ]
       },
       "intellectual_property": {
-        "title": "Intellectual Property",
+        "title": "지적 재산권",
         "subsections": {
           "our_content": {
-            "title": "Our Content",
-            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+            "title": "우리의 콘텐츠",
+            "content": "EduGameHQ 웹사이트 디자인, 레이아웃 및 원본 콘텐츠는 저작권 및 기타 지적 재산권법으로 보호됩니다."
           },
           "third_party": {
-            "title": "Third-Party Content",
-            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+            "title": "제3자 콘텐츠",
+            "content": "모든 게임 및 제3자 콘텐츠는 각 소유자의 재산으로 남아 있습니다. 우리는 공정 사용 또는 허가에 따라 이 콘텐츠를 표시합니다."
           }
         }
       },
       "privacy_data": {
-        "title": "Privacy and Data Protection",
-        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "title": "개인정보 보호 및 데이터 보호",
+        "content": "귀하의 개인정보는 우리에게 중요합니다. 우리가 귀하의 정보를 어떻게 수집, 사용 및 보호하는지 이해하려면 개인정보 보호정책을 검토하십시오.",
         "items": [
-          "We do not collect personal information from children",
-          "Game progress is stored locally on your device",
-          "We use minimal cookies for functionality",
-          "We comply with COPPA and GDPR requirements"
+          "어린이로부터 개인 정보를 수집하지 않습니다",
+          "게임 진행 상황은 기기에 로컬로 저장됩니다",
+          "기능을 위해 최소한의 쿠키를 사용합니다",
+          "COPPA 및 GDPR 요구사항을 준수합니다"
         ],
-        "note": "For complete details, please read our Privacy Policy."
+        "note": "자세한 내용은 개인정보 보호정책을 읽어보십시오."
       },
       "disclaimers": {
-        "title": "Disclaimers",
+        "title": "면책 조항",
         "subsections": {
           "educational_value": {
-            "title": "Educational Value",
-            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+            "title": "교육적 가치",
+            "content": "교육 콘텐츠를 제공하기 위해 노력하지만 특정 학습 결과나 교육 효과를 보장하지 않습니다."
           },
           "service_availability": {
-            "title": "Service Availability",
-            "content": "We provide our service 'as is' and make no warranties about:",
+            "title": "서비스 가용성",
+            "content": "우리는 서비스를 '있는 그대로' 제공하며 다음에 대해 보증하지 않습니다:",
             "items": [
-              "Continuous availability of the service",
-              "Compatibility with all devices",
-              "Error-free operation",
-              "Third-party game functionality"
+              "서비스의 지속적인 가용성",
+              "모든 기기와의 호환성",
+              "오류 없는 작동",
+              "제3자 게임 기능"
             ]
           }
         }
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "To the fullest extent permitted by law:",
+        "title": "책임의 제한",
+        "content": "법이 허용하는 최대 범위 내에서:",
         "items": [
-          "We are not liable for any indirect, incidental, or consequential damages",
-          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
-          "We are not responsible for third-party content or services",
-          "Parents are responsible for supervising their children's use of our service"
+          "간접적, 부수적 또는 결과적 손해에 대해 책임지지 않습니다",
+          "우리의 총 책임은 서비스 사용을 위해 귀하가 지불한 금액을 초과하지 않습니다(무료 사용자의 경우 0원)",
+          "제3자 콘텐츠 또는 서비스에 대해 책임지지 않습니다",
+          "부모는 자녀의 서비스 사용을 감독할 책임이 있습니다"
         ]
       },
       "advertising": {
-        "title": "Advertising",
-        "content": "Our service is supported by advertising:",
+        "title": "광고",
+        "content": "우리 서비스는 광고로 지원됩니다:",
         "items": [
-          "We display family-friendly advertisements",
-          "Ads are non-personalized for children's content",
-          "We use Google AdSense and other advertising partners",
-          "Ad content is subject to our content policies"
+          "가족 친화적인 광고를 표시합니다",
+          "어린이 콘텐츠에 대한 광고는 개인화되지 않습니다",
+          "Google AdSense 및 기타 광고 파트너를 사용합니다",
+          "광고 콘텐츠는 우리의 콘텐츠 정책을 따릅니다"
         ]
       },
       "modifications": {
-        "title": "Modifications to Service",
-        "content": "We reserve the right to:",
+        "title": "서비스 수정",
+        "content": "우리는 다음의 권리를 보유합니다:",
         "items": [
-          "Modify or discontinue any part of our service",
-          "Update our game collection",
-          "Change these terms with notice",
-          "Improve our platform and features"
+          "서비스의 일부를 수정하거나 중단하기",
+          "게임 컬렉션 업데이트하기",
+          "공지와 함께 이 약관 변경하기",
+          "플랫폼 및 기능 개선하기"
         ]
       },
       "termination": {
-        "title": "Termination",
-        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+        "title": "종료",
+        "content": "우리는 이 서비스 약관을 위반하거나 다른 사용자, 우리 또는 제3자에게 해롭다고 판단되는 행위에 대해 사전 통지 없이 즉시 서비스에 대한 액세스를 종료하거나 일시 중지할 수 있습니다."
       },
       "governing_law": {
-        "title": "Governing Law",
-        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+        "title": "준거법",
+        "content": "이 약관은 법률 충돌 조항에 관계없이 우리 서비스가 운영되는 관할권의 법률에 따라 해석되고 관리됩니다."
       },
       "contact_changes": {
-        "title": "Contact & Changes",
+        "title": "연락 및 변경",
         "subsections": {
           "contact": {
-            "title": "Contact Information",
-            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "title": "연락처 정보",
+            "content": "이 서비스 약관에 대해 질문이 있으시면 문의해 주십시오:",
             "items": [
-              "Email: legal@edugamehq.com",
-              "Website: Contact Form"
+              "이메일: legal@edugamehq.com",
+              "웹사이트: 문의 양식"
             ]
           },
           "changes": {
-            "title": "Changes to Terms",
-            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
-            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+            "title": "약관 변경",
+            "content": "우리는 언제든지 이 서비스 약관을 업데이트할 권리를 보유합니다. 중요한 변경 사항에 대해서는 업데이트된 '최종 업데이트' 날짜와 함께 이 페이지에 새로운 서비스 약관을 게시하여 사용자에게 알립니다.",
+            "note": "이러한 변경 후 서비스를 계속 사용하면 새로운 서비스 약관에 대한 동의를 의미합니다."
           }
         }
       }

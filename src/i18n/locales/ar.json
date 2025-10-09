@@ -733,166 +733,166 @@
     },
     "sections": {
       "acceptance": {
-        "title": "Acceptance of Terms",
-        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+        "title": "قبول الشروط",
+        "content": "من خلال الوصول إلى واستخدام EduGameHQ.com ('الخدمة')، فإنك توافق على الالتزام بشروط وأحكام هذه الاتفاقية. إذا كنت لا توافق على ما سبق، يرجى عدم استخدام هذه الخدمة."
       },
       "service_description": {
-        "title": "Description of Service",
-        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "title": "وصف الخدمة",
+        "content": "EduGameHQ.com هي منصة ألعاب تعليمية مجانية توفر الوصول إلى الألعاب التعليمية للأطفال الذين تتراوح أعمارهم بين 6-18 عامًا. تشمل خدمتنا:",
         "items": [
-          "Access to curated educational games",
-          "Game progress tracking (stored locally)",
-          "Educational content and resources",
-          "Safe, child-friendly gaming environment"
+          "الوصول إلى الألعاب التعليمية المختارة",
+          "تتبع تقدم اللعبة (مخزن محليًا)",
+          "المحتوى والموارد التعليمية",
+          "بيئة لعب آمنة ومناسبة للأطفال"
         ]
       },
       "user_eligibility": {
-        "title": "User Eligibility",
+        "title": "أهلية المستخدم",
         "subsections": {
           "age_requirements": {
-            "title": "Age Requirements",
+            "title": "متطلبات العمر",
             "items": [
-              "Our service is designed for children aged 6-18",
-              "Children under 13 should use this service with parental supervision",
-              "We do not require account registration"
+              "خدمتنا مصممة للأطفال الذين تتراوح أعمارهم بين 6-18 عامًا",
+              "يجب على الأطفال دون سن 13 عامًا استخدام هذه الخدمة تحت إشراف الوالدين",
+              "نحن لا نطلب تسجيل حساب"
             ]
           },
           "parental_consent": {
-            "title": "Parental Consent",
-            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+            "title": "موافقة الوالدين",
+            "content": "بالنسبة للمستخدمين الذين تقل أعمارهم عن 13 عامًا، نوصي بالإشراف الأبوي والموافقة قبل استخدام خدمتنا."
           }
         }
       },
       "acceptable_use": {
-        "title": "Acceptable Use",
+        "title": "الاستخدام المقبول",
         "subsections": {
           "permitted": {
-            "title": "Permitted Uses",
+            "title": "الاستخدامات المسموح بها",
             "items": [
-              "Educational and learning purposes",
-              "Personal, non-commercial use",
-              "Sharing with family and friends for educational purposes",
-              "Use in classroom settings with proper supervision"
+              "الأغراض التعليمية والتعلمية",
+              "الاستخدام الشخصي غير التجاري",
+              "المشاركة مع العائلة والأصدقاء لأغراض تعليمية",
+              "الاستخدام في بيئات الفصول الدراسية مع الإشراف المناسب"
             ]
           },
           "prohibited": {
-            "title": "Prohibited Uses",
+            "title": "الاستخدامات المحظورة",
             "items": [
-              "Commercial redistribution of games",
-              "Attempting to hack or disrupt the service",
-              "Using the service for any illegal activities",
-              "Circumventing any security measures",
-              "Uploading malicious content or viruses"
+              "إعادة التوزيع التجاري للألعاب",
+              "محاولة اختراق أو تعطيل الخدمة",
+              "استخدام الخدمة للأنشطة غير القانونية",
+              "تجاوز تدابير الأمان",
+              "تحميل محتوى ضار أو فيروسات"
             ]
           }
         }
       },
       "third_party_content": {
-        "title": "Third-Party Content",
-        "content": "Our platform includes games and content from third-party providers:",
+        "title": "محتوى الطرف الثالث",
+        "content": "تتضمن منصتنا ألعاب ومحتوى من موفري الطرف الثالث:",
         "items": [
-          "We do not own all games displayed on our platform",
-          "Third-party games are subject to their own terms and conditions",
-          "We strive to ensure all content is appropriate for children",
-          "We are not responsible for third-party content or services"
+          "نحن لا نمتلك جميع الألعاب المعروضة على منصتنا",
+          "ألعاب الطرف الثالث تخضع لشروطها وأحكامها الخاصة",
+          "نسعى جاهدين لضمان أن كل المحتوى مناسب للأطفال",
+          "نحن غير مسؤولين عن محتوى أو خدمات الطرف الثالث"
         ]
       },
       "intellectual_property": {
-        "title": "Intellectual Property",
+        "title": "الملكية الفكرية",
         "subsections": {
           "our_content": {
-            "title": "Our Content",
-            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+            "title": "محتوانا",
+            "content": "تصميم وتخطيط والمحتوى الأصلي لموقع EduGameHQ محمي بموجب حقوق النشر وقوانين الملكية الفكرية الأخرى."
           },
           "third_party": {
-            "title": "Third-Party Content",
-            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+            "title": "محتوى الطرف الثالث",
+            "content": "جميع الألعاب ومحتوى الطرف الثالث تبقى ملكًا لأصحابها المعنيين. نعرض هذا المحتوى بموجب الاستخدام العادل أو بإذن."
           }
         }
       },
       "privacy_data": {
-        "title": "Privacy and Data Protection",
-        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "title": "الخصوصية وحماية البيانات",
+        "content": "خصوصيتك مهمة بالنسبة لنا. يرجى مراجعة سياسة الخصوصية الخاصة بنا لفهم كيفية جمع معلوماتك واستخدامها وحمايتها.",
         "items": [
-          "We do not collect personal information from children",
-          "Game progress is stored locally on your device",
-          "We use minimal cookies for functionality",
-          "We comply with COPPA and GDPR requirements"
+          "نحن لا نجمع معلومات شخصية من الأطفال",
+          "يتم تخزين تقدم اللعبة محليًا على جهازك",
+          "نستخدم الحد الأدنى من ملفات تعريف الارتباط للوظائف",
+          "نحن نمتثل لمتطلبات COPPA و GDPR"
         ],
-        "note": "For complete details, please read our Privacy Policy."
+        "note": "للحصول على التفاصيل الكاملة، يرجى قراءة سياسة الخصوصية الخاصة بنا."
       },
       "disclaimers": {
-        "title": "Disclaimers",
+        "title": "إخلاء المسؤولية",
         "subsections": {
           "educational_value": {
-            "title": "Educational Value",
-            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+            "title": "القيمة التعليمية",
+            "content": "بينما نسعى جاهدين لتوفير محتوى تعليمي، فإننا لا نضمن نتائج تعليمية محددة أو فعالية تعليمية."
           },
           "service_availability": {
-            "title": "Service Availability",
-            "content": "We provide our service 'as is' and make no warranties about:",
+            "title": "توفر الخدمة",
+            "content": "نحن نقدم خدمتنا 'كما هي' ولا نضمن:",
             "items": [
-              "Continuous availability of the service",
-              "Compatibility with all devices",
-              "Error-free operation",
-              "Third-party game functionality"
+              "التوافر المستمر للخدمة",
+              "التوافق مع جميع الأجهزة",
+              "التشغيل الخالي من الأخطاء",
+              "وظائف ألعاب الطرف الثالث"
             ]
           }
         }
       },
       "liability": {
-        "title": "Limitation of Liability",
-        "content": "To the fullest extent permitted by law:",
+        "title": "تحديد المسؤولية",
+        "content": "إلى أقصى حد يسمح به القانون:",
         "items": [
-          "We are not liable for any indirect, incidental, or consequential damages",
-          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
-          "We are not responsible for third-party content or services",
-          "Parents are responsible for supervising their children's use of our service"
+          "نحن غير مسؤولين عن أي أضرار غير مباشرة أو عرضية أو تبعية",
+          "لن تتجاوز مسؤوليتنا الإجمالية المبلغ الذي دفعته لاستخدام خدمتنا (وهو 0 درهم للمستخدمين المجانيين)",
+          "نحن غير مسؤولين عن محتوى أو خدمات الطرف الثالث",
+          "الآباء مسؤولون عن الإشراف على استخدام أطفالهم لخدمتنا"
         ]
       },
       "advertising": {
-        "title": "Advertising",
-        "content": "Our service is supported by advertising:",
+        "title": "الإعلان",
+        "content": "خدمتنا مدعومة بالإعلانات:",
         "items": [
-          "We display family-friendly advertisements",
-          "Ads are non-personalized for children's content",
-          "We use Google AdSense and other advertising partners",
-          "Ad content is subject to our content policies"
+          "نعرض إعلانات مناسبة للعائلة",
+          "الإعلانات غير مخصصة لمحتوى الأطفال",
+          "نستخدم Google AdSense وشركاء إعلانيين آخرين",
+          "محتوى الإعلان يخضع لسياسات المحتوى الخاصة بنا"
         ]
       },
       "modifications": {
-        "title": "Modifications to Service",
-        "content": "We reserve the right to:",
+        "title": "التعديلات على الخدمة",
+        "content": "نحتفظ بالحق في:",
         "items": [
-          "Modify or discontinue any part of our service",
-          "Update our game collection",
-          "Change these terms with notice",
-          "Improve our platform and features"
+          "تعديل أو إيقاف أي جزء من خدمتنا",
+          "تحديث مجموعة الألعاب لدينا",
+          "تغيير هذه الشروط مع الإشعار",
+          "تحسين منصتنا وميزاتنا"
         ]
       },
       "termination": {
-        "title": "Termination",
-        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+        "title": "الإنهاء",
+        "content": "يمكننا إنهاء أو تعليق الوصول إلى خدمتنا فورًا، دون إشعار مسبق، للسلوك الذي نعتقد أنه ينتهك شروط الخدمة هذه أو ضار للمستخدمين الآخرين أو لنا أو لأطراف ثالثة."
       },
       "governing_law": {
-        "title": "Governing Law",
-        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+        "title": "القانون الساري",
+        "content": "سيتم تفسير هذه الشروط والتحكم فيها بموجب قوانين الولاية القضائية حيث تعمل خدمتنا، دون اعتبار لأحكام تنازع القوانين."
       },
       "contact_changes": {
-        "title": "Contact & Changes",
+        "title": "الاتصال والتغييرات",
         "subsections": {
           "contact": {
-            "title": "Contact Information",
-            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "title": "معلومات الاتصال",
+            "content": "إذا كان لديك أي أسئلة حول شروط الخدمة هذه، يرجى الاتصال بنا:",
             "items": [
-              "Email: legal@edugamehq.com",
-              "Website: Contact Form"
+              "البريد الإلكتروني: legal@edugamehq.com",
+              "الموقع الإلكتروني: نموذج الاتصال"
             ]
           },
           "changes": {
-            "title": "Changes to Terms",
-            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
-            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+            "title": "التغييرات على الشروط",
+            "content": "نحتفظ بالحق في تحديث شروط الخدمة هذه في أي وقت. سنخطر المستخدمين بأي تغييرات جوهرية من خلال نشر شروط الخدمة الجديدة على هذه الصفحة مع تاريخ 'آخر تحديث' محدث.",
+            "note": "يشكل استمرارك في استخدام الخدمة بعد هذه التغييرات موافقتك على شروط الخدمة الجديدة."
           }
         }
       }
