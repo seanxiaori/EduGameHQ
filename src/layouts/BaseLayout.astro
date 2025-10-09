@@ -323,36 +323,8 @@ if (!isHomePage) {
       }
     }
     
-    // 根据游戏分类添加对应的分类页面链接
-    if (gameCategory) {
-      const categoryPath = `/${gameCategory}-games`;
-      const categoryInfo = (pageStructure.categories as Record<string, any>)[categoryPath];
-      
-      if (categoryInfo) {
-        breadcrumbs.push({ 
-          name: categoryInfo.name, 
-          url: getLocalizedPath(categoryPath, currentLang), 
-          icon: categoryInfo.icon,
-          color: categoryInfo.color
-        });
-      } else {
-        // 如果找不到对应的分类页面，使用通用分类名
-        const categoryName = gameCategory.charAt(0).toUpperCase() + gameCategory.slice(1) + ' Games';
-        breadcrumbs.push({ 
-          name: categoryName, 
-          url: getLocalizedPath('/', currentLang), 
-          icon: 'fas fa-gamepad',
-          color: 'primary'
-        });
-      }
-    } else {
-      // 如果无法确定分类，显示通用游戏链接
-      breadcrumbs.push({ 
-        name: t(translations, 'game', 'Games'), 
-        url: getLocalizedPath('/', currentLang), 
-        icon: 'fas fa-gamepad' 
-      });
-    }
+    // 🔧 修复：游戏详情页面不添加分类到面包屑（因为顶部已有"分类"下拉菜单）
+    // 直接添加游戏名称，结构为：首页 > 分类(下拉) > 游戏名称
     
     // 添加当前游戏名称（不链接）- 智能截断长名称
     const truncatedTitle = gameTitle.length > 20 ? gameTitle.substring(0, 17) + '...' : gameTitle;
