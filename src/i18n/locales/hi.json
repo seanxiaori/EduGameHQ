@@ -934,108 +934,108 @@
     "last_updated": "अंतिम अपडेट: जनवरी 2025",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "परिचय",
+        "content": "EduGameHQ.com हमारे उपयोगकर्ताओं, विशेष रूप से बच्चों की गोपनीयता की रक्षा के लिए प्रतिबद्ध है। यह गोपनीयता नीति बताती है कि जब आप हमारे शैक्षिक गेमिंग प्लेटफ़ॉर्म पर जाते हैं तो हम जानकारी कैसे एकत्र, उपयोग और सुरक्षित करते हैं।"
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "हम जो जानकारी एकत्र करते हैं",
+        "dont_collect_title": "हम जो जानकारी एकत्र नहीं करते हैं",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत जानकारी",
+          "नाम, पते या संपर्क जानकारी",
+          "फोटो या वीडियो",
+          "स्थान डेटा",
+          "सोशल मीडिया प्रोफाइल"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "हम जो जानकारी एकत्र कर सकते हैं",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "गेम प्रगति",
+            "detail": "केवल आपके डिवाइस पर स्थानीय रूप से संग्रहीत"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "गुमनाम उपयोग डेटा",
+            "detail": "कौन से गेम खेले गए (कोई व्यक्तिगत पहचान नहीं)"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "तकनीकी जानकारी",
+            "detail": "अनुकूलन के लिए ब्राउज़र प्रकार, डिवाइस प्रकार"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "हम जानकारी का उपयोग कैसे करते हैं",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "हमारे शैक्षिक गेम और वेबसाइट में सुधार करें",
+          "सुनिश्चित करें कि गेम विभिन्न उपकरणों पर ठीक से काम करते हैं",
+          "एक सुरक्षित सीखने का वातावरण प्रदान करें",
+          "उपयुक्त, गैर-वैयक्तिकृत विज्ञापन प्रदर्शित करें"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "कुकीज़ और स्थानीय संग्रहण",
+        "content": "हम आपके अनुभव को बढ़ाने के लिए न्यूनतम कुकीज़ और स्थानीय संग्रहण का उपयोग करते हैं:",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "अपनी गेम प्रगति याद रखें (केवल आपके डिवाइस पर संग्रहीत)",
+          "सुनिश्चित करें कि वेबसाइट ठीक से काम करती है",
+          "गैर-वैयक्तिकृत विज्ञापन प्रदर्शित करें"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "आप अपनी ब्राउज़र सेटिंग्स में कुकीज़ अक्षम कर सकते हैं, लेकिन कुछ सुविधाएँ ठीक से काम नहीं कर सकती हैं।"
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "तृतीय-पक्ष सेवाएँ",
+        "game_providers_title": "शैक्षिक गेम प्रदाता",
+        "game_providers_content": "हमारे गेम विश्वसनीय शैक्षिक प्लेटफ़ॉर्म से एम्बेडेड हैं। प्रत्येक गेम प्रदाता की अपनी गोपनीयता नीति है।",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "हम विज्ञापन प्रदर्शित करने के लिए Google AdSense का उपयोग करते हैं। बच्चों की सामग्री के लिए:",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "केवल गैर-वैयक्तिकृत विज्ञापन दिखाए जाते हैं",
+          "विज्ञापन परिवार के अनुकूल और बच्चों के लिए उपयुक्त हैं",
+          "विज्ञापन लक्ष्यीकरण के लिए कोई व्यक्तिगत डेटा उपयोग नहीं किया जाता है"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "बच्चों की गोपनीयता (COPPA अनुपालन)",
+        "content": "हम बच्चों की ऑनलाइन गोपनीयता संरक्षण अधिनियम (COPPA) का अनुपालन करने के लिए प्रतिबद्ध हैं:",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "हम जानबूझकर 13 वर्ष से कम उम्र के बच्चों से व्यक्तिगत जानकारी एकत्र नहीं करते हैं",
+          "हमें पंजीकरण या खाता बनाने की आवश्यकता नहीं है",
+          "सभी सामग्री बच्चों के लिए सुरक्षित होने के लिए डिज़ाइन की गई है",
+          "माता-पिता किसी भी चिंता के साथ हमसे संपर्क कर सकते हैं"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "डेटा सुरक्षा",
+        "content": "हम एकत्रित की गई किसी भी जानकारी की सुरक्षा के लिए उपयुक्त सुरक्षा उपाय लागू करते हैं:",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "सभी वेबसाइट ट्रैफ़िक के लिए HTTPS एन्क्रिप्शन",
+          "न्यूनतम डेटा संग्रह प्रथाएं",
+          "नियमित सुरक्षा अपडेट",
+          "सुरक्षित होस्टिंग अवसंरचना"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "अंतर्राष्ट्रीय उपयोगकर्ता",
+        "content": "यूरोपीय संघ में उपयोगकर्ताओं के लिए, हम GDPR आवश्यकताओं का अनुपालन करते हैं:",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "न्यूनतम डेटा प्रोसेसिंग",
+          "पारदर्शी गोपनीयता प्रथाएं",
+          "डेटा हटाने का अनुरोध करने का अधिकार",
+          "बच्चों की कोई प्रोफाइलिंग नहीं"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "इस नीति में परिवर्तन",
+        "content": "हम समय-समय पर इस गोपनीयता नीति को अपडेट कर सकते हैं। हम इस पृष्ठ पर अद्यतन 'अंतिम अपडेट' तारीख के साथ नई नीति पोस्ट करके किसी भी महत्वपूर्ण परिवर्तन के बारे में उपयोगकर्ताओं को सूचित करेंगे।"
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "हमसे संपर्क करें",
+        "content": "यदि आपके पास इस गोपनीयता नीति या हमारी गोपनीयता प्रथाओं के बारे में कोई प्रश्न हैं, तो कृपया हमसे संपर्क करें:",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "ईमेल: privacy@edugamehq.com",
+          "वेबसाइट: संपर्क फ़ॉर्म"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "माता-पिता के लिए: यदि आपको लगता है कि आपके बच्चे ने हमें व्यक्तिगत जानकारी प्रदान की है, तो कृपया तुरंत हमसे संपर्क करें ताकि हम इसे हटा सकें।"
       }
     }
   }

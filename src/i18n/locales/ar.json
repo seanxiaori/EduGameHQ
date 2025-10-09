@@ -947,108 +947,108 @@
     "last_updated": "آخر تحديث: يناير 2025",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "مقدمة",
+        "content": "تلتزم EduGameHQ.com بحماية خصوصية مستخدمينا، وخاصة الأطفال. توضح سياسة الخصوصية هذه كيفية جمع المعلومات واستخدامها وحمايتها عند زيارة منصة الألعاب التعليمية الخاصة بنا."
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "المعلومات التي نجمعها",
+        "dont_collect_title": "المعلومات التي لا نجمعها",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "المعلومات الشخصية من الأطفال دون سن 13 عامًا",
+          "الأسماء أو العناوين أو معلومات الاتصال",
+          "الصور أو مقاطع الفيديو",
+          "بيانات الموقع",
+          "ملفات تعريف وسائل التواصل الاجتماعي"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "المعلومات التي قد نجمعها",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "تقدم اللعبة",
+            "detail": "يتم تخزينها محليًا على جهازك فقط"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "بيانات الاستخدام المجهولة",
+            "detail": "الألعاب التي تم لعبها (بدون تعريف شخصي)"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "المعلومات الفنية",
+            "detail": "نوع المتصفح، نوع الجهاز للتحسين"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "كيف نستخدم المعلومات",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "تحسين ألعابنا التعليمية وموقعنا الإلكتروني",
+          "التأكد من عمل الألعاب بشكل صحيح على الأجهزة المختلفة",
+          "توفير بيئة تعليمية آمنة",
+          "عرض إعلانات مناسبة وغير مخصصة"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "ملفات تعريف الارتباط والتخزين المحلي",
+        "content": "نستخدم الحد الأدنى من ملفات تعريف الارتباط والتخزين المحلي لتحسين تجربتك:",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "تذكر تقدمك في اللعبة (يتم تخزينه على جهازك فقط)",
+          "التأكد من عمل الموقع الإلكتروني بشكل صحيح",
+          "عرض إعلانات غير مخصصة"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "يمكنك تعطيل ملفات تعريف الارتباط في إعدادات المتصفح، ولكن قد لا تعمل بعض الميزات بشكل صحيح."
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "خدمات الطرف الثالث",
+        "game_providers_title": "مزودو الألعاب التعليمية",
+        "game_providers_content": "ألعابنا مدمجة من منصات تعليمية موثوقة. لكل مزود ألعاب سياسة الخصوصية الخاصة به.",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "نستخدم Google AdSense لعرض الإعلانات. لمحتوى الأطفال:",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "يتم عرض إعلانات غير مخصصة فقط",
+          "الإعلانات مناسبة للعائلة ومناسبة للأطفال",
+          "لا تُستخدم البيانات الشخصية لاستهداف الإعلانات"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "خصوصية الأطفال (الامتثال لـ COPPA)",
+        "content": "نلتزم بالامتثال لقانون حماية خصوصية الأطفال عبر الإنترنت (COPPA):",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "نحن لا نجمع عن قصد معلومات شخصية من الأطفال دون سن 13 عامًا",
+          "نحن لا نطلب التسجيل أو إنشاء حساب",
+          "تم تصميم جميع المحتويات لتكون آمنة للأطفال",
+          "يمكن للآباء الاتصال بنا بشأن أي مخاوف"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "أمن البيانات",
+        "content": "ننفذ تدابير أمنية مناسبة لحماية أي معلومات نجمعها:",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "تشفير HTTPS لجميع حركة المرور على الموقع",
+          "ممارسات الحد الأدنى من جمع البيانات",
+          "تحديثات أمنية منتظمة",
+          "بنية تحتية آمنة للاستضافة"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "المستخدمون الدوليون",
+        "content": "بالنسبة للمستخدمين في الاتحاد الأوروبي، نلتزم بمتطلبات اللائحة العامة لحماية البيانات:",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "الحد الأدنى من معالجة البيانات",
+          "ممارسات خصوصية شفافة",
+          "الحق في طلب حذف البيانات",
+          "عدم التنميط للأطفال"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "التغييرات في هذه السياسة",
+        "content": "قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سنخطر المستخدمين بأي تغييرات مهمة من خلال نشر السياسة الجديدة على هذه الصفحة مع تاريخ 'آخر تحديث' محدث."
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "اتصل بنا",
+        "content": "إذا كان لديك أي أسئلة حول سياسة الخصوصية هذه أو ممارسات الخصوصية لدينا، يرجى الاتصال بنا:",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "البريد الإلكتروني: privacy@edugamehq.com",
+          "الموقع الإلكتروني: نموذج الاتصال"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "للآباء: إذا كنت تعتقد أن طفلك قد قدم معلومات شخصية لنا، يرجى الاتصال بنا على الفور حتى نتمكن من إزالتها."
       }
     }
   }

@@ -939,108 +939,108 @@
     "last_updated": "עדכון אחרון: ינואר 2025",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "מבוא",
+        "content": "EduGameHQ.com מחויב להגן על הפרטיות של המשתמשים שלנו, במיוחד ילדים. מדיניות פרטיות זו מסבירה כיצד אנו אוספים, משתמשים ומגנים על מידע כאשר אתה מבקר בפלטפורמת המשחקים החינוכיים שלנו."
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "מידע שאנו אוספים",
+        "dont_collect_title": "מידע שאנחנו לא אוספים",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "מידע אישי מילדים מתחת לגיל 13",
+          "שמות, כתובות או פרטי יצירת קשר",
+          "תמונות או סרטונים",
+          "נתוני מיקום",
+          "פרופילי מדיה חברתית"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "מידע שאנחנו עשויים לאסוף",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "התקדמות במשחק",
+            "detail": "מאוחסן רק מקומית במכשיר שלך"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "נתוני שימוש אנונימיים",
+            "detail": "אילו משחקים משוחקים (ללא זיהוי אישי)"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "מידע טכני",
+            "detail": "סוג דפדפן, סוג מכשיר לאופטימיזציה"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "כיצד אנו משתמשים במידע",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "לשפר את המשחקים החינוכיים והאתר שלנו",
+          "להבטיח שהמשחקים עובדים כראוי במכשירים שונים",
+          "לספק סביבת למידה בטוחה",
+          "להציג פרסומות מתאימות ולא מותאמות אישית"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "עוגיות ואחסון מקומי",
+        "content": "אנו משתמשים במינימום עוגיות ואחסון מקומי כדי לשפר את החוויה שלך:",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "לזכור את ההתקדמות שלך במשחק (מאוחסן רק במכשיר שלך)",
+          "להבטיח שהאתר פועל כראוי",
+          "להציג פרסומות לא מותאמות אישית"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "אתה יכול להשבית עוגיות בהגדרות הדפדפן שלך, אך ייתכן שתכונות מסוימות לא יעבדו כראוי."
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "שירותי צד שלישי",
+        "game_providers_title": "ספקי משחקים חינוכיים",
+        "game_providers_content": "המשחקים שלנו מוטמעים מפלטפורמות חינוכיות מהימנות. לכל ספק משחקים יש מדיניות פרטיות משלו.",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "אנו משתמשים ב-Google AdSense להצגת פרסומות. לתוכן ילדים:",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "מוצגות רק פרסומות לא מותאמות אישית",
+          "הפרסומות ידידותיות למשפחה ומתאימות לילדים",
+          "לא נעשה שימוש בנתונים אישיים למיקוד פרסומות"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "פרטיות ילדים (תאימות COPPA)",
+        "content": "אנו מחויבים לציית לחוק הגנת הפרטיות המקוון של ילדים (COPPA):",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "אנחנו לא אוספים במכוון מידע אישי מילדים מתחת לגיל 13",
+          "אנחנו לא דורשים רישום או יצירת חשבון",
+          "כל התוכן מעוצב להיות בטוח לילדים",
+          "הורים יכולים ליצור איתנו קשר עם כל דאגה"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "אבטחת מידע",
+        "content": "אנו מיישמים אמצעי אבטחה מתאימים להגנה על כל מידע שאנו אוספים:",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "הצפנת HTTPS לכל תעבורת האתר",
+          "שיטות איסוף מידע מינימליות",
+          "עדכוני אבטחה קבועים",
+          "תשתית אירוח מאובטחת"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "משתמשים בינלאומיים",
+        "content": "עבור משתמשים באיחוד האירופי, אנו עומדים בדרישות GDPR:",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "עיבוד מידע מינימלי",
+          "שיטות פרטיות שקופות",
+          "זכות לבקש מחיקת נתונים",
+          "ללא פרופיל של ילדים"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "שינויים במדיניות זו",
+        "content": "אנו עשויים לעדכן את מדיניות הפרטיות הזו מעת לעת. נודיע למשתמשים על כל שינוי משמעותי על ידי פרסום המדיניות החדשה בעמוד זה עם תאריך 'עדכון אחרון' מעודכן."
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "צור קשר",
+        "content": "אם יש לך שאלות כלשהן לגבי מדיניות פרטיות זו או נוהלי הפרטיות שלנו, אנא צור איתנו קשר:",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "דוא\"ל: privacy@edugamehq.com",
+          "אתר אינטרנט: טופס יצירת קשר"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "להורים: אם אתה מאמין שילדך סיפק לנו מידע אישי, אנא צור איתנו קשר מיד כדי שנוכל להסיר אותו."
       }
     }
   }

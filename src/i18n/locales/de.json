@@ -882,108 +882,108 @@
     "last_updated": "Zuletzt aktualisiert: Januar 2025",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "Einführung",
+        "content": "EduGameHQ.com ist dem Schutz der Privatsphäre unserer Benutzer, insbesondere von Kindern, verpflichtet. Diese Datenschutzrichtlinie erklärt, wie wir Informationen sammeln, verwenden und schützen, wenn Sie unsere Bildungsspielplattform besuchen."
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "Informationen, die wir sammeln",
+        "dont_collect_title": "Informationen, die wir NICHT sammeln",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "Persönliche Informationen von Kindern unter 13 Jahren",
+          "Namen, Adressen oder Kontaktinformationen",
+          "Fotos oder Videos",
+          "Standortdaten",
+          "Social-Media-Profile"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "Informationen, die wir möglicherweise sammeln",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "Spielfortschritt",
+            "detail": "Nur lokal auf Ihrem Gerät gespeichert"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "Anonyme Nutzungsdaten",
+            "detail": "Welche Spiele gespielt werden (keine persönliche Identifikation)"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "Technische Informationen",
+            "detail": "Browsertyp, Gerätetyp zur Optimierung"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "Wie wir Informationen verwenden",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "Unsere Lernspiele und Website verbessern",
+          "Sicherstellen, dass Spiele auf verschiedenen Geräten richtig funktionieren",
+          "Eine sichere Lernumgebung bereitstellen",
+          "Angemessene, nicht personalisierte Werbung anzeigen"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "Cookies und lokale Speicherung",
+        "content": "Wir verwenden minimale Cookies und lokale Speicherung, um Ihr Erlebnis zu verbessern:",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "Ihren Spielfortschritt merken (nur auf Ihrem Gerät gespeichert)",
+          "Sicherstellen, dass die Website ordnungsgemäß funktioniert",
+          "Nicht personalisierte Werbung anzeigen"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "Sie können Cookies in Ihren Browsereinstellungen deaktivieren, aber einige Funktionen funktionieren möglicherweise nicht richtig."
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "Drittanbieterdienste",
+        "game_providers_title": "Anbieter von Lernspielen",
+        "game_providers_content": "Unsere Spiele sind von vertrauenswürdigen Bildungsplattformen eingebettet. Jeder Spieleanbieter hat seine eigene Datenschutzrichtlinie.",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "Wir verwenden Google AdSense, um Werbung anzuzeigen. Für Kinderinhalte:",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "Es werden nur nicht personalisierte Anzeigen gezeigt",
+          "Anzeigen sind familienfreundlich und für Kinder geeignet",
+          "Keine persönlichen Daten werden für Anzeigen-Targeting verwendet"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "Privatsphäre von Kindern (COPPA-Konformität)",
+        "content": "Wir verpflichten uns, das Gesetz zum Schutz der Online-Privatsphäre von Kindern (COPPA) einzuhalten:",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "Wir sammeln wissentlich keine persönlichen Informationen von Kindern unter 13 Jahren",
+          "Wir benötigen keine Registrierung oder Kontoerstellung",
+          "Alle Inhalte sind für Kinder sicher gestaltet",
+          "Eltern können uns mit allen Bedenken kontaktieren"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "Datensicherheit",
+        "content": "Wir implementieren angemessene Sicherheitsmaßnahmen zum Schutz aller gesammelten Informationen:",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "HTTPS-Verschlüsselung für den gesamten Website-Verkehr",
+          "Minimale Datenerfassungspraktiken",
+          "Regelmäßige Sicherheitsupdates",
+          "Sichere Hosting-Infrastruktur"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "Internationale Benutzer",
+        "content": "Für Benutzer in der Europäischen Union erfüllen wir die DSGVO-Anforderungen:",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "Minimale Datenverarbeitung",
+          "Transparente Datenschutzpraktiken",
+          "Recht auf Anforderung der Datenlöschung",
+          "Kein Profiling von Kindern"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "Änderungen an dieser Richtlinie",
+        "content": "Wir können diese Datenschutzrichtlinie von Zeit zu Zeit aktualisieren. Wir werden Benutzer über wesentliche Änderungen informieren, indem wir die neue Richtlinie auf dieser Seite mit einem aktualisierten Datum 'Zuletzt aktualisiert' veröffentlichen."
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "Kontaktieren Sie uns",
+        "content": "Wenn Sie Fragen zu dieser Datenschutzrichtlinie oder unseren Datenschutzpraktiken haben, kontaktieren Sie uns bitte:",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "E-Mail: privacy@edugamehq.com",
+          "Website: Kontaktformular"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "Für Eltern: Wenn Sie glauben, dass Ihr Kind uns persönliche Informationen zur Verfügung gestellt hat, kontaktieren Sie uns bitte sofort, damit wir diese entfernen können."
       }
     }
   }

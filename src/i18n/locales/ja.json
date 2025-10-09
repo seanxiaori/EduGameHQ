@@ -859,108 +859,108 @@
     "last_updated": "最終更新：2025年1月",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "はじめに",
+        "content": "EduGameHQ.comは、特に子供たちを含むユーザーのプライバシーを保護することに取り組んでいます。このプライバシーポリシーは、教育ゲームプラットフォームを訪問する際に、情報をどのように収集、使用、保護するかを説明します。"
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "収集する情報",
+        "dont_collect_title": "収集しない情報",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "13歳未満の子供からの個人情報",
+          "氏名、住所、または連絡先情報",
+          "写真または動画",
+          "位置情報データ",
+          "ソーシャルメディアプロフィール"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "収集する可能性のある情報",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "ゲームの進行状況",
+            "detail": "お使いのデバイスにのみローカルに保存されます"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "匿名の使用データ",
+            "detail": "プレイされたゲーム（個人識別なし）"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "技術情報",
+            "detail": "最適化のためのブラウザタイプ、デバイスタイプ"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "情報の使用方法",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "教育ゲームとウェブサイトの改善",
+          "異なるデバイスでゲームが正しく動作することを確認",
+          "安全な学習環境の提供",
+          "適切で非パーソナライズされた広告の表示"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "Cookieとローカルストレージ",
+        "content": "エクスペリエンスを向上させるために、最小限のCookieとローカルストレージを使用します：",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "ゲームの進行状況を記憶（デバイスにのみ保存）",
+          "ウェブサイトが正しく機能することを確認",
+          "非パーソナライズされた広告を表示"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "ブラウザの設定でCookieを無効にできますが、一部の機能が正しく動作しない場合があります。"
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "サードパーティサービス",
+        "game_providers_title": "教育ゲームプロバイダー",
+        "game_providers_content": "当社のゲームは、信頼できる教育プラットフォームから埋め込まれています。各ゲームプロバイダーには独自のプライバシーポリシーがあります。",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "広告を表示するためにGoogle AdSenseを使用しています。子供向けコンテンツの場合：",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "非パーソナライズされた広告のみが表示されます",
+          "広告は家族向けで子供に適しています",
+          "個人データは広告ターゲティングに使用されません"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "子供のプライバシー（COPPA準拠）",
+        "content": "児童オンラインプライバシー保護法（COPPA）の遵守に取り組んでいます：",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "13歳未満の子供から故意に個人情報を収集しません",
+          "登録やアカウント作成は必要ありません",
+          "すべてのコンテンツは子供にとって安全に設計されています",
+          "保護者は懸念事項について当社に連絡できます"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "データセキュリティ",
+        "content": "収集するすべての情報を保護するために適切なセキュリティ対策を実装しています：",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "すべてのウェブサイトトラフィックのHTTPS暗号化",
+          "最小限のデータ収集慣行",
+          "定期的なセキュリティアップデート",
+          "安全なホスティングインフラストラクチャ"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "国際ユーザー",
+        "content": "欧州連合のユーザーについては、GDPR要件を遵守しています：",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "最小限のデータ処理",
+          "透明なプライバシー慣行",
+          "データ削除を要求する権利",
+          "子供のプロファイリングなし"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "このポリシーの変更",
+        "content": "このプライバシーポリシーを随時更新することがあります。更新された'最終更新'日付とともにこのページに新しいポリシーを投稿することで、重要な変更をユーザーに通知します。"
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "お問い合わせ",
+        "content": "このプライバシーポリシーまたは当社のプライバシー慣行について質問がある場合は、お問い合わせください：",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "メール: privacy@edugamehq.com",
+          "ウェブサイト: お問い合わせフォーム"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "保護者の方へ：お子様が当社に個人情報を提供したと思われる場合は、すぐに当社に連絡して削除できるようにしてください。"
       }
     }
   }

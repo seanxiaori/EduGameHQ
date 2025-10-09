@@ -779,108 +779,108 @@
     "last_updated": "Последнее обновление: Январь 2025",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "Введение",
+        "content": "EduGameHQ.com стремится защищать конфиденциальность наших пользователей, особенно детей. Эта Политика конфиденциальности объясняет, как мы собираем, используем и защищаем информацию, когда вы посещаете нашу образовательную игровую платформу."
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "Информация, которую мы собираем",
+        "dont_collect_title": "Информация, которую мы НЕ собираем",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "Личную информацию детей младше 13 лет",
+          "Имена, адреса или контактную информацию",
+          "Фотографии или видео",
+          "Данные о местоположении",
+          "Профили в социальных сетях"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "Информация, которую мы можем собирать",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "Прогресс игры",
+            "detail": "Хранится только локально на вашем устройстве"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "Анонимные данные использования",
+            "detail": "В какие игры играют (без личной идентификации)"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "Техническая информация",
+            "detail": "Тип браузера, тип устройства для оптимизации"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "Как мы используем информацию",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "Улучшаем наши образовательные игры и веб-сайт",
+          "Обеспечиваем правильную работу игр на разных устройствах",
+          "Предоставляем безопасную среду для обучения",
+          "Показываем подходящую, неперсонализированную рекламу"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "Файлы cookie и локальное хранилище",
+        "content": "Мы используем минимальное количество файлов cookie и локальное хранилище для улучшения вашего опыта:",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "Запоминаем ваш прогресс в игре (хранится только на вашем устройстве)",
+          "Обеспечиваем правильную работу веб-сайта",
+          "Показываем неперсонализированную рекламу"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "Вы можете отключить файлы cookie в настройках браузера, но некоторые функции могут работать неправильно."
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "Сторонние сервисы",
+        "game_providers_title": "Поставщики образовательных игр",
+        "game_providers_content": "Наши игры встроены с надежных образовательных платформ. У каждого поставщика игр есть своя политика конфиденциальности.",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "Мы используем Google AdSense для показа рекламы. Для детского контента:",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "Показывается только неперсонализированная реклама",
+          "Реклама подходит для семейного просмотра и детей",
+          "Личные данные не используются для таргетинга рекламы"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "Конфиденциальность детей (соответствие COPPA)",
+        "content": "Мы стремимся соблюдать Закон о защите конфиденциальности детей в Интернете (COPPA):",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "Мы сознательно не собираем личную информацию от детей младше 13 лет",
+          "Мы не требуем регистрации или создания учетной записи",
+          "Весь контент разработан безопасным для детей",
+          "Родители могут связаться с нами с любыми проблемами"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "Безопасность данных",
+        "content": "Мы применяем соответствующие меры безопасности для защиты любой собираемой нами информации:",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "HTTPS-шифрование для всего трафика веб-сайта",
+          "Минимальные практики сбора данных",
+          "Регулярные обновления безопасности",
+          "Безопасная инфраструктура хостинга"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "Международные пользователи",
+        "content": "Для пользователей в Европейском союзе мы соблюдаем требования GDPR:",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "Минимальная обработка данных",
+          "Прозрачные методы обеспечения конфиденциальности",
+          "Право запросить удаление данных",
+          "Отсутствие профилирования детей"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "Изменения в этой политике",
+        "content": "Мы можем время от времени обновлять эту Политику конфиденциальности. Мы уведомим пользователей о любых существенных изменениях, разместив новую политику на этой странице с обновленной датой 'Последнее обновление'."
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "Свяжитесь с нами",
+        "content": "Если у вас есть вопросы об этой Политике конфиденциальности или наших методах обеспечения конфиденциальности, свяжитесь с нами:",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "Электронная почта: privacy@edugamehq.com",
+          "Веб-сайт: Контактная форма"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "Для родителей: Если вы считаете, что ваш ребенок предоставил нам личную информацию, немедленно свяжитесь с нами, чтобы мы могли ее удалить."
       }
     }
   }

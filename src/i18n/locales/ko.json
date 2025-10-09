@@ -979,108 +979,108 @@
     "last_updated": "최종 업데이트: 2025년 1월",
     "sections": {
       "introduction": {
-        "title": "Introduction",
-        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+        "title": "소개",
+        "content": "EduGameHQ.com은 특히 어린이를 포함한 사용자의 개인정보를 보호하기 위해 최선을 다하고 있습니다. 이 개인정보 보호정책은 교육 게임 플랫폼을 방문할 때 정보를 수집, 사용 및 보호하는 방법을 설명합니다."
       },
       "information_collection": {
-        "title": "Information We Collect",
-        "dont_collect_title": "Information We Do NOT Collect",
+        "title": "수집하는 정보",
+        "dont_collect_title": "수집하지 않는 정보",
         "dont_collect_items": [
-          "Personal information from children under 13",
-          "Names, addresses, or contact information",
-          "Photos or videos",
-          "Location data",
-          "Social media profiles"
+          "13세 미만 어린이의 개인 정보",
+          "이름, 주소 또는 연락처 정보",
+          "사진 또는 동영상",
+          "위치 데이터",
+          "소셜 미디어 프로필"
         ],
-        "may_collect_title": "Information We May Collect",
+        "may_collect_title": "수집할 수 있는 정보",
         "may_collect_items": [
           {
-            "label": "Game Progress",
-            "detail": "Stored locally on your device only"
+            "label": "게임 진행 상황",
+            "detail": "기기에만 로컬로 저장됨"
           },
           {
-            "label": "Anonymous Usage Data",
-            "detail": "Which games are played (no personal identification)"
+            "label": "익명 사용 데이터",
+            "detail": "어떤 게임이 플레이되었는지(개인 식별 없음)"
           },
           {
-            "label": "Technical Information",
-            "detail": "Browser type, device type for optimization"
+            "label": "기술 정보",
+            "detail": "최적화를 위한 브라우저 유형, 기기 유형"
           }
         ]
       },
       "information_use": {
-        "title": "How We Use Information",
+        "title": "정보 사용 방법",
         "items": [
-          "Improve our educational games and website",
-          "Ensure games work properly on different devices",
-          "Provide a safe learning environment",
-          "Display appropriate, non-personalized advertisements"
+          "교육 게임 및 웹사이트 개선",
+          "다양한 기기에서 게임이 제대로 작동하는지 확인",
+          "안전한 학습 환경 제공",
+          "적절하고 개인화되지 않은 광고 표시"
         ]
       },
       "cookies_storage": {
-        "title": "Cookies and Local Storage",
-        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "title": "쿠키 및 로컬 저장소",
+        "content": "경험을 향상시키기 위해 최소한의 쿠키와 로컬 저장소를 사용합니다:",
         "items": [
-          "Remember your game progress (stored on your device only)",
-          "Ensure the website functions properly",
-          "Display non-personalized advertisements"
+          "게임 진행 상황 기억(기기에만 저장)",
+          "웹사이트가 제대로 작동하도록 보장",
+          "개인화되지 않은 광고 표시"
         ],
-        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+        "note": "브라우저 설정에서 쿠키를 비활성화할 수 있지만 일부 기능이 제대로 작동하지 않을 수 있습니다."
       },
       "third_party": {
-        "title": "Third-Party Services",
-        "game_providers_title": "Educational Game Providers",
-        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "title": "제3자 서비스",
+        "game_providers_title": "교육 게임 제공업체",
+        "game_providers_content": "우리의 게임은 신뢰할 수 있는 교육 플랫폼에서 제공됩니다. 각 게임 제공업체는 자체 개인정보 보호정책을 가지고 있습니다.",
         "adsense_title": "Google AdSense",
-        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_content": "광고를 표시하기 위해 Google AdSense를 사용합니다. 어린이 콘텐츠의 경우:",
         "adsense_items": [
-          "Only non-personalized ads are shown",
-          "Ads are family-friendly and appropriate for children",
-          "No personal data is used for ad targeting"
+          "개인화되지 않은 광고만 표시됩니다",
+          "광고는 가족 친화적이고 어린이에게 적합합니다",
+          "개인 데이터는 광고 타겟팅에 사용되지 않습니다"
         ]
       },
       "coppa_compliance": {
-        "title": "Children's Privacy (COPPA Compliance)",
-        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "title": "어린이 개인정보 보호(COPPA 준수)",
+        "content": "어린이 온라인 개인정보 보호법(COPPA)을 준수하기 위해 최선을 다하고 있습니다:",
         "items": [
-          "We do not knowingly collect personal information from children under 13",
-          "We do not require registration or account creation",
-          "All content is designed to be safe for children",
-          "Parents can contact us with any concerns"
+          "13세 미만 어린이로부터 의도적으로 개인 정보를 수집하지 않습니다",
+          "등록 또는 계정 생성이 필요하지 않습니다",
+          "모든 콘텐츠는 어린이에게 안전하도록 설계되었습니다",
+          "부모님은 우려 사항에 대해 당사에 연락할 수 있습니다"
         ]
       },
       "data_security": {
-        "title": "Data Security",
-        "content": "We implement appropriate security measures to protect any information we collect:",
+        "title": "데이터 보안",
+        "content": "수집하는 모든 정보를 보호하기 위해 적절한 보안 조치를 구현합니다:",
         "items": [
-          "HTTPS encryption for all website traffic",
-          "Minimal data collection practices",
-          "Regular security updates",
-          "Secure hosting infrastructure"
+          "모든 웹사이트 트래픽에 대한 HTTPS 암호화",
+          "최소한의 데이터 수집 관행",
+          "정기적인 보안 업데이트",
+          "안전한 호스팅 인프라"
         ]
       },
       "international_users": {
-        "title": "International Users",
-        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "title": "국제 사용자",
+        "content": "유럽 연합의 사용자에 대해 GDPR 요구 사항을 준수합니다:",
         "items": [
-          "Minimal data processing",
-          "Transparent privacy practices",
-          "Right to request data deletion",
-          "No profiling of children"
+          "최소한의 데이터 처리",
+          "투명한 개인정보 보호 관행",
+          "데이터 삭제를 요청할 권리",
+          "어린이 프로파일링 없음"
         ]
       },
       "policy_changes": {
-        "title": "Changes to This Policy",
-        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+        "title": "정책 변경",
+        "content": "이 개인정보 보호정책을 수시로 업데이트할 수 있습니다. 업데이트된 '최종 업데이트' 날짜와 함께 이 페이지에 새로운 정책을 게시하여 중요한 변경 사항을 사용자에게 알립니다."
       },
       "contact_us": {
-        "title": "Contact Us",
-        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "title": "문의하기",
+        "content": "이 개인정보 보호정책 또는 당사의 개인정보 보호 관행에 대해 질문이 있으시면 문의해 주십시오:",
         "items": [
-          "Email: privacy@edugamehq.com",
-          "Website: Contact Form"
+          "이메일: privacy@edugamehq.com",
+          "웹사이트: 문의 양식"
         ],
-        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+        "note": "부모님께: 자녀가 당사에 개인 정보를 제공했다고 생각되시면 즉시 당사에 연락하여 삭제할 수 있도록 해주십시오."
       }
     }
   }
