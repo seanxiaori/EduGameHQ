@@ -95,31 +95,80 @@
   </svg>
 </div>
 
-<!-- 品牌名称 - 现代专业设计 -->
-<div class="logo-text flex items-center gap-1">
-  <span class="text-3xl font-black tracking-tight" style="background: linear-gradient(135deg, #FF6B35 0%, #F7931E 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Edu</span>
-  <span class="text-3xl font-black tracking-tight" style="background: linear-gradient(135deg, #3B82F6 0%, #8B5CF6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">Game</span>
-  <span class="text-2xl font-bold tracking-tight text-gray-600">HQ</span>
+<!-- 品牌名称 - 清晰专业的设计 -->
+<div class="logo-text">
+  <span class="logo-edu">Edu</span><span class="logo-game">Game</span><span class="logo-hq">HQ</span>
 </div>
 
 <style>
+  /* Logo容器 */
+  .logo-text {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+  }
+  
+  /* Edu - 橙色强调 */
+  .logo-edu {
+    font-size: 1.875rem; /* 30px */
+    color: #F97316;
+    text-shadow: 0 2px 4px rgba(249, 115, 22, 0.2);
+  }
+  
+  /* Game - 蓝色强调 */
+  .logo-game {
+    font-size: 1.875rem; /* 30px */
+    color: #3B82F6;
+    text-shadow: 0 2px 4px rgba(59, 130, 246, 0.2);
+  }
+  
+  /* HQ - 灰色副标 */
+  .logo-hq {
+    font-size: 1.5rem; /* 24px */
+    color: #6B7280;
+    font-weight: 700;
+    opacity: 0.9;
+  }
+  
   /* Logo悬停效果 */
   svg {
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
   }
   
   svg:hover {
     transform: scale(1.05);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+  }
+  
+  .logo-text:hover .logo-edu {
+    color: #EA580C;
+  }
+  
+  .logo-text:hover .logo-game {
+    color: #2563EB;
   }
   
   /* 响应式字体 */
   @media (max-width: 640px) {
-    .logo-text span:first-child,
-    .logo-text span:nth-child(2) {
-      font-size: 1.5rem;
+    .logo-edu,
+    .logo-game {
+      font-size: 1.5rem; /* 24px */
     }
-    .logo-text span:last-child {
-      font-size: 1.25rem;
+    .logo-hq {
+      font-size: 1.25rem; /* 20px */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .logo-edu,
+    .logo-game {
+      font-size: 1.25rem; /* 20px */
+    }
+    .logo-hq {
+      font-size: 1rem; /* 16px */
     }
   }
 </style>

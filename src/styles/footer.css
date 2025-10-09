@@ -46,20 +46,60 @@
 .footer-section:nth-child(3) { animation-delay: 0.3s; }
 .footer-section:nth-child(4) { animation-delay: 0.4s; }
 
-/* Logo部分 */
-.footer-logo {
+/* Logo品牌部分 */
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
   margin-bottom: 1rem;
 }
 
-.footer-logo img {
-  width: 240px;
-  height: auto;
+.footer-logo-icon {
+  flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
-.footer-logo img:hover {
-  transform: scale(1.02);
-  filter: brightness(1.1);
+.footer-logo-icon:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 4px 8px rgba(255, 107, 53, 0.3));
+}
+
+.footer-logo-text {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  font-family: 'Inter', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.footer-edu {
+  font-size: 2rem;
+  color: #F97316;
+  text-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
+  transition: color 0.3s ease;
+}
+
+.footer-game {
+  font-size: 2rem;
+  color: #3B82F6;
+  text-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  transition: color 0.3s ease;
+}
+
+.footer-hq {
+  font-size: 1.5rem;
+  color: #9CA3AF;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
+.footer-brand:hover .footer-edu {
+  color: #EA580C;
+}
+
+.footer-brand:hover .footer-game {
+  color: #2563EB;
 }
 
 .footer-description {
@@ -150,8 +190,13 @@
     gap: 2rem;
   }
   
-  .footer-logo img {
-    width: 220px;
+  .footer-edu,
+  .footer-game {
+    font-size: 1.75rem;
+  }
+  
+  .footer-hq {
+    font-size: 1.25rem;
   }
 }
 
@@ -166,8 +211,17 @@
     text-align: center;
   }
   
-  .footer-logo img {
-    width: 200px;
+  .footer-brand {
+    justify-content: center;
+  }
+  
+  .footer-edu,
+  .footer-game {
+    font-size: 1.5rem;
+  }
+  
+  .footer-hq {
+    font-size: 1.125rem;
   }
   
   .footer-title::after {
@@ -183,8 +237,18 @@
 }
 
 @media (max-width: 480px) {
-  .footer-logo img {
-    width: 180px;
+  .footer-brand {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .footer-edu,
+  .footer-game {
+    font-size: 1.25rem;
+  }
+  
+  .footer-hq {
+    font-size: 1rem;
   }
   
   .footer-description,
