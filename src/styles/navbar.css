@@ -37,9 +37,10 @@
   flex-grow: 1; /* 占据所有可用空间 */
   align-items: center;
   justify-content: flex-start; /* 从左侧开始对齐 */
-  min-width: 300px; /* 🔧 确保有足够空间显示面包屑 */
+  min-width: 400px; /* 🔧 增加最小宽度，确保面包屑有足够空间 */
   margin: 0 1.5rem; /* 与Logo和右侧按钮组保持间距 */
   overflow: visible; /* 🔧 允许内容溢出显示 */
+  gap: 0.75rem; /* 🔧 面包屑和搜索框之间的间距 */
 }
 
 /* Logo样式 - 适配新设计的LOGO */
@@ -120,6 +121,7 @@
   overflow: visible;
   max-width: 100%;
   padding: 0.25rem 0;
+  flex: 1; /* 🔧 占据更多可用空间 */
 }
 
 .nav-breadcrumbs::-webkit-scrollbar {
@@ -519,7 +521,7 @@
   flex-shrink: 0; /* 防止搜索框被压缩 */
   margin-left: auto; /* 将搜索框推到右边 */
   width: 100%; /* 默认宽度 */
-  max-width: 320px; /* 限制最大宽度 */
+  max-width: 200px; /* 🔧 缩小搜索框，给面包屑更多空间 */
 }
 
 .search-wrapper {
@@ -733,6 +735,27 @@
 }
 
 /* 响应式设计 */
+/* 🔧 新增：中等屏幕优化（1200px以下） */
+@media (max-width: 1200px) {
+  .nav-btn-text {
+    display: none; /* 隐藏按钮文字，节省空间 */
+  }
+  
+  .nav-btn {
+    padding: 0.75rem;
+    min-width: 2.5rem;
+    justify-content: center;
+  }
+  
+  .language-btn .language-code {
+    display: none; /* 只显示国旗图标 */
+  }
+  
+  .search-container {
+    max-width: 180px; /* 进一步缩小搜索框 */
+  }
+}
+
 @media (max-width: 1024px) {
   .nav-container {
     padding: 0 1.5rem;
@@ -758,7 +781,7 @@
   }
   
   .search-container {
-    max-width: 250px;
+    max-width: 160px; /* 🔧 平板进一步缩小 */
     margin: 0 0.5rem;
   }
   
