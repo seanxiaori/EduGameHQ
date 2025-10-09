@@ -4,16 +4,13 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../../i18n/utils';
 
 // 导入样式文件
 import '../../styles/game-card.css';
 
-const seoData = {
-  title: "New Games | Latest Educational Games for Kids | EduGameHQ",
-  description: "Discover the newest educational games for kids aged 6-18. Fresh content added regularly to keep learning fun and engaging.",
-  keywords: ["new games", "latest games", "newest educational games", "fresh content", "recently added games", "new learning games"],
-  ogImage: "/images/new-games-og.jpg"
-};
+// 获取ZH翻译数据
+const translations = await getTranslations('zh');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -35,10 +32,10 @@ const thisMonthGames = shuffledGames.slice(8, 12);
 const recentlyUpdatedGames = shuffledGames.slice(12, 16);
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
-  <!-- 引入统一游戏卡片样式 -->
-  
-  
+<BaseLayout 
+  title={t(translations, 'new_games_page.seo.title')} 
+  description={t(translations, 'new_games_page.seo.description')}
+>
   <main class="main-content">
     <div class="content-wrapper">
 
@@ -47,14 +44,13 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
         <div class="header-content">
           <div class="header-icon">
             <div class="section-icon new">
-            <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">New Educational Games</h1>
-          <p class="page-description">
-              Discover the latest educational games added to our platform. Fresh learning experiences 
-              across math, science, coding, language arts, and puzzle solving for students of all ages.
+            <h1 class="page-title">{t(translations, 'new_games_page.page_title')}</h1>
+            <p class="page-description">
+              {t(translations, 'new_games_page.page_description')}
             </p>
           </div>
         </div>
@@ -63,85 +59,85 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
       <!-- 2. 今日新增游戏模块 -->
       {todayGames.length > 0 && (
         <section class="game-module today-module">
-        <div class="module-header">
+          <div class="module-header">
             <div class="module-icon today-icon">
-            <i class="fas fa-calendar-day"></i>
-          </div>
+              <i class="fas fa-calendar-day"></i>
+            </div>
             <div class="module-title-group">
-            <h2 class="module-title">Today's New Games</h2>
-            <p class="module-subtitle">Fresh games added today</p>
+              <h2 class="module-title">{t(translations, 'new_games_page.sections.today.title')}</h2>
+              <p class="module-subtitle">{t(translations, 'new_games_page.sections.today.subtitle')}</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="games-grid">
+          
+          <div class="games-grid">
             {todayGames.map((game) => (
               <GameCard game={game} showNew={true} showPopularity={true} showFavorite={true} />
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       )}
 
       <!-- 3. 本周新增游戏模块 -->
       {thisWeekGames.length > 0 && (
         <section class="game-module week-module">
-        <div class="module-header">
+          <div class="module-header">
             <div class="module-icon week-icon">
-            <i class="fas fa-calendar-week"></i>
-          </div>
+              <i class="fas fa-calendar-week"></i>
+            </div>
             <div class="module-title-group">
-            <h2 class="module-title">This Week's New Games</h2>
-            <p class="module-subtitle">Games added in the past 7 days</p>
+              <h2 class="module-title">{t(translations, 'new_games_page.sections.this_week.title')}</h2>
+              <p class="module-subtitle">{t(translations, 'new_games_page.sections.this_week.subtitle')}</p>
+            </div>
           </div>
-                  </div>
-        
-        <div class="games-grid">
+          
+          <div class="games-grid">
             {thisWeekGames.map((game) => (
               <GameCard game={game} showFeatured={true} showPopularity={true} showFavorite={true} />
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       )}
 
       <!-- 4. 本月新增游戏模块 -->
       {thisMonthGames.length > 0 && (
         <section class="game-module month-module">
-        <div class="module-header">
+          <div class="module-header">
             <div class="module-icon month-icon">
-            <i class="fas fa-calendar-alt"></i>
+              <i class="fas fa-calendar-alt"></i>
             </div>
             <div class="module-title-group">
-            <h2 class="module-title">This Month's New Games</h2>
-            <p class="module-subtitle">Games added in the past 30 days</p>
-          </div>
+              <h2 class="module-title">{t(translations, 'new_games_page.sections.this_month.title')}</h2>
+              <p class="module-subtitle">{t(translations, 'new_games_page.sections.this_month.subtitle')}</p>
             </div>
-        
-        <div class="games-grid">
+          </div>
+          
+          <div class="games-grid">
             {thisMonthGames.map((game) => (
               <GameCard game={game} showPopularity={true} showFavorite={true} />
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       )}
 
       <!-- 5. 最近更新游戏模块 -->
       {recentlyUpdatedGames.length > 0 && (
         <section class="game-module updated-module">
-        <div class="module-header">
+          <div class="module-header">
             <div class="module-icon updated-icon">
-            <i class="fas fa-sync-alt"></i>
-          </div>
+              <i class="fas fa-sync-alt"></i>
+            </div>
             <div class="module-title-group">
-            <h2 class="module-title">Recently Updated Games</h2>
-            <p class="module-subtitle">Games with recent improvements and updates</p>
+              <h2 class="module-title">{t(translations, 'new_games_page.sections.recently_updated.title')}</h2>
+              <p class="module-subtitle">{t(translations, 'new_games_page.sections.recently_updated.subtitle')}</p>
+            </div>
           </div>
-        </div>
-        
-        <div class="games-grid">
+          
+          <div class="games-grid">
             {recentlyUpdatedGames.map((game) => (
               <GameCard game={game} showUpdated={true} showPopularity={true} showFavorite={true} />
-          ))}
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
       )}
 
     </div>
@@ -466,5 +462,4 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
       padding: 1rem;
     }
   }
-</style> 
-
+</style>

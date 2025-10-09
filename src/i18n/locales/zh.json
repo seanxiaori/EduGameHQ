@@ -1142,5 +1142,32 @@
       "description": "开始游玩一些教育游戏，它们会出现在这里！",
       "action": "浏览游戏"
     }
+  },
+  "new_games_page": {
+    "seo": {
+      "title": "新游戏 | 最新教育游戏 | EduGameHQ",
+      "description": "发现最新添加的6-18岁儿童教育游戏。定期添加新鲜内容，让学习保持有趣和吸引力。",
+      "keywords": "新游戏, 最新游戏, 最新教育游戏, 新鲜内容, 最近添加的游戏, 新学习游戏"
+    },
+    "page_title": "最新教育游戏",
+    "page_description": "探索平台上最新添加的教育游戏。涵盖数学、科学、编程、语言艺术和解谜等领域的全新学习体验，适合所有年龄段的学生。",
+    "sections": {
+      "today": {
+        "title": "今日新游戏",
+        "subtitle": "今天新增的游戏"
+      },
+      "this_week": {
+        "title": "本周新游戏",
+        "subtitle": "过去7天内添加的游戏"
+      },
+      "this_month": {
+        "title": "本月新游戏",
+        "subtitle": "过去30天内添加的游戏"
+      },
+      "recently_updated": {
+        "title": "最近更新的游戏",
+        "subtitle": "最近改进和更新的游戏"
+      }
+    }
   }
 }

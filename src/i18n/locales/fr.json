@@ -838,5 +838,32 @@
       "permitted_activities": "Activités autorisées:",
       "prohibited_activities": "Activités interdites:"
     }
+  },
+  "new_games_page": {
+    "seo": {
+      "title": "Nouveaux Jeux | Derniers Jeux Éducatifs pour Enfants | EduGameHQ",
+      "description": "Découvrez les tout derniers jeux éducatifs pour les enfants de 6 à 18 ans. Contenu frais ajouté régulièrement pour garder l'apprentissage amusant et engageant.",
+      "keywords": "nouveaux jeux, derniers jeux, jeux éducatifs les plus récents, contenu frais, jeux récemment ajoutés, nouveaux jeux d'apprentissage"
+    },
+    "page_title": "Nouveaux Jeux Éducatifs",
+    "page_description": "Découvrez les derniers jeux éducatifs ajoutés à notre plateforme. Expériences d'apprentissage fraîches en mathématiques, sciences, codage, arts du langage et résolution d'énigmes pour les étudiants de tous âges.",
+    "sections": {
+      "today": {
+        "title": "Nouveaux Jeux d'Aujourd'hui",
+        "subtitle": "Jeux frais ajoutés aujourd'hui"
+      },
+      "this_week": {
+        "title": "Nouveaux Jeux de Cette Semaine",
+        "subtitle": "Jeux ajoutés au cours des 7 derniers jours"
+      },
+      "this_month": {
+        "title": "Nouveaux Jeux de Ce Mois",
+        "subtitle": "Jeux ajoutés au cours des 30 derniers jours"
+      },
+      "recently_updated": {
+        "title": "Jeux Récemment Mis à Jour",
+        "subtitle": "Jeux avec des améliorations et mises à jour récentes"
+      }
+    }
   }
 }

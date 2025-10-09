@@ -779,5 +779,32 @@
         }
       }
     }
+  },
+  "new_games_page": {
+    "seo": {
+      "title": "New Games | Latest Educational Games for Kids | EduGameHQ",
+      "description": "Discover the newest educational games for kids aged 6-18. Fresh content added regularly to keep learning fun and engaging.",
+      "keywords": "new games, latest games, newest educational games, fresh content, recently added games, new learning games"
+    },
+    "page_title": "New Educational Games",
+    "page_description": "Discover the latest educational games added to our platform. Fresh learning experiences across math, science, coding, language arts, and puzzle solving for students of all ages.",
+    "sections": {
+      "today": {
+        "title": "Today's New Games",
+        "subtitle": "Fresh games added today"
+      },
+      "this_week": {
+        "title": "This Week's New Games",
+        "subtitle": "Games added in the past 7 days"
+      },
+      "this_month": {
+        "title": "This Month's New Games",
+        "subtitle": "Games added in the past 30 days"
+      },
+      "recently_updated": {
+        "title": "Recently Updated Games",
+        "subtitle": "Games with recent improvements and updates"
+      }
+    }
   }
 }

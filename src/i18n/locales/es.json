@@ -962,5 +962,32 @@
       "permitted_activities": "Actividades permitidas:",
       "prohibited_activities": "Actividades prohibidas:"
     }
+  },
+  "new_games_page": {
+    "seo": {
+      "title": "Juegos Nuevos | Últimos Juegos Educativos para Niños | EduGameHQ",
+      "description": "Descubre los juegos educativos más nuevos para niños de 6-18 años. Contenido fresco agregado regularmente para mantener el aprendizaje divertido y atractivo.",
+      "keywords": "juegos nuevos, últimos juegos, juegos educativos más nuevos, contenido fresco, juegos recientemente agregados, nuevos juegos de aprendizaje"
+    },
+    "page_title": "Nuevos Juegos Educativos",
+    "page_description": "Descubre los últimos juegos educativos agregados a nuestra plataforma. Experiencias de aprendizaje frescas en matemáticas, ciencias, codificación, artes del lenguaje y resolución de acertijos para estudiantes de todas las edades.",
+    "sections": {
+      "today": {
+        "title": "Juegos Nuevos de Hoy",
+        "subtitle": "Juegos frescos agregados hoy"
+      },
+      "this_week": {
+        "title": "Juegos Nuevos de Esta Semana",
+        "subtitle": "Juegos agregados en los últimos 7 días"
+      },
+      "this_month": {
+        "title": "Juegos Nuevos de Este Mes",
+        "subtitle": "Juegos agregados en los últimos 30 días"
+      },
+      "recently_updated": {
+        "title": "Juegos Recientemente Actualizados",
+        "subtitle": "Juegos con mejoras y actualizaciones recientes"
+      }
+    }
   }
 }

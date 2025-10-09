@@ -843,5 +843,32 @@
       "permitted_activities": "Erlaubte Aktivitäten:",
       "prohibited_activities": "Verbotene Aktivitäten:"
     }
+  },
+  "new_games_page": {
+    "seo": {
+      "title": "Neue Spiele | Neueste Lernspiele für Kinder | EduGameHQ",
+      "description": "Entdecke die neuesten Lernspiele für Kinder von 6-18 Jahren. Regelmäßig hinzugefügter frischer Inhalt, um das Lernen unterhaltsam und ansprechend zu halten.",
+      "keywords": "neue Spiele, neueste Spiele, neueste Lernspiele, frischer Inhalt, kürzlich hinzugefügte Spiele, neue Lernspiele"
+    },
+    "page_title": "Neue Lernspiele",
+    "page_description": "Entdecke die neuesten Lernspiele, die unserer Plattform hinzugefügt wurden. Frische Lernerfahrungen in Mathematik, Naturwissenschaften, Programmierung, Sprachkunst und Rätsellösen für Schüler aller Altersgruppen.",
+    "sections": {
+      "today": {
+        "title": "Heutige Neue Spiele",
+        "subtitle": "Heute hinzugefügte frische Spiele"
+      },
+      "this_week": {
+        "title": "Neue Spiele Diese Woche",
+        "subtitle": "In den letzten 7 Tagen hinzugefügte Spiele"
+      },
+      "this_month": {
+        "title": "Neue Spiele Diesen Monat",
+        "subtitle": "In den letzten 30 Tagen hinzugefügte Spiele"
+      },
+      "recently_updated": {
+        "title": "Kürzlich Aktualisierte Spiele",
+        "subtitle": "Spiele mit kürzlichen Verbesserungen und Updates"
+      }
+    }
   }
 }

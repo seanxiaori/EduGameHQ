@@ -940,5 +940,32 @@
       "permitted_activities": "허용되는 활동:",
       "prohibited_activities": "금지되는 활동:"
     }
+  },
+  "new_games_page": {
+    "seo": {
+      "title": "새로운 게임 | 최신 교육 게임 | EduGameHQ",
+      "description": "6-18세 어린이를 위한 최신 교육 게임을 발견하세요. 학습을 재미있고 매력적으로 유지하기 위해 정기적으로 추가되는 신선한 콘텐츠.",
+      "keywords": "새로운 게임, 최신 게임, 최신 교육 게임, 신선한 콘텐츠, 최근 추가된 게임, 새로운 학습 게임"
+    },
+    "page_title": "새로운 교육 게임",
+    "page_description": "플랫폼에 추가된 최신 교육 게임을 발견하세요. 모든 연령대의 학생들을 위한 수학, 과학, 코딩, 언어 예술 및 퍼즐 해결의 신선한 학습 경험.",
+    "sections": {
+      "today": {
+        "title": "오늘의 새로운 게임",
+        "subtitle": "오늘 추가된 신선한 게임"
+      },
+      "this_week": {
+        "title": "이번 주 새로운 게임",
+        "subtitle": "지난 7일 동안 추가된 게임"
+      },
+      "this_month": {
+        "title": "이번 달 새로운 게임",
+        "subtitle": "지난 30일 동안 추가된 게임"
+      },
+      "recently_updated": {
+        "title": "최근 업데이트된 게임",
+        "subtitle": "최근 개선 및 업데이트가 있는 게임"
+      }
+    }
   }
 }
