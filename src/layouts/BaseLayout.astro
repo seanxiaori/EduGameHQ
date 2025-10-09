@@ -1,12 +1,12 @@
 ---
-import { getPageSEO, generateStructuredData, getKeywordsString, getOGImageUrl } from '../data/seo-config';
+import { generateStructuredData, getOGImageUrl } from '../data/seo-config';
 import fs from 'fs';
 import path from 'path';
 // 多语言支持导入
 import { getLanguageFromPath, getTranslations, t, getLocalizedPath, isRTL, getLanguageInfo, getLanguageSwitchLinks, removeLanguagePrefix, type LanguageCode } from '../i18n/utils';
 import { defaultLanguage, languages } from '../i18n/config';
 // SEO国际化工具导入
-import { getLocalizedSEO, getLocalizedPageTitle, getLocalizedKeywords } from '../utils/seo-i18n';
+import { getLocalizedSEO } from '../utils/seo-i18n';
 // 导入样式文件
 import '../styles/language-switcher.css';
 import '../styles/navbar.css';
@@ -235,6 +235,16 @@ const currentSystemPage = (pageStructure.system as Record<string, any>)[normaliz
 const currentSupportPage = (pageStructure.support as Record<string, any>)[normalizedPath] || (pageStructure.support as Record<string, any>)[currentPath];
 const isGamePage = currentPath.startsWith('/games/');
 
+// 读取games.json数据用于客户端
+let gamesData = [];
+try {
+  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  gamesData = JSON.parse(fileContent);
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
 // 构建面包屑导航 - 多语言支持
 const breadcrumbs = [];
 if (!isHomePage) {
@@ -386,15 +396,7 @@ console.log('- 分类内容:', pageStructure.categories);
 console.log('- 特殊页面数量:', Object.keys(pageStructure.special).length);
 console.log('- 特殊页面内容:', pageStructure.special);
 
-// 读取games.json数据用于客户端
-let gamesData = [];
-try {
-  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  gamesData = JSON.parse(fileContent);
-} catch (error) {
-  console.warn('Unable to read games data file:', error);
-}
+
 ---
 
 <!DOCTYPE html>
@@ -440,7 +442,7 @@ try {
   
   <!-- 多语言Alternate hreflang标签 -->
   {languageSwitchLinks.map(link => (
-    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://www.edugamehq.com').toString()} key={link.code} />
+    <link rel="alternate" hreflang={link.code} href={new URL(link.url, Astro.site || 'https://www.edugamehq.com').toString()} />
   ))}
   <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://www.edugamehq.com').toString()} />
   
@@ -608,7 +610,7 @@ try {
                 <div class="dropdown-menu" id="categoriesMenu">
                   <!-- 游戏分类 -->
                   {Object.entries(pageStructure.categories).map(([path, info]) => (
-                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`} key={path}>
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
                       <i class={info.icon}></i>
                       {t(translations, info.translationKey, info.fallback)}
                     </a>
@@ -617,7 +619,7 @@ try {
                   <hr class="dropdown-divider">
                   <!-- 特殊页面 -->
                   {Object.entries(pageStructure.special).map(([path, info]) => (
-                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`} key={path}>
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
                       <i class={info.icon}></i>
                       {t(translations, info.translationKey, info.fallback)}
                     </a>
@@ -626,8 +628,8 @@ try {
               </div>
 
               <!-- Step 3: 非首页时显示面包屑导航 -->
-              {!isHomePage && breadcrumbs.slice(1).map((crumb, index) => (
-                <div class="breadcrumb-item" key={index}>
+              {!isHomePage && breadcrumbs.slice(1).map((crumb) => (
+                <div class="breadcrumb-item">
                   <i class="fas fa-chevron-right breadcrumb-separator"></i>
                   {crumb.isDropdown ? (
                     <div class="nav-dropdown">
@@ -641,7 +643,7 @@ try {
                           <>
                             {/* Support页面 */}
                             {Object.entries(pageStructure.support).map(([path, info]) => (
-                              <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
+                              <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                                 <i class={info.icon}></i>
                                 {t(translations, info.translationKey, info.fallback)}
                               </a>
@@ -693,7 +695,7 @@ try {
             </button>
             <div class="dropdown-menu language-menu" id="languageMenu">
               {languageSwitchLinks.map(link => (
-                <a href={link.url} class={`dropdown-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir} key={link.code}>
+                <a href={link.url} class={`dropdown-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir}>
                   <span class="language-flag">{link.flag}</span>
                   <span class="language-name">{link.nativeName}</span>
                   {link.code === currentLang && <i class="fas fa-check"></i>}
@@ -731,7 +733,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'footer.game_categories', 'Game Categories')}</div>
             {Object.entries(pageStructure.categories).map(([path, info]) => (
-              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {t(translations, info.translationKey, info.fallback)}
               </a>
@@ -741,7 +743,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'nav.special', 'Special Pages')}</div>
             {Object.entries(pageStructure.special).map(([path, info]) => (
-              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {t(translations, info.translationKey, info.fallback)}
               </a>
@@ -751,7 +753,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'footer.support', 'Support')}</div>
             {Object.entries(pageStructure.support).map(([path, info]) => (
-              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`} key={path}>
+              <a href={getLocalizedPath(path, currentLang)} class={`mobile-menu-item ${info.color} ${currentPath === path ? 'active' : ''}`}>
                 <i class={info.icon}></i>
                 {t(translations, info.translationKey, info.fallback)}
               </a>
@@ -762,7 +764,7 @@ try {
           <div class="mobile-menu-section">
             <div class="mobile-menu-title">{t(translations, 'language.switch', 'Language')}</div>
             {languageSwitchLinks.map(link => (
-              <a href={link.url} class={`mobile-menu-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir} key={link.code}>
+              <a href={link.url} class={`mobile-menu-item language-item ${link.code === currentLang ? 'active' : ''}`} dir={link.dir}>
                 <span class="language-flag">{link.flag}</span>
                 <span class="language-name">{link.nativeName}</span>
                 {link.code === currentLang && <i class="fas fa-check"></i>}

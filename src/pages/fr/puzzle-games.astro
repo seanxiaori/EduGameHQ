@@ -4,50 +4,15 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import { t } from '../../i18n/utils';
+import { getTranslations, t } from '../../i18n/utils';
+
+const translations = await getTranslations('fr');
 
 // 导入样式文件
 import '../../styles/game-card.css';
 
 // 翻译配置
-const translations = {
-  'fr': {
-    'puzzle_games': 'Jeux de Puzzle',
-    'puzzle_games_description': 'Défiez votre esprit avec notre collection de jeux de puzzle éducatifs ! Développez la pensée critique, les compétences de résolution de problèmes, la logique et le raisonnement spatial grâce à des casse-têtes engageants et des défis stimulants.',
-    'featured_puzzle_games': 'Jeux de Puzzle Vedettes',
-    'featured_puzzle_games_subtitle': 'Puzzles captivants pour défier vos compétences de réflexion',
-    'easy_level_games': 'Jeux de Niveau Facile',
-    'easy_level_games_subtitle': 'Parfait pour les débutants et les jeunes résolveurs de puzzles',
-    'medium_level_games': 'Jeux de Niveau Moyen',
-    'medium_level_games_subtitle': 'Défis intermédiaires pour les résolveurs de problèmes en développement',
-    'hard_level_games': 'Jeux de Niveau Difficile',
-    'hard_level_games_subtitle': 'Défis d\'expert pour les maîtres résolveurs de puzzles',
-    'puzzle_solving_tips': 'Conseils pour Résoudre les Puzzles',
-    'puzzle_solving_tips_subtitle': 'Stratégies efficaces pour améliorer vos capacités de résolution de problèmes',
-    'think_step_by_step': 'Pensez Étape par Étape',
-    'think_step_by_step_desc': 'Divisez les problèmes complexes en petites parties gérables',
-    'look_for_patterns': 'Cherchez les Motifs',
-    'look_for_patterns_desc': 'Identifiez les éléments récurrents et les relations dans les puzzles',
-    'take_your_time': 'Prenez Votre Temps',
-    'take_your_time_desc': 'Ne vous précipitez pas - une observation attentive mène à de meilleures solutions',
-    'practice_regularly': 'Pratiquez Régulièrement',
-    'practice_regularly_desc': 'La résolution quotidienne de puzzles améliore les compétences de pensée logique',
-    'cognitive_skills_develop': 'Compétences Cognitives que Vous Développerez',
-    'cognitive_skills_develop_subtitle': 'Capacités mentales essentielles acquises grâce aux jeux de puzzle',
-    'logic_reasoning': 'Logique et Raisonnement',
-    'logic_reasoning_desc': 'Développez la pensée systématique et les compétences de déduction',
-    'pattern_recognition': 'Reconnaissance de Motifs',
-    'pattern_recognition_desc': 'Identifiez les relations et les séquences',
-    'problem_solving': 'Résolution de Problèmes',
-    'problem_solving_desc': 'Apprenez des approches stratégiques aux défis',
-    'attention_to_detail': 'Attention aux Détails',
-    'attention_to_detail_desc': 'Améliorez les compétences de concentration et d\'observation',
-    'memory_enhancement': 'Amélioration de la Mémoire',
-    'memory_enhancement_desc': 'Renforcez la mémoire de travail et visuelle',
-    'mental_flexibility': 'Flexibilité Mentale',
-    'mental_flexibility_desc': 'Adaptez les stratégies de pensée pour différentes tâches',
-  }
-};
+
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -775,4 +740,6 @@ const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style>
+
+
 

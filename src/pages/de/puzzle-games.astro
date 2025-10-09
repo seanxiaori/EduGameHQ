@@ -4,7 +4,9 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import { t } from '../../i18n/utils';
+import { getTranslations, t } from '../../i18n/utils';
+
+const translations = await getTranslations('de');
 
 // 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
@@ -30,44 +32,7 @@ const mediumGames = puzzleGames.filter(game => game.difficulty === 'Medium');
 const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
 
 // 德语翻译配置
-const translations = {
-  'de': {
-    'page_title': 'Puzzle-Spiele',
-    'page_description': 'Fordern Sie Ihren Geist mit unserer Sammlung von pädagogischen Puzzle-Spielen heraus! Entwickeln Sie kritisches Denken, Problemlösungsfähigkeiten, Logik und räumliches Vorstellungsvermögen durch fesselnde Denksportaufgaben und verblüffende Herausforderungen.',
-    'featured_games': 'Empfohlene Puzzle-Spiele',
-    'featured_games_subtitle': 'Verblüffende Puzzles, die Ihre Denkfähigkeiten herausfordern',
-    'easy_level': 'Einfaches Niveau',
-    'easy_level_subtitle': 'Perfekt für Anfänger und junge Puzzle-Löser',
-    'medium_level': 'Mittleres Niveau',
-    'medium_level_subtitle': 'Ausgewogene Herausforderungen für fortgeschrittene Denker',
-    'hard_level': 'Schwieriges Niveau',
-    'hard_level_subtitle': 'Extreme Herausforderungen für Puzzle-Meister',
-    'learning_tips': 'Lerntipps',
-    'learning_tips_subtitle': 'Strategien zur Verbesserung Ihrer Puzzle-Fähigkeiten',
-    'start_simple': 'Einfach beginnen',
-    'start_simple_desc': 'Beginnen Sie mit einfacheren Puzzles und steigern Sie sich allmählich',
-    'pattern_recognition': 'Mustererkennung',
-    'pattern_recognition_desc': 'Suchen Sie nach wiederkehrenden Mustern und Sequenzen',
-    'break_down': 'Aufteilen',
-    'break_down_desc': 'Teilen Sie komplexe Probleme in kleinere, handhabbare Teile auf',
-    'practice_regularly': 'Regelmäßig üben',
-    'practice_regularly_desc': 'Konsistente Übung verbessert Ihre Problemlösungsfähigkeiten',
-    'core_skills': 'Kernkompetenzen',
-    'core_skills_subtitle': 'Wichtige Fähigkeiten, die durch Puzzle-Spiele entwickelt werden',
-    'critical_thinking': 'Kritisches Denken',
-    'critical_thinking_desc': 'Analysieren Sie Situationen und treffen Sie logische Entscheidungen',
-    'pattern_recognition': 'Mustererkennung',
-    'pattern_recognition_desc': 'Identifizieren Sie Beziehungen und Sequenzen',
-    'problem_solving': 'Problemlösung',
-    'problem_solving_desc': 'Lernen Sie strategische Ansätze für Herausforderungen',
-    'attention_to_detail': 'Aufmerksamkeit für Details',
-    'attention_to_detail_desc': 'Verbessern Sie Fokus und Beobachtungsfähigkeiten',
-    'memory_enhancement': 'Gedächtnisverbesserung',
-    'memory_enhancement_desc': 'Stärken Sie Arbeits- und visuelles Gedächtnis',
-    'mental_flexibility': 'Geistige Flexibilität',
-    'mental_flexibility_desc': 'Passen Sie Denkstrategien für verschiedene Aufgaben an',
-  }
-};
+
 ---
 
 <BaseLayout>
@@ -775,4 +740,6 @@ const translations = {
     }
   }
 </style>
+
+
 

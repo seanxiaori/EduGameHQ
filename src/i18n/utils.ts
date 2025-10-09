@@ -1,5 +1,4 @@
 import { languages, defaultLanguage, supportedLanguages, rtlLanguages, type LanguageCode } from './config';
-import deepmerge from 'deepmerge';
 
 // 重新导出 LanguageCode 类型
 export type { LanguageCode };
@@ -8,9 +7,6 @@ export type { LanguageCode };
 export interface TranslationData {
   [key: string]: string | TranslationData;
 }
-
-// 翻译缓存
-const translationCache = new Map<string, TranslationData>();
 
 /**
  * 从URL路径中提取语言代码

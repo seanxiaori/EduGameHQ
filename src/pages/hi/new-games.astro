@@ -4,6 +4,10 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations } from '../../i18n/utils';
+
+// 获取印地语翻译
+const translations = await getTranslations('hi');
 
 // 导入样式文件
 import '../../styles/game-card.css';
@@ -466,5 +470,5 @@ const recentlyUpdatedGames = shuffledGames.slice(12, 16);
       padding: 1rem;
     }
   }
-</style> 
+</style>
 

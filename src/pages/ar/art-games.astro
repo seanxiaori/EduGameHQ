@@ -4,27 +4,16 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import { getTranslations } from '../../i18n/utils';
+import { getTranslations, t as translateFn } from '../../i18n/utils';
+
+// 获取ar翻译
+const translations = await getTranslations('ar');
 
 // 导入样式文件 - 修复正确的2级深度路径
 import '../../styles/game-card.css';
 
 // 获取阿拉伯语翻译
-const translations = await getTranslations('ar');
-const t = (key: string, fallback?: string) => {
-  const keys = key.split('.');
-  let value: any = translations;
-  
-  for (const k of keys) {
-    if (value && typeof value === 'object' && k in value) {
-      value = value[k];
-    } else {
-      return fallback || key;
-    }
-  }
-  
-  return typeof value === 'string' ? value : fallback || key;
-};
+const t = (key: string, fallback?: string) => translateFn(translations, key, fallback);
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -752,4 +741,10 @@ const hardGames = artGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style>
+
+
+
+
+
+
 

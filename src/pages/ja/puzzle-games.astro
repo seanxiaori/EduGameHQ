@@ -2,7 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
-import { t } from '../../i18n/utils';
+import { getTranslations, t } from '../../i18n/utils';
+
+const translations = await getTranslations('ja');
 import fs from 'fs';
 import path from 'path';
 
@@ -30,42 +32,7 @@ const mediumGames = puzzleGames.filter(game => game.difficulty === 'Medium');
 const hardGames = puzzleGames.filter(game => game.difficulty === 'Hard');
 
 // 日语翻译配置
-const translations = {
-  page_title: 'パズルゲーム',
-  page_description: '教育的なパズルゲームのコレクションで頭脳を鍛えましょう！魅力的な頭の体操と心を曲げる挑戦を通じて、批判的思考、問題解決スキル、論理、空間推理を発達させます。',
-  featured_games: '注目のパズルゲーム',
-  featured_games_subtitle: '思考スキルに挑戦する頭脳を曲げるパズル',
-  easy_level: '簡単レベル',
-  easy_level_subtitle: '初心者と若いパズル解決者に最適',
-  medium_level: '中級レベル',
-  medium_level_subtitle: '経験豊富なプレイヤー向けの挑戦的なパズル',
-  hard_level: '上級レベル',
-  hard_level_subtitle: 'パズルマスター向けの極限の挑戦',
-  learning_tips: '学習のコツ',
-  learning_tips_subtitle: 'パズル解決能力を向上させる戦略',
-  break_down: '分解する',
-  break_down_desc: '複雑な問題を小さく管理しやすい部分に分けます',
-  find_patterns: 'パターンを見つける',
-  find_patterns_desc: 'パズルの中で繰り返される要素と関係を特定します',
-  take_time: '時間をかける',
-  take_time_desc: '急がないで - 注意深い観察がより良い解決策につながります',
-  practice_regularly: '定期的に練習',
-  practice_regularly_desc: '毎日のパズル解決は論理的思考スキルを向上させます',
-  core_skills: 'コアスキル',
-  core_skills_subtitle: 'パズルゲームを通じて重要な精神的能力',
-  logic_reasoning: '論理と推論',
-  logic_reasoning_desc: '体系的思考と演繹スキルを発達させます',
-  pattern_recognition: 'パターン認識',
-  pattern_recognition_desc: '関係とシーケンスを特定します',
-  problem_solving: '問題解決',
-  problem_solving_desc: '挑戦への戦略的アプローチを学びます',
-  attention_detail: '細部への注意',
-  attention_detail_desc: '集中力と観察スキルを向上させます',
-  memory_enhancement: '記憶力向上',
-  memory_enhancement_desc: '作業記憶と視覚記憶を強化します',
-  mental_flexibility: '精神的柔軟性',
-  mental_flexibility_desc: '異なるタスクに対する思考戦略を適応させます'
-};
+
 ---
 
 <BaseLayout>
@@ -773,4 +740,6 @@ const translations = {
     }
   }
 </style>
+
+
 

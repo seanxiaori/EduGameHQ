@@ -64,7 +64,7 @@ const safeGame = {
 };
 
 // 格式化人气值显示 - 构建时静态渲染
-function formatPopularity(num) {
+function formatPopularity(num: number): string {
   if (!num || num === 0) return '0';
   if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
   if (num >= 1000) return (num / 1000).toFixed(1) + 'K';

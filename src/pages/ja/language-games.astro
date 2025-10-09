@@ -4,20 +4,11 @@ import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
 import fs from 'fs';
 import path from 'path';
-import { getTranslations } from '../../i18n/utils';
+import { getTranslations, t as translateFn } from '../../i18n/utils';
 
-// 获取日语翻译
+// 获取ja翻译
 const translations = await getTranslations('ja');
-
-// 创建翻译函数
-const t = (translations: any, key: string, fallback: string) => {
-  const keys = key.split('.');
-  let value = translations;
-  for (const k of keys) {
-    value = value?.[k];
-  }
-  return value || fallback;
-};
+const t = (key: string, fallback?: string) => translateFn(translations, key, fallback);
 
 // 导入样式文件
 import '../../styles/game-card.css';
@@ -59,9 +50,9 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">{t(translations, 'pages.language_games.title', '言語ゲーム')}</h1>
+            <h1 class="page-title">{t('pages.language_games.title', '言語ゲーム')}</h1>
             <p class="page-description">
-              {t(translations, 'pages.language_games.description', '魅力的なゲームを通じて言語スキルをマスターしましょう！私たちのコレクションは、読解、作文、語彙、文法、コミュニケーションスキルに焦点を当てています。基本的な読み書きから高度な言語芸術まで、あらゆるレベルの日本語学習者に最適です。')}
+              {t('pages.language_games.description', '魅力的なゲームを通じて言語スキルをマスターしましょう！私たちのコレクションは、読解、作文、語彙、文法、コミュニケーションスキルに焦点を当てています。基本的な読み書きから高度な言語芸術まで、あらゆるレベルの日本語学習者に最適です。')}
             </p>
           </div>
         </div>
@@ -75,8 +66,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t(translations, 'pages.language_games.featured.title', '注目の言語ゲーム')}</h2>
-              <p class="module-subtitle">{t(translations, 'pages.language_games.featured.subtitle', 'コミュニケーションスキルを向上させる人気ゲーム')}</p>
+              <h2 class="module-title">{t('pages.language_games.featured.title', '注目の言語ゲーム')}</h2>
+              <p class="module-subtitle">{t('pages.language_games.featured.subtitle', 'コミュニケーションスキルを向上させる人気ゲーム')}</p>
             </div>
           </div>
           
@@ -96,8 +87,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t(translations, 'pages.language_games.easy.title', '初級レベルゲーム')}</h2>
-              <p class="module-subtitle">{t(translations, 'pages.language_games.easy.subtitle', '言語学習初心者に最適')}</p>
+              <h2 class="module-title">{t('pages.language_games.easy.title', '初級レベルゲーム')}</h2>
+              <p class="module-subtitle">{t('pages.language_games.easy.subtitle', '言語学習初心者に最適')}</p>
             </div>
           </div>
           
@@ -117,8 +108,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t(translations, 'pages.language_games.medium.title', '中級レベルゲーム')}</h2>
-              <p class="module-subtitle">{t(translations, 'pages.language_games.medium.subtitle', '語彙力向上のための中級チャレンジ')}</p>
+              <h2 class="module-title">{t('pages.language_games.medium.title', '中級レベルゲーム')}</h2>
+              <p class="module-subtitle">{t('pages.language_games.medium.subtitle', '語彙力向上のための中級チャレンジ')}</p>
             </div>
           </div>
           
@@ -138,8 +129,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t(translations, 'pages.language_games.hard.title', '上級レベルゲーム')}</h2>
-              <p class="module-subtitle">{t(translations, 'pages.language_games.hard.subtitle', '言語マスターのための高度なチャレンジ')}</p>
+              <h2 class="module-title">{t('pages.language_games.hard.title', '上級レベルゲーム')}</h2>
+              <p class="module-subtitle">{t('pages.language_games.hard.subtitle', '言語マスターのための高度なチャレンジ')}</p>
             </div>
           </div>
           
@@ -158,8 +149,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">{t(translations, 'pages.language_games.learning_tips.title', '言語学習のコツ')}</h2>
-            <p class="module-subtitle">{t(translations, 'pages.language_games.learning_tips.subtitle', '言語スキルを向上させる効果的な戦略')}</p>
+            <h2 class="module-title">{t('pages.language_games.learning_tips.title', '言語学習のコツ')}</h2>
+            <p class="module-subtitle">{t('pages.language_games.learning_tips.subtitle', '言語スキルを向上させる効果的な戦略')}</p>
           </div>
         </div>
         
@@ -169,8 +160,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-book-reader"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.read.title', '毎日読書')}</h4>
-              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.read.description', '語彙を増やすために様々な種類のテキストを読む練習をしましょう')}</p>
+              <h4 class="tip-title">{t('pages.language_games.learning_tips.tips.read.title', '毎日読書')}</h4>
+              <p class="tip-text">{t('pages.language_games.learning_tips.tips.read.description', '語彙を増やすために様々な種類のテキストを読む練習をしましょう')}</p>
             </div>
           </div>
           
@@ -179,8 +170,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-spell-check"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.spelling.title', 'スペリング練習')}</h4>
-              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.spelling.description', '定期的なスペリング練習は書く自信を向上させます')}</p>
+              <h4 class="tip-title">{t('pages.language_games.learning_tips.tips.spelling.title', 'スペリング練習')}</h4>
+              <p class="tip-text">{t('pages.language_games.learning_tips.tips.spelling.description', '定期的なスペリング練習は書く自信を向上させます')}</p>
             </div>
           </div>
           
@@ -189,8 +180,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-comments"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.vocabulary.title', '新しい単語を使う')}</h4>
-              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.vocabulary.description', '新しく学んだ単語を会話や文章で使ってみましょう')}</p>
+              <h4 class="tip-title">{t('pages.language_games.learning_tips.tips.vocabulary.title', '新しい単語を使う')}</h4>
+              <p class="tip-text">{t('pages.language_games.learning_tips.tips.vocabulary.description', '新しく学んだ単語を会話や文章で使ってみましょう')}</p>
             </div>
           </div>
           
@@ -199,8 +190,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-edit"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t(translations, 'pages.language_games.learning_tips.tips.writing.title', '物語を書く')}</h4>
-              <p class="tip-text">{t(translations, 'pages.language_games.learning_tips.tips.writing.description', '創作文章は言語学習の定着に役立ちます')}</p>
+              <h4 class="tip-title">{t('pages.language_games.learning_tips.tips.writing.title', '物語を書く')}</h4>
+              <p class="tip-text">{t('pages.language_games.learning_tips.tips.writing.description', '創作文章は言語学習の定着に役立ちます')}</p>
             </div>
           </div>
         </div>
@@ -213,8 +204,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">{t(translations, 'pages.language_games.skills.title', '身につく言語スキル')}</h2>
-            <p class="module-subtitle">{t(translations, 'pages.language_games.skills.subtitle', 'ゲームプレイを通じて得られる重要なコミュニケーション能力')}</p>
+            <h2 class="module-title">{t('pages.language_games.skills.title', '身につく言語スキル')}</h2>
+            <p class="module-subtitle">{t('pages.language_games.skills.subtitle', 'ゲームプレイを通じて得られる重要なコミュニケーション能力')}</p>
           </div>
         </div>
 
@@ -224,8 +215,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-font"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.vocabulary.title', '語彙力向上')}</h4>
-              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.vocabulary.description', '新しい単語とその意味を学びます')}</p>
+              <h4 class="skill-title">{t('pages.language_games.skills.items.vocabulary.title', '語彙力向上')}</h4>
+              <p class="skill-description">{t('pages.language_games.skills.items.vocabulary.description', '新しい単語とその意味を学びます')}</p>
             </div>
           </div>
 
@@ -234,8 +225,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-spell-check"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.spelling.title', 'スペリング精度')}</h4>
-              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.spelling.description', '正しいスペリングパターンをマスターします')}</p>
+              <h4 class="skill-title">{t('pages.language_games.skills.items.spelling.title', 'スペリング精度')}</h4>
+              <p class="skill-description">{t('pages.language_games.skills.items.spelling.description', '正しいスペリングパターンをマスターします')}</p>
             </div>
           </div>
 
@@ -244,8 +235,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-book-open"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.reading.title', '読解力')}</h4>
-              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.reading.description', 'テキストの意味を理解し分析します')}</p>
+              <h4 class="skill-title">{t('pages.language_games.skills.items.reading.title', '読解力')}</h4>
+              <p class="skill-description">{t('pages.language_games.skills.items.reading.description', 'テキストの意味を理解し分析します')}</p>
             </div>
           </div>
 
@@ -254,8 +245,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-pen-nib"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.writing.title', '文章力')}</h4>
-              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.writing.description', 'アイデアを明確に文章で表現します')}</p>
+              <h4 class="skill-title">{t('pages.language_games.skills.items.writing.title', '文章力')}</h4>
+              <p class="skill-description">{t('pages.language_games.skills.items.writing.description', 'アイデアを明確に文章で表現します')}</p>
             </div>
           </div>
           
@@ -264,8 +255,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-language"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.grammar.title', '文法知識')}</h4>
-              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.grammar.description', '文の構造とルールを理解します')}</p>
+              <h4 class="skill-title">{t('pages.language_games.skills.items.grammar.title', '文法知識')}</h4>
+              <p class="skill-description">{t('pages.language_games.skills.items.grammar.description', '文の構造とルールを理解します')}</p>
             </div>
           </div>
           
@@ -274,8 +265,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-microphone-alt"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">{t(translations, 'pages.language_games.skills.items.communication.title', 'コミュニケーション')}</h4>
-              <p class="skill-description">{t(translations, 'pages.language_games.skills.items.communication.description', '効果的な話す能力を身につけます')}</p>
+              <h4 class="skill-title">{t('pages.language_games.skills.items.communication.title', 'コミュニケーション')}</h4>
+              <p class="skill-description">{t('pages.language_games.skills.items.communication.description', '効果的な話す能力を身につけます')}</p>
             </div>
           </div>
         </div>
@@ -748,4 +739,8 @@ const hardGames = languageGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style>
+
+
+
+
 

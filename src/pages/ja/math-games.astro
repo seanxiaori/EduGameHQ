@@ -46,9 +46,9 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">{t('mathGames.title', '数学ゲーム')}</h1>
+            <h1 class="page-title">{t(translations, 'mathGames.title', '数学ゲーム')}</h1>
             <p class="page-description">
-              {t('mathGames.description', '遊びながら数学をマスターしよう！私たちの数学ゲームコレクションは、算数、代数、幾何学、問題解決スキルの学習を、すべての学年にとって楽しく魅力的なものにします。基本的な数え方から高度な微積分の概念まで、インタラクティブなゲームプレイを通じて数学を学ぶ喜びを発見してください。')}
+              {t(translations, 'mathGames.description', '遊びながら数学をマスターしよう！私たちの数学ゲームコレクションは、算数、代数、幾何学、問題解決スキルの学習を、すべての学年にとって楽しく魅力的なものにします。基本的な数え方から高度な微積分の概念まで、インタラクティブなゲームプレイを通じて数学を学ぶ喜びを発見してください。')}
             </p>
           </div>
         </div>
@@ -62,8 +62,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t('mathGames.featured.title', 'おすすめ数学ゲーム')}</h2>
-              <p class="module-subtitle">{t('mathGames.featured.subtitle', '最も人気があり、おすすめの数学ゲーム')}</p>
+              <h2 class="module-title">{t(translations, 'mathGames.featured.title', 'おすすめ数学ゲーム')}</h2>
+              <p class="module-subtitle">{t(translations, 'mathGames.featured.subtitle', '最も人気があり、おすすめの数学ゲーム')}</p>
             </div>
           </div>
           
@@ -83,8 +83,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-smile"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t('mathGames.easy.title', '初級レベルゲーム')}</h2>
-              <p class="module-subtitle">{t('mathGames.easy.subtitle', '初心者や若い学習者に最適')}</p>
+              <h2 class="module-title">{t(translations, 'mathGames.easy.title', '初級レベルゲーム')}</h2>
+              <p class="module-subtitle">{t(translations, 'mathGames.easy.subtitle', '初心者や若い学習者に最適')}</p>
             </div>
           </div>
           
@@ -104,8 +104,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-meh"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t('mathGames.medium.title', '中級レベルゲーム')}</h2>
-              <p class="module-subtitle">{t('mathGames.medium.subtitle', '中級概念で自分に挑戦しよう')}</p>
+              <h2 class="module-title">{t(translations, 'mathGames.medium.title', '中級レベルゲーム')}</h2>
+              <p class="module-subtitle">{t(translations, 'mathGames.medium.subtitle', '中級概念で自分に挑戦しよう')}</p>
             </div>
           </div>
           
@@ -125,8 +125,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-frown"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">{t('mathGames.hard.title', '上級レベルゲーム')}</h2>
-              <p class="module-subtitle">{t('mathGames.hard.subtitle', '数学エキスパート向けの高度な挑戦')}</p>
+              <h2 class="module-title">{t(translations, 'mathGames.hard.title', '上級レベルゲーム')}</h2>
+              <p class="module-subtitle">{t(translations, 'mathGames.hard.subtitle', '数学エキスパート向けの高度な挑戦')}</p>
             </div>
           </div>
           
@@ -145,8 +145,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">{t('mathGames.tips.title', '数学学習のコツ')}</h2>
-            <p class="module-subtitle">{t('mathGames.tips.subtitle', '数学スキル向上のための専門家のアドバイス')}</p>
+            <h2 class="module-title">{t(translations, 'mathGames.tips.title', '数学学習のコツ')}</h2>
+            <p class="module-subtitle">{t(translations, 'mathGames.tips.subtitle', '数学スキル向上のための専門家のアドバイス')}</p>
           </div>
         </div>
         
@@ -156,8 +156,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-clock"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t('mathGames.tips.daily.title', '毎日練習する')}</h4>
-              <p class="tip-text">{t('mathGames.tips.daily.text', 'ゲームを通じて数学の概念を毎日15-20分練習しましょう')}</p>
+              <h4 class="tip-title">{t(translations, 'mathGames.tips.daily.title', '毎日練習する')}</h4>
+              <p class="tip-text">{t(translations, 'mathGames.tips.daily.text', 'ゲームを通じて数学の概念を毎日15-20分練習しましょう')}</p>
             </div>
           </div>
           
@@ -166,8 +166,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-chart-line"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t('mathGames.tips.progress.title', '段階的に進歩する')}</h4>
-              <p class="tip-text">{t('mathGames.tips.progress.text', '簡単なゲームから始めて、徐々により挑戦的なものに移行しましょう')}</p>
+              <h4 class="tip-title">{t(translations, 'mathGames.tips.progress.title', '段階的に進歩する')}</h4>
+              <p class="tip-text">{t(translations, 'mathGames.tips.progress.text', '簡単なゲームから始めて、徐々により挑戦的なものに移行しましょう')}</p>
             </div>
           </div>
           
@@ -176,8 +176,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-heart"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t('mathGames.tips.mistakes.title', '間違いを受け入れる')}</h4>
-              <p class="tip-text">{t('mathGames.tips.mistakes.text', '間違いを恐れないでください。それは学習プロセスの一部です')}</p>
+              <h4 class="tip-title">{t(translations, 'mathGames.tips.mistakes.title', '間違いを受け入れる')}</h4>
+              <p class="tip-text">{t(translations, 'mathGames.tips.mistakes.text', '間違いを恐れないでください。それは学習プロセスの一部です')}</p>
             </div>
           </div>
           
@@ -186,8 +186,8 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
               <i class="fas fa-question-circle"></i>
             </div>
             <div class="tip-content">
-              <h4 class="tip-title">{t('mathGames.tips.understand.title', '理由を理解する')}</h4>
-              <p class="tip-text">{t('mathGames.tips.understand.text', '各解決策の背後にある理由を理解することに焦点を当てましょう')}</p>
+              <h4 class="tip-title">{t(translations, 'mathGames.tips.understand.title', '理由を理解する')}</h4>
+              <p class="tip-text">{t(translations, 'mathGames.tips.understand.text', '各解決策の背後にある理由を理解することに焦点を当てましょう')}</p>
             </div>
           </div>
         </div>
@@ -755,4 +755,5 @@ const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
     }
   }
 </style>
+
 

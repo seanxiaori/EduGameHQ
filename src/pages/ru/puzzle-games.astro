@@ -2,7 +2,9 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GameCard from '../../components/GameCard.astro';
 import type { Game } from '../../types/game';
-import { t } from '../../i18n/utils';
+import { getTranslations, t } from '../../i18n/utils';
+
+const translations = await getTranslations('ru');
 import fs from 'fs';
 import path from 'path';
 
@@ -37,42 +39,7 @@ const seoData = {
 };
 
 // 俄语翻译配置
-const translations = {
-  'puzzle.title': 'Головоломки',
-  'puzzle.description': 'Бросьте вызов своему разуму с нашей коллекцией образовательных головоломок! Развивайте критическое мышление, навыки решения проблем, логику и пространственное мышление через увлекательные головоломки и сложные задачи.',
-  'featured.title': 'Рекомендуемые игры',
-  'featured.description': 'Лучшие головоломки для развития мышления',
-  'easy.title': 'Легкий уровень',
-  'easy.description': 'Идеально подходит для начинающих и юных игроков',
-  'medium.title': 'Средний уровень',
-  'medium.description': 'Промежуточные вызовы для развивающихся решателей проблем',
-  'hard.title': 'Сложный уровень',
-  'hard.description': 'Экспертные вызовы для мастеров головоломок',
-  'tips.title': 'Советы по обучению',
-  'tips.subtitle': 'Эффективные стратегии для улучшения ваших способностей решения проблем',
-  'tip1.title': 'Думайте пошагово',
-  'tip1.description': 'Разбивайте сложные проблемы на более мелкие, управляемые части',
-  'tip2.title': 'Ищите закономерности',
-  'tip2.description': 'Определяйте повторяющиеся элементы и связи в головоломках',
-  'tip3.title': 'Не торопитесь',
-  'tip3.description': 'Не спешите - внимательное наблюдение приводит к лучшим решениям',
-  'tip4.title': 'Практикуйтесь регулярно',
-  'tip4.description': 'Ежедневное решение головоломок улучшает навыки логического мышления',
-  'skills.title': 'Основные навыки',
-  'skills.subtitle': 'Важные умственные способности, приобретаемые через игры-головоломки',
-  'skill1.title': 'Логика и рассуждение',
-  'skill1.description': 'Развивайте систематическое мышление и навыки дедукции',
-  'skill2.title': 'Распознавание образов',
-  'skill2.description': 'Определяйте связи и последовательности',
-  'skill3.title': 'Решение проблем',
-  'skill3.description': 'Изучайте стратегические подходы к вызовам',
-  'skill4.title': 'Внимание к деталям',
-  'skill4.description': 'Улучшайте концентрацию и навыки наблюдения',
-  'skill5.title': 'Улучшение памяти',
-  'skill5.description': 'Укрепляйте рабочую и зрительную память',
-  'skill6.title': 'Умственная гибкость',
-  'skill6.description': 'Адаптируйте стратегии мышления для разных задач'
-};
+
 ---
 
 <BaseLayout 
@@ -784,4 +751,6 @@ const translations = {
     }
   }
 </style>
+
+
 
