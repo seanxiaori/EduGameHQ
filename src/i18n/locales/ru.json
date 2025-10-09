@@ -770,13 +770,13 @@
   },
   "privacy_policy_page": {
     "seo": {
-      "title": "Privacy Policy | EduGameHQ - Protecting Your Privacy",
-      "description": "Learn how EduGameHQ protects your privacy and keeps children safe online. COPPA and GDPR compliant educational gaming platform.",
-      "keywords": "privacy policy, child safety, COPPA compliance, data protection, educational games privacy"
+      "title": "Политика Конфиденциальности | EduGameHQ - Защита Вашей Конфиденциальности",
+      "description": "Узнайте, как EduGameHQ защищает вашу конфиденциальность и обеспечивает безопасность детей в Интернете. Платформа образовательных игр, соответствующая COPPA и GDPR.",
+      "keywords": "политика конфиденциальности, безопасность детей, соответствие COPPA, защита данных, конфиденциальность образовательных игр"
     },
-    "page_title": "Privacy Policy",
-    "page_description": "Your privacy and safety are our top priorities. Learn how we protect children's information and comply with international privacy laws.",
-    "last_updated": "Last updated: January 2025",
+    "page_title": "Политика Конфиденциальности",
+    "page_description": "Ваша конфиденциальность и безопасность являются нашими главными приоритетами. Узнайте, как мы защищаем информацию детей и соблюдаем международные законы о конфиденциальности.",
+    "last_updated": "Последнее обновление: Январь 2025",
     "sections": {
       "introduction": {
         "title": "Introduction",

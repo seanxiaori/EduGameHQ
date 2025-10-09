@@ -938,13 +938,13 @@
   },
   "privacy_policy_page": {
     "seo": {
-      "title": "Privacy Policy | EduGameHQ - Protecting Your Privacy",
-      "description": "Learn how EduGameHQ protects your privacy and keeps children safe online. COPPA and GDPR compliant educational gaming platform.",
-      "keywords": "privacy policy, child safety, COPPA compliance, data protection, educational games privacy"
+      "title": "سياسة الخصوصية | EduGameHQ - حماية خصوصيتك",
+      "description": "تعرف على كيفية حماية EduGameHQ لخصوصيتك والحفاظ على سلامة الأطفال عبر الإنترنت. منصة ألعاب تعليمية متوافقة مع COPPA و GDPR.",
+      "keywords": "سياسة الخصوصية, أمان الأطفال, الامتثال لـ COPPA, حماية البيانات, خصوصية الألعاب التعليمية"
     },
-    "page_title": "Privacy Policy",
-    "page_description": "Your privacy and safety are our top priorities. Learn how we protect children's information and comply with international privacy laws.",
-    "last_updated": "Last updated: January 2025",
+    "page_title": "سياسة الخصوصية",
+    "page_description": "خصوصيتك وأمانك هما أولوياتنا القصوى. تعرف على كيفية حمايتنا لمعلومات الأطفال والامتثال لقوانين الخصوصية الدولية.",
+    "last_updated": "آخر تحديث: يناير 2025",
     "sections": {
       "introduction": {
         "title": "Introduction",
