@@ -838,6 +838,10 @@
       "button1": "Hilfezentrum besuchen",
       "button2": "Rechtsteam kontaktieren",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "Erlaubte Aktivitäten:",
+      "prohibited_activities": "Verbotene Aktivitäten:"
     }
   }
 }

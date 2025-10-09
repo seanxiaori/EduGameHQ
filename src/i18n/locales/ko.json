@@ -935,6 +935,10 @@
       "button1": "고객센터 방문",
       "button2": "법무팀 문의",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "허용되는 활동:",
+      "prohibited_activities": "금지되는 활동:"
     }
   }
 }

@@ -108,7 +108,7 @@
     "navigation": {
       "mission": "我们的使命",
       "values": "核心价值",
-      "story": "我们的故事", 
+      "story": "我们的故事",
       "team": "认识我们的团队",
       "stats": "我们的影响"
     },
@@ -338,37 +338,37 @@
         }
       },
       "core_skills": {
-         "title": "你将培养的核心技能",
-         "subtitle": "通过游戏获得的基本科学能力",
-         "scientific_method": {
-           "title": "科学方法",
-           "description": "学习观察和实验"
-         },
-         "physics": {
-           "title": "物理概念",
-           "description": "理解力和运动"
-         },
-         "biology": {
-           "title": "生物学",
-           "description": "了解生命系统"
-         },
-         "chemistry": {
-           "title": "化学基础",
-           "description": "探索物质变化"
-         },
-         "earth_science": {
-           "title": "地球科学",
-           "description": "认识我们的星球"
-         },
-         "astronomy": {
-           "title": "天文学",
-           "description": "探索宇宙奥秘"
-         },
-         "critical_thinking": {
-           "title": "批判性思维",
-           "description": "培养逻辑推理能力"
-         }
-       }
+        "title": "你将培养的核心技能",
+        "subtitle": "通过游戏获得的基本科学能力",
+        "scientific_method": {
+          "title": "科学方法",
+          "description": "学习观察和实验"
+        },
+        "physics": {
+          "title": "物理概念",
+          "description": "理解力和运动"
+        },
+        "biology": {
+          "title": "生物学",
+          "description": "了解生命系统"
+        },
+        "chemistry": {
+          "title": "化学基础",
+          "description": "探索物质变化"
+        },
+        "earth_science": {
+          "title": "地球科学",
+          "description": "认识我们的星球"
+        },
+        "astronomy": {
+          "title": "天文学",
+          "description": "探索宇宙奥秘"
+        },
+        "critical_thinking": {
+          "title": "批判性思维",
+          "description": "培养逻辑推理能力"
+        }
+      }
     },
     "language_games": {
       "title": "语言游戏",
@@ -935,6 +935,10 @@
       "button1": "访问帮助中心",
       "button2": "联系法务团队",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "允许的活动：",
+      "prohibited_activities": "禁止的活动："
     }
   },
   "pages": {
@@ -1036,7 +1040,7 @@
         "trend": "上升 15%"
       },
       "science": {
-        "title": "科学游戏", 
+        "title": "科学游戏",
         "description": "科学探索和实验",
         "trend": "上升 12%"
       },

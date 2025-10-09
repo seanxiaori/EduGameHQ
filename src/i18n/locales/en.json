@@ -15,7 +15,7 @@
   },
   "categories": {
     "math-games": "Math Games",
-    "science-games": "Science Games", 
+    "science-games": "Science Games",
     "language-games": "Language Games",
     "puzzle-games": "Puzzle Games",
     "sports-games": "Sports Games",
@@ -103,7 +103,7 @@
           "description": "Perfect for beginners and young learners"
         },
         "medium": {
-          "title": "Medium Level Games", 
+          "title": "Medium Level Games",
           "description": "Great for intermediate students"
         },
         "hard": {
@@ -216,7 +216,7 @@
     "explore_our_story": "Explore Our Story",
     "navigation": {
       "mission": "Our Mission",
-      "values": "Core Values", 
+      "values": "Core Values",
       "story": "Our Story",
       "team": "Meet Our Team",
       "stats": "Our Impact"
@@ -278,7 +278,7 @@
           "description": "Former Stanford professor with 15+ years in educational technology"
         },
         "mike_rodriguez": {
-          "name": "Mike Rodriguez", 
+          "name": "Mike Rodriguez",
           "role": "Game Developer",
           "description": "Award-winning game designer specializing in educational content"
         },
@@ -700,6 +700,10 @@
       "button1": "Visit Help Center",
       "button2": "Contact Legal Team",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "Permitted activities:",
+      "prohibited_activities": "Prohibited activities:"
     }
   },
   "pages": {

@@ -735,6 +735,10 @@
       "button1": "Посетить справочный центр",
       "button2": "Связаться с юридической командой",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "Разрешенные действия:",
+      "prohibited_activities": "Запрещенные действия:"
     }
   }
 }

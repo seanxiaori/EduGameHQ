@@ -833,6 +833,10 @@
       "button1": "Visiter le centre d'aide",
       "button2": "Contacter l'équipe juridique",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "Activités autorisées:",
+      "prohibited_activities": "Activités interdites:"
     }
   }
 }

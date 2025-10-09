@@ -890,6 +890,10 @@
       "button1": "सहायता केंद्र पर जाएं",
       "button2": "कानूनी टीम से संपर्क करें",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "अनुमत गतिविधियाँ:",
+      "prohibited_activities": "निषिद्ध गतिविधियाँ:"
     }
   }
 }

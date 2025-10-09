@@ -110,7 +110,7 @@ const sectionIds = Object.keys(sectionIcons);
                       
                       {subKey === 'permitted' && subsection.items && (
                         <div class="permitted-list">
-                          <h5 class="list-title">允许的活动：</h5>
+                          <h5 class="list-title">{t(translations, 'terms_page.labels.permitted_activities')}</h5>
                           <ul class="policy-list positive">
                             {subsection.items.map((item: string) => (
                               <li class="policy-item">
@@ -124,7 +124,7 @@ const sectionIds = Object.keys(sectionIcons);
                       
                       {subKey === 'prohibited' && subsection.items && (
                         <div class="prohibited-list">
-                          <h5 class="list-title">禁止的活动：</h5>
+                          <h5 class="list-title">{t(translations, 'terms_page.labels.prohibited_activities')}</h5>
                           <ul class="policy-list negative">
                             {subsection.items.map((item: string) => (
                               <li class="policy-item">

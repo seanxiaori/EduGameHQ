@@ -815,6 +815,10 @@
       "button1": "ヘルプセンターにアクセス",
       "button2": "法務チームに連絡",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "許可される活動：",
+      "prohibited_activities": "禁止される活動："
     }
   }
 }

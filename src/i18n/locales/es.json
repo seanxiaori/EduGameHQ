@@ -957,6 +957,10 @@
       "button1": "Visitar Centro de Ayuda",
       "button2": "Contactar Equipo Legal",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "Actividades permitidas:",
+      "prohibited_activities": "Actividades prohibidas:"
     }
   }
 }

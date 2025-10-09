@@ -903,6 +903,10 @@
       "button1": "زيارة مركز المساعدة",
       "button2": "الاتصال بالفريق القانوني",
       "button2_email": "legal@edugamehq.com"
+    },
+    "labels": {
+      "permitted_activities": "الأنشطة المسموح بها:",
+      "prohibited_activities": "الأنشطة المحظورة:"
     }
   }
 }
