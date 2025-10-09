@@ -1066,8 +1066,10 @@ console.log('- 特殊页面内容:', pageStructure.special);
       if (games.length > 0) {
         const randomGame = games[Math.floor(Math.random() * games.length)];
         const currentLang = window.CURRENT_LANG || 'en';
-        // 修复：所有语言都使用统一的路径格式 /${language}/games/${slug}
-        const gamePath = `/${currentLang}/games/${randomGame.slug}`;
+        // 🔧 修复：英语使用根路径，其他语言使用语言前缀
+        const gamePath = currentLang === 'en' 
+          ? `/games/${randomGame.slug}` 
+          : `/${currentLang}/games/${randomGame.slug}`;
         window.location.href = gamePath;
       }
     }
