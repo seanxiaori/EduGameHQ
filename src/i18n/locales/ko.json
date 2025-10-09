@@ -967,5 +967,121 @@
         "subtitle": "최근 개선 및 업데이트가 있는 게임"
       }
     }
+  },
+  "privacy_policy_page": {
+    "seo": {
+      "title": "Privacy Policy | EduGameHQ - Protecting Your Privacy",
+      "description": "Learn how EduGameHQ protects your privacy and keeps children safe online. COPPA and GDPR compliant educational gaming platform.",
+      "keywords": "privacy policy, child safety, COPPA compliance, data protection, educational games privacy"
+    },
+    "page_title": "Privacy Policy",
+    "page_description": "Your privacy and safety are our top priorities. Learn how we protect children's information and comply with international privacy laws.",
+    "last_updated": "Last updated: January 2025",
+    "sections": {
+      "introduction": {
+        "title": "Introduction",
+        "content": "EduGameHQ.com is committed to protecting the privacy of our users, especially children. This Privacy Policy explains how we collect, use, and protect information when you visit our educational gaming platform."
+      },
+      "information_collection": {
+        "title": "Information We Collect",
+        "dont_collect_title": "Information We Do NOT Collect",
+        "dont_collect_items": [
+          "Personal information from children under 13",
+          "Names, addresses, or contact information",
+          "Photos or videos",
+          "Location data",
+          "Social media profiles"
+        ],
+        "may_collect_title": "Information We May Collect",
+        "may_collect_items": [
+          {
+            "label": "Game Progress",
+            "detail": "Stored locally on your device only"
+          },
+          {
+            "label": "Anonymous Usage Data",
+            "detail": "Which games are played (no personal identification)"
+          },
+          {
+            "label": "Technical Information",
+            "detail": "Browser type, device type for optimization"
+          }
+        ]
+      },
+      "information_use": {
+        "title": "How We Use Information",
+        "items": [
+          "Improve our educational games and website",
+          "Ensure games work properly on different devices",
+          "Provide a safe learning environment",
+          "Display appropriate, non-personalized advertisements"
+        ]
+      },
+      "cookies_storage": {
+        "title": "Cookies and Local Storage",
+        "content": "We use minimal cookies and local storage to enhance your experience:",
+        "items": [
+          "Remember your game progress (stored on your device only)",
+          "Ensure the website functions properly",
+          "Display non-personalized advertisements"
+        ],
+        "note": "You can disable cookies in your browser settings, but some features may not work properly."
+      },
+      "third_party": {
+        "title": "Third-Party Services",
+        "game_providers_title": "Educational Game Providers",
+        "game_providers_content": "Our games are embedded from trusted educational platforms. Each game provider has their own privacy policy.",
+        "adsense_title": "Google AdSense",
+        "adsense_content": "We use Google AdSense to display advertisements. For children's content:",
+        "adsense_items": [
+          "Only non-personalized ads are shown",
+          "Ads are family-friendly and appropriate for children",
+          "No personal data is used for ad targeting"
+        ]
+      },
+      "coppa_compliance": {
+        "title": "Children's Privacy (COPPA Compliance)",
+        "content": "We are committed to complying with the Children's Online Privacy Protection Act (COPPA):",
+        "items": [
+          "We do not knowingly collect personal information from children under 13",
+          "We do not require registration or account creation",
+          "All content is designed to be safe for children",
+          "Parents can contact us with any concerns"
+        ]
+      },
+      "data_security": {
+        "title": "Data Security",
+        "content": "We implement appropriate security measures to protect any information we collect:",
+        "items": [
+          "HTTPS encryption for all website traffic",
+          "Minimal data collection practices",
+          "Regular security updates",
+          "Secure hosting infrastructure"
+        ]
+      },
+      "international_users": {
+        "title": "International Users",
+        "content": "For users in the European Union, we comply with GDPR requirements:",
+        "items": [
+          "Minimal data processing",
+          "Transparent privacy practices",
+          "Right to request data deletion",
+          "No profiling of children"
+        ]
+      },
+      "policy_changes": {
+        "title": "Changes to This Policy",
+        "content": "We may update this Privacy Policy from time to time. We will notify users of any significant changes by posting the new policy on this page with an updated 'Last updated' date."
+      },
+      "contact_us": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this Privacy Policy or our privacy practices, please contact us:",
+        "items": [
+          "Email: privacy@edugamehq.com",
+          "Website: Contact Form"
+        ],
+        "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
+      }
+    }
   }
 }
