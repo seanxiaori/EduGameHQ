@@ -15,7 +15,7 @@
   },
   "categories": {
     "math-games": "수학 게임",
-    "science-games": "과학 게임", 
+    "science-games": "과학 게임",
     "language-games": "언어 게임",
     "puzzle-games": "퍼즐 게임",
     "sports-games": "스포츠 게임",
@@ -101,136 +101,90 @@
   "category_pages": {
     "math_games": {
       "title": "수학 게임",
-      "description": "재미있고 상호작용적인 수학 게임으로 수학 실력을 향상시키세요! 덧셈과 뺄셈부터 고급 대수와 기하학까지, 우리의 게임들은 모든 연령대와 실력 수준의 학습자들이 수학 개념을 마스터하는 데 도움을 줍니다.",
+      "description": "수학 학습을 재미있고 상호작용적으로 만들도록 설계된 매력적인 수학 게임 컬렉션을 탐험해보세요. 기본 산술부터 고급 문제 해결까지, 이 게임들은 학생들이 수학에서 자신감과 기술을 쌓는 데 도움을 줍니다.",
       "featured_section": {
         "title": "추천 수학 게임",
-        "description": "학습을 재미있게 만드는 최고의 수학 게임들"
+        "description": "가장 인기 있고 추천하는 수학 게임"
       },
       "difficulty_levels": {
         "easy": {
-          "title": "쉬운 수학 게임",
-          "description": "초보자와 어린 학습자들에게 완벽한 게임들"
+          "title": "쉬운 레벨 게임",
+          "description": "초보자와 어린 학습자에게 완벽"
         },
         "medium": {
-          "title": "중간 수학 게임",
-          "description": "발전하는 수학 실력을 위한 도전적인 게임들"
+          "title": "중간 레벨 게임",
+          "description": "중급 학생들에게 훌륭함"
         },
         "hard": {
-          "title": "어려운 수학 게임",
-          "description": "고급 학습자들을 위한 복잡한 수학 문제들"
+          "title": "어려운 레벨 게임",
+          "description": "고급 학습자를 위한 도전적인 게임"
         }
       },
       "learning_tips": {
         "title": "수학 학습 팁",
-        "subtitle": "수학 실력 향상을 위한 효과적인 전략들"
-      },
-      "core_skills": {
-        "title": "개발할 핵심 기술",
-        "subtitle": "게임플레이를 통해 습득하는 필수 수학 능력",
-        "skills": {
-          "addition_subtraction": {
-            "title": "덧셈과 뺄셈",
-            "description": "기본 산술 연산 마스터하기"
+        "subtitle": "수학 실력 향상을 위한 전문가 조언",
+        "tips": [
+          {
+            "title": "매일 연습하기",
+            "description": "게임을 통해 수학 개념을 매일 15-20분 연습하세요"
           },
-          "multiplication_division": {
-            "title": "곱셈과 나눗셈",
-            "description": "고급 연산의 유창성 구축하기"
+          {
+            "title": "단계적으로 진행하기",
+            "description": "쉬운 게임부터 시작해서 점차 어려운 도전으로 나아가세요"
           },
-          "fractions_decimals": {
-            "title": "분수와 소수",
-            "description": "부분과 전체 이해하기"
+          {
+            "title": "실수 받아들이기",
+            "description": "실수를 두려워하지 마세요 - 그것들은 학습 과정의 일부입니다"
           },
-          "geometry": {
-            "title": "기하학",
-            "description": "도형과 공간 추론 탐구하기"
-          },
-          "algebra": {
-            "title": "대수학",
-            "description": "방정식 풀기와 변수 다루기"
-          },
-          "problem_solving": {
-            "title": "문제 해결",
-            "description": "비판적 사고 능력 개발하기"
+          {
+            "title": "이유 이해하기",
+            "description": "각 해결책 뒤에 있는 논리를 이해하는 데 집중하세요"
           }
-        }
+        ]
       }
     },
     "science_games": {
       "title": "과학 게임",
-      "description": "매력적인 과학 게임으로 자연 세계의 경이로움을 탐험하세요! 물리학과 화학부터 생물학과 지구과학까지, 우리의 상호작용적인 게임들은 복잡한 과학 개념을 재미있고 이해하기 쉽게 만듭니다.",
+      "description": "복잡한 개념을 이해하기 쉽고 탐험하기 재미있게 만드는 상호작용 게임을 통해 과학의 경이로움을 발견하세요.",
       "featured_section": {
         "title": "추천 과학 게임",
-        "description": "과학적 호기심을 자극하는 흥미진진한 게임들"
+        "description": "가장 인기 있고 추천하는 과학 게임"
       },
       "difficulty_levels": {
         "easy": {
-          "title": "쉬운 과학 게임",
-          "description": "어린 과학자들을 위한 기초 과학 개념들"
+          "title": "쉬운 레벨 게임",
+          "description": "초보자와 어린 학습자에게 완벽"
         },
         "medium": {
-          "title": "중간 과학 게임",
-          "description": "중급 학습자들을 위한 도전적인 과학 탐험"
+          "title": "중간 레벨 게임",
+          "description": "중급 학생들에게 훌륭함"
         },
         "hard": {
-          "title": "어려운 과학 게임",
-          "description": "고급 과학 학습자들을 위한 복잡한 실험들"
+          "title": "어려운 레벨 게임",
+          "description": "고급 학습자를 위한 도전적인 게임"
         }
-      },
-      "learning_tips": {
-        "title": "과학 학습 팁",
-        "subtitle": "과학적 이해를 향상시키는 방법들"
       }
     },
     "language_games": {
       "title": "언어 게임",
-      "description": "상호작용적인 언어 게임으로 의사소통 능력을 향상시키세요! 어휘 구축과 문법부터 읽기 이해와 창의적 글쓰기까지, 우리의 게임들은 언어 학습을 즐겁고 효과적으로 만듭니다.",
+      "description": "매력적인 단어 게임, 어휘 구축기, 독해 활동의 컬렉션으로 언어 기술을 향상시키세요.",
       "featured_section": {
         "title": "추천 언어 게임",
-        "description": "언어 능력을 향상시키는 매력적인 게임들"
+        "description": "가장 인기 있고 추천하는 언어 게임"
       },
       "difficulty_levels": {
         "easy": {
-          "title": "쉬운 언어 게임",
-          "description": "초보 독자와 작가들에게 완벽한 게임들"
+          "title": "쉬운 레벨 게임",
+          "description": "초보자와 어린 학습자에게 완벽"
         },
         "medium": {
-          "title": "중간 언어 게임",
-          "description": "발전하는 언어 능력을 위한 도전적인 활동들"
+          "title": "중간 레벨 게임",
+          "description": "중급 학생들에게 훌륭함"
         },
         "hard": {
-          "title": "어려운 언어 게임",
-          "description": "고급 학습자들을 위한 복잡한 언어 과제들"
+          "title": "어려운 레벨 게임",
+          "description": "고급 학습자를 위한 도전적인 게임"
         }
-      },
-      "learning_tips": {
-        "title": "언어 학습 팁",
-        "subtitle": "언어 능력 향상을 위한 효과적인 전략들"
-      }
-    },
-    "puzzle_games": {
-      "title": "퍼즐 게임",
-      "description": "교육적인 퍼즐 게임 컬렉션으로 두뇌에 도전하세요! 매력적인 퍼즐과 자극적인 도전을 통해 비판적 사고, 문제 해결 능력, 논리력, 공간 추론 능력을 개발하세요.",
-      "featured_section": {
-        "title": "추천 퍼즐 게임",
-        "description": "사고력에 도전하는 자극적인 퍼즐들"
-      },
-      "difficulty_levels": {
-        "easy": {
-          "title": "쉬운 퍼즐 게임",
-          "description": "초보자와 어린 퍼즐 해결사들에게 이상적"
-        },
-        "medium": {
-          "title": "중간 퍼즐 게임",
-          "description": "발전하는 두뇌를 위한 적당한 도전"
-        },
-        "hard": {
-          "title": "어려운 퍼즐 게임",
-          "description": "마스터 문제 해결사들을 위한 고급 퍼즐들"
-        }
-      },
-      "learning_tips": {
-        "title": "퍼즐 해결 팁",
-        "subtitle": "문제 해결 능력 향상을 위한 전략들"
       }
     }
   },
@@ -249,7 +203,7 @@
       "content": "EduGameHQ는 모든 연령대의 학습자들이 즐겁고 효과적으로 학습할 수 있도록 고품질의 교육 게임을 제공하는 것을 목표로 합니다."
     },
     "vision": {
-      "title": "우리의 비전", 
+      "title": "우리의 비전",
       "content": "교육 게임을 통해 전 세계의 모든 아이들이 학습에 대한 사랑을 발견하고, 지식과 기술을 자연스럽게 습득할 수 있는 미래를 만들어가고 있습니다."
     },
     "values": {
@@ -443,96 +397,6 @@
     "play_game": "게임 플레이",
     "add_to_favorites": "즐겨찾기에 추가",
     "remove_from_favorites": "즐겨찾기에서 제거"
-  },
-  "category_pages": {
-    "math_games": {
-      "title": "수학 게임",
-      "description": "수학 학습을 재미있고 상호작용적으로 만들도록 설계된 매력적인 수학 게임 컬렉션을 탐험해보세요. 기본 산술부터 고급 문제 해결까지, 이 게임들은 학생들이 수학에서 자신감과 기술을 쌓는 데 도움을 줍니다.",
-      "featured_section": {
-        "title": "추천 수학 게임",
-        "description": "가장 인기 있고 추천하는 수학 게임"
-      },
-      "difficulty_levels": {
-        "easy": {
-          "title": "쉬운 레벨 게임",
-          "description": "초보자와 어린 학습자에게 완벽"
-        },
-        "medium": {
-          "title": "중간 레벨 게임",
-          "description": "중급 학생들에게 훌륭함"
-        },
-        "hard": {
-          "title": "어려운 레벨 게임",
-          "description": "고급 학습자를 위한 도전적인 게임"
-        }
-      },
-      "learning_tips": {
-        "title": "수학 학습 팁",
-        "subtitle": "수학 실력 향상을 위한 전문가 조언",
-        "tips": [
-          {
-            "title": "매일 연습하기",
-            "description": "게임을 통해 수학 개념을 매일 15-20분 연습하세요"
-          },
-          {
-            "title": "단계적으로 진행하기",
-            "description": "쉬운 게임부터 시작해서 점차 어려운 도전으로 나아가세요"
-          },
-          {
-            "title": "실수 받아들이기",
-            "description": "실수를 두려워하지 마세요 - 그것들은 학습 과정의 일부입니다"
-          },
-          {
-            "title": "이유 이해하기",
-            "description": "각 해결책 뒤에 있는 논리를 이해하는 데 집중하세요"
-          }
-        ]
-      }
-    },
-    "science_games": {
-      "title": "과학 게임",
-      "description": "복잡한 개념을 이해하기 쉽고 탐험하기 재미있게 만드는 상호작용 게임을 통해 과학의 경이로움을 발견하세요.",
-      "featured_section": {
-        "title": "추천 과학 게임",
-        "description": "가장 인기 있고 추천하는 과학 게임"
-      },
-      "difficulty_levels": {
-        "easy": {
-          "title": "쉬운 레벨 게임",
-          "description": "초보자와 어린 학습자에게 완벽"
-        },
-        "medium": {
-          "title": "중간 레벨 게임",
-          "description": "중급 학생들에게 훌륭함"
-        },
-        "hard": {
-          "title": "어려운 레벨 게임",
-          "description": "고급 학습자를 위한 도전적인 게임"
-        }
-      }
-    },
-    "language_games": {
-      "title": "언어 게임",
-      "description": "매력적인 단어 게임, 어휘 구축기, 독해 활동의 컬렉션으로 언어 기술을 향상시키세요.",
-      "featured_section": {
-        "title": "추천 언어 게임",
-        "description": "가장 인기 있고 추천하는 언어 게임"
-      },
-      "difficulty_levels": {
-        "easy": {
-          "title": "쉬운 레벨 게임",
-          "description": "초보자와 어린 학습자에게 완벽"
-        },
-        "medium": {
-          "title": "중간 레벨 게임",
-          "description": "중급 학생들에게 훌륭함"
-        },
-        "hard": {
-          "title": "어려운 레벨 게임",
-          "description": "고급 학습자를 위한 도전적인 게임"
-        }
-      }
-    }
   },
   "about_page": {
     "seo": {
@@ -883,6 +747,194 @@
       "title": "아직 플레이한 게임이 없습니다",
       "description": "컬렉션에서 게임을 선택하여 학습 여정을 시작하세요!",
       "action": "게임 탐색"
+    }
+  },
+  "terms_page": {
+    "seo": {
+      "title": "Terms of Service | EduGameHQ - Educational Gaming Platform",
+      "description": "Read our terms of service for EduGameHQ educational gaming platform. Safe, educational, and fun games for children aged 6-18.",
+      "keywords": "terms of service, educational games, platform rules, user agreement, child safety"
+    },
+    "header": {
+      "title": "Terms of Service",
+      "subtitle": "Clear guidelines for using our educational gaming platform safely and responsibly",
+      "last_updated": "Last updated: January 2025"
+    },
+    "sidebar": {
+      "title": "Quick Navigation"
+    },
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+      },
+      "service_description": {
+        "title": "Description of Service",
+        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "items": [
+          "Access to curated educational games",
+          "Game progress tracking (stored locally)",
+          "Educational content and resources",
+          "Safe, child-friendly gaming environment"
+        ]
+      },
+      "user_eligibility": {
+        "title": "User Eligibility",
+        "subsections": {
+          "age_requirements": {
+            "title": "Age Requirements",
+            "items": [
+              "Our service is designed for children aged 6-18",
+              "Children under 13 should use this service with parental supervision",
+              "We do not require account registration"
+            ]
+          },
+          "parental_consent": {
+            "title": "Parental Consent",
+            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+          }
+        }
+      },
+      "acceptable_use": {
+        "title": "Acceptable Use",
+        "subsections": {
+          "permitted": {
+            "title": "Permitted Uses",
+            "items": [
+              "Educational and learning purposes",
+              "Personal, non-commercial use",
+              "Sharing with family and friends for educational purposes",
+              "Use in classroom settings with proper supervision"
+            ]
+          },
+          "prohibited": {
+            "title": "Prohibited Uses",
+            "items": [
+              "Commercial redistribution of games",
+              "Attempting to hack or disrupt the service",
+              "Using the service for any illegal activities",
+              "Circumventing any security measures",
+              "Uploading malicious content or viruses"
+            ]
+          }
+        }
+      },
+      "third_party_content": {
+        "title": "Third-Party Content",
+        "content": "Our platform includes games and content from third-party providers:",
+        "items": [
+          "We do not own all games displayed on our platform",
+          "Third-party games are subject to their own terms and conditions",
+          "We strive to ensure all content is appropriate for children",
+          "We are not responsible for third-party content or services"
+        ]
+      },
+      "intellectual_property": {
+        "title": "Intellectual Property",
+        "subsections": {
+          "our_content": {
+            "title": "Our Content",
+            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+          },
+          "third_party": {
+            "title": "Third-Party Content",
+            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+          }
+        }
+      },
+      "privacy_data": {
+        "title": "Privacy and Data Protection",
+        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "items": [
+          "We do not collect personal information from children",
+          "Game progress is stored locally on your device",
+          "We use minimal cookies for functionality",
+          "We comply with COPPA and GDPR requirements"
+        ],
+        "note": "For complete details, please read our Privacy Policy."
+      },
+      "disclaimers": {
+        "title": "Disclaimers",
+        "subsections": {
+          "educational_value": {
+            "title": "Educational Value",
+            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+          },
+          "service_availability": {
+            "title": "Service Availability",
+            "content": "We provide our service 'as is' and make no warranties about:",
+            "items": [
+              "Continuous availability of the service",
+              "Compatibility with all devices",
+              "Error-free operation",
+              "Third-party game functionality"
+            ]
+          }
+        }
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "content": "To the fullest extent permitted by law:",
+        "items": [
+          "We are not liable for any indirect, incidental, or consequential damages",
+          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
+          "We are not responsible for third-party content or services",
+          "Parents are responsible for supervising their children's use of our service"
+        ]
+      },
+      "advertising": {
+        "title": "Advertising",
+        "content": "Our service is supported by advertising:",
+        "items": [
+          "We display family-friendly advertisements",
+          "Ads are non-personalized for children's content",
+          "We use Google AdSense and other advertising partners",
+          "Ad content is subject to our content policies"
+        ]
+      },
+      "modifications": {
+        "title": "Modifications to Service",
+        "content": "We reserve the right to:",
+        "items": [
+          "Modify or discontinue any part of our service",
+          "Update our game collection",
+          "Change these terms with notice",
+          "Improve our platform and features"
+        ]
+      },
+      "termination": {
+        "title": "Termination",
+        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+      },
+      "governing_law": {
+        "title": "Governing Law",
+        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+      },
+      "contact_changes": {
+        "title": "Contact & Changes",
+        "subsections": {
+          "contact": {
+            "title": "Contact Information",
+            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "items": [
+              "Email: legal@edugamehq.com",
+              "Website: Contact Form"
+            ]
+          },
+          "changes": {
+            "title": "Changes to Terms",
+            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
+            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "Questions About Our Terms?",
+      "description": "Need clarification on any of our terms? We're here to help!",
+      "button1": "Visit Help Center",
+      "button2": "Contact Legal Team",
+      "button2_email": "legal@edugamehq.com"
     }
   }
 }

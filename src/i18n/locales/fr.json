@@ -544,7 +544,14 @@
     "seo": {
       "title": "Jeux Populaires | Jeux Éducatifs Les Plus Populaires | EduGameHQ",
       "description": "Jouez aux jeux éducatifs les plus populaires en ce moment. Rejoignez des milliers d'étudiants qui apprennent grâce aux jeux de mathématiques, sciences, programmation et langues les plus tendance.",
-      "keywords": ["jeux populaires", "jeux tendance", "jeux éducatifs populaires", "jeux les plus joués", "jeux d'apprentissage tendance", "contenu éducatif populaire"]
+      "keywords": [
+        "jeux populaires",
+        "jeux tendance",
+        "jeux éducatifs populaires",
+        "jeux les plus joués",
+        "jeux d'apprentissage tendance",
+        "contenu éducatif populaire"
+      ]
     },
     "hero": {
       "title": "Jeux Populaires",
@@ -592,7 +599,14 @@
     "seo": {
       "title": "Jeux Récemment Joués | Votre Historique de Jeux | EduGameHQ",
       "description": "Consultez vos jeux éducatifs récemment joués et continuez votre parcours d'apprentissage. Suivez vos progrès en mathématiques, sciences, programmation et langues.",
-      "keywords": ["jeux récemment joués", "historique de jeux", "continuer à jouer", "suivre les progrès", "historique d'apprentissage", "historique des jeux éducatifs"]
+      "keywords": [
+        "jeux récemment joués",
+        "historique de jeux",
+        "continuer à jouer",
+        "suivre les progrès",
+        "historique d'apprentissage",
+        "historique des jeux éducatifs"
+      ]
     },
     "hero": {
       "title": "Jeux Récemment Joués",
@@ -631,6 +645,194 @@
       "title": "Aucun jeu récent",
       "description": "Vous n'avez pas encore joué à des jeux. Commencez à explorer nos jeux éducatifs !",
       "action": "Explorer les jeux"
+    }
+  },
+  "terms_page": {
+    "seo": {
+      "title": "Terms of Service | EduGameHQ - Educational Gaming Platform",
+      "description": "Read our terms of service for EduGameHQ educational gaming platform. Safe, educational, and fun games for children aged 6-18.",
+      "keywords": "terms of service, educational games, platform rules, user agreement, child safety"
+    },
+    "header": {
+      "title": "Terms of Service",
+      "subtitle": "Clear guidelines for using our educational gaming platform safely and responsibly",
+      "last_updated": "Last updated: January 2025"
+    },
+    "sidebar": {
+      "title": "Quick Navigation"
+    },
+    "sections": {
+      "acceptance": {
+        "title": "Acceptance of Terms",
+        "content": "By accessing and using EduGameHQ.com ('the Service'), you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service."
+      },
+      "service_description": {
+        "title": "Description of Service",
+        "content": "EduGameHQ.com is a free educational gaming platform that provides access to educational games for children aged 6-18. Our service includes:",
+        "items": [
+          "Access to curated educational games",
+          "Game progress tracking (stored locally)",
+          "Educational content and resources",
+          "Safe, child-friendly gaming environment"
+        ]
+      },
+      "user_eligibility": {
+        "title": "User Eligibility",
+        "subsections": {
+          "age_requirements": {
+            "title": "Age Requirements",
+            "items": [
+              "Our service is designed for children aged 6-18",
+              "Children under 13 should use this service with parental supervision",
+              "We do not require account registration"
+            ]
+          },
+          "parental_consent": {
+            "title": "Parental Consent",
+            "content": "For users under 13, we recommend parental supervision and consent before using our service."
+          }
+        }
+      },
+      "acceptable_use": {
+        "title": "Acceptable Use",
+        "subsections": {
+          "permitted": {
+            "title": "Permitted Uses",
+            "items": [
+              "Educational and learning purposes",
+              "Personal, non-commercial use",
+              "Sharing with family and friends for educational purposes",
+              "Use in classroom settings with proper supervision"
+            ]
+          },
+          "prohibited": {
+            "title": "Prohibited Uses",
+            "items": [
+              "Commercial redistribution of games",
+              "Attempting to hack or disrupt the service",
+              "Using the service for any illegal activities",
+              "Circumventing any security measures",
+              "Uploading malicious content or viruses"
+            ]
+          }
+        }
+      },
+      "third_party_content": {
+        "title": "Third-Party Content",
+        "content": "Our platform includes games and content from third-party providers:",
+        "items": [
+          "We do not own all games displayed on our platform",
+          "Third-party games are subject to their own terms and conditions",
+          "We strive to ensure all content is appropriate for children",
+          "We are not responsible for third-party content or services"
+        ]
+      },
+      "intellectual_property": {
+        "title": "Intellectual Property",
+        "subsections": {
+          "our_content": {
+            "title": "Our Content",
+            "content": "The EduGameHQ website design, layout, and original content are protected by copyright and other intellectual property laws."
+          },
+          "third_party": {
+            "title": "Third-Party Content",
+            "content": "All games and third-party content remain the property of their respective owners. We display this content under fair use or with permission."
+          }
+        }
+      },
+      "privacy_data": {
+        "title": "Privacy and Data Protection",
+        "content": "Your privacy is important to us. Please review our Privacy Policy to understand how we collect, use, and protect your information.",
+        "items": [
+          "We do not collect personal information from children",
+          "Game progress is stored locally on your device",
+          "We use minimal cookies for functionality",
+          "We comply with COPPA and GDPR requirements"
+        ],
+        "note": "For complete details, please read our Privacy Policy."
+      },
+      "disclaimers": {
+        "title": "Disclaimers",
+        "subsections": {
+          "educational_value": {
+            "title": "Educational Value",
+            "content": "While we strive to provide educational content, we make no guarantees about specific learning outcomes or educational effectiveness."
+          },
+          "service_availability": {
+            "title": "Service Availability",
+            "content": "We provide our service 'as is' and make no warranties about:",
+            "items": [
+              "Continuous availability of the service",
+              "Compatibility with all devices",
+              "Error-free operation",
+              "Third-party game functionality"
+            ]
+          }
+        }
+      },
+      "liability": {
+        "title": "Limitation of Liability",
+        "content": "To the fullest extent permitted by law:",
+        "items": [
+          "We are not liable for any indirect, incidental, or consequential damages",
+          "Our total liability shall not exceed the amount you paid to use our service (which is $0 for free users)",
+          "We are not responsible for third-party content or services",
+          "Parents are responsible for supervising their children's use of our service"
+        ]
+      },
+      "advertising": {
+        "title": "Advertising",
+        "content": "Our service is supported by advertising:",
+        "items": [
+          "We display family-friendly advertisements",
+          "Ads are non-personalized for children's content",
+          "We use Google AdSense and other advertising partners",
+          "Ad content is subject to our content policies"
+        ]
+      },
+      "modifications": {
+        "title": "Modifications to Service",
+        "content": "We reserve the right to:",
+        "items": [
+          "Modify or discontinue any part of our service",
+          "Update our game collection",
+          "Change these terms with notice",
+          "Improve our platform and features"
+        ]
+      },
+      "termination": {
+        "title": "Termination",
+        "content": "We may terminate or suspend access to our service immediately, without prior notice, for conduct that we believe violates these Terms of Service or is harmful to other users, us, or third parties."
+      },
+      "governing_law": {
+        "title": "Governing Law",
+        "content": "These Terms shall be interpreted and governed by the laws of the jurisdiction where our service is operated, without regard to conflict of law provisions."
+      },
+      "contact_changes": {
+        "title": "Contact & Changes",
+        "subsections": {
+          "contact": {
+            "title": "Contact Information",
+            "content": "If you have any questions about these Terms of Service, please contact us:",
+            "items": [
+              "Email: legal@edugamehq.com",
+              "Website: Contact Form"
+            ]
+          },
+          "changes": {
+            "title": "Changes to Terms",
+            "content": "We reserve the right to update these Terms of Service at any time. We will notify users of any material changes by posting the new Terms of Service on this page with an updated 'Last updated' date.",
+            "note": "Your continued use of the service after any such changes constitutes your acceptance of the new Terms of Service."
+          }
+        }
+      }
+    },
+    "cta": {
+      "title": "Questions About Our Terms?",
+      "description": "Need clarification on any of our terms? We're here to help!",
+      "button1": "Visit Help Center",
+      "button2": "Contact Legal Team",
+      "button2_email": "legal@edugamehq.com"
     }
   }
 }
