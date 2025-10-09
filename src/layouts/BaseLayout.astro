@@ -567,32 +567,34 @@ console.log('- 特殊页面内容:', pageStructure.special);
                 {t(translations, 'nav.home', 'Home')}
               </a>
 
-              <!-- Step 2: 始终显示分类下拉菜单 -->
-              <div class="nav-dropdown">
-                <button class="nav-link dropdown-trigger" id="categoriesDropdown">
-                  <i class="fas fa-gamepad"></i>
-                  {t(translations, 'nav.categories', 'Categories')}
-                  <i class="fas fa-chevron-down dropdown-arrow"></i>
-                </button>
-                <div class="dropdown-menu" id="categoriesMenu">
-                  <!-- 游戏分类 -->
-                  {Object.entries(pageStructure.categories).map(([path, info]) => (
-                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
-                      <i class={info.icon}></i>
-                      {t(translations, info.translationKey, info.fallback)}
-                    </a>
-                  ))}
-                  <!-- 分隔线 -->
-                  <hr class="dropdown-divider">
-                  <!-- 特殊页面 -->
-                  {Object.entries(pageStructure.special).map(([path, info]) => (
-                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
-                      <i class={info.icon}></i>
-                      {t(translations, info.translationKey, info.fallback)}
-                    </a>
-                  ))}
+              <!-- Step 2: 分类下拉菜单（游戏详情页隐藏，释放空间给游戏名称） -->
+              {!isGamePage && (
+                <div class="nav-dropdown">
+                  <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                    <i class="fas fa-gamepad"></i>
+                    {t(translations, 'nav.categories', 'Categories')}
+                    <i class="fas fa-chevron-down dropdown-arrow"></i>
+                  </button>
+                  <div class="dropdown-menu" id="categoriesMenu">
+                    <!-- 游戏分类 -->
+                    {Object.entries(pageStructure.categories).map(([path, info]) => (
+                      <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
+                        <i class={info.icon}></i>
+                        {t(translations, info.translationKey, info.fallback)}
+                      </a>
+                    ))}
+                    <!-- 分隔线 -->
+                    <hr class="dropdown-divider">
+                    <!-- 特殊页面 -->
+                    {Object.entries(pageStructure.special).map(([path, info]) => (
+                      <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
+                        <i class={info.icon}></i>
+                        {t(translations, info.translationKey, info.fallback)}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               <!-- Step 3: 非首页时显示面包屑导航 -->
               {!isHomePage && breadcrumbs.slice(1).map((crumb) => (
