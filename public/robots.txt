@@ -1,11 +1,15 @@
 # EduGameHQ.com - Robots.txt
 # 教育游戏聚合平台 - 搜索引擎爬虫指导文件
+# 最后更新: 2025-01-09
 
-# 允许所有搜索引擎爬虫访问
+# ============================================
+# 通用爬虫规则
+# ============================================
 User-agent: *
 Allow: /
+Crawl-delay: 1
 
-# 不允许爬取的目录和文件
+# 不允许爬取的目录（开发和系统文件）
 Disallow: /admin/
 Disallow: /api/
 Disallow: /_astro/
@@ -15,36 +19,78 @@ Disallow: /.git/
 Disallow: /scripts/
 Disallow: /temp/
 Disallow: /cache/
+Disallow: /.env
+Disallow: /dist/
 
-# 不允许爬取用户个人数据相关页面
-Disallow: /recently-played
-Disallow: /favorites
+# 不允许爬取私密路径
 Disallow: /user/
+Disallow: /private/
 
-# 允许爬取但降低优先级的页面
-Crawl-delay: 1
+# ============================================
+# 允许爬取所有教育游戏内容
+# ============================================
+Allow: /games/
+Allow: /*/games/
+Allow: /math-games
+Allow: /science-games
+Allow: /language-games
+Allow: /puzzle-games
+Allow: /sports-games
+Allow: /art-games
+Allow: /*/math-games
+Allow: /*/science-games
+Allow: /*/language-games
+Allow: /*/puzzle-games
+Allow: /*/sports-games
+Allow: /*/art-games
 
-# 特别针对Google搜索引擎的设置
+# 允许爬取功能页面
+Allow: /search
+Allow: /*/search
+Allow: /trending
+Allow: /*/trending
+Allow: /new-games
+Allow: /*/new-games
+Allow: /recently-played
+Allow: /*/recently-played
+Allow: /favorites
+Allow: /*/favorites
+
+# ============================================
+# Google 搜索引擎优化设置
+# ============================================
 User-agent: Googlebot
 Allow: /
-Crawl-delay: 1
+Crawl-delay: 0.5
 
-# 特别针对Bing搜索引擎的设置  
+User-agent: Googlebot-Image
+Allow: /images/
+Allow: /*/images/
+
+# ============================================
+# Bing 搜索引擎设置
+# ============================================
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-# 特别针对百度搜索引擎的设置
+# ============================================
+# 百度搜索引擎设置
+# ============================================
 User-agent: Baiduspider
 Allow: /
 Crawl-delay: 2
 
-# 特别针对Yandex搜索引擎的设置
+# ============================================
+# Yandex 搜索引擎设置
+# ============================================
 User-agent: YandexBot
 Allow: /
 Crawl-delay: 1
 
-# 阻止恶意爬虫
+# ============================================
+# 阻止恶意/商业爬虫
+# ============================================
 User-agent: SemrushBot
 Disallow: /
 
@@ -54,46 +100,34 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Sitemap位置
+User-agent: DotBot
+Disallow: /
+
+# ============================================
+# Sitemap 位置（多语言）
+# ============================================
+# 主Sitemap索引
+Sitemap: https://www.edugamehq.com/sitemap-index.xml
+
+# 英语版本（根路径）
 Sitemap: https://www.edugamehq.com/sitemap.xml
 
-# 主要页面（提示搜索引擎优先抓取）
-# 首页
-# https://edugamehq.com/
+# 其他语言版本
+Sitemap: https://www.edugamehq.com/zh/sitemap.xml
+Sitemap: https://www.edugamehq.com/es/sitemap.xml
+Sitemap: https://www.edugamehq.com/fr/sitemap.xml
+Sitemap: https://www.edugamehq.com/de/sitemap.xml
+Sitemap: https://www.edugamehq.com/ja/sitemap.xml
+Sitemap: https://www.edugamehq.com/ru/sitemap.xml
+Sitemap: https://www.edugamehq.com/hi/sitemap.xml
+Sitemap: https://www.edugamehq.com/ko/sitemap.xml
+Sitemap: https://www.edugamehq.com/ar/sitemap.xml
+Sitemap: https://www.edugamehq.com/he/sitemap.xml
 
-# 分类页面
-# https://edugamehq.com/math-games
-# https://edugamehq.com/science-games
-# https://edugamehq.com/language-games
-# https://edugamehq.com/puzzle-games
-# https://edugamehq.com/sports-games
-# https://edugamehq.com/art-games
-
-# 特殊页面
-# https://edugamehq.com/trending
-# https://edugamehq.com/new-games
-
-# Allow all educational game content
-Allow: /math-games
-Allow: /science-games
-Allow: /language-games
-Allow: /puzzle-games
-Allow: /sports-games
-Allow: /art-games
-Allow: /games/
-
-# Allow important pages
-Allow: /search
-Allow: /trending
-Allow: /new-games
-Allow: /recently-played
-Allow: /favorites
-
-# Block admin or development files (if any)
-Disallow: /admin/
-Disallow: /.env
-Disallow: /src/
-Disallow: /node_modules/
-
-# Educational games platform for students aged 6-18
-# Visit https://www.edugamehq.com for free educational games 
+# ============================================
+# 网站信息
+# ============================================
+# EduGameHQ - Free Educational Games Platform
+# Target Audience: Students aged 6-18
+# Languages: 11 languages supported
+# Visit: https://www.edugamehq.com 

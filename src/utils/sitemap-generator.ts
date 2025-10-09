@@ -52,17 +52,38 @@ export function generateSitemapForLanguage(languageCode: string) {
   // 合并所有URL
   const allPages = [...localizedStaticPages, ...localizedGamePages];
 
-  // 生成XML内容
+  // 所有支持的语言
+  const allLanguages = ['en', 'zh', 'es', 'fr', 'de', 'ja', 'ru', 'hi', 'ko', 'ar', 'he'];
+  
+  // 生成hreflang链接
+  const generateHreflang = (pagePath: string) => {
+    return allLanguages.map(lang => {
+      const hreflangUrl = lang === 'en' 
+        ? `${baseUrl}${pagePath.replace(`/${languageCode}`, '')}`
+        : `${baseUrl}/${lang}${pagePath.replace(`/${languageCode}`, '').replace(/^\//, '')}`;
+      
+      return `    <xhtml:link rel="alternate" hreflang="${lang}" href="${hreflangUrl}"/>`;
+    }).join('\n');
+  };
+
+  // 生成XML内容（带hreflang支持）
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
-${allPages.map(page => `  <url>
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${allPages.map(page => {
+  // 提取纯路径（不含语言前缀）
+  const purePath = page.url.replace(`/${languageCode}`, '').replace(/^\//, '');
+  
+  return `  <url>
     <loc>${baseUrl}${page.url}</loc>
     <lastmod>${page.lastmod || new Date().toISOString().split('T')[0]}</lastmod>
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`).join('\n')}
+${generateHreflang(`/${purePath}`)}
+  </url>`;
+}).join('\n')}
 </urlset>`;
 
   return new Response(sitemap, {
