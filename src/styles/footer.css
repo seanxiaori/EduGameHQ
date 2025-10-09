@@ -74,21 +74,21 @@
 }
 
 .footer-edu {
-  font-size: 2rem;
+  font-size: 32px; /* 固定像素，确保所有环境一致 */
   color: #F97316;
   text-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
   transition: color 0.3s ease;
 }
 
 .footer-game {
-  font-size: 2rem;
+  font-size: 32px; /* 固定像素，确保所有环境一致 */
   color: #3B82F6;
   text-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
   transition: color 0.3s ease;
 }
 
 .footer-hq {
-  font-size: 1.5rem;
+  font-size: 24px; /* 固定像素，确保所有环境一致 */
   color: #9CA3AF;
   font-weight: 700;
   opacity: 0.9;
