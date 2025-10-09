@@ -229,11 +229,15 @@ console.log('✅ 是否为首页:', isHomePage);
 // 修复路径匹配问题 - 确保在构建时也能正确匹配
 const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
 
-const currentCategory = (pageStructure.categories as Record<string, any>)[normalizedPath] || (pageStructure.categories as Record<string, any>)[currentPath];
-const currentSpecialPage = (pageStructure.special as Record<string, any>)[normalizedPath] || (pageStructure.special as Record<string, any>)[currentPath];
-const currentSystemPage = (pageStructure.system as Record<string, any>)[normalizedPath] || (pageStructure.system as Record<string, any>)[currentPath];
-const currentSupportPage = (pageStructure.support as Record<string, any>)[normalizedPath] || (pageStructure.support as Record<string, any>)[currentPath];
-const isGamePage = currentPath.startsWith('/games/');
+// 🔧 修复：去除语言前缀后再匹配页面结构
+const pathWithoutLang = removeLanguagePrefix(normalizedPath);
+console.log('🔍 去除语言前缀的路径:', pathWithoutLang);
+
+const currentCategory = (pageStructure.categories as Record<string, any>)[pathWithoutLang];
+const currentSpecialPage = (pageStructure.special as Record<string, any>)[pathWithoutLang];
+const currentSystemPage = (pageStructure.system as Record<string, any>)[pathWithoutLang];
+const currentSupportPage = (pageStructure.support as Record<string, any>)[pathWithoutLang];
+const isGamePage = pathWithoutLang.startsWith('/games/');
 
 // 读取games.json数据用于客户端
 let gamesData = [];
@@ -255,29 +259,19 @@ if (!isHomePage) {
   });
   
   if (currentCategory) {
-    breadcrumbs.push({ 
-      name: t(translations, 'nav.categories', 'Categories'), 
-      url: '#', 
-      icon: 'fas fa-gamepad', 
-      isDropdown: true 
-    });
+    // 分类页面：直接显示分类名称，不需要中间的"分类"下拉
     breadcrumbs.push({ 
       name: t(translations, currentCategory.translationKey, currentCategory.fallback), 
-      url: getLocalizedPath(currentPath, currentLang), 
+      url: getLocalizedPath(pathWithoutLang, currentLang), 
       icon: currentCategory.icon,
       color: currentCategory.color,
       isCurrent: true 
     });
   } else if (currentSpecialPage) {
-    breadcrumbs.push({ 
-      name: t(translations, 'nav.categories', 'Categories'), 
-      url: '#', 
-      icon: 'fas fa-gamepad', 
-      isDropdown: true 
-    });
+    // 特殊页面：直接显示页面名称，不需要中间的"分类"下拉
     breadcrumbs.push({ 
       name: t(translations, currentSpecialPage.translationKey, currentSpecialPage.fallback), 
-      url: getLocalizedPath(currentPath, currentLang), 
+      url: getLocalizedPath(pathWithoutLang, currentLang), 
       icon: currentSpecialPage.icon,
       color: currentSpecialPage.color,
       isCurrent: true 
@@ -286,23 +280,16 @@ if (!isHomePage) {
     // 系统页面面包屑（如收藏、搜索等）
     breadcrumbs.push({ 
       name: t(translations, currentSystemPage.translationKey, currentSystemPage.fallback), 
-      url: getLocalizedPath(currentPath, currentLang), 
+      url: getLocalizedPath(pathWithoutLang, currentLang), 
       icon: currentSystemPage.icon,
       color: currentSystemPage.color,
       isCurrent: true 
     });
   } else if (currentSupportPage) {
-    // Support页面面包屑
-    breadcrumbs.push({ 
-      name: t(translations, 'footer.support', 'Support'), 
-      url: '#', 
-      icon: 'fas fa-life-ring', 
-      color: 'support',
-      isDropdown: true 
-    });
+    // Support页面：直接显示页面名称，不需要中间的"Support"下拉
     breadcrumbs.push({ 
       name: t(translations, currentSupportPage.translationKey, currentSupportPage.fallback), 
-      url: getLocalizedPath(currentPath, currentLang), 
+      url: getLocalizedPath(pathWithoutLang, currentLang), 
       icon: currentSupportPage.icon,
       color: currentSupportPage.color,
       isCurrent: true 
