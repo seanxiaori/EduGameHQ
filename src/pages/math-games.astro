@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GameCard from '../components/GameCard.astro';
-import type { Game } from '../../types/game';
+import type { Game } from '../types/game';
 import { getTranslations, t } from '../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../../styles/game-card.css';
+import '../styles/game-card.css';
 
 // 获取翻译数据
 const translations = await getTranslations('en');
