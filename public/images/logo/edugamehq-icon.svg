@@ -1,25 +1,90 @@
-<!-- EduGameHQ 图标版 - 仅图标 -->
-<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" aria-label="EduGameHQ Icon">
+<!-- EduGameHQ 图标版 - 游戏手柄+书本融合设计 -->
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- 网站主色调渐变 -->
-    <linearGradient id="icon-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
+    <!-- 主渐变 - 活力橙到紫色 -->
+    <linearGradient id="controller-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F7931E; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6; stop-opacity:1" />
     </linearGradient>
+    
+    <!-- 书本渐变 - 蓝色系 -->
+    <linearGradient id="book-gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6; stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 阴影效果 -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-opacity="0.25"/>
+    </filter>
   </defs>
 
-  <!-- 现代扁平背景 -->
-  <rect x="16" y="16" width="96" height="96" rx="28" ry="28" fill="url(#icon-bg-gradient)"/>
-  
-  <!-- 极简书本 -->
-  <g transform="translate(64, 48)">
-    <path d="M-14 -4 L-14 16 L0 12 L14 16 L14 -4 Z" 
-          fill="none" stroke="white" stroke-width="4" stroke-linejoin="round"/>
+  <!-- 游戏手柄外形 -->
+  <g filter="url(#shadow)">
+    <!-- 手柄主体 -->
+    <rect x="18" y="40" width="92" height="56" rx="28" ry="28" 
+          fill="url(#controller-gradient)"/>
+    
+    <!-- 左侧握把 -->
+    <ellipse cx="28" cy="84" rx="18" ry="23" 
+             fill="url(#controller-gradient)"/>
+    
+    <!-- 右侧握把 -->
+    <ellipse cx="100" cy="84" rx="18" ry="23" 
+             fill="url(#controller-gradient)"/>
+  </g>
+
+  <!-- 中心：打开的书本 -->
+  <g transform="translate(64, 68)">
+    <!-- 左页 -->
+    <path d="M-18 -14 L-18 14 L-2 9 L-2 -18 Z" 
+          fill="white" opacity="0.95"/>
+    <!-- 右页 -->
+    <path d="M2 -18 L2 9 L18 14 L18 -14 Z" 
+          fill="white" opacity="0.95"/>
+    <!-- 书脊 -->
+    <line x1="0" y1="-18" x2="0" y2="9" 
+          stroke="white" stroke-width="3" opacity="0.6"/>
+    
+    <!-- 书本装饰线条 -->
+    <line x1="-14" y1="-9" x2="-5" y2="-9" 
+          stroke="url(#book-gradient)" stroke-width="2" opacity="0.8"/>
+    <line x1="-14" y1="-2" x2="-5" y2="-2" 
+          stroke="url(#book-gradient)" stroke-width="2" opacity="0.8"/>
+    <line x1="-14" y1="5" x2="-5" y2="5" 
+          stroke="url(#book-gradient)" stroke-width="2" opacity="0.8"/>
+    
+    <line x1="5" y1="-9" x2="14" y2="-9" 
+          stroke="url(#book-gradient)" stroke-width="2" opacity="0.8"/>
+    <line x1="5" y1="-2" x2="14" y2="-2" 
+          stroke="url(#book-gradient)" stroke-width="2" opacity="0.8"/>
+    <line x1="5" y1="5" x2="14" y2="5" 
+          stroke="url(#book-gradient)" stroke-width="2" opacity="0.8"/>
+  </g>
+
+  <!-- 游戏按钮元素 -->
+  <g>
+    <!-- 左侧方向键 -->
+    <circle cx="36" cy="58" r="5.5" fill="white" opacity="0.9"/>
+    <circle cx="36" cy="78" r="5.5" fill="white" opacity="0.9"/>
+    <circle cx="26" cy="68" r="5.5" fill="white" opacity="0.9"/>
+    <circle cx="46" cy="68" r="5.5" fill="white" opacity="0.9"/>
+    
+    <!-- 右侧动作按钮 -->
+    <circle cx="92" cy="58" r="5.5" fill="white" opacity="0.9"/>
+    <circle cx="102" cy="68" r="5.5" fill="white" opacity="0.9"/>
+    <circle cx="92" cy="78" r="5.5" fill="white" opacity="0.9"/>
+    <circle cx="82" cy="68" r="5.5" fill="white" opacity="0.9"/>
   </g>
   
-  <!-- 游戏元素 -->
-  <g transform="translate(64, 80)">
-    <circle cx="-8" cy="0" r="4" fill="white" opacity="0.9"/>
-    <circle cx="8" cy="0" r="4" fill="white" opacity="0.9"/>
+  <!-- 装饰星星 -->
+  <g opacity="0.8">
+    <path d="M14 22 L16 28 L22 28 L17 32 L19 38 L14 34 L9 38 L11 32 L6 28 L12 28 Z" 
+          fill="#FCD34D"/>
+    <path d="M114 22 L116 28 L122 28 L117 32 L119 38 L114 34 L109 38 L111 32 L106 28 L112 28 Z" 
+          fill="#FCD34D"/>
+    <path d="M64 8 L66 14 L72 14 L67 18 L69 24 L64 20 L59 24 L61 18 L56 14 L62 14 Z" 
+          fill="#FCD34D"/>
   </g>
 </svg>

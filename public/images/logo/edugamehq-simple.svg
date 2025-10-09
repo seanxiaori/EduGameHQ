@@ -1,29 +1,60 @@
-<!-- EduGameHQ 简化Logo - 图标+主标题 -->
-<svg width="200" height="160" viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg" aria-label="EduGameHQ Simple Logo">
+<!-- EduGameHQ 简化版Logo - 图标+主标题 -->
+<svg width="280" height="100" viewBox="0 0 280 100" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- 网站主色调渐变 -->
-    <linearGradient id="simple-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
+    <!-- 主渐变 -->
+    <linearGradient id="controller-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B35; stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F7931E; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6; stop-opacity:1" />
     </linearGradient>
+    
+    <linearGradient id="text-edu" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF6B35; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F7931E; stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="text-game" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3B82F6; stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B5CF6; stop-opacity:1" />
+    </linearGradient>
+    
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+    </filter>
   </defs>
 
-  <!-- 扁平背景 -->
-  <rect x="10" y="30" width="60" height="60" rx="15" ry="15" fill="url(#simple-bg-gradient)"/>
-  
-  <!-- 书本 -->
-  <g transform="translate(40, 48)">
-    <path d="M-9 -1.5 L-9 10.5 L0 7.5 L9 10.5 L9 -1.5 Z" 
-          fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-  </g>
-  
-  <!-- 游戏元素 -->
-  <g transform="translate(40, 72)">
-    <circle cx="-5" cy="0" r="2" fill="white" opacity="0.9"/>
-    <circle cx="5" cy="0" r="2" fill="white" opacity="0.9"/>
+  <!-- 游戏手柄图标（小尺寸） -->
+  <g transform="translate(20, 20)" filter="url(#shadow)">
+    <rect x="0" y="12" width="60" height="36" rx="18" ry="18" fill="url(#controller-gradient)"/>
+    <ellipse cx="6" cy="42" rx="12" ry="15" fill="url(#controller-gradient)"/>
+    <ellipse cx="54" cy="42" rx="12" ry="15" fill="url(#controller-gradient)"/>
+    
+    <g transform="translate(30, 30)">
+      <path d="M-12 -9 L-12 9 L-1 6 L-1 -12 Z" fill="white" opacity="0.95"/>
+      <path d="M1 -12 L1 6 L12 9 L12 -9 Z" fill="white" opacity="0.95"/>
+      <line x1="0" y1="-12" x2="0" y2="6" stroke="white" stroke-width="2" opacity="0.6"/>
+      
+      <line x1="-9" y1="-6" x2="-3" y2="-6" stroke="#60A5FA" stroke-width="1.5" opacity="0.8"/>
+      <line x1="-9" y1="-1" x2="-3" y2="-1" stroke="#60A5FA" stroke-width="1.5" opacity="0.8"/>
+      <line x1="3" y1="-6" x2="9" y2="-6" stroke="#60A5FA" stroke-width="1.5" opacity="0.8"/>
+      <line x1="3" y1="-1" x2="9" y2="-1" stroke="#60A5FA" stroke-width="1.5" opacity="0.8"/>
+    </g>
+
+    <circle cx="12" cy="24" r="3.5" fill="white" opacity="0.9"/>
+    <circle cx="12" cy="38" r="3.5" fill="white" opacity="0.9"/>
+    <circle cx="5" cy="31" r="3.5" fill="white" opacity="0.9"/>
+    <circle cx="19" cy="31" r="3.5" fill="white" opacity="0.9"/>
+    
+    <circle cx="48" cy="24" r="3.5" fill="white" opacity="0.9"/>
+    <circle cx="55" cy="31" r="3.5" fill="white" opacity="0.9"/>
+    <circle cx="48" cy="38" r="3.5" fill="white" opacity="0.9"/>
+    <circle cx="41" cy="31" r="3.5" fill="white" opacity="0.9"/>
   </g>
 
-  <!-- 主标题 -->
-  <text x="85" y="68" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" 
-        font-size="24" font-weight="800" fill="#1F2937">EduGameHQ</text>
+  <!-- 品牌名称（紧凑版） -->
+  <g transform="translate(100, 55)">
+    <text x="0" y="0" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="url(#text-edu)">Edu</text>
+    <text x="80" y="0" font-family="Arial, sans-serif" font-size="42" font-weight="900" fill="url(#text-game)">Game</text>
+    <text x="200" y="0" font-family="Arial, sans-serif" font-size="36" font-weight="700" fill="#6B7280">HQ</text>
+  </g>
 </svg>
