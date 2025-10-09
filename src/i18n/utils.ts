@@ -91,7 +91,12 @@ export function getLocalizedPath(path: string, lang: LanguageCode): string {
   // 移除现有的语言前缀
   const cleanPath = removeLanguagePrefix(path);
   
-  // 添加语言前缀（包括默认语言）
+  // 英语使用根路径，其他语言添加语言前缀
+  if (lang === 'en') {
+    return cleanPath === '/' ? '/' : cleanPath;
+  }
+  
+  // 其他语言添加语言前缀
   const langPrefix = `/${lang}`;
   return cleanPath === '/' ? langPrefix : `${langPrefix}${cleanPath}`;
 }

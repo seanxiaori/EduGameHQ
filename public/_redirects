@@ -5,6 +5,9 @@ http://edugamehq.com/* https://www.edugamehq.com/:splat 301!
 # HTTP -> HTTPS 重定向
 http://www.edugamehq.com/* https://www.edugamehq.com/:splat 301!
 
+# SEO优化：英语版本从/en/*重定向到根路径
+/en/* /:splat 301!
+
 # 旧URL重定向（如果存在）
 /index.html / 301
 /home / 301

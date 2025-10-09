@@ -1,26 +1,1020 @@
 ---
-// src/pages/about.astro
-// 重定向到英语版本的关于页面
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../../i18n/utils';
+
+// 获取英文翻译
+const translations = await getTranslations('en');
+
+// 移除硬编码的SEO数据，让BaseLayout使用翻译文件中的本地化SEO数据
+
+// 团队成员数据
+const teamMembers = [
+  {
+    name: t(translations, 'about_page.team_section.member1.name'),
+    role: t(translations, 'about_page.team_section.member1.role'),
+    description: t(translations, 'about_page.team_section.member1.description'),
+    icon: "fas fa-user-graduate"
+  },
+  {
+    name: t(translations, 'about_page.team_section.member2.name'),
+    role: t(translations, 'about_page.team_section.member2.role'),
+    description: t(translations, 'about_page.team_section.member2.description'),
+    icon: "fas fa-gamepad"
+  },
+  {
+    name: t(translations, 'about_page.team_section.member3.name'),
+    role: t(translations, 'about_page.team_section.member3.role'),
+    description: t(translations, 'about_page.team_section.member3.description'),
+    icon: "fas fa-brain"
+  },
+  {
+    name: t(translations, 'about_page.team_section.member4.name'),
+    role: t(translations, 'about_page.team_section.member4.role'),
+    description: t(translations, 'about_page.team_section.member4.description'),
+    icon: "fas fa-code"
+  }
+];
+
+// 统计数据
+const stats = [
+  { number: "500+", label: t(translations, 'about_page.impact.games'), icon: "fas fa-gamepad" },
+  { number: "50,000+", label: t(translations, 'about_page.impact.students'), icon: "fas fa-users" },
+  { number: "120+", label: t(translations, 'about_page.impact.countries'), icon: "fas fa-globe" },
+  { number: "100%", label: t(translations, 'about_page.impact.free'), icon: "fas fa-heart" }
+];
+
+// 价值主张
+const values = [
+  {
+    title: t(translations, 'about_page.values_section.quality.title'),
+    description: t(translations, 'about_page.values_section.quality.description'),
+    icon: "fas fa-star"
+  },
+  {
+    title: t(translations, 'about_page.values_section.free.title'),
+    description: t(translations, 'about_page.values_section.free.description'),
+    icon: "fas fa-gift"
+  },
+  {
+    title: t(translations, 'about_page.values_section.safety.title'),
+    description: t(translations, 'about_page.values_section.safety.description'),
+    icon: "fas fa-shield-alt"
+  },
+  {
+    title: t(translations, 'about_page.values_section.reach.title'),
+    description: t(translations, 'about_page.values_section.reach.description'),
+    icon: "fas fa-world"
+  }
+];
+
+// 关于我们章节数据（用于目录导航）
+const aboutSections = [
+  { id: "mission", title: t(translations, 'about_page.sections.mission'), icon: "fa-bullseye" },
+  { id: "values", title: t(translations, 'about_page.sections.values'), icon: "fa-heart" },
+  { id: "story", title: t(translations, 'about_page.sections.story'), icon: "fa-book" },
+  { id: "team", title: t(translations, 'about_page.sections.team'), icon: "fa-users" },
+  { id: "stats", title: t(translations, 'about_page.sections.impact'), icon: "fa-chart-line" }
+];
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/en/about" />
-    <link rel="canonical" href="/en/about" />
-    <title>Redirecting to About</title>
-    <script is:inline>
-      // JavaScript fallback for immediate redirection
-      window.location.replace('/en/about');
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to <a href="/en/about">About</a>...</p>
-  </body>
-</html>
 
+<BaseLayout>
+  <main class="about-page">
+    <div class="content-wrapper">
+      
+      <!-- 关于我们头部 -->
+      <section class="about-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon about-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">{t(translations, 'about_page.header.title')}</h1>
+            <p class="page-description">
+              {t(translations, 'about_page.header.subtitle')}
+            </p>
+            <p class="company-subtitle">
+              {t(translations, 'about_page.header.tagline')}
+            </p>
+          </div>
+        </div>
+      </section>
 
+      <div class="about-content">
+        <!-- 侧边栏目录 -->
+        <aside class="about-sidebar">
+          <div class="sidebar-header">
+            <h3>{t(translations, 'about_page.sidebar.title')}</h3>
+          </div>
+          <nav class="about-nav">
+            <ul>
+              {aboutSections.map((section) => (
+                <li>
+                  <a href={`#${section.id}`} class="nav-link">
+                    <i class={`fas ${section.icon}`}></i>
+                    <span>{section.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </aside>
 
+        <!-- 主要内容区域 -->
+        <div class="about-main">
 
+          <!-- 统计数据 -->
+          <section class="stats-section" id="stats">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h2 class="section-title">{t(translations, 'about_page.sections.impact')}</h2>
+            </div>
+            <div class="stats-grid">
+              {stats.map((stat) => (
+                <div class="stat-card">
+                  <div class="stat-icon">
+                    <i class={stat.icon}></i>
+                  </div>
+                  <div class="stat-number">{stat.number}</div>
+                  <div class="stat-label">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </section>
 
+          <!-- 使命愿景 -->
+          <section class="mission-section" id="mission">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-bullseye"></i>
+              </div>
+              <h2 class="section-title">{t(translations, 'about_page.sections.mission')}</h2>
+            </div>
+            <div class="mission-content">
+              <div class="mission-text">
+                <p class="mission-description">
+                  {t(translations, 'about_page.mission_section.description')}
+                </p>
+                
+                <div class="vision-section">
+                  <h3 class="subsection-title">{t(translations, 'about_page.mission_section.vision_title')}</h3>
+                  <p class="vision-description">
+                    {t(translations, 'about_page.mission_section.vision_description')}
+                  </p>
+                </div>
+              </div>
+              
+              <div class="mission-visual">
+                <div class="mission-icon-large">
+                  <i class="fas fa-graduation-cap"></i>
+                </div>
+              </div>
+            </div>
+          </section>
 
+          <!-- 价值主张 -->
+          <section class="values-section" id="values">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-heart"></i>
+              </div>
+              <h2 class="section-title">{t(translations, 'about_page.values_section.title')}</h2>
+            </div>
+            <div class="values-grid">
+              {values.map((value) => (
+                <div class="value-card">
+                  <div class="value-icon">
+                    <i class={value.icon}></i>
+                  </div>
+                  <h3 class="value-title">{value.title}</h3>
+                  <p class="value-description">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- 我们的故事 -->
+          <section class="story-section" id="story">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-book"></i>
+              </div>
+              <h2 class="section-title">{t(translations, 'about_page.sections.story')}</h2>
+            </div>
+            <div class="story-content">
+              <div class="story-timeline">
+                <div class="timeline-item">
+                  <div class="timeline-icon">
+                    <i class="fas fa-lightbulb"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>{t(translations, 'about_page.story_section.beginning.title')}</h4>
+                    <p>
+                      {t(translations, 'about_page.story_section.beginning.description')}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon">
+                    <i class="fas fa-rocket"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>{t(translations, 'about_page.story_section.growth.title')}</h4>
+                    <p>
+                      {t(translations, 'about_page.story_section.growth.description')}
+                    </p>
+                  </div>
+                </div>
+
+                <div class="timeline-item">
+                  <div class="timeline-icon">
+                    <i class="fas fa-globe"></i>
+                  </div>
+                  <div class="timeline-content">
+                    <h4>{t(translations, 'about_page.story_section.today.title')}</h4>
+                    <p>
+                      {t(translations, 'about_page.story_section.today.description')}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 团队介绍 -->
+          <section class="team-section" id="team">
+            <div class="section-header">
+              <div class="section-icon-small">
+                <i class="fas fa-users"></i>
+              </div>
+              <h2 class="section-title">{t(translations, 'about_page.sections.team')}</h2>
+            </div>
+            <p class="team-intro">
+              {t(translations, 'about_page.team_section.intro')}
+            </p>
+            
+            <div class="team-grid">
+              {teamMembers.map((member) => (
+                <div class="team-card">
+                  <div class="team-avatar">
+                    <i class={member.icon}></i>
+                  </div>
+                  <h3 class="team-name">{member.name}</h3>
+                  <div class="team-role">{member.role}</div>
+                  <p class="team-description">{member.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <!-- 联系行动区域 -->
+          <section class="contact-cta">
+            <div class="cta-content">
+              <div class="cta-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="cta-text">
+                <h3>{t(translations, 'about_page.cta.title')}</h3>
+                <p>{t(translations, 'about_page.cta.description')}</p>
+              </div>
+              <div class="cta-actions">
+                <a href="/help" class="btn-primary">{t(translations, 'about_page.cta.button1')}</a>
+                <a href="/privacy-policy" class="btn-secondary">{t(translations, 'about_page.cta.button2')}</a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<script>
+  // 平滑滚动到锚点
+  document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(this: HTMLElement, e: Event) {
+        const href = this.getAttribute('href');
+        
+        // 只对页面内锚点链接（以#开头）执行preventDefault，不影响外部链接
+        if (href && href.startsWith('#')) {
+          e.preventDefault();
+          const targetId = href.substring(1);
+          const targetElement = document.getElementById(targetId);
+          
+          if (targetElement) {
+            // 移除所有活动状态
+            navLinks.forEach(nl => nl.classList.remove('active'));
+            // 添加当前活动状态
+            this.classList.add('active');
+            
+            // 平滑滚动
+            targetElement.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start'
+            });
+          }
+        }
+        // 对于外部链接（如/、/help等），让浏览器正常处理
+      });
+    });
+
+    // 滚动监听，高亮当前章节
+    const sections = document.querySelectorAll('section[id]');
+    const options = {
+      threshold: 0.3,
+      rootMargin: '-100px 0px -50% 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          const correspondingNavLink = document.querySelector(`a[href="#${sectionId}"]`);
+          
+          // 移除所有活动状态
+          navLinks.forEach(nl => nl.classList.remove('active'));
+          
+          // 添加当前活动状态
+          if (correspondingNavLink) {
+            correspondingNavLink.classList.add('active');
+          }
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  /* 主要内容区域 */
+  .about-page {
+    width: 100%;
+    background: linear-gradient(135deg, #FEFCFB 0%, #FEF3E2 50%, rgba(34, 197, 94, 0.05) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 关于我们头部 - 绿色主题 */
+  .about-header {
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 50%, #10B981 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.2);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.2), transparent 50%);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .header-icon {
+    flex-shrink: 0;
+  }
+
+  .section-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+
+  .about-icon {
+    background: linear-gradient(135deg, #10B981, #059669);
+  }
+
+  .header-text {
+    flex: 1;
+  }
+
+  .page-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin: 0 0 0.5rem 0;
+    color: #065F46;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.2;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #047857;
+    margin: 0 0 0.5rem 0;
+    font-weight: 500;
+    line-height: 1.6;
+  }
+
+  .company-subtitle {
+    font-size: 0.875rem;
+    color: #065F46;
+    font-style: italic;
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  /* 内容布局 */
+  .about-content {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* 侧边栏 */
+  .about-sidebar {
+    background: white;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+  }
+
+  .sidebar-header h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #10B981;
+  }
+
+  .about-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .about-nav li {
+    margin-bottom: 0.25rem;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #4B5563;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: #F3F4F6;
+    color: #10B981;
+  }
+
+  .nav-link.active {
+    background: #D1FAE5;
+    color: #065F46;
+    font-weight: 600;
+  }
+
+  .nav-link i {
+    width: 16px;
+    text-align: center;
+    opacity: 0.7;
+  }
+
+  .nav-link.active i {
+    opacity: 1;
+    color: #10B981;
+  }
+
+  /* 主要内容 */
+  .about-main {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    border: 1px solid #E5E7EB;
+  }
+
+  .about-main section {
+    margin-bottom: 3rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .about-main section:last-of-type {
+    margin-bottom: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #F3F4F6;
+  }
+
+  .section-icon-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* 统计数据 */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .stat-card {
+    background: linear-gradient(135deg, #F0FDF4 0%, #DCFCE7 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #BBF7D0;
+    transition: all 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+  }
+
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #065F46;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-label {
+    color: #047857;
+    font-weight: 600;
+    font-size: 0.875rem;
+  }
+
+  /* 使命愿景 */
+  .mission-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .mission-text {
+    line-height: 1.7;
+  }
+
+  .mission-description {
+    color: #4B5563;
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .vision-section {
+    background: #F0FDF4;
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid #10B981;
+  }
+
+  .subsection-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #065F46;
+    margin: 0 0 1rem 0;
+  }
+
+  .vision-description {
+    color: #047857;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  .mission-visual {
+    text-align: center;
+  }
+
+  .mission-icon-large {
+    width: 120px;
+    height: 120px;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 3rem;
+    margin: 0 auto;
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+  }
+
+  /* 价值主张 */
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .value-card {
+    background: #FAFAFA;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #E5E7EB;
+    transition: all 0.3s ease;
+  }
+
+  .value-card:hover {
+    background: #F0FDF4;
+    border-color: #10B981;
+    transform: translateY(-3px);
+  }
+
+  .value-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+  }
+
+  .value-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+  }
+
+  .value-description {
+    color: #4B5563;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  /* 故事时间轴 */
+  .story-timeline {
+    margin-top: 1.5rem;
+  }
+
+  .timeline-item {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .timeline-item:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 20px;
+    top: 50px;
+    width: 2px;
+    height: calc(100% + 1rem);
+    background: #D1FAE5;
+  }
+
+  .timeline-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .timeline-content h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 1rem 0;
+  }
+
+  .timeline-content p {
+    color: #4B5563;
+    margin: 0;
+    line-height: 1.7;
+  }
+
+  /* 团队介绍 */
+  .team-intro {
+    color: #4B5563;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .team-card {
+    background: #FAFAFA;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #E5E7EB;
+    transition: all 0.3s ease;
+  }
+
+  .team-card:hover {
+    background: #F0FDF4;
+    border-color: #10B981;
+    transform: translateY(-3px);
+  }
+
+  .team-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto 1rem;
+  }
+
+  .team-name {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .team-role {
+    color: #10B981;
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+  }
+
+  .team-description {
+    color: #4B5563;
+    margin: 0;
+    font-size: 0.875rem;
+    line-height: 1.6;
+  }
+
+  /* 联系行动区域 */
+  .contact-cta {
+    background: linear-gradient(135deg, #D1FAE5 0%, #A7F3D0 100%);
+    border-radius: 16px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border: 1px solid #10B981;
+  }
+
+  .cta-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .cta-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .cta-text {
+    flex: 1;
+  }
+
+  .cta-text h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #065F46;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .cta-text p {
+    color: #047857;
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .cta-actions {
+    display: flex;
+    gap: 1rem;
+    flex-shrink: 0;
+  }
+
+  .btn-primary, .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+  }
+
+  .btn-primary {
+    background: #10B981;
+    color: white;
+    border: 2px solid #10B981;
+  }
+
+  .btn-primary:hover {
+    background: #059669;
+    border-color: #059669;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: #10B981;
+    border: 2px solid #10B981;
+  }
+
+  .btn-secondary:hover {
+    background: #10B981;
+    color: white;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 1024px) {
+    .content-wrapper {
+      padding: 1.5rem;
+    }
+
+    .about-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .about-sidebar {
+      position: static;
+      max-height: none;
+      margin-bottom: 1rem;
+    }
+
+    .about-header {
+      padding: 2rem;
+    }
+
+    .header-content {
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .mission-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .content-wrapper {
+      padding: 1rem;
+    }
+
+    .about-header {
+      padding: 1.5rem;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .about-main {
+      padding: 1.5rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .values-grid, .team-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .timeline-item {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .timeline-item::after {
+      display: none;
+    }
+
+    .cta-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 1.5rem;
+    }
+
+    .cta-actions {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+
+    .cta-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .btn-primary, .btn-secondary {
+      text-align: center;
+    }
+  }
+</style>
 

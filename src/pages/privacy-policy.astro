@@ -1,25 +1,483 @@
 ---
-// src/pages/privacy-policy.astro
-// 重定向到英语版本的隐私政策页面
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../../i18n/utils';
+
+// 获取EN翻译数据
+const translations = await getTranslations('en');
+
+// 图标映射
+const sectionIcons = {
+  introduction: 'fa-info-circle',
+  information_collection: 'fa-database',
+  information_use: 'fa-cogs',
+  cookies_storage: 'fa-cookie-bite',
+  third_party: 'fa-handshake',
+  coppa_compliance: 'fa-child',
+  data_security: 'fa-shield-alt',
+  international_users: 'fa-globe',
+  policy_changes: 'fa-edit',
+  contact_us: 'fa-envelope'
+};
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/en/privacy-policy" />
-    <link rel="canonical" href="/en/privacy-policy" />
-    <title>Redirecting to Privacy Policy</title>
-    <script is:inline>
-      // JavaScript fallback for immediate redirection
-      window.location.replace('/en/privacy-policy');
-    </script>
-  </head>
-  <body>
-    <p>Redirecting to <a href="/en/privacy-policy">Privacy Policy</a>...</p>
-  </body>
-</html>
 
+<BaseLayout 
+  title={t(translations, 'privacy_policy_page.seo.title')} 
+  description={t(translations, 'privacy_policy_page.seo.description')}
+>
+  <main class="privacy-policy-page">
+    <div class="content-wrapper">
+      
+      <!-- 隐私政策头部 -->
+      <section class="policy-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon privacy-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">{t(translations, 'privacy_policy_page.page_title')}</h1>
+            <p class="page-description">
+              {t(translations, 'privacy_policy_page.page_description')}
+            </p>
+            <p class="last-updated">{t(translations, 'privacy_policy_page.last_updated')}</p>
+          </div>
+        </div>
+      </section>
 
+      <!-- 隐私政策内容 -->
+      <div class="policy-content">
 
+        <!-- 1. 简介 -->
+        <section class="policy-section" id="introduction">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-info-circle"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.introduction.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.introduction.content')}</p>
+        </section>
 
+        <!-- 2. 信息收集 -->
+        <section class="policy-section" id="information-collection">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-database"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.information_collection.title')}</h2>
+          </div>
+          
+          <div class="subsection dont-collect-section">
+            <h3 class="subsection-title">{t(translations, 'privacy_policy_page.sections.information_collection.dont_collect_title')}</h3>
+            <ul class="policy-list negative">
+              {translations.privacy_policy_page.sections.information_collection.dont_collect_items.map((item) => (
+                <li class="policy-item">
+                  <i class="fas fa-times-circle"></i>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
 
+          <div class="subsection may-collect-section">
+            <h3 class="subsection-title">{t(translations, 'privacy_policy_page.sections.information_collection.may_collect_title')}</h3>
+            <ul class="policy-list neutral">
+              {translations.privacy_policy_page.sections.information_collection.may_collect_items.map((item) => (
+                <li class="policy-item">
+                  <strong>{item.label}:</strong> {item.detail}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
 
+        <!-- 3. 信息使用 -->
+        <section class="policy-section" id="information-use">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.information_use.title')}</h2>
+          </div>
+          <ul class="policy-list positive">
+            {translations.privacy_policy_page.sections.information_use.items.map((item) => (
+              <li class="policy-item">
+                <i class="fas fa-check-circle"></i>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- 4. Cookies和本地存储 -->
+        <section class="policy-section" id="cookies-storage">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-cookie-bite"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.cookies_storage.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.cookies_storage.content')}</p>
+          <ul class="policy-list positive">
+            {translations.privacy_policy_page.sections.cookies_storage.items.map((item) => (
+              <li class="policy-item">
+                <i class="fas fa-check-circle"></i>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="note-text">
+            <i class="fas fa-info-circle"></i>
+            {t(translations, 'privacy_policy_page.sections.cookies_storage.note')}
+          </p>
+        </section>
+
+        <!-- 5. 第三方服务 -->
+        <section class="policy-section" id="third-party">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.third_party.title')}</h2>
+          </div>
+          
+          <div class="subsection">
+            <h3 class="subsection-title">{t(translations, 'privacy_policy_page.sections.third_party.game_providers_title')}</h3>
+            <p class="subsection-content">{t(translations, 'privacy_policy_page.sections.third_party.game_providers_content')}</p>
+          </div>
+
+          <div class="subsection">
+            <h3 class="subsection-title">{t(translations, 'privacy_policy_page.sections.third_party.adsense_title')}</h3>
+            <p class="subsection-content">{t(translations, 'privacy_policy_page.sections.third_party.adsense_content')}</p>
+            <ul class="policy-list positive">
+              {translations.privacy_policy_page.sections.third_party.adsense_items.map((item) => (
+                <li class="policy-item">
+                  <i class="fas fa-check-circle"></i>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        <!-- 6. COPPA合规 -->
+        <section class="policy-section" id="coppa-compliance">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-child"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.coppa_compliance.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.coppa_compliance.content')}</p>
+          <ul class="policy-list positive">
+            {translations.privacy_policy_page.sections.coppa_compliance.items.map((item) => (
+              <li class="policy-item">
+                <i class="fas fa-check-circle"></i>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- 7. 数据安全 -->
+        <section class="policy-section" id="data-security">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.data_security.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.data_security.content')}</p>
+          <ul class="policy-list positive">
+            {translations.privacy_policy_page.sections.data_security.items.map((item) => (
+              <li class="policy-item">
+                <i class="fas fa-check-circle"></i>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- 8. 国际用户 -->
+        <section class="policy-section" id="international-users">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-globe"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.international_users.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.international_users.content')}</p>
+          <ul class="policy-list positive">
+            {translations.privacy_policy_page.sections.international_users.items.map((item) => (
+              <li class="policy-item">
+                <i class="fas fa-check-circle"></i>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <!-- 9. 政策变更 -->
+        <section class="policy-section" id="policy-changes">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-edit"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.policy_changes.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.policy_changes.content')}</p>
+        </section>
+
+        <!-- 10. 联系我们 -->
+        <section class="policy-section" id="contact-us">
+          <div class="section-header">
+            <div class="section-icon-small">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <h2 class="section-title">{t(translations, 'privacy_policy_page.sections.contact_us.title')}</h2>
+          </div>
+          <p class="section-content">{t(translations, 'privacy_policy_page.sections.contact_us.content')}</p>
+          <ul class="policy-list neutral">
+            {translations.privacy_policy_page.sections.contact_us.items.map((item) => (
+              <li class="policy-item">
+                <i class="fas fa-info-circle"></i>
+                {item}
+              </li>
+            ))}
+          </ul>
+          <p class="note-text highlighted">
+            <i class="fas fa-exclamation-triangle"></i>
+            {t(translations, 'privacy_policy_page.sections.contact_us.note')}
+          </p>
+        </section>
+
+      </div>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* 主要内容区域 */
+  .privacy-policy-page {
+    width: 100%;
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, rgba(14, 165, 233, 0.05) 100%);
+    min-height: 100vh;
+  }
+
+  .content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
+  /* 页面头部 */
+  .policy-header {
+    background: linear-gradient(135deg, #F0F9FF 0%, #E0F2FE 50%, rgba(14, 165, 233, 0.08) 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+    border: 1px solid rgba(14, 165, 233, 0.15);
+    box-shadow: 
+      0 8px 32px rgba(14, 165, 233, 0.08),
+      0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .section-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.75rem;
+    box-shadow: 
+      0 8px 24px rgba(14, 165, 233, 0.3),
+      0 4px 12px rgba(14, 165, 233, 0.2);
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 50%, #0369A1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 0.5rem 0;
+  }
+
+  .page-description {
+    font-size: 1.125rem;
+    color: #64748B;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.6;
+  }
+
+  .last-updated {
+    font-size: 0.9rem;
+    color: #94A3B8;
+    font-style: italic;
+  }
+
+  /* 政策章节 */
+  .policy-section {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #F3F4F6;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-icon-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.125rem;
+  }
+
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1F2937;
+    margin: 0;
+  }
+
+  .section-content {
+    color: #4B5563;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .subsection {
+    margin-top: 1.5rem;
+  }
+
+  .subsection-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+
+  .subsection-content {
+    color: #4B5563;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  /* 列表样式 */
+  .policy-list {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+  }
+
+  .policy-item {
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.6;
+  }
+
+  .policy-list.positive .policy-item {
+    background: rgba(34, 197, 94, 0.05);
+    border-left: 3px solid #22C55E;
+  }
+
+  .policy-list.positive .policy-item i {
+    color: #22C55E;
+    margin-top: 0.25rem;
+  }
+
+  .policy-list.negative .policy-item {
+    background: rgba(239, 68, 68, 0.05);
+    border-left: 3px solid #EF4444;
+  }
+
+  .policy-list.negative .policy-item i {
+    color: #EF4444;
+    margin-top: 0.25rem;
+  }
+
+  .policy-list.neutral .policy-item {
+    background: rgba(59, 130, 246, 0.05);
+    border-left: 3px solid #3B82F6;
+  }
+
+  .policy-list.neutral .policy-item i {
+    color: #3B82F6;
+    margin-top: 0.25rem;
+  }
+
+  .note-text {
+    background: rgba(59, 130, 246, 0.05);
+    border-left: 3px solid #3B82F6;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    color: #4B5563;
+    line-height: 1.6;
+  }
+
+  .note-text i {
+    color: #3B82F6;
+    margin-top: 0.25rem;
+  }
+
+  .note-text.highlighted {
+    background: rgba(251, 191, 36, 0.08);
+    border-left-color: #F59E0B;
+  }
+
+  .note-text.highlighted i {
+    color: #F59E0B;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .header-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .policy-section {
+      padding: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.25rem;
+    }
+  }
+</style>

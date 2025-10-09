@@ -94,7 +94,7 @@ export const rtlLanguages: LanguageCode[] = ['ar', 'he'];
 
 // 语言路径映射
 export const languagePathMap = {
-  en: '/en', // 英语也使用/en路径，保持结构统一
+  en: '', // 英语使用根路径（SEO最佳实践）
   zh: '/zh',
   es: '/es',
   fr: '/fr',
