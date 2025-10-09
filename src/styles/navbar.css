@@ -37,8 +37,9 @@
   flex-grow: 1; /* 占据所有可用空间 */
   align-items: center;
   justify-content: flex-start; /* 从左侧开始对齐 */
-  min-width: 0; /* 防止子元素溢出 */
+  min-width: 300px; /* 🔧 确保有足够空间显示面包屑 */
   margin: 0 1.5rem; /* 与Logo和右侧按钮组保持间距 */
+  overflow: visible; /* 🔧 允许内容溢出显示 */
 }
 
 /* Logo样式 - 适配新设计的LOGO */
@@ -106,7 +107,8 @@
   display: flex;
   align-items: center;
   flex-grow: 1; /* 面包屑/导航占据可用空间 */
-  min-width: 0; /* 防止长面包屑溢出 */
+  min-width: 200px; /* 🔧 确保面包屑有最小宽度 */
+  overflow: visible; /* 🔧 允许内容正常显示 */
 }
 
 .nav-breadcrumbs {
