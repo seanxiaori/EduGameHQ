@@ -631,17 +631,17 @@
   },
   "terms_page": {
     "seo": {
-      "title": "Terms of Service | EduGameHQ - Educational Gaming Platform",
-      "description": "Read our terms of service for EduGameHQ educational gaming platform. Safe, educational, and fun games for children aged 6-18.",
-      "keywords": "terms of service, educational games, platform rules, user agreement, child safety"
+      "title": "利用規約 | EduGameHQ - 教育ゲームプラットフォーム",
+      "description": "EduGameHQ教育ゲームプラットフォームの利用規約をお読みください。6〜18歳の子供向けの安全で教育的で楽しいゲーム。",
+      "keywords": "利用規約, 教育ゲーム, プラットフォームルール, ユーザー契約, 子供の安全"
     },
     "header": {
-      "title": "Terms of Service",
-      "subtitle": "Clear guidelines for using our educational gaming platform safely and responsibly",
-      "last_updated": "Last updated: January 2025"
+      "title": "利用規約",
+      "subtitle": "教育ゲームプラットフォームを安全かつ責任を持って使用するための明確なガイドライン",
+      "last_updated": "最終更新: 2025年1月"
     },
     "sidebar": {
-      "title": "Quick Navigation"
+      "title": "クイックナビゲーション"
     },
     "sections": {
       "acceptance": {
@@ -810,10 +810,10 @@
       }
     },
     "cta": {
-      "title": "Questions About Our Terms?",
-      "description": "Need clarification on any of our terms? We're here to help!",
-      "button1": "Visit Help Center",
-      "button2": "Contact Legal Team",
+      "title": "利用規約についてのご質問？",
+      "description": "利用規約について説明が必要ですか？お手伝いします！",
+      "button1": "ヘルプセンターにアクセス",
+      "button2": "法務チームに連絡",
       "button2_email": "legal@edugamehq.com"
     }
   }

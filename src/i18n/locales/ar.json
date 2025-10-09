@@ -719,17 +719,17 @@
   },
   "terms_page": {
     "seo": {
-      "title": "Terms of Service | EduGameHQ - Educational Gaming Platform",
-      "description": "Read our terms of service for EduGameHQ educational gaming platform. Safe, educational, and fun games for children aged 6-18.",
-      "keywords": "terms of service, educational games, platform rules, user agreement, child safety"
+      "title": "شروط الخدمة | EduGameHQ - منصة الألعاب التعليمية",
+      "description": "اقرأ شروط الخدمة الخاصة بمنصة الألعاب التعليمية EduGameHQ. ألعاب آمنة وتعليمية وممتعة للأطفال من سن 6-18 عامًا.",
+      "keywords": "شروط الخدمة، ألعاب تعليمية، قواعد المنصة، اتفاقية المستخدم، سلامة الأطفال"
     },
     "header": {
-      "title": "Terms of Service",
-      "subtitle": "Clear guidelines for using our educational gaming platform safely and responsibly",
-      "last_updated": "Last updated: January 2025"
+      "title": "شروط الخدمة",
+      "subtitle": "إرشادات واضحة لاستخدام منصة الألعاب التعليمية بأمان ومسؤولية",
+      "last_updated": "آخر تحديث: يناير 2025"
     },
     "sidebar": {
-      "title": "Quick Navigation"
+      "title": "التنقل السريع"
     },
     "sections": {
       "acceptance": {
@@ -898,10 +898,10 @@
       }
     },
     "cta": {
-      "title": "Questions About Our Terms?",
-      "description": "Need clarification on any of our terms? We're here to help!",
-      "button1": "Visit Help Center",
-      "button2": "Contact Legal Team",
+      "title": "أسئلة حول شروطنا؟",
+      "description": "هل تحتاج إلى توضيح بشأن أي من شروطنا؟ نحن هنا للمساعدة!",
+      "button1": "زيارة مركز المساعدة",
+      "button2": "الاتصال بالفريق القانوني",
       "button2_email": "legal@edugamehq.com"
     }
   }

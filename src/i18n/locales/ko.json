@@ -751,17 +751,17 @@
   },
   "terms_page": {
     "seo": {
-      "title": "Terms of Service | EduGameHQ - Educational Gaming Platform",
-      "description": "Read our terms of service for EduGameHQ educational gaming platform. Safe, educational, and fun games for children aged 6-18.",
-      "keywords": "terms of service, educational games, platform rules, user agreement, child safety"
+      "title": "서비스 약관 | EduGameHQ - 교육 게임 플랫폼",
+      "description": "EduGameHQ 교육 게임 플랫폼의 서비스 약관을 읽어보세요. 6-18세 어린이를 위한 안전하고 교육적이며 재미있는 게임.",
+      "keywords": "서비스 약관, 교육 게임, 플랫폼 규칙, 사용자 계약, 어린이 안전"
     },
     "header": {
-      "title": "Terms of Service",
-      "subtitle": "Clear guidelines for using our educational gaming platform safely and responsibly",
-      "last_updated": "Last updated: January 2025"
+      "title": "서비스 약관",
+      "subtitle": "교육 게임 플랫폼을 안전하고 책임감 있게 사용하기 위한 명확한 지침",
+      "last_updated": "최종 업데이트: 2025년 1월"
     },
     "sidebar": {
-      "title": "Quick Navigation"
+      "title": "빠른 탐색"
     },
     "sections": {
       "acceptance": {
@@ -930,10 +930,10 @@
       }
     },
     "cta": {
-      "title": "Questions About Our Terms?",
-      "description": "Need clarification on any of our terms? We're here to help!",
-      "button1": "Visit Help Center",
-      "button2": "Contact Legal Team",
+      "title": "약관에 대한 질문이 있으신가요?",
+      "description": "약관에 대해 설명이 필요하신가요? 도와드리겠습니다!",
+      "button1": "고객센터 방문",
+      "button2": "법무팀 문의",
       "button2_email": "legal@edugamehq.com"
     }
   }
