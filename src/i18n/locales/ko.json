@@ -1083,5 +1083,39 @@
         "note": "부모님께: 자녀가 당사에 개인 정보를 제공했다고 생각되시면 즉시 당사에 연락하여 삭제할 수 있도록 해주십시오."
       }
     }
+  },
+  "favorites_page": {
+    "seo": {
+      "title": "좋아하는 게임 - EduGameHQ",
+      "description": "좋아하는 교육 게임의 개인 컬렉션입니다. 가장 좋아하는 게임을 계속 플레이하고 새로운 게임을 발견하세요!",
+      "keywords": "좋아하는 게임, 교육 게임 컬렉션, 저장된 게임, 북마크된 게임, 학습 게임 즐겨찾기"
+    },
+    "page_title": "즐겨찾기",
+    "page_description": "좋아하는 교육 게임의 개인 컬렉션입니다. 가장 좋아하는 게임을 계속 플레이하세요!",
+    "clear_all": "모두 지우기",
+    "stats": {
+      "favorite_games": "좋아하는 게임",
+      "categories": "카테고리",
+      "total_play_time": "총 플레이 시간"
+    },
+    "your_favorite_games": "좋아하는 게임",
+    "games_marked_favorites": "즐겨찾기로 표시한 게임",
+    "empty": {
+      "title": "아직 좋아하는 게임이 없습니다",
+      "description": "교육 게임을 탐색하고 ❤️ 버튼을 클릭하여 즐겨찾기에 게임을 추가하세요!",
+      "browse_games": "게임 둘러보기",
+      "trending_games": "인기 게임"
+    },
+    "recommended": {
+      "title": "추천 게임",
+      "subtitle": "좋아하는 게임과 유사한 게임"
+    },
+    "confirm": {
+      "clear_title": "모든 즐겨찾기를 지우시겠습니까?",
+      "clear_message": "정말로 즐겨찾기에서 모든 게임을 제거하시겠습니까? 이 작업은 취소할 수 없습니다.",
+      "yes": "예, 모두 지우기",
+      "cancel": "취소",
+      "success": "모든 좋아하는 게임이 성공적으로 제거되었습니다!"
+    }
   }
 }

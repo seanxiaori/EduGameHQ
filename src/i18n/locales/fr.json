@@ -981,5 +981,39 @@
         "note": "Pour les parents: Si vous pensez que votre enfant nous a fourni des informations personnelles, veuillez nous contacter immédiatement afin que nous puissions les supprimer."
       }
     }
+  },
+  "favorites_page": {
+    "seo": {
+      "title": "Vos Jeux Favoris - EduGameHQ",
+      "description": "Votre collection personnelle de jeux éducatifs favoris. Continuez à jouer aux jeux que vous aimez le plus et découvrez-en de nouveaux!",
+      "keywords": "jeux favoris, collection de jeux éducatifs, jeux sauvegardés, jeux marqués, favoris de jeux d'apprentissage"
+    },
+    "page_title": "Vos Favoris",
+    "page_description": "Votre collection personnelle de jeux éducatifs favoris. Continuez à jouer aux jeux que vous aimez le plus!",
+    "clear_all": "Tout Effacer",
+    "stats": {
+      "favorite_games": "Jeux Favoris",
+      "categories": "Catégories",
+      "total_play_time": "Temps de Jeu Total"
+    },
+    "your_favorite_games": "Vos Jeux Favoris",
+    "games_marked_favorites": "Jeux que vous avez marqués comme favoris",
+    "empty": {
+      "title": "Aucun Jeu Favori Pour le Moment",
+      "description": "Commencez à explorer nos jeux éducatifs et cliquez sur le bouton ❤️ pour ajouter des jeux à vos favoris!",
+      "browse_games": "Parcourir les Jeux",
+      "trending_games": "Jeux Tendance"
+    },
+    "recommended": {
+      "title": "Recommandés pour Vous",
+      "subtitle": "Jeux similaires à vos favoris"
+    },
+    "confirm": {
+      "clear_title": "Effacer Tous les Favoris?",
+      "clear_message": "Êtes-vous sûr de vouloir supprimer tous les jeux de vos favoris? Cette action ne peut pas être annulée.",
+      "yes": "Oui, Tout Effacer",
+      "cancel": "Annuler",
+      "success": "Tous les jeux favoris ont été supprimés avec succès!"
+    }
   }
 }

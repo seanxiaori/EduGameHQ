@@ -1285,5 +1285,39 @@
         "note": "致家长：如果您认为您的孩子向我们提供了个人信息，请立即联系我们，以便我们删除。"
       }
     }
+  },
+  "favorites_page": {
+    "seo": {
+      "title": "您的收藏游戏 - EduGameHQ",
+      "description": "您的个人教育游戏收藏集。继续玩您最喜欢的游戏并发现新游戏！",
+      "keywords": "收藏游戏, 教育游戏收藏, 保存的游戏, 书签游戏, 学习游戏收藏"
+    },
+    "page_title": "您的收藏",
+    "page_description": "您的个人教育游戏收藏集。继续玩您最喜欢的游戏！",
+    "clear_all": "清空全部",
+    "stats": {
+      "favorite_games": "收藏游戏",
+      "categories": "分类",
+      "total_play_time": "总游玩时长"
+    },
+    "your_favorite_games": "您的收藏游戏",
+    "games_marked_favorites": "您标记为收藏的游戏",
+    "empty": {
+      "title": "还没有收藏游戏",
+      "description": "开始探索我们的教育游戏，点击 ❤️ 按钮将游戏添加到您的收藏！",
+      "browse_games": "浏览游戏",
+      "trending_games": "热门游戏"
+    },
+    "recommended": {
+      "title": "为您推荐",
+      "subtitle": "与您的收藏类似的游戏"
+    },
+    "confirm": {
+      "clear_title": "清空所有收藏？",
+      "clear_message": "您确定要从收藏中删除所有游戏吗？此操作无法撤销。",
+      "yes": "是的，清空全部",
+      "cancel": "取消",
+      "success": "已成功删除所有收藏游戏！"
+    }
   }
 }

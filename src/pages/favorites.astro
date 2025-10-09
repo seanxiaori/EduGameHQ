@@ -2,21 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
+import { getTranslations, t, getLanguageFromPath } from '../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
 import '../styles/game-card.css';
 
+// 获取当前语言
+const currentLang = getLanguageFromPath(Astro.url.pathname);
+
+// 获取翻译数据
+const translations = await getTranslations(currentLang);
+
 // 读取游戏数据
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
 const allGamesData: Game[] = JSON.parse(fs.readFileSync(gamesPath, 'utf-8'));
 
-// SEO数据
+// SEO数据 - 使用翻译
 const seoData = {
-  title: 'Your Favorite Games - EduGameHQ',
-  description: 'Your personal collection of favorite educational games. Keep playing the games you love most and discover new ones!',
-  keywords: ['favorite games', 'educational games collection', 'saved games', 'bookmarked games', 'learning games favorites']
+  title: t(translations, 'favorites_page.seo.title', 'Your Favorite Games - EduGameHQ'),
+  description: t(translations, 'favorites_page.seo.description', 'Your personal collection of favorite educational games. Keep playing the games you love most and discover new ones!'),
+  keywords: t(translations, 'favorites_page.seo.keywords', 'favorite games, educational games collection, saved games, bookmarked games, learning games favorites')
 };
 
 // 获取一些示例推荐游戏（不同分类的热门游戏）
@@ -41,9 +48,9 @@ const recommendedGames = allGamesData
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Your Favorites</h1>
+            <h1 class="page-title">{t(translations, 'favorites_page.page_title', 'Your Favorites')}</h1>
             <p class="page-description">
-              Your personal collection of favorite educational games. Keep playing the games you love most!
+              {t(translations, 'favorites_page.page_description', 'Your personal collection of favorite educational games. Keep playing the games you love most!')}
             </p>
           </div>
         </div>
@@ -52,7 +59,7 @@ const recommendedGames = allGamesData
         <div class="header-actions">
           <button id="clearFavoritesBtn" class="clear-favorites-btn">
             <i class="fas fa-trash-alt"></i>
-            <span>Clear All</span>
+            <span>{t(translations, 'favorites_page.clear_all', 'Clear All')}</span>
           </button>
         </div>
       </section>
@@ -65,7 +72,7 @@ const recommendedGames = allGamesData
           </div>
           <div class="stat-info">
             <div class="stat-number" id="favoritesCount">0</div>
-            <div class="stat-label">Favorite Games</div>
+            <div class="stat-label">{t(translations, 'favorites_page.stats.favorite_games', 'Favorite Games')}</div>
           </div>
         </div>
         
@@ -75,7 +82,7 @@ const recommendedGames = allGamesData
           </div>
           <div class="stat-info">
             <div class="stat-number" id="categoriesCount">0</div>
-            <div class="stat-label">Categories</div>
+            <div class="stat-label">{t(translations, 'favorites_page.stats.categories', 'Categories')}</div>
           </div>
         </div>
         
@@ -85,7 +92,7 @@ const recommendedGames = allGamesData
           </div>
           <div class="stat-info">
             <div class="stat-number" id="totalPlayTime">0h</div>
-            <div class="stat-label">Total Play Time</div>
+            <div class="stat-label">{t(translations, 'favorites_page.stats.total_play_time', 'Total Play Time')}</div>
           </div>
         </div>
       </section>
@@ -99,8 +106,8 @@ const recommendedGames = allGamesData
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Your Favorite Games</h2>
-              <p class="module-subtitle">Games you've marked as favorites</p>
+              <h2 class="module-title">{t(translations, 'favorites_page.your_favorite_games', 'Your Favorite Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'favorites_page.games_marked_favorites', 'Games you\'ve marked as favorites')}</p>
             </div>
           </div>
           
@@ -125,18 +132,18 @@ const recommendedGames = allGamesData
             <i class="fas fa-heart-broken"></i>
           </div>
           <div class="empty-content">
-            <h3 class="empty-title">No Favorite Games Yet</h3>
+            <h3 class="empty-title">{t(translations, 'favorites_page.empty.title', 'No Favorite Games Yet')}</h3>
             <p class="empty-description">
-              Start exploring our educational games and click the ❤️ button to add games to your favorites!
+              {t(translations, 'favorites_page.empty.description', 'Start exploring our educational games and click the ❤️ button to add games to your favorites!')}
             </p>
             <div class="empty-actions">
               <a href="/" class="action-btn primary">
                 <i class="fas fa-home"></i>
-                Browse Games
+                {t(translations, 'favorites_page.empty.browse_games', 'Browse Games')}
               </a>
               <a href="/trending" class="action-btn secondary">
                 <i class="fas fa-fire"></i>
-                Trending Games
+                {t(translations, 'favorites_page.empty.trending_games', 'Trending Games')}
               </a>
             </div>
           </div>
@@ -150,8 +157,8 @@ const recommendedGames = allGamesData
             <i class="fas fa-lightbulb"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Recommended for You</h2>
-            <p class="module-subtitle">Games similar to your favorites</p>
+            <h2 class="module-title">{t(translations, 'favorites_page.recommended.title', 'Recommended for You')}</h2>
+            <p class="module-subtitle">{t(translations, 'favorites_page.recommended.subtitle', 'Games similar to your favorites')}</p>
           </div>
         </div>
         
@@ -164,8 +171,31 @@ const recommendedGames = allGamesData
     </div>
   </main>
 
+  <!-- 传递翻译数据给JavaScript -->
+  <script define:vars={{ translations, currentLang }} is:inline>
+    // 设置全局翻译数据
+    window.FAVORITES_TRANSLATIONS = translations;
+    window.CURRENT_LANG = currentLang;
+  </script>
+
   <!-- 简化的收藏管理JavaScript -->
   <script is:inline>
+    // 🌍 简单的翻译函数
+    function t(key, fallback) {
+      const keys = key.split('.');
+      let current = window.FAVORITES_TRANSLATIONS || {};
+      
+      for (const k of keys) {
+        if (current && typeof current === 'object' && k in current) {
+          current = current[k];
+        } else {
+          return fallback || key;
+        }
+      }
+      
+      return typeof current === 'string' ? current : (fallback || key);
+    }
+
     // 极简的收藏管理类 - 只负责显示/隐藏预渲染的GameCard
     class SimpleFavoritesManager {
       constructor() {
@@ -253,10 +283,10 @@ const recommendedGames = allGamesData
       clearAllFavorites() {
         console.log('🗑️ clearAllFavorites函数被调用');
         
-        // 创建自定义确认对话框
+        // 创建自定义确认对话框 - 使用翻译
         this.showCustomConfirm(
-          'Clear All Favorites?',
-          'Are you sure you want to remove all games from your favorites? This action cannot be undone.',
+          t('favorites_page.confirm.clear_title', 'Clear All Favorites?'),
+          t('favorites_page.confirm.clear_message', 'Are you sure you want to remove all games from your favorites? This action cannot be undone.'),
           () => {
             this.favoriteGameIds.clear();
             localStorage.setItem('favoriteGames', JSON.stringify([]));
@@ -268,8 +298,8 @@ const recommendedGames = allGamesData
             
             console.log('🗑️ 已清空所有收藏游戏');
             
-            // 显示成功提示
-            this.showSuccessMessage('All favorite games have been removed successfully!');
+            // 显示成功提示 - 使用翻译
+            this.showSuccessMessage(t('favorites_page.confirm.success', 'All favorite games have been removed successfully!'));
             
             // 延迟刷新页面
             setTimeout(() => {
@@ -337,11 +367,11 @@ const recommendedGames = allGamesData
           <div class="confirm-actions" style="padding: 1rem 2rem 2rem !important; display: flex !important; gap: 1rem !important; justify-content: center !important;">
             <button class="confirm-btn cancel-btn" id="confirmCancel" style="display: flex !important; align-items: center !important; gap: 0.5rem !important; padding: 0.875rem 1.5rem !important; border: 2px solid #E5E7EB !important; border-radius: 12px !important; font-weight: 600 !important; font-size: 0.95rem !important; cursor: pointer !important; transition: all 0.3s ease !important; min-width: 120px !important; justify-content: center !important; background: #F3F4F6 !important; color: #6B7280 !important;">
               <i class="fas fa-times"></i>
-              Cancel
+              ${t('favorites_page.confirm.cancel', 'Cancel')}
             </button>
             <button class="confirm-btn confirm-btn-primary" id="confirmYes" style="display: flex !important; align-items: center !important; gap: 0.5rem !important; padding: 0.875rem 1.5rem !important; border: none !important; border-radius: 12px !important; font-weight: 600 !important; font-size: 0.95rem !important; cursor: pointer !important; transition: all 0.3s ease !important; min-width: 120px !important; justify-content: center !important; background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%) !important; color: white !important; box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3) !important;">
               <i class="fas fa-heart-broken"></i>
-              Clear All
+              ${t('favorites_page.confirm.yes', 'Yes, Clear All')}
             </button>
           </div>
         `;

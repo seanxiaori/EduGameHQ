@@ -986,5 +986,39 @@
         "note": "Für Eltern: Wenn Sie glauben, dass Ihr Kind uns persönliche Informationen zur Verfügung gestellt hat, kontaktieren Sie uns bitte sofort, damit wir diese entfernen können."
       }
     }
+  },
+  "favorites_page": {
+    "seo": {
+      "title": "Ihre Lieblingsspiele - EduGameHQ",
+      "description": "Ihre persönliche Sammlung von Lieblings-Lernspielen. Spielen Sie weiterhin die Spiele, die Sie am meisten lieben, und entdecken Sie neue!",
+      "keywords": "Lieblingsspiele, Lernspiele-Sammlung, gespeicherte Spiele, markierte Spiele, Lernspiele-Favoriten"
+    },
+    "page_title": "Ihre Favoriten",
+    "page_description": "Ihre persönliche Sammlung von Lieblings-Lernspielen. Spielen Sie weiterhin die Spiele, die Sie am meisten lieben!",
+    "clear_all": "Alle Löschen",
+    "stats": {
+      "favorite_games": "Lieblingsspiele",
+      "categories": "Kategorien",
+      "total_play_time": "Gesamtspielzeit"
+    },
+    "your_favorite_games": "Ihre Lieblingsspiele",
+    "games_marked_favorites": "Spiele, die Sie als Favoriten markiert haben",
+    "empty": {
+      "title": "Noch Keine Lieblingsspiele",
+      "description": "Beginnen Sie, unsere Lernspiele zu erkunden, und klicken Sie auf die ❤️-Schaltfläche, um Spiele zu Ihren Favoriten hinzuzufügen!",
+      "browse_games": "Spiele Durchsuchen",
+      "trending_games": "Angesagte Spiele"
+    },
+    "recommended": {
+      "title": "Für Sie Empfohlen",
+      "subtitle": "Spiele ähnlich Ihren Favoriten"
+    },
+    "confirm": {
+      "clear_title": "Alle Favoriten Löschen?",
+      "clear_message": "Sind Sie sicher, dass Sie alle Spiele aus Ihren Favoriten entfernen möchten? Diese Aktion kann nicht rückgängig gemacht werden.",
+      "yes": "Ja, Alle Löschen",
+      "cancel": "Abbrechen",
+      "success": "Alle Lieblingsspiele wurden erfolgreich entfernt!"
+    }
   }
 }

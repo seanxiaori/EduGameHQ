@@ -922,5 +922,39 @@
         "note": "For Parents: If you believe your child has provided personal information to us, please contact us immediately so we can remove it."
       }
     }
+  },
+  "favorites_page": {
+    "seo": {
+      "title": "Your Favorite Games - EduGameHQ",
+      "description": "Your personal collection of favorite educational games. Keep playing the games you love most and discover new ones!",
+      "keywords": "favorite games, educational games collection, saved games, bookmarked games, learning games favorites"
+    },
+    "page_title": "Your Favorites",
+    "page_description": "Your personal collection of favorite educational games. Keep playing the games you love most!",
+    "clear_all": "Clear All",
+    "stats": {
+      "favorite_games": "Favorite Games",
+      "categories": "Categories",
+      "total_play_time": "Total Play Time"
+    },
+    "your_favorite_games": "Your Favorite Games",
+    "games_marked_favorites": "Games you've marked as favorites",
+    "empty": {
+      "title": "No Favorite Games Yet",
+      "description": "Start exploring our educational games and click the ❤️ button to add games to your favorites!",
+      "browse_games": "Browse Games",
+      "trending_games": "Trending Games"
+    },
+    "recommended": {
+      "title": "Recommended for You",
+      "subtitle": "Games similar to your favorites"
+    },
+    "confirm": {
+      "clear_title": "Clear All Favorites?",
+      "clear_message": "Are you sure you want to remove all games from your favorites? This action cannot be undone.",
+      "yes": "Yes, Clear All",
+      "cancel": "Cancel",
+      "success": "All favorite games have been removed successfully!"
+    }
   }
 }

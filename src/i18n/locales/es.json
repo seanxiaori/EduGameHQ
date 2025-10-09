@@ -1105,5 +1105,39 @@
         "note": "Para Padres: Si cree que su hijo ha proporcionado información personal a nosotros, contáctenos inmediatamente para que podamos eliminarla."
       }
     }
+  },
+  "favorites_page": {
+    "seo": {
+      "title": "Tus Juegos Favoritos - EduGameHQ",
+      "description": "Tu colección personal de juegos educativos favoritos. ¡Sigue jugando los juegos que más te gustan y descubre nuevos!",
+      "keywords": "juegos favoritos, colección de juegos educativos, juegos guardados, juegos marcados, favoritos de juegos de aprendizaje"
+    },
+    "page_title": "Tus Favoritos",
+    "page_description": "Tu colección personal de juegos educativos favoritos. ¡Sigue jugando los juegos que más te gustan!",
+    "clear_all": "Limpiar Todo",
+    "stats": {
+      "favorite_games": "Juegos Favoritos",
+      "categories": "Categorías",
+      "total_play_time": "Tiempo Total de Juego"
+    },
+    "your_favorite_games": "Tus Juegos Favoritos",
+    "games_marked_favorites": "Juegos que has marcado como favoritos",
+    "empty": {
+      "title": "Aún No Hay Juegos Favoritos",
+      "description": "¡Comienza a explorar nuestros juegos educativos y haz clic en el botón ❤️ para agregar juegos a tus favoritos!",
+      "browse_games": "Explorar Juegos",
+      "trending_games": "Juegos Populares"
+    },
+    "recommended": {
+      "title": "Recomendados para Ti",
+      "subtitle": "Juegos similares a tus favoritos"
+    },
+    "confirm": {
+      "clear_title": "¿Limpiar Todos los Favoritos?",
+      "clear_message": "¿Estás seguro de que quieres eliminar todos los juegos de tus favoritos? Esta acción no se puede deshacer.",
+      "yes": "Sí, Limpiar Todo",
+      "cancel": "Cancelar",
+      "success": "¡Todos los juegos favoritos han sido eliminados exitosamente!"
+    }
   }
 }
