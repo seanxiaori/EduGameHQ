@@ -296,12 +296,8 @@ if (!isHomePage) {
     });
   } else if (isGamePage) {
     // 游戏页面面包屑 - 根据游戏所属分类来确定
-    breadcrumbs.push({ 
-      name: t(translations, 'nav.categories', 'Categories'), 
-      url: '#', 
-      icon: 'fas fa-gamepad', 
-      isDropdown: true 
-    });
+    // 🔧 修复：不添加重复的"分类"下拉（因为顶部已有固定的"分类"下拉菜单）
+    // 直接添加游戏类型和游戏名称，结构为：首页 > 分类(下拉,固定) > Math Games > 游戏名称
     
     // 获取游戏数据来确定分类
     let gameCategory = null;
@@ -323,8 +319,20 @@ if (!isHomePage) {
       }
     }
     
-    // 🔧 修复：游戏详情页面不添加分类到面包屑（因为顶部已有"分类"下拉菜单）
-    // 直接添加游戏名称，结构为：首页 > 分类(下拉) > 游戏名称
+    // 添加游戏类型（如Math Games）
+    if (gameCategory) {
+      const categoryPath = `/${gameCategory}-games`;
+      const categoryInfo = (pageStructure.categories as Record<string, any>)[categoryPath];
+      
+      if (categoryInfo) {
+        breadcrumbs.push({ 
+          name: t(translations, categoryInfo.translationKey, categoryInfo.fallback),
+          url: getLocalizedPath(categoryPath, currentLang), 
+          icon: categoryInfo.icon,
+          color: categoryInfo.color
+        });
+      }
+    }
     
     // 添加当前游戏名称（不链接）- 智能截断长名称
     const truncatedTitle = gameTitle.length > 20 ? gameTitle.substring(0, 17) + '...' : gameTitle;
