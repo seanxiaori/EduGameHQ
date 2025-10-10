@@ -10,7 +10,15 @@
  * 5. 新鲜度评分 (10分) - 游戏更新时间
  */
 
-import config from './game-sources-config.json' assert { type: 'json' };
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// 读取配置文件
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const configPath = path.join(__dirname, 'game-sources-config.json');
+const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 
 /**
  * 1. 来源评分（最高30分）

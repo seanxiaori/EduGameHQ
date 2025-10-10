@@ -5,18 +5,15 @@
       "priority": 1,
       "baseUrl": "https://www.crazygames.com",
       "categories": {
-        "math": "/c/math",
-        "logic": "/c/puzzle",
-        "science": "/c/educational",
-        "language": "/c/word"
+        "math": "/c/math"
       },
       "limits": {
-        "gamesPerCategory": 20,
-        "maxPages": 3
+        "gamesPerCategory": 5,
+        "maxPages": 1
       }
     },
     "coolmathgames": {
-      "enabled": true,
+      "enabled": false,
       "priority": 2,
       "baseUrl": "https://www.coolmathgames.com",
       "categories": {
@@ -25,14 +22,14 @@
         "strategy": "/0-strategy"
       },
       "limits": {
-        "gamesPerCategory": 15,
-        "maxPages": 2
+        "gamesPerCategory": 5,
+        "maxPages": 1
       }
     }
   },
   "filters": {
     "minScore": 70,
-    "maxGamesPerRun": 10,
+    "maxGamesPerRun": 5,
     "requireIframe": true,
     "requireMobile": false,
     "minRating": 3.5,

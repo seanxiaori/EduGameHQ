@@ -53,6 +53,9 @@ tmp/
 temp/
 scripts/temp/
 
+# Puppeteer Chrome
+chrome/
+
 # Optional npm cache directory
 .npm
 

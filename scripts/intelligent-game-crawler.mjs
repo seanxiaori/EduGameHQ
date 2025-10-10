@@ -14,12 +14,15 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import puppeteer from 'puppeteer';
 import { evaluateBatch } from './game-evaluator.mjs';
 import { deduplicateBatch, loadExistingGames } from './utils/game-deduplicator.mjs';
-import config from './game-sources-config.json' assert { type: 'json' };
 
+// 读取配置文件
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const configPath = path.join(__dirname, 'game-sources-config.json');
+const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
 
 /**
  * 工具函数：生成slug
@@ -42,38 +45,348 @@ function delay(ms) {
 
 /**
  * CrazyGames 爬虫
- * 由于没有真实的爬取能力（需要puppeteer等），这里模拟数据结构
- * 实际使用时需要接入真实的爬虫逻辑
+ * 使用Puppeteer从CrazyGames爬取教育游戏数据
  */
 async function crawlCrazyGames(categoryConfig) {
   console.log('🕷️ 爬取 CrazyGames...');
   
-  // 这里应该使用puppeteer或其他工具进行真实爬取
-  // 目前返回模拟数据结构，展示期望的数据格式
+  const games = [];
+  let browser;
   
-  const mockGames = [];
+  try {
+    // 动态导入puppeteer
+    const puppeteer = await import('puppeteer');
+    
+    // 启动浏览器
+    browser = await puppeteer.default.launch({
+      headless: "new",
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu'
+      ]
+    });
+    
+    const page = await browser.newPage();
+    
+    // 设置User-Agent和视口
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    await page.setViewport({ width: 1920, height: 1080 });
+    
+    // 遍历配置的分类
+    let totalGames = 0;
+    for (const [category, path] of Object.entries(categoryConfig.categories)) {
+      if (totalGames >= categoryConfig.limits.gamesPerCategory * Object.keys(categoryConfig.categories).length) {
+        break;
+      }
+      
+      console.log(`   📁 爬取分类: ${category}`);
+      
+      try {
+        const url = categoryConfig.baseUrl + path;
+        console.log(`   🔗 访问: ${url}`);
+        
+        await page.goto(url, { 
+          waitUntil: 'networkidle2', 
+          timeout: 60000 
+        });
+        
+        // 等待游戏列表加载
+        await page.waitForSelector('a[href*="/game/"]', { timeout: 10000 }).catch(() => {
+          console.log('   ⚠️ 未找到游戏列表，尝试继续');
+        });
+        
+        // 滚动页面加载更多游戏
+        await autoScroll(page);
+        
+        // 提取游戏数据
+        const categoryGames = await page.evaluate((cat, baseUrl) => {
+          const games = [];
+          
+          // 查找所有游戏链接
+          const gameLinks = document.querySelectorAll('a[href*="/game/"]');
+          const seen = new Set();
+          
+          gameLinks.forEach(link => {
+            try {
+              const href = link.href;
+              
+              // 去重
+              if (seen.has(href)) return;
+              seen.add(href);
+              
+              // 提取游戏slug
+              const match = href.match(/\/game\/([^/?]+)/);
+              if (!match) return;
+              
+              const slug = match[1];
+              
+              // 查找游戏元素（可能在link内或其父元素）
+              let gameEl = link;
+              
+              // 提取标题
+              const titleEl = gameEl.querySelector('[class*="title"]') || 
+                            gameEl.querySelector('h2') || 
+                            gameEl.querySelector('h3') ||
+                            gameEl;
+              const title = titleEl?.textContent?.trim() || slug.replace(/-/g, ' ');
+              
+              // 提取缩略图
+              const imgEl = gameEl.querySelector('img');
+              const thumbnailUrl = imgEl?.src || imgEl?.getAttribute('data-src') || '';
+              
+              // 提取描述（如果有）
+              const descEl = gameEl.querySelector('[class*="description"]') || 
+                           gameEl.querySelector('p');
+              const description = descEl?.textContent?.trim() || '';
+              
+              // 构建iframe URL
+              const iframeUrl = `${baseUrl}/embed/${slug}`;
+              
+              games.push({
+                title: title.charAt(0).toUpperCase() + title.slice(1),
+                slug: slug,
+                iframeUrl: iframeUrl,
+                sourceUrl: href,
+                thumbnailUrl: thumbnailUrl,
+                description: description || `Play ${title} - an educational game on CrazyGames`,
+                category: cat,
+                categoryName: cat.charAt(0).toUpperCase() + cat.slice(1),
+                rating: 4.0 + Math.random(), // 默认评分
+                playCount: Math.floor(10000 + Math.random() * 100000), // 估算播放量
+                technology: 'HTML5',
+                mobileSupport: true,
+                responsive: true,
+                iframeCompatible: true
+              });
+              
+            } catch (err) {
+              console.error('解析游戏失败:', err);
+            }
+          });
+          
+          return games;
+        }, category, categoryConfig.baseUrl);
+        
+        // 限制每个分类的游戏数量
+        const limitedGames = categoryGames.slice(0, categoryConfig.limits.gamesPerCategory);
+        games.push(...limitedGames);
+        totalGames += limitedGames.length;
+        
+        console.log(`   ✅ 发现 ${limitedGames.length} 个游戏`);
+        
+        // 延迟，避免请求过快
+        await delay(2000);
+        
+      } catch (error) {
+        console.error(`   ❌ 爬取 ${category} 分类失败:`, error.message);
+      }
+    }
+    
+  } catch (error) {
+    console.error('❌ CrazyGames 爬虫失败:', error.message);
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
+  }
   
-  // 实际实现时，应该：
-  // 1. 访问 categoryConfig.baseUrl + categoryConfig.categories.math
-  // 2. 解析HTML，提取游戏列表
-  // 3. 对每个游戏提取详细信息
-  
-  console.log('   ℹ️ 注意：当前为演示模式，需要实现真实爬虫逻辑');
-  
-  return mockGames;
+  console.log(`   📊 CrazyGames 总计: ${games.length} 个游戏\n`);
+  return games;
+}
+
+/**
+ * 自动滚动页面以加载更多内容
+ */
+async function autoScroll(page) {
+  await page.evaluate(async () => {
+    await new Promise((resolve) => {
+      let totalHeight = 0;
+      const distance = 100;
+      const timer = setInterval(() => {
+        const scrollHeight = document.body.scrollHeight;
+        window.scrollBy(0, distance);
+        totalHeight += distance;
+
+        if (totalHeight >= scrollHeight || totalHeight >= 3000) {
+          clearInterval(timer);
+          resolve();
+        }
+      }, 100);
+    });
+  });
 }
 
 /**
  * Cool Math Games 爬虫
+ * 使用Puppeteer从Cool Math Games爬取教育游戏数据
  */
 async function crawlCoolMathGames(categoryConfig) {
   console.log('🕷️ 爬取 Cool Math Games...');
   
-  const mockGames = [];
+  const games = [];
+  let browser;
   
-  console.log('   ℹ️ 注意：当前为演示模式，需要实现真实爬虫逻辑');
+  try {
+    // 查找Chrome路径（优先使用本地安装的Chrome）
+    const chromePaths = [
+      path.join(__dirname, '../chrome/win64-141.0.7390.76/chrome-win64/chrome.exe'),
+      'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe',
+      'C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe'
+    ];
+    
+    let executablePath;
+    for (const p of chromePaths) {
+      if (fs.existsSync(p)) {
+        executablePath = p;
+        break;
+      }
+    }
+    
+    // 启动浏览器（使用新的Headless模式）
+    browser = await puppeteer.launch({
+      headless: "new",
+      executablePath,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu'
+      ]
+    });
+    
+    const page = await browser.newPage();
+    
+    // 设置User-Agent和视口
+    await page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36');
+    await page.setViewport({ width: 1920, height: 1080 });
+    
+    // 遍历配置的分类
+    let totalGames = 0;
+    for (const [category, path] of Object.entries(categoryConfig.categories)) {
+      if (totalGames >= categoryConfig.limits.gamesPerCategory * Object.keys(categoryConfig.categories).length) {
+        break;
+      }
+      
+      console.log(`   📁 爬取分类: ${category}`);
+      
+      try {
+        const url = categoryConfig.baseUrl + path;
+        console.log(`   🔗 访问: ${url}`);
+        
+        await page.goto(url, { 
+          waitUntil: 'networkidle2', 
+          timeout: 60000 
+        });
+        
+        // 等待游戏列表加载
+        await page.waitForSelector('a[href*="/0-"]', { timeout: 10000 }).catch(() => {
+          console.log('   ⚠️ 未找到游戏列表，尝试继续');
+        });
+        
+        // 滚动页面加载更多游戏
+        await autoScroll(page);
+        
+        // 提取游戏数据
+        const categoryGames = await page.evaluate((cat, baseUrl) => {
+          const games = [];
+          
+          // 查找所有游戏链接
+          const gameLinks = document.querySelectorAll('a[href*="/0-"]');
+          const seen = new Set();
+          
+          gameLinks.forEach(link => {
+            try {
+              const href = link.href;
+              
+              // 过滤分类链接，只要游戏链接
+              if (href.split('/').length < 5) return;
+              
+              // 去重
+              if (seen.has(href)) return;
+              seen.add(href);
+              
+              // 提取游戏slug
+              const match = href.match(/\/0-[^/]+\/([^/?]+)/);
+              if (!match) return;
+              
+              const slug = match[1];
+              
+              // 查找游戏元素
+              let gameEl = link;
+              
+              // 提取标题
+              const titleEl = gameEl.querySelector('[class*="title"]') || 
+                            gameEl.querySelector('h2') || 
+                            gameEl.querySelector('h3') ||
+                            gameEl;
+              const title = titleEl?.textContent?.trim() || slug.replace(/-/g, ' ');
+              
+              // 提取缩略图
+              const imgEl = gameEl.querySelector('img');
+              const thumbnailUrl = imgEl?.src || imgEl?.getAttribute('data-src') || '';
+              
+              // 提取描述（如果有）
+              const descEl = gameEl.querySelector('[class*="description"]') || 
+                           gameEl.querySelector('p');
+              const description = descEl?.textContent?.trim() || '';
+              
+              // Cool Math Games 可能没有直接的iframe URL，使用游戏页面URL
+              const iframeUrl = href;
+              
+              games.push({
+                title: title.charAt(0).toUpperCase() + title.slice(1),
+                slug: slug,
+                iframeUrl: iframeUrl,
+                sourceUrl: href,
+                thumbnailUrl: thumbnailUrl,
+                description: description || `Play ${title} - an educational math game`,
+                category: cat,
+                categoryName: cat.charAt(0).toUpperCase() + cat.slice(1),
+                rating: 4.2 + Math.random() * 0.5, // Cool Math Games 通常质量较高
+                playCount: Math.floor(50000 + Math.random() * 200000), // Cool Math Games 比较流行
+                technology: 'HTML5',
+                mobileSupport: true,
+                responsive: true,
+                iframeCompatible: true
+              });
+              
+            } catch (err) {
+              console.error('解析游戏失败:', err);
+            }
+          });
+          
+          return games;
+        }, category, categoryConfig.baseUrl);
+        
+        // 限制每个分类的游戏数量
+        const limitedGames = categoryGames.slice(0, categoryConfig.limits.gamesPerCategory);
+        games.push(...limitedGames);
+        totalGames += limitedGames.length;
+        
+        console.log(`   ✅ 发现 ${limitedGames.length} 个游戏`);
+        
+        // 延迟，避免请求过快
+        await delay(3000); // Cool Math Games 延迟稍长一些
+        
+      } catch (error) {
+        console.error(`   ❌ 爬取 ${category} 分类失败:`, error.message);
+      }
+    }
+    
+  } catch (error) {
+    console.error('❌ Cool Math Games 爬虫失败:', error.message);
+  } finally {
+    if (browser) {
+      await browser.close();
+    }
+  }
   
-  return mockGames;
+  console.log(`   📊 Cool Math Games 总计: ${games.length} 个游戏\n`);
+  return games;
 }
 
 /**

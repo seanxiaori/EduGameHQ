@@ -48,7 +48,7 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
-    "puppeteer": "^24.10.1",
+    "puppeteer": "^24.23.1",
     "sharp": "^0.33.5"
   },
   "engines": {
