@@ -385,9 +385,10 @@ export function getPageSEO(path: string): SEOConfig {
 // 生成结构化数据的工具函数
 export function generateStructuredData(path: string, gameData?: any) {
   const config = getPageSEO(path);
+  const currentDate = new Date().toISOString();
   
   if (path.startsWith('/games/') && gameData) {
-    // 游戏页面的结构化数据
+    // 游戏页面的结构化数据（增强GEO优化）
     return {
       "@context": "https://schema.org",
       "@type": "Game",
@@ -400,14 +401,27 @@ export function generateStructuredData(path: string, gameData?: any) {
       "learningResourceType": "Educational Game",
       "interactivityType": "active",
       "educationalUse": "instruction",
+      "datePublished": gameData.datePublished || "2025-01-01",
+      "dateModified": gameData.lastUpdated || currentDate,
+      "inLanguage": "en",
       "audience": {
         "@type": "EducationalAudience",
         "educationalRole": "student"
       },
       "publisher": {
         "@type": "Organization",
-        "name": "EduGameHQ"
+        "name": "EduGameHQ",
+        "url": "https://www.edugamehq.com"
       }
+    };
+  }
+
+  // 为其他页面添加dateModified（GEO优化）
+  if (config.structuredData) {
+    return {
+      ...config.structuredData,
+      "dateModified": currentDate,
+      "inLanguage": "en"
     };
   }
 

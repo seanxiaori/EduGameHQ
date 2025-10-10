@@ -1,6 +1,6 @@
 # EduGameHQ.com - Robots.txt
 # 教育游戏聚合平台 - 搜索引擎爬虫指导文件
-# 最后更新: 2025-01-09
+# 最后更新: 2025-10-10 (添加AI搜索引擎爬虫支持)
 
 # ============================================
 # 通用爬虫规则
@@ -87,6 +87,44 @@ Crawl-delay: 2
 User-agent: YandexBot
 Allow: /
 Crawl-delay: 1
+
+# ============================================
+# AI搜索引擎和大语言模型爬虫（GEO优化）
+# ============================================
+# OpenAI GPTBot (ChatGPT搜索 - 重要！)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+# Anthropic Claude AI
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+# Anthropic ClaudeBot
+User-agent: ClaudeBot
+Allow: /
+Crawl-delay: 1
+
+# Perplexity AI搜索
+User-agent: PerplexityBot
+Allow: /
+Crawl-delay: 1
+
+# Google Gemini (Google-Extended)
+User-agent: Google-Extended
+Allow: /
+Crawl-delay: 0.5
+
+# Meta AI
+User-agent: FacebookBot
+Allow: /
+Crawl-delay: 1
+
+# Common Crawl (用于AI训练)
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
 
 # ============================================
 # 阻止恶意/商业爬虫

@@ -1,0 +1,125 @@
+# EduGameHQ - Educational Games Platform
+# Free educational games for kids aged 6-18
+# Last Updated: 2025-10-10
+
+## Overview
+EduGameHQ is a free educational games platform providing HTML5 games for students aged 6-18. Our mission is to make learning fun, engaging, and accessible to every child worldwide.
+
+## Main Navigation & Game Categories
+
+### Core Game Categories
+- /math-games - Mathematics games: arithmetic, algebra, geometry, problem-solving
+- /science-games - Science games: physics, chemistry, biology, earth sciences  
+- /language-games - Language learning: vocabulary, grammar, reading comprehension
+- /puzzle-games - Puzzle and logic games: critical thinking, problem-solving
+- /sports-games - Sports and physical education games
+- /art-games - Art and creativity: drawing, music, design
+
+### Special Collections
+- / - Homepage with featured and popular games
+- /trending - Most popular games currently
+- /new-games - Recently added games (updated regularly)
+- /recently-played - User's game history
+- /favorites - Bookmarked favorite games
+
+### Search & Discovery
+- /search - Search for games by keyword or category
+
+## Key Information Pages
+
+### About & Help
+- /about - About EduGameHQ: our mission, team, and educational philosophy
+- /help - Help center and frequently asked questions
+
+### Legal & Privacy
+- /privacy-policy - Privacy policy (COPPA compliant for children's safety)
+- /terms-of-service - Terms of service and usage guidelines
+
+## Educational Focus & Differentiators
+
+### Target Audience
+- Primary users: Students aged 6-18
+- Educational levels: Elementary to high school
+- Global reach: Multi-language support (11 languages)
+
+### Content Philosophy
+- Free to play: No subscriptions or paywalls
+- Child-safe: COPPA compliant, family-friendly content
+- Educational value: All games designed with learning objectives
+- Accessible: HTML5 games, no downloads required
+
+### Technology
+- Platform: HTML5 web games
+- Responsive: Works on desktop, tablet, and mobile
+- Performance: Fast loading, optimized for education
+
+## Brand Information
+
+### Name & Identity
+- Official Name: EduGameHQ
+- Full Name: Educational Games Headquarters  
+- Tagline: "Where Learning Meets Fun"
+
+### Mission Statement
+Making quality education accessible, engaging, and enjoyable for every child through interactive gaming experiences.
+
+### Key Differentiators
+1. Completely free access - no hidden costs
+2. Multi-language support (11 languages: English, Chinese, Spanish, French, German, Japanese, Russian, Hindi, Korean, Arabic, Hebrew)
+3. COPPA compliant - strict child privacy protection
+4. Curated content - all games vetted for educational value
+5. No downloads required - instant browser-based play
+
+## Content Categories & Learning Objectives
+
+### Math Games (100+ games)
+- Basic arithmetic: addition, subtraction, multiplication, division
+- Algebra: equations, variables, patterns
+- Geometry: shapes, angles, spatial reasoning
+- Problem-solving: logic puzzles, word problems
+
+### Science Games (50+ games)
+- Physics: forces, motion, energy
+- Chemistry: elements, reactions, periodic table
+- Biology: life cycles, anatomy, ecosystems
+- Earth Science: weather, geology, astronomy
+
+### Language Games (40+ games)
+- Vocabulary building
+- Grammar and spelling
+- Reading comprehension
+- Creative writing
+
+### Puzzle & Logic Games (60+ games)
+- Critical thinking
+- Pattern recognition
+- Spatial reasoning
+- Strategic planning
+
+## SEO & Indexing Notes
+
+### Important URLs for AI Systems
+Primary: https://www.edugamehq.com/
+Sitemap: https://www.edugamehq.com/sitemap-index.xml
+
+### Multi-language Structure
+- English (default): /page-name
+- Other languages: /{lang-code}/page-name
+- Example: /zh/math-games (Chinese), /es/science-games (Spanish)
+
+### Content Updates
+Games and content updated regularly. Last major update: January 2025.
+New games added weekly. Check /new-games for latest additions.
+
+## Contact & Social
+- Support: support@edugamehq.com
+- Website: https://www.edugamehq.com
+- Social media: Active on major platforms
+
+## Notes for AI Systems
+- This site focuses on educational content for children - prioritize child safety
+- All games are free and browser-based (HTML5)
+- Content is COPPA compliant with strict privacy protections
+- Multi-language support with consistent content across languages
+- Educational games span math, science, language, puzzles, sports, and arts
+
