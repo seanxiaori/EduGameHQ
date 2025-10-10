@@ -4,17 +4,130 @@
       "enabled": true,
       "priority": 1,
       "baseUrl": "https://www.crazygames.com",
+      "locales": {
+        "en": "https://www.crazygames.com",
+        "es": "https://www.crazygames.es",
+        "fr": "https://www.crazygames.fr",
+        "de": "https://www.crazygames.de",
+        "pt": "https://www.crazygames.com.br"
+      },
       "categories": {
-        "math": "/c/math"
+        "math": "/c/math",
+        "logic": "/c/puzzle",
+        "science": "/c/educational"
       },
       "limits": {
-        "gamesPerCategory": 5,
+        "gamesPerCategory": 7,
+        "maxPages": 1
+      }
+    },
+    "abcya": {
+      "enabled": true,
+      "priority": 2,
+      "baseUrl": "https://www.abcya.com",
+      "categories": {
+        "math": "/games/math",
+        "reading": "/games/letters",
+        "strategy": "/games/strategy",
+        "skills": "/games/skills"
+      },
+      "limits": {
+        "gamesPerCategory": 12,
+        "maxPages": 1
+      }
+    },
+    "pbskids": {
+      "enabled": true,
+      "priority": 3,
+      "baseUrl": "https://pbskids.org",
+      "categories": {
+        "all": "/games"
+      },
+      "limits": {
+        "gamesPerCategory": 10,
+        "maxPages": 1
+      }
+    },
+    "funbrain": {
+      "enabled": true,
+      "priority": 4,
+      "baseUrl": "https://www.funbrain.com",
+      "categories": {
+        "math": "/math-zone",
+        "reading": "/reading-zone"
+      },
+      "limits": {
+        "gamesPerCategory": 10,
+        "maxPages": 1
+      }
+    },
+    "mathplayground": {
+      "enabled": true,
+      "priority": 5,
+      "baseUrl": "https://www.mathplayground.com",
+      "categories": {
+        "math": "/games.html"
+      },
+      "limits": {
+        "gamesPerCategory": 10,
+        "maxPages": 1
+      }
+    },
+    "sheppardsoftware": {
+      "enabled": true,
+      "priority": 6,
+      "baseUrl": "https://www.sheppardsoftware.com",
+      "categories": {
+        "math": "/math.htm",
+        "geography": "/geography.htm",
+        "science": "/science.htm"
+      },
+      "limits": {
+        "gamesPerCategory": 8,
+        "maxPages": 1
+      }
+    },
+    "natgeokids": {
+      "enabled": true,
+      "priority": 7,
+      "baseUrl": "https://kids.nationalgeographic.com",
+      "categories": {
+        "all": "/games"
+      },
+      "limits": {
+        "gamesPerCategory": 6,
+        "maxPages": 1
+      }
+    },
+    "turtlediary": {
+      "enabled": true,
+      "priority": 8,
+      "baseUrl": "https://www.turtlediary.com",
+      "categories": {
+        "math": "/games/math",
+        "science": "/games/science",
+        "reading": "/games/reading"
+      },
+      "limits": {
+        "gamesPerCategory": 6,
+        "maxPages": 1
+      }
+    },
+    "educationcom": {
+      "enabled": true,
+      "priority": 9,
+      "baseUrl": "https://www.education.com",
+      "categories": {
+        "all": "/games"
+      },
+      "limits": {
+        "gamesPerCategory": 6,
         "maxPages": 1
       }
     },
     "coolmathgames": {
       "enabled": false,
-      "priority": 2,
+      "priority": 10,
       "baseUrl": "https://www.coolmathgames.com",
       "categories": {
         "math": "/0-math",
@@ -28,11 +141,11 @@
     }
   },
   "filters": {
-    "minScore": 70,
-    "maxGamesPerRun": 5,
+    "minScore": 75,
+    "maxGamesPerRun": 60,
     "requireIframe": true,
     "requireMobile": false,
-    "minRating": 3.5,
+    "minRating": 4.0,
     "minPlayCount": 5000
   },
   "categories": [
@@ -43,7 +156,10 @@
     "geography",
     "history",
     "art",
-    "typing"
+    "typing",
+    "reading",
+    "strategy",
+    "skills"
   ],
   "blacklist": [
     "casino",
@@ -59,6 +175,13 @@
     "dating",
     "sexy"
   ],
+  "languages": {
+    "en": "English",
+    "es": "Spanish",
+    "fr": "French",
+    "de": "German",
+    "pt": "Portuguese"
+  },
   "ageRanges": {
     "preschool": { "min": 3, "max": 5 },
     "elementary": { "min": 6, "max": 10 },
@@ -71,4 +194,3 @@
     "timeout": 30000
   }
 }
-

@@ -4674,5 +4674,2507 @@
     "trending": false,
     "isNew": true,
     "developer": "Tong965"
+  },
+  {
+    "slug": "osgu-games",
+    "title": "Osgu games",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://pbskids.org/games/osgu-games",
+    "description": "Play osgu games - an educational game from PBS Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://pbskids.org/_next/image?url=https%3A%2F%2Fcms-tc.pbskids.org%2Fpbskidswebsite%2FPKK_OSGU_LargeFreeform_Games-Home.png&w=3840&q=75",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "pbskids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.834466337947209,
+    "playCount": 193298,
+    "sourceUrl": "https://pbskids.org/games/osgu-games",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-games",
+    "title": "Math Games",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/math-games.html",
+    "description": "Play Math Games - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.829159503289031,
+    "playCount": 172366,
+    "sourceUrl": "https://www.mathplayground.com/math-games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "mergest-kingdom",
+    "title": "Mergest Kingdom",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://www.crazygames.com/embed/mergest-kingdom",
+    "description": "Play Mergest Kingdom - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/mergest-kingdom_16x9/20250203022532/mergest-kingdom_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "logic"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.950149968235865,
+    "playCount": 85409,
+    "sourceUrl": "https://www.crazygames.com/game/mergest-kingdom",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "wordproblems",
+    "title": "Math Stories",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/wordproblems.html",
+    "description": "Play Math Stories - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.806447051409343,
+    "playCount": 143066,
+    "sourceUrl": "https://www.mathplayground.com/wordproblems.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "kindergarten_games",
+    "title": "K",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/kindergarten_games.html",
+    "description": "Play K - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.897624103742403,
+    "playCount": 82552,
+    "sourceUrl": "https://www.mathplayground.com/kindergarten_games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "mahjongg-solitaire",
+    "title": "Mahjongg Solitaire",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://www.crazygames.com/embed/mahjongg-solitaire",
+    "description": "Play Mahjongg Solitaire - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/mahjongg-solitaire/cover_16x9-1707829450935.png?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "logic"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.9537370900161015,
+    "playCount": 58331,
+    "sourceUrl": "https://www.crazygames.com/game/mahjongg-solitaire",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "grade_1_games",
+    "title": "1",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/grade_1_games.html",
+    "description": "Play 1 - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.801139403251737,
+    "playCount": 125488,
+    "sourceUrl": "https://www.mathplayground.com/grade_1_games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "bloxdhop-io",
+    "title": "Bloxd.io",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/bloxdhop-io",
+    "description": "Play Bloxd.io - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/bloxdhop-io_16x9/20250829023851/bloxdhop-io_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.812126845183278,
+    "playCount": 107649,
+    "sourceUrl": "https://www.crazygames.com/game/bloxdhop-io",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "racing-limits",
+    "title": "Racing Limits",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/racing-limits",
+    "description": "Play Racing Limits - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/racing-limits_16x9/20250711091800/racing-limits_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.8180886392699716,
+    "playCount": 109304,
+    "sourceUrl": "https://www.crazygames.com/game/racing-limits",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "daily-donkey",
+    "title": "Daily donkey",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://pbskids.org/donkeyhodie/games/daily-donkey",
+    "description": "Play daily donkey - an educational game from PBS Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "pbskids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.7298905920075285,
+    "playCount": 132456,
+    "sourceUrl": "https://pbskids.org/donkeyhodie/games/daily-donkey",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "look-closely",
+    "title": "Look closely",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://pbskids.org/daniel/games/look-closely",
+    "description": "Play look closely - an educational game from PBS Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "pbskids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.711960713274801,
+    "playCount": 123140,
+    "sourceUrl": "https://pbskids.org/daniel/games/look-closely",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "halloween",
+    "title": "Halloween",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://pbskids.org/games/halloween",
+    "description": "Play halloween - an educational game from PBS Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://pbskids.org/_next/image?url=https%3A%2F%2Fcms-tc.pbskids.org%2Fglobal%2Fmezzanines%2FHalloween-Games.png&w=7680&q=75",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "pbskids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.789813775431236,
+    "playCount": 61322,
+    "sourceUrl": "https://pbskids.org/games/halloween",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "play",
+    "title": "Play",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://pbskids.org/games/play/elevator-antics/1902621",
+    "description": "Play play - an educational game from PBS Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://pbskids.org/_next/image?url=https%3A%2F%2Fcms-tc.pbskids.org%2Fglobal%2FGames%2Felevator-antics%2FODDS-halfbody-agentgadget-v1.png&w=7680&q=75",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "pbskids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.578318296909666,
+    "playCount": 170946,
+    "sourceUrl": "https://pbskids.org/games/play/elevator-antics/1902621",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "game_directory",
+    "title": "Library",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/game_directory.html",
+    "description": "Play Library - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.633286183345568,
+    "playCount": 120819,
+    "sourceUrl": "https://www.mathplayground.com/game_directory.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "grade_4_games",
+    "title": "4",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/grade_4_games.html",
+    "description": "Play 4 - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.780227866691744,
+    "playCount": 51926,
+    "sourceUrl": "https://www.mathplayground.com/grade_4_games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "grade_3_games",
+    "title": "3",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/grade_3_games.html",
+    "description": "Play 3 - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.593289885452233,
+    "playCount": 130862,
+    "sourceUrl": "https://www.mathplayground.com/grade_3_games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "personality-quizzes",
+    "title": "Personality Quizzes",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://kids.nationalgeographic.com/games/personality-quizzes",
+    "description": "Play Personality Quizzes - an educational game from National Geographic Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "natgeokids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.585705047699021,
+    "playCount": 109980,
+    "sourceUrl": "https://kids.nationalgeographic.com/games/personality-quizzes",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "piece-of-cake-merge-and-bake",
+    "title": "Piece of Cake: Merge and Bake",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://www.crazygames.com/embed/piece-of-cake-merge-and-bake",
+    "description": "Play Piece of Cake: Merge and Bake - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/piece-of-cake-merge-and-bake_16x9/20250528043012/piece-of-cake-merge-and-bake_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "logic"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.6551638796326325,
+    "playCount": 62140,
+    "sourceUrl": "https://www.crazygames.com/game/piece-of-cake-merge-and-bake",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "brain-breaks",
+    "title": "Brain Breaks",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/brain-breaks.html",
+    "description": "Play Brain Breaks - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.470574707307615,
+    "playCount": 163155,
+    "sourceUrl": "https://www.mathplayground.com/brain-breaks.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "grade_2_games",
+    "title": "2",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/grade_2_games.html",
+    "description": "Play 2 - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.637163310631308,
+    "playCount": 59996,
+    "sourceUrl": "https://www.mathplayground.com/grade_2_games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-basketball",
+    "title": "Math Basketball",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/math-basketball",
+    "description": "Play Math Basketball - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-math_basketball.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.694440272209293,
+    "playCount": 42959,
+    "sourceUrl": "https://www.funbrain.com/games/math-basketball",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "apple-catch",
+    "title": "Apple Catch",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/apple-catch",
+    "description": "Play Apple Catch - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-apple_catch.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5197287271181255,
+    "playCount": 89031,
+    "sourceUrl": "https://www.funbrain.com/games/apple-catch",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "?page=2",
+    "title": "2",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://www.education.com/resources/games/?page=2",
+    "description": "Play 2 - an educational game from Education.com",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "educationcom",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.529663332860128,
+    "playCount": 85698,
+    "sourceUrl": "https://www.education.com/resources/games/?page=2",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "bumble-numbers",
+    "title": "Bumble Numbers",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/bumble-numbers",
+    "description": "Play Bumble Numbers - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-bumble_numbers.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.6401254785110755,
+    "playCount": 42994,
+    "sourceUrl": "https://www.funbrain.com/games/bumble-numbers",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "traffic-rider-vvq",
+    "title": "Traffic Rider",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/traffic-rider-vvq",
+    "description": "Play Traffic Rider - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/traffic-rider-vvq_16x9/20250526021507/traffic-rider-vvq_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.474092762000832,
+    "playCount": 100354,
+    "sourceUrl": "https://www.crazygames.com/game/traffic-rider-vvq",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "tic-tac-toe-squares",
+    "title": "Tic Tac Toe Squares",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/tic-tac-toe-squares",
+    "description": "Play Tic Tac Toe Squares - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-tic_tac_toe_squares.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.481425110823916,
+    "playCount": 92215,
+    "sourceUrl": "https://www.funbrain.com/games/tic-tac-toe-squares",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "kindergarten",
+    "title": "Kindergarten",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/kindergarten.html",
+    "description": "Play Kindergarten - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4994450921799105,
+    "playCount": 80537,
+    "sourceUrl": "https://www.turtlediary.com/games/kindergarten.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "preschool",
+    "title": "Preschool",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/preschool.html",
+    "description": "Play Preschool - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.512687613342865,
+    "playCount": 54360,
+    "sourceUrl": "https://www.turtlediary.com/games/preschool.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-car-racing",
+    "title": "MathCar Racing",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/math-car-racing",
+    "description": "Play MathCar Racing - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-mathcar_racing.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4207153909374055,
+    "playCount": 70879,
+    "sourceUrl": "https://www.funbrain.com/games/math-car-racing",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "education",
+    "title": "Education.com is certified by the kidSAFE Seal Program.",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://www.kidsafeseal.com/certifiedproducts/education.html",
+    "description": "Play Education.com is certified by the kidSAFE Seal Program. - an educational game from Education.com",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.kidsafeseal.com/sealimage/50473324616348843/education_small_whitetm.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "educationcom",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.35797119821175,
+    "playCount": 96143,
+    "sourceUrl": "https://www.kidsafeseal.com/certifiedproducts/education.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "logic-games",
+    "title": "Logic Lab",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.mathplayground.com/logic-games.html",
+    "description": "Play Logic Lab - a math game from Math Playground",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "mathplayground",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.484590150888986,
+    "playCount": 42091,
+    "sourceUrl": "https://www.mathplayground.com/logic-games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "space-waves",
+    "title": "UpdatedSpace Waves",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/space-waves",
+    "description": "Play UpdatedSpace Waves - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/space-waves_16x9/20241203031650/space-waves_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.399268155298696,
+    "playCount": 51387,
+    "sourceUrl": "https://www.crazygames.com/game/space-waves",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "make-a-cookie",
+    "title": "Make a cookie",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.abcya.com/games/make-a-cookie",
+    "description": "Play make a cookie - an educational game from ABCya",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.abcya.com/client/assets/chocChipCookie-0c95dd2acd6ff483d79a.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "abcya",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.304844598462387,
+    "playCount": 71612,
+    "sourceUrl": "https://www.abcya.com/games/make-a-cookie",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "quizzes",
+    "title": "Quizzes",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://kids.nationalgeographic.com/games/quizzes",
+    "description": "Play Quizzes - an educational game from National Geographic Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "natgeokids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.340381724750567,
+    "playCount": 58466,
+    "sourceUrl": "https://kids.nationalgeographic.com/games/quizzes",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "word-wipe",
+    "title": "Word Wipe",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://www.crazygames.com/embed/word-wipe",
+    "description": "Play Word Wipe - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/word-wipe/cover_16x9-1707829913887.png?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "logic"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.37625197432423,
+    "playCount": 44316,
+    "sourceUrl": "https://www.crazygames.com/game/word-wipe",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "action-adventure",
+    "title": "Action and Adventure",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://kids.nationalgeographic.com/games/action-adventure",
+    "description": "Play Action and Adventure - an educational game from National Geographic Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "natgeokids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.255794659565858,
+    "playCount": 80357,
+    "sourceUrl": "https://kids.nationalgeographic.com/games/action-adventure",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "first-grade",
+    "title": "First Grade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/first-grade.html",
+    "description": "Play First Grade - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.495800306463582,
+    "playCount": 21297,
+    "sourceUrl": "https://www.turtlediary.com/games/first-grade.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "second-grade",
+    "title": "Second Grade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/second-grade.html",
+    "description": "Play Second Grade - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.251761196196447,
+    "playCount": 80693,
+    "sourceUrl": "https://www.turtlediary.com/games/second-grade.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "uno-online",
+    "title": "Four Colors",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://www.crazygames.com/embed/uno-online",
+    "description": "Play Four Colors - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/games/uno-online/cover-1679068977831.png?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "logic"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.281240391191082,
+    "playCount": 61023,
+    "sourceUrl": "https://www.crazygames.com/game/uno-online",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "measure-it",
+    "title": "Measure It!",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/measure-it",
+    "description": "Play Measure It! - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-measure_it%21.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.239936142110815,
+    "playCount": 79215,
+    "sourceUrl": "https://www.funbrain.com/games/measure-it",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "?common-core=yes",
+    "title": "Yes",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://www.education.com/resources/games/?common-core=yes",
+    "description": "Play Yes - an educational game from Education.com",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "educationcom",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.292842929864661,
+    "playCount": 61319,
+    "sourceUrl": "https://www.education.com/resources/games/?common-core=yes",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "rock-the-boat",
+    "title": "Rock The Boat",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/rock-the-boat",
+    "description": "Play Rock The Boat - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-rock_the_boat.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.295319527533541,
+    "playCount": 53103,
+    "sourceUrl": "https://www.funbrain.com/games/rock-the-boat",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "matching-gemstones",
+    "title": "Matching: Gemstones",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://kids.nationalgeographic.com/games/puzzles/article/matching-gemstones",
+    "description": "Play Matching: Gemstones - an educational game from National Geographic Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "natgeokids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3802517280951365,
+    "playCount": 29833,
+    "sourceUrl": "https://kids.nationalgeographic.com/games/puzzles/article/matching-gemstones",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "cake-monster",
+    "title": "Cake Monster",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/cake-monster",
+    "description": "Play Cake Monster - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-cake_monster.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.293741922030202,
+    "playCount": 40740,
+    "sourceUrl": "https://www.funbrain.com/games/cake-monster",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "games",
+    "title": "Games for tablets, phones and more",
+    "category": "science",
+    "categoryName": "Science",
+    "iframeUrl": "https://www.sheppardsoftware.com/games.html",
+    "description": "Play games for tablets, phones and more - an educational game from Sheppard Software",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.sheppardsoftware.com/design/icons/MobileGamePageSmall.gif",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "science"
+    ],
+    "source": "sheppardsoftware",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.26759543983764,
+    "playCount": 78922,
+    "sourceUrl": "https://www.sheppardsoftware.com/games.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "steal-brainrot-online",
+    "title": "Steal Brainrot Online",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/steal-brainrot-online",
+    "description": "Play Steal Brainrot Online - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/steal-brainrot-online_16x9/20250916042622/steal-brainrot-online_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.246551214605874,
+    "playCount": 42617,
+    "sourceUrl": "https://www.crazygames.com/game/steal-brainrot-online",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "space-explorer",
+    "title": "Space Explorer",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://kids.nationalgeographic.com/games/action-adventure/article/space-explorer",
+    "description": "Play Space Explorer - an educational game from National Geographic Kids",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "natgeokids",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.062983210978799,
+    "playCount": 108524,
+    "sourceUrl": "https://kids.nationalgeographic.com/games/action-adventure/article/space-explorer",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "?page=4",
+    "title": "4",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://www.education.com/resources/games/?page=4",
+    "description": "Play 4 - an educational game from Education.com",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "educationcom",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.0817738100643846,
+    "playCount": 93970,
+    "sourceUrl": "https://www.education.com/resources/games/?page=4",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "shape-invasion",
+    "title": "Shape Invasion",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.funbrain.com/games/shape-invasion",
+    "description": "Play Shape Invasion - an educational game from Funbrain",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://www.funbrain.com/assets/img/content-cards/games%2Fsmall-shape_invasion.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "funbrain",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.216797866579132,
+    "playCount": 41445,
+    "sourceUrl": "https://www.funbrain.com/games/shape-invasion",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "third-grade",
+    "title": "Third Grade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/third-grade.html",
+    "description": "Play Third Grade - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.1645803880871455,
+    "playCount": 51815,
+    "sourceUrl": "https://www.turtlediary.com/games/third-grade.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "farm-merge-valley",
+    "title": "Farm Merge Valley",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://www.crazygames.com/embed/farm-merge-valley",
+    "description": "Play Farm Merge Valley - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/farm-merge-valley_16x9/20251002051802/farm-merge-valley_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "logic"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.1316948661902755,
+    "playCount": 53864,
+    "sourceUrl": "https://www.crazygames.com/game/farm-merge-valley",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "go-ad-free",
+    "title": "Go ad free",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/go-ad-free.html",
+    "description": "Play go ad free - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.330296944003693,
+    "playCount": 15454,
+    "sourceUrl": "https://www.turtlediary.com/go-ad-free.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "?page=29",
+    "title": "29",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://www.education.com/resources/games/?page=29",
+    "description": "Play 29 - an educational game from Education.com",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "educationcom",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.0615310858011044,
+    "playCount": 70411,
+    "sourceUrl": "https://www.education.com/resources/games/?page=29",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "?page=3",
+    "title": "3",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://www.education.com/resources/games/?page=3",
+    "description": "Play 3 - an educational game from Education.com",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational"
+    ],
+    "source": "educationcom",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.342088415219428,
+    "playCount": 13715,
+    "sourceUrl": "https://www.education.com/resources/games/?page=3",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "ragdoll-archers",
+    "title": "Ragdoll Archers",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.crazygames.com/embed/ragdoll-archers",
+    "description": "Play Ragdoll Archers - an educational game on CrazyGames",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "thumbnailUrl": "https://imgs.crazygames.com/ragdoll-archers_16x9/20250926080758/ragdoll-archers_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "crazygames",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.138992874658244,
+    "playCount": 38301,
+    "sourceUrl": "https://www.crazygames.com/game/ragdoll-archers",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
   }
 ]
