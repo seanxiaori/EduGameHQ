@@ -108,7 +108,7 @@ Sitemap: https://www.edugamehq.com/sitemap-index.xml
 - Example: /zh/math-games (Chinese), /es/science-games (Spanish)
 
 ### Content Updates
-Games and content updated regularly. Last major update: January 2025.
+Games and content updated regularly. Last major update: October 2025.
 New games added weekly. Check /new-games for latest additions.
 
 ## Contact & Social

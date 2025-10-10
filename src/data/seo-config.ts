@@ -401,7 +401,7 @@ export function generateStructuredData(path: string, gameData?: any) {
       "learningResourceType": "Educational Game",
       "interactivityType": "active",
       "educationalUse": "instruction",
-      "datePublished": gameData.datePublished || "2025-01-01",
+      "datePublished": gameData.datePublished || "2025-10-01",
       "dateModified": gameData.lastUpdated || currentDate,
       "inLanguage": "en",
       "audience": {
