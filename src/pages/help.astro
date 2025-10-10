@@ -8,6 +8,27 @@ const seoData = {
   keywords: ["help", "support", "FAQ", "educational games", "troubleshooting", "parent guide", "teacher resources"]
 };
 
+// 🔧 GEO优化：生成FAQ结构化数据（帮助AI系统理解和引用FAQ内容）
+const generateFAQStructuredData = (categories: any[]) => {
+  // 将所有分类的问题合并到一个数组
+  const allQuestions = categories.flatMap(category => 
+    category.questions.map((q: any) => ({
+      "@type": "Question",
+      "name": q.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": q.answer
+      }
+    }))
+  );
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": allQuestions
+  };
+};
+
 // 常见问题数据
 const faqCategories = [
   {
@@ -88,6 +109,9 @@ const faqCategories = [
   }
 ];
 
+// 🔧 GEO优化：生成FAQ结构化数据
+const faqStructuredData = generateFAQStructuredData(faqCategories);
+
 // 快速链接数据
 const quickLinks = [
   {
@@ -156,7 +180,11 @@ const contactMethods = [
 ];
 ---
 
-<BaseLayout title={seoData.title} description={seoData.description}>
+<BaseLayout 
+  title={seoData.title} 
+  description={seoData.description}
+  additionalStructuredData={faqStructuredData}
+>
   <main class="help-center">
     <div class="content-wrapper">
       

@@ -31,9 +31,45 @@ const featuredGames = mathGames.filter(game => game.featured);
 const easyGames = mathGames.filter(game => game.difficulty === 'Easy');
 const mediumGames = mathGames.filter(game => game.difficulty === 'Medium');
 const hardGames = mathGames.filter(game => game.difficulty === 'Hard');
+
+// 🔧 GEO优化：生成CollectionPage结构化数据（帮助AI理解分类页面和游戏集合）
+const collectionPageData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Math Games Collection - EduGameHQ",
+  "description": "Master mathematics through play! Our collection of math games makes learning arithmetic, algebra, geometry, and problem-solving skills fun and engaging for all grade levels.",
+  "url": "https://www.edugamehq.com/math-games",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": mathGames.length,
+    "itemListElement": mathGames.slice(0, 12).map((game, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Game",
+        "name": game.title,
+        "description": game.description,
+        "url": `https://www.edugamehq.com/games/${game.slug}`,
+        "image": game.thumbnailUrl || "/images/logo.svg",
+        "genre": "Educational Math Game",
+        "educationalLevel": game.ageRange,
+        "audience": {
+          "@type": "EducationalAudience",
+          "educationalRole": "student"
+        }
+      }
+    }))
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Mathematics Education",
+    "description": "Educational games focused on teaching mathematical concepts including arithmetic, algebra, geometry, and problem-solving"
+  },
+  "keywords": "math games, educational math, arithmetic games, algebra games, geometry games, problem-solving, learning mathematics"
+};
 ---
 
-<BaseLayout>
+<BaseLayout additionalStructuredData={collectionPageData}>
   <main class="main-content">
     <div class="content-wrapper">
 

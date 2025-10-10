@@ -24,9 +24,10 @@ export interface Props {
   bodyClass?: string;
   gameData?: any; // 游戏页面的游戏数据
   lang?: LanguageCode; // 可选的语言参数
+  additionalStructuredData?: any; // 🔧 GEO优化：额外的结构化数据（如FAQ、CollectionPage等）
 }
 
-const { title, description, bodyClass = "", gameData, lang } = Astro.props;
+const { title, description, bodyClass = "", gameData, lang, additionalStructuredData } = Astro.props;
 
 // 获取当前页面路径，用于导航高亮和SEO配置
 const currentPath = Astro.url.pathname;
@@ -363,6 +364,17 @@ console.log('- 分类内容:', pageStructure.categories);
 console.log('- 特殊页面数量:', Object.keys(pageStructure.special).length);
 console.log('- 特殊页面内容:', pageStructure.special);
 
+// 🔧 GEO优化：生成BreadcrumbList结构化数据（帮助AI理解页面层级）
+const breadcrumbListData = breadcrumbs.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbs.map((crumb, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": crumb.fullName || crumb.name, // 使用完整名称，避免截断
+    "item": crumb.url !== '#' ? `https://www.edugamehq.com${crumb.url}` : undefined
+  }))
+} : null;
 
 ---
 
@@ -465,6 +477,16 @@ console.log('- 特殊页面内容:', pageStructure.special);
   <!-- Structured Data (JSON-LD) -->
   {structuredData && (
     <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+  )}
+  
+  <!-- 🔧 GEO优化：BreadcrumbList结构化数据（帮助AI理解页面层级关系） -->
+  {breadcrumbListData && (
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbListData)} />
+  )}
+  
+  <!-- 🔧 GEO优化：额外的结构化数据（FAQ、CollectionPage等） -->
+  {additionalStructuredData && (
+    <script type="application/ld+json" set:html={JSON.stringify(additionalStructuredData)} />
   )}
   
   <!-- Additional structured data for educational content -->
