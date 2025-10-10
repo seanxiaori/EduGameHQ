@@ -44,6 +44,105 @@ function delay(ms) {
 }
 
 /**
+ * 智能图片获取函数（在浏览器端执行）
+ * 尝试多种策略获取游戏缩略图
+ * 
+ * @param {Element} element - 游戏元素
+ * @returns {string} 图片URL
+ */
+function getSmartThumbnail(element) {
+  // 策略1: 查找img标签的多种属性
+  const img = element.querySelector('img');
+  if (img) {
+    // 尝试多个可能的图片源属性
+    const possibleSources = [
+      'src',
+      'data-src',
+      'data-lazy-src', 
+      'data-original',
+      'data-lazy',
+      'data-srcset',
+      'data-background-image'
+    ];
+    
+    for (const attr of possibleSources) {
+      const value = img.getAttribute(attr);
+      if (value && value.trim()) {
+        // 处理完整URL
+        if (value.startsWith('http')) return value;
+        // 处理相对路径
+        if (value.startsWith('/')) return window.location.origin + value;
+        // 处理没有斜杠的相对路径
+        if (!value.startsWith('data:')) return window.location.origin + '/' + value;
+      }
+    }
+    
+    // 检查srcset属性
+    if (img.srcset) {
+      const firstSrc = img.srcset.split(',')[0].trim().split(' ')[0];
+      if (firstSrc && firstSrc.startsWith('http')) return firstSrc;
+    }
+  }
+  
+  // 策略2: 查找背景图片（computed style）
+  const bgImage = window.getComputedStyle(element).backgroundImage;
+  if (bgImage && bgImage !== 'none') {
+    const match = bgImage.match(/url\(['"]?([^'"()]+)['"]?\)/);
+    if (match && match[1]) {
+      const url = match[1];
+      if (url.startsWith('http')) return url;
+      if (url.startsWith('/')) return window.location.origin + url;
+    }
+  }
+  
+  // 策略3: 查找data-background或类似属性
+  const dataBg = element.getAttribute('data-background') || 
+                 element.getAttribute('data-bg') ||
+                 element.getAttribute('data-image') ||
+                 element.getAttribute('data-img');
+  if (dataBg && dataBg.trim()) {
+    if (dataBg.startsWith('http')) return dataBg;
+    if (dataBg.startsWith('/')) return window.location.origin + dataBg;
+  }
+  
+  // 策略4: 查找picture元素
+  const picture = element.querySelector('picture source');
+  if (picture) {
+    const srcset = picture.getAttribute('srcset') || picture.getAttribute('data-srcset');
+    if (srcset) {
+      const firstSrc = srcset.split(',')[0].trim().split(' ')[0];
+      if (firstSrc && firstSrc.startsWith('http')) return firstSrc;
+    }
+  }
+  
+  // 策略5: 查找任何带有background-image的子元素
+  const bgElements = element.querySelectorAll('[style*="background-image"]');
+  for (const bgEl of bgElements) {
+    const style = bgEl.getAttribute('style');
+    const match = style.match(/background-image:\s*url\(['"]?([^'"()]+)['"]?\)/);
+    if (match && match[1]) {
+      const url = match[1];
+      if (url.startsWith('http')) return url;
+      if (url.startsWith('/')) return window.location.origin + url;
+    }
+  }
+  
+  // 策略6: 向上查找父元素的图片
+  let parent = element.parentElement;
+  let depth = 0;
+  while (parent && depth < 3) {
+    const parentImg = parent.querySelector('img');
+    if (parentImg && parentImg.src && parentImg.src.startsWith('http')) {
+      return parentImg.src;
+    }
+    parent = parent.parentElement;
+    depth++;
+  }
+  
+  return ''; // 未找到图片
+}
+
+/**
  * CrazyGames 爬虫
  * 使用Puppeteer从CrazyGames爬取教育游戏数据
  */
@@ -116,8 +215,16 @@ async function crawlCrazyGames(categoryConfig) {
           console.log('   ⚠️ 未找到游戏列表，尝试继续');
         });
         
-        // 滚动页面加载更多游戏
+        // 滚动页面加载更多游戏（触发懒加载）
         await autoScroll(page);
+        
+        // 额外等待懒加载图片
+        await page.waitForTimeout(2000);
+        
+        // 注入智能图片获取函数到页面
+        await page.evaluate((getSmartThumbnailStr) => {
+          window.getSmartThumbnail = eval('(' + getSmartThumbnailStr + ')');
+        }, getSmartThumbnail.toString());
         
         // 提取游戏数据
         const categoryGames = await page.evaluate((cat, baseUrl, language) => {
@@ -151,9 +258,8 @@ async function crawlCrazyGames(categoryConfig) {
                             gameEl;
               const title = titleEl?.textContent?.trim() || slug.replace(/-/g, ' ');
               
-              // 提取缩略图
-              const imgEl = gameEl.querySelector('img');
-              const thumbnailUrl = imgEl?.src || imgEl?.getAttribute('data-src') || '';
+              // 使用智能图片获取函数
+              const thumbnailUrl = window.getSmartThumbnail(gameEl);
               
               // 提取描述（如果有）
               const descEl = gameEl.querySelector('[class*="description"]') || 
@@ -461,6 +567,14 @@ async function crawlABCya(categoryConfig) {
         await page.waitForSelector('a[href*="/games/"]', { timeout: 10000 }).catch(() => {});
         await autoScroll(page);
         
+        // 等待懒加载图片
+        await page.waitForTimeout(2000);
+        
+        // 注入智能图片获取函数
+        await page.evaluate((getSmartThumbnailStr) => {
+          window.getSmartThumbnail = eval('(' + getSmartThumbnailStr + ')');
+        }, getSmartThumbnail.toString());
+        
         const categoryGames = await page.evaluate((cat, baseUrl) => {
           const games = [];
           const gameLinks = document.querySelectorAll('a[href*="/games/"]');
@@ -479,8 +593,8 @@ async function crawlABCya(categoryConfig) {
               const titleEl = link.querySelector('[class*="title"]') || link.querySelector('h2') || link;
               const title = titleEl?.textContent?.trim() || slug.replace(/-/g, ' ');
               
-              const imgEl = link.querySelector('img');
-              const thumbnailUrl = imgEl?.src || imgEl?.getAttribute('data-src') || '';
+              // 使用智能图片获取函数
+              const thumbnailUrl = window.getSmartThumbnail(link);
               
               games.push({
                 title: title.charAt(0).toUpperCase() + title.slice(1),
@@ -573,6 +687,14 @@ async function crawlPBSKids(categoryConfig) {
         await page.waitForSelector('a[href*="/games/"]', { timeout: 10000 }).catch(() => {});
         await autoScroll(page);
         
+        // 等待懒加载图片
+        await page.waitForTimeout(2000);
+        
+        // 注入智能图片获取函数
+        await page.evaluate((getSmartThumbnailStr) => {
+          window.getSmartThumbnail = eval('(' + getSmartThumbnailStr + ')');
+        }, getSmartThumbnail.toString());
+        
         const categoryGames = await page.evaluate((cat, baseUrl) => {
           const games = [];
           const gameLinks = document.querySelectorAll('a[href*="/games/"]');
@@ -591,8 +713,8 @@ async function crawlPBSKids(categoryConfig) {
               const titleEl = link.querySelector('[class*="title"]') || link.querySelector('h2') || link;
               const title = titleEl?.textContent?.trim() || slug.replace(/-/g, ' ');
               
-              const imgEl = link.querySelector('img');
-              const thumbnailUrl = imgEl?.src || imgEl?.getAttribute('data-src') || '';
+              // 使用智能图片获取函数
+              const thumbnailUrl = window.getSmartThumbnail(link);
               
               games.push({
                 title: title.charAt(0).toUpperCase() + title.slice(1),
@@ -682,6 +804,14 @@ async function crawlFunbrain(categoryConfig) {
         
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         await autoScroll(page);
+        
+        // 等待懒加载图片
+        await page.waitForTimeout(2000);
+        
+        // 注入智能图片获取函数
+        await page.evaluate((getSmartThumbnailStr) => {
+          window.getSmartThumbnail = eval('(' + getSmartThumbnailStr + ')');
+        }, getSmartThumbnail.toString());
         
         const categoryGames = await page.evaluate((cat, baseUrl) => {
           const games = [];
@@ -793,6 +923,14 @@ async function crawlMathPlayground(categoryConfig) {
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         await autoScroll(page);
         
+        // 等待懒加载图片
+        await page.waitForTimeout(2000);
+        
+        // 注入智能图片获取函数
+        await page.evaluate((getSmartThumbnailStr) => {
+          window.getSmartThumbnail = eval('(' + getSmartThumbnailStr + ')');
+        }, getSmartThumbnail.toString());
+        
         const categoryGames = await page.evaluate((cat, baseUrl) => {
           const games = [];
           const gameLinks = document.querySelectorAll('a[href*=".html"]');
@@ -902,6 +1040,14 @@ async function crawlGenericSite(siteName, categoryConfig) {
         
         await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
         await autoScroll(page);
+        
+        // 等待懒加载图片
+        await page.waitForTimeout(2000);
+        
+        // 注入智能图片获取函数
+        await page.evaluate((getSmartThumbnailStr) => {
+          window.getSmartThumbnail = eval('(' + getSmartThumbnailStr + ')');
+        }, getSmartThumbnail.toString());
         
         const categoryGames = await page.evaluate((cat, baseUrl, site) => {
           const games = [];
