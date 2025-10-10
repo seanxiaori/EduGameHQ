@@ -1,0 +1,112 @@
+name: 🎮 自动发现教育游戏
+
+# 定时任务：每天UTC 2:00运行（北京时间10:00）
+# 也可以手动触发
+on:
+  schedule:
+    - cron: '0 2 * * *'  # 每天UTC 2:00
+  workflow_dispatch:  # 允许手动触发
+
+# 设置权限
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  discover-games:
+    name: 发现新游戏
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. 检出代码
+      - name: 📥 检出代码
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 获取完整历史，便于分析
+      
+      # 2. 设置Node.js环境
+      - name: 🔧 设置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      # 3. 安装依赖
+      - name: 📦 安装依赖
+        run: npm ci
+      
+      # 4. 运行智能爬虫
+      - name: 🕷️ 运行智能爬虫
+        id: crawl
+        run: |
+          echo "🚀 开始爬取游戏数据..."
+          node scripts/intelligent-game-crawler.mjs
+          
+          # 检查是否发现了新游戏
+          if [ -f "scripts/temp/new-games.json" ]; then
+            echo "found_games=true" >> $GITHUB_OUTPUT
+            GAME_COUNT=$(cat scripts/temp/new-games.json | grep -o '"slug"' | wc -l)
+            echo "game_count=$GAME_COUNT" >> $GITHUB_OUTPUT
+          else
+            echo "found_games=false" >> $GITHUB_OUTPUT
+            echo "game_count=0" >> $GITHUB_OUTPUT
+          fi
+      
+      # 5. 创建分支并提交更改
+      - name: 📝 创建分支并提交
+        if: steps.crawl.outputs.found_games == 'true'
+        run: |
+          # 配置Git
+          git config user.name "EduGameHQ Bot"
+          git config user.email "bot@edugamehq.com"
+          
+          # 创建新分支（使用日期命名）
+          BRANCH_NAME="auto-games-$(date +%Y%m%d-%H%M%S)"
+          git checkout -b $BRANCH_NAME
+          
+          # 添加更改
+          git add src/data/games.json
+          
+          # 提交
+          GAME_COUNT="${{ steps.crawl.outputs.game_count }}"
+          git commit -m "🎮 自动发现 $GAME_COUNT 个新游戏"
+          
+          # 推送分支
+          git push origin $BRANCH_NAME
+          
+          # 保存分支名供下一步使用
+          echo "BRANCH_NAME=$BRANCH_NAME" >> $GITHUB_ENV
+      
+      # 6. 创建Pull Request
+      - name: 🔀 创建 Pull Request
+        if: steps.crawl.outputs.found_games == 'true'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ env.BRANCH_NAME }}
+          title: "🎮 自动发现 ${{ steps.crawl.outputs.game_count }} 个新教育游戏"
+          body-path: scripts/temp/pr-body.md
+          labels: |
+            auto-discovery
+            games
+            needs-review
+          reviewers: ${{ github.repository_owner }}
+      
+      # 7. 清理临时文件
+      - name: 🧹 清理临时文件
+        if: always()
+        run: |
+          if [ -d "scripts/temp" ]; then
+            rm -rf scripts/temp
+          fi
+      
+      # 8. 输出结果
+      - name: ✅ 输出结果
+        run: |
+          if [ "${{ steps.crawl.outputs.found_games }}" == "true" ]; then
+            echo "✅ 成功发现 ${{ steps.crawl.outputs.game_count }} 个新游戏！"
+            echo "📬 已创建PR等待审核"
+          else
+            echo "ℹ️ 本次未发现符合条件的新游戏"
+          fi
+

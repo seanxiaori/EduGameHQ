@@ -1,0 +1,77 @@
+{
+  "sources": {
+    "crazygames": {
+      "enabled": true,
+      "priority": 1,
+      "baseUrl": "https://www.crazygames.com",
+      "categories": {
+        "math": "/c/math",
+        "logic": "/c/puzzle",
+        "science": "/c/educational",
+        "language": "/c/word"
+      },
+      "limits": {
+        "gamesPerCategory": 20,
+        "maxPages": 3
+      }
+    },
+    "coolmathgames": {
+      "enabled": true,
+      "priority": 2,
+      "baseUrl": "https://www.coolmathgames.com",
+      "categories": {
+        "math": "/0-math",
+        "logic": "/0-logic",
+        "strategy": "/0-strategy"
+      },
+      "limits": {
+        "gamesPerCategory": 15,
+        "maxPages": 2
+      }
+    }
+  },
+  "filters": {
+    "minScore": 70,
+    "maxGamesPerRun": 10,
+    "requireIframe": true,
+    "requireMobile": false,
+    "minRating": 3.5,
+    "minPlayCount": 5000
+  },
+  "categories": [
+    "math",
+    "science",
+    "language",
+    "logic",
+    "geography",
+    "history",
+    "art",
+    "typing"
+  ],
+  "blacklist": [
+    "casino",
+    "gambling",
+    "bet",
+    "violence",
+    "gore",
+    "blood",
+    "weapon",
+    "gun",
+    "war",
+    "adult",
+    "dating",
+    "sexy"
+  ],
+  "ageRanges": {
+    "preschool": { "min": 3, "max": 5 },
+    "elementary": { "min": 6, "max": 10 },
+    "middle": { "min": 11, "max": 14 },
+    "high": { "min": 15, "max": 18 }
+  },
+  "retryConfig": {
+    "maxRetries": 3,
+    "retryDelay": 2000,
+    "timeout": 30000
+  }
+}
+
