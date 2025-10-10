@@ -49,7 +49,7 @@
       }
     },
     "funbrain": {
-      "enabled": true,
+      "enabled": false,
       "priority": 4,
       "baseUrl": "https://www.funbrain.com",
       "categories": {
@@ -62,7 +62,7 @@
       }
     },
     "mathplayground": {
-      "enabled": true,
+      "enabled": false,
       "priority": 5,
       "baseUrl": "https://www.mathplayground.com",
       "categories": {
