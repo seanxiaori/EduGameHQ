@@ -470,8 +470,8 @@ console.log('- 特殊页面内容:', pageStructure.special);
   <!-- Additional structured data for educational content -->
   <script type="application/ld+json" set:html={JSON.stringify(educationalOrgData)} />
   
-  <!-- Google Analytics 4 - 暂时注释掉用于诊断 -->
-  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RR1NHJ49F5" is:inline></script>
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RR1NHJ49F5" is:inline></script>
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -480,12 +480,23 @@ console.log('- 特殊页面内容:', pageStructure.special);
       page_title: document.title,
       page_location: window.location.href,
       content_group1: 'Educational Games',
+      anonymize_ip: true,  // IP匿名化（COPPA儿童隐私保护）
+      allow_ad_personalization_signals: false,  // 禁用广告个性化
       custom_map: {
         'dimension1': 'page_category',
         'dimension2': 'user_type'
       }
     });
-  </script> -->
+  </script>
+  
+  <!-- Microsoft Clarity - 用户行为分析（热图、会话录制） -->
+  <script type="text/javascript" is:inline>
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "tnryvuvm0u");
+  </script>
   
   <!-- Google Search Console Verification -->
   <!-- 请将下面的验证代码替换为Google Search Console提供的真实验证代码 -->
@@ -569,31 +580,31 @@ console.log('- 特殊页面内容:', pageStructure.special);
 
               <!-- Step 2: 分类下拉菜单（游戏详情页隐藏，释放空间给游戏名称） -->
               {!isGamePage && (
-                <div class="nav-dropdown">
-                  <button class="nav-link dropdown-trigger" id="categoriesDropdown">
-                    <i class="fas fa-gamepad"></i>
-                    {t(translations, 'nav.categories', 'Categories')}
-                    <i class="fas fa-chevron-down dropdown-arrow"></i>
-                  </button>
-                  <div class="dropdown-menu" id="categoriesMenu">
-                    <!-- 游戏分类 -->
-                    {Object.entries(pageStructure.categories).map(([path, info]) => (
-                      <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
-                        <i class={info.icon}></i>
-                        {t(translations, info.translationKey, info.fallback)}
-                      </a>
-                    ))}
-                    <!-- 分隔线 -->
-                    <hr class="dropdown-divider">
-                    <!-- 特殊页面 -->
-                    {Object.entries(pageStructure.special).map(([path, info]) => (
-                      <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
-                        <i class={info.icon}></i>
-                        {t(translations, info.translationKey, info.fallback)}
-                      </a>
-                    ))}
-                  </div>
+              <div class="nav-dropdown">
+                <button class="nav-link dropdown-trigger" id="categoriesDropdown">
+                  <i class="fas fa-gamepad"></i>
+                  {t(translations, 'nav.categories', 'Categories')}
+                  <i class="fas fa-chevron-down dropdown-arrow"></i>
+                </button>
+                <div class="dropdown-menu" id="categoriesMenu">
+                  <!-- 游戏分类 -->
+                  {Object.entries(pageStructure.categories).map(([path, info]) => (
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
+                      <i class={info.icon}></i>
+                      {t(translations, info.translationKey, info.fallback)}
+                    </a>
+                  ))}
+                  <!-- 分隔线 -->
+                  <hr class="dropdown-divider">
+                  <!-- 特殊页面 -->
+                  {Object.entries(pageStructure.special).map(([path, info]) => (
+                    <a href={getLocalizedPath(path, currentLang)} class={`dropdown-item ${info.color}`}>
+                      <i class={info.icon}></i>
+                      {t(translations, info.translationKey, info.fallback)}
+                    </a>
+                  ))}
                 </div>
+              </div>
               )}
 
               <!-- Step 3: 非首页时显示面包屑导航 -->
