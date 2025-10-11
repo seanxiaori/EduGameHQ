@@ -35,19 +35,19 @@ export async function getLocalizedSEO(path: string, lang: LanguageCode): Promise
     seoKey = 'about_page.seo';
     console.log('📍 匹配到about页面，SEO键:', seoKey);
   } else if (path === '/' || path.includes('/index')) {
-    seoKey = 'home_page.seo';
+    seoKey = 'seo.home_page';
   } else if (path.includes('/math-games')) {
-    seoKey = 'categories.math_games.seo';
+    seoKey = 'seo.math_games';
   } else if (path.includes('/science-games')) {
-    seoKey = 'categories.science_games.seo';
+    seoKey = 'seo.science_games';
   } else if (path.includes('/coding-games')) {
-    seoKey = 'categories.coding_games.seo';
+    seoKey = 'seo.coding_games';
   } else if (path.includes('/language-games')) {
-    seoKey = 'categories.language_games.seo';
+    seoKey = 'seo.language_games';
   } else if (path.includes('/puzzle-games')) {
-    seoKey = 'categories.puzzle_games.seo';
+    seoKey = 'seo.puzzle_games';
   } else if (path.includes('/sports-games')) {
-    seoKey = 'categories.sports_games.seo';
+    seoKey = 'seo.sports_games';
   } else if (path.includes('/art-games')) {
     seoKey = 'categories.art_games.seo';
   } else if (path.includes('/trending')) {

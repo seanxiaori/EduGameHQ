@@ -1,4 +1,26 @@
 {
+  "seo": {
+    "home_page": {
+      "title": "EduGameHQ - Kostenlose Lernspiele | Bildung 6-18 Jahre",
+      "description": "Entdecken Sie 100+ kostenlose Lernspiele für Mathematik, Naturwissenschaften, Programmierung und mehr. Sichere Plattform für Schüler von 6-18 Jahren.",
+      "keywords": "Lernspiele, Bildungsspiele, Kinderspiele, Mathematikspiele, Naturwissenschaftsspiele, Programmierspiele"
+    },
+    "math_games": {
+      "title": "Mathematikspiele | Kostenloses Lernen | EduGameHQ",
+      "description": "Verbessern Sie Ihre Mathematikfähigkeiten mit 30+ kostenlosen Spielen. Arithmetik, Geometrie, Algebra für Schüler von 6-18 Jahren.",
+      "keywords": "Mathematikspiele, Arithmetikspiele, Geometriespiele, Algebraspiele, Mathematiklernen"
+    },
+    "science_games": {
+      "title": "Naturwissenschaftsspiele | Interaktives Lernen | EduGameHQ",
+      "description": "Erkunden Sie 25+ kostenlose Naturwissenschaftsspiele. Lernen Sie Physik, Chemie, Biologie auf unterhaltsame und interaktive Weise.",
+      "keywords": "Naturwissenschaftsspiele, Physikspiele, Chemiespiele, Biologiespiele, wissenschaftliches Lernen"
+    },
+    "coding_games": {
+      "title": "Programmierspiele | Programmieren Lernen | EduGameHQ",
+      "description": "Lernen Sie Programmieren mit 8+ kostenlosen Spielen. Von grundlegender Logik bis zu fortgeschrittenen Konzepten für 8-18 Jahre.",
+      "keywords": "Programmierspiele, Programmieren für Kinder, Programmieren lernen, Logikspiele, Algorithmen"
+    }
+  },
   "nav": {
     "home": "Startseite",
     "categories": "Kategorien",

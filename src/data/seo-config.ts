@@ -11,25 +11,19 @@ export interface SEOConfig {
 export const seoConfig: Record<string, SEOConfig> = {
   // 首页 - 核心关键词策略
   '/': {
-    title: "EduGameHQ - Free Educational Games for Kids | Learning Games Online",
-    description: "Discover 100+ free educational games for kids aged 6-18. Play math, science, coding, language, sports, art and geography games online. Safe, fun learning platform with no downloads required.",
+    title: "EduGameHQ - Free Educational Games for Kids",
+    description: "Discover 100+ free educational games for kids aged 6-18. Play math, science, coding, language, sports, art games online. Safe learning platform.",
     keywords: [
       "educational games",
       "learning games", 
       "kids games",
-      "free educational games for kids",
-      "online learning games for children",
-      "educational games for students",
-      "interactive learning platform",
-      "HTML5 educational games",
-      "brain games",
+      "free educational games",
+      "online learning games",
       "math games",
       "science games",
       "coding games",
-      "language learning games",
-      "sports games for kids",
-      "art games for children",
-      "geography games online"
+      "interactive learning",
+      "brain games"
     ],
     ogImage: "/images/logo.svg",
     structuredData: {
@@ -57,23 +51,19 @@ export const seoConfig: Record<string, SEOConfig> = {
 
   // 数学游戏页面
   '/math-games': {
-    title: "Math Games for Kids | Free Online Math Learning Games | EduGameHQ",
-    description: "Play 27+ free math games for kids aged 6-18. Master arithmetic, algebra, geometry, and problem-solving skills through fun educational games. Perfect for homework help and math practice.",
+    title: "Math Games for Kids | Free Online Learning | EduGameHQ",
+    description: "Play 27+ free math games for kids aged 6-18. Master arithmetic, algebra, geometry through fun educational games. Perfect for homework help.",
     keywords: [
       "math games for kids",
       "free math games",
       "arithmetic games",
       "algebra games",
       "geometry games",
-      "math games for children",
       "educational math games",
       "online math practice",
       "math homework help",
       "interactive math games",
-      "math learning games",
-      "numbers games",
-      "calculation games",
-      "math puzzle games"
+      "numbers games"
     ],
     ogImage: "/images/logo.svg",
     structuredData: {
@@ -93,20 +83,18 @@ export const seoConfig: Record<string, SEOConfig> = {
   // 科学游戏页面
   '/science-games': {
     title: "Science Games for Students | Interactive Learning | EduGameHQ",
-    description: "Explore 12+ free science games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds and future scientists aged 8-18.",
+    description: "Explore 12+ free science games covering physics, chemistry, biology, and earth sciences. Perfect for curious minds aged 8-18.",
     keywords: [
       "science games for students",
       "physics games",
       "chemistry games", 
       "biology games",
       "earth science games",
-      "science games for kids",
       "interactive science learning",
       "STEM games",
       "science education games",
       "laboratory games",
-      "experiment games",
-      "nature games"
+      "experiment games"
     ],
     ogImage: "/images/logo.svg",
     structuredData: {
@@ -121,7 +109,7 @@ export const seoConfig: Record<string, SEOConfig> = {
   // 编程游戏页面
   '/coding-games': {
     title: "Coding Games for Children | Learn Programming | EduGameHQ",
-    description: "Learn programming fundamentals with 8+ free coding games. From basic logic to advanced coding concepts, start your computer science journey today for ages 8-18.",
+    description: "Learn programming fundamentals with 8+ free coding games. From basic logic to advanced coding concepts for ages 8-18.",
     keywords: [
       "coding games for children",
       "programming games",
@@ -129,7 +117,6 @@ export const seoConfig: Record<string, SEOConfig> = {
       "computer science games",
       "coding for kids",
       "programming for beginners",
-      "scratch programming games",
       "coding education",
       "logic games",
       "algorithm games",
@@ -438,4 +425,4 @@ export function getKeywordsString(path: string): string {
 export function getOGImageUrl(path: string): string {
   const config = getPageSEO(path);
   return config.ogImage || '/images/logo.svg';
-} 
+}

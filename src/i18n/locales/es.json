@@ -1,4 +1,26 @@
 {
+  "seo": {
+    "home_page": {
+      "title": "EduGameHQ - Juegos Educativos Gratis | Aprendizaje 6-18 años",
+      "description": "Descubre 100+ juegos educativos gratuitos de matemáticas, ciencias, programación y más. Plataforma segura para estudiantes de 6-18 años.",
+      "keywords": "juegos educativos, juegos de aprendizaje, juegos para niños, juegos de matemáticas, juegos de ciencias, juegos de programación"
+    },
+    "math_games": {
+      "title": "Juegos de Matemáticas | Aprendizaje Gratis | EduGameHQ",
+      "description": "Mejora tus habilidades matemáticas con 30+ juegos gratuitos. Aritmética, geometría, álgebra para estudiantes de 6-18 años.",
+      "keywords": "juegos de matemáticas, juegos de aritmética, juegos de geometría, juegos de álgebra, aprendizaje de matemáticas"
+    },
+    "science_games": {
+      "title": "Juegos de Ciencias | Aprendizaje Interactivo | EduGameHQ",
+      "description": "Explora 25+ juegos de ciencias gratuitos. Aprende física, química, biología de manera divertida e interactiva.",
+      "keywords": "juegos de ciencias, juegos de física, juegos de química, juegos de biología, aprendizaje científico"
+    },
+    "coding_games": {
+      "title": "Juegos de Programación | Aprende a Programar | EduGameHQ",
+      "description": "Aprende programación con 8+ juegos gratuitos. Desde lógica básica hasta conceptos avanzados para edades 8-18.",
+      "keywords": "juegos de programación, programación para niños, aprender a programar, juegos de lógica, algoritmos"
+    }
+  },
   "nav": {
     "home": "Inicio",
     "categories": "Categorías",
