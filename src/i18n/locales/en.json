@@ -2,22 +2,22 @@
   "seo": {
     "home_page": {
       "title": "EduGameHQ - Free Educational Games | Learning Platform 6-18",
-      "description": "Discover 100+ free educational games covering math, science, coding and more. Safe learning platform designed for students aged 6-18.",
+      "description": "Discover 100+ free educational games covering math, science, coding and more. Safe learning platform designed for students aged 6-18 with interactive content.",
       "keywords": "educational games, learning games, kids games, math games, science games, coding games, free educational resources"
     },
     "math_games": {
       "title": "Math Games | Free Online Math Learning | EduGameHQ",
-      "description": "Boost math skills with 30+ free math games. Covering arithmetic, geometry, algebra for students aged 6-18.",
+      "description": "Boost math skills with 30+ free math games. Covering arithmetic, geometry, algebra for students aged 6-18. Interactive learning with instant feedback.",
       "keywords": "math games, arithmetic games, geometry games, algebra games, math learning, kids math"
     },
     "science_games": {
       "title": "Science Games | Interactive Science Learning | EduGameHQ",
-      "description": "Explore 25+ free science games. Learn physics, chemistry, biology in fun and interactive ways.",
+      "description": "Explore 25+ free science games. Learn physics, chemistry, biology in fun and interactive ways. Perfect for curious minds aged 6-18 years old.",
       "keywords": "science games, physics games, chemistry games, biology games, science learning, experiment games"
     },
     "coding_games": {
       "title": "Coding Games | Learn Programming for Kids | EduGameHQ",
-      "description": "Learn programming with 8+ free coding games. From basic logic to advanced concepts for ages 8-18.",
+      "description": "Learn programming with 8+ free coding games. From basic logic to advanced concepts for ages 8-18. Build coding skills through interactive gameplay.",
       "keywords": "coding games, programming for kids, learn coding, computer science games, logic games, algorithms"
     }
   },

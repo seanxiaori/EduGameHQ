@@ -1,0 +1,317 @@
+{
+  "timestamp": "2025-10-11T11:59:48.138Z",
+  "totalChecked": 44,
+  "validCount": 44,
+  "invalidCount": 0,
+  "allValid": true,
+  "details": [
+    {
+      "language": "en",
+      "page": "首页",
+      "length": 158,
+      "valid": true,
+      "description": "Discover 100+ free educational games covering math..."
+    },
+    {
+      "language": "en",
+      "page": "数学游戏",
+      "length": 150,
+      "valid": true,
+      "description": "Boost math skills with 30+ free math games. Coveri..."
+    },
+    {
+      "language": "en",
+      "page": "科学游戏",
+      "length": 141,
+      "valid": true,
+      "description": "Explore 25+ free science games. Learn physics, che..."
+    },
+    {
+      "language": "en",
+      "page": "编程游戏",
+      "length": 147,
+      "valid": true,
+      "description": "Learn programming with 8+ free coding games. From ..."
+    },
+    {
+      "language": "zh",
+      "page": "首页",
+      "length": 151,
+      "valid": true,
+      "description": "发现100+免费教育游戏，涵盖数学、科学、编程、语言、艺术等多个学科。专为6-18岁学生设计的安全互..."
+    },
+    {
+      "language": "zh",
+      "page": "数学游戏",
+      "length": 148,
+      "valid": true,
+      "description": "通过30+免费数学游戏提升数学技能。涵盖算术、几何、代数、统计等多个数学领域，适合6-18岁学生。互..."
+    },
+    {
+      "language": "zh",
+      "page": "科学游戏",
+      "length": 149,
+      "valid": true,
+      "description": "探索25+免费科学游戏，学习物理、化学、生物、地理等科学知识。通过虚拟实验和互动模拟，让科学学习变得..."
+    },
+    {
+      "language": "zh",
+      "page": "编程游戏",
+      "length": 140,
+      "valid": true,
+      "description": "通过8+免费编程游戏学习编程基础和计算思维。从基础逻辑到高级编程概念，适合8-18岁学生。循序渐进的..."
+    },
+    {
+      "language": "es",
+      "page": "首页",
+      "length": 150,
+      "valid": true,
+      "description": "Descubre 100+ juegos educativos gratuitos de matem..."
+    },
+    {
+      "language": "es",
+      "page": "数学游戏",
+      "length": 156,
+      "valid": true,
+      "description": "Mejora tus habilidades matemáticas con 30+ juegos ..."
+    },
+    {
+      "language": "es",
+      "page": "科学游戏",
+      "length": 154,
+      "valid": true,
+      "description": "Explora 25+ juegos de ciencias gratuitos. Aprende ..."
+    },
+    {
+      "language": "es",
+      "page": "编程游戏",
+      "length": 157,
+      "valid": true,
+      "description": "Aprende programación con 8+ juegos gratuitos. Desd..."
+    },
+    {
+      "language": "fr",
+      "page": "首页",
+      "length": 153,
+      "valid": true,
+      "description": "Découvrez 100+ jeux éducatifs gratuits en mathémat..."
+    },
+    {
+      "language": "fr",
+      "page": "数学游戏",
+      "length": 147,
+      "valid": true,
+      "description": "Améliorez vos compétences mathématiques avec 30+ j..."
+    },
+    {
+      "language": "fr",
+      "page": "科学游戏",
+      "length": 160,
+      "valid": true,
+      "description": "Explorez 25+ jeux de sciences gratuits. Apprenez l..."
+    },
+    {
+      "language": "fr",
+      "page": "编程游戏",
+      "length": 158,
+      "valid": true,
+      "description": "Apprenez la programmation avec 8+ jeux gratuits. D..."
+    },
+    {
+      "language": "de",
+      "page": "首页",
+      "length": 149,
+      "valid": true,
+      "description": "Entdecken Sie 100+ kostenlose Lernspiele für Mathe..."
+    },
+    {
+      "language": "de",
+      "page": "数学游戏",
+      "length": 154,
+      "valid": true,
+      "description": "Verbessern Sie Ihre Mathematikfähigkeiten mit 30+ ..."
+    },
+    {
+      "language": "de",
+      "page": "科学游戏",
+      "length": 152,
+      "valid": true,
+      "description": "Erkunden Sie 25+ kostenlose Naturwissenschaftsspie..."
+    },
+    {
+      "language": "de",
+      "page": "编程游戏",
+      "length": 152,
+      "valid": true,
+      "description": "Lernen Sie Programmieren mit 8+ kostenlosen Spiele..."
+    },
+    {
+      "language": "ar",
+      "page": "首页",
+      "length": 148,
+      "valid": true,
+      "description": "اكتشف أكثر من 100 لعبة تعليمية مجانية للأطفال من س..."
+    },
+    {
+      "language": "ar",
+      "page": "数学游戏",
+      "length": 151,
+      "valid": true,
+      "description": "العب ألعاب الرياضيات التفاعلية المجانية. تعلم الحس..."
+    },
+    {
+      "language": "ar",
+      "page": "科学游戏",
+      "length": 160,
+      "valid": true,
+      "description": "استكشف ألعاب العلوم التفاعلية. تعلم الفيزياء والكي..."
+    },
+    {
+      "language": "ar",
+      "page": "编程游戏",
+      "length": 155,
+      "valid": true,
+      "description": "تعلم البرمجة من خلال ألعاب تفاعلية ممتعة. ابدأ رحل..."
+    },
+    {
+      "language": "he",
+      "page": "首页",
+      "length": 140,
+      "valid": true,
+      "description": "גלו יותר מ-100 משחקים חינוכיים חינמיים לילדים בגיל..."
+    },
+    {
+      "language": "he",
+      "page": "数学游戏",
+      "length": 159,
+      "valid": true,
+      "description": "שחקו משחקי מתמטיקה אינטראקטיביים חינמיים. למדו חשב..."
+    },
+    {
+      "language": "he",
+      "page": "科学游戏",
+      "length": 143,
+      "valid": true,
+      "description": "חקרו משחקי מדע אינטראקטיביים. למדו פיזיקה, כימיה ו..."
+    },
+    {
+      "language": "he",
+      "page": "编程游戏",
+      "length": 160,
+      "valid": true,
+      "description": "למדו תכנות דרך משחקים אינטראקטיביים מהנים. התחילו ..."
+    },
+    {
+      "language": "hi",
+      "page": "首页",
+      "length": 153,
+      "valid": true,
+      "description": "6-18 साल के बच्चों के लिए 100+ मुफ्त शैक्षिक खेल ख..."
+    },
+    {
+      "language": "hi",
+      "page": "数学游戏",
+      "length": 149,
+      "valid": true,
+      "description": "मुफ्त इंटरैक्टिव गणित के खेल खेलें। बच्चों के लिए ..."
+    },
+    {
+      "language": "hi",
+      "page": "科学游戏",
+      "length": 156,
+      "valid": true,
+      "description": "इंटरैक्टिव विज्ञान के खेल खोजें। मजेदार प्रयोगों औ..."
+    },
+    {
+      "language": "hi",
+      "page": "编程游戏",
+      "length": 157,
+      "valid": true,
+      "description": "मजेदार इंटरैक्टिव खेलों के माध्यम से कोडिंग सीखें।..."
+    },
+    {
+      "language": "ru",
+      "page": "首页",
+      "length": 153,
+      "valid": true,
+      "description": "Откройте для себя более 100 бесплатных образовател..."
+    },
+    {
+      "language": "ru",
+      "page": "数学游戏",
+      "length": 157,
+      "valid": true,
+      "description": "Играйте в бесплатные интерактивные математические ..."
+    },
+    {
+      "language": "ru",
+      "page": "科学游戏",
+      "length": 144,
+      "valid": true,
+      "description": "Исследуйте интерактивные научные игры. Изучайте фи..."
+    },
+    {
+      "language": "ru",
+      "page": "编程游戏",
+      "length": 160,
+      "valid": true,
+      "description": "Изучайте программирование через веселые интерактив..."
+    },
+    {
+      "language": "ja",
+      "page": "首页",
+      "length": 158,
+      "valid": true,
+      "description": "6-18歳の子供向けの100以上の無料教育ゲームを発見しよう。数学、科学、プログラミング、言語、スポ..."
+    },
+    {
+      "language": "ja",
+      "page": "数学游戏",
+      "length": 148,
+      "valid": true,
+      "description": "無料のインタラクティブ数学ゲームをプレイしよう。子供向けの楽しく教育的なゲームを通じて算数、代数、幾..."
+    },
+    {
+      "language": "ja",
+      "page": "科学游戏",
+      "length": 140,
+      "valid": true,
+      "description": "インタラクティブ科学ゲームを探索しよう。楽しい実験と教育ゲームを通じて物理学、化学、生物学を学習。6..."
+    },
+    {
+      "language": "ja",
+      "page": "编程游戏",
+      "length": 148,
+      "valid": true,
+      "description": "楽しいインタラクティブゲームを通じてプログラミングを学習しよう。初心者に適したゲームでプログラミング..."
+    },
+    {
+      "language": "ko",
+      "page": "首页",
+      "length": 154,
+      "valid": true,
+      "description": "6-18세 어린이를 위한 100개 이상의 무료 교육 게임을 발견하세요. 수학, 과학, 코딩..."
+    },
+    {
+      "language": "ko",
+      "page": "数学游戏",
+      "length": 154,
+      "valid": true,
+      "description": "무료 인터랙티브 수학 게임을 플레이하세요. 어린이를 위한 재미있고 교육적인 게임을 통해 산..."
+    },
+    {
+      "language": "ko",
+      "page": "科学游戏",
+      "length": 155,
+      "valid": true,
+      "description": "인터랙티브 과학 게임을 탐험하세요. 재미있는 실험과 교육 게임을 통해 물리학, 화학, 생물..."
+    },
+    {
+      "language": "ko",
+      "page": "编程游戏",
+      "length": 144,
+      "valid": true,
+      "description": "재미있는 인터랙티브 게임을 통해 코딩을 학습하세요. 초보자에게 적합한 게임으로 코딩 세계로..."
+    }
+  ]
+}

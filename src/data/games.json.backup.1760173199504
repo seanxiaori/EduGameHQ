@@ -5270,6 +5270,96 @@
     "isNew": true
   },
   {
+    "slug": "kindergarten",
+    "title": "Kindergarten",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/kindergarten.html",
+    "description": "Play Kindergarten - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4994450921799105,
+    "playCount": 80537,
+    "sourceUrl": "https://www.turtlediary.com/games/kindergarten.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "preschool",
+    "title": "Preschool",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/preschool.html",
+    "description": "Play Preschool - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.512687613342865,
+    "playCount": 54360,
+    "sourceUrl": "https://www.turtlediary.com/games/preschool.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
     "slug": "education",
     "title": "Education.com is certified by the kidSAFE Seal Program.",
     "category": "educational",
@@ -5537,6 +5627,96 @@
     "rating": 4.255794659565858,
     "playCount": 80357,
     "sourceUrl": "https://kids.nationalgeographic.com/games/action-adventure",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "first-grade",
+    "title": "First Grade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/first-grade.html",
+    "description": "Play First Grade - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.495800306463582,
+    "playCount": 21297,
+    "sourceUrl": "https://www.turtlediary.com/games/first-grade.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "second-grade",
+    "title": "Second Grade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/second-grade.html",
+    "description": "Play Second Grade - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.251761196196447,
+    "playCount": 80693,
+    "sourceUrl": "https://www.turtlediary.com/games/second-grade.html",
     "lastUpdated": "2025-10-10",
     "lastChecked": "2025-10-10",
     "featured": false,
@@ -5862,6 +6042,51 @@
     "isNew": true
   },
   {
+    "slug": "third-grade",
+    "title": "Third Grade",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/games/third-grade.html",
+    "description": "Play Third Grade - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.1645803880871455,
+    "playCount": 51815,
+    "sourceUrl": "https://www.turtlediary.com/games/third-grade.html",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
     "slug": "farm-merge-valley",
     "title": "Farm Merge Valley",
     "category": "logic",
@@ -5901,6 +6126,51 @@
     "rating": 4.1316948661902755,
     "playCount": 53864,
     "sourceUrl": "https://www.crazygames.com/game/farm-merge-valley",
+    "lastUpdated": "2025-10-10",
+    "lastChecked": "2025-10-10",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "go-ad-free",
+    "title": "Go ad free",
+    "category": "math",
+    "categoryName": "Math",
+    "iframeUrl": "https://www.turtlediary.com/go-ad-free.html",
+    "description": "Play go ad free - an educational game from Turtle Diary",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to start the game",
+        "Follow the on-screen instructions",
+        "Complete the objectives to win"
+      ],
+      "controls": {
+        "mouse": "Click and drag to interact",
+        "keyboard": "Use arrow keys to move"
+      },
+      "tips": [
+        "Take your time to understand the game",
+        "Practice makes perfect"
+      ]
+    },
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "math"
+    ],
+    "source": "turtlediary",
+    "iframeCompatible": true,
+    "verified": false,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.330296944003693,
+    "playCount": 15454,
+    "sourceUrl": "https://www.turtlediary.com/go-ad-free.html",
     "lastUpdated": "2025-10-10",
     "lastChecked": "2025-10-10",
     "featured": false,
