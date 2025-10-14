@@ -1,0 +1,215 @@
+{
+  "strategies": {
+    "local": {
+      "name": "本地托管",
+      "description": "游戏文件直接存储在网站的 public/games 目录中",
+      "advantages": [
+        "部署简单，无需额外配置",
+        "与主网站同域，无跨域问题",
+        "加载速度快，减少网络请求",
+        "完全控制游戏文件"
+      ],
+      "limitations": [
+        "增加主网站体积",
+        "受 Cloudflare Pages 100MB 限制",
+        "不适合大型游戏集合"
+      ],
+      "suitableFor": [
+        "小型HTML5游戏 (< 5MB)",
+        "简单的教育小游戏",
+        "快速原型和测试"
+      ],
+      "maxGameSize": "5MB",
+      "maxTotalSize": "50MB",
+      "path": "public/games/original",
+      "urlPattern": "/games/original/{slug}/"
+    },
+    
+    "github": {
+      "name": "GitHub Pages 托管",
+      "description": "使用 GitHub Pages 托管游戏文件，通过自定义域名访问",
+      "advantages": [
+        "完全免费",
+        "全球CDN加速",
+        "版本控制和回滚",
+        "与现有Git工作流集成",
+        "支持自定义域名"
+      ],
+      "limitations": [
+        "单个仓库1GB限制",
+        "需要额外的仓库管理",
+        "部署需要几分钟时间"
+      ],
+      "suitableFor": [
+        "中型游戏集合 (5-50MB)",
+        "需要版本控制的游戏",
+        "团队协作开发的游戏"
+      ],
+      "maxGameSize": "50MB",
+      "maxTotalSize": "1GB",
+      "repository": "EduGameHQ-Games",
+      "domain": "games.edugamehq.com",
+      "urlPattern": "https://games.edugamehq.com/{slug}/",
+      "setup": {
+        "steps": [
+          "创建 GitHub 仓库 'EduGameHQ-Games'",
+          "配置 GitHub Pages",
+          "设置自定义域名 CNAME",
+          "配置 SSL 证书"
+        ],
+        "automation": {
+          "githubActions": true,
+          "autoDeployment": true,
+          "branchProtection": true
+        }
+      }
+    },
+    
+    "cloudflare": {
+      "name": "Cloudflare R2 + Workers",
+      "description": "使用 Cloudflare R2 存储游戏文件，Workers 提供代理和安全功能",
+      "advantages": [
+        "无限存储空间",
+        "极低成本 (每月几美分)",
+        "全球边缘缓存",
+        "高级安全功能",
+        "支持动态内容"
+      ],
+      "limitations": [
+        "需要 Cloudflare 付费计划",
+        "配置相对复杂",
+        "需要 Workers 开发"
+      ],
+      "suitableFor": [
+        "大型游戏集合 (> 50MB)",
+        "需要高级功能的游戏",
+        "商业化运营的游戏平台"
+      ],
+      "maxGameSize": "无限制",
+      "maxTotalSize": "无限制",
+      "bucket": "edugamehq-games",
+      "domain": "games.edugamehq.com",
+      "urlPattern": "https://games.edugamehq.com/{slug}/",
+      "setup": {
+        "requirements": [
+          "Cloudflare 账户",
+          "R2 存储服务",
+          "Workers 服务",
+          "自定义域名"
+        ],
+        "steps": [
+          "创建 R2 存储桶",
+          "配置 Workers 代理",
+          "设置自定义域名",
+          "配置 SSL 和安全规则"
+        ]
+      }
+    },
+    
+    "hybrid": {
+      "name": "混合托管策略",
+      "description": "根据游戏大小和类型自动选择最适合的托管方式",
+      "rules": [
+        {
+          "condition": "size < 5MB",
+          "strategy": "local",
+          "reason": "小型游戏适合本地托管"
+        },
+        {
+          "condition": "5MB <= size < 50MB",
+          "strategy": "github",
+          "reason": "中型游戏适合GitHub Pages"
+        },
+        {
+          "condition": "size >= 50MB",
+          "strategy": "cloudflare",
+          "reason": "大型游戏需要专业托管"
+        }
+      ],
+      "advantages": [
+        "自动优化托管策略",
+        "成本效益最大化",
+        "性能最优化",
+        "管理简化"
+      ]
+    }
+  },
+  
+  "recommendations": {
+    "startups": {
+      "primary": "github",
+      "fallback": "local",
+      "reason": "免费且功能完整，适合初期发展"
+    },
+    "growing": {
+      "primary": "hybrid",
+      "fallback": "github",
+      "reason": "灵活应对不同规模的游戏"
+    },
+    "enterprise": {
+      "primary": "cloudflare",
+      "fallback": "hybrid",
+      "reason": "专业级性能和无限扩展能力"
+    }
+  },
+  
+  "migration": {
+    "local_to_github": {
+      "difficulty": "easy",
+      "steps": [
+        "创建 GitHub 仓库",
+        "推送游戏文件",
+        "更新 games.json 中的 URL",
+        "测试游戏访问"
+      ]
+    },
+    "github_to_cloudflare": {
+      "difficulty": "medium",
+      "steps": [
+        "设置 Cloudflare R2",
+        "配置 Workers",
+        "迁移游戏文件",
+        "更新 DNS 配置",
+        "更新游戏 URL"
+      ]
+    }
+  },
+  
+  "security": {
+    "iframe_sandbox": {
+      "enabled": true,
+      "attributes": [
+        "allow-scripts",
+        "allow-same-origin",
+        "allow-forms"
+      ]
+    },
+    "csp_headers": {
+      "frame-src": [
+        "'self'",
+        "https://games.edugamehq.com",
+        "https://*.github.io"
+      ]
+    },
+    "cors_policy": {
+      "origins": [
+        "https://edugamehq.com",
+        "https://*.edugamehq.com"
+      ]
+    }
+  },
+  
+  "monitoring": {
+    "metrics": [
+      "game_load_time",
+      "error_rate",
+      "user_engagement",
+      "bandwidth_usage"
+    ],
+    "alerts": [
+      "game_unavailable",
+      "slow_loading",
+      "high_error_rate"
+    ]
+  }
+}

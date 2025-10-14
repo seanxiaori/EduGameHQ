@@ -126,5 +126,59 @@ const { translations } = Astro.props;
         <p class="category-card-description">{t(translations, 'home.category_description.art', 'Express creativity through digital art')}</p>
       </div>
     </a>
+
+    <!-- 冒险游戏 -->
+    <a href="/adventure-games" class="category-card adventure">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🗺️</span>
+          <span class="floating-symbol">⚔️</span>
+          <span class="floating-symbol">🏰</span>
+        </div>
+        <div class="category-card-icon">
+          🗺️
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.adventure-games', 'Adventure Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.adventure', 'Embark on exciting quests and explorations')}</p>
+      </div>
+    </a>
+
+    <!-- 创意游戏 -->
+    <a href="/creative-games" class="category-card creative">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">💡</span>
+          <span class="floating-symbol">🎭</span>
+          <span class="floating-symbol">🌟</span>
+        </div>
+        <div class="category-card-icon">
+          💡
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.creative-games', 'Creative Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.creative', 'Unleash imagination and creative thinking')}</p>
+      </div>
+    </a>
+
+    <!-- 记忆游戏 -->
+    <a href="/memory-games" class="category-card memory">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🧠</span>
+          <span class="floating-symbol">💭</span>
+          <span class="floating-symbol">🔄</span>
+        </div>
+        <div class="category-card-icon">
+          🧠
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.memory-games', 'Memory Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.memory', 'Enhance memory and cognitive abilities')}</p>
+      </div>
+    </a>
   </div>
 </section>

@@ -229,6 +229,228 @@
         "title": "Puzzle Solving Tips",
         "subtitle": "Strategies to improve your problem-solving skills"
       }
+    },
+    "adventure_games": {
+      "title": "Adventure Games",
+      "description": "Embark on exciting educational adventures! Explore new worlds, solve mysteries, and learn through immersive storytelling that combines fun gameplay with valuable learning experiences.",
+      "featured_section": {
+        "title": "Featured Adventure Games",
+        "description": "Epic adventures that make learning unforgettable"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Adventures",
+          "description": "Perfect for young explorers starting their journey"
+        },
+        "medium": {
+          "title": "Medium Level Adventures",
+          "description": "Engaging quests for intermediate adventurers"
+        },
+        "hard": {
+          "title": "Hard Level Adventures",
+          "description": "Epic challenges for master adventurers"
+        }
+      },
+      "learning_tips": {
+        "title": "Adventure Learning Tips",
+        "subtitle": "Strategies to maximize your adventure learning experience",
+        "tips": [
+          {
+            "title": "Explore Thoroughly",
+            "description": "Take time to explore every area and interact with all elements"
+          },
+          {
+            "title": "Think Creatively",
+            "description": "Use your imagination to solve puzzles and overcome challenges"
+          },
+          {
+            "title": "Learn from Failure",
+            "description": "Every mistake is a learning opportunity in your adventure"
+          },
+          {
+            "title": "Stay Curious",
+            "description": "Ask questions and seek to understand the world around you"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Adventure Skills",
+        "subtitle": "Essential adventure abilities gained through immersive gameplay",
+        "skills": [
+          {
+            "title": "Problem Solving",
+            "description": "Develop critical thinking through quest challenges"
+          },
+          {
+            "title": "Exploration",
+            "description": "Learn to navigate and discover new environments"
+          },
+          {
+            "title": "Story Comprehension",
+            "description": "Understand narratives and character development"
+          },
+          {
+            "title": "Decision Making",
+            "description": "Practice making choices and understanding consequences"
+          },
+          {
+            "title": "Resource Management",
+            "description": "Learn to manage items and plan strategically"
+          },
+          {
+            "title": "Creative Thinking",
+            "description": "Use imagination to solve unique challenges"
+          }
+        ]
+      }
+    },
+    "creative_games": {
+      "title": "Creative Games",
+      "description": "Unleash your artistic potential! Express yourself through digital art, music, storytelling, and design while developing creativity, imagination, and artistic skills.",
+      "featured_section": {
+        "title": "Featured Creative Games",
+        "description": "Inspiring games that spark artistic expression"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Creative",
+          "description": "Perfect for budding young artists"
+        },
+        "medium": {
+          "title": "Medium Level Creative",
+          "description": "Intermediate projects for developing artists"
+        },
+        "hard": {
+          "title": "Hard Level Creative",
+          "description": "Advanced challenges for creative masters"
+        }
+      },
+      "learning_tips": {
+        "title": "Creative Learning Tips",
+        "subtitle": "Strategies to enhance your artistic development",
+        "tips": [
+          {
+            "title": "Experiment Freely",
+            "description": "Try different tools and techniques without fear of mistakes"
+          },
+          {
+            "title": "Find Inspiration",
+            "description": "Look for ideas in nature, art, and everyday life"
+          },
+          {
+            "title": "Practice Regularly",
+            "description": "Dedicate time daily to creative expression and skill building"
+          },
+          {
+            "title": "Share Your Work",
+            "description": "Show your creations to others and learn from feedback"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Creative Skills",
+        "subtitle": "Essential creative abilities gained through artistic gameplay",
+        "skills": [
+          {
+            "title": "Color & Design",
+            "description": "Master color theory and visual composition principles"
+          },
+          {
+            "title": "Drawing & Illustration",
+            "description": "Develop fundamental drawing and illustration techniques"
+          },
+          {
+            "title": "Animation & Video",
+            "description": "Learn basic animation and video creation skills"
+          },
+          {
+            "title": "Music & Sound",
+            "description": "Explore rhythm, melody, and sound design"
+          },
+          {
+            "title": "Storytelling & Writing",
+            "description": "Craft compelling narratives and creative writing"
+          },
+          {
+            "title": "Creative Thinking",
+            "description": "Develop innovative problem-solving approaches"
+          }
+        ]
+      }
+    },
+    "memory_games": {
+      "title": "Memory Games",
+      "description": "Strengthen your mind with engaging memory challenges! Improve concentration, recall abilities, and cognitive skills through fun brain training exercises and memory-building activities.",
+      "featured_section": {
+        "title": "Featured Memory Games",
+        "description": "Brain training games to boost your memory power"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Easy Level Memory",
+          "description": "Perfect for beginners starting memory training"
+        },
+        "medium": {
+          "title": "Medium Level Memory",
+          "description": "Intermediate challenges for developing minds"
+        },
+        "hard": {
+          "title": "Hard Level Memory",
+          "description": "Advanced challenges for memory masters"
+        }
+      },
+      "learning_tips": {
+        "title": "Memory Training Tips",
+        "subtitle": "Effective strategies to improve your memory skills",
+        "tips": [
+          {
+            "title": "Start Simple",
+            "description": "Begin with easier patterns and gradually increase complexity"
+          },
+          {
+            "title": "Stay Focused",
+            "description": "Eliminate distractions and concentrate fully on the task"
+          },
+          {
+            "title": "Use Strategies",
+            "description": "Develop memory techniques like visualization and association"
+          },
+          {
+            "title": "Practice Daily",
+            "description": "Regular practice strengthens memory pathways in your brain"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Memory Skills",
+        "subtitle": "Essential memory abilities gained through cognitive training",
+        "skills": [
+          {
+            "title": "Visual Memory",
+            "description": "Remember and recall visual patterns and images"
+          },
+          {
+            "title": "Auditory Memory",
+            "description": "Process and remember sounds and spoken information"
+          },
+          {
+            "title": "Sequential Memory",
+            "description": "Remember the order of events and sequences"
+          },
+          {
+            "title": "Working Memory",
+            "description": "Hold and manipulate information in your mind"
+          },
+          {
+            "title": "Long-term Recall",
+            "description": "Store and retrieve information over extended periods"
+          },
+          {
+            "title": "Concentration",
+            "description": "Maintain focus and attention for extended periods"
+          }
+        ]
+      }
     }
   },
   "about": {

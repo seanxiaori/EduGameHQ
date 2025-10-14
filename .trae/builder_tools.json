@@ -1,0 +1,503 @@
+[
+  {
+    "description": "Use this tool to create and manage a structured task list for your current coding session. This helps you track progress, organize complex tasks, and demonstrate thoroughness to the user.\nIt also helps the user understand the progress of the task and overall progress of their requests.\n\n## When to Use This Tool\nUse this tool proactively in these scenarios:\n  1. Complex multi-step tasks - When a task requires 3 or more distinct steps or actions\n  2. Non-trivial and complex tasks - Tasks that require careful planning or multiple operations\n  3. User explicitly requests todo list - When the user directly asks you to use the todo list\n  4. User provides multiple tasks - When users provide a list of things to be done (numbered or comma-separated)\n  5. After receiving new instructions - Immediately capture user requirements as todos\n  6. When you start working on a task - Mark it as in_progress BEFORE beginning work. Ideally you should only have one todo as in_progress at a time\n  7. After completing a task - Mark it as completed and add any new follow-up tasks discovered during implementation\n\n## When NOT to Use This Tool\nSkip using this tool when:\n  1. There is only a single, straightforward task\n  2. The task is trivial and tracking it provides no organizational benefit\n  3. The task can be completed in less than 3 trivial steps\n  4. The task is purely conversational or informational\n  \nNOTE that you should not use this tool if there is only one trivial task to do. In this case you are better off just doing the task directly.\n  \n## Task States and Management\n\n1. **Task States**: Use these states to track progress:\n                      - pending: Task not yet started\n                      - in_progress: Currently working on (limit to ONE task at a time)\n                      - completed: Task finished successfully\n\n2. **Task Management**:\n  - Update task status in real-time as you work\n  - Mark tasks complete IMMEDIATELY after finishing (don't batch completions)\n  - Only have ONE task in_progress at any time\n  - Complete current tasks before starting new ones\n  - Remove tasks that are no longer relevant from the list entirely\n\n3. **Task Completion Requirements**:\n  - ONLY mark a task as completed when you have FULLY accomplished it\n  - If you encounter errors, blockers, or cannot finish, keep the task as in_progress\n  - When blocked, create a new task describing what needs to be resolved\n  - Never mark a task as completed if:\n      - Tests are failing\n      - Implementation is partial\n      - You encountered unresolved errors\n      - You couldn't find necessary files or dependencies\n\n4. **Task Breakdown**:\n  - Create specific, actionable items\n  - Break complex tasks into smaller, manageable steps\n  - Use clear, descriptive task names\n\nWhen in doubt, use this tool. Being proactive with task management demonstrates attentiveness and ensures you complete all requirements successfully.",
+    "name": "todo_write",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "todos": {
+          "description": "The updated todo list",
+          "items": {
+            "maxItems": 10,
+            "minItems": 3,
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "priority": {
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ],
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "pending",
+                  "in_progress",
+                  "completed"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "content",
+              "status",
+              "id",
+              "priority"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "todos"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "This tool is Trae's context engine. It:\n1. Takes in a natural language description of the code you are looking for;\n2. Uses a proprietary retrieval/embedding model suite that produces the highest-quality recall of relevant code snippets from across the codebase;\n3. Maintains a real-time index of the codebase, so the results are always up-to-date and reflects the current state of the codebase;\n4. Can retrieve across different programming languages;\n5. Only reflects the current state of the codebase on the disk, and has no information on version control or code history.",
+    "name": "search_codebase",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "information_request": {
+          "description": "A description of the information you need.",
+          "type": "string"
+        },
+        "target_directories": {
+          "description": "Specific directories to search within (You MUST use absolute paths only and MUST use correct file path separator of user's operating system). If not provided, the search will default to the project root directory. Multiple directories can be specified for targeted searching.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "information_request"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "Fast text-based search that finds exact pattern matches within files or directories, utilizing the ripgrep command for efficient searching.\nResults will be formatted in the style of ripgrep and can be configured to include line numbers and content.\nTo avoid overwhelming output, the results are capped at 50 matches. Use the Includes option to filter the search scope by file types or specific paths to narrow down the results.",
+    "name": "search_by_regex",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "query": {
+          "description": "The regular expression to search for.",
+          "type": "string"
+        },
+        "search_directory": {
+          "description": "The directory to run the ripgrep command in. This path MUST be a directory, not a file. Defaults to the current working directory.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "View up to 3 files simultaneously in batch mode for faster information gathering.\nWhen using this tool to gather information, you should **FIRST try to use search tool to locate specific parts that need examination**, and only use this tool when you need to see the complete context of specific code blocks.\n\nThe output of this tool call will be the 1-indexed file contents from start_line_one_indexed to end_line_one_indexed_inclusive.\nNote that this call can view at most 250 lines at a time and 200 lines minimum for each file.\n\nWhen using this tool to gather information, it's your responsibility to ensure you have the COMPLETE context. Specifically, each time you call this tool you should:\n1) Assess if the file contents you viewed are sufficient to proceed with your task.\n2) Take note of where there are lines not shown.\n3) If the file contents you have viewed are insufficient, and you suspect they may be in lines not shown, proactively call the tool again to view those lines.\n4) Prefer to read more lines per view to minimize the number of calls, when making multiple calls to view the same file, ensure your reading ranges do not significantly overlap to maximize information coverage.\n5) When in doubt, call this tool again to gather more information. Remember that partial file views may miss critical dependencies, imports, or functionality.\n\nIn some cases, if reading a range of lines is not enough, you may choose to read the entire file.\nReading entire files is often wasteful and slow, especially for large files (i.e. more than a few hundred lines). So you should use this option sparingly.\nReading the entire file is not allowed in most cases. You are only allowed to read the entire file if it has been edited or manually mentioned in the conversation by the user.",
+    "name": "view_files",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "files": {
+          "description": "List of files to view (up to 3 files, local paths only).",
+          "items": {
+            "properties": {
+              "end_line_one_indexed_inclusive": {
+                "description": "The one-indexed line number to end reading at (inclusive).",
+                "format": "int32",
+                "type": "integer"
+              },
+              "file_path": {
+                "description": "The file path you need to view, you MUST set file path to absolute path.",
+                "type": "string"
+              },
+              "read_entire_file": {
+                "description": "Whether to read the entire file. Defaults to false.",
+                "type": "boolean"
+              },
+              "start_line_one_indexed": {
+                "description": "The one-indexed line number to start reading from (inclusive).",
+                "format": "int32",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "file_path",
+              "start_line_one_indexed",
+              "end_line_one_indexed_inclusive"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "files"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to view files of the specified directory.\nThe directory path must be an absolute path that exists. For each child in the directory, output will have:\n- Relative path to the directory.\n- Whether it is a directory or file, the directory path will ends with a slash, and the file will not.",
+    "name": "list_dir",
+    "parameters": {
+      "properties": {
+        "dir_path": {
+          "description": "The directory path you want to list, must be an absolute path to a directory that exists, you MUST set file path to absolute path.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "max_depth": {
+          "default": 3,
+          "description": "The max depth you want to traverse in provided directory, the value MUST not larger than 5, default is 3.",
+          "format": "uint",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dir_path"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to write content to a file with precise control over creation/rewrite behavior. You should specify the following arguments before the others: [rewrite, file_path]. Follow these rules:\n1. **REWRITE MODE (rewrite=true)**:\n   - Use EXCLUSIVELY for rewriting an existing file with new content\n   - Only suitable for writing limited content (<2000 characters)\n   - Unless rewriting is more cost-effective in your situation, use other file editing tools provided in the tool list\n2. **CREATE MODE (rewrite=false)**:\n   - Use EXCLUSIVELY for creating a new file\n   - STRICTLY PROHIBITED to use when file exists\n   - Parent directories will be auto-created\n3. **COMMON RULES**:\n   - ALWAYS use absolute path\n   - NEVER specify directory path (must be file path)\n   - Content must be full file content\n   - MUST explicitly set rewrite=true/false",
+    "name": "write_to_file",
+    "parameters": {
+      "properties": {
+        "content": {
+          "description": "The full file content. - When rewrite=true, content length STRONGLY RECOMMENDED <2000 characters - When rewrite=false, content MUST NOT exceed 5000 characters OR 300 lines.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "file_path": {
+          "description": "The absolute file path (never a directory). When rewrite=false, MUST be non-existing file path When rewrite=true, MUST be existing file path",
+          "type": "string"
+        },
+        "rewrite": {
+          "description": "CRITICAL FLAG DECLARATION:\n- Set TRUE ONLY when absolutely certain you need to rewrite the existing file\n- Set FALSE ONLY when absolutely certain the file does not exist\nModel MUST verify file existence status before setting this flag\nYou MUST set this field as the FIRST property.",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "rewrite",
+        "file_path",
+        "content"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to edit file. You should specify the following arguments before the others: [file_path]\n\nWhen you choose to use this tool to edit a existing file, you MUST follow the *SEARCH/REPLACE* Rules to set the `old_str` and `new_str` parameters:\n\n1. The `old_str` is the SEARCH section that should be a contiguous chunk of lines to search for in the existing source code.\n2. The `new_str` is the REPLACE section that should be lines to replace into the source code.\n3. The REPLACE section MUST be different from the SEARCH section.\n\nThis tool will *only* replace the first match occurrence of the SEARCH section.\nInclude enough lines in the SEARCH section to uniquely match the set of lines that need to change.\n\nKeep your SEARCH and REPLACE sections concise.\nInclude just the changing lines, and a few surrounding lines if needed for uniqueness.\nDo not include long runs of unchanging lines in your SEARCH and REPLACE sections.\n\nOnly create SEARCH and REPLACE sections for file that the user has added to the chat!\n\nIf you want to move code within a file, you need to make two separate edit operations: delete the original code chunk and then insert it in anothor location.",
+    "name": "update_file",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "file_path": {
+          "description": "The file path, you MUST set file path to absolute path.",
+          "type": "string"
+        },
+        "new_str": {
+          "description": "The REPLACE section, the lines to replace into the source code.",
+          "type": "string"
+        },
+        "old_str": {
+          "description": "The SEARCH section, a contiguous chunk of lines to search for in the existing source code.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "file_path",
+        "old_str",
+        "new_str"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to edit an existing files with less than 1000 lines of code, and you should follow these rules:\n\n1. Provide ONLY the specific lines of code that you intend to edit.\n2. **NEVER specify or write out unchanged code**. Instead, represent all unchanged code using this special placeholder: `// ... existing code ...`.\n3. To edit multiple, non-adjacent lines of code in the same file, make a single call to this tool. Specify each edit in sequence with the special placeholder `// ... existing code ...` to represent unchanged code in between edited lines.\nHere's an example of how to edit three non-adjacent lines of code at once:\n\n```\n// ... existing code ...\nedited_line_1\n// ... existing code ...\nedited_line_2\n// ... existing code ...\nedited_line_3\n// ... existing code ...\n```\n\n4. NEVER output an entire file, this is very expensive.\nYou should specify the following arguments before the others: [file_path]\n\nYou are diligent and tireless!\nYou NEVER leave comments describing code without implementing it!\nYou always COMPLETELY IMPLEMENT the needed code!",
+    "name": "edit_file_fast_apply",
+    "parameters": {
+      "properties": {
+        "code_language": {
+          "description": "The markdown language for the code block, e.g 'python' or 'javascript'",
+          "type": "string"
+        },
+        "content": {
+          "description": "The changed content of the file.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "file_path": {
+          "description": "The file path, you MUST set file path to absolute path.",
+          "type": "string"
+        },
+        "instruction": {
+          "default": "",
+          "description": "A description of the changes that you are making to the file.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "file_path",
+        "content"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to move or rename an existing file.\nWhen you need to relocate a file to a different directory or change its name, you should use this tool.",
+    "name": "rename_file",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "file_path": {
+          "description": "The original file path, you MUST set file path to absolute path.",
+          "type": "string"
+        },
+        "rename_file_path": {
+          "description": "The new file path you want to rename.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "file_path",
+        "rename_file_path"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to delete files, you can delete multi files in one toolcall, and you MUST make sure the files is exist before deleting.\nWhen you need to delete file, you MUST use this tool to delete file instead of using shell.",
+    "name": "delete_file",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "file_paths": {
+          "description": "The list of file paths you want to delete, you MUST set file path to absolute path.",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "file_paths"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to PROPOSE a command to run on behalf of the user.\nEnsure the command is properly formatted and does not contain any harmful instructions.\nEnsure the command is compatible with the current operating system (windows).\nIf you want to run command in special directory, you should set [cwd] to the directory path instead of using command to change directory.\nIf you need to start a web server or any long-running process, you MUST set [blocking] to false. Additionally, remember to set [wait_ms_before_async] to a reasonable value to ensure the command does not fail quickly with an error.\nSince interactive commands are expensive, You MUST avoid generating interactive commands, unless the command only supports interactive input. For example, you MUST run `npm create vite@latest . -- --template react` instead of `npm create vite@latest .`.\nCommands will be run with PAGER=cat. You may want to limit the length of output for commands that usually rely on paging and may contain very long output (e.g. for git log, use git log -n <N> ; for man ls, man ls | head -n <N>).\nFor performance reasons, please reuse existing terminals as much as possible.\nThe command will be executed in PowerShell environment. Do NOT use `cmd.exe` or `command.exe`. Use PowerShell compatible commands.",
+    "name": "run_command",
+    "parameters": {
+      "properties": {
+        "blocking": {
+          "description": "When [blocking] is set to `true`, the command will run until it completes, and during this period, the user won't be able to interact with the Agent. You MUST ensure this value is set according to the following rules:\n\nAssign [blocking] to `false` only if:\n1. Launching a web server or dev server.\n2. Starting a long-running process that runs continuously (e.g., system services, monitoring processes, database servers, or message queues).\n\nOtherwise, set [blocking] to `true`. For example, if the command will finish in a relatively short amount of time, or it's important to review the command's output before responding to the user, make the command blocking.",
+          "type": "boolean"
+        },
+        "command": {
+          "description": "The terminal command to execute.",
+          "type": "string"
+        },
+        "command_type": {
+          "description": "The command type which you have classified, the available type is: [web_server, long_running_process, short_running_process, other].\n\nThe descriptions of available types are:\n- **web_server**: Commands that launch a web server, such as a local development server, a web application, or a web API.\n- **long_running_process**: Commands that run for a long period of time, such as a long-running task, a watch process, or a daemon.\n- **short_running_process**: Commands that run for a short period of time, such as a simple task, a small script, or a small command-line tool.\n- **other**: Commands that don't fit into any of the above categories.",
+          "type": "string"
+        },
+        "cwd": {
+          "description": "The working directory to run the command in, the value MUST be absolute path, if not provided, it will be the current working directory.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "requires_approval": {
+          "description": "Whether the user must approval the command before it is executed. Set to 'false' for safe operations like read/write files/directories, create/initialize/build projects, install project dependencies, running development servers.",
+          "type": "boolean"
+        },
+        "target_terminal": {
+          "description": "The target terminal for command execution. it can be a terminal id (tell you in <available_terminal/> or <toolcall_result/>), or 'new' that refer to a new terminal.",
+          "type": "string"
+        },
+        "wait_ms_before_async": {
+          "description": "This configuration applies only when [blocking] is set to false.\nIt defines the number of milliseconds to pause after initiating the command before letting it proceed in full asynchronous mode.\nThis delay is beneficial for commands that are meant to run asynchronously but might fail almost immediately with an error; the wait allows you to detect and observe any errors that occur during this initial period.\nIf you prefer not to wait, set this value to 0.",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "command",
+        "blocking",
+        "requires_approval"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to get the status of a previously executed command by its Command ID ( non-blocking command ).\nReturns the current status (running, done), exit code (if done), output lines as specified by output priority, and any error if present.\nIf the user asks about runtime errors, compilation errors, terminal errors, etc., you can also use the provided tool to obtain the current terminal command without setting the Command ID.\nIf there is a non-blocking command is initializing in previous toolcall, you should use this tool to get the current status of that command.\nIf there is no **Command ID** information in previous toolcall, you MUST not use this tool.\nIf the output is long, this tool will only get part of the output and the rest will be replaced with (some characters truncated). You can call this tool multiple times with the same command_id, and set skip_character_count to get more output contents.\nYou MUST not call this tool with the same command_id more than 3 times, as it consumes excessive resources and is inefficient.\n\nExample:\n```\n$ ls -a\n.bashrc\n.zshrc\nWorkspace\n```\n* If you set 'output_priority' to 'bottom' and 'output_character_count' to 10, you will get the output \"c\\nWorkspace\".\n* If you set 'output_priority' to 'bottom' and 'output_character_count' to 10 and 'skip_character_count' to 10, you will get the output \"shrc\\n.zshr\".",
+    "name": "check_command_status",
+    "parameters": {
+      "properties": {
+        "command_id": {
+          "description": "ID of the command to get status for.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "output_character_count": {
+          "default": 1000,
+          "description": "Number of characters to view. Make this as small as possible to avoid excessive memory usage.",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "output_priority": {
+          "default": "bottom",
+          "description": "Priority for displaying command output. Must be one of: 'top' (show oldest lines), 'bottom' (show newest lines), or 'split' (prioritize oldest and newest lines, excluding middle).",
+          "type": "string"
+        },
+        "skip_character_count": {
+          "default": 0,
+          "description": "Number of characters to skip from the output_priority position.",
+          "format": "uint",
+          "minimum": 0,
+          "type": "integer"
+        },
+        "wait_ms_before_check": {
+          "description": "If you expect the command to take longer to complete, you can specify a waiting period in milliseconds before checking its status.\nIf you prefer not to wait, set this value to 0.",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    }
+  },
+  {
+    "description": "This tool allows you to terminate a currently running command( the command MUST be previously executed command. ). You should use this tool when:\n- You need to restart a command after updating the code;\n- The user requests to stop the running command;",
+    "name": "stop_command",
+    "parameters": {
+      "properties": {
+        "command_id": {
+          "description": "The command id of the running command that you need to terminate. you MUST use correct command id from previously executed command info.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "command_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "You can use this tool to show the available preview URL to user if you have started a local server successfully in a previous toolcall, which user can open it in the browser.\nYou MUST verify that a command has been successfully executed in the toolcall history, and obtain the preview URL from the command's output information.\nYou MUST provide a valid, complete, and visible preview URL.\nIf you not sure the command is running, you MUST not use this tool.",
+    "name": "open_preview",
+    "parameters": {
+      "properties": {
+        "command_id": {
+          "description": "The command id that should be obtained from a previously executed command. This command id must correspond to the command that generated the preview url.",
+          "type": "string"
+        },
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "preview_url": {
+          "description": "The available preview url of the http server, it must be a complete, visible, valid http url. e.g. http://localhost:8000/.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "preview_url",
+        "command_id"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "This tool can be used to search the internet, which should be used with caution, as frequent searches result in a bad user experience and excessive costs.\n\nSome good examples to use this tool are:\n- knowledge relies on real-time information, e.g. current weather, stock prices, etc.\n- knowledge that you absolutely don't know but is required for the task.\n- when user indicates your previous answer is not accurate.",
+    "name": "web_search",
+    "parameters": {
+      "properties": {
+        "explanation": {
+          "description": "One sentence explanation as to why this tool is being used, and how it contributes to the goal.",
+          "type": "string"
+        },
+        "lr": {
+          "description": "Language restriction for search results (e.g., 'lang_en' for English)",
+          "type": "string"
+        },
+        "num": {
+          "default": 5,
+          "description": "Maximum number of search results to return (default: 5)",
+          "format": "uint",
+          "type": "integer"
+        },
+        "query": {
+          "description": "The search query to be executed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query"
+      ],
+      "type": "object"
+    }
+  },
+  {
+    "description": "Use this tool to indicate that you have completed the task and are ready to finish the conversation. This tool should be used when:\n1. All user requirements have been fully satisfied\n2. The task has been completed successfully\n3. No further action is needed from your side\n4. You want to provide a final summary or conclusion\n\nDo not use this tool if:\n- There are still pending tasks or unresolved issues\n- The user might have follow-up questions\n- You are waiting for user feedback or confirmation\n- The task is only partially complete",
+    "name": "finish",
+    "parameters": {
+      "properties": {
+        "summary": {
+          "description": "A brief summary of what was accomplished and any important notes for the user.",
+          "type": "string"
+        }
+      },
+      "required": [
+        "summary"
+      ],
+      "type": "object"
+    }
+  }
+]

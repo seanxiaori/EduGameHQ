@@ -107,6 +107,33 @@
   background: radial-gradient(circle, #EC4899 0%, transparent 70%);
 }
 
+/* 冒险游戏分类图标 */
+.category-icon.adventure .icon-background {
+  background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); /* Teal */
+}
+
+.category-icon.adventure .icon-glow {
+  background: radial-gradient(circle, #14B8A6 0%, transparent 70%);
+}
+
+/* 创意游戏分类图标 */
+.category-icon.creative .icon-background {
+  background: linear-gradient(135deg, #FACC15 0%, #EAB308 100%); /* Yellow */
+}
+
+.category-icon.creative .icon-glow {
+  background: radial-gradient(circle, #FACC15 0%, transparent 70%);
+}
+
+/* 记忆游戏分类图标 */
+.category-icon.memory .icon-background {
+  background: linear-gradient(135deg, #64748B 0%, #475569 100%); /* Slate */
+}
+
+.category-icon.memory .icon-glow {
+  background: radial-gradient(circle, #64748B 0%, transparent 70%);
+}
+
 /* 历史地理分类图标 */
 .category-icon.geography .icon-background {
   background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
@@ -188,6 +215,16 @@
   background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
 }
 
+.section-icon.adventure { background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); } /* Teal */
+
+.section-icon.creative {
+  background: linear-gradient(135deg, #FACC15 0%, #EAB308 100%); /* Yellow */
+}
+
+.section-icon.memory {
+  background: linear-gradient(135deg, #64748B 0%, #475569 100%); /* Slate */
+}
+
 .section-icon.geography {
   background: linear-gradient(135deg, #8B5CF6 0%, #7C3AED 100%);
 }
@@ -244,6 +281,18 @@
 
 .sidebar-icon.art {
   background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%);
+}
+
+.sidebar-icon.adventure {
+  background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%); /* Teal */
+}
+
+.sidebar-icon.creative {
+  background: linear-gradient(135deg, #FACC15 0%, #EAB308 100%); /* Yellow */
+}
+
+.sidebar-icon.memory {
+  background: linear-gradient(135deg, #64748B 0%, #475569 100%); /* Slate */
 }
 
 .sidebar-icon.geography {
@@ -382,8 +431,165 @@
 - Medium: fas fa-thermometer-half (中温)
 - Hard: fas fa-thermometer-full (高温)
 
-侧边栏图标建议：
+/* 侧边栏图标建议：
 - Tips: fas fa-lightbulb, fas fa-info-circle, fas fa-question-circle
 - Skills: fas fa-chart-line, fas fa-graduation-cap, fas fa-target
 - Progress: fas fa-chart-bar, fas fa-trophy, fas fa-medal
-*/ 
+*/
+
+/*
+ * =========================================
+ * 分类页面头部主题系统 (Category Page Header Themes)
+ * =========================================
+ * 使用 :has() 选择器，根据 .section-icon 的分类
+ * 动态地为父元素 .page-header 应用主题色。
+ */
+
+/* --- 语言分类主题 --- */
+.page-header:has(.section-icon.language) {
+  background: linear-gradient(135deg, #FAF5FF 0%, #F3E8FF 100%);
+  border-color: rgba(192, 38, 211, 0.2);
+}
+
+/* --- 冒险分类主题 --- */
+.page-header:has(.section-icon.adventure) {
+  background: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%); /* Teal */
+  border-color: rgba(20, 184, 166, 0.2);
+}
+
+/* --- 数学分类主题 --- */
+.page-header:has(.section-icon.math) {
+  background: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+  border-color: rgba(249, 115, 22, 0.2);
+}
+
+/* --- 科学分类主题 --- */
+.page-header:has(.section-icon.science) {
+  background: linear-gradient(135deg, #F0FDF4 0%, #D1FAE5 100%);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+
+/* --- 编程分类主题 --- */
+.page-header:has(.section-icon.coding) {
+  background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+/* --- 益智分类主题 --- */
+.page-header:has(.section-icon.puzzle) {
+  background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+  border-color: rgba(124, 58, 237, 0.2);
+}
+
+/* --- 艺术创意分类主题 --- */
+.page-header:has(.section-icon.art) {
+  background: linear-gradient(135deg, #FFF1F2 0%, #FFE4E6 100%);
+  border-color: rgba(236, 72, 153, 0.2);
+}
+
+/* --- 创意游戏分类主题 --- */
+.page-header:has(.section-icon.creative) {
+  background: linear-gradient(135deg, #FEFCE8 0%, #FEF9C3 100%); /* Yellow */
+  border-color: rgba(234, 179, 8, 0.2);
+}
+
+/* --- 记忆游戏分类主题 --- */
+.page-header:has(.section-icon.memory) {
+  background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%); /* Slate */
+  border-color: rgba(100, 116, 139, 0.2);
+}
+
+/*
+ * =========================================
+ * 导航/菜单项文本颜色系统 (Navigation/Menu Item Text Color System)
+ * =========================================
+ * 利用分类颜色类，为下拉菜单和移动端菜单的文本上色
+ */
+
+/* --- 数学分类文本颜色 --- */
+.dropdown-item.math, .mobile-menu-item.math, .nav-link.math {
+  color: #EA580C;
+}
+.dropdown-item.math i, .mobile-menu-item.math i, .nav-link.math i {
+  color: #EA580C;
+}
+
+/* --- 科学分类文本颜色 --- */
+.dropdown-item.science, .mobile-menu-item.science, .nav-link.science {
+  color: #059669;
+}
+.dropdown-item.science i, .mobile-menu-item.science i, .nav-link.science i {
+  color: #059669;
+}
+
+/* --- 编程分类文本颜色 --- */
+.dropdown-item.coding, .mobile-menu-item.coding, .nav-link.coding {
+  color: #2563EB;
+}
+.dropdown-item.coding i, .mobile-menu-item.coding i, .nav-link.coding i {
+  color: #2563EB;
+}
+
+/* --- 语言分类文本颜色 --- */
+.dropdown-item.language, .mobile-menu-item.language, .nav-link.language {
+  color: #C026D3;
+}
+.dropdown-item.language i, .mobile-menu-item.language i, .nav-link.language i {
+  color: #C026D3;
+}
+
+/* --- 益智分类文本颜色 --- */
+.dropdown-item.puzzle, .mobile-menu-item.puzzle, .nav-link.puzzle {
+  color: #7C3AED;
+}
+.dropdown-item.puzzle i, .mobile-menu-item.puzzle i, .nav-link.puzzle i {
+  color: #7C3AED;
+}
+
+/* --- 体育分类文本颜色 --- */
+.dropdown-item.sports, .mobile-menu-item.sports, .nav-link.sports {
+  color: #F97316;
+}
+.dropdown-item.sports i, .mobile-menu-item.sports i, .nav-link.sports i {
+  color: #F97316;
+}
+
+/* --- 艺术创意分类文本颜色 --- */
+.dropdown-item.art, .mobile-menu-item.art, .nav-link.art {
+  color: #EC4899;
+}
+.dropdown-item.art i, .mobile-menu-item.art i, .nav-link.art i {
+  color: #EC4899;
+}
+
+/* --- 冒险游戏分类文本颜色 --- */
+.dropdown-item.adventure, .mobile-menu-item.adventure, .nav-link.adventure {
+  color: #14B8A6; /* Teal */
+}
+.dropdown-item.adventure i, .mobile-menu-item.adventure i, .nav-link.adventure i {
+  color: #14B8A6; /* Teal */
+}
+
+/* --- 创意游戏分类文本颜色 --- */
+.dropdown-item.creative, .mobile-menu-item.creative, .nav-link.creative {
+  color: #EAB308; /* Yellow */
+}
+.dropdown-item.creative i, .mobile-menu-item.creative i, .nav-link.creative i {
+  color: #EAB308; /* Yellow */
+}
+
+/* --- 记忆游戏分类文本颜色 --- */
+.dropdown-item.memory, .mobile-menu-item.memory, .nav-link.memory {
+  color: #64748B; /* Slate */
+}
+.dropdown-item.memory i, .mobile-menu-item.memory i, .nav-link.memory i {
+  color: #64748B; /* Slate */
+}
+
+/* --- 历史地理分类文本颜色 --- */
+.dropdown-item.geography, .mobile-menu-item.geography, .nav-link.geography {
+  color: #8B5CF6;
+}
+.dropdown-item.geography i, .mobile-menu-item.geography i, .nav-link.geography i {
+  color: #8B5CF6;
+}

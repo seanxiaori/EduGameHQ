@@ -350,6 +350,18 @@
   background: linear-gradient(135deg, #FFF7ED, #FFEDD5);
 }
 
+.category-card.adventure:hover {
+  background: linear-gradient(135deg, #F0FDF4, #DCFCE7);
+}
+
+.category-card.creative:hover {
+  background: linear-gradient(135deg, #FFFBEB, #FEF3C7);
+}
+
+.category-card.memory:hover {
+  background: linear-gradient(135deg, #F3E8FF, #E9D5FF);
+}
+
 /* 特色游戏区域 */
 .featured-section {
   margin-bottom: 3rem;

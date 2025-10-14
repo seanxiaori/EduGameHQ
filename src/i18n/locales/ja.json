@@ -297,6 +297,108 @@
         "title": "パズル解決のコツ",
         "subtitle": "問題解決スキル向上のための戦略"
       }
+    },
+    "adventure_games": {
+      "title": "アドベンチャーゲーム",
+      "description": "アドベンチャーゲームのコレクションでエキサイティングな教育の旅に出かけましょう！新しい世界を探索し、パズルを解き、魅力的なストーリーとインタラクティブなチャレンジを通じて重要なスキルを学びます。",
+      "featured_section": {
+        "title": "おすすめアドベンチャーゲーム",
+        "description": "学習と楽しさを組み合わせたスリリングなアドベンチャー"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単なアドベンチャー",
+          "description": "若い探検家と初心者に最適"
+        },
+        "medium": {
+          "title": "中級アドベンチャー",
+          "description": "経験豊富なプレイヤー向けのエキサイティングなチャレンジ"
+        },
+        "hard": {
+          "title": "エピックアドベンチャー",
+          "description": "マスター冒険者のための複雑なクエスト"
+        }
+      },
+      "learning_tips": {
+        "title": "アドベンチャー学習のコツ",
+        "subtitle": "プレイ中の学習成果を最大化するための戦略"
+      },
+      "core_skills": {
+        "title": "コアスキル",
+        "subtitle": "アドベンチャーゲームを通じて開発される重要なスキル",
+        "problem_solving": "問題解決",
+        "critical_thinking": "批判的思考",
+        "exploration": "探索",
+        "decision_making": "意思決定"
+      }
+    },
+    "creative_games": {
+      "title": "クリエイティブゲーム",
+      "description": "クリエイティブな教育ゲームのコレクションで創造性を解き放ちましょう！実践的な活動を通じて芸術的スキル、デザイン原則、創造的思考を発達させながら、デザイン、構築、創造を行います。",
+      "featured_section": {
+        "title": "おすすめクリエイティブゲーム",
+        "description": "あなたの創造的な側面を育むインスピレーショナルなゲーム"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単な創造性",
+          "description": "初心者向けの基本的な創造活動"
+        },
+        "medium": {
+          "title": "中級創造性",
+          "description": "発達中のアーティスト向けの高度なプロジェクト"
+        },
+        "hard": {
+          "title": "マスター創造性",
+          "description": "経験豊富なクリエイター向けの複雑な創造的チャレンジ"
+        }
+      },
+      "learning_tips": {
+        "title": "創造性学習のコツ",
+        "subtitle": "創造的スキル向上のためのテクニック"
+      },
+      "core_skills": {
+        "title": "コアスキル",
+        "subtitle": "クリエイティブゲームを通じて育成される重要なスキル",
+        "artistic_expression": "芸術的表現",
+        "design_thinking": "デザイン思考",
+        "innovation": "イノベーション",
+        "visual_creativity": "視覚的創造性"
+      }
+    },
+    "memory_games": {
+      "title": "記憶ゲーム",
+      "description": "記憶ゲームのコレクションで記憶力と認知能力を強化しましょう！楽しく挑戦的な精神的エクササイズを通じて集中力、注意力、記憶力を向上させます。",
+      "featured_section": {
+        "title": "おすすめ記憶ゲーム",
+        "description": "記憶力向上のための効果的なゲーム"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "簡単な記憶トレーニング",
+          "description": "記憶初心者向けの優しいエクササイズ"
+        },
+        "medium": {
+          "title": "中級記憶トレーニング",
+          "description": "発達中の心のための適度なチャレンジ"
+        },
+        "hard": {
+          "title": "上級記憶トレーニング",
+          "description": "記憶マスター向けの集中的なエクササイズ"
+        }
+      },
+      "learning_tips": {
+        "title": "記憶学習のコツ",
+        "subtitle": "記憶力向上のための実証済み戦略"
+      },
+      "core_skills": {
+        "title": "コアスキル",
+        "subtitle": "記憶ゲームを通じて開発される重要な認知スキル",
+        "concentration": "集中力",
+        "attention": "注意力",
+        "recall": "記憶",
+        "cognitive_flexibility": "認知的柔軟性"
+      }
     }
   },
   "home": {

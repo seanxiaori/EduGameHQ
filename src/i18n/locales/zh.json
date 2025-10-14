@@ -242,6 +242,228 @@
     "select": "选择语言"
   },
   "category_pages": {
+    "adventure_games": {
+      "title": "冒险游戏",
+      "description": "踏上激动人心的冒险之旅！我们的冒险游戏集合通过令人兴奋的任务和探索来培养问题解决技能、战略思维和创造力。从寻宝到史诗般的旅程，在冒险和发现中体验学习的乐趣。",
+      "featured_section": {
+        "title": "精选冒险游戏",
+        "description": "我们最受欢迎和推荐的冒险游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻探险者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级冒险者"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合经验丰富的探险家的挑战性任务"
+        }
+      },
+      "learning_tips": {
+        "title": "冒险学习技巧",
+        "subtitle": "专家建议，帮助您成为更好的探险者",
+        "tips": [
+          {
+            "title": "从简单开始",
+            "description": "从基础任务开始，逐步挑战更复杂的冒险"
+          },
+          {
+            "title": "保持专注",
+            "description": "仔细观察环境中的线索和细节"
+          },
+          {
+            "title": "运用策略",
+            "description": "在行动前制定计划，考虑不同的解决方案"
+          },
+          {
+            "title": "坚持不懈",
+            "description": "不要轻易放弃，每次失败都是学习的机会"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "您将培养的核心技能",
+        "subtitle": "通过冒险游戏获得的基本能力",
+        "skills": {
+          "problem_solving": {
+            "title": "问题解决",
+            "description": "培养批判性思维能力"
+          },
+          "strategic_thinking": {
+            "title": "战略思维",
+            "description": "学会规划和预测结果"
+          },
+          "exploration": {
+            "title": "探索能力",
+            "description": "发现隐藏的秘密和路径"
+          },
+          "decision_making": {
+            "title": "决策制定",
+            "description": "在压力下做出明智的选择"
+          },
+          "resource_management": {
+            "title": "资源管理",
+            "description": "有效利用可用的工具和物品"
+          },
+          "perseverance": {
+            "title": "坚持不懈",
+            "description": "克服挑战，永不放弃"
+          }
+        }
+      }
+    },
+    "creative_games": {
+      "title": "创意游戏",
+      "description": "释放您的想象力！我们的创意游戏集合通过艺术表达、设计挑战和创新思维来培养创造力、艺术技能和想象力。从绘画到建造，在创作中发现学习的乐趣。",
+      "featured_section": {
+        "title": "精选创意游戏",
+        "description": "我们最受欢迎和推荐的创意游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻艺术家"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级创作者"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合高级艺术家的复杂项目"
+        }
+      },
+      "learning_tips": {
+        "title": "创意学习技巧",
+        "subtitle": "专家建议，帮助您提升创造力",
+        "tips": [
+          {
+            "title": "自由表达",
+            "description": "不要害怕尝试新的想法和风格"
+          },
+          {
+            "title": "观察学习",
+            "description": "从其他艺术家和创作者那里获得灵感"
+          },
+          {
+            "title": "多样尝试",
+            "description": "探索不同的媒介和创作技巧"
+          },
+          {
+            "title": "享受过程",
+            "description": "专注于创作的乐趣，而不仅仅是结果"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "您将培养的核心技能",
+        "subtitle": "通过创意游戏获得的基本能力",
+        "skills": {
+          "artistic_expression": {
+            "title": "艺术表达",
+            "description": "通过视觉艺术传达想法和情感"
+          },
+          "design_thinking": {
+            "title": "设计思维",
+            "description": "创造功能性和美观的解决方案"
+          },
+          "color_theory": {
+            "title": "色彩理论",
+            "description": "理解颜色如何协同工作"
+          },
+          "spatial_awareness": {
+            "title": "空间意识",
+            "description": "理解形状、大小和位置关系"
+          },
+          "innovation": {
+            "title": "创新思维",
+            "description": "开发独特和原创的想法"
+          },
+          "creative_thinking": {
+            "title": "创造性思维",
+            "description": "培养创新的问题解决能力"
+          }
+        }
+      }
+    },
+    "memory_games": {
+      "title": "记忆游戏",
+      "description": "增强您的记忆力！我们的记忆游戏集合通过模式识别、序列记忆和认知挑战来提高记忆技能、注意力和认知能力。从简单的配对到复杂的序列，在训练中发现学习的乐趣。",
+      "featured_section": {
+        "title": "精选记忆游戏",
+        "description": "我们最受欢迎和推荐的记忆游戏"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "简单级别游戏",
+          "description": "适合初学者和年轻学习者"
+        },
+        "medium": {
+          "title": "中等级别游戏",
+          "description": "适合中级训练者"
+        },
+        "hard": {
+          "title": "困难级别游戏",
+          "description": "适合高级学习者的挑战性训练"
+        }
+      },
+      "learning_tips": {
+        "title": "记忆训练技巧",
+        "subtitle": "专家建议，帮助您提升记忆力",
+        "tips": [
+          {
+            "title": "从简单开始",
+            "description": "从基础练习开始，逐步增加难度"
+          },
+          {
+            "title": "保持专注",
+            "description": "消除干扰，全神贯注于任务"
+          },
+          {
+            "title": "运用策略",
+            "description": "使用记忆技巧如联想和分组"
+          },
+          {
+            "title": "定期练习",
+            "description": "每天进行短时间的记忆训练"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "您将培养的核心技能",
+        "subtitle": "通过记忆游戏获得的基本能力",
+        "skills": {
+          "visual_memory": {
+            "title": "视觉记忆",
+            "description": "记住图像、颜色和视觉模式"
+          },
+          "auditory_memory": {
+            "title": "听觉记忆",
+            "description": "记住声音、音乐和口语信息"
+          },
+          "sequential_memory": {
+            "title": "序列记忆",
+            "description": "记住事件和信息的顺序"
+          },
+          "working_memory": {
+            "title": "工作记忆",
+            "description": "在心中保持和操作信息"
+          },
+          "pattern_recognition": {
+            "title": "模式识别",
+            "description": "识别重复的序列和结构"
+          },
+          "cognitive_flexibility": {
+            "title": "认知灵活性",
+            "description": "适应思维并在概念间切换"
+          }
+        }
+      }
+    },
     "math_games": {
       "title": "数学游戏",
       "description": "探索我们精心设计的数学游戏集合，让数学学习变得有趣且互动。从基础算术到高级问题解决，这些游戏帮助学生建立数学信心和技能。",

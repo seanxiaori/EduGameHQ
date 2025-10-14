@@ -202,6 +202,99 @@ export const seoConfig: Record<string, SEOConfig> = {
     ogImage: "/images/logo.svg"
   },
 
+  // 冒险游戏页面
+  '/adventure-games': {
+    title: "Adventure Games for Kids | Exploration & Discovery | EduGameHQ",
+    description: "Embark on exciting educational adventures! Explore 15+ adventure games that teach problem-solving, geography, history, and critical thinking for ages 6-16.",
+    keywords: [
+      "adventure games for kids",
+      "educational adventure games",
+      "exploration games",
+      "discovery games",
+      "quest games",
+      "journey games",
+      "problem solving adventures",
+      "geography games",
+      "history adventure games",
+      "critical thinking games"
+    ],
+    ogImage: "/images/logo.svg",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Adventure Games for Kids",
+      "description": "Educational adventure games for children aged 6-16",
+      "url": "https://www.edugamehq.com/adventure-games",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Adventure Games Collection",
+        "description": "Curated collection of educational adventure games"
+      }
+    }
+  },
+
+  // 创意游戏页面
+  '/creative-games': {
+    title: "Creative Games for Kids | Imagination & Innovation | EduGameHQ",
+    description: "Spark creativity with 12+ innovative games! Develop artistic skills, imagination, and creative thinking through engaging activities for ages 4-16.",
+    keywords: [
+      "creative games for kids",
+      "imagination games",
+      "innovation games",
+      "artistic games",
+      "creative thinking games",
+      "design games",
+      "building games",
+      "craft games",
+      "invention games",
+      "creativity development"
+    ],
+    ogImage: "/images/logo.svg",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Creative Games for Kids",
+      "description": "Educational creative games for children aged 4-16",
+      "url": "https://www.edugamehq.com/creative-games",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Creative Games Collection",
+        "description": "Curated collection of educational creative games"
+      }
+    }
+  },
+
+  // 记忆游戏页面
+  '/memory-games': {
+    title: "Memory Games for Kids | Brain Training & Cognitive Skills | EduGameHQ",
+    description: "Boost memory and cognitive skills with 18+ brain training games! Improve concentration, recall, and mental agility through fun challenges for ages 5-16.",
+    keywords: [
+      "memory games for kids",
+      "brain training games",
+      "cognitive games",
+      "concentration games",
+      "recall games",
+      "mental agility games",
+      "brain exercises",
+      "memory improvement",
+      "cognitive development",
+      "mind training games"
+    ],
+    ogImage: "/images/logo.svg",
+    structuredData: {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Memory Games for Kids",
+      "description": "Educational memory games for children aged 5-16",
+      "url": "https://www.edugamehq.com/memory-games",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "Memory Games Collection",
+        "description": "Curated collection of educational memory games"
+      }
+    }
+  },
+
   // 趋势游戏页面
   '/trending': {
     title: "Trending Educational Games | Popular Learning Games | EduGameHQ",

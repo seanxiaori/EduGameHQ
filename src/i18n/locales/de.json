@@ -297,6 +297,108 @@
         "title": "Puzzle-Lösungstipps",
         "subtitle": "Strategien zur Verbesserung Ihrer Problemlösungsfähigkeiten"
       }
+    },
+    "adventure_games": {
+      "title": "Abenteuer-Spiele",
+      "description": "Begeben Sie sich auf aufregende Bildungsreisen mit unserer Sammlung von Abenteuerspielen! Erkunden Sie neue Welten, lösen Sie Rätsel und lernen Sie dabei wichtige Fähigkeiten durch fesselnde Geschichten und interaktive Herausforderungen.",
+      "featured_section": {
+        "title": "Empfohlene Abenteuer-Spiele",
+        "description": "Spannende Abenteuer, die Lernen mit Spaß verbinden"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfache Abenteuer",
+          "description": "Perfekt für junge Entdecker und Anfänger"
+        },
+        "medium": {
+          "title": "Mittlere Abenteuer",
+          "description": "Aufregende Herausforderungen für erfahrene Spieler"
+        },
+        "hard": {
+          "title": "Epische Abenteuer",
+          "description": "Komplexe Quests für Meister-Abenteurer"
+        }
+      },
+      "learning_tips": {
+        "title": "Abenteuer-Lerntipps",
+        "subtitle": "Strategien zur Maximierung Ihres Lernerfolgs während des Spielens"
+      },
+      "core_skills": {
+        "title": "Kernfähigkeiten",
+        "subtitle": "Wichtige Fähigkeiten, die durch Abenteuerspiele entwickelt werden",
+        "problem_solving": "Problemlösung",
+        "critical_thinking": "Kritisches Denken",
+        "exploration": "Erkundung",
+        "decision_making": "Entscheidungsfindung"
+      }
+    },
+    "creative_games": {
+      "title": "Kreativ-Spiele",
+      "description": "Entfesseln Sie Ihre Kreativität mit unserer Sammlung von kreativen Bildungsspielen! Gestalten Sie, bauen Sie und erschaffen Sie, während Sie künstlerische Fähigkeiten, Design-Prinzipien und kreatives Denken durch praktische Aktivitäten entwickeln.",
+      "featured_section": {
+        "title": "Empfohlene Kreativ-Spiele",
+        "description": "Inspirierende Spiele zur Förderung Ihrer kreativen Seite"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfache Kreativität",
+          "description": "Grundlegende kreative Aktivitäten für Anfänger"
+        },
+        "medium": {
+          "title": "Mittlere Kreativität",
+          "description": "Fortgeschrittene Projekte für sich entwickelnde Künstler"
+        },
+        "hard": {
+          "title": "Meister-Kreativität",
+          "description": "Komplexe kreative Herausforderungen für erfahrene Schöpfer"
+        }
+      },
+      "learning_tips": {
+        "title": "Kreativitäts-Lerntipps",
+        "subtitle": "Techniken zur Verbesserung Ihrer kreativen Fähigkeiten"
+      },
+      "core_skills": {
+        "title": "Kernfähigkeiten",
+        "subtitle": "Wesentliche Fähigkeiten, die durch kreative Spiele gefördert werden",
+        "artistic_expression": "Künstlerischer Ausdruck",
+        "design_thinking": "Design-Denken",
+        "innovation": "Innovation",
+        "visual_creativity": "Visuelle Kreativität"
+      }
+    },
+    "memory_games": {
+      "title": "Gedächtnis-Spiele",
+      "description": "Stärken Sie Ihr Gedächtnis und Ihre kognitiven Fähigkeiten mit unserer Sammlung von Gedächtnisspielen! Verbessern Sie Konzentration, Aufmerksamkeit und Erinnerungsfähigkeiten durch unterhaltsame und herausfordernde mentale Übungen.",
+      "featured_section": {
+        "title": "Empfohlene Gedächtnis-Spiele",
+        "description": "Effektive Spiele zur Verbesserung Ihrer Gedächtnisleistung"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Einfaches Gedächtnistraining",
+          "description": "Sanfte Übungen für Gedächtnisanfänger"
+        },
+        "medium": {
+          "title": "Mittleres Gedächtnistraining",
+          "description": "Moderate Herausforderungen für sich entwickelnde Köpfe"
+        },
+        "hard": {
+          "title": "Fortgeschrittenes Gedächtnistraining",
+          "description": "Intensive Übungen für Gedächtnismeister"
+        }
+      },
+      "learning_tips": {
+        "title": "Gedächtnis-Lerntipps",
+        "subtitle": "Bewährte Strategien zur Verbesserung Ihrer Gedächtnisleistung"
+      },
+      "core_skills": {
+        "title": "Kernfähigkeiten",
+        "subtitle": "Wichtige kognitive Fähigkeiten, die durch Gedächtnisspiele entwickelt werden",
+        "concentration": "Konzentration",
+        "attention": "Aufmerksamkeit",
+        "recall": "Erinnerung",
+        "cognitive_flexibility": "Kognitive Flexibilität"
+      }
     }
   },
   "home": {

@@ -1139,5 +1139,109 @@
       "cancel": "취소",
       "success": "모든 좋아하는 게임이 성공적으로 제거되었습니다!"
     }
+  },
+  "category_pages": {
+    "adventure_games": {
+      "title": "모험 게임",
+      "description": "우리의 모험 게임 컬렉션으로 흥미진진한 교육적 여행을 떠나보세요! 새로운 세계를 탐험하고, 퍼즐을 풀고, 매력적인 스토리와 인터랙티브 도전을 통해 중요한 기술을 배워보세요.",
+      "featured_section": {
+        "title": "추천 모험 게임",
+        "description": "학습과 재미를 결합한 흥미진진한 모험"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "쉬운 모험",
+          "description": "어린 탐험가와 초보자에게 완벽"
+        },
+        "medium": {
+          "title": "중간 모험",
+          "description": "숙련된 플레이어를 위한 흥미진진한 도전"
+        },
+        "hard": {
+          "title": "서사적 모험",
+          "description": "전문 모험가를 위한 복잡한 미션"
+        }
+      },
+      "learning_tips": {
+        "title": "모험 학습 팁",
+        "subtitle": "게임 중 학습 결과를 극대화하는 전략"
+      },
+      "core_skills": {
+        "title": "핵심 기술",
+        "subtitle": "모험 게임이 개발하는 중요한 기술",
+        "problem_solving": "문제 해결",
+        "critical_thinking": "비판적 사고",
+        "exploration": "탐험",
+        "decision_making": "의사 결정"
+      }
+    },
+    "creative_games": {
+      "title": "창의적 게임",
+      "description": "우리의 창의적 교육 게임 컬렉션으로 창의력을 발휘해보세요! 실습 활동을 통해 예술적 기술, 디자인 원리, 창의적 사고를 개발하면서 디자인하고, 만들고, 창조해보세요.",
+      "featured_section": {
+        "title": "추천 창의적 게임",
+        "description": "창의적 면을 개발하는 영감을 주는 게임"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "간단한 창의성",
+          "description": "초보자를 위한 기본 창의적 활동"
+        },
+        "medium": {
+          "title": "중간 창의성",
+          "description": "성장하는 아티스트를 위한 고급 프로젝트"
+        },
+        "hard": {
+          "title": "정교한 창의성",
+          "description": "숙련된 창작자를 위한 복잡한 창의적 도전"
+        }
+      },
+      "learning_tips": {
+        "title": "창의적 학습 팁",
+        "subtitle": "창의적 기술을 향상시키는 기법"
+      },
+      "core_skills": {
+        "title": "핵심 기술",
+        "subtitle": "창의적 게임이 개발하는 중요한 기술",
+        "artistic_expression": "예술적 표현",
+        "design_thinking": "디자인 사고",
+        "innovation": "혁신",
+        "visual_creativity": "시각적 창의성"
+      }
+    },
+    "memory_games": {
+      "title": "기억력 게임",
+      "description": "우리의 기억력 게임 컬렉션으로 기억력과 인지 능력을 강화하세요! 재미있고 도전적인 정신 운동을 통해 집중력, 주의력, 기억 능력을 향상시켜보세요.",
+      "featured_section": {
+        "title": "추천 기억력 게임",
+        "description": "기억력 향상을 위한 효과적인 게임"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "간단한 기억 훈련",
+          "description": "기억 훈련 초보자를 위한 부드러운 연습"
+        },
+        "medium": {
+          "title": "중간 기억 훈련",
+          "description": "성장하는 마음을 위한 적당한 도전"
+        },
+        "hard": {
+          "title": "고급 기억 훈련",
+          "description": "기억 마스터를 위한 집중적인 연습"
+        }
+      },
+      "learning_tips": {
+        "title": "기억 학습 팁",
+        "subtitle": "기억력 향상을 위한 입증된 전략"
+      },
+      "core_skills": {
+        "title": "핵심 기술",
+        "subtitle": "기억력 게임이 개발하는 중요한 인지 기술",
+        "concentration": "집중력",
+        "attention": "주의력",
+        "recall": "기억",
+        "cognitive_flexibility": "인지적 유연성"
+      }
+    }
   }
 }

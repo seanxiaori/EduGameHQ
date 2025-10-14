@@ -11,6 +11,8 @@ import { getLocalizedSEO } from '../utils/seo-i18n';
 import '../styles/language-switcher.css';
 import '../styles/navbar.css';
 import '../styles/footer.css';
+import '../styles/category-icons.css';
+import '../styles/page-header.css';
 
 // 导入全新的Logo组件
 import Logo from '../components/ui/Logo.astro';
@@ -154,6 +156,24 @@ const pageStructure = {
       fallback: 'Art Games',
       icon: 'fas fa-palette', 
       color: 'art' 
+    },
+    '/adventure-games': { 
+      translationKey: 'categories.adventure-games',
+      fallback: 'Adventure Games',
+      icon: 'fas fa-map', 
+      color: 'adventure' 
+    },
+    '/creative-games': { 
+      translationKey: 'categories.creative-games',
+      fallback: 'Creative Games',
+      icon: 'fas fa-lightbulb', 
+      color: 'creative' 
+    },
+    '/memory-games': { 
+      translationKey: 'categories.memory-games',
+      fallback: 'Memory Games',
+      icon: 'fas fa-brain', 
+      color: 'memory' 
     }
   },
   special: {

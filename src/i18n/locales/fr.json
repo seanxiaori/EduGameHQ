@@ -150,6 +150,228 @@
     "report_issue": "Signaler un problème"
   },
   "category_pages": {
+    "adventure_games": {
+      "title": "Jeux d'Aventure",
+      "description": "Embarquez dans des aventures passionnantes ! Notre collection de jeux d'aventure développe les compétences de résolution de problèmes, la pensée stratégique et la créativité à travers des quêtes excitantes et l'exploration. Des chasses au trésor aux voyages épiques, découvrez la joie d'apprendre à travers l'aventure et la découverte.",
+      "featured_section": {
+        "title": "Jeux d'Aventure Recommandés",
+        "description": "Nos jeux d'aventure les plus populaires et recommandés"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes explorateurs"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Pour les aventuriers de niveau intermédiaire"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Missions difficiles pour les explorateurs expérimentés"
+        }
+      },
+      "learning_tips": {
+        "title": "Conseils d'Aventure",
+        "subtitle": "Conseils d'experts pour vous aider à devenir un meilleur explorateur",
+        "tips": [
+          {
+            "title": "Commencez Simple",
+            "description": "Commencez par des missions de base et progressez vers des aventures plus complexes"
+          },
+          {
+            "title": "Restez Concentré",
+            "description": "Observez attentivement les indices et détails dans votre environnement"
+          },
+          {
+            "title": "Utilisez la Stratégie",
+            "description": "Planifiez avant d'agir et considérez différentes solutions"
+          },
+          {
+            "title": "Persévérez",
+            "description": "N'abandonnez pas facilement, chaque échec est une opportunité d'apprendre"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Compétences Fondamentales que Vous Développerez",
+        "subtitle": "Capacités essentielles acquises grâce aux jeux d'aventure",
+        "skills": {
+          "problem_solving": {
+            "title": "Résolution de Problèmes",
+            "description": "Développer des compétences de pensée critique"
+          },
+          "strategic_thinking": {
+            "title": "Pensée Stratégique",
+            "description": "Apprendre à planifier et anticiper les résultats"
+          },
+          "exploration": {
+            "title": "Compétences d'Exploration",
+            "description": "Découvrir des secrets et chemins cachés"
+          },
+          "decision_making": {
+            "title": "Prise de Décision",
+            "description": "Faire des choix judicieux sous pression"
+          },
+          "resource_management": {
+            "title": "Gestion des Ressources",
+            "description": "Utiliser efficacement les outils et objets disponibles"
+          },
+          "perseverance": {
+            "title": "Persévérance",
+            "description": "Surmonter les défis et ne jamais abandonner"
+          }
+        }
+      }
+    },
+    "creative_games": {
+      "title": "Jeux Créatifs",
+      "description": "Libérez votre imagination ! Notre collection de jeux créatifs développe la créativité, les compétences artistiques et l'imagination à travers l'expression artistique, les défis de design et la pensée innovante. De la peinture à la construction, découvrez la joie d'apprendre à travers la création.",
+      "featured_section": {
+        "title": "Jeux Créatifs Recommandés",
+        "description": "Nos jeux créatifs les plus populaires et recommandés"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes artistes"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Pour les créateurs de niveau intermédiaire"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Projets complexes pour les artistes avancés"
+        }
+      },
+      "learning_tips": {
+        "title": "Conseils Créatifs",
+        "subtitle": "Conseils d'experts pour vous aider à améliorer votre créativité",
+        "tips": [
+          {
+            "title": "Exprimez-vous Librement",
+            "description": "N'ayez pas peur d'essayer de nouvelles idées et styles"
+          },
+          {
+            "title": "Apprenez en Observant",
+            "description": "Trouvez l'inspiration chez d'autres artistes et créateurs"
+          },
+          {
+            "title": "Expérimentez la Variété",
+            "description": "Explorez différents médiums et techniques créatives"
+          },
+          {
+            "title": "Profitez du Processus",
+            "description": "Concentrez-vous sur le plaisir de créer, pas seulement sur le résultat"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Compétences Fondamentales que Vous Développerez",
+        "subtitle": "Capacités essentielles acquises grâce aux jeux créatifs",
+        "skills": {
+          "artistic_expression": {
+            "title": "Expression Artistique",
+            "description": "Communiquer des idées et émotions à travers l'art visuel"
+          },
+          "design_thinking": {
+            "title": "Pensée Design",
+            "description": "Créer des solutions fonctionnelles et belles"
+          },
+          "color_theory": {
+            "title": "Théorie des Couleurs",
+            "description": "Comprendre comment les couleurs fonctionnent ensemble"
+          },
+          "spatial_awareness": {
+            "title": "Conscience Spatiale",
+            "description": "Comprendre les relations de forme, taille et position"
+          },
+          "innovation": {
+            "title": "Pensée Innovante",
+            "description": "Développer des idées uniques et originales"
+          },
+          "creative_thinking": {
+            "title": "Pensée Créative",
+            "description": "Cultiver des compétences innovantes de résolution de problèmes"
+          }
+        }
+      }
+    },
+    "memory_games": {
+      "title": "Jeux de Mémoire",
+      "description": "Renforcez votre mémoire ! Notre collection de jeux de mémoire améliore les compétences de mémoire, l'attention et les capacités cognitives à travers la reconnaissance de motifs, la mémoire séquentielle et les défis cognitifs. Des appariements simples aux séquences complexes, découvrez la joie d'apprendre à travers l'entraînement.",
+      "featured_section": {
+        "title": "Jeux de Mémoire Recommandés",
+        "description": "Nos jeux de mémoire les plus populaires et recommandés"
+      },
+      "difficulty_levels": {
+        "easy": {
+          "title": "Jeux de Niveau Facile",
+          "description": "Parfait pour les débutants et les jeunes apprenants"
+        },
+        "medium": {
+          "title": "Jeux de Niveau Moyen",
+          "description": "Pour les entraîneurs de niveau intermédiaire"
+        },
+        "hard": {
+          "title": "Jeux de Niveau Difficile",
+          "description": "Entraînement difficile pour les apprenants avancés"
+        }
+      },
+      "learning_tips": {
+        "title": "Conseils d'Entraînement de la Mémoire",
+        "subtitle": "Conseils d'experts pour vous aider à améliorer votre mémoire",
+        "tips": [
+          {
+            "title": "Commencez Simple",
+            "description": "Commencez par des exercices de base et augmentez progressivement la difficulté"
+          },
+          {
+            "title": "Restez Concentré",
+            "description": "Éliminez les distractions et concentrez-vous entièrement sur la tâche"
+          },
+          {
+            "title": "Utilisez des Stratégies",
+            "description": "Employez des techniques de mémoire comme l'association et le regroupement"
+          },
+          {
+            "title": "Pratiquez Régulièrement",
+            "description": "Effectuez de courts entraînements de mémoire quotidiennement"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Compétences Fondamentales que Vous Développerez",
+        "subtitle": "Capacités essentielles acquises grâce aux jeux de mémoire",
+        "skills": {
+          "visual_memory": {
+            "title": "Mémoire Visuelle",
+            "description": "Se souvenir d'images, couleurs et motifs visuels"
+          },
+          "auditory_memory": {
+            "title": "Mémoire Auditive",
+            "description": "Se souvenir de sons, musique et informations parlées"
+          },
+          "sequential_memory": {
+            "title": "Mémoire Séquentielle",
+            "description": "Se souvenir de l'ordre des événements et informations"
+          },
+          "working_memory": {
+            "title": "Mémoire de Travail",
+            "description": "Maintenir et manipuler l'information dans l'esprit"
+          },
+          "pattern_recognition": {
+            "title": "Reconnaissance de Motifs",
+            "description": "Identifier des séquences et structures répétitives"
+          },
+          "cognitive_flexibility": {
+            "title": "Flexibilité Cognitive",
+            "description": "Adapter la pensée et basculer entre les concepts"
+          }
+        }
+      }
+    },
     "math_games": {
       "title": "Jeux de Mathématiques",
       "description": "Explorez notre collection de jeux de mathématiques engageants conçus pour rendre l'apprentissage des mathématiques amusant et interactif. De l'arithmétique de base à la résolution avancée de problèmes, ces jeux aident les étudiants à développer confiance et compétences en mathématiques.",
