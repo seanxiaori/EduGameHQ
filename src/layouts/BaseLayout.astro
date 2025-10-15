@@ -445,13 +445,16 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
   ))}
   <link rel="alternate" hreflang="x-default" href={new URL(getLocalizedPath(currentPath, defaultLanguage), Astro.site || 'https://www.edugamehq.com').toString()} />
   
-  <!-- Fonts - 优化加载 -->
+  <!-- Fonts - 优化加载性能 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- 使用display=swap避免FOIT(Flash of Invisible Text) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <!-- Font Awesome - 延迟加载非关键CSS -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin="anonymous" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" /></noscript>
   
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content={pageTitle}>
@@ -486,7 +489,9 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
   <!-- Preload critical resources -->
   <link rel="preload" href="/images/logo/edugamehq-logo.svg" as="image" />
   <link rel="preload" href="/images/logo/edugamehq-icon.svg" as="image" />
-  <!-- <link rel="preload" href={ogImageUrl} as="image"> -->
+  <!-- Preload critical CSS for above-the-fold content -->
+  <link rel="preload" href="/src/styles/navbar.css" as="style" />
+  <link rel="preload" href="/src/styles/game-card.css" as="style" />
   
   <!-- DNS Prefetch for external resources -->
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
@@ -563,18 +568,23 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
   <link rel="dns-prefetch" href="//www.googletagmanager.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   
-  <!-- 游戏统计管理器 - 全局加载 -->
+  <!-- 性能优化脚本 - 移动端优先 -->
+  <script src="/js/performance-optimizer.js" defer></script>
+  
+  <!-- 游戏统计管理器 - 延迟加载 -->
   <script src="/js/game-stats-manager.js" defer is:inline></script>
   
-  <!-- 全局games数据 - 供客户端JavaScript使用 -->
-  <script define:vars={{ gamesData, currentLang, translations }} is:inline>
-    // 设置全局游戏数据和多语言数据
+  <!-- 全局games数据 - 延迟加载以改善初始加载性能 -->
+  <script define:vars={{ gamesData, currentLang, translations }} defer>
+    // 延迟设置全局游戏数据
     window.GAMES_DATA = gamesData || [];
     window.CURRENT_LANG = currentLang;
     window.TRANSLATIONS = translations;
-    console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
-    console.log('🌍 当前语言:', window.CURRENT_LANG);
-    console.log('📊 GAMES_DATA内容样例:', window.GAMES_DATA.slice(0, 2));
+    // 生产环境减少日志输出
+    if (import.meta.env.DEV) {
+      console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
+      console.log('🌍 当前语言:', window.CURRENT_LANG);
+    }
   </script>
   
   
