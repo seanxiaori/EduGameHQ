@@ -37,12 +37,18 @@ Allow: /language-games
 Allow: /puzzle-games
 Allow: /sports-games
 Allow: /art-games
+Allow: /adventure-games
+Allow: /creative-games
+Allow: /memory-games
 Allow: /*/math-games
 Allow: /*/science-games
 Allow: /*/language-games
 Allow: /*/puzzle-games
 Allow: /*/sports-games
 Allow: /*/art-games
+Allow: /*/adventure-games
+Allow: /*/creative-games
+Allow: /*/memory-games
 
 # 允许爬取功能页面
 Allow: /search
