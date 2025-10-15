@@ -3,9 +3,9 @@
     "slug": "princess-coffee-shop",
     "title": "Princess Coffee Shop",
     "category": "creative",
-    "image": "https://games.edugamehq.com/games/princess-coffee-shop/assets/shop-preview.png",
+    "image": "/games/princess-coffee-shop/assets/shop-preview.png",
     "categoryName": "Creative",
-    "iframeUrl": "https://games.edugamehq.com/games/princess-coffee-shop/",
+    "iframeUrl": "/games/princess-coffee-shop/",
     "description": "Help the princess run her magical coffee shop! Serve customers, make delicious drinks, and manage your very own café business.",
     "gameGuide": {
       "howToPlay": [
@@ -24,7 +24,7 @@
         "Keep track of popular items"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/princess-coffee-shop/assets/shop-preview.png",
+    "thumbnailUrl": "/games/princess-coffee-shop/assets/shop-preview.png",
     "difficulty": "Medium",
     "ageRange": "7-14",
     "minAge": 7,
@@ -42,7 +42,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://games.edugamehq.com/games/princess-coffee-shop/",
+    "sourceUrl": "/games/princess-coffee-shop/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -56,8 +56,8 @@
     "title": "Princess Castle",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/princess-castle/images/castle.png",
-    "iframeUrl": "https://games.edugamehq.com/games/princess-castle/",
+    "image": "/games/princess-castle/images/castle.png",
+    "iframeUrl": "/games/princess-castle/",
     "description": "Explore a magical princess castle filled with secrets and adventures! Help the princess complete quests and discover hidden treasures.",
     "gameGuide": {
       "howToPlay": [
@@ -76,7 +76,7 @@
         "Keep track of items you collect"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/princess-castle/images/castle.png",
+    "thumbnailUrl": "/games/princess-castle/images/castle.png",
     "difficulty": "Medium",
     "ageRange": "6-12",
     "minAge": 6,
@@ -94,7 +94,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://games.edugamehq.com/games/princess-castle/",
+    "sourceUrl": "/games/princess-castle/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -108,9 +108,9 @@
     "title": "Coloring Studio",
     "category": "creative",
     "categoryName": "Creative",
-    "iframeUrl": "https://games.edugamehq.com/games/coloring-studio/",
+    "iframeUrl": "/games/coloring-studio/",
     "description": "Unleash your creativity in this digital coloring studio! Choose from various pictures and color them with a wide palette of colors.",
-      "image": "https://games.edugamehq.com/games/coloring-studio/preview.png",
+      "image": "/games/animal-matching/assets/butterfly.png",
     "gameGuide": {
       "howToPlay": [
         "Select a coloring page from the gallery",
@@ -128,7 +128,7 @@
         "Take your time and enjoy the creative process"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/coloring-studio/preview.png",
+    "thumbnailUrl": "/games/animal-matching/assets/butterfly.png",
     "difficulty": "Easy",
     "ageRange": "3-12",
     "minAge": 3,
@@ -146,7 +146,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://games.edugamehq.com/games/coloring-studio/",
+    "sourceUrl": "/games/coloring-studio/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -160,9 +160,9 @@
     "title": "Animal Matching",
     "category": "memory",
     "categoryName": "Memory",
-    "iframeUrl": "https://games.edugamehq.com/games/animal-matching/",
+    "iframeUrl": "/games/animal-matching/",
     "description": "Test your memory skills with this fun animal matching game! Find pairs of identical animals and improve your concentration and memory.",
-      "image": "https://games.edugamehq.com/games/animal-matching/assets/card-back.png",
+      "image": "/games/animal-matching/assets/panda.png",
     "gameGuide": {
       "howToPlay": [
         "Click on cards to flip them over",
@@ -180,7 +180,7 @@
         "Work systematically across the board"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/animal-matching/assets/card-back.png",
+    "thumbnailUrl": "/games/animal-matching/assets/panda.png",
     "difficulty": "Medium",
     "ageRange": "5-12",
     "minAge": 5,
@@ -198,7 +198,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://games.edugamehq.com/games/animal-matching/",
+    "sourceUrl": "/games/animal-matching/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -212,7 +212,7 @@
     "title": "Animal Adventure",
     "category": "adventure",
     "categoryName": "Adventure",
-    "iframeUrl": "https://games.edugamehq.com/games/animal-adventure/",
+    "iframeUrl": "/games/animal-adventure/",
     "description": "Join cute animals on an exciting adventure! Learn about different animals while having fun in this educational game designed for young learners.",
     "gameGuide": {
       "howToPlay": [
@@ -231,7 +231,7 @@
         "Try to remember the animal facts you learn"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/animal-adventure/elephant.png",
+    "thumbnailUrl": "/games/animal-adventure/elephant.png",
     "difficulty": "Easy",
     "ageRange": "4-8",
     "minAge": 4,
@@ -249,7 +249,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://games.edugamehq.com/games/animal-adventure/",
+    "sourceUrl": "/games/animal-adventure/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,

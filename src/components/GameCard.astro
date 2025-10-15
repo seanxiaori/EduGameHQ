@@ -53,6 +53,25 @@ function getTranslatedGameData(game: Game, translations?: Record<string, any>) {
 // 获取翻译后的游戏数据
 const translatedGameData = getTranslatedGameData(game, translations);
 
+// 翻译分类名称
+function getTranslatedCategoryName(category: string, translations?: Record<string, any>): string {
+  if (!translations || !category) {
+    return category ? category.charAt(0).toUpperCase() + category.slice(1) : '';
+  }
+  // 使用categories翻译键
+  const categoryKey = `${category}-games`;
+  return t(translations, `categories.${categoryKey}`, category.charAt(0).toUpperCase() + category.slice(1));
+}
+
+// 翻译难度标签
+function getTranslatedDifficulty(difficulty: string, translations?: Record<string, any>): string {
+  if (!translations || !difficulty) {
+    return difficulty ? difficulty.toUpperCase() : '';
+  }
+  const difficultyKey = difficulty.toLowerCase();
+  return t(translations, `game.difficulty.${difficultyKey}`, difficulty.toUpperCase());
+}
+
 // 确保游戏对象有效 - 修复类型不匹配问题
 const safeGame = {
   ...game,
@@ -60,7 +79,8 @@ const safeGame = {
   slug: game.slug || '',
   title: translatedGameData.title || 'Unknown Game',
   description: translatedGameData.description || 'No description available',
-  thumbnailUrl: game.thumbnailUrl || '/images/logo.svg'
+  thumbnailUrl: game.image || game.thumbnailUrl || '/images/logo.svg',
+  translatedCategoryName: getTranslatedCategoryName(game.category, translations)
 };
 
 // 格式化人气值显示 - 构建时静态渲染
@@ -98,15 +118,15 @@ const gameUrl = getLocalizedPath(`/games/${safeGame.slug}`, currentLang);
     <!-- Play按钮独立出来 -->
     <a href={gameUrl} class="play-button">
       <i class="fas fa-play"></i>
-      <span>Play Now</span>
+      <span>{t(translations, 'game.play_now', 'Play Now')}</span>
     </a>
     
     <!-- 游戏徽章独立出来 -->
       <div class="game-badges">
-        {(showTrending && safeGame.trending) && <span class="badge trending">HOT</span>}
-        {(showFeatured && safeGame.featured) && <span class="badge featured">FEATURED</span>}
-        {(showNew && safeGame.isNew) && <span class="badge new">NEW</span>}
-        {showUpdated && <span class="badge updated">UPDATED</span>}
+        {(showTrending && safeGame.trending) && <span class="badge trending">{t(translations, 'game.badges.hot', 'HOT')}</span>}
+        {(showFeatured && safeGame.featured) && <span class="badge featured">{t(translations, 'game.badges.featured', 'FEATURED')}</span>}
+        {(showNew && safeGame.isNew) && <span class="badge new">{t(translations, 'game.badges.new', 'NEW')}</span>}
+        {showUpdated && <span class="badge updated">{t(translations, 'game.badges.updated', 'UPDATED')}</span>}
       </div>
       
     <!-- 收藏按钮独立出来，依赖全局脚本处理 -->
@@ -129,13 +149,12 @@ const gameUrl = getLocalizedPath(`/games/${safeGame.slug}`, currentLang);
     
     <div class="game-tags">
       <span class={`category-tag ${safeGame.category}`}>
-        {safeGame.categoryName || (safeGame.category && 
-          safeGame.category.charAt(0).toUpperCase() + safeGame.category.slice(1))}
+        {safeGame.translatedCategoryName}
       </span>
-      {safeGame.featured && <span class="feature-tag featured">FEATURED</span>}
-      {safeGame.trending && <span class="feature-tag hot">HOT</span>}
-      {safeGame.isNew && <span class="feature-tag new">NEW</span>}
-      <span class={`difficulty-tag ${safeGame.difficulty.toLowerCase()}`}>{safeGame.difficulty.toUpperCase()}</span>
+      {safeGame.featured && <span class="feature-tag featured">{t(translations, 'game.badges.featured', 'FEATURED')}</span>}
+      {safeGame.trending && <span class="feature-tag hot">{t(translations, 'game.badges.hot', 'HOT')}</span>}
+      {safeGame.isNew && <span class="feature-tag new">{t(translations, 'game.badges.new', 'NEW')}</span>}
+      <span class={`difficulty-tag ${safeGame.difficulty.toLowerCase()}`}>{getTranslatedDifficulty(safeGame.difficulty, translations)}</span>
     </div>
     
       <div class="game-stats">
@@ -147,7 +166,7 @@ const gameUrl = getLocalizedPath(`/games/${safeGame.slug}`, currentLang);
       )}
       <div class="stat">
         <i class="fas fa-child"></i>
-        <span>Ages {safeGame.ageRange}</span>
+        <span>{t(translations, 'game.ages', 'Ages')} {safeGame.ageRange}</span>
       </div>
       {showDeveloper && safeGame.developer && (
         <div class="stat">

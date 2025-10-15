@@ -41,7 +41,10 @@
     "language-games": "언어 게임",
     "puzzle-games": "퍼즐 게임",
     "sports-games": "스포츠 게임",
-    "art-games": "예술 게임"
+    "art-games": "예술 게임",
+    "adventure-games": "모험 게임",
+    "creative-games": "창의적 게임",
+    "memory-games": "기억력 게임"
   },
   "hero": {
     "title": "학습과 재미가 만나는 곳",
@@ -321,7 +324,10 @@
       "language": "어휘, 읽기 및 쓰기 실력 향상하기",
       "puzzle": "논리와 비판적 사고력 도전하기",
       "sports": "팀워크와 체육 배우기",
-      "art": "디지털 아트를 통한 창의성 표현하기"
+      "art": "디지털 아트를 통한 창의성 표현하기",
+      "adventure": "흥미진진한 퀴스트와 탐험을 시작하세요",
+      "creative": "상상력과 창의적 사고 발휘하기",
+      "memory": "기억력과 인지 능력 향상시키기"
     },
     "featured_games": {
       "title": "추천 게임",
@@ -1164,15 +1170,55 @@
       },
       "learning_tips": {
         "title": "모험 학습 팁",
-        "subtitle": "게임 중 학습 결과를 극대화하는 전략"
+        "subtitle": "게임 중 학습 결과를 극대화하는 전략",
+        "tips": [
+          {
+            "title": "매일 탐험",
+            "description": "매일 15-20분 새로운 모험과 도전을 탐험하세요"
+          },
+          {
+            "title": "단계적 진행",
+            "description": "쉬운 모험으로 시작하여 점차 더 어려운 퀄스트로 진행하세요"
+          },
+          {
+            "title": "도전 수용",
+            "description": "도전을 두려워하지 마세요 - 그것은 모험의 일부입니다"
+          },
+          {
+            "title": "전략적 사고",
+            "description": "전략적 사고와 문제 해결 기술 개발에 집중하세요"
+          }
+        ]
       },
       "core_skills": {
-        "title": "핵심 기술",
-        "subtitle": "모험 게임이 개발하는 중요한 기술",
-        "problem_solving": "문제 해결",
-        "critical_thinking": "비판적 사고",
-        "exploration": "탐험",
-        "decision_making": "의사 결정"
+        "title": "개발할 핵심 기술",
+        "subtitle": "몫입형 게임플레이를 통해 습등하는 필수 모험 능력",
+        "skills": [
+          {
+            "title": "문제 해결",
+            "description": "퀴스트 도전을 통해 비판적 사고력 발달"
+          },
+          {
+            "title": "탐험",
+            "description": "새로운 환경을 탐색하고 발견하는 법 배우기"
+          },
+          {
+            "title": "스토리 이해",
+            "description": "서사와 캠릭터 발달 이해하기"
+          },
+          {
+            "title": "의사 결정",
+            "description": "선택하고 결과를 이해하는 연습"
+          },
+          {
+            "title": "자원 관리",
+            "description": "아이템을 관리하고 전략적으로 계획하는 법 배우기"
+          },
+          {
+            "title": "창의적 사고",
+            "description": "상상력을 사용해 독특한 도전 해결"
+          }
+        ]
       }
     },
     "creative_games": {
@@ -1201,12 +1247,34 @@
         "subtitle": "창의적 기술을 향상시키는 기법"
       },
       "core_skills": {
-        "title": "핵심 기술",
-        "subtitle": "창의적 게임이 개발하는 중요한 기술",
-        "artistic_expression": "예술적 표현",
-        "design_thinking": "디자인 사고",
-        "innovation": "혁신",
-        "visual_creativity": "시각적 창의성"
+        "title": "창의적 기술",
+        "subtitle": "예술적 게임플레이를 통해 습등하는 필수 창의적 능력",
+        "skills": [
+          {
+            "title": "색상과 디자인",
+            "description": "색상 이론과 시각 구성 원칙 마스터하기"
+          },
+          {
+            "title": "그림과 일러스트",
+            "description": "기본 그림 및 일러스트 기법 개발"
+          },
+          {
+            "title": "애니메이션과 비디오",
+            "description": "기본 애니메이션 및 비디오 제작 기술 배우기"
+          },
+          {
+            "title": "음악과 사운드",
+            "description": "리듬, 멜로디, 사운드 디자인 탐구"
+          },
+          {
+            "title": "스토리텔링과 글쓰기",
+            "description": "매력적인 서사와 창의적인 글쓰기 만들기"
+          },
+          {
+            "title": "창의적 사고",
+            "description": "혁신적인 문제 해결 접근법 개발"
+          }
+        ]
       }
     },
     "memory_games": {
@@ -1232,15 +1300,55 @@
       },
       "learning_tips": {
         "title": "기억 학습 팁",
-        "subtitle": "기억력 향상을 위한 입증된 전략"
+        "subtitle": "기억력 향상을 위한 입증된 전략",
+        "tips": [
+          {
+            "title": "매일 연습",
+            "description": "게임을 통해 매일 15-20분 기억력 훈련"
+          },
+          {
+            "title": "간단하게 시작",
+            "description": "간단한 패턴으로 시작하여 점차 복잡도를 높이기"
+          },
+          {
+            "title": "집중 유지",
+            "description": "기억력 향상을 위해 작업에 완전히 집중하기"
+          },
+          {
+            "title": "전략 사용",
+            "description": "시각화 및 연상과 같은 기억 기술 개발"
+          }
+        ]
       },
       "core_skills": {
-        "title": "핵심 기술",
-        "subtitle": "기억력 게임이 개발하는 중요한 인지 기술",
-        "concentration": "집중력",
-        "attention": "주의력",
-        "recall": "기억",
-        "cognitive_flexibility": "인지적 유연성"
+        "title": "개발할 핵심 기술",
+        "subtitle": "인지 훈련을 통해 습등하는 필수 기억 능력",
+        "skills": [
+          {
+            "title": "시각 기억",
+            "description": "시각적 패턴과 이미지를 기억하고 회상하기"
+          },
+          {
+            "title": "청각 기억",
+            "description": "소리와 구어 정보를 처리하고 기억하기"
+          },
+          {
+            "title": "순차적 기억",
+            "description": "사건과 순서의 순서 기억하기"
+          },
+          {
+            "title": "작업 기억",
+            "description": "마음속에서 정보를 유지하고 조작하기"
+          },
+          {
+            "title": "장기 회상",
+            "description": "장기간에 걸쳐 정보를 저장하고 검색하기"
+          },
+          {
+            "title": "집중력",
+            "description": "장시간 집중력과 주의력 유지하기"
+          }
+        ]
       }
     }
   }

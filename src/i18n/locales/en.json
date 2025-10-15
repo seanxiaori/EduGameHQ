@@ -41,7 +41,10 @@
     "language-games": "Language Games",
     "puzzle-games": "Puzzle Games",
     "sports-games": "Sports Games",
-    "art-games": "Art Games"
+    "art-games": "Art Games",
+    "adventure-games": "Adventure Games",
+    "creative-games": "Creative Games",
+    "memory-games": "Memory Games"
   },
   "hero": {
     "title": "Where Learning Meets Fun",
@@ -69,7 +72,18 @@
     "play_now": "Play Now",
     "add_to_favorites": "Add to favorites",
     "loading": "Loading...",
-    "ages": "Ages"
+    "ages": "Ages",
+    "badges": {
+      "hot": "HOT",
+      "featured": "FEATURED",
+      "new": "NEW",
+      "updated": "UPDATED"
+    },
+    "difficulty": {
+      "easy": "EASY",
+      "medium": "MEDIUM",
+      "hard": "HARD"
+    }
   },
   "game_detail": {
     "loading_game": "Loading {gameTitle}...",
@@ -583,7 +597,10 @@
       "language": "Improve vocabulary, reading and writing",
       "puzzle": "Challenge logic and critical thinking",
       "sports": "Learn teamwork and physical education",
-      "art": "Express creativity through digital art"
+      "art": "Express creativity through digital art",
+      "adventure": "Embark on exciting quests and explorations",
+      "creative": "Unleash imagination and creative thinking",
+      "memory": "Enhance memory and cognitive abilities"
     },
     "featured_games": {
       "title": "Featured Games",

@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import GameCard from '../components/GameCard.astro';
-import type { Game } from '../types/game';
-import { getTranslations, t } from '../i18n/utils';
+import GameCard from '../../components/GameCard.astro';
+import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../styles/game-card.css';
+import '../../styles/game-card.css';
 
 // 获取翻译数据
 const translations = await getTranslations('ko');
@@ -236,19 +236,39 @@ const collectionPageData = {
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Core Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential adventure abilities gained through gameplay</p>
+            <h2 class="module-title">{t(translations, 'category_pages.adventure_games.core_skills.title', 'Core Skills You\'ll Develop')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.adventure_games.core_skills.subtitle', 'Essential adventure abilities gained through gameplay')}</p>
           </div>
         </div>
 
         <div class="skills-grid">
           <div class="skill-item">
             <div class="skill-icon">
+              <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">{t(translations, 'category_pages.adventure_games.core_skills.skills.0.title', 'Problem Solving')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.adventure_games.core_skills.skills.0.description', 'Develop critical thinking abilities')}</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
               <i class="fas fa-compass"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Navigation & Exploration</h4>
-              <p class="skill-description">Master map reading and pathfinding</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.adventure_games.core_skills.skills.1.title', 'Exploration')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.adventure_games.core_skills.skills.1.description', 'Learn navigation and discovery')}</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">{t(translations, 'category_pages.adventure_games.core_skills.skills.2.title', 'Story Understanding')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.adventure_games.core_skills.skills.2.description', 'Understand narratives and character development')}</p>
             </div>
           </div>
 
@@ -257,48 +277,28 @@ const collectionPageData = {
               <i class="fas fa-shield-alt"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Strategy & Planning</h4>
-              <p class="skill-description">Develop tactical thinking skills</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.adventure_games.core_skills.skills.3.title', 'Decision Making')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.adventure_games.core_skills.skills.3.description', 'Practice making choices and understanding consequences')}</p>
             </div>
           </div>
 
           <div class="skill-item">
             <div class="skill-icon">
-              <i class="fas fa-search"></i>
+              <i class="fas fa-box"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Investigation & Discovery</h4>
-              <p class="skill-description">Learn to observe and analyze clues</p>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">
-              <i class="fas fa-users"></i>
-            </div>
-            <div class="skill-content">
-              <h4 class="skill-title">Teamwork & Leadership</h4>
-              <p class="skill-description">Build collaboration and leadership skills</p>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">
-              <i class="fas fa-lightbulb"></i>
-            </div>
-            <div class="skill-content">
-              <h4 class="skill-title">Creative Thinking</h4>
-              <p class="skill-description">Develop innovative problem-solving approaches</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.adventure_games.core_skills.skills.4.title', 'Resource Management')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.adventure_games.core_skills.skills.4.description', 'Learn to manage items and plan strategically')}</p>
             </div>
           </div>
           
           <div class="skill-item">
             <div class="skill-icon">
-              <i class="fas fa-puzzle-piece"></i>
+              <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Problem Solving</h4>
-              <p class="skill-description">Develop critical thinking abilities</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.adventure_games.core_skills.skills.5.title', 'Creative Thinking')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.adventure_games.core_skills.skills.5.description', 'Develop innovative problem-solving approaches')}</p>
             </div>
           </div>
         </div>

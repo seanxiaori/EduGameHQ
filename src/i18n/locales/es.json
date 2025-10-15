@@ -41,7 +41,10 @@
     "language-games": "Juegos de Idiomas",
     "puzzle-games": "Juegos de Rompecabezas",
     "sports-games": "Juegos de Deportes",
-    "art-games": "Juegos de Arte"
+    "art-games": "Juegos de Arte",
+    "adventure-games": "Juegos de Aventura",
+    "creative-games": "Juegos Creativos",
+    "memory-games": "Juegos de Memoria"
   },
   "hero": {
     "title": "Donde el Aprendizaje se Encuentra con la Diversión",
@@ -287,33 +290,33 @@
       },
       "core_skills": {
         "title": "Habilidades Básicas que Desarrollarás",
-        "subtitle": "Capacidades esenciales adquiridas a través de juegos de aventura",
-        "skills": {
-          "problem_solving": {
+        "subtitle": "Habilidades esenciales de aventura adquiridas a través del juego inmersivo",
+        "skills": [
+          {
             "title": "Resolución de Problemas",
-            "description": "Desarrollar habilidades de pensamiento crítico"
+            "description": "Desarrollar pensamiento crítico a través de desafíos de misiones"
           },
-          "strategic_thinking": {
-            "title": "Pensamiento Estratégico",
-            "description": "Aprender a planificar y anticipar resultados"
+          {
+            "title": "Exploración",
+            "description": "Aprender a navegar y descubrir nuevos entornos"
           },
-          "exploration": {
-            "title": "Habilidades de Exploración",
-            "description": "Descubrir secretos y caminos ocultos"
+          {
+            "title": "Comprensión de Historias",
+            "description": "Entender narrativas y desarrollo de personajes"
           },
-          "decision_making": {
+          {
             "title": "Toma de Decisiones",
-            "description": "Hacer elecciones sabias bajo presión"
+            "description": "Practicar hacer elecciones y entender consecuencias"
           },
-          "resource_management": {
+          {
             "title": "Gestión de Recursos",
-            "description": "Usar efectivamente herramientas y objetos disponibles"
+            "description": "Aprender a gestionar objetos y planificar estratégicamente"
           },
-          "perseverance": {
-            "title": "Perseverancia",
-            "description": "Superar desafíos y nunca rendirse"
+          {
+            "title": "Pensamiento Creativo",
+            "description": "Usar la imaginación para resolver desafíos únicos"
           }
-        }
+        ]
       }
     },
     "creative_games": {
@@ -361,33 +364,33 @@
       },
       "core_skills": {
         "title": "Habilidades Básicas que Desarrollarás",
-        "subtitle": "Capacidades esenciales adquiridas a través de juegos creativos",
-        "skills": {
-          "artistic_expression": {
-            "title": "Expresión Artística",
-            "description": "Comunicar ideas y emociones a través del arte visual"
+        "subtitle": "Habilidades creativas esenciales adquiridas a través del juego artístico",
+        "skills": [
+          {
+            "title": "Color y Diseño",
+            "description": "Dominar la teoría del color y los principios de composición visual"
           },
-          "design_thinking": {
-            "title": "Pensamiento de Diseño",
-            "description": "Crear soluciones funcionales y hermosas"
+          {
+            "title": "Dibujo e Ilustración",
+            "description": "Desarrollar técnicas fundamentales de dibujo e ilustración"
           },
-          "color_theory": {
-            "title": "Teoría del Color",
-            "description": "Entender cómo los colores trabajan juntos"
+          {
+            "title": "Animación y Video",
+            "description": "Aprender habilidades básicas de animación y creación de video"
           },
-          "spatial_awareness": {
-            "title": "Conciencia Espacial",
-            "description": "Entender relaciones de forma, tamaño y posición"
+          {
+            "title": "Música y Sonido",
+            "description": "Explorar ritmo, melodía y diseño de sonido"
           },
-          "innovation": {
-            "title": "Pensamiento Innovador",
-            "description": "Desarrollar ideas únicas y originales"
+          {
+            "title": "Narración y Escritura",
+            "description": "Crear narrativas convincentes y escritura creativa"
           },
-          "creative_thinking": {
+          {
             "title": "Pensamiento Creativo",
-            "description": "Cultivar habilidades innovadoras de resolución de problemas"
+            "description": "Desarrollar enfoques innovadores de resolución de problemas"
           }
-        }
+        ]
       }
     },
     "memory_games": {
@@ -435,33 +438,33 @@
       },
       "core_skills": {
         "title": "Habilidades Básicas que Desarrollarás",
-        "subtitle": "Capacidades esenciales adquiridas a través de juegos de memoria",
-        "skills": {
-          "visual_memory": {
+        "subtitle": "Habilidades esenciales de memoria adquiridas a través del entrenamiento cognitivo",
+        "skills": [
+          {
             "title": "Memoria Visual",
-            "description": "Recordar imágenes, colores y patrones visuales"
+            "description": "Recordar y recuperar patrones visuales e imágenes"
           },
-          "auditory_memory": {
+          {
             "title": "Memoria Auditiva",
-            "description": "Recordar sonidos, música e información hablada"
+            "description": "Procesar y recordar sonidos e información hablada"
           },
-          "sequential_memory": {
+          {
             "title": "Memoria Secuencial",
-            "description": "Recordar el orden de eventos e información"
+            "description": "Recordar el orden de eventos y secuencias"
           },
-          "working_memory": {
+          {
             "title": "Memoria de Trabajo",
-            "description": "Mantener y manipular información en la mente"
+            "description": "Mantener y manipular información en tu mente"
           },
-          "pattern_recognition": {
-            "title": "Reconocimiento de Patrones",
-            "description": "Identificar secuencias y estructuras repetitivas"
+          {
+            "title": "Recuerdo a Largo Plazo",
+            "description": "Almacenar y recuperar información durante períodos prolongados"
           },
-          "cognitive_flexibility": {
-            "title": "Flexibilidad Cognitiva",
-            "description": "Adaptar el pensamiento y cambiar entre conceptos"
+          {
+            "title": "Concentración",
+            "description": "Mantener enfoque y atención durante períodos prolongados"
           }
-        }
+        ]
       }
     },
     "sports_games": {
@@ -568,7 +571,10 @@
       "language": "Mejora la lectura, escritura y habilidades de comunicación",
       "puzzle": "Desarrolla el pensamiento crítico y las habilidades de resolución de problemas",
       "sports": "Mantente activo mientras aprendes sobre deportes y ejercicio",
-      "art": "Expresa tu creatividad a través del arte digital y el diseño"
+      "art": "Expresa tu creatividad a través del arte digital y el diseño",
+      "adventure": "Embárcate en emocionantes misiones y exploraciones",
+      "creative": "Libera la imaginación y el pensamiento creativo",
+      "memory": "Mejora la memoria y las habilidades cognitivas"
     },
     "explore_by_category": {
       "title": "Explorar por Categoría",

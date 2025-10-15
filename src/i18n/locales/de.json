@@ -41,7 +41,10 @@
     "language-games": "Sprach-Spiele",
     "puzzle-games": "Puzzle-Spiele",
     "sports-games": "Sport-Spiele",
-    "art-games": "Kunst-Spiele"
+    "art-games": "Kunst-Spiele",
+    "adventure-games": "Abenteuer-Spiele",
+    "creative-games": "Kreative Spiele",
+    "memory-games": "Gedächtnis-Spiele"
   },
   "hero": {
     "title": "Wo Lernen auf Spaß trifft",
@@ -71,9 +74,19 @@
     "favorite": "Zu Favoriten hinzufügen",
     "add_to_favorites": "Zu Favoriten hinzufügen",
     "share": "Spiel teilen",
-    "difficulty": "Schwierigkeit",
     "age_range": "Altersbereich",
     "ages": "Alter",
+    "badges": {
+      "hot": "BELIEBT",
+      "featured": "EMPFOHLEN",
+      "new": "NEU",
+      "updated": "AKTUALISIERT"
+    },
+    "difficulty": {
+      "easy": "EINFACH",
+      "medium": "MITTEL",
+      "hard": "SCHWER"
+    },
     "category": "Kategorie",
     "tags": "Tags",
     "description": "Beschreibung",
@@ -321,15 +334,55 @@
       },
       "learning_tips": {
         "title": "Abenteuer-Lerntipps",
-        "subtitle": "Strategien zur Maximierung Ihres Lernerfolgs während des Spielens"
+        "subtitle": "Strategien zur Maximierung Ihres Lernerfolgs während des Spielens",
+        "tips": [
+          {
+            "title": "Täglich erkunden",
+            "description": "Verbringen Sie täglich 15-20 Minuten mit der Erkundung neuer Abenteuer und Herausforderungen"
+          },
+          {
+            "title": "Schrittweise voranschreiten",
+            "description": "Beginnen Sie mit einfacheren Abenteuern und gehen Sie schrittweise zu anspruchsvolleren Quests über"
+          },
+          {
+            "title": "Herausforderungen annehmen",
+            "description": "Haben Sie keine Angst vor Herausforderungen - sie sind Teil des Abenteuers"
+          },
+          {
+            "title": "Strategisch denken",
+            "description": "Konzentrieren Sie sich auf die Entwicklung strategischen Denkens und Problemlösungsfähigkeiten"
+          }
+        ]
       },
       "core_skills": {
-        "title": "Kernfähigkeiten",
-        "subtitle": "Wichtige Fähigkeiten, die durch Abenteuerspiele entwickelt werden",
-        "problem_solving": "Problemlösung",
-        "critical_thinking": "Kritisches Denken",
-        "exploration": "Erkundung",
-        "decision_making": "Entscheidungsfindung"
+        "title": "Kernkompetenzen, die Sie entwickeln werden",
+        "subtitle": "Wesentliche Abenteuerfähigkeiten durch immersives Gameplay erworben",
+        "skills": [
+          {
+            "title": "Problemlösung",
+            "description": "Kritisches Denken durch Quest-Herausforderungen entwickeln"
+          },
+          {
+            "title": "Erkundung",
+            "description": "Lernen zu navigieren und neue Umgebungen zu entdecken"
+          },
+          {
+            "title": "Geschichtenverständnis",
+            "description": "Narrative und Charakterentwicklung verstehen"
+          },
+          {
+            "title": "Entscheidungsfindung",
+            "description": "Entscheidungen treffen und Konsequenzen verstehen üben"
+          },
+          {
+            "title": "Ressourcenverwaltung",
+            "description": "Gegenstände verwalten und strategisch planen lernen"
+          },
+          {
+            "title": "Kreatives Denken",
+            "description": "Vorstellungskraft nutzen, um einzigartige Herausforderungen zu lösen"
+          }
+        ]
       }
     },
     "creative_games": {
@@ -355,15 +408,55 @@
       },
       "learning_tips": {
         "title": "Kreativitäts-Lerntipps",
-        "subtitle": "Techniken zur Verbesserung Ihrer kreativen Fähigkeiten"
+        "subtitle": "Techniken zur Verbesserung Ihrer kreativen Fähigkeiten",
+        "tips": [
+          {
+            "title": "Täglich kreieren",
+            "description": "Verbringen Sie täglich 15-20 Minuten mit kreativen Projekten und künstlerischem Ausdruck"
+          },
+          {
+            "title": "Schrittweise voranschreiten",
+            "description": "Beginnen Sie mit einfacheren Projekten und gehen Sie schrittweise zu komplexeren Kreationen über"
+          },
+          {
+            "title": "Experimentieren Sie",
+            "description": "Haben Sie keine Angst zu experimentieren - Kreativität entsteht durch Ausprobieren neuer Dinge"
+          },
+          {
+            "title": "Drücken Sie sich aus",
+            "description": "Konzentrieren Sie sich darauf, Ihre einzigartigen Ideen und Ihren persönlichen Stil auszudrücken"
+          }
+        ]
       },
       "core_skills": {
-        "title": "Kernfähigkeiten",
-        "subtitle": "Wesentliche Fähigkeiten, die durch kreative Spiele gefördert werden",
-        "artistic_expression": "Künstlerischer Ausdruck",
-        "design_thinking": "Design-Denken",
-        "innovation": "Innovation",
-        "visual_creativity": "Visuelle Kreativität"
+        "title": "Kernkompetenzen, die Sie entwickeln werden",
+        "subtitle": "Wesentliche kreative Fähigkeiten durch künstlerisches Gameplay erworben",
+        "skills": [
+          {
+            "title": "Farbe & Design",
+            "description": "Farbtheorie und visuelle Kompositionsprinzipien meistern"
+          },
+          {
+            "title": "Zeichnen & Illustration",
+            "description": "Grundlegende Zeichen- und Illustrationstechniken entwickeln"
+          },
+          {
+            "title": "Animation & Video",
+            "description": "Grundlegende Animations- und Videoerstellungsfähigkeiten lernen"
+          },
+          {
+            "title": "Musik & Klang",
+            "description": "Rhythmus, Melodie und Sounddesign erkunden"
+          },
+          {
+            "title": "Geschichtenerzählen & Schreiben",
+            "description": "Fesselnde Narrative und kreatives Schreiben gestalten"
+          },
+          {
+            "title": "Kreatives Denken",
+            "description": "Innovative Problemlösungsansätze entwickeln"
+          }
+        ]
       }
     },
     "memory_games": {
@@ -389,15 +482,55 @@
       },
       "learning_tips": {
         "title": "Gedächtnis-Lerntipps",
-        "subtitle": "Bewährte Strategien zur Verbesserung Ihrer Gedächtnisleistung"
+        "subtitle": "Bewährte Strategien zur Verbesserung Ihrer Gedächtnisleistung",
+        "tips": [
+          {
+            "title": "Täglich üben",
+            "description": "Trainieren Sie täglich 15-20 Minuten Ihr Gedächtnis durch Spiele"
+          },
+          {
+            "title": "Einfach beginnen",
+            "description": "Beginnen Sie mit einfachen Mustern und erhöhen Sie schrittweise die Komplexität"
+          },
+          {
+            "title": "Fokussiert bleiben",
+            "description": "Konzentrieren Sie sich vollständig auf die Aufgabe, um das Gedächtnis zu verbessern"
+          },
+          {
+            "title": "Strategien verwenden",
+            "description": "Entwickeln Sie Gedächtnistechniken wie Visualisierung und Assoziation"
+          }
+        ]
       },
       "core_skills": {
-        "title": "Kernfähigkeiten",
-        "subtitle": "Wichtige kognitive Fähigkeiten, die durch Gedächtnisspiele entwickelt werden",
-        "concentration": "Konzentration",
-        "attention": "Aufmerksamkeit",
-        "recall": "Erinnerung",
-        "cognitive_flexibility": "Kognitive Flexibilität"
+        "title": "Kernkompetenzen, die Sie entwickeln werden",
+        "subtitle": "Wesentliche Gedächtnisfähigkeiten durch kognitives Training erworben",
+        "skills": [
+          {
+            "title": "Visuelles Gedächtnis",
+            "description": "Bilder, Muster und räumliche Layouts merken"
+          },
+          {
+            "title": "Auditives Gedächtnis",
+            "description": "Geräusche, Musik und gesprochene Informationen abrufen"
+          },
+          {
+            "title": "Sequenzielles Gedächtnis",
+            "description": "Reihenfolge und Abfolge von Ereignissen merken"
+          },
+          {
+            "title": "Arbeitsgedächtnis",
+            "description": "Informationen vorübergehend halten und manipulieren"
+          },
+          {
+            "title": "Assoziatives Gedächtnis",
+            "description": "Verschiedene Informationen verbinden und in Beziehung setzen"
+          },
+          {
+            "title": "Kognitive Flexibilität",
+            "description": "Denken anpassen und zwischen Konzepten wechseln"
+          }
+        ]
       }
     }
   },
@@ -412,7 +545,10 @@
       "language": "Verbessern Sie Lese-, Schreib- und Kommunikationsfähigkeiten",
       "puzzle": "Entwickeln Sie kritisches Denken und Problemlösungsfähigkeiten",
       "sports": "Bleiben Sie aktiv, während Sie über Sport und Bewegung lernen",
-      "art": "Drücken Sie Ihre Kreativität durch digitale Kunst und Design aus"
+      "art": "Drücken Sie Ihre Kreativität durch digitale Kunst und Design aus",
+      "adventure": "Begeben Sie sich auf spannende Quests und Erkundungen",
+      "creative": "Entfesseln Sie Fantasie und kreatives Denken",
+      "memory": "Verbessern Sie Gedächtnis und kognitive Fähigkeiten"
     },
     "explore_by_category": {
       "title": "Nach Kategorie erkunden",

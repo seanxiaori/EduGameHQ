@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import GameCard from '../components/GameCard.astro';
-import type { Game } from '../types/game';
-import { getTranslations, t } from '../i18n/utils';
+import GameCard from '../../components/GameCard.astro';
+import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../styles/game-card.css';
+import '../../styles/game-card.css';
 
 // 获取翻译数据
 const translations = await getTranslations('ko');
@@ -236,8 +236,8 @@ const collectionPageData = {
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Core Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential memory abilities gained through cognitive gameplay</p>
+            <h2 class="module-title">{t(translations, 'category_pages.memory_games.core_skills.title', 'Core Skills You\'ll Develop')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.memory_games.core_skills.subtitle', 'Essential memory abilities gained through cognitive gameplay')}</p>
           </div>
         </div>
 
@@ -247,8 +247,8 @@ const collectionPageData = {
               <i class="fas fa-eye"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Visual Memory</h4>
-              <p class="skill-description">Remember images, patterns, and spatial layouts</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.memory_games.core_skills.skills.0.title', 'Visual Memory')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.memory_games.core_skills.skills.0.description', 'Remember images, patterns, and spatial layouts')}</p>
             </div>
           </div>
 
@@ -257,8 +257,8 @@ const collectionPageData = {
               <i class="fas fa-volume-up"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Auditory Memory</h4>
-              <p class="skill-description">Recall sounds, music, and spoken information</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.memory_games.core_skills.skills.1.title', 'Auditory Memory')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.memory_games.core_skills.skills.1.description', 'Recall sounds, music, and spoken information')}</p>
             </div>
           </div>
 
@@ -267,8 +267,8 @@ const collectionPageData = {
               <i class="fas fa-list-ol"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Sequential Memory</h4>
-              <p class="skill-description">Remember order and sequence of events</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.memory_games.core_skills.skills.2.title', 'Sequential Memory')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.memory_games.core_skills.skills.2.description', 'Remember order and sequence of events')}</p>
             </div>
           </div>
 
@@ -277,8 +277,8 @@ const collectionPageData = {
               <i class="fas fa-clock"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Working Memory</h4>
-              <p class="skill-description">Hold and manipulate information temporarily</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.memory_games.core_skills.skills.3.title', 'Working Memory')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.memory_games.core_skills.skills.3.description', 'Hold and manipulate information temporarily')}</p>
             </div>
           </div>
 
@@ -287,8 +287,8 @@ const collectionPageData = {
               <i class="fas fa-link"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Associative Memory</h4>
-              <p class="skill-description">Connect and relate different pieces of information</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.memory_games.core_skills.skills.4.title', 'Associative Memory')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.memory_games.core_skills.skills.4.description', 'Connect and relate different pieces of information')}</p>
             </div>
           </div>
           
@@ -297,8 +297,8 @@ const collectionPageData = {
               <i class="fas fa-brain"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Cognitive Flexibility</h4>
-              <p class="skill-description">Adapt thinking and switch between concepts</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.memory_games.core_skills.skills.5.title', 'Cognitive Flexibility')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.memory_games.core_skills.skills.5.description', 'Adapt thinking and switch between concepts')}</p>
             </div>
           </div>
         </div>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coloring Studio - Paint by Numbers</title>
+    <style>
+        :root {
+            color-scheme: light;
+            --bg: #f5f4ff;
+            --card: #ffffff;
+            --accent: #6c63ff;
+            --text: #2d2a44;
+            --muted: #7b749b;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Quicksand', 'Nunito', 'Comic Sans MS', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #f9f8ff 0%, #ebe7ff 50%, #e1f0ff 100%);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+
+        main {
+            background: var(--card);
+            width: min(900px, 100%);
+            border-radius: 26px;
+            box-shadow: 0 30px 60px -30px rgba(70, 66, 118, 0.35);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            padding: 1.75rem clamp(1.25rem, 4vw, 2.5rem) 1.25rem;
+            background: linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(108, 99, 255, 0));
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .header-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.85rem;
+            width: 100%;
+        }
+
+        .header-actions {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+
+        .back-button {
+            background: rgba(108, 99, 255, 0.12);
+            border: none;
+            border-radius: 999px;
+            color: var(--accent);
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0.55rem 1.35rem;
+            box-shadow: 0 10px 22px -16px rgba(108, 99, 255, 0.75);
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .back-button:hover,
+        .back-button:focus-visible {
+            background: rgba(108, 99, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px -14px rgba(108, 99, 255, 0.7);
+            outline: none;
+        }
+
+        .back-button:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 18px -12px rgba(108, 99, 255, 0.65);
+        }
+
+        .header-title {
+            margin: 0;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            color: var(--accent);
+        }
+
+        .header-icon-button {
+            border: none;
+            background: rgba(108, 99, 255, 0.1);
+            color: var(--accent);
+            width: 2.75rem;
+            height: 2.75rem;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.35rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+            box-shadow: 0 10px 22px -18px rgba(108, 99, 255, 0.75);
+        }
+
+        .header-icon-button:hover,
+        .header-icon-button:focus-visible {
+            background: rgba(108, 99, 255, 0.18);
+            transform: translateY(-2px);
+            box-shadow: 0 16px 28px -16px rgba(108, 99, 255, 0.7);
+            outline: none;
+        }
+
+        .header-icon-button:active {
+            transform: translateY(0);
+            box-shadow: 0 8px 18px -14px rgba(108, 99, 255, 0.65);
+        }
+
+        .header-label {
+            display: none;
+        }
+
+        .visually-hidden {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+
+        header p {
+            margin: 0.75rem 0 0;
+            color: var(--muted);
+            font-size: clamp(0.95rem, 2.6vw, 1.05rem);
+            line-height: 1.6;
+        }
+
+        .studio {
+            padding: 0 clamp(1.25rem, 3vw, 2.25rem) clamp(1.5rem, 4vw, 2.5rem);
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1.25rem;
+        }
+
+        .toolbar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
+
+        .palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 0.65rem;
+        }
+
+        .color-swatch {
+            border: none;
+            border-radius: 18px;
+            padding: 0.75rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f0efff;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.8rem;
+            gap: 0.45rem;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .swatch-preview {
+            width: 36px;
+            height: 36px;
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.75);
+        }
+
+        .color-swatch.is-selected {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 24px -14px rgba(108, 99, 255, 0.75);
+            outline: 3px solid rgba(108, 99, 255, 0.35);
+        }
+
+
+        .canvas-area {
+            background: linear-gradient(145deg, rgba(108, 99, 255, 0.12), rgba(108, 99, 255, 0.02));
+            border-radius: 24px;
+            padding: clamp(0.75rem, 3vw, 1.5rem);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .canvas-wrapper {
+            background: white;
+            border-radius: 18px;
+            padding: clamp(0.5rem, 2.5vw, 1.2rem);
+            box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.08);
+        }
+
+        svg {
+            width: 100%;
+            height: auto;
+            max-height: min(70vh, 600px);
+            display: block;
+            touch-action: none;
+        }
+
+        .numbers-hint {
+            font-size: 0.85rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        .legend {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .legend-swatch {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            padding: 1.25rem 1.75rem 1.75rem;
+            background: rgba(108, 99, 255, 0.06);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        @media (max-width: 899px) {
+            .studio {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+        }
+
+        @media (min-width: 900px) {
+            .studio {
+                grid-template-columns: 320px 1fr;
+            }
+        }
+
+        @media (max-width: 720px) {
+            body {
+                display: block;
+                padding: 0;
+                min-height: 100dvh;
+                overflow: hidden;
+            }
+
+            main {
+                width: 100%;
+                height: 100dvh;
+                max-height: 100dvh;
+                border-radius: 0;
+                box-shadow: none;
+                overflow: hidden;
+            }
+
+            header {
+                padding: 0.65rem 0.85rem 0.55rem;
+                gap: 0.35rem;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            .header-bar {
+                gap: 0.5rem;
+            }
+
+            .header-actions {
+                gap: 0.4rem;
+            }
+
+            .header-icon-button {
+                font-size: 1.2rem;
+            }
+
+            .header-title {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+
+            .header-label {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+                font-weight: 600;
+                font-size: 1rem;
+                color: var(--accent);
+            }
+
+            header p {
+                display: none;
+            }
+
+            .studio {
+                flex: 1;
+                padding: 0.85rem 1.25rem 1rem;
+                display: grid;
+                grid-template-rows: minmax(0, 1fr) auto;
+                gap: 0.75rem;
+                overflow: hidden;
+            }
+
+            .canvas-area {
+                flex: 1;
+                min-height: 0;
+                padding: 0.65rem;
+                border-radius: 18px;
+                gap: 0.65rem;
+            }
+
+            .canvas-wrapper {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 0;
+                padding: 0.5rem;
+            }
+
+            svg {
+                height: 100%;
+                max-height: none;
+            }
+
+            .toolbar {
+                display: grid;
+                gap: 0.75rem;
+            }
+
+            .palette {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 0.5rem;
+            }
+
+            .color-swatch {
+                padding: 0.45rem 0.35rem;
+                font-size: 0.7rem;
+                gap: 0.35rem;
+            }
+
+            .swatch-preview {
+                width: 28px;
+                height: 28px;
+            }
+
+            .numbers-hint,
+            .legend {
+                display: none;
+            }
+
+            footer {
+                padding: 0.65rem 1rem 0.85rem;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <div class="header-bar">
+                <button class="back-button" type="button" onclick="window.location.href='../index.html'">← Back to Games</button>
+                <span class="header-label" aria-hidden="true">🎨 Studio</span>
+                <div class="header-actions">
+                    <button class="header-icon-button" id="regenerate" type="button">
+                        <span aria-hidden="true">🔁</span>
+                        <span class="visually-hidden">New Pattern</span>
+                    </button>
+                    <button class="header-icon-button" id="clear" type="button">
+                        <span aria-hidden="true">🧽</span>
+                        <span class="visually-hidden">Clear Colors</span>
+                    </button>
+                </div>
+            </div>
+            <h1 class="header-title">Coloring Studio</h1>
+            <p>Create your own masterpiece! Choose a color, tap a numbered section, and watch the fractal mosaic come alive. The pattern refreshes every time you visit or press regenerate.</p>
+        </header>
+        <div class="studio">
+            <aside class="toolbar">
+                <div class="palette" id="palette"></div>
+                <p class="numbers-hint">Tip: Drag your finger across the artboard to paint multiple regions in one motion. Every shape is outlined in bold black lines just like a coloring book.</p>
+                <div class="legend" id="legend"></div>
+            </aside>
+            <section class="canvas-area">
+                <div class="canvas-wrapper">
+                    <svg id="artboard" viewBox="0 0 600 780" aria-label="Paint by numbers canvas"></svg>
+                </div>
+            </section>
+        </div>
+        <footer>
+            Made for tiny artists on big and small screens alike. 🌈
+        </footer>
+    </main>
+    <script>
+        const PALETTE = [
+            { name: 'Sunrise', value: '#FFB400' },
+            { name: 'Berry', value: '#FF5F7E' },
+            { name: 'Lagoon', value: '#2AC3FF' },
+            { name: 'Mint', value: '#45E5B5' },
+            { name: 'Lilac', value: '#B784FF' },
+            { name: 'Coral', value: '#FF8C5C' },
+            { name: 'Meadow', value: '#7ED957' },
+            { name: 'Sky', value: '#8EC5FC' }
+        ];
+
+        const svgNS = 'http://www.w3.org/2000/svg';
+        const artboard = document.getElementById('artboard');
+        const paletteEl = document.getElementById('palette');
+        const legendEl = document.getElementById('legend');
+        const regenerateBtn = document.getElementById('regenerate');
+        const clearBtn = document.getElementById('clear');
+
+        let currentColor = PALETTE[0].value;
+        let painting = false;
+
+        function createPalette() {
+            paletteEl.innerHTML = '';
+            legendEl.innerHTML = '';
+
+            PALETTE.forEach((color, index) => {
+                const button = document.createElement('button');
+                button.className = 'color-swatch';
+                if (index === 0) button.classList.add('is-selected');
+                button.dataset.color = color.value;
+                button.dataset.label = color.name;
+                button.innerHTML = `
+                    <span class="swatch-preview" style="background:${color.value}"></span>
+                    <span>${index + 1}. ${color.name}</span>
+                `;
+                button.addEventListener('click', () => {
+                    currentColor = color.value;
+                    document.querySelectorAll('.color-swatch').forEach(btn => btn.classList.remove('is-selected'));
+                    button.classList.add('is-selected');
+                });
+                paletteEl.appendChild(button);
+
+                const legendItem = document.createElement('span');
+                legendItem.className = 'legend-item';
+                legendItem.innerHTML = `
+                    <span class="legend-swatch" style="background:${color.value}"></span>
+                    <strong>${index + 1}</strong> ${color.name}
+                `;
+                legendEl.appendChild(legendItem);
+            });
+        }
+
+        function randomBetween(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function degToRad(degrees) {
+            return (degrees * Math.PI) / 180;
+        }
+
+        function polarToCartesian(cx, cy, radius, angleInDegrees) {
+            const angleInRadians = degToRad(angleInDegrees);
+            return {
+                x: cx + radius * Math.cos(angleInRadians),
+                y: cy + radius * Math.sin(angleInRadians)
+            };
+        }
+
+        function createRingSegmentPath(cx, cy, innerRadius, outerRadius, startAngle, endAngle) {
+            const outerStart = polarToCartesian(cx, cy, outerRadius, startAngle);
+            const outerEnd = polarToCartesian(cx, cy, outerRadius, endAngle);
+            const innerEnd = polarToCartesian(cx, cy, innerRadius, endAngle);
+            const innerStart = polarToCartesian(cx, cy, innerRadius, startAngle);
+            const largeArc = Math.abs(endAngle - startAngle) > 180 ? 1 : 0;
+
+            return [
+                `M ${outerStart.x},${outerStart.y}`,
+                `A ${outerRadius},${outerRadius} 0 ${largeArc} 1 ${outerEnd.x},${outerEnd.y}`,
+                `L ${innerEnd.x},${innerEnd.y}`,
+                `A ${innerRadius},${innerRadius} 0 ${largeArc} 0 ${innerStart.x},${innerStart.y}`,
+                'Z'
+            ].join(' ');
+        }
+
+        function createPetalPath(cx, cy, baseRadius, length, angle, spread) {
+            const baseLeft = polarToCartesian(cx, cy, baseRadius, angle - spread);
+            const baseRight = polarToCartesian(cx, cy, baseRadius, angle + spread);
+            const controlLeft = polarToCartesian(cx, cy, (baseRadius + length) / 2, angle - spread / 2);
+            const controlRight = polarToCartesian(cx, cy, (baseRadius + length) / 2, angle + spread / 2);
+            const tip = polarToCartesian(cx, cy, length, angle);
+
+            return [
+                `M ${baseLeft.x},${baseLeft.y}`,
+                `Q ${controlLeft.x},${controlLeft.y} ${tip.x},${tip.y}`,
+                `Q ${controlRight.x},${controlRight.y} ${baseRight.x},${baseRight.y}`,
+                `L ${cx},${cy}`,
+                'Z'
+            ].join(' ');
+        }
+
+        function createStarPath(cx, cy, outerRadius, innerRadius, points) {
+            const step = Math.PI / points;
+            let d = '';
+
+            for (let i = 0; i < points * 2; i++) {
+                const radius = i % 2 === 0 ? outerRadius : innerRadius;
+                const angle = -Math.PI / 2 + step * i;
+                const x = cx + radius * Math.cos(angle);
+                const y = cy + radius * Math.sin(angle);
+                d += i === 0 ? `M ${x},${y}` : `L ${x},${y}`;
+            }
+
+            return `${d} Z`;
+        }
+
+        function randomInt(min, max) {
+            return Math.floor(randomBetween(min, max + 1));
+        }
+
+        function generateSnowflakePattern() {
+            artboard.innerHTML = '';
+            let regionIndex = 1;
+            const width = 600;
+            const height = 780;
+            const centerX = width / 2;
+            const centerY = height / 2;
+            const maxRegions = 50;
+
+            function addPath(d, labelSize = 20) {
+                if (regionIndex > maxRegions) {
+                    return false;
+                }
+
+                const path = document.createElementNS(svgNS, 'path');
+                path.setAttribute('d', d);
+                path.setAttribute('fill', '#ffffff');
+                path.setAttribute('stroke', '#111');
+                path.setAttribute('stroke-width', '3');
+                path.classList.add('paint-cell');
+                path.dataset.index = regionIndex;
+
+                const label = document.createElementNS(svgNS, 'text');
+                label.textContent = regionIndex;
+
+                const tempPathForBBox = document.createElementNS(svgNS, 'path');
+                tempPathForBBox.setAttribute('d', d);
+                artboard.appendChild(tempPathForBBox);
+                const bbox = tempPathForBBox.getBBox();
+                artboard.removeChild(tempPathForBBox);
+
+                const centerLabelX = bbox.x + bbox.width / 2;
+                const centerLabelY = bbox.y + bbox.height / 2;
+
+                label.setAttribute('x', centerLabelX);
+                label.setAttribute('y', centerLabelY + (labelSize / 3));
+                label.setAttribute('text-anchor', 'middle');
+                label.setAttribute('dominant-baseline', 'middle');
+                label.setAttribute('fill', '#c7c4d9');
+                label.setAttribute('font-family', 'Quicksand, Nunito, sans-serif');
+                label.setAttribute('font-size', labelSize);
+                label.setAttribute('pointer-events', 'none');
+
+                artboard.appendChild(path);
+                artboard.appendChild(label);
+                regionIndex++;
+                return true;
+            }
+
+            const maxRadius = Math.min(width, height) * 0.48;
+            let currentRadius = randomBetween(60, 90);
+            const ringCount = randomInt(3, 4);
+
+            for (let ring = 0; ring < ringCount && regionIndex <= maxRegions; ring++) {
+                const ringThickness = randomBetween(60, 100);
+                const innerRadius = currentRadius;
+                const outerRadius = Math.min(maxRadius, innerRadius + ringThickness);
+                const segments = randomInt(5, 8);
+                const segmentAngle = 360 / segments;
+                const offset = randomBetween(0, segmentAngle);
+
+                for (let segment = 0; segment < segments && regionIndex <= maxRegions; segment++) {
+                    const startAngle = offset + segment * segmentAngle;
+                    const arcMultiplier = randomBetween(0.78, 1.15);
+                    const endAngle = startAngle + segmentAngle * arcMultiplier;
+                    const path = createRingSegmentPath(centerX, centerY, innerRadius, outerRadius, startAngle, endAngle);
+                    addPath(path, 26 - ring * 2);
+                }
+
+                currentRadius = outerRadius + randomBetween(20, 40);
+                if (currentRadius >= maxRadius - 40) {
+                    break;
+                }
+            }
+
+            const petalCount = randomInt(6, 9);
+            const petalBase = currentRadius * 0.6;
+            const petalLength = Math.min(maxRadius + 80, currentRadius + randomBetween(120, 180));
+            const petalSpread = randomBetween(18, 32);
+
+            for (let i = 0; i < petalCount && regionIndex <= maxRegions; i++) {
+                const angle = (360 / petalCount) * i + randomBetween(-10, 10);
+                const petalPath = createPetalPath(centerX, centerY, petalBase, petalLength, angle, petalSpread);
+                addPath(petalPath, 24);
+            }
+
+            const starOuter = currentRadius * 0.65;
+            const starInner = starOuter * randomBetween(0.35, 0.55);
+            const starPoints = randomInt(5, 8);
+            const starPath = createStarPath(centerX, centerY, starOuter, starInner, starPoints);
+            addPath(starPath, 30);
+
+            const ringHighlightCount = randomInt(4, 6);
+            for (let highlight = 0; highlight < ringHighlightCount && regionIndex <= maxRegions; highlight++) {
+                const highlightRadius = randomBetween(currentRadius * 0.6, maxRadius);
+                const highlightWidth = randomBetween(20, 45);
+                const startAngle = randomBetween(0, 360);
+                const endAngle = startAngle + randomBetween(40, 110);
+                const highlightPath = createRingSegmentPath(centerX, centerY, Math.max(20, highlightRadius - highlightWidth), highlightRadius, startAngle, endAngle);
+                addPath(highlightPath, 18);
+            }
+
+            const totalRegions = regionIndex - 1;
+            console.log(`[Coloring Studio] Generated ${totalRegions} paintable regions.`);
+            painting = false;
+        }
+
+
+        function paintCell(element) {
+            element.setAttribute('fill', currentColor);
+        }
+
+        function attachPaintingEvents() {
+            artboard.addEventListener('pointerdown', handlePointerDown);
+            artboard.addEventListener('pointermove', handlePointerMove);
+            window.addEventListener('pointerup', stopPainting);
+            window.addEventListener('pointercancel', stopPainting);
+            artboard.addEventListener('pointerleave', stopPainting);
+        }
+
+        function handlePointerDown(event) {
+            if (event.target.classList.contains('paint-cell')) {
+                painting = true;
+                paintCell(event.target);
+            }
+        }
+
+        function handlePointerMove(event) {
+            if (!painting) return;
+            const target = document.elementFromPoint(event.clientX, event.clientY);
+            if (target && target.classList && target.classList.contains('paint-cell')) {
+                paintCell(target);
+            }
+        }
+
+        function stopPainting(event) {
+            painting = false;
+        }
+
+        regenerateBtn.addEventListener('click', () => {
+            generateSnowflakePattern();
+        });
+
+        clearBtn.addEventListener('click', () => {
+            document.querySelectorAll('.paint-cell').forEach(path => {
+                path.setAttribute('fill', '#ffffff');
+            });
+        });
+
+        createPalette();
+        generateSnowflakePattern();
+        attachPaintingEvents();
+    </script>
+</body>
+</html>

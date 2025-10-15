@@ -41,7 +41,10 @@
     "language-games": "语言游戏",
     "puzzle-games": "益智游戏",
     "sports-games": "体育游戏",
-    "art-games": "艺术游戏"
+    "art-games": "艺术游戏",
+    "adventure-games": "冒险游戏",
+    "creative-games": "创意游戏",
+    "memory-games": "记忆游戏"
   },
   "hero": {
     "title": "让学习充满乐趣",
@@ -69,7 +72,6 @@
     "full_screen": "全屏",
     "favorite": "添加收藏",
     "share": "分享游戏",
-    "difficulty": "难度",
     "age_range": "适合年龄",
     "category": "分类",
     "tags": "标签",
@@ -80,7 +82,18 @@
     "random": "随机游戏",
     "add_to_favorites": "添加到收藏",
     "loading": "加载中...",
-    "ages": "年龄"
+    "ages": "年龄",
+    "badges": {
+      "hot": "热门",
+      "featured": "特色",
+      "new": "新品",
+      "updated": "已更新"
+    },
+    "difficulty": {
+      "easy": "简单",
+      "medium": "中等",
+      "hard": "困难"
+    }
   },
   "game_detail": {
     "loading_game": "正在加载 {gameTitle}...",
@@ -286,34 +299,34 @@
         ]
       },
       "core_skills": {
-        "title": "您将培养的核心技能",
-        "subtitle": "通过冒险游戏获得的基本能力",
-        "skills": {
-          "problem_solving": {
+        "title": "你将发展的核心技能",
+        "subtitle": "通过沉浸式游戏体验获得的核心冒险能力",
+        "skills": [
+          {
             "title": "问题解决",
-            "description": "培养批判性思维能力"
+            "description": "通过任务挑战培养批判性思维"
           },
-          "strategic_thinking": {
-            "title": "战略思维",
-            "description": "学会规划和预测结果"
-          },
-          "exploration": {
+          {
             "title": "探索能力",
-            "description": "发现隐藏的秘密和路径"
+            "description": "学会导航和发现新环境"
           },
-          "decision_making": {
+          {
+            "title": "故事理解",
+            "description": "理解叙事和角色发展"
+          },
+          {
             "title": "决策制定",
-            "description": "在压力下做出明智的选择"
+            "description": "练习做出选择并理解后果"
           },
-          "resource_management": {
+          {
             "title": "资源管理",
-            "description": "有效利用可用的工具和物品"
+            "description": "学会管理物品并进行战略规划"
           },
-          "perseverance": {
-            "title": "坚持不懈",
-            "description": "克服挑战，永不放弃"
+          {
+            "title": "创造性思维",
+            "description": "运用想象力解决独特挑战"
           }
-        }
+        ]
       }
     },
     "creative_games": {
@@ -342,52 +355,52 @@
         "subtitle": "专家建议，帮助您提升创造力",
         "tips": [
           {
-            "title": "自由表达",
-            "description": "不要害怕尝试新的想法和风格"
+            "title": "每日创作",
+            "description": "每天花15-20分钟探索创意项目和艺术表达"
           },
           {
-            "title": "观察学习",
-            "description": "从其他艺术家和创作者那里获得灵感"
+            "title": "循序渐进",
+            "description": "从简单的项目开始，逐步进阶到更复杂的创作"
           },
           {
-            "title": "多样尝试",
-            "description": "探索不同的媒介和创作技巧"
+            "title": "勇于尝试",
+            "description": "不要害怕实验 - 创造力来自尝试新事物"
           },
           {
-            "title": "享受过程",
-            "description": "专注于创作的乐趣，而不仅仅是结果"
+            "title": "表达自我",
+            "description": "专注于表达你独特的想法和个人风格"
           }
         ]
       },
       "core_skills": {
-        "title": "您将培养的核心技能",
-        "subtitle": "通过创意游戏获得的基本能力",
-        "skills": {
-          "artistic_expression": {
-            "title": "艺术表达",
-            "description": "通过视觉艺术传达想法和情感"
+        "title": "你将发展的核心技能",
+        "subtitle": "通过艺术游戏体验获得的核心创意能力",
+        "skills": [
+          {
+            "title": "色彩与设计",
+            "description": "掌握色彩理论和视觉构图"
           },
-          "design_thinking": {
-            "title": "设计思维",
-            "description": "创造功能性和美观的解决方案"
+          {
+            "title": "绘画与插图",
+            "description": "培养艺术绘画技巧"
           },
-          "color_theory": {
-            "title": "色彩理论",
-            "description": "理解颜色如何协同工作"
+          {
+            "title": "动画与视频",
+            "description": "让你的创作通过动态效果栩栩如生"
           },
-          "spatial_awareness": {
-            "title": "空间意识",
-            "description": "理解形状、大小和位置关系"
+          {
+            "title": "音乐与声音",
+            "description": "创作旋律和音效"
           },
-          "innovation": {
-            "title": "创新思维",
-            "description": "开发独特和原创的想法"
+          {
+            "title": "故事创作与写作",
+            "description": "创作引人入胜的叙事和角色"
           },
-          "creative_thinking": {
+          {
             "title": "创造性思维",
             "description": "培养创新的问题解决能力"
           }
-        }
+        ]
       }
     },
     "memory_games": {
@@ -434,34 +447,34 @@
         ]
       },
       "core_skills": {
-        "title": "您将培养的核心技能",
-        "subtitle": "通过记忆游戏获得的基本能力",
-        "skills": {
-          "visual_memory": {
+        "title": "你将发展的核心技能",
+        "subtitle": "通过认知训练获得的核心记忆能力",
+        "skills": [
+          {
             "title": "视觉记忆",
-            "description": "记住图像、颜色和视觉模式"
+            "description": "记住和回忆视觉模式和图像"
           },
-          "auditory_memory": {
+          {
             "title": "听觉记忆",
-            "description": "记住声音、音乐和口语信息"
+            "description": "处理和记住声音和口语信息"
           },
-          "sequential_memory": {
+          {
             "title": "序列记忆",
-            "description": "记住事件和信息的顺序"
+            "description": "记住事件和序列的顺序"
           },
-          "working_memory": {
+          {
             "title": "工作记忆",
             "description": "在心中保持和操作信息"
           },
-          "pattern_recognition": {
-            "title": "模式识别",
-            "description": "识别重复的序列和结构"
+          {
+            "title": "长期回忆",
+            "description": "长期存储和检索信息"
           },
-          "cognitive_flexibility": {
-            "title": "认知灵活性",
-            "description": "适应思维并在概念间切换"
+          {
+            "title": "专注力",
+            "description": "长时间保持专注和注意力"
           }
-        }
+        ]
       }
     },
     "math_games": {
@@ -508,7 +521,7 @@
         ]
       },
       "core_skills": {
-        "title": "您将培养的核心技能",
+        "title": "你将发展的核心技能",
         "subtitle": "通过游戏获得的基本数学能力",
         "skills": {
           "addition_subtraction": {
@@ -582,7 +595,7 @@
         }
       },
       "core_skills": {
-        "title": "你将培养的核心技能",
+        "title": "你将发展的核心技能",
         "subtitle": "通过游戏获得的基本科学能力",
         "scientific_method": {
           "title": "科学方法",
@@ -776,7 +789,7 @@
         }
       },
       "core_skills": {
-        "title": "你将培养的核心技能",
+        "title": "你将发展的核心技能",
         "subtitle": "通过体育游戏获得的基本运动能力",
         "skills": {
           "teamwork": {
@@ -818,7 +831,10 @@
       "language": "提高词汇量、阅读和写作能力",
       "puzzle": "挑战逻辑和批判性思维",
       "sports": "学习团队合作和体育知识",
-      "art": "通过数字艺术表达创造力"
+      "art": "通过数字艺术表达创造力",
+      "adventure": "踏上激动人心的探险之旅",
+      "creative": "释放想象力与创新思维",
+      "memory": "增强记忆力和认知能力"
     },
     "featured_games": {
       "title": "特色游戏",
@@ -1228,7 +1244,7 @@
         }
       },
       "core_skills": {
-        "title": "要培养的核心技能",
+        "title": "你将发展的核心技能",
         "subtitle": "通过游戏获得的基本科学技能",
         "skills": {
           "scientific_method": {

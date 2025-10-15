@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import GameCard from '../components/GameCard.astro';
-import type { Game } from '../types/game';
-import { getTranslations, t } from '../i18n/utils';
+import GameCard from '../../components/GameCard.astro';
+import type { Game } from '../../types/game';
+import { getTranslations, t } from '../../i18n/utils';
 import fs from 'fs';
 import path from 'path';
 
 // 导入样式文件
-import '../styles/game-card.css';
+import '../../styles/game-card.css';
 
 // 获取翻译数据
 const translations = await getTranslations('he');
@@ -236,8 +236,8 @@ const collectionPageData = {
             <i class="fas fa-brain"></i>
           </div>
           <div class="module-title-group">
-            <h2 class="module-title">Core Skills You'll Develop</h2>
-            <p class="module-subtitle">Essential creative abilities gained through artistic gameplay</p>
+            <h2 class="module-title">{t(translations, 'category_pages.creative_games.core_skills.title', 'Core Skills You\'ll Develop')}</h2>
+            <p class="module-subtitle">{t(translations, 'category_pages.creative_games.core_skills.subtitle', 'Essential creative abilities gained through artistic gameplay')}</p>
           </div>
         </div>
 
@@ -247,8 +247,8 @@ const collectionPageData = {
               <i class="fas fa-palette"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Color & Design</h4>
-              <p class="skill-description">Master color theory and visual composition</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.creative_games.core_skills.skills.0.title', 'Color & Design')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.creative_games.core_skills.skills.0.description', 'Master color theory and visual composition')}</p>
             </div>
           </div>
 
@@ -257,18 +257,8 @@ const collectionPageData = {
               <i class="fas fa-paint-brush"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Drawing & Illustration</h4>
-              <p class="skill-description">Develop artistic drawing techniques</p>
-            </div>
-          </div>
-
-          <div class="skill-item">
-            <div class="skill-icon">
-              <i class="fas fa-music"></i>
-            </div>
-            <div class="skill-content">
-              <h4 class="skill-title">Music & Sound</h4>
-              <p class="skill-description">Create melodies and sound effects</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.creative_games.core_skills.skills.1.title', 'Drawing & Illustration')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.creative_games.core_skills.skills.1.description', 'Develop artistic drawing techniques')}</p>
             </div>
           </div>
 
@@ -277,8 +267,18 @@ const collectionPageData = {
               <i class="fas fa-video"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Animation & Video</h4>
-              <p class="skill-description">Bring your creations to life with motion</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.creative_games.core_skills.skills.2.title', 'Animation & Video')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.creative_games.core_skills.skills.2.description', 'Bring your creations to life with motion')}</p>
+            </div>
+          </div>
+
+          <div class="skill-item">
+            <div class="skill-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <div class="skill-content">
+              <h4 class="skill-title">{t(translations, 'category_pages.creative_games.core_skills.skills.3.title', 'Music & Sound')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.creative_games.core_skills.skills.3.description', 'Create melodies and sound effects')}</p>
             </div>
           </div>
 
@@ -287,8 +287,8 @@ const collectionPageData = {
               <i class="fas fa-pen-fancy"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Storytelling & Writing</h4>
-              <p class="skill-description">Craft compelling narratives and characters</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.creative_games.core_skills.skills.4.title', 'Storytelling & Writing')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.creative_games.core_skills.skills.4.description', 'Craft compelling narratives and characters')}</p>
             </div>
           </div>
           
@@ -297,8 +297,8 @@ const collectionPageData = {
               <i class="fas fa-lightbulb"></i>
             </div>
             <div class="skill-content">
-              <h4 class="skill-title">Creative Thinking</h4>
-              <p class="skill-description">Develop innovative problem-solving abilities</p>
+              <h4 class="skill-title">{t(translations, 'category_pages.creative_games.core_skills.skills.5.title', 'Creative Thinking')}</h4>
+              <p class="skill-description">{t(translations, 'category_pages.creative_games.core_skills.skills.5.description', 'Develop innovative problem-solving abilities')}</p>
             </div>
           </div>
         </div>
