@@ -82,4 +82,8 @@ html原型图备份/
 .parcel-cache/
 
 # Additional file types
-*.tar.gz 
+*.tar.gz
+
+# GitHub Games Repository (已复制到public/games)
+github-games-repo/
+temp-games/
