@@ -210,6 +210,47 @@ class GameStatsManager {
   }
 
   /**
+   * 记录iframe加载时间 (游戏页面调用的方法)
+   * @param {string} gameSlug - 游戏标识符
+   * @param {number} loadTime - 加载时间（毫秒）
+   */
+  recordIframeLoadTime(gameSlug, loadTime) {
+    if (!this.iframeStats) {
+      this.iframeStats = JSON.parse(localStorage.getItem(this.STORAGE_KEYS.IFRAME_STATS) || '{}');
+    }
+
+    if (!this.iframeStats[gameSlug]) {
+      this.iframeStats[gameSlug] = {
+        loadCount: 0,
+        totalLoadTime: 0,
+        lastLoaded: null,
+        iframeSrc: '',
+        loadFailures: 0,
+        loadTimes: [] // 新增：存储加载时间历史
+      };
+    }
+
+    // 记录加载时间
+    this.iframeStats[gameSlug].totalLoadTime += loadTime;
+    if (!this.iframeStats[gameSlug].loadTimes) {
+      this.iframeStats[gameSlug].loadTimes = [];
+    }
+    this.iframeStats[gameSlug].loadTimes.push({
+      time: loadTime,
+      timestamp: new Date().toISOString()
+    });
+
+    // 只保留最近10次加载时间记录
+    if (this.iframeStats[gameSlug].loadTimes.length > 10) {
+      this.iframeStats[gameSlug].loadTimes = this.iframeStats[gameSlug].loadTimes.slice(-10);
+    }
+    
+    localStorage.setItem(this.STORAGE_KEYS.IFRAME_STATS, JSON.stringify(this.iframeStats));
+    
+    console.log(`📊 记录iframe加载时间: ${gameSlug}, 耗时: ${loadTime}ms`);
+  }
+
+  /**
    * 监听用户交互行为
    */
   monitorUserInteraction() {

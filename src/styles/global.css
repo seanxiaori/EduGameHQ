@@ -2,8 +2,20 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+/* Google Fonts - 优化加载策略 */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap') layer(fonts);
+
+/* 字体回退定义 - 确保即使Google Fonts加载失败也有合适的字体 */
+@layer fonts {
+  /* 定义字体回退 */
+  .font-display {
+    font-family: 'Space Grotesk', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  }
+  
+  .font-sans {
+    font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+  }
+}
 
 /* 基础样式重置 */
 @layer base {
@@ -266,4 +278,4 @@
   font-size: 0.875rem;
 }
 
-/* 以下移动端样式已在navbar.css中定义，避免重复 */ 
+/* 以下移动端样式已在navbar.css中定义，避免重复 */

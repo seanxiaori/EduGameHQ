@@ -170,7 +170,8 @@
     window.addEventListener('load', () => {
       optimizeFontLoading();
       prefetchNextPage();
-      if (import.meta && import.meta.env && import.meta.env.DEV) {
+      // 在开发环境中启用性能监控（通过检查hostname判断）
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         monitorPerformance();
       }
     });

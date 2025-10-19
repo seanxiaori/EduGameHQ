@@ -580,8 +580,8 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
     window.GAMES_DATA = gamesData || [];
     window.CURRENT_LANG = currentLang;
     window.TRANSLATIONS = translations;
-    // 生产环境减少日志输出
-    if (import.meta.env.DEV) {
+    // 开发环境日志输出（通过检查hostname判断）
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
       console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
       console.log('🌍 当前语言:', window.CURRENT_LANG);
     }
