@@ -6301,5 +6301,359 @@
     "featured": false,
     "trending": false,
     "isNew": true
+  },
+  {
+    "slug": "2048",
+    "title": "2048",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "/images/games/2048.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/2048/",
+    "description": "Slide numbered tiles on a grid to combine them and create a tile with the number 2048. A classic puzzle game that challenges your strategic thinking!",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys to slide all tiles",
+        "When two tiles with the same number touch, they merge into one",
+        "Try to reach the 2048 tile",
+        "Game ends when no more moves are possible"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to slide tiles",
+        "mobile": "Swipe in any direction"
+      },
+      "tips": [
+        "Keep your highest tile in a corner",
+        "Build a chain of descending numbers",
+        "Plan several moves ahead"
+      ]
+    },
+    "thumbnailUrl": "/images/games/2048.png",
+    "difficulty": "Medium",
+    "ageRange": "8-99",
+    "minAge": 8,
+    "maxAge": 99,
+    "tags": ["puzzle", "numbers", "strategy", "classic", "brain-training"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/gabrielecirulli/2048",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "tetris",
+    "title": "Tetris",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "/images/games/tetris.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/tetris/",
+    "description": "The classic tile-matching puzzle game! Rotate and move falling Tetromino shapes to complete horizontal lines and score points.",
+    "gameGuide": {
+      "howToPlay": [
+        "Move falling blocks left and right",
+        "Rotate blocks to fit them together",
+        "Complete horizontal lines to clear them",
+        "Don't let blocks stack to the top"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Up to rotate, Down to drop faster"
+      },
+      "tips": [
+        "Keep the playing field as flat as possible",
+        "Save the I-piece for clearing multiple lines",
+        "Plan ahead for the next piece"
+      ]
+    },
+    "thumbnailUrl": "/images/games/tetris.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["puzzle", "classic", "arcade", "blocks", "strategy"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/tetris",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "memory-game",
+    "title": "Memory Match",
+    "category": "memory",
+    "categoryName": "Memory",
+    "image": "/images/games/memory-game.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/memory-game/",
+    "description": "Test your memory by matching pairs of cards! Flip cards to find matching pairs and clear the board.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click on a card to flip it",
+        "Try to find matching pairs",
+        "Remember card positions",
+        "Match all pairs to win"
+      ],
+      "controls": {
+        "mouse": "Click to flip cards"
+      },
+      "tips": [
+        "Start from corners",
+        "Create a mental map of card positions",
+        "Focus on one row at a time"
+      ]
+    },
+    "thumbnailUrl": "/images/games/memory-game.png",
+    "difficulty": "Easy",
+    "ageRange": "4-99",
+    "minAge": 4,
+    "maxAge": 99,
+    "tags": ["memory", "cards", "matching", "brain-training", "kids"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/memory-game",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "whack-a-mole",
+    "title": "Whack-a-Mole",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "/images/games/whack-a-mole.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/whack-a-mole/",
+    "description": "Test your reflexes! Click on moles as they pop up from their holes to score points.",
+    "gameGuide": {
+      "howToPlay": [
+        "Watch for moles popping up",
+        "Click on them quickly to score",
+        "Don't miss any moles"
+      ],
+      "controls": {
+        "mouse": "Click to whack moles"
+      },
+      "tips": [
+        "Stay focused on the center",
+        "Use peripheral vision",
+        "React quickly"
+      ]
+    },
+    "thumbnailUrl": "/images/games/whack-a-mole.png",
+    "difficulty": "Easy",
+    "ageRange": "4-99",
+    "minAge": 4,
+    "maxAge": 99,
+    "tags": ["reflex", "arcade", "fun", "kids", "reaction"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/whack-a-mole",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "connect-four",
+    "title": "Connect Four",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "/images/games/connect-four.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/connect-four/",
+    "description": "Classic two-player strategy game. Drop colored discs to connect four in a row!",
+    "gameGuide": {
+      "howToPlay": [
+        "Take turns dropping discs",
+        "Connect four discs in a row to win",
+        "Block your opponent's moves"
+      ],
+      "controls": {
+        "mouse": "Click column to drop disc"
+      },
+      "tips": [
+        "Control the center column",
+        "Think ahead",
+        "Watch for diagonal wins"
+      ]
+    },
+    "thumbnailUrl": "/images/games/connect-four.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["strategy", "classic", "two-player", "board-game"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/connect-four",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "space-invaders",
+    "title": "Space Invaders",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "image": "/images/games/space-invaders.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/space-invaders/",
+    "description": "Classic arcade shooter! Defend Earth from waves of alien invaders.",
+    "gameGuide": {
+      "howToPlay": [
+        "Move left and right to dodge",
+        "Shoot the aliens before they reach you",
+        "Clear all aliens to advance"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Space to shoot"
+      },
+      "tips": [
+        "Target the edges first",
+        "Use cover wisely",
+        "Watch for bonus ships"
+      ]
+    },
+    "thumbnailUrl": "/images/games/space-invaders.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["arcade", "shooter", "classic", "retro"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/space-invaders",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "breakout",
+    "title": "Breakout",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "/images/games/breakout.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/breakout/",
+    "description": "Classic brick-breaking game! Bounce the ball to destroy all bricks.",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle left and right",
+        "Bounce ball to break bricks",
+        "Clear all bricks to win"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move paddle"
+      },
+      "tips": [
+        "Aim for corners",
+        "Keep ball in play"
+      ]
+    },
+    "thumbnailUrl": "/images/games/breakout.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["arcade", "classic", "retro", "brick-breaker"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/breakout",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "frogger",
+    "title": "Frogger",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "image": "/images/games/frogger.png",
+    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/frogger/",
+    "description": "Help the frog cross the road and river safely!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move frog across traffic",
+        "Jump on logs to cross river",
+        "Reach the other side safely"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Time your moves carefully",
+        "Watch traffic patterns"
+      ]
+    },
+    "thumbnailUrl": "/images/games/frogger.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["arcade", "classic", "retro"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://github.com/kubowania/frogger",
+    "lastUpdated": "2025-01-23",
+    "lastChecked": "2025-01-23",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
   }
 ]
