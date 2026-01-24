@@ -7048,7 +7048,7 @@
     "title": "Digger",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/digger/.github/screenshot.png",
+    "image": "https://games.edugamehq.com/games/digger/screenshot.png",
     "iframeUrl": "https://games.edugamehq.com/games/digger/",
     "description": "Classic Digger game! Dig tunnels, collect gems, avoid enemies.",
     "gameGuide": {
@@ -7065,7 +7065,7 @@
         "Use falling rocks"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/digger/.github/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/digger/screenshot.png",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
