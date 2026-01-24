@@ -6381,9 +6381,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
     "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "numbers",
@@ -6433,9 +6433,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/clumsy-bird/data/img/logo.png",
     "difficulty": "Hard",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "flappy",
@@ -6514,7 +6514,7 @@
     "title": "Alien Invasion",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/alien-invasion/images/alien_small.png",
+    "image": "https://games.edugamehq.com/games/alien-invasion/cover.svg",
     "iframeUrl": "https://games.edugamehq.com/games/alien-invasion/",
     "description": "Defend Earth from alien invaders! Shoot down waves of aliens before they reach the bottom.",
     "gameGuide": {
@@ -6534,11 +6534,11 @@
         "Watch for bonus power-ups"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/alien-invasion/images/alien_small.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/alien-invasion/cover.svg",
     "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "shooter",
@@ -6587,9 +6587,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/snake/snake-cover.svg",
     "difficulty": "Easy",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "snake",
@@ -6739,9 +6739,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/ball-and-wall/cover.svg",
     "difficulty": "Easy",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "breakout",
@@ -6817,7 +6817,7 @@
     "title": "Coil",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/coil/images/background.jpg",
+    "image": "https://games.edugamehq.com/games/coil/cover.svg",
     "iframeUrl": "https://games.edugamehq.com/games/coil/",
     "description": "Abstract puzzle game with unique mechanics. Guide your coil through challenges.",
     "gameGuide": {
@@ -6834,7 +6834,7 @@
         "Watch the patterns"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/coil/images/background.jpg",
+    "thumbnailUrl": "https://games.edugamehq.com/games/coil/cover.svg",
     "difficulty": "Medium",
     "ageRange": "10-99",
     "minAge": 10,
@@ -6863,7 +6863,7 @@
     "title": "Flappy Clone",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/crappy-bird/replay.png",
+    "image": "https://games.edugamehq.com/games/crappy-bird/screenshot.png",
     "iframeUrl": "https://games.edugamehq.com/games/crappy-bird/",
     "description": "Tap to fly! Navigate through pipes in this addictive arcade game.",
     "gameGuide": {
@@ -6882,11 +6882,11 @@
         "Stay calm"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/crappy-bird/replay.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/crappy-bird/screenshot.png",
     "difficulty": "Hard",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "flappy",
@@ -6931,9 +6931,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/ceros-snake/cover.svg",
     "difficulty": "Easy",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "snake",
@@ -7070,9 +7070,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/jolly-jumper/assets/credit/shohan.png",
     "difficulty": "Easy",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "jumping",
@@ -7116,9 +7116,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/digger/.github/screenshot.png",
     "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "classic",
@@ -7163,9 +7163,9 @@
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/tetris/screenshot.png",
     "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "puzzle",
       "tetris",
@@ -7191,7 +7191,7 @@
     "title": "SkiFree",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/skifree/skifree-github-banner.png",
+    "image": "https://games.edugamehq.com/games/skifree/yeti-big.png",
     "iframeUrl": "https://games.edugamehq.com/games/skifree/",
     "description": "Classic skiing game! Ski down the mountain, avoid obstacles, watch out for the yeti!",
     "gameGuide": {
@@ -7208,11 +7208,11 @@
         "Speed up to escape yeti"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/skifree/skifree-github-banner.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/skifree/yeti-big.png",
     "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
     "tags": [
       "arcade",
       "skiing",
