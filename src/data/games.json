@@ -48,7 +48,7 @@
     "playCount": 0,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "original": true
   },
   {
@@ -100,7 +100,7 @@
     "playCount": 0,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "original": true
   },
   {
@@ -152,7 +152,7 @@
     "playCount": 0,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "original": true
   },
   {
@@ -204,7 +204,7 @@
     "playCount": 0,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "original": true
   },
   {
@@ -255,7 +255,7 @@
     "playCount": 0,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "original": true
   },
   {
@@ -307,7 +307,7 @@
     "playCount": 1352,
     "featured": false,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Blury Studio",
     "educationalValue": "Physics principles, reaction ability, adaptability"
   },
@@ -361,7 +361,7 @@
     "playCount": 1535,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "FreePlay LLC"
   },
   {
@@ -455,7 +455,7 @@
     "playCount": 1515,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "numbers-arena",
@@ -499,7 +499,7 @@
     "playCount": 1314,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Aleksei Skachko"
   },
   {
@@ -545,7 +545,7 @@
     "playCount": 1156,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "kurlyBrackets"
   },
   {
@@ -592,7 +592,7 @@
     "playCount": 1458,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "hero-castle-war-tower-attack",
@@ -638,7 +638,7 @@
     "playCount": 1721,
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "number-line-match",
@@ -683,7 +683,7 @@
     "playCount": 992,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Synk"
   },
   {
@@ -729,7 +729,7 @@
     "playCount": 1475,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "just.so"
   },
   {
@@ -775,7 +775,7 @@
     "playCount": 1102,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Robert Alvarez"
   },
   {
@@ -821,7 +821,7 @@
     "playCount": 1580,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Diya Games"
   },
   {
@@ -867,7 +867,7 @@
     "playCount": 1690,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "PlayJutsu"
   },
   {
@@ -913,7 +913,7 @@
     "playCount": 1270,
     "featured": true,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Misc.261 Games"
   },
   {
@@ -959,7 +959,7 @@
     "playCount": 1173,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Go Panda Games"
   },
   {
@@ -1005,7 +1005,7 @@
     "playCount": 987,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Mirra Games"
   },
   {
@@ -1052,7 +1052,7 @@
     "playCount": 1415,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Next Door Gamedev"
   },
   {
@@ -1098,7 +1098,7 @@
     "playCount": 1932,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Carlos Pedroso"
   },
   {
@@ -1144,7 +1144,7 @@
     "playCount": 1316,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Demir"
   },
   {
@@ -1190,7 +1190,7 @@
     "playCount": 1066,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "PixelMaskGames"
   },
   {
@@ -1240,7 +1240,7 @@
     "playCount": 1909,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Qookie Games"
   },
   {
@@ -1286,7 +1286,7 @@
     "playCount": 1181,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "playablefactory"
   },
   {
@@ -1332,7 +1332,7 @@
     "playCount": 1399,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Mandinga Games"
   },
   {
@@ -1378,7 +1378,7 @@
     "playCount": 1690,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Kids site"
   },
   {
@@ -1425,7 +1425,7 @@
     "playCount": 545,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Alex Vi"
   },
   {
@@ -1471,7 +1471,7 @@
     "playCount": 778,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Kids site"
   },
   {
@@ -1527,7 +1527,7 @@
     "playCount": 1919,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Recloak"
   },
   {
@@ -1583,7 +1583,7 @@
     "playCount": 1880,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "INOVE"
   },
   {
@@ -1640,7 +1640,7 @@
     "playCount": 1387,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "DNA Games"
   },
   {
@@ -1696,7 +1696,7 @@
     "playCount": 1970,
     "featured": true,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Science Lab"
   },
   {
@@ -1752,7 +1752,7 @@
     "playCount": 623,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Research Games"
   },
   {
@@ -1809,7 +1809,7 @@
     "playCount": 877,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Anatomy Games"
   },
   {
@@ -1865,7 +1865,7 @@
     "playCount": 1533,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Famobi"
   },
   {
@@ -1921,7 +1921,7 @@
     "playCount": 1954,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "playh5"
   },
   {
@@ -1978,7 +1978,7 @@
     "playCount": 1415,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "SuperSonic"
   },
   {
@@ -2034,7 +2034,7 @@
     "playCount": 1247,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Famobi"
   },
   {
@@ -2090,7 +2090,7 @@
     "playCount": 1861,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Famobi"
   },
   {
@@ -2146,7 +2146,7 @@
     "playCount": 1126,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Voodoo"
   },
   {
@@ -2202,7 +2202,7 @@
     "playCount": 905,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "FX Games"
   },
   {
@@ -2257,7 +2257,7 @@
     "playCount": 709,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Borutist"
   },
   {
@@ -2312,7 +2312,7 @@
     "playCount": 700,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Neko"
   },
   {
@@ -2367,7 +2367,7 @@
     "playCount": 1065,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "ingenium games"
   },
   {
@@ -2422,7 +2422,7 @@
     "playCount": 733,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Vad Games"
   },
   {
@@ -2456,7 +2456,7 @@
     "minAge": 6,
     "maxAge": 14,
     "ageRange": "6-14",
-    "isNew": true,
+    "isNew": false,
     "trending": true,
     "featured": true
   },
@@ -2491,7 +2491,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2526,7 +2526,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2561,7 +2561,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2596,7 +2596,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2631,7 +2631,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2666,7 +2666,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2701,7 +2701,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2736,7 +2736,7 @@
     "minAge": 8,
     "maxAge": 16,
     "ageRange": "8-16",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2771,7 +2771,7 @@
     "minAge": 6,
     "maxAge": 14,
     "ageRange": "6-14",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2806,7 +2806,7 @@
     "minAge": 6,
     "maxAge": 14,
     "ageRange": "6-14",
-    "isNew": true,
+    "isNew": false,
     "trending": false,
     "featured": false
   },
@@ -2864,7 +2864,7 @@
     "playCount": 1609,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "GameDistribution"
   },
   {
@@ -2921,7 +2921,7 @@
     "playCount": 1465,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Astetrio"
   },
   {
@@ -2977,7 +2977,7 @@
     "playCount": 1597,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Clever Apps"
   },
   {
@@ -3034,7 +3034,7 @@
     "playCount": 1442,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Unknown"
   },
   {
@@ -3090,7 +3090,7 @@
     "playCount": 1394,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Bravestars Games"
   },
   {
@@ -3146,7 +3146,7 @@
     "playCount": 1625,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Tom Bombadil"
   },
   {
@@ -3202,7 +3202,7 @@
     "playCount": 1726,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Foony"
   },
   {
@@ -3258,7 +3258,7 @@
     "playCount": 1102,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Obumo Games"
   },
   {
@@ -3315,7 +3315,7 @@
     "playCount": 588,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "just.so"
   },
   {
@@ -3372,7 +3372,7 @@
     "playCount": 1759,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "abcgames"
   },
   {
@@ -3429,7 +3429,7 @@
     "playCount": 1045,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Gameyogi"
   },
   {
@@ -3485,7 +3485,7 @@
     "playCount": 1649,
     "featured": false,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Unknown"
   },
   {
@@ -3541,7 +3541,7 @@
     "playCount": 1928,
     "featured": true,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Clever Apps"
   },
   {
@@ -3597,7 +3597,7 @@
     "playCount": 1249,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Mirra Games"
   },
   {
@@ -3653,7 +3653,7 @@
     "playCount": 685,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Onki Games"
   },
   {
@@ -3709,7 +3709,7 @@
     "playCount": 928,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Famobi"
   },
   {
@@ -3765,7 +3765,7 @@
     "playCount": 1697,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Bravestars Games"
   },
   {
@@ -3821,7 +3821,7 @@
     "playCount": 1508,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Rollic Games"
   },
   {
@@ -3877,7 +3877,7 @@
     "playCount": 1260,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "FreePlay LLC"
   },
   {
@@ -3933,7 +3933,7 @@
     "playCount": 972,
     "featured": true,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "1LIFE.GAMES"
   },
   {
@@ -3990,7 +3990,7 @@
     "playCount": 753,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Onki Games"
   },
   {
@@ -4046,7 +4046,7 @@
     "playCount": 643,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Dev Dude"
   },
   {
@@ -4102,7 +4102,7 @@
     "playCount": 1522,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "tiplay studio"
   },
   {
@@ -4158,7 +4158,7 @@
     "playCount": 1730,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "masasgames"
   },
   {
@@ -4213,7 +4213,7 @@
     "playCount": 550,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "AMG Studio"
   },
   {
@@ -4268,7 +4268,7 @@
     "playCount": 1380,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Blury Studio"
   },
   {
@@ -4323,7 +4323,7 @@
     "playCount": 1393,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Lion Studios"
   },
   {
@@ -4379,7 +4379,7 @@
     "playCount": 1607,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "Rike Games"
   },
   {
@@ -4434,7 +4434,7 @@
     "playCount": 1508,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Idea Studios"
   },
   {
@@ -4490,7 +4490,7 @@
     "playCount": 1672,
     "featured": true,
     "trending": true,
-    "isNew": true,
+    "isNew": false,
     "developer": "ticedev"
   },
   {
@@ -4546,7 +4546,7 @@
     "playCount": 893,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "TapNation"
   },
   {
@@ -4602,7 +4602,7 @@
     "playCount": 1157,
     "featured": true,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Piano Academy"
   },
   {
@@ -4658,7 +4658,7 @@
     "playCount": 1486,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Little Island Games"
   },
   {
@@ -4714,7 +4714,7 @@
     "playCount": 816,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Evil Dog Productions"
   },
   {
@@ -4770,7 +4770,7 @@
     "playCount": 1328,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "APEKung"
   },
   {
@@ -4826,7 +4826,7 @@
     "playCount": 1085,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "RAD BROTHERS"
   },
   {
@@ -4882,7 +4882,7 @@
     "playCount": 581,
     "featured": false,
     "trending": false,
-    "isNew": true,
+    "isNew": false,
     "developer": "Tong965"
   },
   {
@@ -4929,7 +4929,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "mahjongg-solitaire",
@@ -4975,7 +4975,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "bloxdhop-io",
@@ -5021,7 +5021,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "racing-limits",
@@ -5067,52 +5067,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "personality-quizzes",
-    "title": "Personality Quizzes",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://kids.nationalgeographic.com/games/personality-quizzes",
-    "description": "Play Personality Quizzes - an educational game from National Geographic Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "natgeokids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.585705047699021,
-    "playCount": 109980,
-    "sourceUrl": "https://kids.nationalgeographic.com/games/personality-quizzes",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "piece-of-cake-merge-and-bake",
@@ -5158,52 +5113,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "?page=2",
-    "title": "2",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://www.education.com/resources/games/?page=2",
-    "description": "Play 2 - an educational game from Education.com",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "educationcom",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.529663332860128,
-    "playCount": 85698,
-    "sourceUrl": "https://www.education.com/resources/games/?page=2",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "traffic-rider-vvq",
@@ -5249,99 +5159,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "education",
-    "title": "Education.com is certified by the kidSAFE Seal Program.",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://www.kidsafeseal.com/certifiedproducts/education.html",
-    "description": "Play Education.com is certified by the kidSAFE Seal Program. - an educational game from Education.com",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "thumbnailUrl": "https://www.kidsafeseal.com/sealimage/50473324616348843/education_small_whitetm.png",
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "educationcom",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.35797119821175,
-    "playCount": 96143,
-    "sourceUrl": "https://www.kidsafeseal.com/certifiedproducts/education.html",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "space-waves",
-    "title": "UpdatedSpace Waves",
-    "category": "math",
-    "categoryName": "Math",
-    "iframeUrl": "https://www.crazygames.com/embed/space-waves",
-    "description": "Play UpdatedSpace Waves - an educational game on CrazyGames",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/space-waves_16x9/20241203031650/space-waves_16x9-cover?metadata=none&quality=85&width=273&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "math"
-    ],
-    "source": "crazygames",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.399268155298696,
-    "playCount": 51387,
-    "sourceUrl": "https://www.crazygames.com/game/space-waves",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "make-a-cookie",
@@ -5387,52 +5205,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "quizzes",
-    "title": "Quizzes",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://kids.nationalgeographic.com/games/quizzes",
-    "description": "Play Quizzes - an educational game from National Geographic Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "natgeokids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.340381724750567,
-    "playCount": 58466,
-    "sourceUrl": "https://kids.nationalgeographic.com/games/quizzes",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "word-wipe",
@@ -5478,52 +5251,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "action-adventure",
-    "title": "Action and Adventure",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://kids.nationalgeographic.com/games/action-adventure",
-    "description": "Play Action and Adventure - an educational game from National Geographic Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "natgeokids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.255794659565858,
-    "playCount": 80357,
-    "sourceUrl": "https://kids.nationalgeographic.com/games/action-adventure",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "uno-online",
@@ -5569,52 +5297,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "?common-core=yes",
-    "title": "Yes",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://www.education.com/resources/games/?common-core=yes",
-    "description": "Play Yes - an educational game from Education.com",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "educationcom",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.292842929864661,
-    "playCount": 61319,
-    "sourceUrl": "https://www.education.com/resources/games/?common-core=yes",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "matching-gemstones",
@@ -5659,53 +5342,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "games",
-    "title": "Games for tablets, phones and more",
-    "category": "science",
-    "categoryName": "Science",
-    "iframeUrl": "https://www.sheppardsoftware.com/games.html",
-    "description": "Play games for tablets, phones and more - an educational game from Sheppard Software",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "thumbnailUrl": "https://www.sheppardsoftware.com/design/icons/MobileGamePageSmall.gif",
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "science"
-    ],
-    "source": "sheppardsoftware",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.26759543983764,
-    "playCount": 78922,
-    "sourceUrl": "https://www.sheppardsoftware.com/games.html",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "steal-brainrot-online",
@@ -5751,7 +5388,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "space-explorer",
@@ -5796,52 +5433,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "?page=4",
-    "title": "4",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://www.education.com/resources/games/?page=4",
-    "description": "Play 4 - an educational game from Education.com",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "educationcom",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.0817738100643846,
-    "playCount": 93970,
-    "sourceUrl": "https://www.education.com/resources/games/?page=4",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "farm-merge-valley",
@@ -5887,97 +5479,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "?page=29",
-    "title": "29",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://www.education.com/resources/games/?page=29",
-    "description": "Play 29 - an educational game from Education.com",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "educationcom",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.0615310858011044,
-    "playCount": 70411,
-    "sourceUrl": "https://www.education.com/resources/games/?page=29",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "?page=3",
-    "title": "3",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://www.education.com/resources/games/?page=3",
-    "description": "Play 3 - an educational game from Education.com",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "educationcom",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.342088415219428,
-    "playCount": 13715,
-    "sourceUrl": "https://www.education.com/resources/games/?page=3",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "ragdoll-archers",
@@ -6023,7 +5525,7 @@
     "lastChecked": "2025-10-10",
     "featured": false,
     "trending": false,
-    "isNew": true
+    "isNew": false
   },
   {
     "slug": "hextris",
