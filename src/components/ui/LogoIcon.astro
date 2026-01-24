@@ -1,37 +1,20 @@
 ---
 // src/components/ui/LogoIcon.astro
-// EduGameHQ 方形图标组件 - 极简锐角矩形设计
-// 设计理念：最简洁的教育游戏图标
+// EduGameHQ 简约图标
 ---
 <svg
-  width="64"
-  height="64"
-  viewBox="0 0 64 64"
+  width="48"
+  height="48"
+  viewBox="0 0 48 48"
   xmlns="http://www.w3.org/2000/svg"
   aria-label="EduGameHQ Icon"
 >
   <defs>
-    <!-- 网站主色调渐变 - 暖黄色系 -->
-    <linearGradient id="icon-bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#F59E0B; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#DC2626; stop-opacity:1" />
+    <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366F1"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
     </linearGradient>
   </defs>
-
-  <!-- 现代扁平背景 - 参考知名应用图标风格 -->
-  <rect x="8" y="8" width="48" height="48" rx="14" ry="14" 
-        fill="url(#icon-bg-gradient)"/>
-  
-  <!-- 极简书本 - 更精致的设计 -->
-  <g transform="translate(32, 24)">
-    <!-- 简单的打开书本轮廓 -->
-    <path d="M-7 -2 L-7 8 L0 6 L7 8 L7 -2 Z" 
-          fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"/>
-  </g>
-  
-  <!-- 游戏元素 - 现代化圆点 -->
-  <g transform="translate(32, 40)">
-    <circle cx="-4" cy="0" r="2" fill="white" opacity="0.9"/>
-    <circle cx="4" cy="0" r="2" fill="white" opacity="0.9"/>
-  </g>
+  <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#icon-grad)"/>
+  <path d="M20 16 L20 32 L34 24 Z" fill="white"/>
 </svg>
