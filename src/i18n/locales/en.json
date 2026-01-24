@@ -44,7 +44,13 @@
     "art-games": "Art Games",
     "adventure-games": "Adventure Games",
     "creative-games": "Creative Games",
-    "memory-games": "Memory Games"
+    "memory-games": "Memory Games",
+    "coding-games": "Coding Games",
+    "educational-games": "Educational Games",
+    "geography-games": "Geography Games",
+    "logic-games": "Logic Games",
+    "strategy-games": "Strategy Games",
+    "arcade-games": "Arcade Games"
   },
   "hero": {
     "title": "Where Learning Meets Fun",

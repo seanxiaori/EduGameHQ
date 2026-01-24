@@ -44,7 +44,13 @@
     "art-games": "Kunst-Spiele",
     "adventure-games": "Abenteuer-Spiele",
     "creative-games": "Kreative Spiele",
-    "memory-games": "Gedächtnis-Spiele"
+    "memory-games": "Gedächtnis-Spiele",
+    "coding-games": "Programmier-Spiele",
+    "educational-games": "Bildungs-Spiele",
+    "geography-games": "Geographie-Spiele",
+    "logic-games": "Logik-Spiele",
+    "strategy-games": "Strategie-Spiele",
+    "arcade-games": "Arcade-Spiele"
   },
   "hero": {
     "title": "Wo Lernen auf Spaß trifft",

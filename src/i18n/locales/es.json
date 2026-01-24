@@ -44,7 +44,13 @@
     "art-games": "Juegos de Arte",
     "adventure-games": "Juegos de Aventura",
     "creative-games": "Juegos Creativos",
-    "memory-games": "Juegos de Memoria"
+    "memory-games": "Juegos de Memoria",
+    "coding-games": "Juegos de Programación",
+    "educational-games": "Juegos Educativos",
+    "geography-games": "Juegos de Geografía",
+    "logic-games": "Juegos de Lógica",
+    "strategy-games": "Juegos de Estrategia",
+    "arcade-games": "Juegos Arcade"
   },
   "hero": {
     "title": "Donde el Aprendizaje se Encuentra con la Diversión",

@@ -44,7 +44,13 @@
     "art-games": "ألعاب الفن",
     "adventure-games": "ألعاب مغامرة",
     "creative-games": "ألعاب إبداعية",
-    "memory-games": "ألعاب الذاكرة"
+    "memory-games": "ألعاب الذاكرة",
+    "coding-games": "ألعاب البرمجة",
+    "educational-games": "ألعاب تعليمية",
+    "geography-games": "ألعاب الجغرافيا",
+    "logic-games": "ألعاب المنطق",
+    "strategy-games": "ألعاب الاستراتيجية",
+    "arcade-games": "ألعاب الأركيد"
   },
   "hero": {
     "title": "حيث يلتقي التعلم بالمرح",

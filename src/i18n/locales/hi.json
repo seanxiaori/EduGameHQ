@@ -44,7 +44,13 @@
     "art-games": "कला खेल",
     "adventure-games": "साहसिक खेल",
     "creative-games": "रचनात्मक खेल",
-    "memory-games": "याददाश्त खेल"
+    "memory-games": "याददाश्त खेल",
+    "coding-games": "कोडिंग खेल",
+    "educational-games": "शैक्षिक खेल",
+    "geography-games": "भूगोल खेल",
+    "logic-games": "तर्क खेल",
+    "strategy-games": "रणनीति खेल",
+    "arcade-games": "आर्केड खेल"
   },
   "hero": {
     "title": "जहां सीखना मज़े से मिलता है",

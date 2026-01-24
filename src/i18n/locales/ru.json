@@ -44,7 +44,13 @@
     "art-games": "Художественные игры",
     "adventure-games": "Приключенческие игры",
     "creative-games": "Креативные игры",
-    "memory-games": "Игры на память"
+    "memory-games": "Игры на память",
+    "coding-games": "Игры по программированию",
+    "educational-games": "Образовательные игры",
+    "geography-games": "Географические игры",
+    "logic-games": "Логические игры",
+    "strategy-games": "Стратегические игры",
+    "arcade-games": "Аркадные игры"
   },
   "hero": {
     "title": "Где обучение встречается с удовольствием",

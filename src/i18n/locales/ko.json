@@ -44,7 +44,13 @@
     "art-games": "예술 게임",
     "adventure-games": "모험 게임",
     "creative-games": "창의적 게임",
-    "memory-games": "기억력 게임"
+    "memory-games": "기억력 게임",
+    "coding-games": "코딩 게임",
+    "educational-games": "교육 게임",
+    "geography-games": "지리 게임",
+    "logic-games": "논리 게임",
+    "strategy-games": "전략 게임",
+    "arcade-games": "아케이드 게임"
   },
   "hero": {
     "title": "학습과 재미가 만나는 곳",

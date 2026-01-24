@@ -44,7 +44,13 @@
     "art-games": "艺术游戏",
     "adventure-games": "冒险游戏",
     "creative-games": "创意游戏",
-    "memory-games": "记忆游戏"
+    "memory-games": "记忆游戏",
+    "coding-games": "编程游戏",
+    "educational-games": "教育游戏",
+    "geography-games": "地理游戏",
+    "logic-games": "逻辑游戏",
+    "strategy-games": "策略游戏",
+    "arcade-games": "街机游戏"
   },
   "hero": {
     "title": "让学习充满乐趣",

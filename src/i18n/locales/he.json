@@ -44,7 +44,13 @@
     "art-games": "משחקי אמנות",
     "adventure-games": "משחקי הרפתקאות",
     "creative-games": "משחקים יצירתיים",
-    "memory-games": "משחקי זיכרון"
+    "memory-games": "משחקי זיכרון",
+    "coding-games": "משחקי תכנות",
+    "educational-games": "משחקים חינוכיים",
+    "geography-games": "משחקי גיאוגרפיה",
+    "logic-games": "משחקי לוגיקה",
+    "strategy-games": "משחקי אסטרטגיה",
+    "arcade-games": "משחקי ארקייד"
   },
   "hero": {
     "title": "איפה למידה פוגשת כיף",

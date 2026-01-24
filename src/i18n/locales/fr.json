@@ -44,7 +44,13 @@
     "art-games": "Jeux d'art",
     "adventure-games": "Jeux d'aventure",
     "creative-games": "Jeux créatifs",
-    "memory-games": "Jeux de mémoire"
+    "memory-games": "Jeux de mémoire",
+    "coding-games": "Jeux de programmation",
+    "educational-games": "Jeux éducatifs",
+    "geography-games": "Jeux de géographie",
+    "logic-games": "Jeux de logique",
+    "strategy-games": "Jeux de stratégie",
+    "arcade-games": "Jeux d'arcade"
   },
   "hero": {
     "title": "Où l'apprentissage rencontre le plaisir",

@@ -44,7 +44,13 @@
     "art-games": "アートゲーム",
     "adventure-games": "アドベンチャーゲーム",
     "creative-games": "クリエイティブゲーム",
-    "memory-games": "記憶ゲーム"
+    "memory-games": "記憶ゲーム",
+    "coding-games": "プログラミングゲーム",
+    "educational-games": "教育ゲーム",
+    "geography-games": "地理ゲーム",
+    "logic-games": "論理ゲーム",
+    "strategy-games": "戦略ゲーム",
+    "arcade-games": "アーケードゲーム"
   },
   "hero": {
     "title": "学習と楽しさが出会う場所",
