@@ -110,7 +110,7 @@
     "categoryName": "Creative",
     "iframeUrl": "https://games.edugamehq.com/games/coloring-studio/",
     "description": "Unleash your creativity in this digital coloring studio! Choose from various pictures and color them with a wide palette of colors.",
-      "image": "https://games.edugamehq.com/games/animal-matching/assets/butterfly.png",
+    "image": "https://games.edugamehq.com/games/animal-matching/assets/butterfly.png",
     "gameGuide": {
       "howToPlay": [
         "Select a coloring page from the gallery",
@@ -162,7 +162,7 @@
     "categoryName": "Memory",
     "iframeUrl": "https://games.edugamehq.com/games/animal-matching/",
     "description": "Test your memory skills with this fun animal matching game! Find pairs of identical animals and improve your concentration and memory.",
-      "image": "https://games.edugamehq.com/games/animal-matching/assets/panda.png",
+    "image": "https://games.edugamehq.com/games/animal-matching/assets/panda.png",
     "gameGuide": {
       "howToPlay": [
         "Click on cards to flip them over",
@@ -6301,8 +6301,7 @@
     "featured": false,
     "trending": false,
     "isNew": true
-  }
-,
+  },
   {
     "slug": "hextris",
     "title": "Hextris",
@@ -6333,7 +6332,13 @@
     "ageRange": "8-99",
     "minAge": 8,
     "maxAge": 99,
-    "tags": ["puzzle", "tetris", "hexagon", "arcade", "addictive"],
+    "tags": [
+      "puzzle",
+      "tetris",
+      "hexagon",
+      "arcade",
+      "addictive"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6348,8 +6353,7 @@
     "trending": true,
     "isNew": true,
     "original": false
-  }
-,
+  },
   {
     "slug": "2048",
     "title": "2048",
@@ -6380,7 +6384,13 @@
     "ageRange": "6-99",
     "minAge": 6,
     "maxAge": 99,
-    "tags": ["puzzle", "numbers", "math", "strategy", "classic"],
+    "tags": [
+      "puzzle",
+      "numbers",
+      "math",
+      "strategy",
+      "classic"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6395,8 +6405,7 @@
     "trending": true,
     "isNew": true,
     "original": false
-  }
-,
+  },
   {
     "slug": "clumsy-bird",
     "title": "Clumsy Bird",
@@ -6427,7 +6436,13 @@
     "ageRange": "6-99",
     "minAge": 6,
     "maxAge": 99,
-    "tags": ["arcade", "flappy", "bird", "casual", "addictive"],
+    "tags": [
+      "arcade",
+      "flappy",
+      "bird",
+      "casual",
+      "addictive"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6442,8 +6457,7 @@
     "trending": true,
     "isNew": true,
     "original": false
-  }
-,
+  },
   {
     "slug": "green-mahjong",
     "title": "Green Mahjong",
@@ -6473,7 +6487,13 @@
     "ageRange": "8-99",
     "minAge": 8,
     "maxAge": 99,
-    "tags": ["puzzle", "mahjong", "matching", "classic", "relaxing"],
+    "tags": [
+      "puzzle",
+      "mahjong",
+      "matching",
+      "classic",
+      "relaxing"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6519,7 +6539,13 @@
     "ageRange": "6-99",
     "minAge": 6,
     "maxAge": 99,
-    "tags": ["arcade", "shooter", "space", "aliens", "action"],
+    "tags": [
+      "arcade",
+      "shooter",
+      "space",
+      "aliens",
+      "action"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6564,7 +6590,12 @@
     "ageRange": "6-99",
     "minAge": 6,
     "maxAge": 99,
-    "tags": ["arcade", "snake", "classic", "retro"],
+    "tags": [
+      "arcade",
+      "snake",
+      "classic",
+      "retro"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6572,6 +6603,628 @@
     "mobileSupport": false,
     "responsive": true,
     "sourceUrl": "https://github.com/mjhasbach/ceros-snake",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "astray",
+    "title": "Astray - 3D Maze",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/astray/ball.png",
+    "iframeUrl": "https://games.edugamehq.com/games/astray/",
+    "description": "Navigate a ball through a 3D maze! Tilt and guide the ball to the exit while avoiding obstacles.",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys to tilt the maze",
+        "Guide the ball to the exit",
+        "Avoid falling off edges",
+        "Complete each level as fast as possible"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to tilt maze"
+      },
+      "tips": [
+        "Move slowly at first",
+        "Plan your route ahead",
+        "Watch for narrow passages"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/astray/ball.png",
+    "difficulty": "Medium",
+    "ageRange": "8-99",
+    "minAge": 8,
+    "maxAge": 99,
+    "tags": [
+      "puzzle",
+      "maze",
+      "3d",
+      "ball",
+      "physics"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://github.com/wwwtyro/Astray",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "captain-rogers",
+    "title": "Captain Rogers",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/captain-rogers/favicon.png",
+    "iframeUrl": "https://games.edugamehq.com/games/captain-rogers/",
+    "description": "Space adventure game! Pilot Captain Rogers through asteroid fields and battle enemies.",
+    "gameGuide": {
+      "howToPlay": [
+        "Control your spaceship",
+        "Avoid asteroids and enemies",
+        "Collect power-ups",
+        "Survive as long as possible"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Space to shoot",
+        "touch": "Touch to control"
+      },
+      "tips": [
+        "Keep moving to avoid enemies",
+        "Collect shields for protection",
+        "Watch your fuel level"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/captain-rogers/favicon.png",
+    "difficulty": "Medium",
+    "ageRange": "8-99",
+    "minAge": 8,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "space",
+      "shooter",
+      "adventure"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/nicklockwood/Captain-Rogers",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "ball-and-wall",
+    "title": "Ball and Wall",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/ball-and-wall/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/ball-and-wall/",
+    "description": "Classic brick breaker game! Bounce the ball to destroy all the bricks.",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle left and right",
+        "Bounce ball to break bricks",
+        "Don't let ball fall",
+        "Clear all bricks to win"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys or mouse to move paddle"
+      },
+      "tips": [
+        "Aim for corners",
+        "Watch ball angle",
+        "Catch power-ups"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/ball-and-wall/favicon.ico",
+    "difficulty": "Easy",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "breakout",
+      "classic",
+      "brick"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "3d-chess",
+    "title": "3D Chess",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/3d-chess/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/3d-chess/",
+    "description": "Play chess in stunning 3D! Challenge the AI or play with friends.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click piece to select",
+        "Click destination to move",
+        "Capture opponent pieces",
+        "Checkmate to win"
+      ],
+      "controls": {
+        "mouse": "Click to select and move pieces"
+      },
+      "tips": [
+        "Control the center",
+        "Protect your king",
+        "Think ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/3d-chess/favicon.ico",
+    "difficulty": "Hard",
+    "ageRange": "8-99",
+    "minAge": 8,
+    "maxAge": 99,
+    "tags": [
+      "puzzle",
+      "chess",
+      "strategy",
+      "3d",
+      "board"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "coil",
+    "title": "Coil",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/coil/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/coil/",
+    "description": "Abstract puzzle game with unique mechanics. Guide your coil through challenges.",
+    "gameGuide": {
+      "howToPlay": [
+        "Control the coil movement",
+        "Navigate through obstacles",
+        "Reach the goal"
+      ],
+      "controls": {
+        "mouse": "Mouse to control"
+      },
+      "tips": [
+        "Move carefully",
+        "Watch the patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/coil/favicon.ico",
+    "difficulty": "Medium",
+    "ageRange": "10-99",
+    "minAge": 10,
+    "maxAge": 99,
+    "tags": [
+      "puzzle",
+      "abstract",
+      "artistic"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "crappy-bird",
+    "title": "Flappy Clone",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/crappy-bird/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/crappy-bird/",
+    "description": "Tap to fly! Navigate through pipes in this addictive arcade game.",
+    "gameGuide": {
+      "howToPlay": [
+        "Tap or click to flap",
+        "Avoid the pipes",
+        "Get highest score"
+      ],
+      "controls": {
+        "keyboard": "Space or click to flap",
+        "touch": "Tap to flap"
+      },
+      "tips": [
+        "Tap steadily",
+        "Watch the gaps",
+        "Stay calm"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/crappy-bird/favicon.ico",
+    "difficulty": "Hard",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "flappy",
+      "endless",
+      "casual"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "ceros-snake",
+    "title": "Ceros Snake",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/ceros-snake/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/ceros-snake/",
+    "description": "Modern snake game with smooth graphics! Eat food and grow longer.",
+    "gameGuide": {
+      "howToPlay": [
+        "Control snake direction",
+        "Eat food to grow",
+        "Avoid walls and yourself"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Plan your path",
+        "Don't trap yourself"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/ceros-snake/favicon.ico",
+    "difficulty": "Easy",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "snake",
+      "classic"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "chess-3d",
+    "title": "Chess 3D Pro",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/chess-3d/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/chess-3d/",
+    "description": "Beautiful 3D chess with AI opponent. Test your strategic skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select piece to move",
+        "Click destination",
+        "Checkmate opponent"
+      ],
+      "controls": {
+        "mouse": "Click to play"
+      },
+      "tips": [
+        "Control center squares",
+        "Develop pieces early"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/chess-3d/favicon.ico",
+    "difficulty": "Hard",
+    "ageRange": "8-99",
+    "minAge": 8,
+    "maxAge": 99,
+    "tags": [
+      "puzzle",
+      "chess",
+      "strategy",
+      "3d"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "tower-defense",
+    "title": "Tower Defense",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "image": "https://games.edugamehq.com/games/tower-defense/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/tower-defense/",
+    "description": "Build towers to defend against waves of enemies! Strategic placement is key.",
+    "gameGuide": {
+      "howToPlay": [
+        "Place towers on the map",
+        "Upgrade towers",
+        "Stop all enemies"
+      ],
+      "controls": {
+        "mouse": "Click to place and upgrade"
+      },
+      "tips": [
+        "Mix tower types",
+        "Upgrade strategically"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tower-defense/favicon.ico",
+    "difficulty": "Medium",
+    "ageRange": "8-99",
+    "minAge": 8,
+    "maxAge": 99,
+    "tags": [
+      "strategy",
+      "tower-defense",
+      "tactical"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "jolly-jumper",
+    "title": "Jolly Jumper",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/jolly-jumper/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/jolly-jumper/",
+    "description": "Jump higher and higher! Collect coins and avoid obstacles.",
+    "gameGuide": {
+      "howToPlay": [
+        "Tilt to move",
+        "Jump on platforms",
+        "Collect coins"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Keep jumping",
+        "Watch for moving platforms"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/jolly-jumper/favicon.ico",
+    "difficulty": "Easy",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "jumping",
+      "endless"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "digger",
+    "title": "Digger",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/digger/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/digger/",
+    "description": "Classic Digger game! Dig tunnels, collect gems, avoid enemies.",
+    "gameGuide": {
+      "howToPlay": [
+        "Dig through dirt",
+        "Collect all gems",
+        "Avoid or crush enemies"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Plan escape routes",
+        "Use falling rocks"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/digger/favicon.ico",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "classic",
+      "retro",
+      "digger"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "tetris",
+    "title": "Tetris Classic",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/tetris/screenshot.png",
+    "iframeUrl": "https://games.edugamehq.com/games/tetris/",
+    "description": "The classic block puzzle game! Arrange falling blocks to clear lines.",
+    "gameGuide": {
+      "howToPlay": [
+        "Rotate falling blocks",
+        "Fill complete lines",
+        "Don't let blocks reach top"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Up to rotate"
+      },
+      "tips": [
+        "Keep the stack low",
+        "Save space for long pieces"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tetris/screenshot.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "puzzle",
+      "tetris",
+      "classic",
+      "blocks"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "skifree",
+    "title": "SkiFree",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/skifree/favicon.ico",
+    "iframeUrl": "https://games.edugamehq.com/games/skifree/",
+    "description": "Classic skiing game! Ski down the mountain, avoid obstacles, watch out for the yeti!",
+    "gameGuide": {
+      "howToPlay": [
+        "Ski downhill",
+        "Avoid trees and rocks",
+        "Escape the yeti"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to steer"
+      },
+      "tips": [
+        "Stay alert",
+        "Speed up to escape yeti"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/skifree/favicon.ico",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": [
+      "arcade",
+      "skiing",
+      "classic",
+      "retro"
+    ],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
     "lastUpdated": "2025-01-24",
     "lastChecked": "2025-01-24",
     "playCount": 0,
