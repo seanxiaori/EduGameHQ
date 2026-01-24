@@ -7183,5 +7183,137 @@
     "trending": true,
     "isNew": true,
     "original": false
+  },
+  {
+    "slug": "pacman",
+    "title": "Pacman",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/pacman/img/logo.png",
+    "iframeUrl": "https://games.edugamehq.com/games/pacman/",
+    "description": "Play the classic Pacman arcade game! Navigate through the maze, eat all the dots, and avoid the ghosts. Collect power pellets to turn the tables on your enemies.",
+    "gameGuide": {
+      "howToPlay": [
+        "Navigate Pacman through the maze",
+        "Eat all the dots to complete each level",
+        "Avoid the colorful ghosts",
+        "Eat power pellets to chase and eat ghosts"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move Pacman"
+      },
+      "tips": [
+        "Learn ghost behavior patterns",
+        "Save power pellets for emergencies",
+        "Clear corners first before moving to center"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pacman/img/logo.png",
+    "difficulty": "Medium",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": ["arcade", "classic", "maze", "retro", "strategy"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "minesweeper",
+    "title": "Minesweeper",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/minesweeper/images/minesweeper.png",
+    "iframeUrl": "https://games.edugamehq.com/games/minesweeper/",
+    "description": "The classic Minesweeper puzzle game! Use logic and deduction to clear the minefield without triggering any mines. A perfect brain training game for all ages.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to reveal squares",
+        "Numbers show adjacent mines",
+        "Right-click to flag suspected mines",
+        "Clear all non-mine squares to win"
+      ],
+      "controls": {
+        "mouse": "Left-click to reveal, right-click to flag"
+      },
+      "tips": [
+        "Start from corners or edges",
+        "Use numbers to deduce mine locations",
+        "Flag all mines before revealing remaining squares"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/minesweeper/images/minesweeper.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": ["puzzle", "logic", "classic", "brain-training", "strategy"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "tic-tac-toe",
+    "title": "Tic Tac Toe",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/tic-tac-toe/preview.png",
+    "iframeUrl": "https://games.edugamehq.com/games/tic-tac-toe/",
+    "description": "Play the classic Tic Tac Toe game! Challenge a friend or play against the computer. Get three in a row to win this timeless strategy game.",
+    "gameGuide": {
+      "howToPlay": [
+        "Take turns placing X or O",
+        "Get three in a row to win",
+        "Block your opponent's winning moves",
+        "Think ahead to set up winning combinations"
+      ],
+      "controls": {
+        "mouse": "Click on empty squares to place your mark"
+      },
+      "tips": [
+        "Control the center square",
+        "Watch for diagonal winning opportunities",
+        "Block opponent's two-in-a-row"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tic-tac-toe/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "5-12",
+    "minAge": 5,
+    "maxAge": 12,
+    "tags": ["puzzle", "strategy", "classic", "two-player", "logic"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "original": false
   }
 ]
