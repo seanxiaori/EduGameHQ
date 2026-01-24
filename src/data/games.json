@@ -6487,7 +6487,7 @@
     "title": "Connect Four",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "/images/games/connect-four.png",
+    "image": "https://games.edugamehq.com/games/connect-four/preview/connect-four.png",
     "iframeUrl": "https://games.edugamehq.com/games/connect-four/",
     "description": "Classic two-player strategy game. Drop colored discs to connect four in a row!",
     "gameGuide": {
@@ -6505,7 +6505,7 @@
         "Watch for diagonal wins"
       ]
     },
-    "thumbnailUrl": "/images/games/connect-four.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four/preview/connect-four.png",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6531,7 +6531,7 @@
     "title": "Space Invaders",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "/images/games/space-invaders.png",
+    "image": "https://games.edugamehq.com/games/space-invaders/preview/space-invaders.png",
     "iframeUrl": "https://games.edugamehq.com/games/space-invaders/",
     "description": "Classic arcade shooter! Defend Earth from waves of alien invaders.",
     "gameGuide": {
@@ -6549,7 +6549,7 @@
         "Watch for bonus ships"
       ]
     },
-    "thumbnailUrl": "/images/games/space-invaders.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/preview/space-invaders.png",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6575,7 +6575,7 @@
     "title": "Breakout",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "/images/games/breakout.png",
+    "image": "https://games.edugamehq.com/games/breakout/preview/breakout.png",
     "iframeUrl": "https://games.edugamehq.com/games/breakout/",
     "description": "Classic brick-breaking game! Bounce the ball to destroy all bricks.",
     "gameGuide": {
@@ -6592,7 +6592,7 @@
         "Keep ball in play"
       ]
     },
-    "thumbnailUrl": "/images/games/breakout.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/breakout/preview/breakout.png",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6618,7 +6618,7 @@
     "title": "Frogger",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "/images/games/frogger.png",
+    "image": "https://games.edugamehq.com/games/frogger/preview/frogger.png",
     "iframeUrl": "https://games.edugamehq.com/games/frogger/",
     "description": "Help the frog cross the road and river safely!",
     "gameGuide": {
@@ -6635,7 +6635,7 @@
         "Watch traffic patterns"
       ]
     },
-    "thumbnailUrl": "/images/games/frogger.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/preview/frogger.png",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,
