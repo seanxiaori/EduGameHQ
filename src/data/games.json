@@ -5496,7 +5496,8 @@
       "arcade",
       "addictive"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
+    "developer": "Logan Engstrom, Garrett Finucane, Noah Moroze, Michael Yang",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5548,7 +5549,7 @@
       "strategy",
       "classic"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5561,7 +5562,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Gabriele Cirulli"
   },
   {
     "slug": "clumsy-bird",
@@ -5600,7 +5602,7 @@
       "casual",
       "addictive"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5613,7 +5615,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Ellison Leão"
   },
   {
     "slug": "green-mahjong",
@@ -5651,7 +5654,7 @@
       "classic",
       "relaxing"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5664,7 +5667,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Daniel Beck"
   },
   {
     "slug": "alien-invasion",
@@ -5703,7 +5707,7 @@
       "aliens",
       "action"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5716,7 +5720,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Cykod"
   },
   {
     "slug": "snake",
@@ -5753,7 +5758,7 @@
       "classic",
       "retro"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5766,7 +5771,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Community"
   },
   {
     "slug": "astray",
@@ -5804,7 +5810,7 @@
       "ball",
       "physics"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5817,7 +5823,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Rye Terrell"
   },
   {
     "slug": "captain-rogers",
@@ -5855,7 +5862,7 @@
       "shooter",
       "adventure"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5868,7 +5875,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Nick Lockwood"
   },
   {
     "slug": "ball-and-wall",
@@ -5905,7 +5913,7 @@
       "classic",
       "brick"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5917,7 +5925,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Community"
   },
   {
     "slug": "3d-chess",
@@ -5955,7 +5964,7 @@
       "3d",
       "board"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -5967,7 +5976,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "coil",
@@ -6001,7 +6011,7 @@
       "abstract",
       "artistic"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6013,7 +6023,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Community"
   },
   {
     "slug": "crappy-bird",
@@ -6050,7 +6061,7 @@
       "endless",
       "casual"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6062,7 +6073,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "ceros-snake",
@@ -6096,7 +6108,7 @@
       "snake",
       "classic"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6108,7 +6120,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "chess-3d",
@@ -6143,7 +6156,7 @@
       "strategy",
       "3d"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6155,7 +6168,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "tower-defense",
@@ -6189,7 +6203,7 @@
       "tower-defense",
       "tactical"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6201,7 +6215,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "jolly-jumper",
@@ -6235,7 +6250,7 @@
       "jumping",
       "endless"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6247,7 +6262,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "digger",
@@ -6282,7 +6298,7 @@
       "retro",
       "digger"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6294,7 +6310,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "tetris",
@@ -6329,7 +6346,7 @@
       "classic",
       "blocks"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6341,7 +6358,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "skifree",
@@ -6376,7 +6394,7 @@
       "classic",
       "retro"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6388,7 +6406,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "pacman",
@@ -6426,7 +6445,7 @@
       "retro",
       "strategy"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6438,7 +6457,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "minesweeper",
@@ -6476,7 +6496,7 @@
       "brain-training",
       "strategy"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6488,7 +6508,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "tic-tac-toe",
@@ -6526,7 +6547,7 @@
       "two-player",
       "logic"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6538,7 +6559,8 @@
     "featured": false,
     "trending": false,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "connect-four",
@@ -6576,7 +6598,7 @@
       "two-player",
       "logic"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6588,7 +6610,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "memory-game",
@@ -6626,7 +6649,7 @@
       "cards",
       "educational"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6638,7 +6661,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "whack-a-mole",
@@ -6673,7 +6697,7 @@
       "fun",
       "classic"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6685,7 +6709,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "frogger",
@@ -6721,7 +6746,7 @@
       "retro",
       "action"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6733,7 +6758,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "space-invaders",
@@ -6770,7 +6796,7 @@
       "retro",
       "action"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6782,7 +6808,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "breakout",
@@ -6816,7 +6843,7 @@
       "classic",
       "brick-breaker"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6828,7 +6855,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "candy-crush",
@@ -6862,7 +6890,7 @@
       "match-3",
       "casual"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6874,7 +6902,8 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   },
   {
     "slug": "doodle-jump",
@@ -6908,7 +6937,7 @@
       "jumping",
       "endless"
     ],
-    "source": "GitHub Open Source",
+    "source": "GitHub",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
@@ -6920,6 +6949,7 @@
     "featured": true,
     "trending": true,
     "isNew": true,
-    "original": false
+    "original": false,
+    "developer": "Open Source Community"
   }
 ]
