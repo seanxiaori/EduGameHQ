@@ -6449,7 +6449,7 @@
     "title": "Green Mahjong",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/green-mahjong/gfx/tiles/ball_1.png",
+    "image": "https://games.edugamehq.com/games/green-mahjong/greenmahjong256.png",
     "iframeUrl": "https://games.edugamehq.com/games/green-mahjong/",
     "description": "Classic Mahjong solitaire game. Match pairs of tiles to clear the board!",
     "gameGuide": {
@@ -6468,7 +6468,7 @@
         "Use undo if you make a mistake"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/green-mahjong/gfx/tiles/ball_1.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/green-mahjong/greenmahjong256.png",
     "difficulty": "Medium",
     "ageRange": "8-99",
     "minAge": 8,
