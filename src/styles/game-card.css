@@ -451,6 +451,12 @@
 .category-tag.educational {
   background: linear-gradient(135deg, #14B8A6 0%, #0D9488 100%);
 }
+.category-tag.logic {
+  background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+}
+.category-tag.strategy {
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 100%);
+}
 
 /* 特色标签 */
 .feature-tag {

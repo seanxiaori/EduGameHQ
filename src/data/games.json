@@ -4886,52 +4886,6 @@
     "developer": "Tong965"
   },
   {
-    "slug": "osgu-games",
-    "title": "Osgu games",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://pbskids.org/games/osgu-games",
-    "description": "Play osgu games - an educational game from PBS Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "thumbnailUrl": "https://pbskids.org/_next/image?url=https%3A%2F%2Fcms-tc.pbskids.org%2Fpbskidswebsite%2FPKK_OSGU_LargeFreeform_Games-Home.png&w=3840&q=75",
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "pbskids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.834466337947209,
-    "playCount": 193298,
-    "sourceUrl": "https://pbskids.org/games/osgu-games",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
     "slug": "mergest-kingdom",
     "title": "Mergest Kingdom",
     "category": "logic",
@@ -5109,188 +5063,6 @@
     "rating": 4.8180886392699716,
     "playCount": 109304,
     "sourceUrl": "https://www.crazygames.com/game/racing-limits",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "daily-donkey",
-    "title": "Daily donkey",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://pbskids.org/donkeyhodie/games/daily-donkey",
-    "description": "Play daily donkey - an educational game from PBS Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "pbskids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.7298905920075285,
-    "playCount": 132456,
-    "sourceUrl": "https://pbskids.org/donkeyhodie/games/daily-donkey",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "look-closely",
-    "title": "Look closely",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://pbskids.org/daniel/games/look-closely",
-    "description": "Play look closely - an educational game from PBS Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "pbskids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.711960713274801,
-    "playCount": 123140,
-    "sourceUrl": "https://pbskids.org/daniel/games/look-closely",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "halloween",
-    "title": "Halloween",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://pbskids.org/games/halloween",
-    "description": "Play halloween - an educational game from PBS Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "thumbnailUrl": "https://pbskids.org/_next/image?url=https%3A%2F%2Fcms-tc.pbskids.org%2Fglobal%2Fmezzanines%2FHalloween-Games.png&w=7680&q=75",
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "pbskids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.789813775431236,
-    "playCount": 61322,
-    "sourceUrl": "https://pbskids.org/games/halloween",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "play",
-    "title": "Play",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://pbskids.org/games/play/elevator-antics/1902621",
-    "description": "Play play - an educational game from PBS Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "thumbnailUrl": "https://pbskids.org/_next/image?url=https%3A%2F%2Fcms-tc.pbskids.org%2Fglobal%2FGames%2Felevator-antics%2FODDS-halfbody-agentgadget-v1.png&w=7680&q=75",
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "pbskids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.578318296909666,
-    "playCount": 170946,
-    "sourceUrl": "https://pbskids.org/games/play/elevator-antics/1902621",
     "lastUpdated": "2025-10-10",
     "lastChecked": "2025-10-10",
     "featured": false,
@@ -7213,7 +6985,13 @@
     "ageRange": "6-18",
     "minAge": 6,
     "maxAge": 18,
-    "tags": ["arcade", "classic", "maze", "retro", "strategy"],
+    "tags": [
+      "arcade",
+      "classic",
+      "maze",
+      "retro",
+      "strategy"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7257,7 +7035,13 @@
     "ageRange": "8-18",
     "minAge": 8,
     "maxAge": 18,
-    "tags": ["puzzle", "logic", "classic", "brain-training", "strategy"],
+    "tags": [
+      "puzzle",
+      "logic",
+      "classic",
+      "brain-training",
+      "strategy"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7301,7 +7085,13 @@
     "ageRange": "5-12",
     "minAge": 5,
     "maxAge": 12,
-    "tags": ["puzzle", "strategy", "classic", "two-player", "logic"],
+    "tags": [
+      "puzzle",
+      "strategy",
+      "classic",
+      "two-player",
+      "logic"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7345,7 +7135,13 @@
     "ageRange": "6-14",
     "minAge": 6,
     "maxAge": 14,
-    "tags": ["puzzle", "strategy", "classic", "two-player", "logic"],
+    "tags": [
+      "puzzle",
+      "strategy",
+      "classic",
+      "two-player",
+      "logic"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7389,7 +7185,13 @@
     "ageRange": "5-12",
     "minAge": 5,
     "maxAge": 12,
-    "tags": ["memory", "matching", "brain-training", "cards", "educational"],
+    "tags": [
+      "memory",
+      "matching",
+      "brain-training",
+      "cards",
+      "educational"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7431,7 +7233,12 @@
     "ageRange": "5-12",
     "minAge": 5,
     "maxAge": 12,
-    "tags": ["arcade", "reflexes", "fun", "classic"],
+    "tags": [
+      "arcade",
+      "reflexes",
+      "fun",
+      "classic"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7474,7 +7281,12 @@
     "ageRange": "6-14",
     "minAge": 6,
     "maxAge": 14,
-    "tags": ["arcade", "classic", "retro", "action"],
+    "tags": [
+      "arcade",
+      "classic",
+      "retro",
+      "action"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7517,7 +7329,13 @@
     "ageRange": "8-16",
     "minAge": 8,
     "maxAge": 16,
-    "tags": ["arcade", "shooter", "classic", "retro", "action"],
+    "tags": [
+      "arcade",
+      "shooter",
+      "classic",
+      "retro",
+      "action"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7549,14 +7367,21 @@
       "controls": {
         "keyboard": "Arrow keys or mouse to move paddle"
       },
-      "tips": ["Aim for corners", "Control ball angle"]
+      "tips": [
+        "Aim for corners",
+        "Control ball angle"
+      ]
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/breakout/preview.svg",
     "difficulty": "Medium",
     "ageRange": "6-16",
     "minAge": 6,
     "maxAge": 16,
-    "tags": ["arcade", "classic", "brick-breaker"],
+    "tags": [
+      "arcade",
+      "classic",
+      "brick-breaker"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7580,16 +7405,29 @@
     "iframeUrl": "https://games.edugamehq.com/games/candy-crush/",
     "description": "Match 3 or more candies to score points! A fun and addictive puzzle game.",
     "gameGuide": {
-      "howToPlay": ["Swap adjacent candies", "Match 3+ same colors", "Clear the board"],
-      "controls": {"mouse": "Click and drag to swap"},
-      "tips": ["Look for combos", "Plan moves ahead"]
+      "howToPlay": [
+        "Swap adjacent candies",
+        "Match 3+ same colors",
+        "Clear the board"
+      ],
+      "controls": {
+        "mouse": "Click and drag to swap"
+      },
+      "tips": [
+        "Look for combos",
+        "Plan moves ahead"
+      ]
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/candy-crush/candy-crush-background-2.png",
     "difficulty": "Easy",
     "ageRange": "6-14",
     "minAge": 6,
     "maxAge": 14,
-    "tags": ["puzzle", "match-3", "casual"],
+    "tags": [
+      "puzzle",
+      "match-3",
+      "casual"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -7613,16 +7451,29 @@
     "iframeUrl": "https://games.edugamehq.com/games/doodle-jump/",
     "description": "Jump from platform to platform and climb as high as you can!",
     "gameGuide": {
-      "howToPlay": ["Jump on platforms", "Avoid falling", "Climb higher"],
-      "controls": {"keyboard": "Arrow keys to move"},
-      "tips": ["Time your jumps", "Watch for moving platforms"]
+      "howToPlay": [
+        "Jump on platforms",
+        "Avoid falling",
+        "Climb higher"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Time your jumps",
+        "Watch for moving platforms"
+      ]
     },
     "thumbnailUrl": "https://games.edugamehq.com/games/doodle-jump/doodler-guy.png",
     "difficulty": "Medium",
     "ageRange": "6-14",
     "minAge": 6,
     "maxAge": 14,
-    "tags": ["arcade", "jumping", "endless"],
+    "tags": [
+      "arcade",
+      "jumping",
+      "endless"
+    ],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
