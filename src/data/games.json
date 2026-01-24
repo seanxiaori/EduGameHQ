@@ -3,9 +3,9 @@
     "slug": "princess-coffee-shop",
     "title": "Princess Coffee Shop",
     "category": "creative",
-    "image": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-coffee-shop/assets/shop-preview.png",
+    "image": "https://games.edugamehq.com/games/princess-coffee-shop/assets/shop-preview.png",
     "categoryName": "Creative",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-coffee-shop/",
+    "iframeUrl": "https://games.edugamehq.com/games/princess-coffee-shop/",
     "description": "Help the princess run her magical coffee shop! Serve customers, make delicious drinks, and manage your very own café business.",
     "gameGuide": {
       "howToPlay": [
@@ -24,7 +24,7 @@
         "Keep track of popular items"
       ]
     },
-    "thumbnailUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-coffee-shop/assets/shop-preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/princess-coffee-shop/assets/shop-preview.png",
     "difficulty": "Medium",
     "ageRange": "7-14",
     "minAge": 7,
@@ -42,7 +42,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-coffee-shop/",
+    "sourceUrl": "https://games.edugamehq.com/games/princess-coffee-shop/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -56,8 +56,8 @@
     "title": "Princess Castle",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-castle/images/castle.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-castle/",
+    "image": "https://games.edugamehq.com/games/princess-castle/images/castle.png",
+    "iframeUrl": "https://games.edugamehq.com/games/princess-castle/",
     "description": "Explore a magical princess castle filled with secrets and adventures! Help the princess complete quests and discover hidden treasures.",
     "gameGuide": {
       "howToPlay": [
@@ -76,7 +76,7 @@
         "Keep track of items you collect"
       ]
     },
-    "thumbnailUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-castle/images/castle.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/princess-castle/images/castle.png",
     "difficulty": "Medium",
     "ageRange": "6-12",
     "minAge": 6,
@@ -94,7 +94,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/princess-castle/",
+    "sourceUrl": "https://games.edugamehq.com/games/princess-castle/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -108,9 +108,9 @@
     "title": "Coloring Studio",
     "category": "creative",
     "categoryName": "Creative",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/coloring-studio/",
+    "iframeUrl": "https://games.edugamehq.com/games/coloring-studio/",
     "description": "Unleash your creativity in this digital coloring studio! Choose from various pictures and color them with a wide palette of colors.",
-      "image": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-matching/assets/butterfly.png",
+      "image": "https://games.edugamehq.com/games/animal-matching/assets/butterfly.png",
     "gameGuide": {
       "howToPlay": [
         "Select a coloring page from the gallery",
@@ -128,7 +128,7 @@
         "Take your time and enjoy the creative process"
       ]
     },
-    "thumbnailUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-matching/assets/butterfly.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/animal-matching/assets/butterfly.png",
     "difficulty": "Easy",
     "ageRange": "3-12",
     "minAge": 3,
@@ -146,7 +146,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/coloring-studio/",
+    "sourceUrl": "https://games.edugamehq.com/games/coloring-studio/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -160,9 +160,9 @@
     "title": "Animal Matching",
     "category": "memory",
     "categoryName": "Memory",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-matching/",
+    "iframeUrl": "https://games.edugamehq.com/games/animal-matching/",
     "description": "Test your memory skills with this fun animal matching game! Find pairs of identical animals and improve your concentration and memory.",
-      "image": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-matching/assets/panda.png",
+      "image": "https://games.edugamehq.com/games/animal-matching/assets/panda.png",
     "gameGuide": {
       "howToPlay": [
         "Click on cards to flip them over",
@@ -180,7 +180,7 @@
         "Work systematically across the board"
       ]
     },
-    "thumbnailUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-matching/assets/panda.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/animal-matching/assets/panda.png",
     "difficulty": "Medium",
     "ageRange": "5-12",
     "minAge": 5,
@@ -198,7 +198,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-matching/",
+    "sourceUrl": "https://games.edugamehq.com/games/animal-matching/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -212,7 +212,7 @@
     "title": "Animal Adventure",
     "category": "adventure",
     "categoryName": "Adventure",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-adventure/",
+    "iframeUrl": "https://games.edugamehq.com/games/animal-adventure/",
     "description": "Join cute animals on an exciting adventure! Learn about different animals while having fun in this educational game designed for young learners.",
     "gameGuide": {
       "howToPlay": [
@@ -231,7 +231,7 @@
         "Try to remember the animal facts you learn"
       ]
     },
-    "thumbnailUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-adventure/elephant.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/animal-adventure/elephant.png",
     "difficulty": "Easy",
     "ageRange": "4-8",
     "minAge": 4,
@@ -249,7 +249,7 @@
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/animal-adventure/",
+    "sourceUrl": "https://games.edugamehq.com/games/animal-adventure/",
     "lastUpdated": "2025-01-16",
     "lastChecked": "2025-01-16",
     "playCount": 0,
@@ -6303,12 +6303,12 @@
     "isNew": true
   },
   {
-    "slug": "2048",
-    "title": "2048",
+    "slug": "2048-classic",
+    "title": "2048 Classic",
     "category": "puzzle",
     "categoryName": "Puzzle",
     "image": "/images/games/2048.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/2048/",
+    "iframeUrl": "https://games.edugamehq.com/games/2048/",
     "description": "Slide numbered tiles on a grid to combine them and create a tile with the number 2048. A classic puzzle game that challenges your strategic thinking!",
     "gameGuide": {
       "howToPlay": [
@@ -6354,7 +6354,7 @@
     "category": "puzzle",
     "categoryName": "Puzzle",
     "image": "/images/games/tetris.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/tetris/",
+    "iframeUrl": "https://games.edugamehq.com/games/tetris/",
     "description": "The classic tile-matching puzzle game! Rotate and move falling Tetromino shapes to complete horizontal lines and score points.",
     "gameGuide": {
       "howToPlay": [
@@ -6399,7 +6399,7 @@
     "category": "memory",
     "categoryName": "Memory",
     "image": "/images/games/memory-game.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/memory-game/",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-game/",
     "description": "Test your memory by matching pairs of cards! Flip cards to find matching pairs and clear the board.",
     "gameGuide": {
       "howToPlay": [
@@ -6444,7 +6444,7 @@
     "category": "puzzle",
     "categoryName": "Puzzle",
     "image": "/images/games/whack-a-mole.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/whack-a-mole/",
+    "iframeUrl": "https://games.edugamehq.com/games/whack-a-mole/",
     "description": "Test your reflexes! Click on moles as they pop up from their holes to score points.",
     "gameGuide": {
       "howToPlay": [
@@ -6488,7 +6488,7 @@
     "category": "puzzle",
     "categoryName": "Puzzle",
     "image": "/images/games/connect-four.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/connect-four/",
+    "iframeUrl": "https://games.edugamehq.com/games/connect-four/",
     "description": "Classic two-player strategy game. Drop colored discs to connect four in a row!",
     "gameGuide": {
       "howToPlay": [
@@ -6532,7 +6532,7 @@
     "category": "adventure",
     "categoryName": "Adventure",
     "image": "/images/games/space-invaders.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/space-invaders/",
+    "iframeUrl": "https://games.edugamehq.com/games/space-invaders/",
     "description": "Classic arcade shooter! Defend Earth from waves of alien invaders.",
     "gameGuide": {
       "howToPlay": [
@@ -6576,7 +6576,7 @@
     "category": "puzzle",
     "categoryName": "Puzzle",
     "image": "/images/games/breakout.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/breakout/",
+    "iframeUrl": "https://games.edugamehq.com/games/breakout/",
     "description": "Classic brick-breaking game! Bounce the ball to destroy all bricks.",
     "gameGuide": {
       "howToPlay": [
@@ -6619,7 +6619,7 @@
     "category": "adventure",
     "categoryName": "Adventure",
     "image": "/images/games/frogger.png",
-    "iframeUrl": "https://seanxiaori.github.io/EduGameHQ-Games/games/frogger/",
+    "iframeUrl": "https://games.edugamehq.com/games/frogger/",
     "description": "Help the frog cross the road and river safely!",
     "gameGuide": {
       "howToPlay": [
