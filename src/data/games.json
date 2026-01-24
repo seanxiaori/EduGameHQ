@@ -2458,7 +2458,9 @@
     "ageRange": "6-14",
     "isNew": false,
     "trending": true,
-    "featured": true
+    "featured": true,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/basket-random"
   },
   {
     "id": "mini-golf-club",
@@ -2493,7 +2495,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/mini-golf-club"
   },
   {
     "id": "basketball-orbit",
@@ -2528,7 +2532,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/basketball-orbit"
   },
   {
     "id": "basketbros",
@@ -2563,7 +2569,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/basketbros"
   },
   {
     "id": "hotfoot-baseball",
@@ -2598,7 +2606,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/hotfoot-baseball"
   },
   {
     "id": "qb-legend",
@@ -2633,7 +2643,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/qb-legend"
   },
   {
     "id": "3d-bowling",
@@ -2668,7 +2680,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/3d-bowling"
   },
   {
     "id": "hoop-world-3d",
@@ -2703,7 +2717,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/hoop-world-3d"
   },
   {
     "id": "free-kick-classic",
@@ -2738,7 +2754,9 @@
     "ageRange": "8-16",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/free-kick-classic"
   },
   {
     "id": "soccer-random",
@@ -2773,7 +2791,9 @@
     "ageRange": "6-14",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/soccer-random"
   },
   {
     "id": "volley-random",
@@ -2808,7 +2828,9 @@
     "ageRange": "6-14",
     "isNew": false,
     "trending": false,
-    "featured": false
+    "featured": false,
+    "categoryName": "Sports",
+    "iframeUrl": "https://www.crazygames.com/embed/volley-random"
   },
   {
     "slug": "bhides-english-classes",
