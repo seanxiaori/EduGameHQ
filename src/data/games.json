@@ -6301,38 +6301,86 @@
     "featured": false,
     "trending": false,
     "isNew": true
-  },
+  }
+,
   {
-    "slug": "2048-classic",
-    "title": "2048 Classic",
+    "slug": "hextris",
+    "title": "Hextris",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
-    "iframeUrl": "https://games.edugamehq.com/games/2048/",
-    "description": "Slide numbered tiles on a grid to combine them and create a tile with the number 2048. A classic puzzle game that challenges your strategic thinking!",
+    "image": "https://games.edugamehq.com/games/hextris/images/facebook-opengraph.png",
+    "iframeUrl": "https://games.edugamehq.com/games/hextris/",
+    "description": "An addictive puzzle game inspired by Tetris. Rotate the hexagon to match colors and clear blocks before they stack too high!",
     "gameGuide": {
       "howToPlay": [
-        "Use arrow keys to slide all tiles",
-        "When two tiles with the same number touch, they merge into one",
-        "Try to reach the 2048 tile",
-        "Game ends when no more moves are possible"
+        "Rotate the hexagon left or right",
+        "Match 3 or more blocks of the same color",
+        "Clear blocks before they reach the center",
+        "Build combos for higher scores"
       ],
       "controls": {
-        "keyboard": "Arrow keys to slide tiles",
-        "mobile": "Swipe in any direction"
+        "keyboard": "Left/Right arrows or A/D to rotate",
+        "touch": "Swipe left or right to rotate"
       },
       "tips": [
-        "Keep your highest tile in a corner",
-        "Build a chain of descending numbers",
-        "Plan several moves ahead"
+        "Plan ahead and watch incoming blocks",
+        "Build combos for bonus points",
+        "Keep the hexagon balanced"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/hextris/images/facebook-opengraph.png",
     "difficulty": "Medium",
     "ageRange": "8-99",
     "minAge": 8,
     "maxAge": 99,
-    "tags": ["puzzle", "numbers", "strategy", "classic", "brain-training"],
+    "tags": ["puzzle", "tetris", "hexagon", "arcade", "addictive"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/Hextris/hextris",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  }
+,
+  {
+    "slug": "2048",
+    "title": "2048",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
+    "iframeUrl": "https://games.edugamehq.com/games/2048/",
+    "description": "The original 2048 puzzle game! Slide tiles to combine matching numbers and reach the 2048 tile.",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys to slide all tiles",
+        "Tiles with the same number merge",
+        "Reach the 2048 tile to win",
+        "Keep playing for higher scores"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to slide tiles",
+        "touch": "Swipe in any direction"
+      },
+      "tips": [
+        "Keep your highest tile in a corner",
+        "Build up tiles systematically",
+        "Avoid random moves"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["puzzle", "numbers", "math", "strategy", "classic"],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
@@ -6340,316 +6388,101 @@
     "mobileSupport": true,
     "responsive": true,
     "sourceUrl": "https://github.com/gabrielecirulli/2048",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
     "playCount": 0,
     "featured": true,
     "trending": true,
     "isNew": true,
     "original": false
-  },
+  }
+,
   {
-    "slug": "tetris",
-    "title": "Tetris",
-    "category": "puzzle",
-    "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/tetris/images/Tetris%20Game.gif",
-    "iframeUrl": "https://games.edugamehq.com/games/tetris/",
-    "description": "The classic tile-matching puzzle game! Rotate and move falling Tetromino shapes to complete horizontal lines and score points.",
+    "slug": "clumsy-bird",
+    "title": "Clumsy Bird",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/clumsy-bird/data/img/bg.png",
+    "iframeUrl": "https://games.edugamehq.com/games/clumsy-bird/",
+    "description": "A fun Flappy Bird clone! Tap to fly and avoid the pipes. How far can you go?",
     "gameGuide": {
       "howToPlay": [
-        "Move falling blocks left and right",
-        "Rotate blocks to fit them together",
-        "Complete horizontal lines to clear them",
-        "Don't let blocks stack to the top"
+        "Tap or click to make the bird fly",
+        "Avoid hitting the pipes",
+        "Pass through gaps to score points",
+        "Try to beat your high score"
       ],
       "controls": {
-        "keyboard": "Arrow keys to move, Up to rotate, Down to drop faster"
+        "keyboard": "Space or click to flap",
+        "touch": "Tap anywhere to flap"
       },
       "tips": [
-        "Keep the playing field as flat as possible",
-        "Save the I-piece for clearing multiple lines",
-        "Plan ahead for the next piece"
+        "Tap gently for small hops",
+        "Stay in the middle when possible",
+        "Practice timing your taps"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tetris/images/Tetris%20Game.gif",
-    "difficulty": "Medium",
+    "thumbnailUrl": "https://games.edugamehq.com/games/clumsy-bird/data/img/bg.png",
+    "difficulty": "Hard",
     "ageRange": "6-99",
     "minAge": 6,
     "maxAge": 99,
-    "tags": ["puzzle", "classic", "arcade", "blocks", "strategy"],
+    "tags": ["arcade", "flappy", "bird", "casual", "addictive"],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/tetris",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
+    "sourceUrl": "https://github.com/ellisonleao/clumsy-bird",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
     "playCount": 0,
     "featured": true,
     "trending": true,
     "isNew": true,
     "original": false
-  },
+  }
+,
   {
-    "slug": "memory-game",
-    "title": "Memory Match",
-    "category": "memory",
-    "categoryName": "Memory",
-    "image": "https://games.edugamehq.com/games/memory-game/images/pizza.png",
-    "iframeUrl": "https://games.edugamehq.com/games/memory-game/",
-    "description": "Test your memory by matching pairs of cards! Flip cards to find matching pairs and clear the board.",
+    "slug": "green-mahjong",
+    "title": "Green Mahjong",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/green-mahjong/gfx/tiles/ball_1.png",
+    "iframeUrl": "https://games.edugamehq.com/games/green-mahjong/",
+    "description": "Classic Mahjong solitaire game. Match pairs of tiles to clear the board!",
     "gameGuide": {
       "howToPlay": [
-        "Click on a card to flip it",
-        "Try to find matching pairs",
-        "Remember card positions",
-        "Match all pairs to win"
+        "Click on matching tile pairs",
+        "Only free tiles can be selected",
+        "Clear all tiles to win",
+        "Use hints if you get stuck"
       ],
       "controls": {
-        "mouse": "Click to flip cards"
+        "mouse": "Click to select tiles"
       },
       "tips": [
-        "Start from corners",
-        "Create a mental map of card positions",
-        "Focus on one row at a time"
+        "Look for tiles on the edges first",
+        "Plan several moves ahead",
+        "Use undo if you make a mistake"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/memory-game/images/pizza.png",
-    "difficulty": "Easy",
-    "ageRange": "4-99",
-    "minAge": 4,
+    "thumbnailUrl": "https://games.edugamehq.com/games/green-mahjong/gfx/tiles/ball_1.png",
+    "difficulty": "Medium",
+    "ageRange": "8-99",
+    "minAge": 8,
     "maxAge": 99,
-    "tags": ["memory", "cards", "matching", "brain-training", "kids"],
+    "tags": ["puzzle", "mahjong", "matching", "classic", "relaxing"],
     "source": "GitHub Open Source",
     "iframeCompatible": true,
     "verified": true,
     "technology": "HTML5",
     "mobileSupport": true,
     "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/memory-game",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
-    "playCount": 0,
-    "featured": true,
-    "trending": true,
-    "isNew": true,
-    "original": false
-  },
-  {
-    "slug": "whack-a-mole",
-    "title": "Whack-a-Mole",
-    "category": "puzzle",
-    "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
-    "iframeUrl": "https://games.edugamehq.com/games/whack-a-mole/",
-    "description": "Test your reflexes! Click on moles as they pop up from their holes to score points.",
-    "gameGuide": {
-      "howToPlay": [
-        "Watch for moles popping up",
-        "Click on them quickly to score",
-        "Don't miss any moles"
-      ],
-      "controls": {
-        "mouse": "Click to whack moles"
-      },
-      "tips": [
-        "Stay focused on the center",
-        "Use peripheral vision",
-        "React quickly"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
-    "difficulty": "Easy",
-    "ageRange": "4-99",
-    "minAge": 4,
-    "maxAge": 99,
-    "tags": ["reflex", "arcade", "fun", "kids", "reaction"],
-    "source": "GitHub Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/whack-a-mole",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
-    "playCount": 0,
-    "featured": true,
-    "trending": true,
-    "isNew": true,
-    "original": false
-  },
-  {
-    "slug": "connect-four",
-    "title": "Connect Four",
-    "category": "puzzle",
-    "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/connect-four/preview/connect-four.png",
-    "iframeUrl": "https://games.edugamehq.com/games/connect-four/",
-    "description": "Classic two-player strategy game. Drop colored discs to connect four in a row!",
-    "gameGuide": {
-      "howToPlay": [
-        "Take turns dropping discs",
-        "Connect four discs in a row to win",
-        "Block your opponent's moves"
-      ],
-      "controls": {
-        "mouse": "Click column to drop disc"
-      },
-      "tips": [
-        "Control the center column",
-        "Think ahead",
-        "Watch for diagonal wins"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four/preview/connect-four.png",
-    "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
-    "tags": ["strategy", "classic", "two-player", "board-game"],
-    "source": "GitHub Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/connect-four",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
-    "playCount": 0,
-    "featured": true,
-    "trending": true,
-    "isNew": true,
-    "original": false
-  },
-  {
-    "slug": "space-invaders",
-    "title": "Space Invaders",
-    "category": "adventure",
-    "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/space-invaders/preview/space-invaders.png",
-    "iframeUrl": "https://games.edugamehq.com/games/space-invaders/",
-    "description": "Classic arcade shooter! Defend Earth from waves of alien invaders.",
-    "gameGuide": {
-      "howToPlay": [
-        "Move left and right to dodge",
-        "Shoot the aliens before they reach you",
-        "Clear all aliens to advance"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys to move, Space to shoot"
-      },
-      "tips": [
-        "Target the edges first",
-        "Use cover wisely",
-        "Watch for bonus ships"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/preview/space-invaders.png",
-    "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
-    "tags": ["arcade", "shooter", "classic", "retro"],
-    "source": "GitHub Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/space-invaders",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
-    "playCount": 0,
-    "featured": true,
-    "trending": true,
-    "isNew": true,
-    "original": false
-  },
-  {
-    "slug": "breakout",
-    "title": "Breakout",
-    "category": "puzzle",
-    "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/breakout/preview/breakout.png",
-    "iframeUrl": "https://games.edugamehq.com/games/breakout/",
-    "description": "Classic brick-breaking game! Bounce the ball to destroy all bricks.",
-    "gameGuide": {
-      "howToPlay": [
-        "Move paddle left and right",
-        "Bounce ball to break bricks",
-        "Clear all bricks to win"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys to move paddle"
-      },
-      "tips": [
-        "Aim for corners",
-        "Keep ball in play"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/breakout/preview/breakout.png",
-    "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
-    "tags": ["arcade", "classic", "retro", "brick-breaker"],
-    "source": "GitHub Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/breakout",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
-    "playCount": 0,
-    "featured": true,
-    "trending": true,
-    "isNew": true,
-    "original": false
-  },
-  {
-    "slug": "frogger",
-    "title": "Frogger",
-    "category": "adventure",
-    "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/frogger/preview/frogger.png",
-    "iframeUrl": "https://games.edugamehq.com/games/frogger/",
-    "description": "Help the frog cross the road and river safely!",
-    "gameGuide": {
-      "howToPlay": [
-        "Move frog across traffic",
-        "Jump on logs to cross river",
-        "Reach the other side safely"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys to move"
-      },
-      "tips": [
-        "Time your moves carefully",
-        "Watch traffic patterns"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/preview/frogger.png",
-    "difficulty": "Medium",
-    "ageRange": "6-99",
-    "minAge": 6,
-    "maxAge": 99,
-    "tags": ["arcade", "classic", "retro"],
-    "source": "GitHub Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "sourceUrl": "https://github.com/kubowania/frogger",
-    "lastUpdated": "2025-01-23",
-    "lastChecked": "2025-01-23",
+    "sourceUrl": "https://github.com/danbeck/green-mahjong",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
     "playCount": 0,
     "featured": true,
     "trending": true,
