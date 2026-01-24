@@ -82,8 +82,8 @@
 
 .footer-game {
   font-size: 28px; /* 🔧 与顶部导航保持协调比例 */
-  color: #3B82F6;
-  text-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+  color: #F97316;
+  text-shadow: 0 2px 4px rgba(249, 115, 22, 0.3);
   transition: color 0.3s ease;
 }
 
@@ -99,7 +99,7 @@
 }
 
 .footer-brand:hover .footer-game {
-  color: #2563EB;
+  color: #EA580C;
 }
 
 .footer-description {
@@ -126,7 +126,7 @@
   left: 0;
   width: 2rem;
   height: 2px;
-  background: linear-gradient(90deg, #4F8EF7, #34D399);
+  background: linear-gradient(90deg, #EA580C, #FB923C);
   border-radius: 1px;
 }
 
@@ -150,7 +150,7 @@
 }
 
 .footer-links a:hover {
-  color: #34D399;
+  color: #F97316;
   transform: translateX(4px);
 }
 
@@ -283,7 +283,7 @@
 
 /* 焦点样式 */
 .footer-links a:focus {
-  outline: 2px solid #4F8EF7;
+  outline: 2px solid #F97316;
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -358,11 +358,11 @@
   }
   
   .footer-links a:hover {
-    color: #FCD34D;
+    color: #F97316;
   }
-  
+
   .footer-links a::before {
-    background: #FCD34D;
+    background: #F97316;
   }
   
   .footer-bottom {

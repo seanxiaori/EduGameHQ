@@ -1,28 +1,20 @@
-<!-- EduGameHQ Favicon - 简化游戏手柄图标 -->
+<!-- EduGameHQ Favicon - 学士帽+游戏手柄 -->
 <svg width="48" height="48" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="icon-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#FF6B35; stop-opacity:1" />
-      <stop offset="50%" style="stop-color:#F7931E; stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#8B5CF6; stop-opacity:1" />
+    <linearGradient id="ico-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#EA580C"/>
+      <stop offset="50%" style="stop-color:#F97316"/>
+      <stop offset="100%" style="stop-color:#FB923C"/>
     </linearGradient>
   </defs>
-
-  <!-- 游戏手柄简化版 -->
-  <rect x="6" y="14" width="36" height="22" rx="11" ry="11" fill="url(#icon-gradient)"/>
-  <ellipse cx="10" cy="32" rx="7" ry="9" fill="url(#icon-gradient)"/>
-  <ellipse cx="38" cy="32" rx="7" ry="9" fill="url(#icon-gradient)"/>
-  
-  <!-- 书本符号 -->
-  <g transform="translate(24, 25)">
-    <path d="M-7 -5 L-7 5 L-1 3 L-1 -7 Z" fill="white" opacity="0.95"/>
-    <path d="M1 -7 L1 3 L7 5 L7 -5 Z" fill="white" opacity="0.95"/>
-    <line x1="0" y1="-7" x2="0" y2="3" stroke="white" stroke-width="1.5" opacity="0.6"/>
-  </g>
-
-  <!-- 按钮 -->
-  <circle cx="14" cy="21" r="2" fill="white" opacity="0.9"/>
-  <circle cx="14" cy="29" r="2" fill="white" opacity="0.9"/>
-  <circle cx="34" cy="21" r="2" fill="white" opacity="0.9"/>
-  <circle cx="34" cy="29" r="2" fill="white" opacity="0.9"/>
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#ico-grad)"/>
+  <polygon points="24,9 38,16 24,20 10,16" fill="#FCD34D"/>
+  <circle cx="38" cy="16" r="1.8" fill="#F59E0B"/>
+  <path d="M38 18 Q40 23 37 27" stroke="#F59E0B" stroke-width="1.8" fill="none"/>
+  <rect x="11" y="26" width="26" height="12" rx="6" fill="white" opacity="0.95"/>
+  <rect x="15" y="30" width="5" height="2" rx="1" fill="url(#ico-grad)"/>
+  <rect x="16.5" y="28.5" width="2" height="5" rx="1" fill="url(#ico-grad)"/>
+  <circle cx="29" cy="29.5" r="1.8" fill="#F59E0B"/>
+  <circle cx="33" cy="31.5" r="1.8" fill="#10B981"/>
+  <circle cx="29" cy="33.5" r="1.8" fill="#EF4444"/>
 </svg>
