@@ -1,30 +1,58 @@
 ---
 // src/components/ui/Logo.astro
-// EduGameHQ 现代简约Logo - 游戏+学习融合设计
+// EduGameHQ Logo - 学习帽+游戏手柄融合设计
 ---
-<!-- Logo图标 - 现代简约设计 -->
 <div class="flex-shrink-0">
   <svg
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="52"
+    height="52"
+    viewBox="0 0 52 52"
     xmlns="http://www.w3.org/2000/svg"
     aria-label="EduGameHQ Logo"
   >
     <defs>
-      <linearGradient id="logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <linearGradient id="grad-main" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" style="stop-color:#6366F1"/>
-        <stop offset="100%" style="stop-color:#8B5CF6"/>
+        <stop offset="50%" style="stop-color:#8B5CF6"/>
+        <stop offset="100%" style="stop-color:#A855F7"/>
       </linearGradient>
+      <linearGradient id="grad-accent" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:#F59E0B"/>
+        <stop offset="100%" style="stop-color:#F97316"/>
+      </linearGradient>
+      <filter id="glow">
+        <feGaussianBlur stdDeviation="1" result="blur"/>
+        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
     </defs>
+
     <!-- 圆角方形背景 -->
-    <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#logo-grad)"/>
-    <!-- 播放按钮三角形 -->
-    <path d="M20 16 L20 32 L34 24 Z" fill="white"/>
+    <rect x="2" y="2" width="48" height="48" rx="14" fill="url(#grad-main)"/>
+
+    <!-- 学士帽顶部 -->
+    <polygon points="26,10 42,18 26,22 10,18" fill="#FCD34D" filter="url(#glow)"/>
+
+    <!-- 学士帽流苏 -->
+    <circle cx="42" cy="18" r="2" fill="#F59E0B"/>
+    <path d="M42 20 Q44 26 40 30" stroke="#F59E0B" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+    <!-- 游戏手柄主体 -->
+    <rect x="12" y="28" width="28" height="14" rx="7" fill="white" opacity="0.95"/>
+
+    <!-- 左侧十字键 -->
+    <rect x="16" y="33" width="6" height="2" rx="1" fill="url(#grad-main)"/>
+    <rect x="18" y="31" width="2" height="6" rx="1" fill="url(#grad-main)"/>
+
+    <!-- 右侧按钮 -->
+    <circle cx="32" cy="32" r="2" fill="#F59E0B"/>
+    <circle cx="36" cy="34" r="2" fill="#10B981"/>
+    <circle cx="32" cy="36" r="2" fill="#EF4444"/>
+
+    <!-- 中间装饰线 -->
+    <rect x="24" y="33" width="4" height="2" rx="1" fill="url(#grad-main)" opacity="0.5"/>
   </svg>
 </div>
 
-<!-- 品牌名称 -->
 <div class="logo-text">
   <span class="logo-main">EduGame</span><span class="logo-hq">HQ</span>
 </div>

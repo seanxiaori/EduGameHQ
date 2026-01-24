@@ -1,20 +1,29 @@
 ---
 // src/components/ui/LogoIcon.astro
-// EduGameHQ 简约图标
+// EduGameHQ 图标 - 学习帽+游戏手柄
 ---
 <svg
-  width="48"
-  height="48"
-  viewBox="0 0 48 48"
+  width="52"
+  height="52"
+  viewBox="0 0 52 52"
   xmlns="http://www.w3.org/2000/svg"
   aria-label="EduGameHQ Icon"
 >
   <defs>
-    <linearGradient id="icon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="ico-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" style="stop-color:#6366F1"/>
-      <stop offset="100%" style="stop-color:#8B5CF6"/>
+      <stop offset="50%" style="stop-color:#8B5CF6"/>
+      <stop offset="100%" style="stop-color:#A855F7"/>
     </linearGradient>
   </defs>
-  <rect x="4" y="4" width="40" height="40" rx="12" fill="url(#icon-grad)"/>
-  <path d="M20 16 L20 32 L34 24 Z" fill="white"/>
+  <rect x="2" y="2" width="48" height="48" rx="14" fill="url(#ico-grad)"/>
+  <polygon points="26,10 42,18 26,22 10,18" fill="#FCD34D"/>
+  <circle cx="42" cy="18" r="2" fill="#F59E0B"/>
+  <path d="M42 20 Q44 26 40 30" stroke="#F59E0B" stroke-width="2" fill="none"/>
+  <rect x="12" y="28" width="28" height="14" rx="7" fill="white" opacity="0.95"/>
+  <rect x="16" y="33" width="6" height="2" rx="1" fill="url(#ico-grad)"/>
+  <rect x="18" y="31" width="2" height="6" rx="1" fill="url(#ico-grad)"/>
+  <circle cx="32" cy="32" r="2" fill="#F59E0B"/>
+  <circle cx="36" cy="34" r="2" fill="#10B981"/>
+  <circle cx="32" cy="36" r="2" fill="#EF4444"/>
 </svg>
