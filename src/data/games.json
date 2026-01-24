@@ -6411,7 +6411,7 @@
     "title": "Clumsy Bird",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/clumsy-bird/data/img/bg.png",
+    "image": "https://games.edugamehq.com/games/clumsy-bird/data/img/logo.png",
     "iframeUrl": "https://games.edugamehq.com/games/clumsy-bird/",
     "description": "A fun Flappy Bird clone! Tap to fly and avoid the pipes. How far can you go?",
     "gameGuide": {
@@ -6431,7 +6431,7 @@
         "Practice timing your taps"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/clumsy-bird/data/img/bg.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/clumsy-bird/data/img/logo.png",
     "difficulty": "Hard",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6566,7 +6566,7 @@
     "title": "Snake",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/snake/css/snake-icon.png",
+    "image": "https://games.edugamehq.com/games/snake/snake-cover.svg",
     "iframeUrl": "https://games.edugamehq.com/games/snake/",
     "description": "Classic Snake game! Eat food to grow longer, but don't hit the walls or yourself!",
     "gameGuide": {
@@ -6585,7 +6585,7 @@
         "Move steadily, don't rush"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/snake/css/snake-icon.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/snake/snake-cover.svg",
     "difficulty": "Easy",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6667,7 +6667,7 @@
     "title": "Captain Rogers",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/captain-rogers/favicon.png",
+    "image": "https://games.edugamehq.com/games/captain-rogers/res/logo.png",
     "iframeUrl": "https://games.edugamehq.com/games/captain-rogers/",
     "description": "Space adventure game! Pilot Captain Rogers through asteroid fields and battle enemies.",
     "gameGuide": {
@@ -6687,7 +6687,7 @@
         "Watch your fuel level"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/captain-rogers/favicon.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/captain-rogers/res/logo.png",
     "difficulty": "Medium",
     "ageRange": "8-99",
     "minAge": 8,
@@ -6718,7 +6718,7 @@
     "title": "Ball and Wall",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/ball-and-wall/favicon.ico",
+    "image": "https://games.edugamehq.com/games/ball-and-wall/cover.svg",
     "iframeUrl": "https://games.edugamehq.com/games/ball-and-wall/",
     "description": "Classic brick breaker game! Bounce the ball to destroy all the bricks.",
     "gameGuide": {
@@ -6737,7 +6737,7 @@
         "Catch power-ups"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/ball-and-wall/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/ball-and-wall/cover.svg",
     "difficulty": "Easy",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6767,7 +6767,7 @@
     "title": "3D Chess",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/3d-chess/favicon.ico",
+    "image": "https://games.edugamehq.com/games/3d-chess/mckps/fw-game.png",
     "iframeUrl": "https://games.edugamehq.com/games/3d-chess/",
     "description": "Play chess in stunning 3D! Challenge the AI or play with friends.",
     "gameGuide": {
@@ -6786,7 +6786,7 @@
         "Think ahead"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/3d-chess/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/3d-chess/mckps/fw-game.png",
     "difficulty": "Hard",
     "ageRange": "8-99",
     "minAge": 8,
@@ -6817,7 +6817,7 @@
     "title": "Coil",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/coil/favicon.ico",
+    "image": "https://games.edugamehq.com/games/coil/images/background.jpg",
     "iframeUrl": "https://games.edugamehq.com/games/coil/",
     "description": "Abstract puzzle game with unique mechanics. Guide your coil through challenges.",
     "gameGuide": {
@@ -6834,7 +6834,7 @@
         "Watch the patterns"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/coil/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/coil/images/background.jpg",
     "difficulty": "Medium",
     "ageRange": "10-99",
     "minAge": 10,
@@ -6863,7 +6863,7 @@
     "title": "Flappy Clone",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/crappy-bird/favicon.ico",
+    "image": "https://games.edugamehq.com/games/crappy-bird/replay.png",
     "iframeUrl": "https://games.edugamehq.com/games/crappy-bird/",
     "description": "Tap to fly! Navigate through pipes in this addictive arcade game.",
     "gameGuide": {
@@ -6882,7 +6882,7 @@
         "Stay calm"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/crappy-bird/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/crappy-bird/replay.png",
     "difficulty": "Hard",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6912,7 +6912,7 @@
     "title": "Ceros Snake",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/ceros-snake/favicon.ico",
+    "image": "https://games.edugamehq.com/games/ceros-snake/cover.svg",
     "iframeUrl": "https://games.edugamehq.com/games/ceros-snake/",
     "description": "Modern snake game with smooth graphics! Eat food and grow longer.",
     "gameGuide": {
@@ -6929,7 +6929,7 @@
         "Don't trap yourself"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/ceros-snake/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/ceros-snake/cover.svg",
     "difficulty": "Easy",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6958,7 +6958,7 @@
     "title": "Chess 3D Pro",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/chess-3d/favicon.ico",
+    "image": "https://games.edugamehq.com/games/chess-3d/mckps/fw-game.png",
     "iframeUrl": "https://games.edugamehq.com/games/chess-3d/",
     "description": "Beautiful 3D chess with AI opponent. Test your strategic skills!",
     "gameGuide": {
@@ -6975,7 +6975,7 @@
         "Develop pieces early"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/chess-3d/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/chess-3d/mckps/fw-game.png",
     "difficulty": "Hard",
     "ageRange": "8-99",
     "minAge": 8,
@@ -7005,7 +7005,7 @@
     "title": "Tower Defense",
     "category": "strategy",
     "categoryName": "Strategy",
-    "image": "https://games.edugamehq.com/games/tower-defense/favicon.ico",
+    "image": "https://games.edugamehq.com/games/tower-defense/assets/ui/background.jpg",
     "iframeUrl": "https://games.edugamehq.com/games/tower-defense/",
     "description": "Build towers to defend against waves of enemies! Strategic placement is key.",
     "gameGuide": {
@@ -7022,7 +7022,7 @@
         "Upgrade strategically"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tower-defense/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/tower-defense/assets/ui/background.jpg",
     "difficulty": "Medium",
     "ageRange": "8-99",
     "minAge": 8,
@@ -7051,7 +7051,7 @@
     "title": "Jolly Jumper",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/jolly-jumper/favicon.ico",
+    "image": "https://games.edugamehq.com/games/jolly-jumper/assets/credit/shohan.png",
     "iframeUrl": "https://games.edugamehq.com/games/jolly-jumper/",
     "description": "Jump higher and higher! Collect coins and avoid obstacles.",
     "gameGuide": {
@@ -7068,7 +7068,7 @@
         "Watch for moving platforms"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/jolly-jumper/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/jolly-jumper/assets/credit/shohan.png",
     "difficulty": "Easy",
     "ageRange": "6-99",
     "minAge": 6,
@@ -7097,7 +7097,7 @@
     "title": "Digger",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/digger/favicon.ico",
+    "image": "https://games.edugamehq.com/games/digger/.github/screenshot.png",
     "iframeUrl": "https://games.edugamehq.com/games/digger/",
     "description": "Classic Digger game! Dig tunnels, collect gems, avoid enemies.",
     "gameGuide": {
@@ -7114,7 +7114,7 @@
         "Use falling rocks"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/digger/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/digger/.github/screenshot.png",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,
@@ -7191,7 +7191,7 @@
     "title": "SkiFree",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/skifree/favicon.ico",
+    "image": "https://games.edugamehq.com/games/skifree/skifree-github-banner.png",
     "iframeUrl": "https://games.edugamehq.com/games/skifree/",
     "description": "Classic skiing game! Ski down the mountain, avoid obstacles, watch out for the yeti!",
     "gameGuide": {
@@ -7208,7 +7208,7 @@
         "Speed up to escape yeti"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/skifree/favicon.ico",
+    "thumbnailUrl": "https://games.edugamehq.com/games/skifree/skifree-github-banner.png",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,

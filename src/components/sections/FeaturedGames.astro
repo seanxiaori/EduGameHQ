@@ -21,7 +21,17 @@ try {
   console.error('❌ 无法读取游戏数据文件:', error);
 }
 
-const featuredGames = allGamesData.filter((game: any) => game.featured);
+const featuredGames = allGamesData
+  .filter((game: any) => game.featured)
+  .sort((a: any, b: any) => {
+    // 新游戏优先
+    if (a.isNew && !b.isNew) return -1;
+    if (!a.isNew && b.isNew) return 1;
+    // 然后按最后更新时间排序（新的在前）
+    const dateA = new Date(a.lastUpdated || '2000-01-01').getTime();
+    const dateB = new Date(b.lastUpdated || '2000-01-01').getTime();
+    return dateB - dateA;
+  });
 ---
 <section id="featured" class="featured-section">
   <div class="module-header">

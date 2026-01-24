@@ -23,13 +23,23 @@ try {
   console.error('Error reading games data:', error);
 }
 
-// 获取新游戏（模拟时间分类 - 随机分配到不同时间段）
-const shuffledGames = [...allGamesData].sort(() => Math.random() - 0.5);
+// 获取新游戏 - 按 isNew 和 lastUpdated 排序
+const sortedGames = [...allGamesData]
+  .filter((game) => game.isNew || game.featured)
+  .sort((a, b) => {
+    // 新游戏优先
+    if (a.isNew && !b.isNew) return -1;
+    if (!a.isNew && b.isNew) return 1;
+    // 然后按最后更新时间排序
+    const dateA = new Date(a.lastUpdated || '2000-01-01').getTime();
+    const dateB = new Date(b.lastUpdated || '2000-01-01').getTime();
+    return dateB - dateA;
+  });
 
-const todayGames = shuffledGames.slice(0, 4);
-const thisWeekGames = shuffledGames.slice(4, 8);
-const thisMonthGames = shuffledGames.slice(8, 12);
-const recentlyUpdatedGames = shuffledGames.slice(12, 16);
+const todayGames = sortedGames.slice(0, 4);
+const thisWeekGames = sortedGames.slice(4, 8);
+const thisMonthGames = sortedGames.slice(8, 12);
+const recentlyUpdatedGames = sortedGames.slice(12, 16);
 ---
 
 <BaseLayout 
