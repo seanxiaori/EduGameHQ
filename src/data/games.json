@@ -6307,7 +6307,7 @@
     "title": "2048 Classic",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "/images/games/2048.png",
+    "image": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
     "iframeUrl": "https://games.edugamehq.com/games/2048/",
     "description": "Slide numbered tiles on a grid to combine them and create a tile with the number 2048. A classic puzzle game that challenges your strategic thinking!",
     "gameGuide": {
@@ -6327,7 +6327,7 @@
         "Plan several moves ahead"
       ]
     },
-    "thumbnailUrl": "/images/games/2048.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/2048/meta/apple-touch-icon.png",
     "difficulty": "Medium",
     "ageRange": "8-99",
     "minAge": 8,
@@ -6353,7 +6353,7 @@
     "title": "Tetris",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "/images/games/tetris.png",
+    "image": "https://games.edugamehq.com/games/tetris/images/Tetris%20Game.gif",
     "iframeUrl": "https://games.edugamehq.com/games/tetris/",
     "description": "The classic tile-matching puzzle game! Rotate and move falling Tetromino shapes to complete horizontal lines and score points.",
     "gameGuide": {
@@ -6372,7 +6372,7 @@
         "Plan ahead for the next piece"
       ]
     },
-    "thumbnailUrl": "/images/games/tetris.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/tetris/images/Tetris%20Game.gif",
     "difficulty": "Medium",
     "ageRange": "6-99",
     "minAge": 6,
@@ -6398,7 +6398,7 @@
     "title": "Memory Match",
     "category": "memory",
     "categoryName": "Memory",
-    "image": "/images/games/memory-game.png",
+    "image": "https://games.edugamehq.com/games/memory-game/images/pizza.png",
     "iframeUrl": "https://games.edugamehq.com/games/memory-game/",
     "description": "Test your memory by matching pairs of cards! Flip cards to find matching pairs and clear the board.",
     "gameGuide": {
@@ -6417,7 +6417,7 @@
         "Focus on one row at a time"
       ]
     },
-    "thumbnailUrl": "/images/games/memory-game.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-game/images/pizza.png",
     "difficulty": "Easy",
     "ageRange": "4-99",
     "minAge": 4,
@@ -6443,7 +6443,7 @@
     "title": "Whack-a-Mole",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "/images/games/whack-a-mole.png",
+    "image": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
     "iframeUrl": "https://games.edugamehq.com/games/whack-a-mole/",
     "description": "Test your reflexes! Click on moles as they pop up from their holes to score points.",
     "gameGuide": {
@@ -6461,7 +6461,7 @@
         "React quickly"
       ]
     },
-    "thumbnailUrl": "/images/games/whack-a-mole.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
     "difficulty": "Easy",
     "ageRange": "4-99",
     "minAge": 4,
