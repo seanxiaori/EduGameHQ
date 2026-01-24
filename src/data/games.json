@@ -312,55 +312,6 @@
     "educationalValue": "Physics principles, reaction ability, adaptability"
   },
   {
-    "slug": "2048",
-    "title": "2048",
-    "category": "math",
-    "categoryName": "Math",
-    "iframeUrl": "https://www.crazygames.com/embed/2048",
-    "description": "2048 is a single-player sliding tile puzzle game developed by Gabriele Cirulli. Merge tiles with the same power of 2 to get the total sum. The goal is to keep merging tiles this way until you reach 2048!",
-    "gameGuide": {
-      "howToPlay": [
-        "Use arrow keys to move all number tiles",
-        "When two tiles with the same number touch, they merge into one",
-        "The goal is to create a tile with the number 2048",
-        "The game ends when the board fills up and no more moves are possible"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys control movement direction",
-        "touch": "Swipe to move tiles"
-      },
-      "tips": [
-        "Keep the largest number in a corner",
-        "Build number sequences along the edges"
-      ]
-    },
-    "thumbnailUrl": "https://imgs.crazygames.com/games/2048/cover_16x9-1707828856995.png?metadata=none&quality=40&width=1200&height=630&fit=crop",
-    "difficulty": "Medium",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
-    "tags": [
-      "math",
-      "numbers",
-      "logic",
-      "problem-solving",
-      "strategy"
-    ],
-    "source": "CrazyGames",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://www.crazygames.com/game/2048",
-    "lastUpdated": "2025-06-16",
-    "lastChecked": "2025-06-16",
-    "playCount": 1315,
-    "featured": true,
-    "trending": true,
-    "isNew": true
-  },
-  {
     "slug": "count-masters-stickman-games",
     "title": "Count Masters: Stickman Games",
     "category": "math",
