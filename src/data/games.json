@@ -6488,5 +6488,96 @@
     "trending": true,
     "isNew": true,
     "original": false
+  },
+  {
+    "slug": "alien-invasion",
+    "title": "Alien Invasion",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/alien-invasion/images/alien_small.png",
+    "iframeUrl": "https://games.edugamehq.com/games/alien-invasion/",
+    "description": "Defend Earth from alien invaders! Shoot down waves of aliens before they reach the bottom.",
+    "gameGuide": {
+      "howToPlay": [
+        "Move your ship left and right",
+        "Shoot the aliens before they reach you",
+        "Avoid enemy fire",
+        "Clear all waves to win"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Space to shoot",
+        "touch": "Touch left/right to move, tap to shoot"
+      },
+      "tips": [
+        "Focus on the closest aliens first",
+        "Keep moving to avoid enemy fire",
+        "Watch for bonus power-ups"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/alien-invasion/images/alien_small.png",
+    "difficulty": "Medium",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["arcade", "shooter", "space", "aliens", "action"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "sourceUrl": "https://github.com/cykod/AlienInvasion",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "snake",
+    "title": "Snake",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "image": "https://games.edugamehq.com/games/snake/css/snake-icon.png",
+    "iframeUrl": "https://games.edugamehq.com/games/snake/",
+    "description": "Classic Snake game! Eat food to grow longer, but don't hit the walls or yourself!",
+    "gameGuide": {
+      "howToPlay": [
+        "Control the snake with arrow keys",
+        "Eat food to grow longer",
+        "Avoid hitting walls and yourself",
+        "Get the highest score possible"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to change direction"
+      },
+      "tips": [
+        "Plan your path ahead",
+        "Don't trap yourself in corners",
+        "Move steadily, don't rush"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/snake/css/snake-icon.png",
+    "difficulty": "Easy",
+    "ageRange": "6-99",
+    "minAge": 6,
+    "maxAge": 99,
+    "tags": ["arcade", "snake", "classic", "retro"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "sourceUrl": "https://github.com/mjhasbach/ceros-snake",
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
   }
 ]
