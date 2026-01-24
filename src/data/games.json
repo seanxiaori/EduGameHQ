@@ -7315,5 +7315,326 @@
     "trending": false,
     "isNew": true,
     "original": false
+  },
+  {
+    "slug": "connect-four",
+    "title": "Connect Four",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/connect-four/preview.png",
+    "iframeUrl": "https://games.edugamehq.com/games/connect-four/",
+    "description": "Classic Connect Four strategy game! Drop colored discs into the grid and be the first to connect four in a row horizontally, vertically, or diagonally.",
+    "gameGuide": {
+      "howToPlay": [
+        "Take turns dropping discs into columns",
+        "Connect four discs in a row to win",
+        "Block your opponent's winning moves",
+        "Plan ahead for multiple winning opportunities"
+      ],
+      "controls": {
+        "mouse": "Click on a column to drop your disc"
+      },
+      "tips": [
+        "Control the center column",
+        "Set up multiple winning threats",
+        "Watch for diagonal opportunities"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": ["puzzle", "strategy", "classic", "two-player", "logic"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "memory-game",
+    "title": "Memory Match",
+    "category": "memory",
+    "categoryName": "Memory",
+    "image": "https://games.edugamehq.com/games/memory-game/images/preview.png",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-game/",
+    "description": "Test your memory with this fun card matching game! Flip cards to find matching pairs and train your brain.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click cards to flip them over",
+        "Find matching pairs of cards",
+        "Remember card positions",
+        "Match all pairs to win"
+      ],
+      "controls": {
+        "mouse": "Click to flip cards"
+      },
+      "tips": [
+        "Start from corners",
+        "Create mental patterns",
+        "Focus on a few cards at a time"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-game/images/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "5-12",
+    "minAge": 5,
+    "maxAge": 12,
+    "tags": ["memory", "matching", "brain-training", "cards", "educational"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "whack-a-mole",
+    "title": "Whack-a-Mole",
+    "category": "sports",
+    "categoryName": "Sports",
+    "image": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
+    "iframeUrl": "https://games.edugamehq.com/games/whack-a-mole/",
+    "description": "Classic arcade game! Whack the moles as they pop up from their holes. Test your reflexes and reaction time!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click on moles when they appear",
+        "Score points for each mole hit",
+        "Be quick before they hide"
+      ],
+      "controls": {
+        "mouse": "Click to whack moles"
+      },
+      "tips": [
+        "Stay focused on the center",
+        "Anticipate mole patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
+    "difficulty": "Easy",
+    "ageRange": "5-12",
+    "minAge": 5,
+    "maxAge": 12,
+    "tags": ["arcade", "reflexes", "fun", "classic"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "frogger",
+    "title": "Frogger",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "image": "https://games.edugamehq.com/games/frogger/preview.png",
+    "iframeUrl": "https://games.edugamehq.com/games/frogger/",
+    "description": "Help the frog cross the busy road and river! Avoid cars and jump on logs to reach safety.",
+    "gameGuide": {
+      "howToPlay": [
+        "Guide the frog across the road",
+        "Avoid moving cars",
+        "Jump on logs to cross the river",
+        "Reach the safe zones at the top"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Time your movements carefully",
+        "Watch traffic patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": ["arcade", "classic", "retro", "action"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "space-invaders",
+    "title": "Space Invaders",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "image": "https://games.edugamehq.com/games/space-invaders/preview.png",
+    "iframeUrl": "https://games.edugamehq.com/games/space-invaders/",
+    "description": "Classic arcade shooter! Defend Earth from waves of alien invaders. Shoot them down before they reach you!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move your ship left and right",
+        "Shoot the alien invaders",
+        "Avoid enemy fire",
+        "Clear all aliens to advance"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Space to shoot"
+      },
+      "tips": [
+        "Target the edges first",
+        "Use cover strategically"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": ["arcade", "shooter", "classic", "retro", "action"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "breakout",
+    "title": "Breakout",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/breakout/preview.png",
+    "iframeUrl": "https://games.edugamehq.com/games/breakout/",
+    "description": "Classic brick-breaking game! Bounce the ball to destroy all bricks.",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle to bounce ball",
+        "Break all bricks to win",
+        "Don't let ball fall"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys or mouse to move paddle"
+      },
+      "tips": ["Aim for corners", "Control ball angle"]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/breakout/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": ["arcade", "classic", "brick-breaker"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "candy-crush",
+    "title": "Candy Crush",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/candy-crush/candy-crush-background-2.png",
+    "iframeUrl": "https://games.edugamehq.com/games/candy-crush/",
+    "description": "Match 3 or more candies to score points! A fun and addictive puzzle game.",
+    "gameGuide": {
+      "howToPlay": ["Swap adjacent candies", "Match 3+ same colors", "Clear the board"],
+      "controls": {"mouse": "Click and drag to swap"},
+      "tips": ["Look for combos", "Plan moves ahead"]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/candy-crush/candy-crush-background-2.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": ["puzzle", "match-3", "casual"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
+  },
+  {
+    "slug": "doodle-jump",
+    "title": "Doodle Jump",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "image": "https://games.edugamehq.com/games/doodle-jump/doodler-guy.png",
+    "iframeUrl": "https://games.edugamehq.com/games/doodle-jump/",
+    "description": "Jump from platform to platform and climb as high as you can!",
+    "gameGuide": {
+      "howToPlay": ["Jump on platforms", "Avoid falling", "Climb higher"],
+      "controls": {"keyboard": "Arrow keys to move"},
+      "tips": ["Time your jumps", "Watch for moving platforms"]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/doodle-jump/doodler-guy.png",
+    "difficulty": "Medium",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": ["arcade", "jumping", "endless"],
+    "source": "GitHub Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "lastUpdated": "2025-01-24",
+    "lastChecked": "2025-01-24",
+    "playCount": 0,
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
   }
 ]
