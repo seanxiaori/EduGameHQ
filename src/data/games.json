@@ -5300,51 +5300,6 @@
     "isNew": false
   },
   {
-    "slug": "matching-gemstones",
-    "title": "Matching: Gemstones",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://kids.nationalgeographic.com/games/puzzles/article/matching-gemstones",
-    "description": "Play Matching: Gemstones - an educational game from National Geographic Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "natgeokids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.3802517280951365,
-    "playCount": 29833,
-    "sourceUrl": "https://kids.nationalgeographic.com/games/puzzles/article/matching-gemstones",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": false
-  },
-  {
     "slug": "steal-brainrot-online",
     "title": "Steal Brainrot Online",
     "category": "math",
@@ -5384,51 +5339,6 @@
     "rating": 4.246551214605874,
     "playCount": 42617,
     "sourceUrl": "https://www.crazygames.com/game/steal-brainrot-online",
-    "lastUpdated": "2025-10-10",
-    "lastChecked": "2025-10-10",
-    "featured": false,
-    "trending": false,
-    "isNew": false
-  },
-  {
-    "slug": "space-explorer",
-    "title": "Space Explorer",
-    "category": "educational",
-    "categoryName": "Educational",
-    "iframeUrl": "https://kids.nationalgeographic.com/games/action-adventure/article/space-explorer",
-    "description": "Play Space Explorer - an educational game from National Geographic Kids",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to start the game",
-        "Follow the on-screen instructions",
-        "Complete the objectives to win"
-      ],
-      "controls": {
-        "mouse": "Click and drag to interact",
-        "keyboard": "Use arrow keys to move"
-      },
-      "tips": [
-        "Take your time to understand the game",
-        "Practice makes perfect"
-      ]
-    },
-    "difficulty": "Medium",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "educational"
-    ],
-    "source": "natgeokids",
-    "iframeCompatible": true,
-    "verified": false,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.062983210978799,
-    "playCount": 108524,
-    "sourceUrl": "https://kids.nationalgeographic.com/games/action-adventure/article/space-explorer",
     "lastUpdated": "2025-10-10",
     "lastChecked": "2025-10-10",
     "featured": false,
