@@ -736,6 +736,7 @@
 
 .module-icon.categories { background: linear-gradient(135deg, #818CF8, #4F46E5); }
 .module-icon.featured { background: linear-gradient(135deg, #FBBF24, #D97706); }
+.module-icon.new { background: linear-gradient(135deg, #10B981, #059669); }
 .module-icon.benefits { background: linear-gradient(135deg, #F472B6, #DB2777); }
 
 .module-title {

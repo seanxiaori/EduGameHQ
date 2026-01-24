@@ -1,0 +1,50 @@
+---
+// src/components/sections/NewGames.astro
+import GameCard from '../GameCard.astro';
+import { t } from '../../i18n/utils';
+import fs from 'fs';
+import path from 'path';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+
+// 从JSON文件读取游戏数据
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData = [];
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent);
+} catch (error) {
+  console.error('❌ 无法读取游戏数据文件:', error);
+}
+
+// 获取最新游戏（按lastUpdated排序，取前12个）
+const newGames = allGamesData
+  .filter((game: any) => game.isNew)
+  .sort((a: any, b: any) => {
+    const dateA = new Date(a.lastUpdated || '2000-01-01').getTime();
+    const dateB = new Date(b.lastUpdated || '2000-01-01').getTime();
+    return dateB - dateA;
+  })
+  .slice(0, 12);
+---
+<section id="new-games" class="new-games-section">
+  <div class="module-header">
+    <div class="module-icon new">
+      <i class="fas fa-plus-circle"></i>
+    </div>
+    <div class="module-text">
+      <h2 class="module-title">{t(translations, 'home.new_games.title', 'New Games')}</h2>
+      <p class="module-description">{t(translations, 'home.new_games.description', 'Check out our latest additions')}</p>
+    </div>
+  </div>
+
+  <div class="games-grid">
+    {newGames.map((game: any) => (
+      <GameCard game={game} translations={translations} showPlayHistory={true} showFavorite={true} />
+    ))}
+  </div>
+</section>

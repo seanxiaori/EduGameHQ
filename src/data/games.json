@@ -7189,7 +7189,7 @@
     "title": "Pacman",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/pacman/img/logo.png",
+    "image": "https://games.edugamehq.com/games/pacman/img/Icon-300x300.png",
     "iframeUrl": "https://games.edugamehq.com/games/pacman/",
     "description": "Play the classic Pacman arcade game! Navigate through the maze, eat all the dots, and avoid the ghosts. Collect power pellets to turn the tables on your enemies.",
     "gameGuide": {
@@ -7208,7 +7208,7 @@
         "Clear corners first before moving to center"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/pacman/img/logo.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/pacman/img/Icon-300x300.png",
     "difficulty": "Medium",
     "ageRange": "6-18",
     "minAge": 6,
@@ -7233,7 +7233,7 @@
     "title": "Minesweeper",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/minesweeper/images/minesweeper.png",
+    "image": "https://games.edugamehq.com/games/minesweeper/images/smiley-face.png",
     "iframeUrl": "https://games.edugamehq.com/games/minesweeper/",
     "description": "The classic Minesweeper puzzle game! Use logic and deduction to clear the minefield without triggering any mines. A perfect brain training game for all ages.",
     "gameGuide": {
@@ -7252,7 +7252,7 @@
         "Flag all mines before revealing remaining squares"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/minesweeper/images/minesweeper.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/minesweeper/images/smiley-face.png",
     "difficulty": "Medium",
     "ageRange": "8-18",
     "minAge": 8,
@@ -7277,7 +7277,7 @@
     "title": "Tic Tac Toe",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/tic-tac-toe/preview.png",
+    "image": "https://games.edugamehq.com/games/tic-tac-toe/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/tic-tac-toe/",
     "description": "Play the classic Tic Tac Toe game! Challenge a friend or play against the computer. Get three in a row to win this timeless strategy game.",
     "gameGuide": {
@@ -7296,7 +7296,7 @@
         "Block opponent's two-in-a-row"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tic-tac-toe/preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/tic-tac-toe/preview.svg",
     "difficulty": "Easy",
     "ageRange": "5-12",
     "minAge": 5,
@@ -7321,7 +7321,7 @@
     "title": "Connect Four",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/connect-four/preview.png",
+    "image": "https://games.edugamehq.com/games/connect-four/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/connect-four/",
     "description": "Classic Connect Four strategy game! Drop colored discs into the grid and be the first to connect four in a row horizontally, vertically, or diagonally.",
     "gameGuide": {
@@ -7340,7 +7340,7 @@
         "Watch for diagonal opportunities"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four/preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four/preview.svg",
     "difficulty": "Medium",
     "ageRange": "6-14",
     "minAge": 6,
@@ -7365,7 +7365,7 @@
     "title": "Memory Match",
     "category": "memory",
     "categoryName": "Memory",
-    "image": "https://games.edugamehq.com/games/memory-game/images/preview.png",
+    "image": "https://games.edugamehq.com/games/memory-game/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/memory-game/",
     "description": "Test your memory with this fun card matching game! Flip cards to find matching pairs and train your brain.",
     "gameGuide": {
@@ -7384,7 +7384,7 @@
         "Focus on a few cards at a time"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/memory-game/images/preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-game/preview.svg",
     "difficulty": "Easy",
     "ageRange": "5-12",
     "minAge": 5,
@@ -7409,7 +7409,7 @@
     "title": "Whack-a-Mole",
     "category": "sports",
     "categoryName": "Sports",
-    "image": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
+    "image": "https://games.edugamehq.com/games/whack-a-mole/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/whack-a-mole/",
     "description": "Classic arcade game! Whack the moles as they pop up from their holes. Test your reflexes and reaction time!",
     "gameGuide": {
@@ -7426,7 +7426,7 @@
         "Anticipate mole patterns"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/whack-a-mole/mole.jpg",
+    "thumbnailUrl": "https://games.edugamehq.com/games/whack-a-mole/preview.svg",
     "difficulty": "Easy",
     "ageRange": "5-12",
     "minAge": 5,
@@ -7451,7 +7451,7 @@
     "title": "Frogger",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/frogger/preview.png",
+    "image": "https://games.edugamehq.com/games/frogger/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/frogger/",
     "description": "Help the frog cross the busy road and river! Avoid cars and jump on logs to reach safety.",
     "gameGuide": {
@@ -7469,7 +7469,7 @@
         "Watch traffic patterns"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/preview.svg",
     "difficulty": "Medium",
     "ageRange": "6-14",
     "minAge": 6,
@@ -7494,7 +7494,7 @@
     "title": "Space Invaders",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/space-invaders/preview.png",
+    "image": "https://games.edugamehq.com/games/space-invaders/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/space-invaders/",
     "description": "Classic arcade shooter! Defend Earth from waves of alien invaders. Shoot them down before they reach you!",
     "gameGuide": {
@@ -7512,7 +7512,7 @@
         "Use cover strategically"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/preview.svg",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -7537,7 +7537,7 @@
     "title": "Breakout",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/breakout/preview.png",
+    "image": "https://games.edugamehq.com/games/breakout/preview.svg",
     "iframeUrl": "https://games.edugamehq.com/games/breakout/",
     "description": "Classic brick-breaking game! Bounce the ball to destroy all bricks.",
     "gameGuide": {
@@ -7551,7 +7551,7 @@
       },
       "tips": ["Aim for corners", "Control ball angle"]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/breakout/preview.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/breakout/preview.svg",
     "difficulty": "Medium",
     "ageRange": "6-16",
     "minAge": 6,
