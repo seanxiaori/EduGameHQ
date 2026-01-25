@@ -362,6 +362,22 @@
   background: linear-gradient(135deg, #F3E8FF, #E9D5FF);
 }
 
+.category-card.coding:hover {
+  background: linear-gradient(135deg, #DBEAFE, #BFDBFE);
+}
+
+.category-card.geography:hover {
+  background: linear-gradient(135deg, #D1FAE5, #A7F3D0);
+}
+
+.category-card.strategy:hover {
+  background: linear-gradient(135deg, #FEE2E2, #FECACA);
+}
+
+.category-card.arcade:hover {
+  background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+}
+
 /* 特色游戏区域 */
 .featured-section {
   margin-bottom: 3rem;

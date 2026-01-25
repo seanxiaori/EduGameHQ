@@ -554,7 +554,11 @@
       "art": "Drücken Sie Ihre Kreativität durch digitale Kunst und Design aus",
       "adventure": "Begeben Sie sich auf spannende Quests und Erkundungen",
       "creative": "Entfesseln Sie Fantasie und kreatives Denken",
-      "memory": "Verbessern Sie Gedächtnis und kognitive Fähigkeiten"
+      "memory": "Verbessern Sie Gedächtnis und kognitive Fähigkeiten",
+    "coding": "Programmieren durch lustige Herausforderungen lernen",
+    "geography": "Länder, Hauptstädte und Karten erkunden",
+    "strategy": "Vorausplanen und Gegner überlisten",
+    "arcade": "Klassischer Arcade-Spaß und Action"
     },
     "explore_by_category": {
       "title": "Nach Kategorie erkunden",

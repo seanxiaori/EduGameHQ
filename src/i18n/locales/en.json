@@ -606,7 +606,11 @@
       "art": "Express creativity through digital art",
       "adventure": "Embark on exciting quests and explorations",
       "creative": "Unleash imagination and creative thinking",
-      "memory": "Enhance memory and cognitive abilities"
+      "memory": "Enhance memory and cognitive abilities",
+      "coding": "Learn programming through fun challenges",
+      "geography": "Explore countries, capitals and maps",
+      "strategy": "Plan ahead and outsmart opponents",
+      "arcade": "Classic arcade fun and action"
     },
     "featured_games": {
       "title": "Featured Games",

@@ -180,5 +180,73 @@ const { translations } = Astro.props;
         <p class="category-card-description">{t(translations, 'home.category_description.memory', 'Enhance memory and cognitive abilities')}</p>
       </div>
     </a>
+
+    <!-- 编程游戏 -->
+    <a href="/coding-games" class="category-card coding">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">&lt;/&gt;</span>
+          <span class="floating-symbol">{ }</span>
+        </div>
+        <div class="category-card-icon">
+          💻
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.coding-games', 'Coding Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.coding', 'Learn programming through fun challenges')}</p>
+      </div>
+    </a>
+
+    <!-- 地理游戏 -->
+    <a href="/geography-games" class="category-card geography">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🌍</span>
+          <span class="floating-symbol">🗺️</span>
+        </div>
+        <div class="category-card-icon">
+          🌎
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.geography-games', 'Geography Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.geography', 'Explore countries, capitals and maps')}</p>
+      </div>
+    </a>
+
+    <!-- 策略游戏 -->
+    <a href="/strategy-games" class="category-card strategy">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">♟️</span>
+          <span class="floating-symbol">🎯</span>
+        </div>
+        <div class="category-card-icon">
+          ♟️
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.strategy-games', 'Strategy Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.strategy', 'Plan ahead and outsmart opponents')}</p>
+      </div>
+    </a>
+
+    <!-- 街机游戏 -->
+    <a href="/arcade-games" class="category-card arcade">
+      <div class="category-card-header">
+        <div class="category-floating-elements">
+          <span class="floating-symbol">🕹️</span>
+          <span class="floating-symbol">👾</span>
+        </div>
+        <div class="category-card-icon">
+          🕹️
+        </div>
+      </div>
+      <div class="category-card-content">
+        <h3 class="category-card-title">{t(translations, 'categories.arcade-games', 'Arcade Games')}</h3>
+        <p class="category-card-description">{t(translations, 'home.category_description.arcade', 'Classic arcade fun and action')}</p>
+      </div>
+    </a>
   </div>
 </section>

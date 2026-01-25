@@ -5772,7 +5772,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "astray",
@@ -5926,7 +5926,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "3d-chess",
@@ -5977,7 +5977,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "coil",
@@ -6024,7 +6024,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "crappy-bird",
@@ -6074,7 +6074,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "ceros-snake",
@@ -6121,7 +6121,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "chess-3d",
@@ -6169,7 +6169,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "tower-defense",
@@ -6216,7 +6216,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "jolly-jumper",
@@ -6263,7 +6263,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "digger",
@@ -6311,7 +6311,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "tetris",
@@ -6359,7 +6359,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "skifree",
@@ -6407,7 +6407,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "pacman",
@@ -6458,7 +6458,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "minesweeper",
@@ -6509,7 +6509,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "tic-tac-toe",
@@ -6560,7 +6560,7 @@
     "trending": false,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "connect-four",
@@ -6611,7 +6611,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "memory-game",
@@ -6662,7 +6662,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "whack-a-mole",
@@ -6710,7 +6710,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "frogger",
@@ -6759,7 +6759,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "space-invaders",
@@ -6809,7 +6809,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "breakout",
@@ -6856,7 +6856,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "candy-crush",
@@ -6903,7 +6903,7 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   },
   {
     "slug": "doodle-jump",
@@ -6950,6 +6950,6 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Open Source Community"
+    "developer": "EduGameHQ"
   }
 ]

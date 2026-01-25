@@ -580,7 +580,11 @@
       "art": "Expresa tu creatividad a través del arte digital y el diseño",
       "adventure": "Embárcate en emocionantes misiones y exploraciones",
       "creative": "Libera la imaginación y el pensamiento creativo",
-      "memory": "Mejora la memoria y las habilidades cognitivas"
+      "memory": "Mejora la memoria y las habilidades cognitivas",
+    "coding": "Aprende programación con desafíos divertidos",
+    "geography": "Explora países, capitales y mapas",
+    "strategy": "Planifica y supera a tus oponentes",
+    "arcade": "Diversión y acción arcade clásica"
     },
     "explore_by_category": {
       "title": "Explorar por Categoría",

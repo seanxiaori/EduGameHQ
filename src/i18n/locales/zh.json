@@ -840,7 +840,11 @@
       "art": "通过数字艺术表达创造力",
       "adventure": "踏上激动人心的探险之旅",
       "creative": "释放想象力与创新思维",
-      "memory": "增强记忆力和认知能力"
+      "memory": "增强记忆力和认知能力",
+      "coding": "通过有趣的挑战学习编程",
+      "geography": "探索国家、首都和地图",
+      "strategy": "提前规划，智胜对手",
+      "arcade": "经典街机游戏乐趣"
     },
     "featured_games": {
       "title": "特色游戏",
