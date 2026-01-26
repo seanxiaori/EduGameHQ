@@ -23,6 +23,10 @@ http://www.edugamehq.com/* https://www.edugamehq.com/:splat 301!
 /adventure-games /adventure-games/ 301
 /creative-games /creative-games/ 301
 /memory-games /memory-games/ 301
+/coding-games /coding-games/ 301
+/geography-games /geography-games/ 301
+/strategy-games /strategy-games/ 301
+/arcade-games /arcade-games/ 301
 /trending /trending/ 301
 /new-games /new-games/ 301
 /search /search/ 301
