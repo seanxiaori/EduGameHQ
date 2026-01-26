@@ -1,0 +1,266 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
+import type { Game } from '../types/game';
+import { getTranslations, t } from '../i18n/utils';
+import fs from 'fs';
+import path from 'path';
+
+import '../styles/game-card.css';
+
+const translations = await getTranslations('en');
+
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
+const codingGames = allGamesData.filter(game => game.category === 'coding');
+const featuredGames = codingGames.filter(game => game.featured);
+const easyGames = codingGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = codingGames.filter(game => game.difficulty === 'Medium');
+const hardGames = codingGames.filter(game => game.difficulty === 'Hard');
+
+const collectionPageData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Coding Games Collection - EduGameHQ",
+  "description": "Learn programming through play! Our collection of coding games teaches HTML, CSS, JavaScript, algorithms, and problem-solving skills in a fun and engaging way.",
+  "url": "https://www.edugamehq.com/coding-games",
+  "mainEntity": {
+    "@type": "ItemList",
+    "numberOfItems": codingGames.length,
+    "itemListElement": codingGames.slice(0, 12).map((game, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Game",
+        "name": game.title,
+        "description": game.description,
+        "url": `https://www.edugamehq.com/games/${game.slug}`,
+        "image": game.thumbnailUrl || "/images/logo.svg",
+        "genre": "Educational Coding Game",
+        "educationalLevel": game.ageRange
+      }
+    }))
+  },
+  "keywords": "coding games, programming games, learn to code, HTML games, CSS games, JavaScript games, algorithm games"
+};
+---
+
+<BaseLayout additionalStructuredData={collectionPageData}>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon coding">
+              <i class="fas fa-code"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">{t(translations, 'categories.coding-games', 'Coding Games')}</h1>
+            <p class="page-description">
+              Learn programming through play! Our collection of coding games teaches HTML, CSS, JavaScript, algorithms, and problem-solving skills. From visual code editors to algorithm visualizers, discover the joy of coding through interactive gameplay.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {featuredGames.length > 0 && (
+        <section class="game-module featured-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon"><i class="fas fa-star"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Coding Games</h2>
+              <p class="module-subtitle">Our most popular programming games</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {featuredGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {easyGames.length > 0 && (
+        <section class="game-module difficulty-module easy-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon"><i class="fas fa-smile"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Beginner Level</h2>
+              <p class="module-subtitle">Perfect for coding beginners</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {easyGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {mediumGames.length > 0 && (
+        <section class="game-module difficulty-module medium-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon"><i class="fas fa-meh"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Intermediate Level</h2>
+              <p class="module-subtitle">Challenge your coding skills</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {mediumGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hardGames.length > 0 && (
+        <section class="game-module difficulty-module hard-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon"><i class="fas fa-frown"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Advanced Level</h2>
+              <p class="module-subtitle">For experienced programmers</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {hardGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="info-module skills-module">
+        <div class="module-header">
+          <div class="module-icon skills-icon"><i class="fas fa-brain"></i></div>
+          <div class="module-title-group">
+            <h2 class="module-title">Skills You'll Learn</h2>
+            <p class="module-subtitle">Essential programming abilities</p>
+          </div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-code"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">HTML & CSS</h4>
+              <p class="skill-description">Build web pages with structure and style</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fab fa-js"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">JavaScript</h4>
+              <p class="skill-description">Add interactivity to websites</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-project-diagram"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Algorithms</h4>
+              <p class="skill-description">Solve problems efficiently</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-bug"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Debugging</h4>
+              <p class="skill-description">Find and fix code errors</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-lightbulb"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Logic</h4>
+              <p class="skill-description">Think like a programmer</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-database"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Data Structures</h4>
+              <p class="skill-description">Organize and manage data</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content {
+    width: 100%;
+    background: linear-gradient(135deg, #FEFCFB 0%, #F8F6F3 50%, #EEF2FF 100%);
+    min-height: 100vh;
+  }
+  .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+  .page-header {
+    background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 50%, rgba(99, 102, 241, 0.08) 100%);
+    border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem;
+    border: 1px solid rgba(99, 102, 241, 0.15);
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  }
+  .header-content { display: flex; align-items: center; gap: 2rem; }
+  .section-icon {
+    width: 72px; height: 72px; border-radius: 20px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.75rem;
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+  }
+  .page-title {
+    font-size: 2.5rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 50%, #4338CA 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin: 0 0 0.5rem 0;
+  }
+  .page-description { font-size: 1.125rem; color: #64748B; margin: 0; line-height: 1.6; }
+  .game-module, .info-module { margin-bottom: 3rem; }
+  .module-header {
+    display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem;
+    padding: 1.5rem; background: white; border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); border: 1px solid #F3F4F6;
+  }
+  .module-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .medium-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .hard-icon { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+  .skills-icon { background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%); }
+  .module-title { font-size: 1.5rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; }
+  .module-subtitle { color: #6B7280; font-size: 0.9rem; margin: 0; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .skill-item {
+    background: white; border-radius: 12px; padding: 1.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); border: 1px solid #F3F4F6;
+    display: flex; gap: 0.875rem; align-items: flex-start; transition: all 0.3s ease;
+  }
+  .skill-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); }
+  .skill-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-size: 0.875rem;
+  }
+  .skill-title { font-size: 0.9rem; font-weight: 600; color: #1F2937; margin: 0 0 0.25rem 0; }
+  .skill-description { color: #6B7280; font-size: 0.8rem; margin: 0; }
+  @media (max-width: 768px) {
+    .header-content { flex-direction: column; text-align: center; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 2rem; }
+  }
+</style>

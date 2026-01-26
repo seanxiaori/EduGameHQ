@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
+import type { Game } from '../types/game';
+import { getTranslations, t } from '../i18n/utils';
+import fs from 'fs';
+import path from 'path';
+
+import '../styles/game-card.css';
+
+const translations = await getTranslations('en');
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
+const arcadeGames = allGamesData.filter(game => game.category === 'arcade');
+const featuredGames = arcadeGames.filter(game => game.featured);
+const easyGames = arcadeGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = arcadeGames.filter(game => game.difficulty === 'Medium');
+const hardGames = arcadeGames.filter(game => game.difficulty === 'Hard');
+
+const collectionPageData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Arcade Games Collection - EduGameHQ",
+  "description": "Classic arcade fun! Play retro-style games like Pac-Man, Space Invaders, and more.",
+  "url": "https://www.edugamehq.com/arcade-games"
+};
+---
+
+<BaseLayout additionalStructuredData={collectionPageData}>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon arcade"><i class="fas fa-gamepad"></i></div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">{t(translations, 'categories.arcade-games', 'Arcade Games')}</h1>
+            <p class="page-description">
+              Classic arcade fun! Enjoy retro-style games including Pac-Man, Space Invaders, Snake, and more. Test your reflexes and beat high scores!
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {featuredGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon"><i class="fas fa-star"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Arcade Games</h2>
+              <p class="module-subtitle">Top-rated classic games</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {featuredGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {easyGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon"><i class="fas fa-smile"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Easy Level</h2>
+              <p class="module-subtitle">Great for beginners</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {easyGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {mediumGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon"><i class="fas fa-meh"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Medium Level</h2>
+              <p class="module-subtitle">Test your skills</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {mediumGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hardGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon"><i class="fas fa-frown"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Hard Level</h2>
+              <p class="module-subtitle">For arcade masters</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {hardGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content { width: 100%; background: linear-gradient(135deg, #FEFCFB 0%, #F8F6F3 50%, #FEF3C7 100%); min-height: 100vh; }
+  .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+  .page-header { background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 50%, rgba(245, 158, 11, 0.08) 100%); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(245, 158, 11, 0.15); }
+  .header-content { display: flex; align-items: center; gap: 2rem; }
+  .section-icon { width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 50%, #B45309 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.75rem; }
+  .page-title { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 0 0.5rem 0; }
+  .page-description { font-size: 1.125rem; color: #64748B; margin: 0; line-height: 1.6; }
+  .game-module { margin-bottom: 3rem; }
+  .module-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+  .module-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+  .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .medium-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .hard-icon { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+  .module-title { font-size: 1.5rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; }
+  .module-subtitle { color: #6B7280; font-size: 0.9rem; margin: 0; }
+  @media (max-width: 768px) { .header-content { flex-direction: column; text-align: center; } .page-title { font-size: 2rem; } }
+</style>

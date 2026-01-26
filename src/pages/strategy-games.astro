@@ -1,0 +1,137 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
+import type { Game } from '../types/game';
+import { getTranslations, t } from '../i18n/utils';
+import fs from 'fs';
+import path from 'path';
+
+import '../styles/game-card.css';
+
+const translations = await getTranslations('en');
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
+const strategyGames = allGamesData.filter(game => game.category === 'strategy');
+const featuredGames = strategyGames.filter(game => game.featured);
+const easyGames = strategyGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = strategyGames.filter(game => game.difficulty === 'Medium');
+const hardGames = strategyGames.filter(game => game.difficulty === 'Hard');
+
+const collectionPageData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Strategy Games Collection - EduGameHQ",
+  "description": "Challenge your mind with strategy games! Chess, checkers, and tactical puzzles to develop critical thinking.",
+  "url": "https://www.edugamehq.com/strategy-games"
+};
+---
+
+<BaseLayout additionalStructuredData={collectionPageData}>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon strategy"><i class="fas fa-chess"></i></div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">{t(translations, 'categories.strategy-games', 'Strategy Games')}</h1>
+            <p class="page-description">
+              Challenge your mind with strategy games! From classic chess and checkers to tactical puzzles, develop critical thinking and planning skills through engaging gameplay.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {featuredGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon"><i class="fas fa-star"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Strategy Games</h2>
+              <p class="module-subtitle">Top-rated tactical challenges</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {featuredGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {easyGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon"><i class="fas fa-smile"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Beginner Level</h2>
+              <p class="module-subtitle">Learn strategic thinking basics</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {easyGames.map((game) => (<GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />))}
+          </div>
+        </section>
+      )}
+
+      {mediumGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon"><i class="fas fa-meh"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Intermediate Level</h2>
+              <p class="module-subtitle">Test your tactical skills</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {mediumGames.map((game) => (<GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />))}
+          </div>
+        </section>
+      )}
+
+      {hardGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon"><i class="fas fa-frown"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Expert Level</h2>
+              <p class="module-subtitle">Master-level challenges</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {hardGames.map((game) => (<GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />))}
+          </div>
+        </section>
+      )}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content { width: 100%; background: linear-gradient(135deg, #FEFCFB 0%, #F8F6F3 50%, #FDF4FF 100%); min-height: 100vh; }
+  .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+  .page-header { background: linear-gradient(135deg, #FDF4FF 0%, #FAE8FF 50%, rgba(168, 85, 247, 0.08) 100%); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(168, 85, 247, 0.15); }
+  .header-content { display: flex; align-items: center; gap: 2rem; }
+  .section-icon { width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, #A855F7 0%, #9333EA 50%, #7C3AED 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.75rem; }
+  .page-title { font-size: 2.5rem; font-weight: 800; background: linear-gradient(135deg, #A855F7 0%, #9333EA 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 0 0.5rem 0; }
+  .page-description { font-size: 1.125rem; color: #64748B; margin: 0; line-height: 1.6; }
+  .game-module { margin-bottom: 3rem; }
+  .module-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); }
+  .module-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; }
+  .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .medium-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .hard-icon { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+  .module-title { font-size: 1.5rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; }
+  .module-subtitle { color: #6B7280; font-size: 0.9rem; margin: 0; }
+  @media (max-width: 768px) { .header-content { flex-direction: column; text-align: center; } .page-title { font-size: 2rem; } }
+</style>

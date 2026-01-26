@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GameCard from '../components/GameCard.astro';
+import type { Game } from '../types/game';
+import { getTranslations, t } from '../i18n/utils';
+import fs from 'fs';
+import path from 'path';
+
+import '../styles/game-card.css';
+
+const translations = await getTranslations('en');
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: Game[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent) as Game[];
+} catch (error) {
+  console.warn('Unable to read games data file:', error);
+}
+
+const geographyGames = allGamesData.filter(game => game.category === 'geography');
+const featuredGames = geographyGames.filter(game => game.featured);
+const easyGames = geographyGames.filter(game => game.difficulty === 'Easy');
+const mediumGames = geographyGames.filter(game => game.difficulty === 'Medium');
+const hardGames = geographyGames.filter(game => game.difficulty === 'Hard');
+
+const collectionPageData = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Geography Games Collection - EduGameHQ",
+  "description": "Explore the world through play! Learn about countries, capitals, flags, and maps with our interactive geography games.",
+  "url": "https://www.edugamehq.com/geography-games",
+  "keywords": "geography games, map games, country quiz, capital cities, flags quiz, world geography"
+};
+---
+
+<BaseLayout additionalStructuredData={collectionPageData}>
+  <main class="main-content">
+    <div class="content-wrapper">
+      <section class="page-header">
+        <div class="header-content">
+          <div class="header-icon">
+            <div class="section-icon geography">
+              <i class="fas fa-globe-americas"></i>
+            </div>
+          </div>
+          <div class="header-text">
+            <h1 class="page-title">{t(translations, 'categories.geography-games', 'Geography Games')}</h1>
+            <p class="page-description">
+              Explore the world through play! Learn about countries, capitals, flags, borders, and maps. From interactive world maps to flag quizzes, discover geography in a fun and engaging way.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {featuredGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon featured-icon"><i class="fas fa-star"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Featured Geography Games</h2>
+              <p class="module-subtitle">Our most popular world exploration games</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {featuredGames.slice(0, 6).map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {easyGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon easy-icon"><i class="fas fa-smile"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Beginner Level</h2>
+              <p class="module-subtitle">Start your world exploration</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {easyGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {mediumGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon medium-icon"><i class="fas fa-meh"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Intermediate Level</h2>
+              <p class="module-subtitle">Test your geography knowledge</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {mediumGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {hardGames.length > 0 && (
+        <section class="game-module">
+          <div class="module-header">
+            <div class="module-icon hard-icon"><i class="fas fa-frown"></i></div>
+            <div class="module-title-group">
+              <h2 class="module-title">Expert Level</h2>
+              <p class="module-subtitle">For geography masters</p>
+            </div>
+          </div>
+          <div class="games-grid">
+            {hardGames.map((game) => (
+              <GameCard game={game} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section class="info-module">
+        <div class="module-header">
+          <div class="module-icon skills-icon"><i class="fas fa-brain"></i></div>
+          <div class="module-title-group">
+            <h2 class="module-title">What You'll Learn</h2>
+            <p class="module-subtitle">Geography skills and knowledge</p>
+          </div>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-flag"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">World Flags</h4>
+              <p class="skill-description">Recognize flags from around the world</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-city"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Capital Cities</h4>
+              <p class="skill-description">Learn capitals of every country</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-map"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Map Reading</h4>
+              <p class="skill-description">Navigate and understand maps</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-border-all"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Country Borders</h4>
+              <p class="skill-description">Identify countries by shape</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-mountain"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Landmarks</h4>
+              <p class="skill-description">Discover famous world landmarks</p>
+            </div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon"><i class="fas fa-globe"></i></div>
+            <div class="skill-content">
+              <h4 class="skill-title">Continents</h4>
+              <p class="skill-description">Master world regions</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .main-content { width: 100%; background: linear-gradient(135deg, #FEFCFB 0%, #F8F6F3 50%, #ECFDF5 100%); min-height: 100vh; }
+  .content-wrapper { max-width: 1400px; margin: 0 auto; padding: 2rem; }
+  .page-header { background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 50%, rgba(16, 185, 129, 0.08) 100%); border-radius: 20px; padding: 2rem; margin-bottom: 2.5rem; border: 1px solid rgba(16, 185, 129, 0.15); box-shadow: 0 8px 32px rgba(16, 185, 129, 0.08); }
+  .header-content { display: flex; align-items: center; gap: 2rem; }
+  .section-icon { width: 72px; height: 72px; border-radius: 20px; background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 1.75rem; box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3); }
+  .page-title { font-size: 2.5rem; font-weight: 800; font-family: 'Space Grotesk', sans-serif; background: linear-gradient(135deg, #10B981 0%, #059669 50%, #047857 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0 0 0.5rem 0; }
+  .page-description { font-size: 1.125rem; color: #64748B; margin: 0; line-height: 1.6; }
+  .game-module, .info-module { margin-bottom: 3rem; }
+  .module-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 16px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); border: 1px solid #F3F4F6; }
+  .module-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.25rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); }
+  .featured-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .easy-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .medium-icon { background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); }
+  .hard-icon { background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%); }
+  .skills-icon { background: linear-gradient(135deg, #10B981 0%, #059669 100%); }
+  .module-title { font-size: 1.5rem; font-weight: 700; color: #1F2937; margin: 0 0 0.25rem 0; }
+  .module-subtitle { color: #6B7280; font-size: 0.9rem; margin: 0; }
+  .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .skill-item { background: white; border-radius: 12px; padding: 1.25rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); border: 1px solid #F3F4F6; display: flex; gap: 0.875rem; align-items: flex-start; transition: all 0.3s ease; }
+  .skill-item:hover { transform: translateY(-2px); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); }
+  .skill-icon { width: 32px; height: 32px; border-radius: 8px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 0.875rem; }
+  .skill-title { font-size: 0.9rem; font-weight: 600; color: #1F2937; margin: 0 0 0.25rem 0; }
+  .skill-description { color: #6B7280; font-size: 0.8rem; margin: 0; }
+  @media (max-width: 768px) { .header-content { flex-direction: column; text-align: center; } .skills-grid { grid-template-columns: 1fr; } .page-title { font-size: 2rem; } }
+</style>

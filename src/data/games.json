@@ -6951,5 +6951,4998 @@
     "isNew": true,
     "original": false,
     "developer": "EduGameHQ"
+  },
+  {
+    "slug": "flexboxfroggy",
+    "title": "Flexbox Froggy",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/flexboxfroggy/",
+    "description": "Learn CSS Flexbox by helping Froggy and friends reach their lilypads! Write CSS code to guide frogs home.",
+    "gameGuide": {
+      "howToPlay": [
+        "Write CSS flexbox code",
+        "Guide frogs to lilypads",
+        "Complete 24 levels"
+      ],
+      "controls": {
+        "keyboard": "Type CSS code",
+        "mouse": "Click to interact"
+      },
+      "tips": [
+        "Start with justify-content",
+        "Learn align-items next"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/flexboxfroggy/images/screenshot.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "css",
+      "flexbox",
+      "educational",
+      "programming"
+    ],
+    "source": "GitHub",
+    "developer": "Thomas Park",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.8,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/thomaspark/flexboxfroggy",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": true,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "css-diner",
+    "title": "CSS Diner",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/css-diner/",
+    "description": "Master CSS selectors in this fun restaurant game! Select the correct items on the table using CSS.",
+    "gameGuide": {
+      "howToPlay": [
+        "Type CSS selectors",
+        "Select items on table",
+        "Complete 32 levels"
+      ],
+      "controls": {
+        "keyboard": "Type CSS selectors",
+        "mouse": "N/A"
+      },
+      "tips": [
+        "Learn element selectors first",
+        "Progress to complex selectors"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/css-diner/images/share.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "css",
+      "selectors",
+      "educational",
+      "programming"
+    ],
+    "source": "GitHub",
+    "developer": "Luke Pacholski",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.7,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/flukeout/css-diner",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "elevatorsaga",
+    "title": "Elevator Saga",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/elevatorsaga/",
+    "description": "Program elevators with JavaScript! Write code to transport people efficiently.",
+    "gameGuide": {
+      "howToPlay": [
+        "Write JavaScript code",
+        "Control elevator movement",
+        "Transport passengers efficiently"
+      ],
+      "controls": {
+        "keyboard": "Type JavaScript code",
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Optimize for wait time",
+        "Handle multiple elevators"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/elevatorsaga/images/screenshot.png",
+    "difficulty": "Hard",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "javascript",
+      "algorithms",
+      "educational",
+      "programming"
+    ],
+    "source": "GitHub",
+    "developer": "Magnus Wolffelt",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.6,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/magwo/elevatorsaga",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "jscheckersai",
+    "title": "Checkers AI",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/jsCheckersAI/",
+    "description": "Play checkers against an intelligent AI! Challenge yourself with this classic board game.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click piece to select",
+        "Click destination to move",
+        "Capture opponent pieces"
+      ],
+      "controls": {
+        "mouse": "Click to move pieces",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Control the center",
+        "Plan multiple jumps"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/jsCheckersAI/preview.svg",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "strategy",
+      "checkers",
+      "board-game",
+      "ai",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Bill Jeffries",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/billjeffries/jsCheckersAI",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "country-quiz",
+    "title": "Country Quiz",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/country-quiz/",
+    "description": "Test your knowledge of country flags, capitals, and populations! Choose difficulty levels and compete for high scores.",
+    "gameGuide": {
+      "howToPlay": [
+        "Select a region",
+        "Answer questions about flags and capitals",
+        "Track your score"
+      ],
+      "controls": {
+        "mouse": "Click to select answers",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Start with easier regions",
+        "Learn flag patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/country-quiz/assets/images/globe-blue.jpg",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "quiz",
+      "flags",
+      "capitals",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "CJ Connolly",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/cjcon90/country-quiz",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "flags-quiz",
+    "title": "Flags Quiz",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/flags-quiz/",
+    "description": "Learn world flags through an interactive quiz! Test your knowledge and improve your geography skills.",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at the flag",
+        "Select the correct country",
+        "Track your progress"
+      ],
+      "controls": {
+        "mouse": "Click to select",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Notice color patterns",
+        "Learn regional flags together"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/flags-quiz/assets/images/flags-background.webp",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "geography",
+      "flags",
+      "quiz",
+      "educational",
+      "world"
+    ],
+    "source": "GitHub",
+    "developer": "Natalitta",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Natalitta/flags-quiz",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "guess-capitals",
+    "title": "Guess The Capitals",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/guess-capitals/",
+    "description": "Match capital cities to their countries! Features 200 world capitals with easy, medium, and hard modes.",
+    "gameGuide": {
+      "howToPlay": [
+        "See the capital city",
+        "Select the correct country",
+        "Progress through levels"
+      ],
+      "controls": {
+        "mouse": "Click to select",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Start with easy mode",
+        "Learn by continent"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/guess-capitals/preview.svg",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "capitals",
+      "quiz",
+      "educational",
+      "world"
+    ],
+    "source": "GitHub",
+    "developer": "Dorj222",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/dorj222/GuessTheCapitals",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "othello",
+    "title": "Othello",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/othello/",
+    "description": "Classic Othello/Reversi board game with AI opponent. Flip your opponent's pieces to win!",
+    "gameGuide": {
+      "howToPlay": [
+        "Place pieces to flip opponent's",
+        "Capture the most pieces",
+        "Control the board"
+      ],
+      "controls": {
+        "mouse": "Click to place piece",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Control corners",
+        "Think ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/othello/assets/images/othello-preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "strategy",
+      "board-game",
+      "othello",
+      "reversi",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Fchavonet",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/fchavonet/full_stack-othello_game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "simon-game",
+    "title": "Simon Game",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/simon-game/",
+    "description": "Classic Simon memory game! Follow the pattern of lights and sounds, then repeat it back.",
+    "gameGuide": {
+      "howToPlay": [
+        "Watch the pattern",
+        "Repeat the sequence",
+        "Each round adds one more"
+      ],
+      "controls": {
+        "mouse": "Click colored buttons",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Focus on colors",
+        "Say colors aloud to remember"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/simon-game/img/simon.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "memory",
+      "pattern",
+      "simon",
+      "classic",
+      "brain-training"
+    ],
+    "source": "GitHub",
+    "developer": "Kumar Shobhit",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/kumarshobhit-1/Simon-Game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "simon-says",
+    "title": "Simon Says",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/simon-says/",
+    "description": "Test your memory with Simon Says! Remember and repeat increasingly complex patterns.",
+    "gameGuide": {
+      "howToPlay": [
+        "Watch the sequence",
+        "Click in same order",
+        "Beat your high score"
+      ],
+      "controls": {
+        "mouse": "Click buttons",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Start slow",
+        "Build muscle memory"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/simon-says/assets/images/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "memory",
+      "pattern",
+      "simon",
+      "brain-training"
+    ],
+    "source": "GitHub",
+    "developer": "Agusscript",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/agusscript/simon-says-game-js",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-match",
+    "title": "Memory Match",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-match/",
+    "description": "Classic card matching memory game for two players. Find matching pairs to win!",
+    "gameGuide": {
+      "howToPlay": [
+        "Flip two cards",
+        "Find matching pairs",
+        "Remember card positions"
+      ],
+      "controls": {
+        "mouse": "Click cards to flip",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Focus on positions",
+        "Use patterns to remember"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-match/preview.svg",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "memory",
+      "cards",
+      "matching",
+      "brain-training"
+    ],
+    "source": "GitHub",
+    "developer": "Zaihdo",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/zaihdo/Memory-Game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "hangman",
+    "title": "Hangman",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://games.edugamehq.com/games/hangman/",
+    "description": "Classic word guessing game! Guess letters to reveal the hidden word before time runs out.",
+    "gameGuide": {
+      "howToPlay": [
+        "Guess letters",
+        "Reveal the word",
+        "Avoid wrong guesses"
+      ],
+      "controls": {
+        "keyboard": "Type letters",
+        "mouse": "Click letters"
+      },
+      "tips": [
+        "Start with vowels",
+        "Look for common patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/hangman/images/hangman.png",
+    "difficulty": "Easy",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "words",
+      "vocabulary",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "Samruddhi Somani",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/samruddhisomani/js-hangman",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "wordle",
+    "title": "Wordle",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://games.edugamehq.com/games/wordle/",
+    "description": "Guess the word in 6 tries! Features 3, 4, or 5 letter modes with over 20,000 words.",
+    "gameGuide": {
+      "howToPlay": [
+        "Type a word",
+        "Green = correct position",
+        "Yellow = wrong position"
+      ],
+      "controls": {
+        "keyboard": "Type words",
+        "mouse": "Click keyboard"
+      },
+      "tips": [
+        "Start with common letters",
+        "Use process of elimination"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/wordle/assets/images/wordle.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "language",
+      "words",
+      "puzzle",
+      "vocabulary"
+    ],
+    "source": "GitHub",
+    "developer": "Milsaware",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.7,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/milsaware/wordled",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": true,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "paint-app",
+    "title": "Paint Studio",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/paint-app/",
+    "description": "Digital painting app with brushes, colors, and tools. Create and save your artwork!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select tools",
+        "Choose colors",
+        "Draw on canvas"
+      ],
+      "controls": {
+        "mouse": "Click and drag to draw",
+        "keyboard": "Shortcuts for tools"
+      },
+      "tips": [
+        "Try different brush sizes",
+        "Layer your colors"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/paint-app/images/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "creative",
+      "art",
+      "drawing",
+      "painting"
+    ],
+    "source": "GitHub",
+    "developer": "CodingBuddy",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/codingbuddy0415/Paint-App",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "maze-game",
+    "title": "The Maze Game",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/maze-game/",
+    "description": "Navigate through challenging mazes! Features multiple difficulty levels and responsive controls.",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys to move",
+        "Find the exit",
+        "Avoid dead ends"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys",
+        "mouse": "On-screen controls"
+      },
+      "tips": [
+        "Follow one wall",
+        "Remember your path"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/maze-game/img/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "adventure",
+      "maze",
+      "puzzle",
+      "navigation"
+    ],
+    "source": "GitHub",
+    "developer": "Hoang Son",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/hoangsonww/The-Maze-Game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "sliding-puzzle",
+    "title": "Sliding Puzzle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://games.edugamehq.com/games/sliding-puzzle/",
+    "description": "Classic 15-tile sliding puzzle! Arrange numbered tiles in order by sliding them.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click tiles to slide",
+        "Arrange in order",
+        "Complete the puzzle"
+      ],
+      "controls": {
+        "mouse": "Click tiles",
+        "keyboard": "Arrow keys"
+      },
+      "tips": [
+        "Work on corners first",
+        "Plan your moves"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/sliding-puzzle/assets/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "logic",
+      "sliding",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Xpaid",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Xpaid/Sliding-Puzzle",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "sudoku",
+    "title": "Sudoku",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://games.edugamehq.com/games/sudoku/",
+    "description": "Classic Sudoku puzzle with solver and generator. Fill the grid with numbers 1-9!",
+    "gameGuide": {
+      "howToPlay": [
+        "Fill empty cells",
+        "Each row/column/box needs 1-9",
+        "No repeats allowed"
+      ],
+      "controls": {
+        "mouse": "Click cells",
+        "keyboard": "Type numbers"
+      },
+      "tips": [
+        "Start with obvious cells",
+        "Use elimination"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/sudoku/demo/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "logic",
+      "puzzle",
+      "sudoku",
+      "numbers",
+      "brain-training"
+    ],
+    "source": "GitHub",
+    "developer": "Pocketjoso",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.6,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/pocketjoso/sudokuJS",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": true,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "typing-test",
+    "title": "Typing Speed Test",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/typing-test/",
+    "description": "Test and improve your typing speed! Track WPM, CPM, and accuracy.",
+    "gameGuide": {
+      "howToPlay": [
+        "Type the displayed text",
+        "Track your speed",
+        "Improve accuracy"
+      ],
+      "controls": {
+        "keyboard": "Type text",
+        "mouse": "N/A"
+      },
+      "tips": [
+        "Focus on accuracy first",
+        "Practice regularly"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/typing-test/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "typing",
+      "speed",
+      "skills"
+    ],
+    "source": "GitHub",
+    "developer": "Yaswanth Teja",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/yaswanthteja/Typing-speed-test",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "rgb-game",
+    "title": "RGB Color Game",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/rgb-game/",
+    "description": "Learn RGB colors! Match the displayed RGB values to the correct color square.",
+    "gameGuide": {
+      "howToPlay": [
+        "Read RGB values",
+        "Click matching color",
+        "Learn color codes"
+      ],
+      "controls": {
+        "mouse": "Click colors",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Learn primary colors first",
+        "Notice patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/rgb-game/assets/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "colors",
+      "rgb",
+      "learning"
+    ],
+    "source": "GitHub",
+    "developer": "Elena",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/elena-in-code/RGB-Game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "rock-paper-scissors",
+    "title": "Rock Paper Scissors",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/rock-paper-scissors/",
+    "description": "Classic Rock Paper Scissors game against AI! Best of 5 rounds.",
+    "gameGuide": {
+      "howToPlay": [
+        "Choose rock, paper, or scissors",
+        "Beat the computer",
+        "Win best of 5"
+      ],
+      "controls": {
+        "mouse": "Click your choice",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Watch for patterns",
+        "Mix up your choices"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/rock-paper-scissors/assets/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "strategy",
+      "classic",
+      "simple",
+      "fun"
+    ],
+    "source": "GitHub",
+    "developer": "TheKumaara",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/TheKumaara/RockPaperScissors",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "snake-classic",
+    "title": "Snake Classic",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/snake-classic/",
+    "description": "Modern Snake game with smooth animations and dynamic difficulty!",
+    "gameGuide": {
+      "howToPlay": [
+        "Control the snake",
+        "Eat food to grow",
+        "Don't hit walls or yourself"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys",
+        "mouse": "N/A"
+      },
+      "tips": [
+        "Plan your path",
+        "Stay near center"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/snake-classic/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "snake",
+      "classic",
+      "retro"
+    ],
+    "source": "GitHub",
+    "developer": "Ramazan Cetinkaya",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/ramazancetinkaya/snake-game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "regex-crossword",
+    "title": "Regex Crossword",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/regex-crossword/",
+    "description": "Learn regular expressions through crossword puzzles! Fill in characters to match regex patterns.",
+    "gameGuide": {
+      "howToPlay": [
+        "Read regex patterns",
+        "Fill in matching characters",
+        "Complete the grid"
+      ],
+      "controls": {
+        "keyboard": "Type characters",
+        "mouse": "Click cells"
+      },
+      "tips": [
+        "Learn basic regex first",
+        "Start with simple patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/regex-crossword/hex.png",
+    "difficulty": "Hard",
+    "ageRange": "14-18",
+    "minAge": 14,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "regex",
+      "puzzle",
+      "programming",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "Jimbly",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Jimbly/regex-crossword",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "sql-murder-mystery",
+    "title": "SQL Murder Mystery",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/sql-murder-mystery/",
+    "description": "Solve a murder mystery using SQL! Query the database to find clues and catch the killer.",
+    "gameGuide": {
+      "howToPlay": [
+        "Write SQL queries",
+        "Find clues in database",
+        "Solve the mystery"
+      ],
+      "controls": {
+        "keyboard": "Type SQL queries",
+        "mouse": "Click to interact"
+      },
+      "tips": [
+        "Start with SELECT statements",
+        "Use JOIN for related tables"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/sql-murder-mystery/174092-clue-illustration.png",
+    "difficulty": "Hard",
+    "ageRange": "14-18",
+    "minAge": 14,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "sql",
+      "database",
+      "mystery",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "Knight Lab",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.8,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/NUKnightLab/sql-mysteries",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": true,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "battleship",
+    "title": "Battleship",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/battleship/",
+    "description": "Classic Battleship game against AI! Place your ships and sink the enemy fleet.",
+    "gameGuide": {
+      "howToPlay": [
+        "Place your ships",
+        "Guess enemy positions",
+        "Sink all ships to win"
+      ],
+      "controls": {
+        "mouse": "Click to attack",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Spread your ships",
+        "Use patterns to search"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/battleship/snapshot.jpg",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "strategy",
+      "board-game",
+      "battleship",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Naktis",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/naktis/battleship",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "number-guess",
+    "title": "Number Guessing Game",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/number-guess/",
+    "description": "Guess the number between 1-100! Get hints if your guess is too high or low.",
+    "gameGuide": {
+      "howToPlay": [
+        "Enter a number",
+        "Get hints",
+        "Find the number"
+      ],
+      "controls": {
+        "keyboard": "Type numbers",
+        "mouse": "Click submit"
+      },
+      "tips": [
+        "Use binary search",
+        "Start in the middle"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/number-guess/guess%20no.%20game.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "educational",
+      "math",
+      "guessing",
+      "logic"
+    ],
+    "source": "GitHub",
+    "developer": "Sujit Mahapatra",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/sujitmahapatra/Guess-Number-Game-using-JS",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "world-map",
+    "title": "Interactive World Map",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/world-map/",
+    "description": "Explore an interactive SVG world map! Click on countries to learn about them.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click on countries",
+        "Learn country names",
+        "Explore the world"
+      ],
+      "controls": {
+        "mouse": "Click and hover",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Start with your continent",
+        "Learn neighboring countries"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/world-map/serach4code.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "geography",
+      "map",
+      "world",
+      "countries",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "Naveen Kumawat",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/naveen-kumawat/svg-world-map",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "connect-four-new",
+    "title": "Connect Four",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/connect-four-new/",
+    "description": "Classic Connect Four game! Drop discs to connect four in a row.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click column to drop disc",
+        "Connect 4 in a row",
+        "Block opponent"
+      ],
+      "controls": {
+        "mouse": "Click columns",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Control the center",
+        "Plan ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four-new/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "strategy",
+      "board-game",
+      "connect-four",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Ania Kubow",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/kubowania/connect-four",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "math-kids",
+    "title": "Math for Kids",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/math-kids/",
+    "description": "Practice math with fun! Addition, subtraction, multiplication and division.",
+    "gameGuide": {
+      "howToPlay": [
+        "Choose operation",
+        "Solve problems",
+        "Get instant feedback"
+      ],
+      "controls": {
+        "keyboard": "Type answers",
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Start with addition",
+        "Practice daily"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/math-kids/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
+    "tags": [
+      "educational",
+      "math",
+      "kids",
+      "arithmetic"
+    ],
+    "source": "GitHub",
+    "developer": "Miguel Nunez",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/miguelznunez/Math4Kids",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-card-game",
+    "title": "Memory Card Game",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-card-game/",
+    "description": "Match pairs of cards in this fun memory game with timer and score tracking!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click cards to flip",
+        "Find matching pairs",
+        "Complete before time runs out"
+      ],
+      "controls": {
+        "mouse": "Click cards",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Remember card positions",
+        "Start from corners"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-card-game/img/001-watering-can.svg",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "memory",
+      "cards",
+      "matching",
+      "brain-training"
+    ],
+    "source": "GitHub",
+    "developer": "Saelsa",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/saelsa/memory-card-game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-kubowania",
+    "title": "Food Memory Game",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-kubowania/",
+    "description": "Match delicious food items in this colorful memory game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to reveal food",
+        "Match identical items",
+        "Clear all pairs to win"
+      ],
+      "controls": {
+        "mouse": "Click cards",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Focus on one area",
+        "Use visual patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-kubowania/images/pizza.png",
+    "difficulty": "Easy",
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
+    "tags": [
+      "memory",
+      "food",
+      "matching",
+      "kids"
+    ],
+    "source": "GitHub",
+    "developer": "Ania Kubow",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/kubowania/memory-game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-taniarascia",
+    "title": "Mario Memory Game",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-taniarascia/",
+    "description": "Match Mario characters in this fun Super Mario themed memory game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click cards to flip",
+        "Match Mario characters",
+        "Clear all pairs"
+      ],
+      "controls": {
+        "mouse": "Click cards",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Remember character positions",
+        "Work systematically"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-taniarascia/img/mario.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "memory",
+      "mario",
+      "matching",
+      "nintendo"
+    ],
+    "source": "GitHub",
+    "developer": "Tania Rascia",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.6,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/taniarascia/memory",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-pb",
+    "title": "JS Framework Memory",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-pb/",
+    "description": "Match JavaScript framework logos in this developer-themed memory game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to reveal logos",
+        "Match framework pairs",
+        "Learn JS frameworks"
+      ],
+      "controls": {
+        "mouse": "Click cards",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Learn the logos",
+        "Focus on colors"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-pb/Images/react.svg",
+    "difficulty": "Easy",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "memory",
+      "coding",
+      "javascript",
+      "frameworks"
+    ],
+    "source": "GitHub",
+    "developer": "PB2204",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/PB2204/Memory-Game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "typing-speed",
+    "title": "Typing Speed Game",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/typing-speed/",
+    "description": "Test and improve your typing speed with falling words!",
+    "gameGuide": {
+      "howToPlay": [
+        "Type the falling words",
+        "Score points for accuracy",
+        "Beat your high score"
+      ],
+      "controls": {
+        "keyboard": "Type words",
+        "mouse": "N/A"
+      },
+      "tips": [
+        "Focus on accuracy first",
+        "Practice daily"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/typing-speed/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "typing",
+      "speed",
+      "keyboard"
+    ],
+    "source": "GitHub",
+    "developer": "Dejwid",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/dejwid/js-typing-game",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "paint-canvas",
+    "title": "Canvas Paint App",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/paint-canvas/",
+    "description": "Draw and create art with shapes, colors and brushes!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select tools",
+        "Choose colors",
+        "Draw on canvas"
+      ],
+      "controls": {
+        "mouse": "Click and drag",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Try different brushes",
+        "Save your artwork"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/paint-canvas/media/pensula.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "creative",
+      "art",
+      "drawing",
+      "paint"
+    ],
+    "source": "GitHub",
+    "developer": "Antonia Nicoara",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/AntoniaNicoara/HTML5-Canvas-Paint-Application",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "drawing-simple",
+    "title": "Simple Drawing App",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/drawing-simple/",
+    "description": "A fun crayon-style drawing app for kids!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select crayon color",
+        "Draw on canvas",
+        "Create artwork"
+      ],
+      "controls": {
+        "mouse": "Click and drag",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Try different colors",
+        "Use eraser to fix mistakes"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/drawing-simple/images/crayon-background.png",
+    "difficulty": "Easy",
+    "ageRange": "4-12",
+    "minAge": 4,
+    "maxAge": 12,
+    "tags": [
+      "creative",
+      "drawing",
+      "kids",
+      "crayon"
+    ],
+    "source": "GitHub",
+    "developer": "William Malone",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/williammalone/Simple-HTML5-Drawing-App",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "tetris-jake",
+    "title": "Classic Tetris",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/tetris-jake/",
+    "description": "The classic Tetris game - stack blocks and clear lines!",
+    "gameGuide": {
+      "howToPlay": [
+        "Rotate falling blocks",
+        "Complete horizontal lines",
+        "Don't let blocks reach top"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Up to rotate"
+      },
+      "tips": [
+        "Plan ahead",
+        "Keep the stack low"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tetris-jake/texture.jpg",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "arcade",
+      "tetris",
+      "classic",
+      "puzzle"
+    ],
+    "source": "GitHub",
+    "developer": "Jake Gordon",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.6,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/jakesgordon/javascript-tetris",
+    "lastUpdated": "2026-01-25",
+    "lastChecked": "2026-01-25",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "guess-flag",
+    "title": "Guess The Flag",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/guess-flag/",
+    "description": "Test your knowledge of world flags in this fun quiz game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at the flag",
+        "Choose the correct country",
+        "Score points"
+      ],
+      "controls": {
+        "mouse": "Click answers",
+        "keyboard": "N/A"
+      },
+      "tips": [
+        "Learn flag colors",
+        "Study continents"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/guess-flag/bandiere.jpeg",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "geography",
+      "flags",
+      "quiz",
+      "countries"
+    ],
+    "source": "GitHub",
+    "developer": "Bocaletto Luca",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/bocaletto-luca/Guess-The-Flag",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "labyrinth",
+    "title": "Labyrinth Game",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/labyrinth/",
+    "description": "Navigate through the maze and find your way out!",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys",
+        "Find the exit",
+        "Avoid dead ends"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move"
+      },
+      "tips": [
+        "Follow one wall",
+        "Remember your path"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/labyrinth/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "adventure",
+      "maze",
+      "puzzle",
+      "navigation"
+    ],
+    "source": "GitHub",
+    "developer": "Bocaletto Luca",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/bocaletto-luca/Labyrinth",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "maze-hoang",
+    "title": "The Maze Game",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/maze-hoang/",
+    "description": "Navigate through procedurally generated mazes!",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys",
+        "Find the exit",
+        "Beat your time"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys"
+      },
+      "tips": [
+        "Plan your route",
+        "Use wall following"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/maze-hoang/utils/MazeUI.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "adventure",
+      "maze",
+      "puzzle"
+    ],
+    "source": "GitHub",
+    "developer": "Hoang Son",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/hoangsonww/The-Maze-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "pixellate",
+    "title": "Pixellate Editor",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/pixellate/",
+    "description": "Create pixel art with this powerful editor!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select colors",
+        "Draw pixels",
+        "Export your art"
+      ],
+      "controls": {
+        "mouse": "Click to draw"
+      },
+      "tips": [
+        "Start simple",
+        "Use grid"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pixellate/icons/logo.png",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "creative",
+      "pixel-art",
+      "drawing",
+      "editor"
+    ],
+    "source": "GitHub",
+    "developer": "RainboeStrykr",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/RainboeStrykr/Pixellate",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "pixelart-ayan",
+    "title": "Pixel Art Maker",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/pixelart-ayan/",
+    "description": "Create and share pixel art masterpieces!",
+    "gameGuide": {
+      "howToPlay": [
+        "Pick colors",
+        "Click to paint",
+        "Save your work"
+      ],
+      "controls": {
+        "mouse": "Click pixels"
+      },
+      "tips": [
+        "Use gallery for ideas",
+        "Start with outlines"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pixelart-ayan/screenshots/1.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "creative",
+      "pixel-art",
+      "drawing"
+    ],
+    "source": "GitHub",
+    "developer": "Captain Ayan",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/captainAyan/pixelart",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "minesweeper-nick",
+    "title": "Classic Minesweeper",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://games.edugamehq.com/games/minesweeper-nick/",
+    "description": "The classic Windows Minesweeper game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to reveal",
+        "Right-click to flag",
+        "Clear all safe cells"
+      ],
+      "controls": {
+        "mouse": "Left/right click"
+      },
+      "tips": [
+        "Start from corners",
+        "Count neighbors"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/minesweeper-nick/images/smiley-face.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "logic",
+      "puzzle",
+      "classic",
+      "minesweeper"
+    ],
+    "source": "GitHub",
+    "developer": "Nick Arocho",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/nickarocho/minesweeper",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "space-invaders-luca",
+    "title": "Space Invaders",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/space-invaders-luca/",
+    "description": "Classic Space Invaders arcade game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move left/right",
+        "Shoot aliens",
+        "Survive waves"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys + Space"
+      },
+      "tips": [
+        "Stay mobile",
+        "Prioritize threats"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders-luca/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "arcade",
+      "shooter",
+      "classic",
+      "retro"
+    ],
+    "source": "GitHub",
+    "developer": "Bocaletto Luca",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/bocaletto-luca/Space-Invaders",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "checkers-devon",
+    "title": "Checkers Game",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/checkers-devon/",
+    "description": "Classic checkers board game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click piece to select",
+        "Click to move",
+        "Capture opponents"
+      ],
+      "controls": {
+        "mouse": "Click to play"
+      },
+      "tips": [
+        "Control center",
+        "King your pieces"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/checkers-devon/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "strategy",
+      "board-game",
+      "checkers",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Devon McGrath",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/DevonMcGrath/Checkers",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "drum-kit",
+    "title": "Drum Kit",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/drum-kit/",
+    "description": "Play drums with your keyboard!",
+    "gameGuide": {
+      "howToPlay": [
+        "Press keys to play",
+        "Create beats",
+        "Have fun!"
+      ],
+      "controls": {
+        "keyboard": "A-L keys for drums"
+      },
+      "tips": [
+        "Try different rhythms",
+        "Practice timing"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/drum-kit/images/drum.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "creative",
+      "music",
+      "drums",
+      "instrument"
+    ],
+    "source": "GitHub",
+    "developer": "Ozngrsc",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/ozngrsc/Drum-Kit",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "piano-game",
+    "title": "Piano Keyboard",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/piano-game/",
+    "description": "Play piano with your keyboard!",
+    "gameGuide": {
+      "howToPlay": [
+        "Press keys to play notes",
+        "Create melodies",
+        "Learn piano"
+      ],
+      "controls": {
+        "keyboard": "A-L keys for notes"
+      },
+      "tips": [
+        "Start with simple songs",
+        "Practice scales"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/piano-game/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "creative",
+      "music",
+      "piano",
+      "instrument"
+    ],
+    "source": "GitHub",
+    "developer": "CodingWithEnjoy",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/CodingWithEnjoy/Piano-HTML-CSS-JS",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "tictactoe-gabriel",
+    "title": "Tic Tac Toe",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/tictactoe-gabriel/",
+    "description": "Classic Tic Tac Toe game for two players!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to place X or O",
+        "Get 3 in a row",
+        "Block opponent"
+      ],
+      "controls": {
+        "mouse": "Click cells"
+      },
+      "tips": [
+        "Control center",
+        "Watch corners"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tictactoe-gabriel/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "strategy",
+      "classic",
+      "two-player"
+    ],
+    "source": "GitHub",
+    "developer": "Gabriel Dim",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/gabrieldim/TicTacToe",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "calculator-zx",
+    "title": "Calculator",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/calculator-zx/",
+    "description": "Beautiful calculator with dark/light mode!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click numbers",
+        "Choose operations",
+        "Get results"
+      ],
+      "controls": {
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Use keyboard too",
+        "Try dark mode"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/calculator-zx/preview.svg",
+    "difficulty": "Easy",
+    "ageRange": "6-18",
+    "minAge": 6,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "math",
+      "calculator",
+      "tool"
+    ],
+    "source": "GitHub",
+    "developer": "ZXCodes",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/zxcodes/Calculator",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "whack-mole",
+    "title": "Whack A Mole",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/whack-mole/",
+    "description": "Classic whack-a-mole arcade game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click moles when they appear",
+        "Score points",
+        "Beat the timer"
+      ],
+      "controls": {
+        "mouse": "Click moles"
+      },
+      "tips": [
+        "Stay focused",
+        "Be quick"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/whack-mole/f65b5de9b4760bb3ee9b63e23c319e0b.jpg",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "arcade",
+      "reflex",
+      "fun"
+    ],
+    "source": "GitHub",
+    "developer": "Shivangi Sharma",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Shivangisharma4/Whack-A-Mole",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "reaction-timer",
+    "title": "Reaction Timer",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/reaction-timer/",
+    "description": "Test your reaction speed!",
+    "gameGuide": {
+      "howToPlay": [
+        "Wait for signal",
+        "Click as fast as you can",
+        "See your time"
+      ],
+      "controls": {
+        "mouse": "Click to react"
+      },
+      "tips": [
+        "Stay focused",
+        "Practice regularly"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/reaction-timer/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "reflex",
+      "speed"
+    ],
+    "source": "GitHub",
+    "developer": "Vidit Varshney",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.1,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/viditvarshney/Reaction-Timer.github.io",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "clock-ui",
+    "title": "Responsive Clock",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/clock-ui/",
+    "description": "Beautiful analog and digital clock!",
+    "gameGuide": {
+      "howToPlay": [
+        "Watch the time",
+        "Learn to read clocks",
+        "Toggle modes"
+      ],
+      "controls": {
+        "mouse": "Click to interact"
+      },
+      "tips": [
+        "Learn analog time",
+        "Compare with digital"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/clock-ui/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
+    "tags": [
+      "educational",
+      "clock",
+      "time"
+    ],
+    "source": "GitHub",
+    "developer": "Bedimcode",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/bedimcode/responsive-clock-ui",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "digital-clock",
+    "title": "Digital Clock",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/digital-clock/",
+    "description": "Simple digital clock display!",
+    "gameGuide": {
+      "howToPlay": [
+        "View current time",
+        "Learn digital format"
+      ],
+      "controls": {
+        "mouse": "N/A"
+      },
+      "tips": [
+        "Watch seconds tick",
+        "Learn 24h format"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/digital-clock/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-12",
+    "minAge": 6,
+    "maxAge": 12,
+    "tags": [
+      "educational",
+      "clock",
+      "time",
+      "digital"
+    ],
+    "source": "GitHub",
+    "developer": "Aaqib Khan",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/AaqibhafeezKhan/Digital-Clock",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "dice-game",
+    "title": "Dice Game",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/dice-game/",
+    "description": "Roll the dice and see who wins!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to roll",
+        "Higher number wins",
+        "Play again"
+      ],
+      "controls": {
+        "mouse": "Click to roll"
+      },
+      "tips": [
+        "It's all luck!",
+        "Have fun"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/dice-game/images/dicee.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "strategy",
+      "dice",
+      "luck",
+      "two-player"
+    ],
+    "source": "GitHub",
+    "developer": "Ozngrsc",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/ozngrsc/Dicee-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "blackjack",
+    "title": "Blackjack",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/blackjack/",
+    "description": "Classic Blackjack card game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Get cards close to 21",
+        "Don't go over",
+        "Beat the dealer"
+      ],
+      "controls": {
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Stand on 17+",
+        "Watch dealer's card"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/blackjack/jack.jpg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "strategy",
+      "cards",
+      "blackjack",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Harshuv10",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/harshuv10/BlackJack-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "pig-game",
+    "title": "Pig Dice Game",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/pig-game/",
+    "description": "Roll dice and reach 100 points first!",
+    "gameGuide": {
+      "howToPlay": [
+        "Roll dice to score",
+        "Hold to save points",
+        "First to 100 wins"
+      ],
+      "controls": {
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Don't be greedy",
+        "Hold at 20+"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pig-game/Output.png",
+    "difficulty": "Easy",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "strategy",
+      "dice",
+      "two-player"
+    ],
+    "source": "GitHub",
+    "developer": "Gouri Panda",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/gouri-panda/Pig-game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "platformer",
+    "title": "Platformer Adventure",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/platformer/",
+    "description": "Classic platformer game with beautiful parallax backgrounds!",
+    "gameGuide": {
+      "howToPlay": [
+        "Use arrow keys to move",
+        "Jump on platforms",
+        "Reach the end"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys + Space"
+      },
+      "tips": [
+        "Time your jumps",
+        "Watch for enemies"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/platformer/assets/background.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "adventure",
+      "platformer",
+      "action"
+    ],
+    "source": "GitHub",
+    "developer": "ZeroDayArcade",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/ZeroDayArcade/HTML5_Platformer",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "endless-runner",
+    "title": "Endless Runner",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/endless-runner/",
+    "description": "Run endlessly and avoid obstacles!",
+    "gameGuide": {
+      "howToPlay": [
+        "Jump to avoid obstacles",
+        "Collect points",
+        "Beat high score"
+      ],
+      "controls": {
+        "keyboard": "Space to jump"
+      },
+      "tips": [
+        "Time your jumps",
+        "Stay focused"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/endless-runner/EndlessRunner.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "runner",
+      "endless"
+    ],
+    "source": "GitHub",
+    "developer": "LRusso",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/lrusso/EndlessRunner",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "quizzify",
+    "title": "Quizzify Trivia",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/quizzify/",
+    "description": "Test your knowledge with trivia questions!",
+    "gameGuide": {
+      "howToPlay": [
+        "Answer questions",
+        "Score points",
+        "Beat high scores"
+      ],
+      "controls": {
+        "mouse": "Click answers"
+      },
+      "tips": [
+        "Read carefully",
+        "Think before answering"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/quizzify/assets/logo.jpg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "trivia",
+      "quiz"
+    ],
+    "source": "GitHub",
+    "developer": "Alok-2002",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Alok-2002/Quizzify",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "color-picker",
+    "title": "Color Picker",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/color-picker/",
+    "description": "Pick and explore colors!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select colors",
+        "Copy hex codes",
+        "Create palettes"
+      ],
+      "controls": {
+        "mouse": "Click to pick"
+      },
+      "tips": [
+        "Try different shades",
+        "Save your favorites"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/color-picker/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "creative",
+      "color",
+      "design",
+      "tool"
+    ],
+    "source": "GitHub",
+    "developer": "Shanisoni",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.1,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Shanisoni/Colour-Picker",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "flappy-bird",
+    "title": "Flappy Bird",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/flappy-bird/",
+    "description": "Classic Flappy Bird game - tap to fly!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to flap",
+        "Avoid pipes",
+        "Score points"
+      ],
+      "controls": {
+        "mouse": "Click to flap",
+        "keyboard": "Space to flap"
+      },
+      "tips": [
+        "Stay calm",
+        "Time your taps"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/flappy-bird/flappy-bird.png",
+    "difficulty": "Hard",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "arcade",
+      "flappy",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Ania Kubow",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/kubowania/flappy-bird",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "dino-game",
+    "title": "Chrome Dino Game",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/dino-game/",
+    "description": "The famous Chrome dinosaur game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Press space to jump",
+        "Avoid obstacles",
+        "Score points"
+      ],
+      "controls": {
+        "keyboard": "Space to jump"
+      },
+      "tips": [
+        "Time your jumps",
+        "Watch for birds"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/dino-game/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "dino",
+      "chrome",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Abhijeet PS",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/abhijeetps/Chrome-Dino-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "pong-html5",
+    "title": "Pong Game",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/pong-html5/",
+    "description": "Classic Pong game - the original arcade game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle up/down",
+        "Hit the ball",
+        "Score points"
+      ],
+      "controls": {
+        "keyboard": "W/S or Arrow keys"
+      },
+      "tips": [
+        "Anticipate ball",
+        "Control angles"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pong-html5/preview.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "pong",
+      "classic",
+      "retro"
+    ],
+    "source": "GitHub",
+    "developer": "SMenigat",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/SMenigat/html5-pong",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "brick-breaker",
+    "title": "Brick Breaker",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/brick-breaker/",
+    "description": "Break all the bricks with your ball!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle",
+        "Bounce ball",
+        "Break all bricks"
+      ],
+      "controls": {
+        "mouse": "Move paddle",
+        "keyboard": "Arrow keys"
+      },
+      "tips": [
+        "Aim for corners",
+        "Get power-ups"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/brick-breaker/assets/Bricks-Breaker.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "breakout",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Untitled Team 101",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/untitled-team-101/Bricks-Breaker",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "match3",
+    "title": "Match 3 Puzzle",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://games.edugamehq.com/games/match3/",
+    "description": "Match 3 or more gems to score!",
+    "gameGuide": {
+      "howToPlay": [
+        "Swap adjacent gems",
+        "Match 3 or more",
+        "Clear the board"
+      ],
+      "controls": {
+        "mouse": "Click and drag"
+      },
+      "tips": [
+        "Look for combos",
+        "Plan ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/match3/screenshot.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "match3",
+      "gems"
+    ],
+    "source": "GitHub",
+    "developer": "Rembound",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/rembound/Match-3-Game-HTML5",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "html5-games",
+    "title": "Breakout Classic",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/html5-games/",
+    "description": "Classic Breakout arcade game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle",
+        "Bounce ball",
+        "Break bricks"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys"
+      },
+      "tips": [
+        "Aim for corners",
+        "Keep ball in play"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/html5-games/demo.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "breakout",
+      "classic"
+    ],
+    "source": "GitHub",
+    "developer": "Kidel",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Kidel/HTML5-JS-Games",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "catch-game",
+    "title": "Catch the Angel",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/catch-game/",
+    "description": "Catch falling angels in this fun game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move to catch",
+        "Score points",
+        "Don't miss"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys"
+      },
+      "tips": [
+        "Stay centered",
+        "Anticipate falls"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/catch-game/angel.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "arcade",
+      "catch",
+      "simple"
+    ],
+    "source": "GitHub",
+    "developer": "Michalbe",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/michalbe/Simple-game-with-HTML5-Canvas",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "pokemon-quiz",
+    "title": "Who's That Pokemon",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/pokemon-quiz/",
+    "description": "Guess the Pokemon from its silhouette!",
+    "gameGuide": {
+      "howToPlay": [
+        "Look at silhouette",
+        "Guess the Pokemon",
+        "Score points"
+      ],
+      "controls": {
+        "mouse": "Click answer"
+      },
+      "tips": [
+        "Learn Pokemon shapes",
+        "Watch the anime"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pokemon-quiz/background.jpg",
+    "difficulty": "Medium",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "educational",
+      "pokemon",
+      "quiz",
+      "trivia"
+    ],
+    "source": "GitHub",
+    "developer": "Marinsborg",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/marinsborg/who-is-that-pokemon",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "guess-word",
+    "title": "Guess The Word",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://games.edugamehq.com/games/guess-word/",
+    "description": "Unscramble letters to guess the word!",
+    "gameGuide": {
+      "howToPlay": [
+        "See scrambled letters",
+        "Guess the word",
+        "Use hints if needed"
+      ],
+      "controls": {
+        "keyboard": "Type letters",
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Look for patterns",
+        "Use hints wisely"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/guess-word/thumbnail.jpg",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "word",
+      "scramble",
+      "vocabulary"
+    ],
+    "source": "GitHub",
+    "developer": "Ayokanmi Adejola",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Ayokanmi-Adejola/Guess-The-Word",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "code-editor",
+    "title": "Live Code Editor",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/code-editor/",
+    "description": "Write and preview HTML/CSS/JS code live!",
+    "gameGuide": {
+      "howToPlay": [
+        "Write code",
+        "See live preview",
+        "Learn web development"
+      ],
+      "controls": {
+        "keyboard": "Type code"
+      },
+      "tips": [
+        "Try HTML first",
+        "Add CSS for styling"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/code-editor/livecodeeditor.PNG",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "html",
+      "css",
+      "javascript",
+      "editor"
+    ],
+    "source": "GitHub",
+    "developer": "Shubham Sarda",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/piyushsachdeva/live-code-editor",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "sudoku-game",
+    "title": "Sudoku Puzzle",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://games.edugamehq.com/games/sudoku-game/",
+    "description": "Classic Sudoku number puzzle!",
+    "gameGuide": {
+      "howToPlay": [
+        "Fill grid with 1-9",
+        "No repeats in row/column/box",
+        "Complete the puzzle"
+      ],
+      "controls": {
+        "mouse": "Click cells",
+        "keyboard": "Type numbers"
+      },
+      "tips": [
+        "Start with easy cells",
+        "Use elimination"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/sudoku-game/Sample Puzzle.png",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "logic",
+      "sudoku",
+      "puzzle",
+      "numbers"
+    ],
+    "source": "GitHub",
+    "developer": "Nidhi Upman",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/nidhiupman568/SUDOKU-GAME",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-matching-game",
+    "title": "Memory Match Cards",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-matching-game/",
+    "description": "Match pairs of cards to test your memory!",
+    "gameGuide": {
+      "howToPlay": [
+        "Flip cards",
+        "Find matching pairs",
+        "Clear the board"
+      ],
+      "controls": {
+        "mouse": "Click cards"
+      },
+      "tips": [
+        "Remember positions",
+        "Start from corners"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-matching-game/Images/snapshot1.PNG",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "memory",
+      "cards",
+      "matching"
+    ],
+    "source": "GitHub",
+    "developer": "Shubham",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/example/memory-matching-game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "pong-jake",
+    "title": "Pong Classic",
+    "category": "arcade",
+    "categoryName": "Arcade",
+    "iframeUrl": "https://games.edugamehq.com/games/pong-jake/",
+    "description": "Classic Pong arcade game with sounds!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move paddle",
+        "Hit the ball",
+        "Score points"
+      ],
+      "controls": {
+        "keyboard": "W/S or Arrow keys"
+      },
+      "tips": [
+        "Anticipate ball",
+        "Control angles"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/pong-jake/images/press1.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": [
+      "arcade",
+      "pong",
+      "classic",
+      "retro"
+    ],
+    "source": "GitHub",
+    "developer": "Jake Gordon",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/jakesgordon/javascript-pong",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "racer-jake",
+    "title": "Retro Racer",
+    "category": "sports",
+    "categoryName": "Sports",
+    "iframeUrl": "https://games.edugamehq.com/games/racer-jake/",
+    "description": "Classic retro racing game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Steer car",
+        "Avoid obstacles",
+        "Race to finish"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys"
+      },
+      "tips": [
+        "Stay on road",
+        "Watch for curves"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/racer-jake/images/background.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "sports",
+      "racing",
+      "retro",
+      "arcade"
+    ],
+    "source": "GitHub",
+    "developer": "Jake Gordon",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/jakesgordon/javascript-racer",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "othello-simple",
+    "title": "Othello Reversi",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/othello-simple/",
+    "description": "Classic Othello/Reversi board game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Place discs",
+        "Flip opponent pieces",
+        "Control the board"
+      ],
+      "controls": {
+        "mouse": "Click to place"
+      },
+      "tips": [
+        "Control corners",
+        "Think ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/othello-simple/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "strategy",
+      "othello",
+      "reversi",
+      "board"
+    ],
+    "source": "GitHub",
+    "developer": "Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/example/othello",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "jsCheckersAI",
+    "title": "Checkers AI",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://games.edugamehq.com/games/jsCheckersAI/",
+    "description": "Play checkers against AI!",
+    "gameGuide": {
+      "howToPlay": [
+        "Move diagonally",
+        "Jump to capture",
+        "King your pieces"
+      ],
+      "controls": {
+        "mouse": "Click to move"
+      },
+      "tips": [
+        "Control center",
+        "Get kings early"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/jsCheckersAI/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "strategy",
+      "checkers",
+      "ai",
+      "board"
+    ],
+    "source": "GitHub",
+    "developer": "Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/nicholasguan/jsCheckersAI",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "tetris-js",
+    "title": "Tetris Classic",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://games.edugamehq.com/games/tetris-js/",
+    "description": "Classic Tetris block puzzle!",
+    "gameGuide": {
+      "howToPlay": [
+        "Rotate blocks",
+        "Fill rows",
+        "Don't stack too high"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys to move, Up to rotate"
+      },
+      "tips": [
+        "Keep it flat",
+        "Plan ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tetris-js/images/preview.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "puzzle",
+      "tetris",
+      "classic",
+      "blocks"
+    ],
+    "source": "GitHub",
+    "developer": "Open Source",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/dionyziz/canvas-tetris",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "map-quiz",
+    "title": "World Map Quiz",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/map-quiz/",
+    "description": "Test your geography knowledge with interactive map quiz!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click on countries",
+        "Answer questions",
+        "Learn geography"
+      ],
+      "controls": {
+        "mouse": "Click on map"
+      },
+      "tips": [
+        "Learn continents first",
+        "Study flags"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/map-quiz/res/demo.gif",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "map",
+      "quiz",
+      "countries"
+    ],
+    "source": "GitHub",
+    "developer": "OwenK2",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/OwenK2/Interactive-Map-Quiz",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "text-adventure",
+    "title": "Text Adventure",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/text-adventure/",
+    "description": "Interactive text-based adventure game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Read story",
+        "Make choices",
+        "Explore paths"
+      ],
+      "controls": {
+        "mouse": "Click choices"
+      },
+      "tips": [
+        "Try different paths",
+        "Read carefully"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/text-adventure/preview.svg",
+    "difficulty": "Easy",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "adventure",
+      "text",
+      "story",
+      "interactive"
+    ],
+    "source": "GitHub",
+    "developer": "Dimterion",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Dimterion/Interactive-text-adventure-game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "mindplay",
+    "title": "MindPlay Memory",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/mindplay/",
+    "description": "Test your memory with this fun card matching game!",
+    "gameGuide": {
+      "howToPlay": [
+        "Flip cards",
+        "Find matching pairs",
+        "Clear the board"
+      ],
+      "controls": {
+        "mouse": "Click cards"
+      },
+      "tips": [
+        "Remember positions",
+        "Focus on patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/mindplay/preview.svg",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "memory",
+      "cards",
+      "matching",
+      "brain"
+    ],
+    "source": "GitHub",
+    "developer": "od-c0d3r",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/od-c0d3r/MindPlay-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "hangman-abdou",
+    "title": "Hangman Deluxe",
+    "category": "language",
+    "categoryName": "Language",
+    "iframeUrl": "https://games.edugamehq.com/games/hangman-abdou/",
+    "description": "Classic hangman word guessing game with great graphics!",
+    "gameGuide": {
+      "howToPlay": [
+        "Guess letters",
+        "Reveal the word",
+        "Don't get hanged"
+      ],
+      "controls": {
+        "keyboard": "Type letters",
+        "mouse": "Click letters"
+      },
+      "tips": [
+        "Start with vowels",
+        "Common letters first"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/hangman-abdou/images/gallows.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "language",
+      "hangman",
+      "word",
+      "vocabulary"
+    ],
+    "source": "GitHub",
+    "developer": "abdoutech19",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/abdoutech19/hangman-game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "lights-out",
+    "title": "Lights Out Puzzle",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://games.edugamehq.com/games/lights-out/",
+    "description": "Turn off all the lights in this classic puzzle!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click lights to toggle",
+        "Turn off all lights",
+        "Solve the puzzle"
+      ],
+      "controls": {
+        "mouse": "Click lights"
+      },
+      "tips": [
+        "Think ahead",
+        "Pattern recognition helps"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/lights-out/common/bg.jpg",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "logic",
+      "puzzle",
+      "lights",
+      "brain"
+    ],
+    "source": "GitHub",
+    "developer": "misohena",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/misohena/js_lightsout",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "beat-maker",
+    "title": "Beat Maker",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/beat-maker/",
+    "description": "Create your own beats and music!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select sounds",
+        "Create patterns",
+        "Play your beat"
+      ],
+      "controls": {
+        "mouse": "Click pads"
+      },
+      "tips": [
+        "Start simple",
+        "Layer sounds"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/beat-maker/preview.svg",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "creative",
+      "music",
+      "beats",
+      "audio"
+    ],
+    "source": "GitHub",
+    "developer": "DevPadd",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/DevPadd/BeatMaker-App",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "dungeon-crawler",
+    "title": "Dungeon Crawler",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/dungeon-crawler/",
+    "description": "Explore dungeons and fight monsters!",
+    "gameGuide": {
+      "howToPlay": [
+        "Navigate dungeon",
+        "Fight enemies",
+        "Find treasure"
+      ],
+      "controls": {
+        "keyboard": "Arrow keys",
+        "mouse": "Click actions"
+      },
+      "tips": [
+        "Watch your health",
+        "Explore carefully"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/dungeon-crawler/images/dungeon-corridor.jpg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "adventure",
+      "dungeon",
+      "rpg",
+      "exploration"
+    ],
+    "source": "GitHub",
+    "developer": "RobF1011",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/RobF1011/dungeon-crawler",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "puzzle-numbers",
+    "title": "Number Puzzle",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://games.edugamehq.com/games/puzzle-numbers/",
+    "description": "Slide tiles to arrange numbers in order!",
+    "gameGuide": {
+      "howToPlay": [
+        "Slide tiles",
+        "Arrange in order",
+        "Solve the puzzle"
+      ],
+      "controls": {
+        "mouse": "Click tiles to slide"
+      },
+      "tips": [
+        "Work from corners",
+        "Plan moves ahead"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/puzzle-numbers/preview.svg",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "logic",
+      "puzzle",
+      "numbers",
+      "sliding"
+    ],
+    "source": "GitHub",
+    "developer": "Luca Bocaletto",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/bocaletto-luca/Puzzle-Numbers",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "live-editor",
+    "title": "Seven Code Editor",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/live-editor/",
+    "description": "Write HTML, CSS, JS with live preview!",
+    "gameGuide": {
+      "howToPlay": [
+        "Write code",
+        "See live preview",
+        "Learn web development"
+      ],
+      "controls": {
+        "keyboard": "Type code"
+      },
+      "tips": [
+        "Start with HTML",
+        "Add CSS styling"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/live-editor/img/Demo.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "html",
+      "css",
+      "javascript",
+      "editor"
+    ],
+    "source": "GitHub",
+    "developer": "thalhatou",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/thalhatou/Seven-Live-Code-Editor",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "capital-quiz",
+    "title": "Capital City Quiz",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/capital-quiz/",
+    "description": "Test your knowledge of world capitals!",
+    "gameGuide": {
+      "howToPlay": [
+        "Answer capital questions",
+        "Score points",
+        "Learn geography"
+      ],
+      "controls": {
+        "mouse": "Click answers"
+      },
+      "tips": [
+        "Study by continent",
+        "Learn major capitals first"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/capital-quiz/world.jpg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "capitals",
+      "quiz",
+      "world"
+    ],
+    "source": "GitHub",
+    "developer": "Afkre",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Afkre/Javascript-Quiz-Capital-City",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "flag-master",
+    "title": "Flag Master",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/flag-master/",
+    "description": "Guess the country from its flag!",
+    "gameGuide": {
+      "howToPlay": [
+        "See a flag",
+        "Guess the country",
+        "Score points"
+      ],
+      "controls": {
+        "mouse": "Click answers"
+      },
+      "tips": [
+        "Learn by continent",
+        "Notice color patterns"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/flag-master/assets/img/flags/us.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "flags",
+      "quiz",
+      "countries"
+    ],
+    "source": "GitHub",
+    "developer": "azizbekdevuz",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/azizbekdevuz/FlagMasterGame",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "memory-jiten",
+    "title": "Memory Match Pro",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://games.edugamehq.com/games/memory-jiten/",
+    "description": "Test your memory with card matching!",
+    "gameGuide": {
+      "howToPlay": [
+        "Flip cards",
+        "Find matching pairs",
+        "Clear the board"
+      ],
+      "controls": {
+        "mouse": "Click cards"
+      },
+      "tips": [
+        "Remember positions",
+        "Start from corners"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/memory-jiten/Images/snapshot1.PNG",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": [
+      "memory",
+      "cards",
+      "matching",
+      "brain"
+    ],
+    "source": "GitHub",
+    "developer": "JitenRaj",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/JitenRaj/Memory-Matching-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "crack-code",
+    "title": "Crack The Code",
+    "category": "logic",
+    "categoryName": "Logic",
+    "iframeUrl": "https://games.edugamehq.com/games/crack-code/",
+    "description": "Guess the secret code using logic!",
+    "gameGuide": {
+      "howToPlay": [
+        "Guess the code",
+        "Use hints",
+        "Crack it!"
+      ],
+      "controls": {
+        "mouse": "Click numbers"
+      },
+      "tips": [
+        "Use elimination",
+        "Pay attention to hints"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/crack-code/preview.svg",
+    "difficulty": "Hard",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "logic",
+      "puzzle",
+      "code",
+      "brain"
+    ],
+    "source": "GitHub",
+    "developer": "minx-monika",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/minx-monika/crack-the-code-game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "drawing-app",
+    "title": "Drawing Canvas",
+    "category": "creative",
+    "categoryName": "Creative",
+    "iframeUrl": "https://games.edugamehq.com/games/drawing-app/",
+    "description": "Draw and create art with crayons and markers!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select tool",
+        "Choose color",
+        "Draw on canvas"
+      ],
+      "controls": {
+        "mouse": "Click and drag to draw"
+      },
+      "tips": [
+        "Try different tools",
+        "Use eraser to fix mistakes"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/drawing-app/images/crayon-background.png",
+    "difficulty": "Easy",
+    "ageRange": "4-14",
+    "minAge": 4,
+    "maxAge": 14,
+    "tags": [
+      "creative",
+      "drawing",
+      "art",
+      "canvas"
+    ],
+    "source": "GitHub",
+    "developer": "William Malone",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/williammalone/Simple-HTML5-Drawing-App",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "js-quiz",
+    "title": "JavaScript Quiz",
+    "category": "educational",
+    "categoryName": "Educational",
+    "iframeUrl": "https://games.edugamehq.com/games/js-quiz/",
+    "description": "Test your JavaScript knowledge!",
+    "gameGuide": {
+      "howToPlay": [
+        "Answer questions",
+        "Score points",
+        "Learn JS"
+      ],
+      "controls": {
+        "mouse": "Click answers"
+      },
+      "tips": [
+        "Read carefully",
+        "Think before answering"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/js-quiz/preview.svg",
+    "difficulty": "Medium",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "educational",
+      "javascript",
+      "quiz",
+      "coding"
+    ],
+    "source": "GitHub",
+    "developer": "sudoyasir",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/sudoyasir/JS-Quiz",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "rpg-game",
+    "title": "RPG Adventure",
+    "category": "adventure",
+    "categoryName": "Adventure",
+    "iframeUrl": "https://games.edugamehq.com/games/rpg-game/",
+    "description": "Battle monsters and level up in this RPG!",
+    "gameGuide": {
+      "howToPlay": [
+        "Fight monsters",
+        "Gain XP",
+        "Level up"
+      ],
+      "controls": {
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Buy weapons",
+        "Heal when low"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/rpg-game/Assets/rpg-game.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "adventure",
+      "rpg",
+      "battle",
+      "fantasy"
+    ],
+    "source": "GitHub",
+    "developer": "Lawani-EJ",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Lawani-EJ/RPG-Game-Prototype1",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "code-playground",
+    "title": "Code Playground",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/code-playground/",
+    "description": "Write HTML, CSS, JS with live preview!",
+    "gameGuide": {
+      "howToPlay": [
+        "Write code",
+        "See live preview",
+        "Learn web dev"
+      ],
+      "controls": {
+        "keyboard": "Type code"
+      },
+      "tips": [
+        "Start with HTML",
+        "Add CSS styling"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/code-playground/livecodeeditor.PNG",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "html",
+      "css",
+      "javascript"
+    ],
+    "source": "GitHub",
+    "developer": "naemazam",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/naemazam/Live-Code-Editor",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "map-world",
+    "title": "Map of World",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/map-world/",
+    "description": "Explore interactive maps of countries worldwide!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select a country",
+        "Explore regions",
+        "Learn geography"
+      ],
+      "controls": {
+        "mouse": "Click and drag to navigate"
+      },
+      "tips": [
+        "Zoom in for details",
+        "Click regions to learn"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/map-world/images/SplashScreen.scale-200.png",
+    "difficulty": "Easy",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "maps",
+      "countries",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "canbax",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/canbax/MapOfWorld",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "geo-mastermind",
+    "title": "GeoMastermind",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/geo-mastermind/",
+    "description": "Test your geography knowledge with landmark photos!",
+    "gameGuide": {
+      "howToPlay": [
+        "View landmark image",
+        "Select correct answer",
+        "Beat the timer"
+      ],
+      "controls": {
+        "mouse": "Click answers"
+      },
+      "tips": [
+        "Look for clues in images",
+        "Use elimination"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/geo-mastermind/assets/images/favi-icon.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "quiz",
+      "landmarks",
+      "educational"
+    ],
+    "source": "GitHub",
+    "developer": "KimBergstroem",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/KimBergstroem/geoMastermind-Game",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "geography-quiz-flags",
+    "title": "Capital Cities Quiz",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/geography-quiz-flags/",
+    "description": "Identify world capitals by their flags!",
+    "gameGuide": {
+      "howToPlay": [
+        "See the flag",
+        "Guess the capital",
+        "Score points"
+      ],
+      "controls": {
+        "mouse": "Click answers"
+      },
+      "tips": [
+        "Learn flag patterns",
+        "Study continents"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/geography-quiz-flags/Capitals.png",
+    "difficulty": "Medium",
+    "ageRange": "8-18",
+    "minAge": 8,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "flags",
+      "capitals",
+      "quiz"
+    ],
+    "source": "GitHub",
+    "developer": "marciofelicioo",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/marciofelicioo/Geography-Quiz",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "borders-quiz",
+    "title": "Borders Quiz",
+    "category": "geography",
+    "categoryName": "Geography",
+    "iframeUrl": "https://games.edugamehq.com/games/borders-quiz/",
+    "description": "Guess countries by their borders and flags!",
+    "gameGuide": {
+      "howToPlay": [
+        "See country border",
+        "Guess the country",
+        "Score points"
+      ],
+      "controls": {
+        "keyboard": "Type country name"
+      },
+      "tips": [
+        "Learn continent shapes",
+        "Study flag colors"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/borders-quiz/preview.svg",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "geography",
+      "borders",
+      "countries",
+      "quiz"
+    ],
+    "source": "GitHub",
+    "developer": "LorenKociko",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.2,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/LorenKociko/BordersQuiz",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "seven-editor",
+    "title": "Seven Code Editor",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/seven-editor/",
+    "description": "Live HTML/CSS/JS editor with instant preview!",
+    "gameGuide": {
+      "howToPlay": [
+        "Write HTML",
+        "Add CSS styles",
+        "See live preview"
+      ],
+      "controls": {
+        "keyboard": "Type code"
+      },
+      "tips": [
+        "Start simple",
+        "Experiment with styles"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/seven-editor/img/Demo.png",
+    "difficulty": "Medium",
+    "ageRange": "10-18",
+    "minAge": 10,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "html",
+      "css",
+      "javascript",
+      "editor"
+    ],
+    "source": "GitHub",
+    "developer": "thalhatou",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.3,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/thalhatou/Seven-Live-Code-Editor",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "code-playground-mhr",
+    "title": "Code Playground Pro",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/code-playground-mhr/",
+    "description": "Full IDE with quizzes and sorting visualizer!",
+    "gameGuide": {
+      "howToPlay": [
+        "Choose a tool",
+        "Write code or take quiz",
+        "Learn programming"
+      ],
+      "controls": {
+        "keyboard": "Type code",
+        "mouse": "Click buttons"
+      },
+      "tips": [
+        "Try the sorting visualizer",
+        "Take programming quizzes"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/code-playground-mhr/assets/code.png",
+    "difficulty": "Medium",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "ide",
+      "quiz",
+      "algorithms",
+      "sorting"
+    ],
+    "source": "GitHub",
+    "developer": "Mehedi-Hasan-Rabbi",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": false,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Mehedi-Hasan-Rabbi/Code_Playground",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "algo-visualizer",
+    "title": "Algorithm Visualizer",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/algo-visualizer/",
+    "description": "Visualize sorting, pathfinding, BST and trie algorithms!",
+    "gameGuide": {
+      "howToPlay": [
+        "Choose algorithm",
+        "Watch visualization",
+        "Learn how it works"
+      ],
+      "controls": {
+        "mouse": "Click buttons to control"
+      },
+      "tips": [
+        "Try different algorithms",
+        "Adjust speed to understand"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/algo-visualizer/assets/home-page.jpeg",
+    "difficulty": "Medium",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "algorithms",
+      "sorting",
+      "pathfinding",
+      "data-structures"
+    ],
+    "source": "GitHub",
+    "developer": "Sayan-Maity",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.5,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/Sayan-Maity/Algorithm-Visualizer",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
+  },
+  {
+    "slug": "visual-sort",
+    "title": "Visual Sort",
+    "category": "coding",
+    "categoryName": "Coding",
+    "iframeUrl": "https://games.edugamehq.com/games/visual-sort/",
+    "description": "Compare and visualize sorting algorithms side by side!",
+    "gameGuide": {
+      "howToPlay": [
+        "Select sorting algorithm",
+        "Watch bars sort",
+        "Compare performance"
+      ],
+      "controls": {
+        "mouse": "Click to start/stop"
+      },
+      "tips": [
+        "Compare different algorithms",
+        "Notice time complexity differences"
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/visual-sort/images/logo.png",
+    "difficulty": "Medium",
+    "ageRange": "12-18",
+    "minAge": 12,
+    "maxAge": 18,
+    "tags": [
+      "coding",
+      "algorithms",
+      "sorting",
+      "visualization"
+    ],
+    "source": "GitHub",
+    "developer": "MastanSayyad",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "rating": 4.4,
+    "playCount": 0,
+    "sourceUrl": "https://github.com/MastanSayyad/Visual-Sort",
+    "lastUpdated": "2026-01-26",
+    "lastChecked": "2026-01-26",
+    "featured": false,
+    "trending": false,
+    "isNew": true
   }
 ]
