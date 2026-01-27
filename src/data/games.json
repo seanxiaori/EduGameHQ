@@ -6077,53 +6077,6 @@
     "developer": "EduGameHQ"
   },
   {
-    "slug": "ceros-snake",
-    "title": "Ceros Snake",
-    "category": "arcade",
-    "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/ceros-snake/cover.svg",
-    "iframeUrl": "https://games.edugamehq.com/games/ceros-snake/",
-    "description": "Modern snake game with smooth graphics! Eat food and grow longer.",
-    "gameGuide": {
-      "howToPlay": [
-        "Control snake direction",
-        "Eat food to grow",
-        "Avoid walls and yourself"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys to move"
-      },
-      "tips": [
-        "Plan your path",
-        "Don't trap yourself"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/ceros-snake/cover.svg",
-    "difficulty": "Easy",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
-    "tags": [
-      "arcade",
-      "snake",
-      "classic"
-    ],
-    "source": "GitHub",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "lastUpdated": "2025-01-24",
-    "lastChecked": "2025-01-24",
-    "playCount": 0,
-    "featured": true,
-    "trending": true,
-    "isNew": true,
-    "original": false,
-    "developer": "EduGameHQ"
-  },
-  {
     "slug": "chess-3d",
     "title": "Chess 3D Pro",
     "category": "puzzle",
@@ -7462,56 +7415,6 @@
     "isNew": true
   },
   {
-    "slug": "memory-match",
-    "title": "Memory Match",
-    "category": "memory",
-    "categoryName": "Memory",
-    "iframeUrl": "https://games.edugamehq.com/games/memory-match/",
-    "description": "Classic card matching memory game for two players. Find matching pairs to win!",
-    "gameGuide": {
-      "howToPlay": [
-        "Flip two cards",
-        "Find matching pairs",
-        "Remember card positions"
-      ],
-      "controls": {
-        "mouse": "Click cards to flip",
-        "keyboard": "N/A"
-      },
-      "tips": [
-        "Focus on positions",
-        "Use patterns to remember"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/memory-match/screenshot.png",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
-    "tags": [
-      "memory",
-      "cards",
-      "matching",
-      "brain-training"
-    ],
-    "source": "GitHub",
-    "developer": "Zaihdo",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.3,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/zaihdo/Memory-Game",
-    "lastUpdated": "2026-01-25",
-    "lastChecked": "2026-01-25",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
     "slug": "hangman",
     "title": "Hangman",
     "category": "language",
@@ -8266,56 +8169,6 @@
     "isNew": true
   },
   {
-    "slug": "connect-four-new",
-    "title": "Connect Four",
-    "category": "strategy",
-    "categoryName": "Strategy",
-    "iframeUrl": "https://games.edugamehq.com/games/connect-four-new/",
-    "description": "Classic Connect Four game! Drop discs to connect four in a row.",
-    "gameGuide": {
-      "howToPlay": [
-        "Click column to drop disc",
-        "Connect 4 in a row",
-        "Block opponent"
-      ],
-      "controls": {
-        "mouse": "Click columns",
-        "keyboard": "N/A"
-      },
-      "tips": [
-        "Control the center",
-        "Plan ahead"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/connect-four-new/screenshot.png",
-    "difficulty": "Easy",
-    "ageRange": "6-16",
-    "minAge": 6,
-    "maxAge": 16,
-    "tags": [
-      "strategy",
-      "board-game",
-      "connect-four",
-      "classic"
-    ],
-    "source": "GitHub",
-    "developer": "Ania Kubow",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.4,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/kubowania/connect-four",
-    "lastUpdated": "2026-01-25",
-    "lastChecked": "2026-01-25",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
     "slug": "math-kids",
     "title": "Math for Kids",
     "category": "educational",
@@ -8864,54 +8717,6 @@
     "isNew": true
   },
   {
-    "slug": "maze-hoang",
-    "title": "The Maze Game",
-    "category": "adventure",
-    "categoryName": "Adventure",
-    "iframeUrl": "https://games.edugamehq.com/games/maze-hoang/",
-    "description": "Navigate through procedurally generated mazes!",
-    "gameGuide": {
-      "howToPlay": [
-        "Use arrow keys",
-        "Find the exit",
-        "Beat your time"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys"
-      },
-      "tips": [
-        "Plan your route",
-        "Use wall following"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/maze-hoang/utils/MazeUI.png",
-    "difficulty": "Medium",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
-    "tags": [
-      "adventure",
-      "maze",
-      "puzzle"
-    ],
-    "source": "GitHub",
-    "developer": "Hoang Son",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.4,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/hoangsonww/The-Maze-Game",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
     "slug": "pixellate",
     "title": "Pixellate Editor",
     "category": "creative",
@@ -9051,55 +8856,6 @@
     "rating": 4.5,
     "playCount": 0,
     "sourceUrl": "https://github.com/nickarocho/minesweeper",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "space-invaders-luca",
-    "title": "Space Invaders",
-    "category": "arcade",
-    "categoryName": "Arcade",
-    "iframeUrl": "https://games.edugamehq.com/games/space-invaders-luca/",
-    "description": "Classic Space Invaders arcade game!",
-    "gameGuide": {
-      "howToPlay": [
-        "Move left/right",
-        "Shoot aliens",
-        "Survive waves"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys + Space"
-      },
-      "tips": [
-        "Stay mobile",
-        "Prioritize threats"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders-luca/screenshot.png",
-    "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
-    "tags": [
-      "arcade",
-      "shooter",
-      "classic",
-      "retro"
-    ],
-    "source": "GitHub",
-    "developer": "Bocaletto Luca",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.4,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/bocaletto-luca/Space-Invaders",
     "lastUpdated": "2026-01-26",
     "lastChecked": "2026-01-26",
     "featured": false,
@@ -9247,54 +9003,6 @@
     "rating": 4.2,
     "playCount": 0,
     "sourceUrl": "https://github.com/CodingWithEnjoy/Piano-HTML-CSS-JS",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "tictactoe-gabriel",
-    "title": "Tic Tac Toe",
-    "category": "strategy",
-    "categoryName": "Strategy",
-    "iframeUrl": "https://games.edugamehq.com/games/tictactoe-gabriel/",
-    "description": "Classic Tic Tac Toe game for two players!",
-    "gameGuide": {
-      "howToPlay": [
-        "Click to place X or O",
-        "Get 3 in a row",
-        "Block opponent"
-      ],
-      "controls": {
-        "mouse": "Click cells"
-      },
-      "tips": [
-        "Control center",
-        "Watch corners"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tictactoe-gabriel/screenshot.png",
-    "difficulty": "Easy",
-    "ageRange": "6-14",
-    "minAge": 6,
-    "maxAge": 14,
-    "tags": [
-      "strategy",
-      "classic",
-      "two-player"
-    ],
-    "source": "GitHub",
-    "developer": "Gabriel Dim",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.3,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/gabrieldim/TicTacToe",
     "lastUpdated": "2026-01-26",
     "lastChecked": "2026-01-26",
     "featured": false,
@@ -10616,104 +10324,6 @@
     "isNew": true
   },
   {
-    "slug": "jsCheckersAI",
-    "title": "Checkers AI",
-    "category": "strategy",
-    "categoryName": "Strategy",
-    "iframeUrl": "https://games.edugamehq.com/games/jsCheckersAI/",
-    "description": "Play checkers against AI!",
-    "gameGuide": {
-      "howToPlay": [
-        "Move diagonally",
-        "Jump to capture",
-        "King your pieces"
-      ],
-      "controls": {
-        "mouse": "Click to move"
-      },
-      "tips": [
-        "Control center",
-        "Get kings early"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/jsCheckersAI/screenshot.png",
-    "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
-    "tags": [
-      "strategy",
-      "checkers",
-      "ai",
-      "board"
-    ],
-    "source": "GitHub",
-    "developer": "Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.2,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/nicholasguan/jsCheckersAI",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "tetris-js",
-    "title": "Tetris Classic",
-    "category": "puzzle",
-    "categoryName": "Puzzle",
-    "iframeUrl": "https://games.edugamehq.com/games/tetris-js/",
-    "description": "Classic Tetris block puzzle!",
-    "gameGuide": {
-      "howToPlay": [
-        "Rotate blocks",
-        "Fill rows",
-        "Don't stack too high"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys to move, Up to rotate"
-      },
-      "tips": [
-        "Keep it flat",
-        "Plan ahead"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tetris-js/images/preview.png",
-    "difficulty": "Medium",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
-    "tags": [
-      "puzzle",
-      "tetris",
-      "classic",
-      "blocks"
-    ],
-    "source": "GitHub",
-    "developer": "Open Source",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.5,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/dionyziz/canvas-tetris",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
     "slug": "map-quiz",
     "title": "World Map Quiz",
     "category": "geography",
@@ -11739,56 +11349,6 @@
     "rating": 4.2,
     "playCount": 0,
     "sourceUrl": "https://github.com/LorenKociko/BordersQuiz",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "seven-editor",
-    "title": "Seven Code Editor",
-    "category": "coding",
-    "categoryName": "Coding",
-    "iframeUrl": "https://games.edugamehq.com/games/seven-editor/",
-    "description": "Live HTML/CSS/JS editor with instant preview!",
-    "gameGuide": {
-      "howToPlay": [
-        "Write HTML",
-        "Add CSS styles",
-        "See live preview"
-      ],
-      "controls": {
-        "keyboard": "Type code"
-      },
-      "tips": [
-        "Start simple",
-        "Experiment with styles"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/seven-editor/img/Demo.png",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "coding",
-      "html",
-      "css",
-      "javascript",
-      "editor"
-    ],
-    "source": "GitHub",
-    "developer": "thalhatou",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": false,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.3,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/thalhatou/Seven-Live-Code-Editor",
     "lastUpdated": "2026-01-26",
     "lastChecked": "2026-01-26",
     "featured": false,
