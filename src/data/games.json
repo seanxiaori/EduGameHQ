@@ -1831,54 +1831,6 @@
     "isNew": true
   },
   {
-    "slug": "digital-clock",
-    "title": "Digital Clock",
-    "category": "coding",
-    "categoryName": "Coding",
-    "iframeUrl": "https://games.edugamehq.com/games/digital-clock/",
-    "description": "Simple digital clock display!",
-    "gameGuide": {
-      "howToPlay": [
-        "View current time",
-        "Learn digital format"
-      ],
-      "controls": {
-        "mouse": "N/A"
-      },
-      "tips": [
-        "Watch seconds tick",
-        "Learn 24h format"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/digital-clock/screenshot.png",
-    "difficulty": "Easy",
-    "ageRange": "6-12",
-    "minAge": 6,
-    "maxAge": 12,
-    "tags": [
-      "educational",
-      "clock",
-      "time",
-      "digital"
-    ],
-    "source": "EduGameHQ",
-    "developer": "Aaqib Khan",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/AaqibhafeezKhan/Digital-Clock",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
     "slug": "elevatorsaga",
     "title": "Elevator Saga",
     "category": "coding",
@@ -2077,54 +2029,6 @@
     "sourceUrl": "https://github.com/Jimbly/regex-crossword",
     "lastUpdated": "2026-01-25",
     "lastChecked": "2026-01-25",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "clock-ui",
-    "title": "Responsive Clock",
-    "category": "coding",
-    "categoryName": "Coding",
-    "iframeUrl": "https://games.edugamehq.com/games/clock-ui/",
-    "description": "Beautiful analog and digital clock!",
-    "gameGuide": {
-      "howToPlay": [
-        "Watch the time",
-        "Learn to read clocks",
-        "Toggle modes"
-      ],
-      "controls": {
-        "mouse": "Click to interact"
-      },
-      "tips": [
-        "Learn analog time",
-        "Compare with digital"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/clock-ui/preview.png",
-    "difficulty": "Easy",
-    "ageRange": "6-12",
-    "minAge": 6,
-    "maxAge": 12,
-    "tags": [
-      "educational",
-      "clock",
-      "time"
-    ],
-    "source": "EduGameHQ",
-    "developer": "Bedimcode",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.4,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/bedimcode/responsive-clock-ui",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
     "featured": false,
     "trending": false,
     "isNew": true
@@ -2374,55 +2278,6 @@
     "sourceUrl": "https://github.com/AntoniaNicoara/HTML5-Canvas-Paint-Application",
     "lastUpdated": "2026-01-25",
     "lastChecked": "2026-01-25",
-    "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "color-picker",
-    "title": "Color Picker",
-    "category": "creative",
-    "categoryName": "Creative",
-    "iframeUrl": "https://games.edugamehq.com/games/color-picker/",
-    "description": "Pick and explore colors!",
-    "gameGuide": {
-      "howToPlay": [
-        "Select colors",
-        "Copy hex codes",
-        "Create palettes"
-      ],
-      "controls": {
-        "mouse": "Click to pick"
-      },
-      "tips": [
-        "Try different shades",
-        "Save your favorites"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/color-picker/screenshot.png",
-    "difficulty": "Easy",
-    "ageRange": "8-18",
-    "minAge": 8,
-    "maxAge": 18,
-    "tags": [
-      "creative",
-      "color",
-      "design",
-      "tool"
-    ],
-    "source": "EduGameHQ",
-    "developer": "Shanisoni",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.1,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/Shanisoni/Colour-Picker",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
     "featured": false,
     "trending": false,
     "isNew": true
@@ -3769,55 +3624,6 @@
     "lastUpdated": "2026-01-25",
     "lastChecked": "2026-01-25",
     "featured": true,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "calculator-zx",
-    "title": "Calculator",
-    "category": "math",
-    "categoryName": "Math",
-    "iframeUrl": "https://games.edugamehq.com/games/calculator-zx/",
-    "description": "Beautiful calculator with dark/light mode!",
-    "gameGuide": {
-      "howToPlay": [
-        "Click numbers",
-        "Choose operations",
-        "Get results"
-      ],
-      "controls": {
-        "mouse": "Click buttons"
-      },
-      "tips": [
-        "Use keyboard too",
-        "Try dark mode"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/calculator-zx/screenshot.png",
-    "difficulty": "Easy",
-    "ageRange": "6-18",
-    "minAge": 6,
-    "maxAge": 18,
-    "tags": [
-      "educational",
-      "math",
-      "calculator",
-      "tool"
-    ],
-    "source": "EduGameHQ",
-    "developer": "ZXCodes",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.5,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/zxcodes/Calculator",
-    "lastUpdated": "2026-01-26",
-    "lastChecked": "2026-01-26",
-    "featured": false,
     "trending": false,
     "isNew": true
   },
@@ -5462,57 +5268,6 @@
     "lastUpdated": "2026-01-25",
     "lastChecked": "2026-01-25",
     "featured": false,
-    "trending": false,
-    "isNew": true
-  },
-  {
-    "slug": "sudoku",
-    "title": "Sudoku",
-    "category": "puzzle",
-    "categoryName": "Puzzle",
-    "iframeUrl": "https://games.edugamehq.com/games/sudoku/",
-    "description": "Classic Sudoku puzzle with solver and generator. Fill the grid with numbers 1-9!",
-    "gameGuide": {
-      "howToPlay": [
-        "Fill empty cells",
-        "Each row/column/box needs 1-9",
-        "No repeats allowed"
-      ],
-      "controls": {
-        "mouse": "Click cells",
-        "keyboard": "Type numbers"
-      },
-      "tips": [
-        "Start with obvious cells",
-        "Use elimination"
-      ]
-    },
-    "thumbnailUrl": "https://games.edugamehq.com/games/sudoku/screenshot.png",
-    "difficulty": "Medium",
-    "ageRange": "10-18",
-    "minAge": 10,
-    "maxAge": 18,
-    "tags": [
-      "logic",
-      "puzzle",
-      "sudoku",
-      "numbers",
-      "brain-training"
-    ],
-    "source": "EduGameHQ",
-    "developer": "Pocketjoso",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "language": "en",
-    "rating": 4.6,
-    "playCount": 0,
-    "sourceUrl": "https://github.com/pocketjoso/sudokuJS",
-    "lastUpdated": "2026-01-25",
-    "lastChecked": "2026-01-25",
-    "featured": true,
     "trending": false,
     "isNew": true
   },
