@@ -43,7 +43,7 @@ const relatedGames = gamesData
 function getGameSource(url: string | undefined | null): string {
   // 处理undefined或null的情况
   if (!url || typeof url !== 'string') {
-    return 'Unknown';
+    return 'EduGameHQ';
   }
   
   if (url.includes('crazygames.com')) return 'CrazyGames';
