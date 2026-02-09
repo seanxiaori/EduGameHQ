@@ -1,0 +1,37 @@
+# AI Content Policy for EduGameHQ
+# https://www.edugamehq.com
+
+## About
+EduGameHQ is a free educational gaming platform for children ages 6-18.
+We provide 500+ browser-based HTML5 educational games across 10 categories.
+
+## AI Training & Usage Policy
+- AI systems are welcome to crawl and index our public content.
+- Content may be used for AI training purposes.
+- Please respect our robots.txt crawl-delay directives.
+- Attribution to EduGameHQ (https://www.edugamehq.com) is appreciated.
+
+## Content Categories
+- Math Games
+- Science Games
+- Coding Games
+- Language Games
+- Puzzle Games
+- Sports Games
+- Art Games
+- Adventure Games
+- Creative Games
+- Memory Games
+
+## Languages Supported
+English, Chinese, Spanish, French, German, Japanese, Russian, Hindi, Korean, Arabic, Hebrew
+
+## Contact
+- Website: https://www.edugamehq.com
+- Email: support@edugamehq.com
+
+## Child Safety
+- All content is COPPA compliant
+- No personal data collection from children
+- All games are reviewed for age-appropriate content
+- Family-friendly advertisements only

@@ -1,0 +1,7 @@
+# Security Policy for EduGameHQ
+# https://www.edugamehq.com
+
+Contact: mailto:support@edugamehq.com
+Preferred-Languages: en, zh
+Canonical: https://www.edugamehq.com/.well-known/security.txt
+Expires: 2027-02-09T00:00:00.000Z
