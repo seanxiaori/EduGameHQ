@@ -1,6 +1,7 @@
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
@@ -10,7 +11,25 @@ export default defineConfig({
   integrations: [
     react(),
     tailwind({
-      applyBaseStyles: false, // 我们将使用自定义基础样式
+      applyBaseStyles: false,
+    }),
+    sitemap({
+      i18n: {
+        defaultLocale: 'en',
+        locales: {
+          en: 'en',
+          zh: 'zh',
+          es: 'es',
+          fr: 'fr',
+          de: 'de',
+          ja: 'ja',
+          ru: 'ru',
+          hi: 'hi',
+          ko: 'ko',
+          ar: 'ar',
+          he: 'he',
+        },
+      },
     }),
   ],
 
