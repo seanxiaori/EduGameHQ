@@ -31,36 +31,32 @@ Disallow: /private/
 # ============================================
 Allow: /games/
 Allow: /*/games/
-Allow: /math-games
-Allow: /science-games
-Allow: /language-games
-Allow: /puzzle-games
-Allow: /sports-games
-Allow: /art-games
-Allow: /adventure-games
-Allow: /creative-games
-Allow: /memory-games
-Allow: /*/math-games
-Allow: /*/science-games
-Allow: /*/language-games
-Allow: /*/puzzle-games
-Allow: /*/sports-games
-Allow: /*/art-games
-Allow: /*/adventure-games
-Allow: /*/creative-games
-Allow: /*/memory-games
+Allow: /math-games/
+Allow: /science-games/
+Allow: /language-games/
+Allow: /puzzle-games/
+Allow: /sports-games/
+Allow: /art-games/
+Allow: /adventure-games/
+Allow: /creative-games/
+Allow: /memory-games/
+Allow: /*/math-games/
+Allow: /*/science-games/
+Allow: /*/language-games/
+Allow: /*/puzzle-games/
+Allow: /*/sports-games/
+Allow: /*/art-games/
+Allow: /*/adventure-games/
+Allow: /*/creative-games/
+Allow: /*/memory-games/
 
 # 允许爬取功能页面
-Allow: /search
-Allow: /*/search
-Allow: /trending
-Allow: /*/trending
-Allow: /new-games
-Allow: /*/new-games
-Allow: /recently-played
-Allow: /*/recently-played
-Allow: /favorites
-Allow: /*/favorites
+Allow: /search/
+Allow: /*/search/
+Allow: /trending/
+Allow: /*/trending/
+Allow: /new-games/
+Allow: /*/new-games/
 
 # ============================================
 # Google 搜索引擎优化设置
@@ -150,23 +146,8 @@ Disallow: /
 # ============================================
 # Sitemap 位置（多语言）
 # ============================================
-# 主Sitemap索引
+# Sitemap（由@astrojs/sitemap自动生成）
 Sitemap: https://www.edugamehq.com/sitemap-index.xml
-
-# 英语版本（根路径）
-Sitemap: https://www.edugamehq.com/sitemap.xml
-
-# 其他语言版本
-Sitemap: https://www.edugamehq.com/zh/sitemap.xml
-Sitemap: https://www.edugamehq.com/es/sitemap.xml
-Sitemap: https://www.edugamehq.com/fr/sitemap.xml
-Sitemap: https://www.edugamehq.com/de/sitemap.xml
-Sitemap: https://www.edugamehq.com/ja/sitemap.xml
-Sitemap: https://www.edugamehq.com/ru/sitemap.xml
-Sitemap: https://www.edugamehq.com/hi/sitemap.xml
-Sitemap: https://www.edugamehq.com/ko/sitemap.xml
-Sitemap: https://www.edugamehq.com/ar/sitemap.xml
-Sitemap: https://www.edugamehq.com/he/sitemap.xml
 
 # ============================================
 # 网站信息

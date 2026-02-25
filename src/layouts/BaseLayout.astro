@@ -34,9 +34,10 @@ const { title, description, bodyClass = "", gameData, lang, additionalStructured
 // 获取当前页面路径，用于导航高亮和SEO配置
 const currentPath = Astro.url.pathname;
 
-// 调试信息
-console.log('🏠 首页路径列表:', homePaths);
-console.log('🌍 当前路径:', currentPath);
+// 客户端专属页面不应被索引（内容依赖localStorage，Google看到的是空页面）
+const cleanPathForCheck = removeLanguagePrefix(currentPath);
+const noIndexPages = ['/recently-played', '/favorites', '/search'];
+const isNoIndexPage = noIndexPages.some(p => cleanPathForCheck === p || cleanPathForCheck === p + '/');
 
 // 多语言配置
 const currentLang = lang || getLanguageFromPath(currentPath);
@@ -114,8 +115,9 @@ const educationalOrgData = {
   }
 };
 
-// 构建完整的页面URL
-const canonicalUrl = new URL(currentPath, Astro.site || 'https://www.edugamehq.com').toString();
+// 构建完整的页面URL（确保trailing slash一致性）
+const normalizedPath = currentPath === '/' ? '/' : (currentPath.endsWith('/') ? currentPath : currentPath + '/');
+const canonicalUrl = new URL(normalizedPath, Astro.site || 'https://www.edugamehq.com').toString();
 
 // 定义页面分类和层级结构 - 支持多语言
 // 页面结构定义 - 不包含翻译，翻译在渲染时进行
@@ -436,7 +438,7 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
   <meta name="keywords" content={pageKeywords} />
   
   <!-- 其他SEO元标签 -->
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="robots" content={isNoIndexPage ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}>
   <meta name="author" content="EduGameHQ">
   <meta name="language" content={langInfo.name}>
   <meta name="revisit-after" content="7 days">
@@ -502,7 +504,6 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
   <meta name="twitter:image:alt" content={pageTitle + ' - EduGameHQ Educational Games'}>
   
   <!-- Facebook Meta Tags -->
-  <meta property="fb:app_id" content="your-facebook-app-id">
   
   <!-- Pinterest Meta Tags -->
   <meta name="pinterest-rich-pin" content="true">

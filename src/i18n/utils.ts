@@ -93,12 +93,15 @@ export function getLocalizedPath(path: string, lang: LanguageCode): string {
   
   // 英语使用根路径，其他语言添加语言前缀
   if (lang === 'en') {
-    return cleanPath === '/' ? '/' : cleanPath;
+    if (cleanPath === '/') return '/';
+    return cleanPath.endsWith('/') ? cleanPath : cleanPath + '/';
   }
-  
+
   // 其他语言添加语言前缀
   const langPrefix = `/${lang}`;
-  return cleanPath === '/' ? langPrefix : `${langPrefix}${cleanPath}`;
+  if (cleanPath === '/') return langPrefix + '/';
+  const fullPath = `${langPrefix}${cleanPath}`;
+  return fullPath.endsWith('/') ? fullPath : fullPath + '/';
 }
 
 /**
@@ -116,7 +119,9 @@ export function removeLanguagePrefix(path: string): string {
   }
   
   const result = '/' + segments.join('/');
-  return result === '/' ? '/' : result.replace(/\/$/, '');
+  if (result === '/') return '/';
+  // Preserve trailing slash to match trailingSlash: 'always' config
+  return result.endsWith('/') ? result : result + '/';
 }
 
 /**
