@@ -269,16 +269,11 @@ const pageStructure = {
 const normalizedCurrentPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
 const isHomePage = homePaths.includes(normalizedCurrentPath);
 
-// 调试信息
-console.log('🔧 标准化路径:', normalizedCurrentPath);
-console.log('✅ 是否为首页:', isHomePage);
-
-// 修复路径匹配问题 - 确保在构建时也能正确匹配
-const normalizedPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
+// 修复路径匹配问题 - 去除trailing slash用于页面结构匹配
+const matchPath = currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
 
 // 🔧 修复：去除语言前缀后再匹配页面结构
-const pathWithoutLang = removeLanguagePrefix(normalizedPath);
-console.log('🔍 去除语言前缀的路径:', pathWithoutLang);
+const pathWithoutLang = removeLanguagePrefix(matchPath);
 
 const currentCategory = (pageStructure.categories as Record<string, any>)[pathWithoutLang];
 const currentSpecialPage = (pageStructure.special as Record<string, any>)[pathWithoutLang];
@@ -393,22 +388,6 @@ if (!isHomePage) {
     });
   }
 }
-
-// 添加详细的面包屑调试信息
-console.log('🍞 面包屑调试信息:');
-console.log('- 当前路径:', currentPath);
-console.log('- 当前语言:', currentLang);
-console.log('- 是否首页:', isHomePage);
-console.log('- 当前分类:', currentCategory);
-console.log('- 面包屑数组长度:', breadcrumbs.length);
-console.log('- 面包屑内容:', breadcrumbs);
-
-// 添加页面结构调试信息
-console.log('📋 页面结构调试信息:');
-console.log('- 分类数量:', Object.keys(pageStructure.categories).length);
-console.log('- 分类内容:', pageStructure.categories);
-console.log('- 特殊页面数量:', Object.keys(pageStructure.special).length);
-console.log('- 特殊页面内容:', pageStructure.special);
 
 // 🔧 GEO优化：生成BreadcrumbList结构化数据（帮助AI理解页面层级）
 const breadcrumbListData = breadcrumbs.length > 0 ? {
