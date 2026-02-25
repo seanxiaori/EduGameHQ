@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://www.edugamehq.com',
   output: 'static',
+  trailingSlash: 'always',
   
   integrations: [
     react(),
