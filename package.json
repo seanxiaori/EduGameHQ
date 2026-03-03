@@ -20,7 +20,9 @@
     "crawl-game-details": "node scripts/intelligent-game-crawler.js",
     "check": "astro check",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:audit:build": "astro build --outDir /tmp/edugamehq-build && node scripts/seo-audit.mjs /tmp/edugamehq-build"
   },
   "dependencies": {
     "@astrojs/check": "^0.8.2",

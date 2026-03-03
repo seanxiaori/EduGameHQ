@@ -25,7 +25,6 @@ export function generateSitemapForLanguage(languageCode: string) {
     { url: '/memory-games/', priority: '0.9', changefreq: 'weekly' },
     { url: '/trending/', priority: '0.8', changefreq: 'daily' },
     { url: '/new-games/', priority: '0.8', changefreq: 'daily' },
-    { url: '/search/', priority: '0.7', changefreq: 'monthly' },
     { url: '/about/', priority: '0.5', changefreq: 'monthly' },
     { url: '/help/', priority: '0.5', changefreq: 'monthly' },
     { url: '/privacy-policy/', priority: '0.4', changefreq: 'yearly' },

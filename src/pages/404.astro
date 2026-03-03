@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  lang="en"
+  title="404 - Page Not Found | EduGameHQ"
+  description="The page you requested could not be found. Explore free educational games by subject on EduGameHQ."
+>
+  <section class="not-found-wrapper">
+    <section class="not-found-card">
+      <p class="code">404</p>
+      <h1>Page not found</h1>
+      <p class="message">That page is missing or the URL is incorrect.</p>
+      <a href="/" class="back-link">Back to Home</a>
+    </section>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found-wrapper {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+
+  .not-found-card {
+    width: 100%;
+    max-width: 560px;
+    background: #fff8ef;
+    border: 1px solid #f3d7b3;
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(146, 64, 14, 0.12);
+  }
+
+  .code {
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 800;
+    color: #b45309;
+    margin: 0 0 0.75rem;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #78350f;
+  }
+
+  .message {
+    margin: 0.9rem 0 1.6rem;
+    color: #6b7280;
+    font-size: 1rem;
+  }
+
+  .back-link {
+    display: inline-block;
+    padding: 0.75rem 1.2rem;
+    border-radius: 999px;
+    background: #f59e0b;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .back-link:hover {
+    background: #d97706;
+  }
+</style>

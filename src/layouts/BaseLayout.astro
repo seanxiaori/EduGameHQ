@@ -36,7 +36,7 @@ const currentPath = Astro.url.pathname;
 
 // 客户端专属页面不应被索引（内容依赖localStorage，Google看到的是空页面）
 const cleanPathForCheck = removeLanguagePrefix(currentPath);
-const noIndexPages = ['/recently-played', '/favorites', '/search'];
+const noIndexPages = ['/recently-played', '/favorites', '/search', '/404'];
 const isNoIndexPage = noIndexPages.some(p => cleanPathForCheck === p || cleanPathForCheck === p + '/');
 
 // 多语言配置
@@ -51,10 +51,94 @@ const languageSwitchLinks = getLanguageSwitchLinks(cleanPath);
 
 // 获取本地化的SEO配置
 const localizedSEO = await getLocalizedSEO(currentPath, currentLang);
-const pageTitle = title || localizedSEO.title;
+const basePageTitle = title || localizedSEO.title;
+const languageTitleSuffix = currentLang !== defaultLanguage ? ` | ${langInfo.nativeName}` : '';
+const pageTitle = languageTitleSuffix && !basePageTitle.includes(languageTitleSuffix)
+  ? `${basePageTitle}${languageTitleSuffix}`
+  : basePageTitle;
 
+function normalizePathForDescription(pathname: string): string {
+  const cleanPath = removeLanguagePrefix(pathname.split('#')[0]?.split('?')[0] || '/');
+  if (cleanPath === '/') {
+    return '/';
+  }
+  return cleanPath.endsWith('/') ? cleanPath.slice(0, -1) : cleanPath;
+}
 
-const pageDescription = description || localizedSEO.description;
+function humanizeSegment(segment: string): string {
+  return decodeURIComponent(segment).replace(/[-_]+/g, ' ').trim();
+}
+
+const shortDescriptionExtensionByLang: Record<LanguageCode, string> = {
+  en: 'Play free, safe educational games online at EduGameHQ.',
+  zh: '在 EduGameHQ 免费安全畅玩教育游戏。',
+  es: 'Juega gratis y de forma segura en EduGameHQ.',
+  fr: 'Jouez gratuitement et en toute securite sur EduGameHQ.',
+  de: 'Spiele kostenlos und sicher auf EduGameHQ.',
+  ja: 'EduGameHQで安全な無料教育ゲームを今すぐプレイ。',
+  ru: 'Играйте в бесплатные и безопасные обучающие игры на EduGameHQ.',
+  hi: 'EduGameHQ पर सुरक्षित और मुफ्त शैक्षिक गेम खेलें।',
+  ko: 'EduGameHQ에서 안전한 무료 교육 게임을 즐겨보세요.',
+  ar: 'العب ألعابا تعليمية مجانية وآمنة على EduGameHQ.',
+  he: 'שחקו משחקים חינוכיים חינמיים ובטוחים ב-EduGameHQ.'
+};
+
+function buildMetaDescription(baseDescription: string): string {
+  const normalizedPathForDescription = normalizePathForDescription(currentPath);
+  const pathSegments = normalizedPathForDescription.split('/').filter(Boolean);
+  const isGameDetailPage = normalizedPathForDescription.startsWith('/games/');
+  const gameSlug = isGameDetailPage ? humanizeSegment(pathSegments[pathSegments.length - 1] || '') : '';
+
+  const uniqueParts: string[] = [];
+  if (currentLang !== defaultLanguage) {
+    uniqueParts.push(langInfo.nativeName);
+  }
+  if (gameSlug) {
+    uniqueParts.push(gameSlug);
+  }
+
+  let result = baseDescription.trim();
+  const lowerResult = result.toLowerCase();
+  const missingUniqueParts = uniqueParts.filter(part => !lowerResult.includes(part.toLowerCase()));
+  const uniqueSuffix = missingUniqueParts.length > 0 ? ` | ${missingUniqueParts.join(' | ')}` : '';
+
+  // For short game descriptions, add one concise value sentence before enforcing max length.
+  if (result.length < 145 && isGameDetailPage) {
+    const extension = ' Build skills through safe, free browser gameplay on EduGameHQ.';
+    if (!/[.!?]$/.test(result)) {
+      result = `${result}.`;
+    }
+    result = `${result} ${extension}`.replace(/\s+/g, ' ').trim();
+  }
+
+  if (result.length < 130) {
+    const shortDescriptionExtension = shortDescriptionExtensionByLang[currentLang] || shortDescriptionExtensionByLang.en;
+    if (!/[.!?。！؟]$/.test(result)) {
+      result = `${result}.`;
+    }
+    result = `${result} ${shortDescriptionExtension}`.replace(/\s+/g, ' ').trim();
+  }
+
+  result = `${result}${uniqueSuffix}`;
+
+  const maxDescriptionLength = 160;
+  if (result.length <= maxDescriptionLength) {
+    return result;
+  }
+
+  if (uniqueSuffix && result.endsWith(uniqueSuffix)) {
+    const baseOnly = result.slice(0, -uniqueSuffix.length).trimEnd();
+    const maxBaseLength = maxDescriptionLength - uniqueSuffix.length;
+    if (maxBaseLength > 24) {
+      const truncatedBase = `${baseOnly.slice(0, maxBaseLength - 1).trimEnd()}…`;
+      return `${truncatedBase}${uniqueSuffix}`;
+    }
+  }
+
+  return `${result.slice(0, maxDescriptionLength - 1).trimEnd()}…`;
+}
+
+const pageDescription = buildMetaDescription(description || localizedSEO.description);
 const pageKeywords = localizedSEO.keywords;
 const ogImageUrl = getOGImageUrl(currentPath);
 const structuredData = generateStructuredData(currentPath, gameData);
