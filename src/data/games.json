@@ -11794,7 +11794,7 @@
     "title": "Tower Building",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/tower-game/assets/main-index-logo.png",
+    "image": "https://games.edugamehq.com/games/tower-game/assets/screenshot.png",
     "iframeUrl": "https://games.edugamehq.com/games/tower-game/",
     "description": "Build the tallest tower with precise timing in this fast-paced HTML5 stacking challenge.",
     "gameGuide": {
@@ -11813,7 +11813,7 @@
         "Use short sessions to improve timing accuracy."
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tower-game/assets/main-index-logo.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/tower-game/assets/screenshot.png",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -11826,7 +11826,7 @@
       "html5",
       "open source"
     ],
-    "source": "GitHub Open Source",
+    "source": "edugamehq",
     "developer": "iamkun",
     "iframeCompatible": true,
     "verified": true,
