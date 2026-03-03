@@ -11788,5 +11788,59 @@
     "categoryName": "Puzzle",
     "iframeUrl": "https://games.edugamehq.com/games/jigsaw-puzzle/",
     "source": "GitHub"
+  },
+  {
+    "slug": "tower-game",
+    "title": "Tower Building",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/tower-game/assets/main-index-logo.png",
+    "iframeUrl": "https://games.edugamehq.com/games/tower-game/",
+    "description": "Build the tallest tower with precise timing in this fast-paced HTML5 stacking challenge.",
+    "gameGuide": {
+      "howToPlay": [
+        "Tap or click to drop each moving block.",
+        "Align blocks as accurately as possible to keep the tower stable.",
+        "Keep stacking to reach a higher score before the tower collapses."
+      ],
+      "controls": {
+        "mouse": "Click to drop the current block.",
+        "touch": "Tap to drop the current block."
+      },
+      "tips": [
+        "Watch the block movement rhythm before dropping.",
+        "Prioritize consistency over risky perfect drops.",
+        "Use short sessions to improve timing accuracy."
+      ]
+    },
+    "thumbnailUrl": "https://games.edugamehq.com/games/tower-game/assets/main-index-logo.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "tower",
+      "timing",
+      "arcade",
+      "html5",
+      "open source"
+    ],
+    "source": "GitHub Open Source",
+    "developer": "iamkun",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "playCount": 0,
+    "sourceUrl": "https://github.com/iamkun/tower_game",
+    "lastUpdated": "2026-03-03",
+    "lastChecked": "2026-03-03",
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "original": false
   }
 ]
