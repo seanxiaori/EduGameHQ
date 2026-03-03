@@ -471,6 +471,82 @@
           }
         ]
       }
+    },
+    "sports_games": {
+      "title": "Sports Games",
+      "description": "Get active and learn through sports games! Combine physical education concepts with fun gameplay, teaching teamwork, strategy, healthy competition, and sportsmanship through virtual athletic challenges.",
+      "featured_section": {
+        "title": "Featured Sports Games",
+        "subtitle": "Championship-level games that will test your athletic skills"
+      },
+      "basketball_section": {
+        "title": "Basketball Games",
+        "subtitle": "Dribble, shoot, and score with these basketball games"
+      },
+      "ball_section": {
+        "title": "Ball Games",
+        "subtitle": "Kick, throw, and catch your way to victory"
+      },
+      "precision_section": {
+        "title": "Precision Games",
+        "subtitle": "Perfect your technique in these precision sports"
+      },
+      "individual_section": {
+        "title": "Individual Sports",
+        "subtitle": "Challenge yourself in these individual sports"
+      },
+      "learning_tips": {
+        "title": "Sports Gaming Tips",
+        "subtitle": "Improve your performance and enjoy sports games more",
+        "tips": [
+          {
+            "title": "Practice Precision",
+            "description": "Focus on accuracy over speed to improve your skills"
+          },
+          {
+            "title": "Master Timing",
+            "description": "Learn the perfect moment to act in each sport"
+          },
+          {
+            "title": "Learn Teamwork",
+            "description": "Understand how to work together in team sports"
+          },
+          {
+            "title": "Set Goals",
+            "description": "Challenge yourself to reach new personal bests"
+          }
+        ]
+      },
+      "core_skills": {
+        "title": "Athletic Skills You'll Develop",
+        "subtitle": "Essential abilities gained through sports gaming",
+        "skills": [
+          {
+            "title": "Hand-Eye Coordination",
+            "description": "Improve reaction time and precision"
+          },
+          {
+            "title": "Strategic Thinking",
+            "description": "Plan moves and anticipate opponents"
+          },
+          {
+            "title": "Focus & Concentration",
+            "description": "Maintain attention under pressure"
+          },
+          {
+            "title": "Competitive Spirit",
+            "description": "Develop healthy competition habits"
+          },
+          {
+            "title": "Quick Decision Making",
+            "description": "Learn to act fast and decisively"
+          },
+          {
+            "title": "Motor Skills",
+            "description": "Enhance physical coordination"
+          }
+        ]
+      }
     }
   },
   "about": {
@@ -1226,6 +1302,153 @@
       "yes": "Yes, Clear All",
       "cancel": "Cancel",
       "success": "All favorite games have been removed successfully!"
+    }
+  },
+  "trending_games": {
+    "seo": {
+      "title": "Trending Games | Popular Educational Games | EduGameHQ",
+      "description": "Play the most popular educational games trending now. Join thousands of students learning through the hottest math, science, coding, and language games.",
+      "keywords": "trending games, popular games, hot educational games, most played games, trending learning games, popular educational content"
+    },
+    "hero": {
+      "title": "Trending Games",
+      "subtitle": "Discover the hottest educational games right now! These trending games are loved by students worldwide and are perfect for engaging learning experiences across all subjects."
+    },
+    "featured": {
+      "title": "Trending Games",
+      "subtitle": "The hottest educational games right now"
+    },
+    "categories": {
+      "title": "Trending Categories",
+      "subtitle": "Popular subjects and learning trends",
+      "math": {
+        "title": "Math Games",
+        "description": "Problem-solving games are trending up 25% this week",
+        "trend": "+25%"
+      },
+      "science": {
+        "title": "Science Games",
+        "description": "Physics simulations gaining popularity among students",
+        "trend": "+18%"
+      },
+      "coding": {
+        "title": "Coding Games",
+        "description": "Programming challenges seeing 40% increase in plays",
+        "trend": "+40%"
+      },
+      "language": {
+        "title": "Language Games",
+        "description": "Vocabulary builders are extremely popular this month",
+        "trend": "+32%"
+      }
+    }
+  },
+  "recently_played": {
+    "seo": {
+      "title": "Recently Played Games | Your Game History | EduGameHQ",
+      "description": "View your recently played educational games and continue your learning journey. Track your progress across math, science, coding, and language games.",
+      "keywords": "recently played games, game history, continue playing, track progress, learning history, educational games history"
+    },
+    "hero": {
+      "title": "Recently Played",
+      "description": "Continue your learning journey! Pick up where you left off with your recently played educational games."
+    },
+    "actions": {
+      "clear_history": "Clear History"
+    },
+    "recent_games": {
+      "title": "Your Recent Games",
+      "subtitle": "Continue where you left off"
+    },
+    "learning_tips": {
+      "title": "Learning Tips",
+      "subtitle": "Maximize your educational gaming experience",
+      "tips": [
+        {
+          "title": "Keep Learning!",
+          "description": "Regular practice helps reinforce learning. Try to play educational games for 15-20 minutes daily for best results."
+        },
+        {
+          "title": "Set Goals",
+          "description": "Challenge yourself to complete one game per day or master a specific skill through repeated practice."
+        },
+        {
+          "title": "Track Progress",
+          "description": "Your game history helps you see your learning journey and identify areas where you've improved."
+        },
+        {
+          "title": "Keep Practicing",
+          "description": "Return to games you've played before to reinforce learning and improve your skills over time."
+        }
+      ]
+    },
+    "empty_state": {
+      "title": "No game history yet",
+      "description": "Start playing some educational games and they'll appear here!",
+      "action": "Explore Games"
+    }
+  },
+  "help_page": {
+    "seo": {
+      "title": "Help Center | EduGameHQ - Support for Educational Games",
+      "description": "Get help with EduGameHQ educational games. Find answers to common questions, troubleshooting guides, and support for parents and teachers.",
+      "keywords": "help, support, FAQ, educational games, troubleshooting, parent guide, teacher resources"
+    },
+    "header": {
+      "title": "Help Center",
+      "description": "Find answers, get support, and make the most of your EduGameHQ experience"
+    },
+    "search": {
+      "placeholder": "Search for help articles...",
+      "hint": "Try searching for \"games won't load\" or \"how to save progress\""
+    },
+    "quick_links": {
+      "title": "Quick Links"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions"
+    },
+    "guides": {
+      "title": "How-To Guides"
+    },
+    "contact": {
+      "title": "Contact Support",
+      "intro": "Can't find what you're looking for? Our support team is here to help!",
+      "response_title": "Response Time",
+      "response_text": "We typically respond within 24 hours on weekdays"
+    }
+  },
+  "search_page": {
+    "seo": {
+      "title": "Search Educational Games - EduGameHQ",
+      "title_with_query": "Search Results for \"{query}\" - EduGameHQ",
+      "description": "Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.",
+      "description_with_query": "Found {count} educational games matching \"{query}\". Play fun learning games for kids."
+    },
+    "header": {
+      "title": "Search Educational Games",
+      "subtitle": "Find the perfect educational game for your learning journey",
+      "results_title": "Found {count} Results",
+      "no_results_title": "No Results Found",
+      "results_for": "Search results for:"
+    },
+    "results": {
+      "title": "Search Results",
+      "subtitle": "Found {count} games matching \"{query}\""
+    },
+    "no_results": {
+      "title": "No Games Found",
+      "subtitle": "Sorry, we couldn't find any games matching \"{query}\"",
+      "try_searching": "Try searching for:",
+      "suggestions_title": "You Might Like These Games",
+      "suggestions_subtitle": "Try these popular games instead"
+    },
+    "default": {
+      "title": "Start Your Learning Adventure",
+      "subtitle": "Use the search bar above to find educational games by subject, difficulty, or keywords",
+      "popular_searches": "Popular Searches",
+      "popular_games_title": "Popular Educational Games",
+      "popular_games_subtitle": "Start with our most loved educational games"
     }
   }
 }

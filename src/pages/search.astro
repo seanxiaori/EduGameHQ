@@ -5,7 +5,10 @@ import GameCard from '../components/GameCard.astro';
 import type { Game } from '../types/game';
 import fs from 'fs';
 import path from 'path';
+import { getTranslations, t } from '../i18n/utils';
 import '../styles/game-card.css';
+
+const translations = await getTranslations('en');
 
 // 从JSON文件读取游戏数据
 const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
@@ -13,9 +16,8 @@ let allGamesData = [];
 try {
   const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
   allGamesData = JSON.parse(fileContent);
-  console.log(`✅ 搜索页面成功加载 ${allGamesData.length} 个游戏数据`);
 } catch (error) {
-  console.error('❌ 搜索页面无法读取游戏数据文件:', error);
+  console.warn('Unable to read games data file:', error);
 }
 
 // 使用JSON数据作为游戏源
@@ -26,47 +28,21 @@ const popularGames = allGames
   .filter((game: any) => game.featured || (game.popularity && game.popularity > 800))
   .slice(0, 12);
 
-console.log(`🔍 搜索页面找到 ${popularGames.length} 个推荐游戏`);
-console.log(`📊 搜索页面游戏总数: ${allGames.length}`);
-
 // 从URL获取搜索查询
 const url = Astro.url;
 const searchQuery = url.searchParams.get('q') || '';
-
-// 详细调试信息
-console.log(`🔍 === 详细URL调试信息 ===`);
-console.log(`🔍 完整URL: ${url.toString()}`);
-console.log(`🔍 URL路径: ${url.pathname}`);
-console.log(`🔍 URL参数字符串: "${url.search}"`);
-console.log(`🔍 URL参数对象:`, url.searchParams);
-console.log(`🔍 所有URL参数:`, [...url.searchParams.entries()]);
-console.log(`🔍 搜索查询 q: "${searchQuery}"`);
-console.log(`🔍 搜索查询长度: ${searchQuery.length}`);
-console.log(`🔍 === 调试信息结束 ===`);
 
 // 执行搜索（如果有查询词）
 let searchResults: Game[] = [];
 if (searchQuery) {
   const searchTerm = searchQuery.toLowerCase().trim();
-  console.log(`🔍 处理后的搜索词: "${searchTerm}"`);
-  
-  searchResults = allGames.filter((game: any) => 
+
+  searchResults = allGames.filter((game: any) =>
     game.title.toLowerCase().includes(searchTerm) ||
     game.description.toLowerCase().includes(searchTerm) ||
     game.category.toLowerCase().includes(searchTerm) ||
     (game.tags && game.tags.some((tag: string) => tag.toLowerCase().includes(searchTerm)))
   );
-  console.log(`🔍 搜索"${searchQuery}"找到 ${searchResults.length} 个结果`);
-  
-  // 显示前几个匹配的游戏
-  if (searchResults.length > 0) {
-    console.log(`🎮 匹配的游戏示例:`);
-    searchResults.slice(0, 3).forEach((game, index) => {
-      console.log(`  ${index + 1}. ${game.title} (${game.category})`);
-    });
-  }
-} else {
-  console.log(`🔍 没有搜索查询，显示默认页面`);
 }
 
 // 热门搜索关键词
@@ -81,8 +57,12 @@ const popularSearchTerms = [
 
 // SEO数据
 const seoData = {
-  title: searchQuery ? `Search Results for "${searchQuery}" - EduGameHQ` : 'Search Educational Games - EduGameHQ',
-  description: searchQuery ? `Found ${searchResults.length} educational games matching "${searchQuery}". Play fun learning games for kids.` : 'Search our collection of educational games by subject, difficulty, or keywords. Find the perfect learning game for your needs.',
+  title: searchQuery
+    ? t(translations, 'search_page.seo.title_with_query', `Search Results for "${searchQuery}" - EduGameHQ`).replace('{query}', searchQuery)
+    : t(translations, 'search_page.seo.title', 'Search Educational Games - EduGameHQ'),
+  description: searchQuery
+    ? t(translations, 'search_page.seo.description_with_query', `Found ${searchResults.length} educational games matching "${searchQuery}".`).replace('{count}', String(searchResults.length)).replace('{query}', searchQuery)
+    : t(translations, 'search_page.seo.description', 'Search our collection of educational games by subject, difficulty, or keywords.'),
   keywords: ['search games', 'educational games', 'learning games', 'find games', 'game search']
 };
 ---
@@ -104,19 +84,19 @@ const seoData = {
               {searchQuery ? (
                 searchResults.length > 0 ? (
                   <>
-                    <h1 class="page-title">Found {searchResults.length} Results</h1>
-                    <p class="page-description">Search results for: <strong>"{searchQuery}"</strong></p>
+                    <h1 class="page-title">{t(translations, 'search_page.header.results_title', 'Found {count} Results').replace('{count}', String(searchResults.length))}</h1>
+                    <p class="page-description">{t(translations, 'search_page.header.results_for', 'Search results for:')} <strong>"{searchQuery}"</strong></p>
                   </>
                 ) : (
                   <>
-                    <h1 class="page-title">No Results Found</h1>
-                    <p class="page-description">Search results for: <strong>"{searchQuery}"</strong></p>
+                    <h1 class="page-title">{t(translations, 'search_page.header.no_results_title', 'No Results Found')}</h1>
+                    <p class="page-description">{t(translations, 'search_page.header.results_for', 'Search results for:')} <strong>"{searchQuery}"</strong></p>
                   </>
                 )
               ) : (
                 <>
-                  <h1 class="page-title">Search Educational Games</h1>
-                  <p class="page-description">Find the perfect educational game for your learning journey</p>
+                  <h1 class="page-title">{t(translations, 'search_page.header.title', 'Search Educational Games')}</h1>
+                  <p class="page-description">{t(translations, 'search_page.header.subtitle', 'Find the perfect educational game for your learning journey')}</p>
                 </>
               )}
             </div>
@@ -132,8 +112,8 @@ const seoData = {
               <i class="fas fa-gamepad"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">Search Results</h2>
-              <p class="module-subtitle">Found {searchResults.length} games matching "{searchQuery}"</p>
+              <h2 class="module-title">{t(translations, 'search_page.results.title', 'Search Results')}</h2>
+              <p class="module-subtitle">{t(translations, 'search_page.results.subtitle', `Found ${searchResults.length} games matching "${searchQuery}"`).replace('{count}', String(searchResults.length)).replace('{query}', searchQuery)}</p>
             </div>
           </div>
           
@@ -158,13 +138,13 @@ const seoData = {
               <i class="fas fa-search"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">No Games Found</h2>
-              <p class="module-subtitle">Sorry, we couldn't find any games matching "{searchQuery}"</p>
+              <h2 class="module-title">{t(translations, 'search_page.no_results.title', 'No Games Found')}</h2>
+              <p class="module-subtitle">{t(translations, 'search_page.no_results.subtitle', `Sorry, we couldn't find any games matching "${searchQuery}"`).replace('{query}', searchQuery)}</p>
             </div>
           </div>
           
           <div class="search-suggestions">
-            <h3 class="section-title">Try searching for:</h3>
+            <h3 class="section-title">{t(translations, 'search_page.no_results.try_searching', 'Try searching for:')}</h3>
             <div class="search-tags">
               {popularSearchTerms.map(item => (
                 <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
@@ -180,8 +160,8 @@ const seoData = {
               <i class="fas fa-star"></i>
             </div>
             <div class="module-title-group">
-              <h2 class="module-title">You Might Like These Games</h2>
-              <p class="module-subtitle">Try these popular games instead</p>
+              <h2 class="module-title">{t(translations, 'search_page.no_results.suggestions_title', 'You Might Like These Games')}</h2>
+              <p class="module-subtitle">{t(translations, 'search_page.no_results.suggestions_subtitle', 'Try these popular games instead')}</p>
             </div>
           </div>
           
@@ -207,13 +187,13 @@ const seoData = {
                 <i class="fas fa-lightbulb"></i>
               </div>
               <div class="module-title-group">
-                <h2 class="module-title">Start Your Learning Adventure</h2>
-                <p class="module-subtitle">Use the search bar above to find educational games by subject, difficulty, or keywords</p>
+                <h2 class="module-title">{t(translations, 'search_page.default.title', 'Start Your Learning Adventure')}</h2>
+                <p class="module-subtitle">{t(translations, 'search_page.default.subtitle', 'Use the search bar above to find educational games by subject, difficulty, or keywords')}</p>
               </div>
             </div>
             
             <div class="popular-searches">
-              <h3 class="section-title">Popular Searches</h3>
+              <h3 class="section-title">{t(translations, 'search_page.default.popular_searches', 'Popular Searches')}</h3>
               <div class="search-tags">
                 {popularSearchTerms.map(item => (
                   <a href={`/search?q=${item.term}`} class={`search-tag ${item.color}`}>
@@ -231,8 +211,8 @@ const seoData = {
                 <i class="fas fa-star"></i>
               </div>
               <div class="module-title-group">
-                <h2 class="module-title">Popular Educational Games</h2>
-                <p class="module-subtitle">Start with our most loved educational games</p>
+                <h2 class="module-title">{t(translations, 'search_page.default.popular_games_title', 'Popular Educational Games')}</h2>
+                <p class="module-subtitle">{t(translations, 'search_page.default.popular_games_subtitle', 'Start with our most loved educational games')}</p>
               </div>
             </div>
             

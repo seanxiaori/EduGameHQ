@@ -1,0 +1,54 @@
+{
+  "generatedAt": "2026-03-03T08:33:29.531Z",
+  "buildDir": "/tmp/edugamehq-build",
+  "totalHtml": 2867,
+  "ignoredPaths": [
+    "/auto-screenshot/",
+    "/yandex_60fb28260cdeec35/"
+  ],
+  "analyzedHtml": 2865,
+  "indexableHtml": 2831,
+  "duplicates": {
+    "titleGroups": 0,
+    "descriptionGroups": 0,
+    "canonicalGroups": 0,
+    "topTitleDup": [],
+    "topDescriptionDup": [],
+    "topCanonicalDup": []
+  },
+  "missing": {
+    "title": 0,
+    "description": 0,
+    "canonical": 0,
+    "robots": 0,
+    "titleExamples": [],
+    "descriptionExamples": [],
+    "canonicalExamples": [],
+    "robotsExamples": []
+  },
+  "h1": {
+    "none": 0,
+    "multi": 0,
+    "noneExamples": [],
+    "multiExamples": []
+  },
+  "lengths": {
+    "description": {
+      "lt120": 24,
+      "b120_149": 40,
+      "b150_160": 2790,
+      "gt160": 11
+    },
+    "title": {
+      "lt30": 9,
+      "b30_60": 2554,
+      "gt60": 302
+    }
+  },
+  "checks": {
+    "has404": true,
+    "hasSitemapIndex": true,
+    "hasRootSitemap": true,
+    "hasRobots": true
+  }
+}

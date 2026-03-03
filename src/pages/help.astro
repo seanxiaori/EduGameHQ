@@ -1,11 +1,14 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../i18n/utils';
+
+const translations = await getTranslations('en');
 
 // 帮助中心SEO数据
 const seoData = {
-  title: "Help Center | EduGameHQ - Support for Educational Games",
-  description: "Get help with EduGameHQ educational games. Find answers to common questions, troubleshooting guides, and support for parents and teachers.",
-  keywords: ["help", "support", "FAQ", "educational games", "troubleshooting", "parent guide", "teacher resources"]
+  title: t(translations, 'help_page.seo.title', 'Help Center | EduGameHQ - Support for Educational Games'),
+  description: t(translations, 'help_page.seo.description', 'Get help with EduGameHQ educational games. Find answers to common questions, troubleshooting guides, and support for parents and teachers.'),
+  keywords: t(translations, 'help_page.seo.keywords', 'help, support, FAQ, educational games, troubleshooting, parent guide, teacher resources')
 };
 
 // 🔧 GEO优化：生成FAQ结构化数据（帮助AI系统理解和引用FAQ内容）
@@ -197,9 +200,9 @@ const contactMethods = [
             </div>
           </div>
           <div class="header-text">
-            <h1 class="page-title">Help Center</h1>
+            <h1 class="page-title">{t(translations, 'help_page.header.title', 'Help Center')}</h1>
             <p class="page-description">
-              Find answers, get support, and make the most of your EduGameHQ experience
+              {t(translations, 'help_page.header.description', 'Find answers, get support, and make the most of your EduGameHQ experience')}
             </p>
           </div>
         </div>
@@ -210,15 +213,15 @@ const contactMethods = [
         <div class="search-container">
           <div class="search-box">
             <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search for help articles..." />
+            <input type="text" placeholder={t(translations, 'help_page.search.placeholder', 'Search for help articles...')} />
           </div>
-          <p class="search-hint">Try searching for "games won't load" or "how to save progress"</p>
+          <p class="search-hint">{t(translations, 'help_page.search.hint', 'Try searching for "games won\'t load" or "how to save progress"')}</p>
         </div>
       </section>
 
       <!-- 快速链接 -->
       <section class="quick-links-section">
-        <h2 class="section-title">Quick Links</h2>
+        <h2 class="section-title">{t(translations, 'help_page.quick_links.title', 'Quick Links')}</h2>
         <div class="quick-links-grid">
           {quickLinks.map((category) => (
             <div class="quick-link-category">
@@ -242,7 +245,7 @@ const contactMethods = [
 
       <!-- 常见问题 -->
       <section class="faq-section">
-        <h2 class="section-title">Frequently Asked Questions</h2>
+        <h2 class="section-title">{t(translations, 'help_page.faq.title', 'Frequently Asked Questions')}</h2>
         <div class="faq-categories">
           {faqCategories.map((category) => (
             <div class="faq-category">
@@ -272,7 +275,7 @@ const contactMethods = [
 
       <!-- 使用指南 -->
       <section class="guides-section">
-        <h2 class="section-title">How-To Guides</h2>
+        <h2 class="section-title">{t(translations, 'help_page.guides.title', 'How-To Guides')}</h2>
         <div class="guides-grid">
           <div class="guide-item">
             <div class="guide-icon">
@@ -327,9 +330,9 @@ const contactMethods = [
 
       <!-- 联系支持 -->
       <section class="contact-section" id="contact">
-        <h2 class="section-title">Contact Support</h2>
+        <h2 class="section-title">{t(translations, 'help_page.contact.title', 'Contact Support')}</h2>
         <p class="contact-intro">
-          Can't find what you're looking for? Our support team is here to help!
+          {t(translations, 'help_page.contact.intro', "Can't find what you're looking for? Our support team is here to help!")}
         </p>
         <div class="contact-methods">
           {contactMethods.map((method) => (
@@ -350,8 +353,8 @@ const contactMethods = [
           <div class="response-info">
             <i class="fas fa-clock"></i>
             <div>
-              <h4>Response Time</h4>
-              <p>We typically respond within 24 hours on weekdays</p>
+              <h4>{t(translations, 'help_page.contact.response_title', 'Response Time')}</h4>
+              <p>{t(translations, 'help_page.contact.response_text', 'We typically respond within 24 hours on weekdays')}</p>
             </div>
           </div>
         </div>
