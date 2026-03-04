@@ -152,7 +152,7 @@
     "title": "Frogger",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/frogger/preview.svg",
+    "image": "https://games.edugamehq.com/games/frogger/screenshot-gameplay.png",
     "iframeUrl": "https://games.edugamehq.com/games/frogger/",
     "description": "Help the frog cross the busy road and river! Avoid cars and jump on logs to reach safety.",
     "gameGuide": {
@@ -170,7 +170,7 @@
         "Watch traffic patterns"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/frogger/screenshot-gameplay.png",
     "difficulty": "Medium",
     "ageRange": "6-14",
     "minAge": 6,
@@ -399,7 +399,7 @@
     "title": "Space Invaders",
     "category": "adventure",
     "categoryName": "Adventure",
-    "image": "https://games.edugamehq.com/games/space-invaders/preview.svg",
+    "image": "https://games.edugamehq.com/games/space-invaders/screenshot-gameplay.png",
     "iframeUrl": "https://games.edugamehq.com/games/space-invaders/",
     "description": "Classic arcade shooter! Defend Earth from waves of alien invaders. Shoot them down before they reach you!",
     "gameGuide": {
@@ -417,7 +417,7 @@
         "Use cover strategically"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/space-invaders/screenshot-gameplay.png",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -466,7 +466,7 @@
         "Keep moving to avoid enemies"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/radius-raid/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/radius-raid/screenshot-gameplay.png",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -491,7 +491,8 @@
     "trending": true,
     "isNew": true,
     "original": false,
-    "developer": "Jack Rugile"
+    "developer": "Jack Rugile",
+    "image": "https://games.edugamehq.com/games/radius-raid/screenshot-gameplay.png"
   },
   {
     "slug": "text-adventure",
@@ -597,7 +598,7 @@
     "title": "Alien Invasion",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/alien-invasion/cover.svg",
+    "image": "https://games.edugamehq.com/games/alien-invasion/screenshot-gameplay.png",
     "iframeUrl": "https://games.edugamehq.com/games/alien-invasion/",
     "description": "Defend Earth from alien invaders! Shoot down waves of aliens before they reach the bottom.",
     "gameGuide": {
@@ -617,7 +618,7 @@
         "Watch for bonus power-ups"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/alien-invasion/cover.svg",
+    "thumbnailUrl": "https://games.edugamehq.com/games/alien-invasion/screenshot-gameplay.png",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -650,7 +651,7 @@
     "title": "Ball and Wall",
     "category": "arcade",
     "categoryName": "Arcade",
-    "image": "https://games.edugamehq.com/games/ball-and-wall/cover.svg",
+    "image": "https://games.edugamehq.com/games/ball-and-wall/screenshot-gameplay.png",
     "iframeUrl": "https://games.edugamehq.com/games/ball-and-wall/",
     "description": "Classic brick breaker game! Bounce the ball to destroy all the bricks.",
     "gameGuide": {
@@ -669,7 +670,7 @@
         "Catch power-ups"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/ball-and-wall/cover.svg",
+    "thumbnailUrl": "https://games.edugamehq.com/games/ball-and-wall/screenshot-gameplay.png",
     "difficulty": "Easy",
     "ageRange": "8-16",
     "minAge": 8,
@@ -1952,7 +1953,7 @@
         "Learn align-items next"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/flexboxfroggy/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/flexboxfroggy/screenshot-gameplay.png",
     "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
@@ -1979,7 +1980,8 @@
     "lastChecked": "2026-01-25",
     "featured": true,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "image": "https://games.edugamehq.com/games/flexboxfroggy/screenshot-gameplay.png"
   },
   {
     "slug": "code-editor",
@@ -3648,7 +3650,7 @@
         "Use process of elimination"
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/wordle/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/wordle/screenshot-gameplay.png",
     "difficulty": "Medium",
     "ageRange": "10-18",
     "minAge": 10,
@@ -3674,7 +3676,8 @@
     "lastChecked": "2026-01-25",
     "featured": true,
     "trending": false,
-    "isNew": true
+    "isNew": true,
+    "image": "https://games.edugamehq.com/games/wordle/screenshot-gameplay.png"
   },
   {
     "slug": "math-kids",
@@ -11267,7 +11270,7 @@
     "description": "Stack blocks as high as you can in this 3D tower building game. Test your timing and precision.",
     "category": "arcade",
     "subcategory": "puzzle",
-    "thumbnailUrl": "https://games.edugamehq.com/games/tower-blocks/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/tower-blocks/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Tanay Padar",
     "rating": 8.5,
@@ -11293,7 +11296,8 @@
     "featured": false,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/tower-blocks/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/tower-blocks/screenshot-gameplay.png"
   },
   {
     "id": "archery-game",
@@ -11302,7 +11306,7 @@
     "description": "Draw back your bow and hit the target. A beautiful SVG-based archery game with smooth animations.",
     "category": "arcade",
     "subcategory": "sports",
-    "thumbnailUrl": "https://games.edugamehq.com/games/archery-game/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/archery-game/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Talha",
     "rating": 8.5,
@@ -11328,7 +11332,8 @@
     "featured": false,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/archery-game/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/archery-game/screenshot-gameplay.png"
   },
   {
     "id": "hexgl",
@@ -11337,7 +11342,7 @@
     "description": "Futuristic racing game built with WebGL. Race through a stunning 3D cityscape at high speed.",
     "category": "arcade",
     "subcategory": "racing",
-    "thumbnailUrl": "https://games.edugamehq.com/games/hexgl/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/hexgl/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "BKcore (Thibaut Despoulain)",
     "rating": 9.5,
@@ -11361,7 +11366,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/hexgl/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/hexgl/screenshot-gameplay.png"
   },
   {
     "id": "emberwind",
@@ -11370,7 +11376,7 @@
     "description": "Help gnome watchman Kindle Elderwood free the city from gremlins in this beautiful platformer game.",
     "category": "arcade",
     "subcategory": "platformer",
-    "thumbnailUrl": "https://games.edugamehq.com/games/emberwind/resources/atlas/no_c_red/titlescreen1.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/emberwind/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Opera Software",
     "rating": 9.0,
@@ -11393,7 +11399,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/emberwind/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/emberwind/screenshot-gameplay.png"
   },
   {
     "id": "duckhunt",
@@ -11402,7 +11409,7 @@
     "description": "Classic shooting game. Shoot the ducks before they fly away in this nostalgic arcade experience.",
     "category": "arcade",
     "subcategory": "shooter",
-    "thumbnailUrl": "https://games.edugamehq.com/games/duckhunt/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/duckhunt/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Matt Surabian",
     "rating": 8.5,
@@ -11426,7 +11433,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/duckhunt/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/duckhunt/screenshot-gameplay.png"
   },
   {
     "id": "angrybirds",
@@ -11435,7 +11443,7 @@
     "description": "Launch birds to destroy structures and defeat the pigs in this physics-based puzzle game.",
     "category": "arcade",
     "subcategory": "puzzle",
-    "thumbnailUrl": "https://games.edugamehq.com/games/angrybirds/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/angrybirds/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Mahdi7s",
     "rating": 9.0,
@@ -11458,7 +11466,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/angrybirds/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/angrybirds/screenshot-gameplay.png"
   },
   {
     "id": "polydash",
@@ -11467,7 +11476,7 @@
     "description": "Rhythm-based platformer inspired by Geometry Dash. Jump and fly through obstacles to the beat.",
     "category": "arcade",
     "subcategory": "platformer",
-    "thumbnailUrl": "https://games.edugamehq.com/games/polydash/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/polydash/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "ishaanSh06",
     "rating": 8.5,
@@ -11490,7 +11499,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/polydash/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/polydash/screenshot-gameplay.png"
   },
   {
     "id": "galaga",
@@ -11499,7 +11509,7 @@
     "description": "Classic arcade space shooter. Destroy waves of alien enemies and achieve the highest score.",
     "category": "arcade",
     "subcategory": "shooter",
-    "thumbnailUrl": "https://games.edugamehq.com/games/galaga/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/galaga/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "jwilliams219",
     "rating": 9.0,
@@ -11523,7 +11533,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/galaga/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/galaga/screenshot-gameplay.png"
   },
   {
     "id": "space-defender",
@@ -11532,7 +11543,7 @@
     "description": "Retro vector graphics space shooter. Defend against waves of enemies with your spaceship.",
     "category": "arcade",
     "subcategory": "shooter",
-    "thumbnailUrl": "https://games.edugamehq.com/games/space-defender/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/space-defender/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Clinton Morrison",
     "rating": 8.0,
@@ -11556,7 +11567,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/space-defender/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/space-defender/screenshot-gameplay.png"
   },
   {
     "id": "asteroids",
@@ -11565,7 +11577,7 @@
     "description": "Classic arcade game. Pilot your ship and destroy asteroids while avoiding collisions.",
     "category": "arcade",
     "subcategory": "shooter",
-    "thumbnailUrl": "https://games.edugamehq.com/games/asteroids/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/asteroids/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "developer": "Doug McInnes",
     "rating": 9.0,
@@ -11588,7 +11600,8 @@
     "isNew": true,
     "categoryName": "Arcade",
     "iframeUrl": "https://games.edugamehq.com/games/asteroids/",
-    "source": "GitHub"
+    "source": "GitHub",
+    "image": "https://games.edugamehq.com/games/asteroids/screenshot-gameplay.png"
   },
   {
     "id": "sokoban",
@@ -11600,7 +11613,7 @@
     "developer": "Tania Rascia",
     "source": "GitHub",
     "subcategory": "logic",
-    "thumbnailUrl": "https://games.edugamehq.com/games/sokoban/screenshot.png",
+    "thumbnailUrl": "https://games.edugamehq.com/games/sokoban/screenshot-gameplay.png",
     "platform": "EduGameHQ",
     "rating": 8.5,
     "playCount": 0,
@@ -11621,7 +11634,8 @@
     "maxAge": 18,
     "ageRange": "6-18",
     "isNew": true,
-    "categoryName": "Puzzle"
+    "categoryName": "Puzzle",
+    "image": "https://games.edugamehq.com/games/sokoban/screenshot-gameplay.png"
   },
   {
     "id": "pinball",
