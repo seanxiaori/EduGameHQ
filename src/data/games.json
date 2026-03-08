@@ -11808,7 +11808,7 @@
     "title": "Tower Building",
     "category": "puzzle",
     "categoryName": "Puzzle",
-    "image": "https://games.edugamehq.com/games/tower-game/assets/main-index-logo.png",
+    "image": "/screenshots/tower-building.png",
     "iframeUrl": "https://games.edugamehq.com/games/tower-game/",
     "description": "Build the tallest tower with precise timing in this fast-paced HTML5 stacking challenge.",
     "gameGuide": {
@@ -11827,7 +11827,7 @@
         "Use short sessions to improve timing accuracy."
       ]
     },
-    "thumbnailUrl": "https://games.edugamehq.com/games/tower-game/assets/main-index-logo.png",
+    "thumbnailUrl": "/screenshots/tower-building.png",
     "difficulty": "Medium",
     "ageRange": "8-16",
     "minAge": 8,
@@ -11840,7 +11840,7 @@
       "html5",
       "open source"
     ],
-    "source": "GitHub Open Source",
+    "source": "EduGameHQ",
     "developer": "iamkun",
     "iframeCompatible": true,
     "verified": true,
@@ -11856,5 +11856,186 @@
     "trending": true,
     "isNew": true,
     "original": false
+  },
+  {
+    "slug": "chinese-chess",
+    "title": "Chinese Chess",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://itlwei.github.io/Chess/",
+    "description": "中国象棋 - Play traditional Chinese Chess online. A classic strategy board game with beautiful HTML5 interface.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click to select a piece",
+        "Click destination to move",
+        "Capture opponent's general to win",
+        "Follow traditional Chinese Chess rules"
+      ],
+      "controls": {
+        "mouse": "Click to select and move pieces"
+      },
+      "tips": [
+        "Protect your general at all times",
+        "Control the center of the board",
+        "Coordinate your pieces for attacks"
+      ]
+    },
+    "thumbnailUrl": "/screenshots/chinese-chess.png",
+    "difficulty": "Hard",
+    "ageRange": "10-16",
+    "minAge": 10,
+    "maxAge": 16,
+    "tags": ["strategy", "chess", "board-game", "chinese"],
+    "source": "EduGameHQ",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "zh",
+    "playCount": 0,
+    "sourceUrl": "https://github.com/itlwei/Chess",
+    "lastUpdated": "2026-03-08",
+    "lastChecked": "2026-03-08",
+    "featured": true,
+    "trending": true,
+    "isNew": true,
+    "developer": "itlwei"
+  },
+  {
+    "slug": "sudoku-puzzle",
+    "title": "Sudoku",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://sudoku.js.org",
+    "description": "Classic Sudoku puzzle game. Fill the 9x9 grid with numbers 1-9, ensuring each row, column, and 3x3 box contains all digits.",
+    "gameGuide": {
+      "howToPlay": [
+        "Click a cell to select it",
+        "Enter numbers 1-9",
+        "Fill all cells without repeating numbers",
+        "Complete the puzzle to win"
+      ],
+      "controls": {
+        "mouse": "Click cells to select",
+        "keyboard": "Type numbers 1-9"
+      },
+      "tips": [
+        "Start with rows/columns that have most numbers",
+        "Look for single candidates",
+        "Use pencil marks for possibilities"
+      ]
+    },
+    "thumbnailUrl": "/screenshots/sudoku-puzzle.png",
+    "difficulty": "Medium",
+    "ageRange": "10-16",
+    "minAge": 10,
+    "maxAge": 16,
+    "tags": ["puzzle", "logic", "brain-training", "educational"],
+    "source": "EduGameHQ",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "playCount": 0,
+    "sourceUrl": "https://github.com/andreynering/sudoku",
+    "lastUpdated": "2026-03-08",
+    "lastChecked": "2026-03-08",
+    "featured": true,
+    "trending": false,
+    "isNew": true,
+    "developer": "andreynering"
+  },
+  {
+    "slug": "tic-tac-toe-ai",
+    "title": "Tic-Tac-Toe",
+    "category": "strategy",
+    "categoryName": "Strategy",
+    "iframeUrl": "https://ramazancetinkaya.github.io/tictactoe/",
+    "description": "Challenge a smart AI in this classic Tic-Tac-Toe game. Built with vanilla JavaScript - simple, fun, and addictive!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click an empty square to place your mark",
+        "Get three in a row to win",
+        "Block opponent's winning moves",
+        "Try to beat the AI!"
+      ],
+      "controls": {
+        "mouse": "Click squares to play"
+      },
+      "tips": [
+        "Control the center square",
+        "Create multiple winning threats",
+        "Watch for opponent's patterns"
+      ]
+    },
+    "thumbnailUrl": "/screenshots/tic-tac-toe-ai.png",
+    "difficulty": "Easy",
+    "ageRange": "6-16",
+    "minAge": 6,
+    "maxAge": 16,
+    "tags": ["strategy", "classic", "ai", "kids"],
+    "source": "EduGameHQ",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "playCount": 0,
+    "sourceUrl": "https://github.com/ramazancetinkaya/tictactoe",
+    "lastUpdated": "2026-03-08",
+    "lastChecked": "2026-03-08",
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "ramazancetinkaya"
+  },
+  {
+    "slug": "memory-match-game",
+    "title": "Memory Match",
+    "category": "memory",
+    "categoryName": "Memory",
+    "iframeUrl": "https://juandagarcia.github.io/MemoryGame/",
+    "description": "Rick and Morty themed memory matching game. Flip cards to find matching pairs. Train your memory skills!",
+    "gameGuide": {
+      "howToPlay": [
+        "Click cards to flip them",
+        "Find matching pairs",
+        "Remember card positions",
+        "Match all pairs to win"
+      ],
+      "controls": {
+        "mouse": "Click to flip cards"
+      },
+      "tips": [
+        "Focus on remembering positions",
+        "Start from one corner",
+        "Match pairs as quickly as possible"
+      ]
+    },
+    "thumbnailUrl": "/screenshots/memory-match-game.png",
+    "difficulty": "Easy",
+    "ageRange": "6-14",
+    "minAge": 6,
+    "maxAge": 14,
+    "tags": ["memory", "kids", "educational", "casual"],
+    "source": "EduGameHQ",
+    "iframeCompatible": true,
+    "verified": true,
+    "technology": "HTML5",
+    "mobileSupport": true,
+    "responsive": true,
+    "language": "en",
+    "playCount": 0,
+    "sourceUrl": "https://github.com/JuandaGarcia/MemoryGame",
+    "lastUpdated": "2026-03-08",
+    "lastChecked": "2026-03-08",
+    "featured": false,
+    "trending": false,
+    "isNew": true,
+    "developer": "JuandaGarcia"
   }
 ]

@@ -36,12 +36,16 @@ const relatedGames = gamesData
   .slice(0, 4);
 
 // 游戏来源检测函数
-function getGameSource(url: string | undefined | null): string {
-  // 处理undefined或null的情况
-  if (!url || typeof url !== 'string') {
-    return 'EduGameHQ';
+function getGameSource(game: Game): string {
+  // 优先使用 game.source 字段
+  if (game.source) {
+    return game.source;
   }
-  
+
+  // 回退到 URL 检测
+  const url = game.sourceUrl || game.url || '';
+  if (!url) return 'EduGameHQ';
+
   if (url.includes('crazygames.com')) return 'CrazyGames';
   if (url.includes('miniplay.com')) return 'Miniplay';
   if (url.includes('gamedistribution.com')) return 'GameDistribution';
@@ -154,7 +158,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
              style="display:block"
              data-ad-client="ca-pub-6509438403900392"
              data-ad-slot="3769513448"
-             data-ad-format="horizontal"
+             data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script is:inline>
              (adsbygoogle = window.adsbygoogle || []).push({});
@@ -320,11 +324,11 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           <div class="developer-details">
             <div class="developer-item">
               <span class="detail-label">Developer:</span>
-              <span class="detail-value">{game.developer || getGameSource(getGameSourceUrl(game)) + ' Team'}</span>
+              <span class="detail-value">{game.developer || getGameSource(game) + ' Team'}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Source:</span>
-              <span class="detail-value">{getGameSource(getGameSourceUrl(game))}</span>
+              <span class="detail-value">{getGameSource(game)}</span>
             </div>
             <div class="developer-item">
               <span class="detail-label">Type:</span>
