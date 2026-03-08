@@ -3,7 +3,7 @@
  * 用于从翻译文件获取本地化的SEO元数据
  */
 
-import { getTranslations, type LanguageCode, type TranslationData } from '../i18n/utils';
+import { getTranslations, removeLanguagePrefix, type LanguageCode, type TranslationData } from '../i18n/utils';
 import { getPageSEO } from '../data/seo-config';
 
 export interface LocalizedSEOData {
@@ -19,63 +19,35 @@ export interface LocalizedSEOData {
  * @returns 本地化的SEO数据
  */
 export async function getLocalizedSEO(path: string, lang: LanguageCode): Promise<LocalizedSEOData> {
-  console.log('🔍 SEO国际化调试 - 路径:', path, '语言:', lang);
-  
   const translations = await getTranslations(lang);
-  console.log('📝 翻译数据获取状态:', translations ? '成功' : '失败');
-  
+
+  const normalizedPath = normalizeSEOPath(path);
+
   // 获取默认的英文SEO配置作为后备
-  const defaultSEO = getPageSEO(path);
-  console.log('🔧 默认SEO配置:', defaultSEO);
-  
-  // 根据路径确定翻译键
-  let seoKey = '';
-  
-  if (path.includes('/about')) {
-    seoKey = 'about_page.seo';
-    console.log('📍 匹配到about页面，SEO键:', seoKey);
-  } else if (path === '/' || path.includes('/index')) {
-    seoKey = 'seo.home_page';
-  } else if (path.includes('/math-games')) {
-    seoKey = 'seo.math_games';
-  } else if (path.includes('/science-games')) {
-    seoKey = 'seo.science_games';
-  } else if (path.includes('/coding-games')) {
-    seoKey = 'seo.coding_games';
-  } else if (path.includes('/language-games')) {
-    seoKey = 'seo.language_games';
-  } else if (path.includes('/puzzle-games')) {
-    seoKey = 'seo.puzzle_games';
-  } else if (path.includes('/sports-games')) {
-    seoKey = 'seo.sports_games';
-  } else if (path.includes('/art-games')) {
-    seoKey = 'categories.art_games.seo';
-  } else if (path.includes('/trending')) {
-    seoKey = 'special_pages.trending.seo';
-  } else if (path.includes('/new-games')) {
-    seoKey = 'special_pages.new_games.seo';
-  } else if (path.includes('/recently-played')) {
-    seoKey = 'special_pages.recently_played.seo';
-  } else if (path.includes('/favorites')) {
-    seoKey = 'special_pages.favorites.seo';
-  } else if (path.includes('/search')) {
-    seoKey = 'special_pages.search.seo';
-  } else if (path.includes('/help')) {
-    seoKey = 'support_pages.help.seo';
-  } else if (path.includes('/privacy')) {
-    seoKey = 'support_pages.privacy.seo';
-  } else if (path.includes('/terms')) {
-    seoKey = 'support_pages.terms.seo';
-  }
-  
+  const defaultSEO = getPageSEO(normalizedPath);
+
+  // 使用翻译文件中实际存在的SEO键映射
+  const seoKeyMap: Record<string, string> = {
+    '/': 'seo.home_page',
+    '/about': 'about_page.seo',
+    '/math-games': 'seo.math_games',
+    '/science-games': 'seo.science_games',
+    '/coding-games': 'seo.coding_games',
+    '/trending': 'trending_games.seo',
+    '/new-games': 'new_games_page.seo',
+    '/recently-played': 'recently_played.seo',
+    '/favorites': 'favorites_page.seo',
+    '/help': 'help_page.seo',
+    '/privacy-policy': 'privacy_policy_page.seo',
+    '/terms-of-service': 'terms_page.seo'
+  };
+  const seoKey = seoKeyMap[normalizedPath] || '';
+
   // 尝试从翻译文件获取SEO数据
-  console.log('🔑 SEO键:', seoKey);
   if (seoKey && translations) {
     try {
       const seoData = getSEOFromTranslations(translations, seoKey);
-      console.log('📊 获取到的SEO数据:', seoData);
       if (seoData) {
-        console.log('✅ 返回本地化SEO数据');
         return seoData;
       }
     } catch (error) {
@@ -84,7 +56,6 @@ export async function getLocalizedSEO(path: string, lang: LanguageCode): Promise
   }
   
   // 如果没有找到翻译，返回默认的英文SEO配置
-  console.log('⚠️ 使用默认英文SEO配置');
   return {
     title: defaultSEO.title,
     description: defaultSEO.description,
@@ -118,11 +89,21 @@ function getSEOFromTranslations(translations: TranslationData, seoKey: string): 
     return {
       title: String(seoData.title),
       description: String(seoData.description),
-      keywords: String(seoData.keywords)
+      keywords: Array.isArray(seoData.keywords) ? seoData.keywords.join(', ') : String(seoData.keywords)
     };
   }
   
   return null;
+}
+
+function normalizeSEOPath(path: string): string {
+  const pathWithoutHash = path.split('#')[0] || '/';
+  const pathWithoutQuery = pathWithoutHash.split('?')[0] || '/';
+  const cleanPath = removeLanguagePrefix(pathWithoutQuery);
+  if (cleanPath === '/') {
+    return '/';
+  }
+  return cleanPath.endsWith('/') ? cleanPath.slice(0, -1) : cleanPath;
 }
 
 /**

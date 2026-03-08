@@ -1,3 +1,5 @@
+import { supportedLanguages, type LanguageCode } from '../i18n/config';
+
 // SEO配置文件 - 基于需求文档的关键词策略
 export interface SEOConfig {
   title: string;
@@ -427,6 +429,51 @@ export const seoConfig: Record<string, SEOConfig> = {
     ogImage: "/images/logo.svg"
   },
 
+  // 地理游戏页面
+  '/geography-games': {
+    title: "Geography Games for Kids | Maps, Flags & Capitals | EduGameHQ",
+    description: "Explore countries, capitals, flags, and world maps with interactive geography games. Build global knowledge through fun educational challenges.",
+    keywords: [
+      "geography games for kids",
+      "map games",
+      "capital cities quiz",
+      "flags of the world",
+      "country learning games",
+      "world geography games"
+    ],
+    ogImage: "/images/logo.svg"
+  },
+
+  // 策略游戏页面
+  '/strategy-games': {
+    title: "Strategy Games for Students | Logic & Tactics | EduGameHQ",
+    description: "Train planning, logic, and decision-making with strategy games. Play chess-style challenges and tactical puzzles designed for students.",
+    keywords: [
+      "strategy games for students",
+      "logic strategy games",
+      "tactical games for kids",
+      "planning games",
+      "critical thinking games",
+      "chess games online"
+    ],
+    ogImage: "/images/logo.svg"
+  },
+
+  // 街机游戏页面
+  '/arcade-games': {
+    title: "Arcade Games for Kids | Reflex & Focus Training | EduGameHQ",
+    description: "Play fun arcade-style educational games that improve reflexes, focus, and coordination. Enjoy classic action with a learning-friendly environment.",
+    keywords: [
+      "arcade games for kids",
+      "educational arcade games",
+      "reflex training games",
+      "focus games for students",
+      "coordination games",
+      "classic arcade games online"
+    ],
+    ogImage: "/images/logo.svg"
+  },
+
   // 游戏详情页面（动态）
   '/games/[slug]': {
     title: "Educational Game | Learning Games | EduGameHQ",
@@ -442,10 +489,31 @@ export const seoConfig: Record<string, SEOConfig> = {
   }
 };
 
+function normalizeSEOPath(path: string): string {
+  const pathWithoutHash = path.split('#')[0] || '/';
+  const pathWithoutQuery = pathWithoutHash.split('?')[0] || '/';
+  let normalized = pathWithoutQuery.startsWith('/') ? pathWithoutQuery : `/${pathWithoutQuery}`;
+
+  normalized = normalized.replace(/\/+/g, '/');
+  if (normalized.length > 1 && normalized.endsWith('/')) {
+    normalized = normalized.slice(0, -1);
+  }
+
+  const segments = normalized.split('/').filter(Boolean);
+  if (segments.length > 0 && supportedLanguages.includes(segments[0] as LanguageCode)) {
+    segments.shift();
+    return segments.length > 0 ? `/${segments.join('/')}` : '/';
+  }
+
+  return normalized || '/';
+}
+
 // 获取页面SEO配置的工具函数
 export function getPageSEO(path: string): SEOConfig {
+  const normalizedPath = normalizeSEOPath(path);
+
   // 处理游戏详情页面的动态路由
-  if (path.startsWith('/games/')) {
+  if (normalizedPath.startsWith('/games/')) {
     return seoConfig['/games/[slug]'] || seoConfig['/'] || {
       title: 'EduGameHQ - Educational Games',
       description: 'Free educational games for kids',
@@ -454,7 +522,7 @@ export function getPageSEO(path: string): SEOConfig {
     };
   }
 
-  return seoConfig[path] || seoConfig['/'] || {
+  return seoConfig[normalizedPath] || seoConfig['/'] || {
     title: 'EduGameHQ - Educational Games',
     description: 'Free educational games for kids',
     keywords: ['educational games', 'kids games'],

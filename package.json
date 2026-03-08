@@ -20,7 +20,9 @@
     "crawl-game-details": "node scripts/intelligent-game-crawler.js",
     "check": "astro check",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "seo:audit": "node scripts/seo-audit.mjs",
+    "seo:audit:build": "astro build --outDir /tmp/edugamehq-build && node scripts/seo-audit.mjs /tmp/edugamehq-build"
   },
   "dependencies": {
     "@astrojs/check": "^0.8.2",
@@ -46,6 +48,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "playwright": "^1.58.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "puppeteer": "^24.23.1",
