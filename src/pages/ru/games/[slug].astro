@@ -1333,7 +1333,13 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
 
     try {
       // 从localStorage获取收藏列表
-      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      const favorites = (() => {
+        try {
+          return JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        } catch (e) {
+          return [];
+        }
+      })();
       const favoriteBtn = document.querySelector('.favorite-btn');
       const heartIcon = favoriteBtn?.querySelector('i');
       
@@ -1378,7 +1384,11 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       }
       
       // 保存到localStorage
-      localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+      try {
+        localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+      } catch (e) {
+        console.warn('localStorage not available');
+      }
       
       // 触发全局事件，通知其他组件
       window.dispatchEvent(new CustomEvent('favoritesChanged', {
@@ -1480,7 +1490,13 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     if (!gameSlug) return;
 
     try {
-      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      const favorites = (() => {
+        try {
+          return JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+        } catch (e) {
+          return [];
+        }
+      })();
       const isFavorited = favorites.includes(gameSlug);
       
       const favoriteBtn = document.querySelector('.favorite-btn') as HTMLElement;
