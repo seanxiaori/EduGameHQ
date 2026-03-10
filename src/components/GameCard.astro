@@ -105,9 +105,9 @@ const gameUrl = getLocalizedPath(`/games/${safeGame.slug}`, currentLang);
     <!-- 优化的图片加载 - 移除懒加载避免404错误 -->
     <div class="image-wrapper">
       <!-- 实际图片（直接加载） -->
-      <img 
+      <img
         src={safeGame.thumbnailUrl}
-        alt={safeGame.title}
+        alt={`${safeGame.title} - ${safeGame.categoryName || safeGame.category} educational game`}
         class="game-image"
         onload="this.parentElement.classList.add('loaded')"
         onerror="this.src='/images/logo.svg'; this.parentElement.classList.add('loaded')"
