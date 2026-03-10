@@ -3,7 +3,7 @@ import https from 'https';
 import fs from 'fs';
 
 const config = {
-  minStars: 10,
+  minStars: 50,  // 提高到50星
   maxResults: 20
 };
 
