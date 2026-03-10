@@ -12107,5 +12107,40 @@
     "trending": false,
     "isNew": false,
     "developer": "Alex Vi"
+  },
+  {
+    "slug": "gamedev-canvas-workshop",
+    "title": "Gamedev-Canvas-workshop",
+    "category": "breakout",
+    "categoryName": "Breakout",
+    "iframeUrl": "https://breakout.enclavegames.com",
+    "sourceUrl": "https://github.com/end3r/Gamedev-Canvas-workshop",
+    "description": "Learn how to build 2D HTML5 Breakout game with pure JavaScript",
+    "thumbnailUrl": "/screenshots/gamedev-canvas-workshop.png",
+    "image": "/screenshots/gamedev-canvas-workshop.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "breakout",
+      "html5",
+      "browser"
+    ],
+    "source": "EduGameHQ",
+    "developer": "end3r",
+    "technology": "HTML5",
+    "lastUpdated": "2026-03-10",
+    "lastChecked": "2026-03-10",
+    "isNew": true,
+    "verified": false,
+    "featured": false,
+    "trending": false,
+    "iframeCompatible": true,
+    "mobileSupport": true,
+    "responsive": true,
+    "playCount": 0,
+    "rating": 0,
+    "qualityScore": 70
   }
 ]
