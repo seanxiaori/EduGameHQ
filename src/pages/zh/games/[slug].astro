@@ -1283,11 +1283,27 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
   // 游戏控制函数
   function toggleFullscreen() {
     const iframe = document.querySelector('.game-iframe') as HTMLIFrameElement;
-    if (iframe) {
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      } else {
-        iframe.requestFullscreen();
+    if (!iframe) return;
+
+    const isFullscreen = document.fullscreenElement ||
+                        document.webkitFullscreenElement ||
+                        document.mozFullScreenElement;
+
+    if (!isFullscreen) {
+      const requestFullscreen = iframe.requestFullscreen ||
+                               iframe.webkitRequestFullscreen ||
+                               iframe.mozRequestFullScreen ||
+                               iframe.msRequestFullscreen;
+      if (requestFullscreen) {
+        requestFullscreen.call(iframe).catch(err => console.error(err));
+      }
+    } else {
+      const exitFullscreen = document.exitFullscreen ||
+                            document.webkitExitFullscreen ||
+                            document.mozCancelFullScreen ||
+                            document.msExitFullscreen;
+      if (exitFullscreen) {
+        exitFullscreen.call(document);
       }
     }
   }
