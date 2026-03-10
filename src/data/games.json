@@ -650,56 +650,6 @@
     "original": true
   },
   {
-    "slug": "anti-pacman",
-    "title": "Anti PacMan",
-    "category": "arcade",
-    "categoryName": "Arcade",
-    "iframeUrl": "https://vmikhav.github.io/AntiPacMan/",
-    "description": "Reverse PacMan game where you play as the ghost! Chase PacMan through the maze and catch him before time runs out.",
-    "gameGuide": {
-      "howToPlay": [
-        "You control the ghost, not PacMan",
-        "Chase PacMan through the maze",
-        "Catch PacMan to win the level",
-        "Avoid power pellets that make you vulnerable"
-      ],
-      "controls": {
-        "keyboard": "Arrow keys to move the ghost"
-      },
-      "tips": [
-        "Predict PacMan's movement patterns",
-        "Use maze corners to cut him off",
-        "Stay away when PacMan eats power pellets"
-      ]
-    },
-    "thumbnailUrl": "/screenshots/anti-pacman.png",
-    "image": "/screenshots/anti-pacman.png",
-    "difficulty": "Medium",
-    "ageRange": "8-16",
-    "minAge": 8,
-    "maxAge": 16,
-    "tags": [
-      "arcade",
-      "classic",
-      "strategy",
-      "casual"
-    ],
-    "source": "EduGameHQ",
-    "iframeCompatible": true,
-    "verified": true,
-    "technology": "HTML5",
-    "mobileSupport": true,
-    "responsive": true,
-    "sourceUrl": "https://github.com/vmikhav/AntiPacMan",
-    "lastUpdated": "2026-03-08",
-    "lastChecked": "2026-03-08",
-    "playCount": 0,
-    "featured": false,
-    "trending": false,
-    "isNew": true,
-    "developer": "vmikhav"
-  },
-  {
     "id": "archery-game",
     "slug": "archery-game",
     "title": "Archery Game",
@@ -12107,5 +12057,34 @@
     "trending": false,
     "isNew": false,
     "developer": "Alex Vi"
+  },
+  {
+    "slug": "mnemo",
+    "title": "mnemo",
+    "category": "puzzle",
+    "categoryName": "Puzzle",
+    "iframeUrl": "https://mnemo.pro/",
+    "sourceUrl": "https://github.com/tsg-ut/mnemo",
+    "description": "TSGが制作しているプログラミング風パズルゲーム",
+    "thumbnailUrl": "/screenshots/mnemo.png",
+    "image": "/screenshots/mnemo.png",
+    "difficulty": "Medium",
+    "ageRange": "8-16",
+    "minAge": 8,
+    "maxAge": 16,
+    "tags": [
+      "puzzle",
+      "html5",
+      "browser"
+    ],
+    "source": "EduGameHQ",
+    "developer": "tsg-ut",
+    "technology": "HTML5",
+    "lastUpdated": "2026-03-10",
+    "lastChecked": "2026-03-10",
+    "isNew": true,
+    "verified": false,
+    "featured": false,
+    "popularity": 0
   }
 ]

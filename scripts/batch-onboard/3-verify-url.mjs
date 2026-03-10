@@ -2,6 +2,7 @@
 import https from 'https';
 import http from 'http';
 import fs from 'fs';
+import { chromium } from 'playwright';
 
 const games = JSON.parse(fs.readFileSync('output/duplicate-check.json')).unique;
 
@@ -9,7 +10,6 @@ console.log('🔍 验证游戏URL...\n');
 
 async function checkUrl(url) {
   return new Promise((resolve) => {
-    // 添加协议如果缺失
     if (!url.startsWith('http')) {
       url = 'https://' + url;
     }
@@ -43,22 +43,62 @@ async function checkUrl(url) {
   });
 }
 
+async function verifyGameContent(url, browser) {
+  const page = await browser.newPage();
+
+  try {
+    // 创建一个包含iframe的测试页面
+    await page.setContent(`<iframe src="${url}" width="800" height="600"></iframe>`);
+    await page.waitForTimeout(5000);
+
+    // 检查iframe是否成功加载
+    const iframe = page.frameLocator('iframe');
+    const iframeLoaded = await iframe.locator('body').count().catch(() => 0);
+
+    if (iframeLoaded === 0) {
+      await page.close();
+      return false;
+    }
+
+    // 检查iframe内是否有游戏元素
+    const hasCanvas = await iframe.locator('canvas').count().catch(() => 0);
+    const hasGame = await iframe.locator('#game, .game, [id*="game"]').count().catch(() => 0);
+
+    await page.close();
+    return hasCanvas > 0 || hasGame > 0;
+  } catch (e) {
+    await page.close();
+    return false;
+  }
+}
+
 const results = { passed: [], failed: [] };
+const browser = await chromium.launch();
 
 for (const game of games) {
   console.log(`检查: ${game.name}`);
-  const result = await checkUrl(game.homepage);
+  const urlCheck = await checkUrl(game.homepage);
 
-  if (result.accessible && !result.iframeBlocked) {
-    console.log(`  ✅ 通过 (${result.status})`);
-    results.passed.push({ ...game, urlCheck: result });
+  if (urlCheck.accessible && !urlCheck.iframeBlocked) {
+    // 进一步验证是否真的是游戏
+    const isGame = await verifyGameContent(game.homepage, browser);
+
+    if (isGame) {
+      console.log(`  ✅ 通过 (${urlCheck.status})`);
+      results.passed.push({ ...game, urlCheck });
+    } else {
+      console.log(`  ❌ 失败 - 不是游戏页面`);
+      results.failed.push({ ...game, urlCheck, reason: 'Not a game' });
+    }
   } else {
-    console.log(`  ❌ 失败 - ${!result.accessible ? 'URL不可访问' : 'iframe被阻止'}`);
-    results.failed.push({ ...game, urlCheck: result });
+    console.log(`  ❌ 失败 - ${!urlCheck.accessible ? 'URL不可访问' : 'iframe被阻止'}`);
+    results.failed.push({ ...game, urlCheck });
   }
 
   await new Promise(r => setTimeout(r, 1000));
 }
+
+await browser.close();
 
 fs.writeFileSync('output/url-verification.json', JSON.stringify(results, null, 2));
 
