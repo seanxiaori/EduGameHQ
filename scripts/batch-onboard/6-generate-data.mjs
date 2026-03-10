@@ -2,7 +2,7 @@
 import fs from 'fs';
 
 const games = JSON.parse(fs.readFileSync('output/quality-report.json'));
-const goodGames = [...games.excellent, ...games.good];
+const goodGames = [...games.excellent, ...games.good, ...games.acceptable];
 
 console.log('📝 生成游戏数据...\n');
 
