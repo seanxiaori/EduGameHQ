@@ -1857,7 +1857,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
     }
   };
 
-  // 📺 全屏功能优化
+  // 📺 全屏功能优化（兼容性修复）
   window.toggleFullscreen = function(): void {
     const iframe = document.getElementById('gameIframe') as HTMLIFrameElement;
     if (!iframe) {
@@ -1865,29 +1865,49 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
       return;
     }
 
-    if (!document.fullscreenElement) {
-      iframe.requestFullscreen().then(() => {
-        console.log('📺 进入全屏模式');
-        showGameNotification('📺 Fullscreen Mode Enabled', 'success');
-        
-        // 记录全屏事件
-        if (window.gameStatsManager && gameSlug) {
-          window.gameStatsManager.recordGameFullscreen(gameSlug, true);
-        }
-      }).catch(err => {
-        console.error('❌ 无法进入全屏:', err);
+    const isFullscreen = document.fullscreenElement ||
+                        document.webkitFullscreenElement ||
+                        document.mozFullScreenElement;
+
+    if (!isFullscreen) {
+      // 请求全屏（兼容不同浏览器）
+      const requestFullscreen = iframe.requestFullscreen ||
+                               iframe.webkitRequestFullscreen ||
+                               iframe.mozRequestFullScreen ||
+                               iframe.msRequestFullscreen;
+
+      if (requestFullscreen) {
+        requestFullscreen.call(iframe).then(() => {
+          console.log('📺 进入全屏模式');
+          showGameNotification('📺 Fullscreen Mode Enabled', 'success');
+
+          if (window.gameStatsManager && gameSlug) {
+            window.gameStatsManager.recordGameFullscreen(gameSlug, true);
+          }
+        }).catch(err => {
+          console.error('❌ 无法进入全屏:', err);
+          showGameNotification('❌ Fullscreen not supported', 'error');
+        });
+      } else {
         showGameNotification('❌ Fullscreen not supported', 'error');
-      });
+      }
     } else {
-      document.exitFullscreen().then(() => {
-        console.log('📱 退出全屏模式');
-        showGameNotification('📱 Fullscreen Mode Disabled', 'info');
-        
-        // 记录全屏事件
-        if (window.gameStatsManager && gameSlug) {
-          window.gameStatsManager.recordGameFullscreen(gameSlug, false);
-        }
-      });
+      // 退出全屏（兼容不同浏览器）
+      const exitFullscreen = document.exitFullscreen ||
+                            document.webkitExitFullscreen ||
+                            document.mozCancelFullScreen ||
+                            document.msExitFullscreen;
+
+      if (exitFullscreen) {
+        exitFullscreen.call(document).then(() => {
+          console.log('📱 退出全屏模式');
+          showGameNotification('📱 Fullscreen Mode Disabled', 'info');
+
+          if (window.gameStatsManager && gameSlug) {
+            window.gameStatsManager.recordGameFullscreen(gameSlug, false);
+          }
+        });
+      }
     }
   };
 
