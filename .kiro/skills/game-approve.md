@@ -1,60 +1,49 @@
 ---
 name: game-approve
-description: Approve reviewed games and publish to main site
+description: Approve reviewed games and publish to main site with git sync
 version: 1.0.0
-author: EduGameHQ
-tags: [games, approve, publish, automation]
 ---
 
-# Game Approval and Publishing Skill
+# Game Approval and Publishing
 
-## Purpose
-Approve reviewed games and publish them to the main EduGameHQ site with git sync.
-
-## Workflow
-1. Load pending review games from `output/pending-review.json`
-2. Show list of games with their review status
-3. User selects games to approve
-4. Add approved games to `src/data/games.json`
-5. Update game status to `approved` and `published: true`
-6. Commit and push to GitHub
-7. Remove approved games from pending review list
+Approve manually reviewed games and publish them to the main EduGameHQ site.
 
 ## Usage
+
+```bash
+/game-approve [options] [slugs...]
 ```
-/game-approve [slug1] [slug2] ...
+
+**Options:**
+- `--list`: List all pending review games
+- `--all`: Approve all pending games
+
+**Examples:**
+```bash
+/game-approve --list
+/game-approve tetris-game snake-classic
+/game-approve --all
 ```
 
-Examples:
-- `/game-approve tetris-game snake-classic` - Approve specific games
-- `/game-approve --all` - Approve all pending games
-- `/game-approve --list` - List all pending review games
+## What This Skill Does
 
-## Implementation
+1. **Load pending games** from `output/pending-review.json`
+2. **Filter selected games** (by slug or all)
+3. **Update game status** to `approved` and `published: true`
+4. **Add to games.json** - Merge with existing games
+5. **Commit to git** with descriptive message
+6. **Push to GitHub** - Triggers Vercel auto-deploy
 
-When this skill is invoked:
+## Output
 
-1. **List mode** (`--list`)
-   - Read `output/pending-review.json`
-   - Display table with: slug, title, category, reviewUrl
-   - Show total pending count
-
-2. **Approve mode** (with slugs or `--all`)
-   - Load pending games from `output/pending-review.json`
-   - Filter selected games (or all if `--all`)
-   - For each game:
-     - Update status: `approved`, `published: true`, `verified: false`
-     - Add to `src/data/games.json`
-   - Commit changes with message: "feat: approve and publish N games"
-   - Push to GitHub
-   - Remove approved games from `output/pending-review.json`
-
-3. **Report results**
-   - Games approved and published
-   - Git commit hash
-   - Deployment status (Vercel auto-deploy)
+- Games added to `src/data/games.json`
+- Git commit created and pushed
+- Approved games removed from `output/pending-review.json`
+- Deployment triggered on Vercel
 
 ## Notes
-- Games are immediately live after approval
+
+- Games go live immediately after approval
 - Screenshots must exist in `public/screenshots/`
-- Approved games still need SEO verification (`verified: false`)
+- Use `--list` first to see what's pending
+
