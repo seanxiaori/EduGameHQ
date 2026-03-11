@@ -1,0 +1,72 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqs = [
+  {
+    question: "What are educational games?",
+    answer: "Educational games are interactive games designed to teach specific skills or knowledge while entertaining players. They combine learning objectives with engaging gameplay to make education fun and effective."
+  },
+  {
+    question: "How many free educational games does EduGameHQ offer?",
+    answer: "EduGameHQ offers 247+ free educational games across multiple categories including math, science, language, puzzle, and creative games. All games are browser-based and require no downloads."
+  },
+  {
+    question: "What age groups are these games suitable for?",
+    answer: "Our games are suitable for ages 6-18, with specific age recommendations for each game. We have games for elementary school (6-10), middle school (11-14), and high school (15-18) students."
+  },
+  {
+    question: "Are these games really free?",
+    answer: "Yes, all 247+ games on EduGameHQ are completely free to play. No registration, no downloads, and no hidden fees required."
+  },
+  {
+    question: "What languages are supported?",
+    answer: "EduGameHQ supports 11 languages: English, Chinese, Spanish, French, German, Japanese, Russian, Korean, Arabic, Hindi, and Hebrew. The website interface is fully translated."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="FAQ - Frequently Asked Questions | EduGameHQ"
+  description="Common questions about EduGameHQ's 247+ free educational games. Learn about age ranges, languages, and how to use our platform."
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="faq-page">
+    <h1>Frequently Asked Questions</h1>
+
+    {faqs.map(faq => (
+      <div class="faq-item">
+        <h2>{faq.question}</h2>
+        <p>{faq.answer}</p>
+      </div>
+    ))}
+  </div>
+
+  <style>
+    .faq-page {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .faq-item {
+      margin-bottom: 2rem;
+    }
+    .faq-item h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</BaseLayout>
