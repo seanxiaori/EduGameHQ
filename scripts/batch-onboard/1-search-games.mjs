@@ -3,16 +3,17 @@ import https from 'https';
 import fs from 'fs';
 
 const config = {
-  minStars: 50,  // 提高到50星
-  maxResults: 20
+  minStars: 50,
+  maxResults: 100
 };
 
-// 具体的游戏类型关键词
-const gameTypes = [
-  'tetris', 'snake', 'pacman', 'breakout', 'pong',
-  'chess', 'checkers', 'sudoku', 'puzzle', 'match3',
-  'platformer', 'shooter', 'racing', 'card game',
-  'memory game', 'quiz', 'trivia', 'word game'
+// 更广泛的搜索关键词
+const searchQueries = [
+  'html5 game',
+  'javascript game',
+  'browser game',
+  'canvas game',
+  'web game'
 ];
 
 // 排除关键词
@@ -68,12 +69,12 @@ async function main() {
   const allGames = [];
   const seen = new Set();
 
-  for (const gameType of gameTypes) {
-    const query = `${gameType} html5 game stars:>${config.minStars}`;
-    console.log(`查询: ${gameType}`);
+  for (const query of searchQueries) {
+    const searchQuery = `${query} stars:>${config.minStars}`;
+    console.log(`查询: ${query}`);
 
     try {
-      const data = await searchGitHub(query);
+      const data = await searchGitHub(searchQuery);
 
       if (data.items) {
         for (const repo of data.items) {
@@ -82,10 +83,9 @@ async function main() {
             allGames.push({
               name: repo.name,
               stars: repo.stargazers_count,
-              url: repo.html_url,
+              sourceUrl: repo.html_url,
               homepage: repo.homepage,
-              description: repo.description,
-              gameType
+              description: repo.description
             });
           }
         }

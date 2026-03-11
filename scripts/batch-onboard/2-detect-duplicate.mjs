@@ -21,8 +21,8 @@ for (const candidate of candidates) {
 
   // 1. URL精确匹配
   const urlMatch = existingGames.find(g =>
-    g.iframeUrl === candidate.homepage ||
-    g.sourceUrl === candidate.sourceUrl
+    (g.iframeUrl && g.iframeUrl === candidate.homepage) ||
+    (g.sourceUrl && candidate.sourceUrl && g.sourceUrl === candidate.sourceUrl)
   );
 
   if (urlMatch) {
