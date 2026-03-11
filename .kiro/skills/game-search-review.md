@@ -55,3 +55,39 @@ version: 1.0.0
 - `public/screenshots/[slug].png` - 游戏截图
 - 审核报告（通过/失败数量）
 
+## 实现步骤（Implementation）
+
+当调用此skill时，按顺序执行以下脚本：
+
+```bash
+cd scripts/batch-onboard
+
+# 1. 搜索游戏
+node 1-search-games.mjs
+# 输出: output/search-results.json
+
+# 2. 检测重复
+node 2-detect-duplicate.mjs
+# 输出: output/duplicate-check.json
+
+# 3. 验证URL
+node 3-verify-url.mjs
+# 输出: output/url-verification.json
+
+# 4. 评估质量
+node 4-evaluate-quality.mjs
+# 输出: output/quality-report.json
+
+# 5. 截取画面
+node 5-capture-screenshots.mjs
+# 输出: public/screenshots/*.png
+
+# 6. 生成数据
+node 6-generate-data.mjs
+# 输出: output/ready-to-onboard.json
+
+# 7. 标记为待审核（不执行7-onboard.mjs）
+# 将ready-to-onboard.json重命名为pending-review.json
+# 所有游戏status设为"pending_review"
+```
+

@@ -54,3 +54,25 @@ version: 1.0.0
 - 部署状态（Vercel）
 - 批准游戏数量
 
+## 实现步骤（Implementation）
+
+当调用此skill时，执行以下操作：
+
+```bash
+# 1. 列出待审核游戏（如果使用--list）
+cat output/pending-review.json | jq '.[] | {slug, title, category}'
+
+# 2. 批准游戏
+node scripts/batch-onboard/7-onboard.mjs --from-review [slugs]
+# 从pending-review.json读取指定游戏
+# 添加到src/data/games.json
+
+# 3. 提交到git
+git add src/data/games.json public/screenshots/
+git commit -m "feat: approve and publish N games"
+git push
+
+# 4. 清理pending-review.json
+# 移除已批准的游戏
+```
+
