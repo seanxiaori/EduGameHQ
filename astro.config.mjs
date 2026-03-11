@@ -53,7 +53,7 @@ export default defineConfig({
   // 构建配置
   build: {
     assets: 'assets',
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'always',
   },
 
   // 开发服务器配置
