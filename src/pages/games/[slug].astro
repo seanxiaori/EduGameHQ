@@ -81,9 +81,13 @@ const gameDescription = game.description || `Play ${game.title} online for free.
 const categoryName = game.category.charAt(0).toUpperCase() + game.category.slice(1);
 const ageRange = `Ages ${game.minAge || 6}-${game.maxAge || 18}`;
 
+// 获取当前语言
+const currentLang = Astro.url.pathname.split('/')[1];
+const langSuffix = currentLang && currentLang.length === 2 ? ` (${currentLang.toUpperCase()})` : '';
+
 // 构建动态SEO信息
 const dynamicSEO = {
-  title: `${gameTitle} - Free ${categoryName} Game | EduGameHQ`,
+  title: `${gameTitle} - Free ${categoryName} Game${langSuffix} | EduGameHQ`,
   description: `${gameDescription} Perfect for students ${ageRange}. Play instantly in your browser - no downloads required!`,
   keywords: [
     game.title.toLowerCase(),
