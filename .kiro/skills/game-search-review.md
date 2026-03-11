@@ -6,46 +6,52 @@ version: 1.0.0
 
 # Game Search and Review
 
-Search for educational HTML5 games from GitHub and publish them to the review subdomain (games.edugamehq.com) for manual testing and approval.
+## 场景（Scenario）
+你需要为EduGameHQ网站寻找新的教育游戏，但不确定这些游戏是否符合质量标准。你希望先将游戏发布到审核环境，手动测试后再决定是否上线。
 
-## Usage
+## 目标（Goal）
+从GitHub搜索HTML5教育游戏，自动验证质量，并发布到审核子域名供人工测试。
+
+## 规则（Rules）
+1. 只搜索50+星的GitHub仓库
+2. 必须通过URL可访问性检查
+3. 必须通过iframe兼容性检查
+4. 必须检测到游戏内容（canvas元素）
+5. 必须成功截取游戏画面
+6. 所有游戏标记为`pending_review`状态
+7. 不会自动添加到主站games.json
+
+## 使用示例（Examples）
 
 ```bash
-/game-search-review [type] [count]
-```
-
-**Arguments:**
-- `type` (optional): Game type to search (tetris, puzzle, snake, etc.). Default: all types
-- `count` (optional): Number of games to find. Default: 20
-
-**Examples:**
-```bash
+# 搜索5个俄罗斯方块游戏
 /game-search-review tetris 5
+
+# 搜索10个益智游戏
 /game-search-review puzzle 10
+
+# 使用默认设置（所有类型，20个游戏）
 /game-search-review
 ```
 
-## What This Skill Does
+## 边界（Boundaries）
 
-1. **Search GitHub** for HTML5 games with 50+ stars
-2. **Check duplicates** against existing games in games.json
-3. **Verify URLs** - Check accessibility and iframe compatibility
-4. **Verify game content** - Ensure it's actually a playable game (canvas elements)
-5. **Capture screenshots** - Take gameplay screenshots
-6. **Generate metadata** - Create complete game data
-7. **Save for review** - Output to `output/pending-review.json` with status `pending_review`
+**会做：**
+- ✅ 搜索GitHub开源游戏
+- ✅ 验证URL和iframe兼容性
+- ✅ 检测游戏内容真实性
+- ✅ 自动截图
+- ✅ 生成游戏元数据
+- ✅ 保存到pending-review.json
 
-## Output
+**不会做：**
+- ❌ 不会自动上线游戏
+- ❌ 不会修改games.json
+- ❌ 不会提交到git
+- ❌ 不会跳过人工审核
 
-- **Review list**: `output/pending-review.json`
-- **Screenshots**: `public/screenshots/[slug].png`
-- **Status**: All games marked as `pending_review`
-- **Review URL**: Each game gets a review URL for testing
-
-## Next Steps
-
-After running this skill:
-1. Manually test each game at the review URL
-2. Use `/game-approve [slug]` to approve good games
-3. Approved games will be published to main site
+## 输出（Output）
+- `output/pending-review.json` - 待审核游戏列表
+- `public/screenshots/[slug].png` - 游戏截图
+- 审核报告（通过/失败数量）
 
