@@ -1,0 +1,98 @@
+[
+  {
+    "name": "hextris",
+    "stars": 2446,
+    "url": "https://github.com/Hextris/hextris",
+    "homepage": "https://hextris.io",
+    "description": "Fast paced HTML5 puzzle game inspired by Tetris!",
+    "gameType": "tetris"
+  },
+  {
+    "name": "blockrain.js",
+    "stars": 982,
+    "url": "https://github.com/Aerolab/blockrain.js",
+    "homepage": "http://aerolab.github.io/blockrain.js",
+    "description": "HTML5 Tetris Game for jQuery",
+    "gameType": "tetris"
+  },
+  {
+    "name": "canvas-tetris",
+    "stars": 455,
+    "url": "https://github.com/dionyziz/canvas-tetris",
+    "homepage": "https://dionyziz.com/graphics/canvas-tetris/",
+    "description": "A 2D tetris game in HTML5 canvas",
+    "gameType": "tetris"
+  },
+  {
+    "name": "Gamedev-Canvas-workshop",
+    "stars": 435,
+    "url": "https://github.com/end3r/Gamedev-Canvas-workshop",
+    "homepage": "https://breakout.enclavegames.com",
+    "description": "Learn how to build 2D HTML5 Breakout game with pure JavaScript",
+    "gameType": "breakout"
+  },
+  {
+    "name": "pacman",
+    "stars": 181,
+    "url": "https://github.com/luciopanepinto/pacman",
+    "homepage": "https://pacman-e281c.firebaseapp.com/",
+    "description": "Pac-Man game written in HTML5 + CSS3 + jQuery with Canvas. This WebApp is a Responsive Web Design (RWD) website.",
+    "gameType": "pacman"
+  },
+  {
+    "name": "javascript-snakes",
+    "stars": 116,
+    "url": "https://github.com/jakesgordon/javascript-snakes",
+    "homepage": "https://jakesgordon.com/writing/javascript-snakes/",
+    "description": "An HTML5 Snakes Game",
+    "gameType": "snake"
+  },
+  {
+    "name": "tetr.js",
+    "stars": 107,
+    "url": "https://github.com/simonlc/tetr.js",
+    "homepage": "http://simon.lc/tetr.js",
+    "description": "🕹️ Tetris clone in HTML5 and JavaScript",
+    "gameType": "tetris"
+  },
+  {
+    "name": "AntiPacMan",
+    "stars": 84,
+    "url": "https://github.com/vmikhav/AntiPacMan",
+    "homepage": "https://vmikhav.itch.io/antipacman",
+    "description": "HTML5 Pac-Man game with gesture recognition",
+    "gameType": "pacman"
+  },
+  {
+    "name": "online-chess",
+    "stars": 78,
+    "url": "https://github.com/hulang1024/online-chess",
+    "homepage": "http://120.27.138.202/",
+    "description": "Chess game website client and server.",
+    "gameType": "chess"
+  },
+  {
+    "name": "sudoku",
+    "stars": 76,
+    "url": "https://github.com/andreynering/sudoku",
+    "homepage": "https://sudoku.js.org",
+    "description": "Simple sudoku web game made with ReactJS and Redux.",
+    "gameType": "sudoku"
+  },
+  {
+    "name": "snake-game",
+    "stars": 74,
+    "url": "https://github.com/ramazancetinkaya/snake-game",
+    "homepage": "https://ramazancetinkaya.github.io/snake-game/",
+    "description": "An implementation of the classic Snake game using HTML5, CSS, and JavaScript.",
+    "gameType": "snake"
+  },
+  {
+    "name": "javascript-tetris",
+    "stars": 66,
+    "url": "https://github.com/hoffhannisyan/javascript-tetris",
+    "homepage": "https://hoffhannisyan.github.io/javascript-tetris/",
+    "description": "Classic Tetris game built with pure HTML5, CSS3, and JavaScript. No external dependencies",
+    "gameType": "tetris"
+  }
+]
