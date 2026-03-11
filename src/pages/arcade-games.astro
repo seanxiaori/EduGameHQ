@@ -32,9 +32,16 @@ const collectionPageData = {
   "description": "Classic arcade fun! Play retro-style games like Pac-Man, Space Invaders, and more.",
   "url": "https://www.edugamehq.com/arcade-games"
 };
+
+const seoTitle = "Free Arcade Games for Kids | Classic Retro Games Online";
+const seoDescription = `Play ${arcadeGames.length}+ free arcade games online. Classic retro-style games including action, platformers, and shooters. Perfect for ages 8-16.`;
 ---
 
-<BaseLayout additionalStructuredData={collectionPageData}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  additionalStructuredData={collectionPageData}
+>
   <main class="main-content">
     <div class="content-wrapper">
       <section class="page-header">

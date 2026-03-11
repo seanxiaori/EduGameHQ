@@ -32,9 +32,16 @@ const collectionPageData = {
   "description": "Challenge your mind with strategy games! Chess, checkers, and tactical puzzles to develop critical thinking.",
   "url": "https://www.edugamehq.com/strategy-games"
 };
+
+const seoTitle = "Free Strategy Games for Kids | Chess, Tactics & Logic Games";
+const seoDescription = `Play ${strategyGames.length}+ free strategy games online. Develop critical thinking with chess, tower defense, and tactical puzzles. Ages 10-18.`;
 ---
 
-<BaseLayout additionalStructuredData={collectionPageData}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  additionalStructuredData={collectionPageData}
+>
   <main class="main-content">
     <div class="content-wrapper">
       <section class="page-header">
