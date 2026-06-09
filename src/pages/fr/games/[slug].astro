@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import GameCard from '../../../components/GameCard.astro';
 import ShareModal from '../../../components/ShareModal.astro';
+import AdSlot from '../../../components/AdSlot.astro';
 import type { Game } from '../../../types/game';
 import fs from 'fs';
 import path from 'path';
@@ -150,20 +151,6 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           </div>
         </div>
       </section>
-
-      <!-- Google AdSense 广告 - 游戏上方 -->
-      <section class="ad-section ad-top">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-6509438403900392"
-             data-ad-slot="3769513448"
-             data-ad-format="horizontal"
-             data-full-width-responsive="true"></ins>
-        <script is:inline>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </section>
-
       <!-- 游戏播放器区域 - 优化版本 -->
       <section class="game-player-section">
         <div class="game-player-container">
@@ -221,18 +208,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
         </div>
       </section>
 
-      <!-- Google AdSense 广告 - 游戏下方 -->
-      <section class="ad-section">
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-6509438403900392"
-             data-ad-slot="3769513448"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script is:inline>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </section>
+      <AdSlot placement="game-below-player" format="horizontal" slot="3312192068" />
 
       <!-- 游戏信息区域 -->
       <section class="game-info-section">
@@ -342,6 +318,8 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           </div>
         </div>
       </section>
+
+      <AdSlot placement="game-after-info" format="rectangle" slot="1922752061" />
 
       <!-- 相关游戏推荐 - 使用统一GameCard组件 -->
       {relatedGames.length > 0 && (
