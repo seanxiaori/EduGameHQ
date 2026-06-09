@@ -28,7 +28,7 @@ interface Props {
 const { game }: Props = Astro.props;
 const currentGameLang = 'es';
 const localizedGame = (game as any).localized?.[currentGameLang] || (game as any).localized?.en || {};
-const localizedGameGuide = localizedGame.gameGuide || localizedGameGuide;
+const localizedGameGuide = localizedGame.gameGuide || (game as any).gameGuide;
 
 // 读取所有游戏数据用于相关游戏推荐
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
