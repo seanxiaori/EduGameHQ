@@ -22,13 +22,18 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx,.astro",
     "format": "prettier --write .",
     "seo:audit": "node scripts/seo-audit.mjs",
-    "seo:audit:build": "astro build --outDir /tmp/edugamehq-build && node scripts/seo-audit.mjs /tmp/edugamehq-build"
+    "seo:audit:build": "astro build --outDir /tmp/edugamehq-build && node scripts/seo-audit.mjs /tmp/edugamehq-build",
+    "games:backfill-localization": "node scripts/backfill-game-localization.mjs",
+    "games:import-github": "node scripts/import-github-open-source-games.mjs",
+    "games:validate-catalog": "node scripts/validate-game-catalog.mjs",
+    "games:validate-playability": "node scripts/validate-game-playability.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.8.2",
     "@astrojs/react": "^3.6.2",
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/tailwind": "^5.1.2",
+    "@octokit/rest": "^22.0.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "astro": "^5.0.5",
@@ -49,7 +54,7 @@
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
-    "playwright": "^1.58.0",
+    "playwright": "^1.58.2",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
     "puppeteer": "^24.23.1",

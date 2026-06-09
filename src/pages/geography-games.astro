@@ -33,9 +33,15 @@ const collectionPageData = {
   "url": "https://www.edugamehq.com/geography-games",
   "keywords": "geography games, map games, country quiz, capital cities, flags quiz, world geography"
 };
+
+const seoTitle = "Geography Games for Kids | Maps, Flags & Capitals | EduGameHQ";
+const seoDescription = `Play ${geographyGames.length}+ free geography games online. Learn countries, capitals, flags, and maps. Ages 6-18.`;
 ---
 
-<BaseLayout additionalStructuredData={collectionPageData}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  additionalStructuredData={collectionPageData}>
   <main class="main-content">
     <div class="content-wrapper">
       <section class="page-header">

@@ -52,7 +52,7 @@ const languageSwitchLinks = getLanguageSwitchLinks(cleanPath);
 // 获取本地化的SEO配置
 const localizedSEO = await getLocalizedSEO(currentPath, currentLang);
 const basePageTitle = title || localizedSEO.title;
-const languageTitleSuffix = currentLang !== defaultLanguage ? ` | ${langInfo.nativeName}` : '';
+const languageTitleSuffix = '';
 const pageTitle = languageTitleSuffix && !basePageTitle.includes(languageTitleSuffix)
   ? `${basePageTitle}${languageTitleSuffix}`
   : basePageTitle;

@@ -34,6 +34,9 @@ const mediumGames = memoryGames.filter(game => game.difficulty === 'Medium');
 const hardGames = memoryGames.filter(game => game.difficulty === 'Hard');
 
 // 🔧 GEO优化：生成CollectionPage结构化数据（帮助AI理解分类页面和游戏集合）
+const seoTitle = "Memory Games for Kids | Brain Training & Cognitive Skills | EduGameHQ";
+const seoDescription = `Play ${memoryGames.length}+ free memory games online. Boost concentration, recall, and mental agility. Ages 6-18.`;
+
 const collectionPageData = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
@@ -70,7 +73,10 @@ const collectionPageData = {
 };
 ---
 
-<BaseLayout additionalStructuredData={collectionPageData}>
+<BaseLayout
+  title={seoTitle}
+  description={seoDescription}
+  additionalStructuredData={collectionPageData}>
   <main class="main-content">
     <div class="content-wrapper">
 

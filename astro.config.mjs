@@ -36,6 +36,7 @@ export default defineConfig({
 
   // Vite配置
   vite: {
+    cacheDir: 'node_modules/.vite-edugamehq',
     build: {
       rollupOptions: {
         output: {

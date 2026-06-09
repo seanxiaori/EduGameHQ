@@ -49,6 +49,29 @@ export interface Game {
   embedUrl?: string;
   thumbnail?: string;
   subcategory?: string;
+  license?: string;
+  uiLanguages?: string[];
+  languageSupportLevel?: string;
+  textHeavy?: boolean;
+  localizationEffort?: string;
+  nonEnglishFriendly?: boolean;
+  localized?: {
+    [languageCode: string]: {
+      title?: string;
+      description?: string;
+      seoTitle?: string;
+      seoDescription?: string;
+      gameGuide?: {
+        howToPlay?: string[];
+        controls?: {
+          keyboard?: string;
+          mouse?: string;
+          touch?: string;
+        };
+        tips?: string[];
+      };
+    };
+  };
 }
 
 export interface GameData {

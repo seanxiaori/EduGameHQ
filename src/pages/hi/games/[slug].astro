@@ -25,6 +25,9 @@ interface Props {
 
 // 获取当前游戏数据
 const { game }: Props = Astro.props;
+const currentGameLang = 'hi';
+const localizedGame = (game as any).localized?.[currentGameLang] || (game as any).localized?.en || {};
+const localizedGameGuide = localizedGame.gameGuide || localizedGameGuide;
 
 // 读取所有游戏数据用于相关游戏推荐
 const gamesPath = path.join(process.cwd(), 'src', 'data', 'games.json');
@@ -72,8 +75,8 @@ function getIframeDomain(url: string): string {
 }
 
 // 动态生成SEO数据
-const gameTitle = game.title;
-const gameDescription = game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`;
+const gameTitle = localizedGame.title || game.title;
+const gameDescription = localizedGame.description || game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`;
 const categoryName = game.category.charAt(0).toUpperCase() + game.category.slice(1);
 const ageRange = `Ages ${game.minAge || 6}-${game.maxAge || 18}`;
 
@@ -207,7 +210,7 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
             <button 
               class="control-btn share-btn" 
               data-game-title={game.title}
-              data-game-description={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+              data-game-description={gameDescription}
               data-game-image={game.thumbnailUrl || ''}
               onclick="handleShareClick(this)"
             >
@@ -244,20 +247,20 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
           
           <!-- 游戏描述 -->
           <div class="info-block">
-            <p>{game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}</p>
+            <p>{gameDescription}</p>
           </div>
 
-          {game.gameGuide && (
+          {localizedGameGuide && (
             <>
               <!-- 如何游戏 -->
-              {game.gameGuide.howToPlay && game.gameGuide.howToPlay.length > 0 && (
+              {localizedGameGuide.howToPlay && localizedGameGuide.howToPlay.length > 0 && (
                 <div class="info-block">
                   <h3 class="guide-title">
                     <i class="fas fa-play-circle"></i>
                     How to Play
                   </h3>
                   <ul class="guide-list">
-                    {game.gameGuide.howToPlay.map((step: string) => (
+                    {localizedGameGuide.howToPlay.map((step: string) => (
                       <li>{step}</li>
                     ))}
                   </ul>
@@ -265,14 +268,14 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
               )}
 
               <!-- 控制方式 -->
-              {game.gameGuide.controls && Object.keys(game.gameGuide.controls).length > 0 && (
+              {localizedGameGuide.controls && Object.keys(localizedGameGuide.controls).length > 0 && (
                 <div class="info-block">
                   <h3 class="guide-title">
                     <i class="fas fa-keyboard"></i>
                     Game Controls
                   </h3>
                   <div class="controls-grid">
-                    {Object.entries(game.gameGuide.controls).map(([type, instruction]: [string, string]) => (
+                    {Object.entries(localizedGameGuide.controls).map(([type, instruction]: [string, string]) => (
                       <div class="control-item">
                         <span class="control-type">
                           {type === 'mouse' && <i class="fas fa-computer-mouse"></i>}
@@ -288,14 +291,14 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
               )}
 
               <!-- 游戏技巧 -->
-              {game.gameGuide.tips && game.gameGuide.tips.length > 0 && (
+              {localizedGameGuide.tips && localizedGameGuide.tips.length > 0 && (
                 <div class="info-block">
                   <h3 class="guide-title">
                     <i class="fas fa-lightbulb"></i>
                     Tips & Tricks
                   </h3>
                   <ul class="tips-list">
-                    {game.gameGuide.tips.map((tip: string) => (
+                    {localizedGameGuide.tips.map((tip: string) => (
                       <li>{tip}</li>
                     ))}
                   </ul>
@@ -1945,6 +1948,6 @@ const iframeDomain = getIframeDomain(getGameIframeUrl(game));
 <ShareModal 
   gameTitle={game.title}
   gameUrl={`${Astro.site || 'https://edugamehq.com'}/games/${game.slug}`}
-  gameDescription={game.description || `Play ${game.title} online for free. Educational ${game.category.toLowerCase()} game perfect for learning.`}
+  gameDescription={gameDescription}
   gameImage={game.thumbnailUrl || ''}
 />
