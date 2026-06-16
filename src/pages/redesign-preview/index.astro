@@ -6,6 +6,11 @@ import PreviewGameTile from '../../components/redesign/PreviewGameTile.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
+interface Props {
+  isProductionHome?: boolean;
+}
+
+const { isProductionHome = false } = Astro.props;
 const allGames = games as any[];
 const footballPattern = /\b(football|soccer|penalty|free kick|world cup|fifa)\b|head ball|goal finger|kickups/i;
 const featured = allGames.filter((game) => game.featured || game.trending || game.isNew).slice(0, 24);
@@ -47,13 +52,15 @@ const shareLinks = [
   ['YouTube', 'youtube', 'https://www.youtube.com/'],
   ['Discord', 'discord', 'https://discord.com/'],
 ];
+const homeHref = isProductionHome ? '/' : '/redesign-preview/';
+const footballHref = isProductionHome ? '/sports-games/' : '/redesign-preview/category/';
 const quickLinks = [
   ['All Games', '/best-games/'],
   ['Math', '/math-games/'],
   ['Puzzle', '/puzzle-games/'],
   ['Science', '/science-games/'],
   ['Sports', '/sports-games/'],
-  ['Football', '/redesign-preview/category/'],
+  ['Football', footballHref],
   ['Random Game', `/games/${featured[9]?.slug || featured[0]?.slug || '2048'}/`],
 ];
 const quietLinks = [
@@ -78,10 +85,15 @@ const languages = [
 ];
 ---
 
-<PreviewLayout title="EduGameHQ Redesign Preview" description="A CrazyGames-inspired redesign preview for EduGameHQ.">
+<PreviewLayout
+  title={isProductionHome ? 'Free Educational Games for Kids - EduGameHQ' : 'EduGameHQ Redesign Preview'}
+  description={isProductionHome ? 'Play free educational browser games for math, science, language, puzzle, sports, coding, and creative learning.' : 'A CrazyGames-inspired redesign preview for EduGameHQ.'}
+  robots={isProductionHome ? 'index, follow' : 'noindex, nofollow'}
+  canonical={isProductionHome ? 'https://www.edugamehq.com/' : undefined}
+>
   <main id="top" class="redesign-preview">
     <header class="preview-topbar">
-      <PreviewLogo />
+      <PreviewLogo href={homeHref} />
       <div class="preview-search">Search free educational games</div>
       <div class="preview-actions">
         <details class="preview-menu">
@@ -90,7 +102,7 @@ const languages = [
             {languages.map(([label, href]) => <a href={href}>{label}</a>)}
           </div>
         </details>
-        <a class="preview-chip" href="/redesign-preview/category/">Football</a>
+        <a class="preview-chip" href={footballHref}>Football</a>
         <a class="preview-icon-button" href="/favorites/" aria-label="Favorites">♡</a>
       </div>
     </header>
@@ -99,7 +111,7 @@ const languages = [
       <aside class="preview-sidebar">
         <nav class="preview-nav-group">
           <span class="preview-nav-title">Play</span>
-          <a class="preview-nav-item play-link active" href="/redesign-preview/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
+          <a class="preview-nav-item play-link active" href={homeHref}><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
           <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
           <a class="preview-nav-item play-link" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
           <a class="preview-nav-item play-link" href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
@@ -112,7 +124,7 @@ const languages = [
           <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
           <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
           <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
-          <a class="preview-nav-item category-link" href="/redesign-preview/category/"><PreviewNavIcon name="football" tone="category" /><span class="preview-nav-label">Football</span></a>
+          <a class="preview-nav-item category-link" href={footballHref}><PreviewNavIcon name="football" tone="category" /><span class="preview-nav-label">Football</span></a>
         </nav>
       </aside>
 
@@ -160,7 +172,7 @@ const languages = [
                   <h2>Football Games</h2>
                   <p>World Cup matches, penalty kicks, free kicks, and quick soccer challenges.</p>
                 </div>
-                <a class="preview-ghost-button" href="/redesign-preview/category/">View all</a>
+                <a class="preview-ghost-button" href={footballHref}>View all</a>
               </div>
               <div class="preview-row">
                 {football.slice(0, 6).map((game) => <PreviewGameTile game={game} />)}
@@ -250,7 +262,7 @@ const languages = [
 
             <footer class="preview-footer-dark">
               <div class="preview-footer-main">
-                <PreviewLogo compact />
+                <PreviewLogo compact href={homeHref} />
                 <p>Free educational browser games for quick play, classroom breaks, and curious learners.</p>
                 <p class="preview-footer-copy">© 2026 EduGameHQ</p>
               </div>

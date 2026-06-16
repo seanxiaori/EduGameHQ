@@ -2,12 +2,13 @@
 interface Props {
   compact?: boolean;
   markOnly?: boolean;
+  href?: string;
 }
 
-const { compact = false, markOnly = false } = Astro.props;
+const { compact = false, markOnly = false, href = '/' } = Astro.props;
 ---
 
-<a class={`preview-logo ${compact ? 'compact' : ''} ${markOnly ? 'mark-only' : ''}`} href="/redesign-preview/" aria-label="EduGameHQ redesign preview home">
+<a class={`preview-logo ${compact ? 'compact' : ''} ${markOnly ? 'mark-only' : ''}`} href={href} aria-label="EduGameHQ home">
   <span class="preview-logo-mark-wrap" aria-hidden="true">
     <img src="/images/brand/edugamehq-icon-transparent.png" alt="" class="preview-logo-mark" loading="eager" />
   </span>
