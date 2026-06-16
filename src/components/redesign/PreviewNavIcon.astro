@@ -1,0 +1,203 @@
+---
+interface Props {
+  name:
+    | 'home'
+    | 'new'
+    | 'popular'
+    | 'recent'
+    | 'favorites'
+    | 'math'
+    | 'puzzle'
+    | 'word'
+    | 'science'
+    | 'sports'
+    | 'football'
+    | 'search'
+    | 'help'
+    | 'about'
+    | 'contact'
+    | 'privacy'
+    | 'all'
+    | 'share'
+    | 'facebook'
+    | 'x'
+    | 'linkedin'
+    | 'youtube'
+    | 'discord'
+    | 'random'
+    | 'top';
+  tone?: 'play' | 'category' | 'neutral' | 'action';
+}
+
+const { name, tone = 'neutral' } = Astro.props;
+---
+
+<span class={`preview-nav-icon ${tone} ${name}`} aria-hidden="true">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+    {name === 'home' && (
+      <>
+        <path d="M4 11.5 12 5l8 6.5" />
+        <path d="M6.5 10.5V19h11v-8.5" />
+        <path d="M10 19v-5h4v5" />
+      </>
+    )}
+    {name === 'new' && (
+      <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.8 1-6.1-4.4-4.3 6.1-.9L12 3Z" />
+    )}
+    {name === 'popular' && (
+      <>
+        <path d="M7 17 17 7" />
+        <path d="M9 7h8v8" />
+        <path d="M5 20h14" />
+      </>
+    )}
+    {name === 'recent' && (
+      <>
+        <path d="M5 12a7 7 0 1 0 2.1-5" />
+        <path d="M5 5v5h5" />
+        <path d="M12 8v4l3 2" />
+      </>
+    )}
+    {name === 'favorites' && (
+      <path d="M20 8.6c0 5.1-8 10.4-8 10.4S4 13.7 4 8.6A4.2 4.2 0 0 1 11.4 6 4.2 4.2 0 0 1 20 8.6Z" />
+    )}
+    {name === 'math' && (
+      <>
+        <path d="M12 5v14" />
+        <path d="M5 12h14" />
+      </>
+    )}
+    {name === 'puzzle' && (
+      <>
+        <path d="M9 4h6l5 5v6l-5 5H9l-5-5V9l5-5Z" />
+        <path d="m8.5 12 2.3 2.3 4.8-5" />
+      </>
+    )}
+    {name === 'word' && (
+      <>
+        <path d="m5 18 4.2-12h2.2L15.5 18" />
+        <path d="M7.4 14h5.7" />
+        <path d="M18 7v11" />
+      </>
+    )}
+    {name === 'science' && (
+      <>
+        <path d="M9 3h6" />
+        <path d="M10 3v6l-4.5 8A3 3 0 0 0 8.1 21h7.8a3 3 0 0 0 2.6-4L14 9V3" />
+        <path d="M8 16h8" />
+      </>
+    )}
+    {name === 'sports' && (
+      <>
+        <circle cx="12" cy="12" r="8" />
+        <path d="M4.5 10.5c4.3.3 7.5 3.5 9 9" />
+        <path d="M10.5 4.5c.3 4.3 3.5 7.5 9 9" />
+      </>
+    )}
+    {name === 'football' && (
+      <>
+        <circle cx="12" cy="12" r="8" />
+        <path d="m12 8 3.2 2.3-1.2 3.8h-4l-1.2-3.8L12 8Z" />
+        <path d="m12 4 0 4" />
+        <path d="m5.3 9 3.5 1.3" />
+        <path d="m18.7 9-3.5 1.3" />
+        <path d="m7.8 18 2.2-3.9" />
+        <path d="m16.2 18-2.2-3.9" />
+      </>
+    )}
+    {name === 'search' && (
+      <>
+        <circle cx="10.5" cy="10.5" r="5.5" />
+        <path d="m15 15 5 5" />
+      </>
+    )}
+    {name === 'help' && (
+      <>
+        <circle cx="12" cy="12" r="8" />
+        <path d="M9.8 9.5a2.4 2.4 0 0 1 4.4 1.3c0 1.8-2.2 2-2.2 3.7" />
+        <path d="M12 18h.01" />
+      </>
+    )}
+    {name === 'about' && (
+      <>
+        <circle cx="12" cy="12" r="8" />
+        <path d="M12 11v5" />
+        <path d="M12 8h.01" />
+      </>
+    )}
+    {name === 'contact' && (
+      <>
+        <path d="M4 7h16v10H4z" />
+        <path d="m4 8 8 6 8-6" />
+      </>
+    )}
+    {name === 'privacy' && (
+      <>
+        <path d="M12 3 19 6v5c0 4.5-2.8 7.8-7 10-4.2-2.2-7-5.5-7-10V6l7-3Z" />
+        <path d="m9.5 12 1.8 1.8 3.7-4" />
+      </>
+    )}
+    {name === 'all' && (
+      <>
+        <path d="M5 5h5v5H5z" />
+        <path d="M14 5h5v5h-5z" />
+        <path d="M5 14h5v5H5z" />
+        <path d="M14 14h5v5h-5z" />
+      </>
+    )}
+    {name === 'share' && (
+      <>
+        <circle cx="6" cy="12" r="2.4" />
+        <circle cx="17" cy="6" r="2.4" />
+        <circle cx="17" cy="18" r="2.4" />
+        <path d="m8.2 10.9 6.6-3.8" />
+        <path d="m8.2 13.1 6.6 3.8" />
+      </>
+    )}
+    {name === 'facebook' && (
+      <path d="M14.5 5h-2.1A3.4 3.4 0 0 0 9 8.4V11H7v3h2v6h3.2v-6h2.3l.5-3h-2.8V8.7c0-.5.4-.9.9-.9h1.4V5Z" />
+    )}
+    {name === 'x' && (
+      <>
+        <path d="M5 5 19 19" />
+        <path d="M19 5 5 19" />
+      </>
+    )}
+    {name === 'linkedin' && (
+      <>
+        <path d="M6 10v9" />
+        <path d="M10.5 19v-5.2c0-2.2 1.3-3.5 3.2-3.5 1.8 0 3.3 1.1 3.3 3.7v5" />
+        <path d="M6 6.5h.01" />
+      </>
+    )}
+    {name === 'youtube' && (
+      <>
+        <path d="M4.5 8.5c.2-1.4 1.2-2.2 2.6-2.4 3.1-.3 6.7-.3 9.8 0 1.4.2 2.4 1 2.6 2.4.3 2.2.3 4.8 0 7-.2 1.4-1.2 2.2-2.6 2.4-3.1.3-6.7.3-9.8 0-1.4-.2-2.4-1-2.6-2.4-.3-2.2-.3-4.8 0-7Z" />
+        <path d="m10.5 9.5 4.2 2.5-4.2 2.5v-5Z" />
+      </>
+    )}
+    {name === 'discord' && (
+      <>
+        <path d="M7.5 7.5c3-1.3 6-1.3 9 0l1.5 8.3c-1.8 1.4-3.5 2.1-5.1 2.2l-.9-1.3-.9 1.3c-1.6-.1-3.3-.8-5.1-2.2l1.5-8.3Z" />
+        <path d="M9.5 13h.01" />
+        <path d="M14.5 13h.01" />
+      </>
+    )}
+    {name === 'random' && (
+      <>
+        <path d="M4 7h3.2c2.5 0 4.1 2 5.5 5" />
+        <path d="M4 17h3.2c2.5 0 4.1-2 5.5-5" />
+        <path d="M16 7h4" />
+        <path d="m17 4 3 3-3 3" />
+        <path d="M16 17h4" />
+        <path d="m17 14 3 3-3 3" />
+      </>
+    )}
+    {name === 'top' && (
+      <>
+        <path d="M12 20V5" />
+        <path d="m6 11 6-6 6 6" />
+      </>
+    )}
+  </svg>
+</span>

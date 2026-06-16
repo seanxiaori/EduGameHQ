@@ -1,0 +1,27 @@
+---
+import type { Game } from '../../types/game';
+
+interface Props {
+  game: Game;
+  size?: 'standard' | 'large' | 'wide' | 'mini';
+  rank?: number;
+}
+
+const { game, size = 'standard', rank } = Astro.props;
+const image = game.image || game.thumbnailUrl || '/images/logo.svg';
+const tags = (game.tags || []).slice(0, 2);
+---
+
+<a class={`preview-game-tile ${size}`} href={`/games/${game.slug}/`}>
+  <span class="tile-art">
+    <img src={image} alt={`${game.title} game cover`} loading="lazy" />
+    {rank && <span class="tile-rank">{rank}</span>}
+    {(game.isNew || game.trending || game.featured) && (
+      <span class="tile-badge">{game.isNew ? 'New' : game.trending ? 'Hot' : 'Pick'}</span>
+    )}
+  </span>
+  <span class="tile-copy">
+    <strong>{game.title}</strong>
+    {size !== 'mini' && <small>{tags.length ? tags.join(' · ') : game.categoryName || game.category}</small>}
+  </span>
+</a>

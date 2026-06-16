@@ -15,6 +15,7 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
     sitemap({
+      filter: (page) => !page.includes('/redesign-preview/'),
       i18n: {
         defaultLocale: 'en',
         locales: {

@@ -1,0 +1,166 @@
+---
+import PreviewLayout from '../../layouts/PreviewLayout.astro';
+import PreviewLogo from '../../components/redesign/PreviewLogo.astro';
+import PreviewNavIcon from '../../components/redesign/PreviewNavIcon.astro';
+import PreviewGameTile from '../../components/redesign/PreviewGameTile.astro';
+import games from '../../data/games.json';
+import '../../styles/redesign-preview.css';
+
+const allGames = games as any[];
+const footballPattern = /\b(football|soccer|penalty|free kick|world cup|fifa)\b|head ball|goal finger|kickups/i;
+const football = allGames.filter((game) => game.category === 'sports' && footballPattern.test([game.title, game.slug, ...(game.tags || [])].join(' ')));
+const featured = allGames.filter((game) => game.featured || game.trending || game.isNew).slice(0, 12);
+const quietLinks = [
+  ['About', '/about/'],
+  ['Developers', '/about/'],
+  ['Kids site', '/'],
+  ['Jobs', '/about/'],
+  ['Info for parents', '/help/'],
+  ['Terms & conditions', '/terms-of-service/'],
+  ['Privacy', '/privacy-policy/'],
+  ['All games', '/best-games/'],
+];
+const shareLinks = [
+  ['Facebook', 'facebook', 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.edugamehq.com%2F'],
+  ['X', 'x', 'https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.edugamehq.com%2F&text=Free%20educational%20browser%20games'],
+  ['LinkedIn', 'linkedin', 'https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.edugamehq.com%2F'],
+  ['YouTube', 'youtube', 'https://www.youtube.com/'],
+  ['Discord', 'discord', 'https://discord.com/'],
+];
+---
+
+<PreviewLayout title="Football Games Category Redesign Preview" description="Football games category page redesign preview for EduGameHQ.">
+  <main id="top" class="redesign-preview">
+    <header class="preview-topbar">
+      <PreviewLogo />
+      <div class="preview-search">Search football, soccer, penalty games</div>
+      <div class="preview-actions">
+        <details class="preview-menu">
+          <summary>Language</summary>
+          <div class="preview-menu-popover">
+            <a href="/">EN</a>
+            <a href="/zh/">中文</a>
+            <a href="/es/">ES</a>
+            <a href="/fr/">FR</a>
+            <a href="/de/">DE</a>
+            <a href="/ja/">JA</a>
+          </div>
+        </details>
+        <a class="preview-chip" href="/redesign-preview/">Home Preview</a>
+        <a class="preview-icon-button" href="/redesign-preview/game/" aria-label="Game detail preview">▶</a>
+      </div>
+    </header>
+
+    <div class="preview-shell">
+      <aside class="preview-sidebar">
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Play</span>
+          <a class="preview-nav-item play-link" href="/redesign-preview/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
+          <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
+          <a class="preview-nav-item play-link" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
+          <a class="preview-nav-item play-link" href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
+          <a class="preview-nav-item play-link" href="/favorites/"><PreviewNavIcon name="favorites" tone="category" /><span class="preview-nav-label">Favorites</span></a>
+        </nav>
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Categories</span>
+          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
+          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
+          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
+          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
+          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
+          <a class="preview-nav-item category-link active" href="/redesign-preview/category/"><PreviewNavIcon name="football" tone="category" /><span class="preview-nav-label">Football</span></a>
+        </nav>
+      </aside>
+
+      <div class="preview-main preview-category-page">
+        <section class="preview-panel preview-category-header">
+          <div>
+            <div class="preview-category-icon-row" aria-hidden="true">
+              <span class="category-icon-pill"><PreviewNavIcon name="football" tone="category" /></span>
+              <span class="category-icon-pill"><PreviewNavIcon name="sports" tone="category" /></span>
+              <span class="category-icon-pill"><PreviewNavIcon name="popular" tone="play" /></span>
+            </div>
+            <div class="preview-section-head">
+              <div>
+                <h1>Football Games</h1>
+                <p>Free online soccer games, penalty shootouts, free kicks, World Cup games, and two-player football challenges.</p>
+              </div>
+            </div>
+            <div class="preview-tag-cloud">
+              <span>Penalty</span>
+              <span>Free Kick</span>
+              <span>World Cup</span>
+              <span>2 Player</span>
+              <span>Mobile Friendly</span>
+            </div>
+          </div>
+          <a class="preview-primary-button" href="/redesign-preview/game/">Open detail preview</a>
+        </section>
+
+        <section class="preview-two-column">
+          <div>
+            <div class="preview-section-head">
+              <div>
+                <h2>{football.length} Football Games</h2>
+                <p>Sorted for discovery with strong covers, compact cards, and clear category signals.</p>
+              </div>
+            </div>
+            <div class="preview-grid">
+              {football.slice(0, 36).map((game) => <PreviewGameTile game={game} />)}
+            </div>
+          </div>
+          <aside class="preview-side-stack">
+            <div class="preview-ad">Category Sidebar Ad</div>
+            <section class="preview-panel preview-info-block">
+              <h2>About Football Games</h2>
+              <p>Football games help players practice timing, spatial awareness, quick decision-making, and goal scoring strategy through short browser-friendly sessions.</p>
+              <h3>Related Categories</h3>
+              <ul>
+                <li>Sports Games</li>
+                <li>Reaction Games</li>
+                <li>Two Player Games</li>
+                <li>Skill Games</li>
+              </ul>
+            </section>
+          </aside>
+        </section>
+
+        <section class="preview-bottom-actions" aria-label="Quick actions">
+          <a class="preview-bottom-button secondary" href={`/games/${featured[5]?.slug || featured[0]?.slug || '2048'}/`}>
+            <PreviewNavIcon name="random" tone="action" />
+            <span>Random game</span>
+          </a>
+          <a class="preview-bottom-button primary" href="#top">
+            <PreviewNavIcon name="top" tone="action" />
+            <span>Back to top</span>
+          </a>
+        </section>
+
+        <footer class="preview-footer-dark">
+          <div class="preview-footer-main">
+            <PreviewLogo compact />
+            <p>Free educational browser games for quick play, classroom breaks, and curious learners.</p>
+            <p class="preview-footer-copy">© 2026 EduGameHQ</p>
+          </div>
+          <div class="preview-footer-links">
+            <strong>Explore</strong>
+            <nav aria-label="Footer links">
+              {quietLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+            </nav>
+          </div>
+          <div class="preview-footer-social">
+            <strong>Share</strong>
+            <div class="preview-share-row" aria-label="Share EduGameHQ">
+              <span><PreviewNavIcon name="share" tone="action" />EduGameHQ</span>
+              {shareLinks.map(([label, icon, href]) => (
+                <a class="preview-social-button" href={href} target="_blank" rel="noopener noreferrer" aria-label={`Share on ${label}`}>
+                  <PreviewNavIcon name={icon as any} tone="action" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+</PreviewLayout>
