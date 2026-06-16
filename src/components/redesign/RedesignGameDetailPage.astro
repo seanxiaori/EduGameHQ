@@ -1,0 +1,173 @@
+---
+import PreviewLayout from '../../layouts/PreviewLayout.astro';
+import PreviewLogo from './PreviewLogo.astro';
+import PreviewNavIcon from './PreviewNavIcon.astro';
+import PreviewGameTile from './PreviewGameTile.astro';
+import type { Game } from '../../types/game';
+import '../../styles/redesign-preview.css';
+
+interface Props {
+  game: Game;
+  allGames: Game[];
+}
+
+const { game, allGames } = Astro.props;
+const title = game.localized?.en?.title || game.title;
+const description = game.localized?.en?.description || game.description || `Play ${title} online for free.`;
+const iframeUrl = game.iframeUrl || game.embedUrl || '';
+const image = game.image || game.thumbnailUrl || '/images/logo.svg';
+const categoryName = game.categoryName || game.category;
+const related = allGames.filter((item) => item.slug !== game.slug && item.category === game.category).slice(0, 14);
+const featured = allGames.filter((item) => item.slug !== game.slug && (item.featured || item.trending || item.isNew)).slice(0, 10);
+const guide = game.localized?.en?.gameGuide || game.gameGuide;
+const age = game.ageRange || `${game.minAge || 6}-${game.maxAge || 18}`;
+const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
+---
+
+<PreviewLayout title={`${title} - Free ${categoryName} Game | EduGameHQ`} description={description} robots="index, follow" canonical={canonical}>
+  <main id="top" class="redesign-preview">
+    <header class="preview-topbar">
+      <PreviewLogo href="/" />
+      <a class="preview-search" href="/search/"><PreviewNavIcon name="search" tone="action" />Search educational games</a>
+      <div class="preview-actions">
+        <a class="preview-chip" href={`/${game.category}-games/`}>{categoryName}</a>
+        <a class="preview-chip" href="/favorites/">Favorites</a>
+        <a class="preview-icon-button" href="/best-games/" aria-label="Random game"><PreviewNavIcon name="random" tone="action" /></a>
+      </div>
+    </header>
+
+    <div class="preview-shell">
+      <aside class="preview-sidebar">
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Play</span>
+          <a class="preview-nav-item play-link" href="/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
+          <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
+          <a class="preview-nav-item play-link" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
+          <a class="preview-nav-item play-link" href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
+          <a class="preview-nav-item play-link" href="/favorites/"><PreviewNavIcon name="favorites" tone="category" /><span class="preview-nav-label">Favorites</span></a>
+        </nav>
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Categories</span>
+          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
+          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
+          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
+          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
+          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
+        </nav>
+      </aside>
+
+      <div class="preview-main preview-game-page">
+        <section class="preview-game-layout">
+          <aside class="preview-list preview-left-queue" aria-label="Quick game queue">
+            {related.slice(0, 5).map((item, index) => <PreviewGameTile game={item} size="mini" rank={index + 1} />)}
+          </aside>
+
+          <div class="preview-game-main-column">
+            <section class="preview-player-card">
+              <div class="preview-player">
+                {iframeUrl ? (
+                  <iframe
+                    src={iframeUrl}
+                    title={title}
+                    allowfullscreen
+                    loading="lazy"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+                  ></iframe>
+                ) : (
+                  <img src={image} alt={`${title} preview`} />
+                )}
+              </div>
+              <div class="preview-player-meta">
+                <div>
+                  <h1>{title}</h1>
+                  <span>{categoryName} · Ages {age}</span>
+                </div>
+                <div class="preview-actions">
+                  <button class="preview-icon-button detail-favorite-button" type="button" data-game-slug={game.slug} aria-label="Favorite"><PreviewNavIcon name="favorites" tone="action" /></button>
+                  <button class="preview-icon-button" type="button" data-fullscreen-player aria-label="Fullscreen">⛶</button>
+                  <a class="preview-icon-button" href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(canonical)}`} target="_blank" rel="noopener noreferrer" aria-label="Share"><PreviewNavIcon name="share" tone="action" /></a>
+                </div>
+              </div>
+            </section>
+
+            <div class="preview-ad compact-ad">Advertisement</div>
+
+            <section class="preview-game-below">
+              <article class="preview-panel preview-info-block">
+                <h2>About {title}</h2>
+                <p>{description}</p>
+                {guide?.howToPlay && (
+                  <>
+                    <h3>How to Play</h3>
+                    <ul>
+                      {guide.howToPlay.slice(0, 4).map((step) => <li>{step}</li>)}
+                    </ul>
+                  </>
+                )}
+              </article>
+              <aside class="preview-game-side-info">
+                <div class="preview-panel preview-facts">
+                  <span><strong>Category</strong>{categoryName}</span>
+                  <span><strong>Age</strong>{age}</span>
+                  <span><strong>Mode</strong>Browser</span>
+                </div>
+                <div class="preview-ad compact-ad">Advertisement</div>
+              </aside>
+            </section>
+
+            <section class="preview-section">
+              <div class="preview-section-head">
+                <h2>More {categoryName} Games</h2>
+              </div>
+              <div class="preview-grid">
+                {related.slice(0, 10).map((item) => <PreviewGameTile game={item} />)}
+              </div>
+            </section>
+          </div>
+
+          <aside class="preview-side-stack preview-game-right-rail">
+            <div class="preview-ad compact-ad">Advertisement</div>
+            <div class="preview-panel preview-list">
+              {featured.slice(0, 5).map((item) => <PreviewGameTile game={item} size="mini" />)}
+            </div>
+          </aside>
+        </section>
+
+        <footer class="preview-footer-dark">
+          <div class="preview-footer-main">
+            <PreviewLogo compact href="/" />
+            <p>Free educational browser games for quick play, classroom breaks, and curious learners.</p>
+            <p class="preview-footer-copy">© 2026 EduGameHQ</p>
+          </div>
+          <div class="preview-footer-links">
+            <strong>Explore</strong>
+            <nav aria-label="Footer links">
+              <a href="/new-games/">New games</a>
+              <a href="/best-games/">Popular</a>
+              <a href={`/${game.category}-games/`}>{categoryName}</a>
+              <a href="/help/">Help</a>
+            </nav>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script is:inline>
+    document.querySelector('[data-fullscreen-player]')?.addEventListener('click', () => {
+      const player = document.querySelector('.preview-player');
+      if (player?.requestFullscreen) player.requestFullscreen();
+    });
+
+    document.querySelector('.detail-favorite-button')?.addEventListener('click', (event) => {
+      const slug = event.currentTarget?.getAttribute('data-game-slug');
+      if (!slug) return;
+      const favorites = JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      const index = favorites.indexOf(slug);
+      if (index >= 0) favorites.splice(index, 1);
+      else favorites.push(slug);
+      localStorage.setItem('favoriteGames', JSON.stringify(favorites));
+      window.dispatchEvent(new CustomEvent('favoritesChanged'));
+    });
+  </script>
+</PreviewLayout>

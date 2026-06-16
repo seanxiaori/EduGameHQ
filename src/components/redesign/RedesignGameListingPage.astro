@@ -308,7 +308,7 @@ if (config.category) {
   listingGames = [...allGames].filter((game) => game.featured || game.trending || (game.popularity || 0) > 500).sort((a, b) => score(b) - score(a));
 }
 
-const heroGames = listingGames.slice(0, 3);
+const heroGames = listingGames.slice(0, 2);
 const mainGames = listingGames.slice(0, 48);
 const relatedGames = allGames.filter((game) => game.category !== config.category && (game.featured || game.trending || game.isNew)).slice(0, 8);
 const randomGame = listingGames[7] || listingGames[0] || allGames[0];
@@ -369,7 +369,7 @@ const shareLinks = [
 
       <div class="preview-main preview-category-page">
         <section class="preview-panel preview-category-header redesign-listing-hero">
-          <div>
+          <div class="redesign-listing-copy">
             <div class="preview-category-icon-row" aria-hidden="true">
               <span class="category-icon-pill"><PreviewNavIcon name={config.icon} tone="category" /></span>
               <span class="category-icon-pill"><PreviewNavIcon name="popular" tone="category" /></span>
@@ -386,12 +386,12 @@ const shareLinks = [
               {config.tags.map((tag) => <span>{tag}</span>)}
             </div>
           </div>
-          {heroGames.length > 0 && (
-            <div class="redesign-hero-stack">
-              {heroGames.map((game, index) => <PreviewGameTile game={game} size={index === 0 ? 'wide' : 'mini'} />)}
-            </div>
-          )}
+          <div class="redesign-hero-stack">
+            {heroGames.map((game) => <PreviewGameTile game={game} />)}
+          </div>
         </section>
+
+        <section class="preview-ad preview-ad-wide">Advertisement</section>
 
         <section class="preview-two-column">
           <div>

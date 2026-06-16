@@ -1,0 +1,231 @@
+---
+import PreviewLayout from '../../layouts/PreviewLayout.astro';
+import PreviewLogo from './PreviewLogo.astro';
+import PreviewNavIcon from './PreviewNavIcon.astro';
+import PreviewGameTile from './PreviewGameTile.astro';
+import games from '../../data/games.json';
+import '../../styles/redesign-preview.css';
+
+type UtilityKind = 'favorites' | 'recent';
+
+interface Props {
+  kind: UtilityKind;
+}
+
+const { kind } = Astro.props;
+const allGames = games as any[];
+const recommended = allGames.filter((game) => game.featured || game.trending || game.isNew).slice(0, 12);
+const compactGames = allGames.map((game) => ({
+  slug: game.slug,
+  title: game.title,
+  description: game.description,
+  category: game.category,
+  categoryName: game.categoryName,
+  image: game.image || game.thumbnailUrl || '/images/logo.svg',
+  thumbnailUrl: game.thumbnailUrl || game.image || '/images/logo.svg',
+  tags: (game.tags || []).slice(0, 3),
+  isNew: game.isNew,
+  trending: game.trending,
+  featured: game.featured,
+}));
+
+const isFavorites = kind === 'favorites';
+const title = isFavorites ? 'Your Favorites' : 'Recently Played';
+const eyebrow = isFavorites ? 'Saved games' : 'Continue playing';
+const description = isFavorites
+  ? 'Your saved educational games stay on this device for fast return play.'
+  : 'Pick up where you left off and keep your learning streak moving.';
+const canonicalPath = isFavorites ? '/favorites/' : '/recently-played/';
+const emptyTitle = isFavorites ? 'No favorite games yet' : 'No recently played games yet';
+const emptyCopy = isFavorites
+  ? 'Tap the heart on any game to build your personal shelf.'
+  : 'Play a game and it will appear here automatically.';
+const primaryHref = isFavorites ? '/new-games/' : '/best-games/';
+const primaryLabel = isFavorites ? 'Browse games' : 'Find a game';
+---
+
+<PreviewLayout
+  title={`${title} - EduGameHQ`}
+  description={description}
+  robots="index, follow"
+  canonical={`https://www.edugamehq.com${canonicalPath}`}
+>
+  <main id="top" class="redesign-preview">
+    <header class="preview-topbar">
+      <PreviewLogo href="/" />
+      <a class="preview-search" href="/search/"><PreviewNavIcon name="search" tone="action" />Search educational games</a>
+      <div class="preview-actions">
+        <a class="preview-chip" href="/new-games/">New Games</a>
+        <a class="preview-chip" href="/favorites/">Favorites</a>
+        <a class="preview-icon-button" href="/best-games/" aria-label="Random game"><PreviewNavIcon name="random" tone="action" /></a>
+      </div>
+    </header>
+
+    <div class="preview-shell">
+      <aside class="preview-sidebar">
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Play</span>
+          <a class="preview-nav-item play-link" href="/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
+          <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
+          <a class="preview-nav-item play-link" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
+          <a class={`preview-nav-item play-link ${!isFavorites ? 'active' : ''}`} href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
+          <a class={`preview-nav-item play-link ${isFavorites ? 'active' : ''}`} href="/favorites/"><PreviewNavIcon name="favorites" tone="category" /><span class="preview-nav-label">Favorites</span></a>
+        </nav>
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Categories</span>
+          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
+          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
+          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
+          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
+          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
+        </nav>
+      </aside>
+
+      <div class="preview-main preview-category-page">
+        <section class="preview-panel preview-category-header redesign-utility-hero">
+          <div>
+            <div class="preview-category-icon-row" aria-hidden="true">
+              <span class="category-icon-pill"><PreviewNavIcon name={isFavorites ? 'favorites' : 'recent'} tone="category" /></span>
+              <span class="category-icon-pill"><PreviewNavIcon name="popular" tone="category" /></span>
+            </div>
+            <div class="preview-section-head">
+              <div>
+                <p class="redesign-eyebrow">{eyebrow}</p>
+                <h1>{title}</h1>
+                <p>{description}</p>
+              </div>
+            </div>
+          </div>
+          <button class="preview-primary-button utility-clear-button" type="button" data-clear-kind={kind}>
+            {isFavorites ? 'Clear Favorites' : 'Clear History'}
+          </button>
+        </section>
+
+        <section class="preview-ad preview-ad-wide">Advertisement</section>
+
+        <section class="preview-panel redesign-stats-row" aria-label={`${title} stats`}>
+          <span><strong data-stat="count">0</strong>{isFavorites ? 'Saved games' : 'Recent games'}</span>
+          <span><strong data-stat="categories">0</strong>Categories</span>
+          <span><strong data-stat="time">0h</strong>Estimated time</span>
+        </section>
+
+        <section class="preview-two-column">
+          <div>
+            <div class="preview-section-head">
+              <div>
+                <h2>{isFavorites ? 'Favorite Games' : 'Recent Games'}</h2>
+                <p>{isFavorites ? 'Games marked with the heart button appear here.' : 'Your latest played games appear here after a session.'}</p>
+              </div>
+            </div>
+            <div class="preview-grid utility-games-grid" data-utility-grid></div>
+            <section class="preview-panel redesign-empty-state" data-empty-state>
+              <span class="category-icon-pill"><PreviewNavIcon name={isFavorites ? 'favorites' : 'recent'} tone="category" /></span>
+              <h2>{emptyTitle}</h2>
+              <p>{emptyCopy}</p>
+              <div class="preview-quick-strip">
+                <a href={primaryHref}>{primaryLabel}</a>
+                <a href="/trending/">Trending games</a>
+              </div>
+            </section>
+          </div>
+          <aside class="preview-side-stack">
+            <div class="preview-ad">Advertisement</div>
+            <section class="preview-panel preview-info-block">
+              <h2>{isFavorites ? 'Recommended for You' : 'Good Next Plays'}</h2>
+              <div class="redesign-mini-list">
+                {recommended.slice(0, 4).map((game) => <PreviewGameTile game={game} size="mini" />)}
+              </div>
+            </section>
+          </aside>
+        </section>
+
+        <footer class="preview-footer-dark">
+          <div class="preview-footer-main">
+            <PreviewLogo compact href="/" />
+            <p>Free educational browser games for quick play, classroom breaks, and curious learners.</p>
+            <p class="preview-footer-copy">© 2026 EduGameHQ</p>
+          </div>
+          <div class="preview-footer-links">
+            <strong>Explore</strong>
+            <nav aria-label="Footer links">
+              <a href="/new-games/">New games</a>
+              <a href="/best-games/">Popular</a>
+              <a href="/math-games/">Math</a>
+              <a href="/puzzle-games/">Puzzle</a>
+              <a href="/help/">Help</a>
+            </nav>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script define:vars={{ compactGames, kind }} is:inline>
+    const games = compactGames;
+    const bySlug = new Map(games.map((game) => [game.slug, game]));
+    const grid = document.querySelector('[data-utility-grid]');
+    const emptyState = document.querySelector('[data-empty-state]');
+    const statCount = document.querySelector('[data-stat="count"]');
+    const statCategories = document.querySelector('[data-stat="categories"]');
+    const statTime = document.querySelector('[data-stat="time"]');
+    const clearButton = document.querySelector('[data-clear-kind]');
+
+    function readFavoriteSlugs() {
+      try {
+        return JSON.parse(localStorage.getItem('favoriteGames') || '[]');
+      } catch {
+        return [];
+      }
+    }
+
+    function readRecentSlugs() {
+      if (window.gameStatsManager?.getRecentGames) {
+        return window.gameStatsManager.getRecentGames(24).map((item) => item.slug);
+      }
+      try {
+        const raw = JSON.parse(localStorage.getItem('gameHistory') || '{}');
+        if (Array.isArray(raw)) return raw.map((item) => item.slug || item).filter(Boolean);
+        return Object.entries(raw)
+          .sort((a, b) => Number(b[1]?.lastPlayed || b[1]?.timestamp || 0) - Number(a[1]?.lastPlayed || a[1]?.timestamp || 0))
+          .map(([slug]) => slug);
+      } catch {
+        return [];
+      }
+    }
+
+    function tile(game) {
+      const tags = (game.tags || []).slice(0, 2).join(' · ') || game.categoryName || game.category;
+      const badge = game.isNew ? '<span class="tile-badge">New</span>' : game.trending ? '<span class="tile-badge">Hot</span>' : game.featured ? '<span class="tile-badge">Pick</span>' : '';
+      return `<a class="preview-game-tile standard" href="/games/${game.slug}/">
+        <span class="tile-art"><img src="${game.image}" alt="${game.title} game cover" loading="lazy" />${badge}</span>
+        <span class="tile-copy"><strong>${game.title}</strong><small>${tags}</small></span>
+      </a>`;
+    }
+
+    function render() {
+      const slugs = kind === 'favorites' ? readFavoriteSlugs() : readRecentSlugs();
+      const uniqueSlugs = [...new Set(slugs)].filter((slug) => bySlug.has(slug));
+      const selected = uniqueSlugs.map((slug) => bySlug.get(slug));
+      grid.innerHTML = selected.map(tile).join('');
+      emptyState.hidden = selected.length > 0;
+      statCount.textContent = selected.length;
+      statCategories.textContent = new Set(selected.map((game) => game.category)).size;
+      statTime.textContent = `${Math.max(0, Math.round(selected.length * 0.5))}h`;
+    }
+
+    clearButton?.addEventListener('click', () => {
+      if (kind === 'favorites') {
+        localStorage.setItem('favoriteGames', '[]');
+        window.dispatchEvent(new CustomEvent('favoritesChanged'));
+      } else {
+        localStorage.removeItem('gameHistory');
+        localStorage.removeItem('gamePlayHistory');
+      }
+      render();
+    });
+
+    window.addEventListener('favoritesChanged', render);
+    document.addEventListener('DOMContentLoaded', render);
+    render();
+  </script>
+</PreviewLayout>

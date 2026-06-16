@@ -5,13 +5,13 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FFFFFF",
-  "theme_color": "#F59E0B",
+  "theme_color": "#0B63CE",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
   "icons": [
     {
-      "src": "/images/logo/edugamehq-icon.svg",
+      "src": "/favicon.svg",
       "sizes": "128x128",
       "type": "image/svg+xml",
       "purpose": "any maskable"
@@ -57,7 +57,7 @@
       "url": "/math-games",
       "icons": [
         {
-          "src": "/images/logo/edugamehq-icon.svg",
+          "src": "/favicon.svg",
           "sizes": "96x96"
         }
       ]
@@ -69,7 +69,7 @@
       "url": "/science-games",
       "icons": [
         {
-          "src": "/images/logo/edugamehq-icon.svg",
+          "src": "/favicon.svg",
           "sizes": "96x96"
         }
       ]
@@ -81,10 +81,10 @@
       "url": "/trending",
       "icons": [
         {
-          "src": "/images/logo/edugamehq-icon.svg",
+          "src": "/favicon.svg",
           "sizes": "96x96"
         }
       ]
     }
   ]
-} 
+}
