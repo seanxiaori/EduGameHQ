@@ -88,6 +88,10 @@ const seoData = {
 ---
 
 <BaseLayout title={seoData.title} description={seoData.description}>
+  <script define:vars={{ allGames }} is:inline>
+    window.GAMES_DATA = allGames;
+  </script>
+
   <main class="main-content">
     <div class="content-wrapper">
       

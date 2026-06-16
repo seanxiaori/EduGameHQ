@@ -365,16 +365,6 @@ const currentSystemPage = (pageStructure.system as Record<string, any>)[pathWith
 const currentSupportPage = (pageStructure.support as Record<string, any>)[pathWithoutLang];
 const isGamePage = pathWithoutLang.startsWith('/games/');
 
-// 读取games.json数据用于客户端
-let gamesData = [];
-try {
-  const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
-  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
-  gamesData = JSON.parse(fileContent);
-} catch (error) {
-  console.warn('Unable to read games data file:', error);
-}
-
 // 构建面包屑导航 - 多语言支持
 const breadcrumbs = [];
 if (!isHomePage) {
@@ -433,16 +423,6 @@ if (!isHomePage) {
     if (typeof gameData !== 'undefined' && gameData) {
       gameCategory = gameData.category;
       gameTitle = gameData.title || 'Game';
-    } else {
-      // 从URL路径中提取游戏slug，然后查找对应的游戏数据
-      const gameSlug = currentPath.split('/').pop();
-      if (gameSlug && gamesData.length > 0) {
-        const game = gamesData.find((g: any) => g.slug === gameSlug);
-        if (game) {
-          gameCategory = game.category;
-          gameTitle = game.title || 'Game';
-        }
-      }
     }
     
     // 添加游戏类型（如Math Games）
@@ -653,15 +633,12 @@ const breadcrumbListData = breadcrumbs.length > 0 ? {
   <!-- 游戏统计管理器 - 延迟加载 -->
   <script src="/js/game-stats-manager.js" defer is:inline></script>
   
-  <!-- 全局games数据 - 延迟加载以改善初始加载性能 -->
-  <script define:vars={{ gamesData, currentLang, translations }} defer>
-    // 延迟设置全局游戏数据
-    window.GAMES_DATA = gamesData || [];
+  <!-- 全局页面语言标识 -->
+  <script define:vars={{ currentLang }} defer>
     window.CURRENT_LANG = currentLang;
-    window.TRANSLATIONS = translations;
+    window.GAMES_DATA = window.GAMES_DATA || [];
     // 开发环境日志输出（通过检查hostname判断）
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-      console.log('🌐 GAMES_DATA已设置，游戏数量:', window.GAMES_DATA.length);
       console.log('🌍 当前语言:', window.CURRENT_LANG);
     }
   </script>
