@@ -1,0 +1,472 @@
+---
+import PreviewLayout from '../../layouts/PreviewLayout.astro';
+import PreviewLogo from './PreviewLogo.astro';
+import PreviewNavIcon from './PreviewNavIcon.astro';
+import PreviewGameTile from './PreviewGameTile.astro';
+import games from '../../data/games.json';
+import '../../styles/redesign-preview.css';
+
+type IconName =
+  | 'home'
+  | 'new'
+  | 'popular'
+  | 'recent'
+  | 'favorites'
+  | 'math'
+  | 'puzzle'
+  | 'word'
+  | 'science'
+  | 'sports'
+  | 'football'
+  | 'search'
+  | 'all'
+  | 'share'
+  | 'facebook'
+  | 'x'
+  | 'linkedin'
+  | 'random'
+  | 'top';
+
+type ListingKind =
+  | 'new'
+  | 'popular'
+  | 'trending'
+  | 'math'
+  | 'science'
+  | 'language'
+  | 'puzzle'
+  | 'sports'
+  | 'art'
+  | 'geography'
+  | 'adventure'
+  | 'creative'
+  | 'memory'
+  | 'arcade'
+  | 'coding'
+  | 'strategy';
+
+interface ListingConfig {
+  title: string;
+  eyebrow: string;
+  description: string;
+  href: string;
+  icon: IconName;
+  category?: string;
+  tags: string[];
+  sidebarTitle: string;
+  sidebarCopy: string;
+  seoTitle: string;
+  seoDescription: string;
+}
+
+interface Props {
+  kind: ListingKind;
+}
+
+const { kind } = Astro.props;
+const allGames = games as any[];
+
+const configs: Record<ListingKind, ListingConfig> = {
+  new: {
+    title: 'New Educational Games',
+    eyebrow: 'Fresh picks',
+    description: 'Recently added learning games with strong covers, quick play, and classroom-friendly discovery.',
+    href: '/new-games/',
+    icon: 'new',
+    tags: ['New releases', 'Fresh covers', 'Quick play', 'Updated catalog'],
+    sidebarTitle: 'About New Games',
+    sidebarCopy: 'This shelf highlights newer additions and featured games so returning players can quickly find something fresh.',
+    seoTitle: 'New Educational Games - EduGameHQ',
+    seoDescription: 'Play the newest educational browser games added to EduGameHQ.',
+  },
+  popular: {
+    title: 'Popular Educational Games',
+    eyebrow: 'Most played',
+    description: 'High-signal educational games from across math, science, word, puzzle, sports, and coding categories.',
+    href: '/best-games/',
+    icon: 'popular',
+    tags: ['Popular', 'Featured', 'All subjects', 'Fast discovery'],
+    sidebarTitle: 'About Popular Games',
+    sidebarCopy: 'Popular games are selected from featured, trending, and high-play catalog entries for fast browsing.',
+    seoTitle: 'Popular Educational Games - EduGameHQ',
+    seoDescription: 'Browse popular educational games for kids and students.',
+  },
+  trending: {
+    title: 'Trending Games',
+    eyebrow: 'Hot right now',
+    description: 'Games currently getting the most attention across the EduGameHQ catalog.',
+    href: '/trending/',
+    icon: 'popular',
+    tags: ['Trending', 'Hot picks', 'Featured', 'Student favorites'],
+    sidebarTitle: 'About Trending Games',
+    sidebarCopy: 'Trending games are sorted by play signals and catalog quality so the list feels lively and current.',
+    seoTitle: 'Trending Educational Games - EduGameHQ',
+    seoDescription: 'Play trending educational games and popular learning games online.',
+  },
+  math: {
+    title: 'Math Games',
+    eyebrow: 'Numbers and logic',
+    description: 'Arithmetic, pattern recognition, geometry, fractions, and logic practice through short browser games.',
+    href: '/math-games/',
+    icon: 'math',
+    category: 'math',
+    tags: ['Arithmetic', 'Logic', 'Patterns', 'Problem solving'],
+    sidebarTitle: 'About Math Games',
+    sidebarCopy: 'Math games help learners practice speed, accuracy, number sense, and multi-step reasoning.',
+    seoTitle: 'Free Math Games for Kids - EduGameHQ',
+    seoDescription: 'Play free math games for arithmetic, logic, patterns, and problem solving.',
+  },
+  science: {
+    title: 'Science Games',
+    eyebrow: 'Explore systems',
+    description: 'Interactive science games about physics, biology, chemistry, nature, experiments, and observation.',
+    href: '/science-games/',
+    icon: 'science',
+    category: 'science',
+    tags: ['Physics', 'Biology', 'Chemistry', 'Experiments'],
+    sidebarTitle: 'About Science Games',
+    sidebarCopy: 'Science games make abstract systems easier to explore with visual feedback and short challenges.',
+    seoTitle: 'Free Science Games for Kids - EduGameHQ',
+    seoDescription: 'Play free science games for physics, biology, chemistry, and experiments.',
+  },
+  language: {
+    title: 'Word and Language Games',
+    eyebrow: 'Words and reading',
+    description: 'Vocabulary, spelling, reading, typing, and language arts games for quick daily practice.',
+    href: '/language-games/',
+    icon: 'word',
+    category: 'language',
+    tags: ['Vocabulary', 'Spelling', 'Typing', 'Reading'],
+    sidebarTitle: 'About Word Games',
+    sidebarCopy: 'Language games support vocabulary growth, spelling fluency, and confident reading habits.',
+    seoTitle: 'Free Word and Language Games - EduGameHQ',
+    seoDescription: 'Play vocabulary, spelling, reading, and language arts games online.',
+  },
+  puzzle: {
+    title: 'Puzzle Games',
+    eyebrow: 'Think it through',
+    description: 'Spatial reasoning, matching, sorting, memory, block puzzles, and problem-solving challenges.',
+    href: '/puzzle-games/',
+    icon: 'puzzle',
+    category: 'puzzle',
+    tags: ['Logic', 'Blocks', 'Matching', 'Spatial reasoning'],
+    sidebarTitle: 'About Puzzle Games',
+    sidebarCopy: 'Puzzle games train planning, attention, pattern recognition, and persistence in compact sessions.',
+    seoTitle: 'Free Puzzle Games for Kids - EduGameHQ',
+    seoDescription: 'Play free puzzle games for logic, matching, blocks, and problem solving.',
+  },
+  sports: {
+    title: 'Sports Games',
+    eyebrow: 'Timing and skill',
+    description: 'Soccer, basketball, tennis, racing, precision, and quick reflex games with learning-friendly pacing.',
+    href: '/sports-games/',
+    icon: 'sports',
+    category: 'sports',
+    tags: ['Soccer', 'Basketball', 'Timing', 'Reflexes'],
+    sidebarTitle: 'About Sports Games',
+    sidebarCopy: 'Sports games help players practice timing, coordination, spatial awareness, and fast decisions.',
+    seoTitle: 'Free Sports Games for Kids - EduGameHQ',
+    seoDescription: 'Play free sports games including soccer, basketball, tennis, and racing games.',
+  },
+  art: {
+    title: 'Art Games',
+    eyebrow: 'Color and creativity',
+    description: 'Drawing, coloring, design, music, and visual creativity games for playful exploration.',
+    href: '/art-games/',
+    icon: 'word',
+    category: 'art',
+    tags: ['Drawing', 'Color', 'Design', 'Creativity'],
+    sidebarTitle: 'About Art Games',
+    sidebarCopy: 'Art games create low-pressure spaces for color, composition, imagination, and visual expression.',
+    seoTitle: 'Free Art Games for Kids - EduGameHQ',
+    seoDescription: 'Play free art, drawing, coloring, and creative design games online.',
+  },
+  geography: {
+    title: 'Geography Games',
+    eyebrow: 'Maps and world knowledge',
+    description: 'Maps, flags, countries, capitals, world facts, and location games for curious learners.',
+    href: '/geography-games/',
+    icon: 'science',
+    category: 'geography',
+    tags: ['Maps', 'Flags', 'Countries', 'Capitals'],
+    sidebarTitle: 'About Geography Games',
+    sidebarCopy: 'Geography games build map confidence, place recognition, and global curiosity.',
+    seoTitle: 'Free Geography Games for Kids - EduGameHQ',
+    seoDescription: 'Play map, flags, countries, capitals, and geography games online.',
+  },
+  adventure: {
+    title: 'Adventure Games',
+    eyebrow: 'Explore and discover',
+    description: 'Exploration, quests, platform challenges, story moments, and curiosity-driven browser games.',
+    href: '/adventure-games/',
+    icon: 'home',
+    category: 'adventure',
+    tags: ['Exploration', 'Quests', 'Stories', 'Challenges'],
+    sidebarTitle: 'About Adventure Games',
+    sidebarCopy: 'Adventure games bring together navigation, reading, memory, and flexible problem solving.',
+    seoTitle: 'Free Adventure Games for Kids - EduGameHQ',
+    seoDescription: 'Play free adventure games with exploration, quests, and learning-friendly challenges.',
+  },
+  creative: {
+    title: 'Creative Games',
+    eyebrow: 'Make something',
+    description: 'Music, building, design, sandbox, drawing, and creative problem-solving games.',
+    href: '/creative-games/',
+    icon: 'science',
+    category: 'creative',
+    tags: ['Music', 'Building', 'Design', 'Sandbox'],
+    sidebarTitle: 'About Creative Games',
+    sidebarCopy: 'Creative games encourage open-ended thinking, experimentation, and self-expression.',
+    seoTitle: 'Free Creative Games for Kids - EduGameHQ',
+    seoDescription: 'Play creative games for building, music, design, drawing, and imagination.',
+  },
+  memory: {
+    title: 'Memory Games',
+    eyebrow: 'Recall and focus',
+    description: 'Matching, concentration, pattern memory, sequencing, and attention-training games.',
+    href: '/memory-games/',
+    icon: 'favorites',
+    category: 'memory',
+    tags: ['Matching', 'Recall', 'Focus', 'Patterns'],
+    sidebarTitle: 'About Memory Games',
+    sidebarCopy: 'Memory games train attention, recall, visual scanning, and pattern recognition.',
+    seoTitle: 'Free Memory Games for Kids - EduGameHQ',
+    seoDescription: 'Play memory games for matching, recall, focus, and concentration.',
+  },
+  arcade: {
+    title: 'Arcade Games',
+    eyebrow: 'Fast and focused',
+    description: 'Short arcade challenges with timing, pattern recognition, attention, and replayable skill loops.',
+    href: '/arcade-games/',
+    icon: 'new',
+    category: 'arcade',
+    tags: ['Timing', 'Reflexes', 'Patterns', 'Quick play'],
+    sidebarTitle: 'About Arcade Games',
+    sidebarCopy: 'Arcade games keep sessions short while practicing rhythm, attention, and reaction speed.',
+    seoTitle: 'Free Arcade Games for Kids - EduGameHQ',
+    seoDescription: 'Play free arcade games with quick browser-friendly challenges.',
+  },
+  coding: {
+    title: 'Coding Games',
+    eyebrow: 'Logic and programs',
+    description: 'Programming concepts, debugging, CSS, algorithms, sequencing, and computational thinking games.',
+    href: '/coding-games/',
+    icon: 'popular',
+    category: 'coding',
+    tags: ['Algorithms', 'Debugging', 'CSS', 'Sequencing'],
+    sidebarTitle: 'About Coding Games',
+    sidebarCopy: 'Coding games introduce program logic, structured thinking, debugging, and cause-and-effect systems.',
+    seoTitle: 'Free Coding Games for Kids - EduGameHQ',
+    seoDescription: 'Play free coding games for programming, algorithms, debugging, and computational thinking.',
+  },
+  strategy: {
+    title: 'Strategy Games',
+    eyebrow: 'Plan ahead',
+    description: 'Decision-making, tradeoffs, tactics, resource planning, and long-form problem solving.',
+    href: '/strategy-games/',
+    icon: 'popular',
+    category: 'strategy',
+    tags: ['Planning', 'Tactics', 'Decisions', 'Tradeoffs'],
+    sidebarTitle: 'About Strategy Games',
+    sidebarCopy: 'Strategy games help players compare options, plan several steps ahead, and adapt to feedback.',
+    seoTitle: 'Free Strategy Games for Kids - EduGameHQ',
+    seoDescription: 'Play free strategy games for planning, tactics, and decision making.',
+  },
+};
+
+const config = configs[kind];
+const categoryLinks = (['math', 'puzzle', 'language', 'science', 'sports', 'coding', 'arcade', 'memory'] as ListingKind[]).map((id) => configs[id]);
+const playLinks = [
+  { title: 'Home', href: '/', icon: 'home' as IconName },
+  { title: 'New Games', href: '/new-games/', icon: 'new' as IconName, active: kind === 'new' },
+  { title: 'Popular', href: '/best-games/', icon: 'popular' as IconName, active: kind === 'popular' },
+  { title: 'Trending', href: '/trending/', icon: 'popular' as IconName, active: kind === 'trending' },
+  { title: 'Recently Played', href: '/recently-played/', icon: 'recent' as IconName },
+  { title: 'Favorites', href: '/favorites/', icon: 'favorites' as IconName },
+];
+
+function byDate(a: any, b: any) {
+  return new Date(b.lastUpdated || '2000-01-01').getTime() - new Date(a.lastUpdated || '2000-01-01').getTime();
+}
+
+function score(game: any) {
+  return (game.playCount || game.popularity || 0) + (game.trending ? 20000 : 0) + (game.featured ? 10000 : 0) + (game.isNew ? 5000 : 0);
+}
+
+let listingGames = allGames;
+if (config.category) {
+  listingGames = allGames.filter((game) => game.category === config.category);
+} else if (kind === 'new') {
+  listingGames = allGames.filter((game) => game.isNew || game.featured).sort((a, b) => {
+    if (a.isNew && !b.isNew) return -1;
+    if (!a.isNew && b.isNew) return 1;
+    return byDate(a, b);
+  });
+} else if (kind === 'trending') {
+  listingGames = [...allGames].sort((a, b) => score(b) - score(a));
+} else if (kind === 'popular') {
+  listingGames = [...allGames].filter((game) => game.featured || game.trending || (game.popularity || 0) > 500).sort((a, b) => score(b) - score(a));
+}
+
+const heroGames = listingGames.slice(0, 3);
+const mainGames = listingGames.slice(0, 48);
+const relatedGames = allGames.filter((game) => game.category !== config.category && (game.featured || game.trending || game.isNew)).slice(0, 8);
+const randomGame = listingGames[7] || listingGames[0] || allGames[0];
+const titleCount = kind === 'new' ? 'New Games' : kind === 'popular' ? 'Popular Games' : `${listingGames.length} ${config.title}`;
+const canonical = `https://www.edugamehq.com${config.href}`;
+const shareLinks = [
+  ['Facebook', 'facebook', 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.edugamehq.com%2F'],
+  ['X', 'x', 'https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.edugamehq.com%2F&text=Free%20educational%20browser%20games'],
+  ['LinkedIn', 'linkedin', 'https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fwww.edugamehq.com%2F'],
+];
+---
+
+<PreviewLayout title={config.seoTitle} description={config.seoDescription} robots="index, follow" canonical={canonical}>
+  <main id="top" class="redesign-preview">
+    <header class="preview-topbar">
+      <PreviewLogo href="/" />
+      <a class="preview-search" href="/search/"><PreviewNavIcon name="search" tone="action" />Search educational games</a>
+      <div class="preview-actions">
+        <details class="preview-menu">
+          <summary>Language</summary>
+          <div class="preview-menu-popover">
+            <a href="/">EN</a>
+            <a href="/zh/">中文</a>
+            <a href="/es/">ES</a>
+            <a href="/fr/">FR</a>
+            <a href="/de/">DE</a>
+            <a href="/ja/">JA</a>
+          </div>
+        </details>
+        <a class="preview-chip" href="/favorites/">Favorites</a>
+        <a class="preview-icon-button" href={`/games/${randomGame?.slug || '2048'}/`} aria-label="Random game">
+          <PreviewNavIcon name="random" tone="action" />
+        </a>
+      </div>
+    </header>
+
+    <div class="preview-shell">
+      <aside class="preview-sidebar">
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Play</span>
+          {playLinks.map((link) => (
+            <a class={`preview-nav-item play-link ${link.active ? 'active' : ''}`} href={link.href}>
+              <PreviewNavIcon name={link.icon} tone="category" />
+              <span class="preview-nav-label">{link.title}</span>
+            </a>
+          ))}
+        </nav>
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Categories</span>
+          {categoryLinks.map((link) => (
+            <a class={`preview-nav-item category-link ${link.href === config.href ? 'active' : ''}`} href={link.href}>
+              <PreviewNavIcon name={link.icon} tone="category" />
+              <span class="preview-nav-label">{link.title.replace(' Games', '').replace('Word and Language', 'Word')}</span>
+            </a>
+          ))}
+        </nav>
+      </aside>
+
+      <div class="preview-main preview-category-page">
+        <section class="preview-panel preview-category-header redesign-listing-hero">
+          <div>
+            <div class="preview-category-icon-row" aria-hidden="true">
+              <span class="category-icon-pill"><PreviewNavIcon name={config.icon} tone="category" /></span>
+              <span class="category-icon-pill"><PreviewNavIcon name="popular" tone="category" /></span>
+              <span class="category-icon-pill"><PreviewNavIcon name="new" tone="category" /></span>
+            </div>
+            <div class="preview-section-head">
+              <div>
+                <p class="redesign-eyebrow">{config.eyebrow}</p>
+                <h1>{config.title}</h1>
+                <p>{config.description}</p>
+              </div>
+            </div>
+            <div class="preview-tag-cloud">
+              {config.tags.map((tag) => <span>{tag}</span>)}
+            </div>
+          </div>
+          {heroGames.length > 0 && (
+            <div class="redesign-hero-stack">
+              {heroGames.map((game, index) => <PreviewGameTile game={game} size={index === 0 ? 'wide' : 'mini'} />)}
+            </div>
+          )}
+        </section>
+
+        <section class="preview-two-column">
+          <div>
+            <div class="preview-section-head">
+              <div>
+                <h2>{titleCount}</h2>
+                <p>Browse compact game cards with cleaner covers, consistent spacing, and the new EduGameHQ navigation.</p>
+              </div>
+            </div>
+            <div class="preview-grid">
+              {mainGames.map((game, index) => <PreviewGameTile game={game} rank={kind === 'popular' || kind === 'trending' ? index + 1 : undefined} />)}
+            </div>
+          </div>
+          <aside class="preview-side-stack">
+            <div class="preview-ad">Responsive Ad Slot</div>
+            <section class="preview-panel preview-info-block">
+              <h2>{config.sidebarTitle}</h2>
+              <p>{config.sidebarCopy}</p>
+              <h3>Related Shelves</h3>
+              <ul>
+                {categoryLinks.filter((link) => link.href !== config.href).slice(0, 5).map((link) => (
+                  <li><a href={link.href}>{link.title}</a></li>
+                ))}
+              </ul>
+            </section>
+            <section class="preview-panel preview-info-block">
+              <h2>More Picks</h2>
+              <div class="redesign-mini-list">
+                {relatedGames.slice(0, 4).map((game) => <PreviewGameTile game={game} size="mini" />)}
+              </div>
+            </section>
+          </aside>
+        </section>
+
+        <section class="preview-bottom-actions" aria-label="Quick actions">
+          <a class="preview-bottom-button secondary" href={`/games/${randomGame?.slug || '2048'}/`}>
+            <PreviewNavIcon name="random" tone="action" />
+            <span>Random game</span>
+          </a>
+          <a class="preview-bottom-button primary" href="#top">
+            <PreviewNavIcon name="top" tone="action" />
+            <span>Back to top</span>
+          </a>
+        </section>
+
+        <footer class="preview-footer-dark">
+          <div class="preview-footer-main">
+            <PreviewLogo compact href="/" />
+            <p>Free educational browser games for quick play, classroom breaks, and curious learners.</p>
+            <p class="preview-footer-copy">© 2026 EduGameHQ</p>
+          </div>
+          <div class="preview-footer-links">
+            <strong>Explore</strong>
+            <nav aria-label="Footer links">
+              <a href="/about/">About</a>
+              <a href="/help/">Help</a>
+              <a href="/privacy-policy/">Privacy</a>
+              <a href="/terms-of-service/">Terms</a>
+              <a href="/search/">Search</a>
+              <a href="/best-games/">All games</a>
+            </nav>
+          </div>
+          <div class="preview-footer-social">
+            <strong>Share</strong>
+            <div class="preview-share-row" aria-label="Share EduGameHQ">
+              <span><PreviewNavIcon name="share" tone="action" />EduGameHQ</span>
+              {shareLinks.map(([label, icon, href]) => (
+                <a class="preview-social-button" href={href} target="_blank" rel="noopener noreferrer" aria-label={`Share on ${label}`}>
+                  <PreviewNavIcon name={icon as any} tone="action" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+</PreviewLayout>

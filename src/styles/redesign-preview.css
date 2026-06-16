@@ -107,6 +107,7 @@
   background: #f8fbfd;
   color: var(--preview-muted);
   font-weight: 700;
+  text-decoration: none;
 }
 
 .preview-actions {
@@ -896,6 +897,35 @@
 .preview-game-page {
   display: grid;
   gap: 20px;
+}
+
+.redesign-eyebrow {
+  margin: 0 0 6px;
+  color: var(--preview-blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.redesign-listing-hero {
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 390px);
+}
+
+.redesign-hero-stack,
+.redesign-mini-list {
+  display: grid;
+  gap: 10px;
+}
+
+.preview-info-block a {
+  color: var(--preview-blue);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.preview-info-block a:hover {
+  text-decoration: underline;
 }
 
 .preview-category-header {

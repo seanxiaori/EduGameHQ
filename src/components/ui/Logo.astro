@@ -1,95 +1,67 @@
 ---
 // src/components/ui/Logo.astro
-// EduGameHQ Logo - 学习帽+游戏手柄融合设计
+// EduGameHQ Logo - shared raster brand mark
 ---
-<div class="flex-shrink-0">
-  <svg
-    width="52"
-    height="52"
-    viewBox="0 0 52 52"
-    xmlns="http://www.w3.org/2000/svg"
-    aria-label="EduGameHQ Logo"
-  >
-    <defs>
-      <linearGradient id="grad-main" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" style="stop-color:#EA580C"/>
-        <stop offset="50%" style="stop-color:#F97316"/>
-        <stop offset="100%" style="stop-color:#FB923C"/>
-      </linearGradient>
-      <linearGradient id="grad-accent" x1="0%" y1="0%" x2="100%" y2="0%">
-        <stop offset="0%" style="stop-color:#F59E0B"/>
-        <stop offset="100%" style="stop-color:#F97316"/>
-      </linearGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="1" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-
-    <!-- 圆角方形背景 -->
-    <rect x="2" y="2" width="48" height="48" rx="14" fill="url(#grad-main)"/>
-
-    <!-- 学士帽顶部 -->
-    <polygon points="26,10 42,18 26,22 10,18" fill="#FCD34D" filter="url(#glow)"/>
-
-    <!-- 学士帽流苏 -->
-    <circle cx="42" cy="18" r="2" fill="#F59E0B"/>
-    <path d="M42 20 Q44 26 40 30" stroke="#F59E0B" stroke-width="2" fill="none" stroke-linecap="round"/>
-
-    <!-- 游戏手柄主体 -->
-    <rect x="12" y="28" width="28" height="14" rx="7" fill="white" opacity="0.95"/>
-
-    <!-- 左侧十字键 -->
-    <rect x="16" y="33" width="6" height="2" rx="1" fill="url(#grad-main)"/>
-    <rect x="18" y="31" width="2" height="6" rx="1" fill="url(#grad-main)"/>
-
-    <!-- 右侧按钮 -->
-    <circle cx="32" cy="32" r="2" fill="#F59E0B"/>
-    <circle cx="36" cy="34" r="2" fill="#10B981"/>
-    <circle cx="32" cy="36" r="2" fill="#EF4444"/>
-
-    <!-- 中间装饰线 -->
-    <rect x="24" y="33" width="4" height="2" rx="1" fill="url(#grad-main)" opacity="0.5"/>
-  </svg>
+<div class="logo-mark-wrap flex-shrink-0">
+  <img src="/images/brand/edugamehq-icon-transparent.png" alt="" class="logo-mark" loading="eager" />
 </div>
 
 <div class="logo-text">
-  <span class="logo-main">EduGame</span><span class="logo-hq">HQ</span>
+  <strong><span class="logo-edu">Edu</span><span class="logo-game">Game</span></strong><span class="logo-hq">HQ</span>
 </div>
 
 <style>
+  .logo-mark-wrap {
+    display: inline-grid;
+    place-items: center;
+    width: 54px;
+    height: 42px;
+    overflow: hidden;
+  }
+
+  .logo-mark {
+    width: 64px;
+    height: 44px;
+    object-fit: contain;
+    mix-blend-mode: screen;
+    transition: transform 0.2s ease;
+  }
+
   .logo-text {
     display: flex;
     align-items: baseline;
     font-family: 'Inter', 'Space Grotesk', sans-serif;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: 0;
   }
 
-  .logo-main {
+  .logo-text strong {
+    display: inline-flex;
+  }
+
+  .logo-edu {
     font-size: 24px;
-    background: linear-gradient(135deg, #EA580C, #F97316);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #EAF2FF;
+  }
+
+  .logo-game {
+    font-size: 24px;
+    color: #10B981;
   }
 
   .logo-hq {
     font-size: 18px;
-    color: #9CA3AF;
+    color: #FFBF1A;
     font-weight: 700;
   }
 
-  svg {
-    transition: transform 0.2s ease;
-  }
-
-  svg:hover {
+  .nav-logo:hover .logo-mark {
     transform: scale(1.05);
   }
 
   @media (max-width: 640px) {
-    .logo-main { font-size: 20px; }
+    .logo-edu,
+    .logo-game { font-size: 20px; }
     .logo-hq { font-size: 16px; }
   }
 </style>
