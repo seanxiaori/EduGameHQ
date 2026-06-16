@@ -1,0 +1,21 @@
+---
+import PreviewNavIcon from './PreviewNavIcon.astro';
+
+interface Props {
+  value?: string;
+}
+
+const { value = '' } = Astro.props;
+---
+
+<form class="preview-search-form" action="/search/" method="get" role="search">
+  <PreviewNavIcon name="search" tone="action" />
+  <input
+    type="search"
+    name="q"
+    value={value}
+    placeholder="Search educational games"
+    aria-label="Search educational games"
+  />
+  <button type="submit">Search</button>
+</form>

@@ -3,6 +3,8 @@ import PreviewLayout from '../../layouts/PreviewLayout.astro';
 import PreviewLogo from './PreviewLogo.astro';
 import PreviewNavIcon from './PreviewNavIcon.astro';
 import PreviewGameTile from './PreviewGameTile.astro';
+import PreviewSearchForm from './PreviewSearchForm.astro';
+import PreviewAdSlot from './PreviewAdSlot.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -53,7 +55,7 @@ const primaryLabel = isFavorites ? 'Browse games' : 'Find a game';
   <main id="top" class="redesign-preview">
     <header class="preview-topbar">
       <PreviewLogo href="/" />
-      <a class="preview-search" href="/search/"><PreviewNavIcon name="search" tone="action" />Search educational games</a>
+      <PreviewSearchForm />
       <div class="preview-actions">
         <a class="preview-chip" href="/new-games/">New Games</a>
         <a class="preview-chip" href="/favorites/">Favorites</a>
@@ -101,7 +103,7 @@ const primaryLabel = isFavorites ? 'Browse games' : 'Find a game';
           </button>
         </section>
 
-        <section class="preview-ad preview-ad-wide">Advertisement</section>
+        <PreviewAdSlot className="preview-ad-wide" format="horizontal" slot="3312192068" />
 
         <section class="preview-panel redesign-stats-row" aria-label={`${title} stats`}>
           <span><strong data-stat="count">0</strong>{isFavorites ? 'Saved games' : 'Recent games'}</span>
@@ -129,7 +131,7 @@ const primaryLabel = isFavorites ? 'Browse games' : 'Find a game';
             </section>
           </div>
           <aside class="preview-side-stack">
-            <div class="preview-ad">Advertisement</div>
+            <PreviewAdSlot format="rectangle" slot="1922752061" />
             <section class="preview-panel preview-info-block">
               <h2>{isFavorites ? 'Recommended for You' : 'Good Next Plays'}</h2>
               <div class="redesign-mini-list">

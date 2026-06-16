@@ -96,7 +96,8 @@
   height: 92px;
 }
 
-.preview-search {
+.preview-search,
+.preview-search-form {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -108,6 +109,33 @@
   color: var(--preview-muted);
   font-weight: 700;
   text-decoration: none;
+}
+
+.preview-search-form {
+  min-width: 0;
+}
+
+.preview-search-form input,
+.preview-search-page-form input {
+  min-width: 0;
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--preview-ink);
+  font-weight: 750;
+}
+
+.preview-search-form button {
+  flex: 0 0 auto;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--preview-blue);
+  border-radius: 999px;
+  color: #fff;
+  background: var(--preview-blue);
+  font-weight: 850;
+  cursor: pointer;
 }
 
 .preview-actions {
@@ -180,6 +208,11 @@
   border-radius: var(--preview-radius);
   background: #fff;
   box-shadow: 0 18px 44px rgba(16, 34, 56, 0.14);
+}
+
+.preview-language-popover {
+  grid-template-columns: repeat(2, minmax(72px, 1fr));
+  min-width: 180px;
 }
 
 .preview-menu-popover a {
@@ -886,6 +919,7 @@
   display: grid;
   place-items: center;
   min-height: 112px;
+  padding: 10px;
   border: 1px dashed #bdd0e4;
   border-radius: var(--preview-radius);
   color: #7590aa;
@@ -893,10 +927,27 @@
   font-weight: 900;
 }
 
+.preview-ad span {
+  grid-area: 1 / 1;
+  z-index: 1;
+}
+
+.preview-ad .adsbygoogle {
+  grid-area: 1 / 1;
+  width: 100%;
+  min-height: 90px;
+}
+
 .preview-category-page,
 .preview-game-page {
   display: grid;
   gap: 20px;
+}
+
+.preview-category-page > *,
+.preview-game-page > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .redesign-eyebrow {
@@ -908,12 +959,13 @@
   text-transform: uppercase;
 }
 
-.redesign-listing-hero {
+.preview-category-header.redesign-listing-hero {
   grid-template-columns: minmax(280px, 0.92fr) minmax(360px, 1.08fr);
   align-items: stretch;
 }
 
 .redesign-hero-stack,
+.redesign-recommendation-grid,
 .redesign-mini-list {
   display: grid;
   gap: 10px;
@@ -938,8 +990,63 @@
   aspect-ratio: 16 / 10;
 }
 
+.redesign-recommendation-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: start;
+}
+
+.redesign-recommendation-grid .tile-art {
+  aspect-ratio: 16 / 9.5;
+}
+
+.redesign-recommendation-grid .tile-copy strong {
+  font-size: 0.88rem;
+}
+
 .preview-ad-wide {
   min-height: 86px;
+}
+
+.preview-search-hero {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(360px, 1.18fr);
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+}
+
+.preview-search-hero h1,
+.preview-popular-searches h2 {
+  margin: 0;
+}
+
+.preview-search-hero p {
+  max-width: 620px;
+  margin: 8px 0 0;
+  color: var(--preview-muted);
+  font-weight: 700;
+}
+
+.preview-search-page-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--preview-line);
+  border-radius: var(--preview-radius);
+  background: #f8fbfd;
+}
+
+.preview-search-page-form input {
+  min-height: 44px;
+  padding: 0 12px;
+}
+
+.preview-popular-searches {
+  display: grid;
+  gap: 12px;
+  padding: 18px;
 }
 
 .redesign-utility-hero {
@@ -1052,6 +1159,13 @@
   grid-template-columns: minmax(0, 1fr) 300px;
   gap: 20px;
   align-items: start;
+}
+
+.preview-two-column > *,
+.preview-grid,
+.redesign-recommendation-grid {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .preview-game-layout {
@@ -1611,7 +1725,9 @@
 
   .preview-content-layout,
   .preview-feature-board,
+  .preview-category-header.redesign-listing-hero,
   .redesign-listing-hero,
+  .preview-search-hero,
   .preview-two-column,
   .preview-game-layout {
     grid-template-columns: 1fr;
@@ -1676,6 +1792,10 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .redesign-recommendation-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .preview-learning-grid .preview-game-tile.wide {
     grid-column: span 2;
     grid-row: auto;
@@ -1720,7 +1840,8 @@
     padding: 12px;
   }
 
-  .preview-search {
+  .preview-search,
+  .preview-search-form {
     grid-column: 1 / -1;
     order: 3;
   }
@@ -1736,6 +1857,7 @@
 
   .preview-main {
     padding: 14px;
+    overflow-x: clip;
   }
 
   .preview-row,
@@ -1744,7 +1866,16 @@
   }
 
   .redesign-hero-stack,
+  .redesign-recommendation-grid,
   .redesign-stats-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .redesign-stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-search-page-form {
     grid-template-columns: 1fr;
   }
 

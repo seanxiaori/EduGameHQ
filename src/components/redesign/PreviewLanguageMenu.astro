@@ -1,0 +1,22 @@
+---
+const languageLinks = [
+  ['EN', '/'],
+  ['中文', '/zh/'],
+  ['ES', '/es/'],
+  ['FR', '/fr/'],
+  ['DE', '/de/'],
+  ['JA', '/ja/'],
+  ['RU', '/ru/'],
+  ['HI', '/hi/'],
+  ['KO', '/ko/'],
+  ['AR', '/ar/'],
+  ['HE', '/he/'],
+];
+---
+
+<details class="preview-menu">
+  <summary>Language</summary>
+  <div class="preview-menu-popover preview-language-popover">
+    {languageLinks.map(([label, href]) => <a href={href}>{label}</a>)}
+  </div>
+</details>

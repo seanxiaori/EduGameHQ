@@ -3,6 +3,9 @@ import PreviewLayout from '../../layouts/PreviewLayout.astro';
 import PreviewLogo from './PreviewLogo.astro';
 import PreviewNavIcon from './PreviewNavIcon.astro';
 import PreviewGameTile from './PreviewGameTile.astro';
+import PreviewSearchForm from './PreviewSearchForm.astro';
+import PreviewLanguageMenu from './PreviewLanguageMenu.astro';
+import PreviewAdSlot from './PreviewAdSlot.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -308,7 +311,7 @@ if (config.category) {
   listingGames = [...allGames].filter((game) => game.featured || game.trending || (game.popularity || 0) > 500).sort((a, b) => score(b) - score(a));
 }
 
-const heroGames = listingGames.slice(0, 2);
+const heroGames = listingGames.slice(0, 6);
 const mainGames = listingGames.slice(0, 48);
 const relatedGames = allGames.filter((game) => game.category !== config.category && (game.featured || game.trending || game.isNew)).slice(0, 8);
 const randomGame = listingGames[7] || listingGames[0] || allGames[0];
@@ -325,19 +328,9 @@ const shareLinks = [
   <main id="top" class="redesign-preview">
     <header class="preview-topbar">
       <PreviewLogo href="/" />
-      <a class="preview-search" href="/search/"><PreviewNavIcon name="search" tone="action" />Search educational games</a>
+      <PreviewSearchForm />
       <div class="preview-actions">
-        <details class="preview-menu">
-          <summary>Language</summary>
-          <div class="preview-menu-popover">
-            <a href="/">EN</a>
-            <a href="/zh/">中文</a>
-            <a href="/es/">ES</a>
-            <a href="/fr/">FR</a>
-            <a href="/de/">DE</a>
-            <a href="/ja/">JA</a>
-          </div>
-        </details>
+        <PreviewLanguageMenu />
         <a class="preview-chip" href="/favorites/">Favorites</a>
         <a class="preview-icon-button" href={`/games/${randomGame?.slug || '2048'}/`} aria-label="Random game">
           <PreviewNavIcon name="random" tone="action" />
@@ -386,12 +379,12 @@ const shareLinks = [
               {config.tags.map((tag) => <span>{tag}</span>)}
             </div>
           </div>
-          <div class="redesign-hero-stack">
+          <div class="redesign-recommendation-grid">
             {heroGames.map((game) => <PreviewGameTile game={game} />)}
           </div>
         </section>
 
-        <section class="preview-ad preview-ad-wide">Advertisement</section>
+        <PreviewAdSlot className="preview-ad-wide" format="horizontal" slot="3312192068" />
 
         <section class="preview-two-column">
           <div>
@@ -406,7 +399,7 @@ const shareLinks = [
             </div>
           </div>
           <aside class="preview-side-stack">
-            <div class="preview-ad">Responsive Ad Slot</div>
+            <PreviewAdSlot label="Advertisement" format="rectangle" slot="1922752061" />
             <section class="preview-panel preview-info-block">
               <h2>{config.sidebarTitle}</h2>
               <p>{config.sidebarCopy}</p>

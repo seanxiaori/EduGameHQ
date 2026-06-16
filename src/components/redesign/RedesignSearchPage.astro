@@ -1,0 +1,205 @@
+---
+import PreviewLayout from '../../layouts/PreviewLayout.astro';
+import PreviewLogo from './PreviewLogo.astro';
+import PreviewNavIcon from './PreviewNavIcon.astro';
+import PreviewGameTile from './PreviewGameTile.astro';
+import PreviewSearchForm from './PreviewSearchForm.astro';
+import PreviewLanguageMenu from './PreviewLanguageMenu.astro';
+import PreviewAdSlot from './PreviewAdSlot.astro';
+import games from '../../data/games.json';
+import '../../styles/redesign-preview.css';
+
+const allGames = games as any[];
+const popularGames = allGames
+  .filter((game) => game.featured || game.trending || (game.popularity || 0) > 500)
+  .slice(0, 24);
+const compactGames = allGames.map((game) => ({
+  slug: game.slug,
+  title: game.title,
+  description: game.description || '',
+  category: game.category,
+  categoryName: game.categoryName || game.category,
+  image: game.image || game.thumbnailUrl || '/images/logo.svg',
+  thumbnailUrl: game.thumbnailUrl || game.image || '/images/logo.svg',
+  tags: (game.tags || []).slice(0, 4),
+  isNew: game.isNew,
+  trending: game.trending,
+  featured: game.featured,
+}));
+const popularTerms = ['math', 'puzzle', 'word', 'science', 'soccer', 'coding', 'memory', '2048'];
+---
+
+<PreviewLayout
+  title="Search Educational Games - EduGameHQ"
+  description="Search free educational games by subject, skill, category, and title."
+  robots="noindex, follow"
+  canonical="https://www.edugamehq.com/search/"
+>
+  <main id="top" class="redesign-preview">
+    <header class="preview-topbar">
+      <PreviewLogo href="/" />
+      <PreviewSearchForm />
+      <div class="preview-actions">
+        <PreviewLanguageMenu />
+        <a class="preview-chip" href="/favorites/">Favorites</a>
+        <a class="preview-icon-button" href="/best-games/" aria-label="Random game"><PreviewNavIcon name="random" tone="action" /></a>
+      </div>
+    </header>
+
+    <div class="preview-shell">
+      <aside class="preview-sidebar">
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Play</span>
+          <a class="preview-nav-item play-link" href="/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
+          <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
+          <a class="preview-nav-item play-link active" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
+          <a class="preview-nav-item play-link" href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
+          <a class="preview-nav-item play-link" href="/favorites/"><PreviewNavIcon name="favorites" tone="category" /><span class="preview-nav-label">Favorites</span></a>
+        </nav>
+        <nav class="preview-nav-group">
+          <span class="preview-nav-title">Categories</span>
+          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
+          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
+          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
+          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
+          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
+        </nav>
+      </aside>
+
+      <div class="preview-main preview-category-page">
+        <section class="preview-panel preview-search-hero">
+          <div>
+            <div class="preview-category-icon-row" aria-hidden="true">
+              <span class="category-icon-pill"><PreviewNavIcon name="search" tone="category" /></span>
+              <span class="category-icon-pill"><PreviewNavIcon name="popular" tone="category" /></span>
+            </div>
+            <p class="redesign-eyebrow">Find a game</p>
+            <h1>Search Educational Games</h1>
+            <p>Search by title, subject, skill, or category across the EduGameHQ catalog.</p>
+          </div>
+          <form class="preview-search-page-form" action="/search/" method="get" role="search">
+            <input type="search" name="q" placeholder="Try math, puzzle, soccer, coding..." aria-label="Search games" />
+            <button class="preview-primary-button" type="submit">Search</button>
+          </form>
+        </section>
+
+        <section class="preview-panel preview-popular-searches">
+          <h2>Popular Searches</h2>
+          <div class="preview-quick-strip">
+            {popularTerms.map((term) => <a href={`/search/?q=${encodeURIComponent(term)}`}>{term}</a>)}
+          </div>
+        </section>
+
+        <PreviewAdSlot className="preview-ad-wide" format="horizontal" slot="3312192068" />
+
+        <section class="preview-two-column">
+          <div>
+            <div class="preview-section-head">
+              <div>
+                <h2 data-search-title>Popular Educational Games</h2>
+                <p data-search-summary>Start with frequently played games, or search for a subject above.</p>
+              </div>
+            </div>
+            <div class="preview-grid" data-search-grid>
+              {popularGames.map((game) => <PreviewGameTile game={game} />)}
+            </div>
+          </div>
+          <aside class="preview-side-stack">
+            <PreviewAdSlot format="rectangle" slot="1922752061" />
+            <section class="preview-panel preview-info-block">
+              <h2>Browse Categories</h2>
+              <ul>
+                <li><a href="/math-games/">Math Games</a></li>
+                <li><a href="/puzzle-games/">Puzzle Games</a></li>
+                <li><a href="/language-games/">Word and Language Games</a></li>
+                <li><a href="/science-games/">Science Games</a></li>
+                <li><a href="/coding-games/">Coding Games</a></li>
+              </ul>
+            </section>
+          </aside>
+        </section>
+
+        <footer class="preview-footer-dark">
+          <div class="preview-footer-main">
+            <PreviewLogo compact href="/" />
+            <p>Free educational browser games for quick play, classroom breaks, and curious learners.</p>
+            <p class="preview-footer-copy">© 2026 EduGameHQ</p>
+          </div>
+          <div class="preview-footer-links">
+            <strong>Explore</strong>
+            <nav aria-label="Footer links">
+              <a href="/new-games/">New games</a>
+              <a href="/best-games/">Popular</a>
+              <a href="/math-games/">Math</a>
+              <a href="/help/">Help</a>
+            </nav>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script define:vars={{ compactGames }} is:inline>
+    const games = compactGames;
+    const params = new URLSearchParams(window.location.search);
+    const query = (params.get('q') || '').trim();
+    const forms = document.querySelectorAll('form[role="search"]');
+    const grid = document.querySelector('[data-search-grid]');
+    const title = document.querySelector('[data-search-title]');
+    const summary = document.querySelector('[data-search-summary]');
+
+    forms.forEach((form) => {
+      const input = form.querySelector('input[name="q"]');
+      if (input && query) input.value = query;
+    });
+
+    function escapeHtml(value) {
+      return String(value || '').replace(/[&<>"']/g, (char) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      }[char]));
+    }
+
+    function matches(game, term) {
+      const haystack = [
+        game.title,
+        game.description,
+        game.category,
+        game.categoryName,
+        ...(game.tags || []),
+      ].join(' ').toLowerCase();
+      return haystack.includes(term.toLowerCase());
+    }
+
+    function tile(game) {
+      const badge = game.isNew ? 'New' : game.trending ? 'Hot' : game.featured ? 'Pick' : '';
+      const tags = (game.tags && game.tags.length ? game.tags.slice(0, 2).join(' · ') : game.categoryName || game.category);
+      return `
+        <a class="preview-game-tile standard" href="/games/${encodeURIComponent(game.slug)}/">
+          <span class="tile-art">
+            <img src="${escapeHtml(game.image || game.thumbnailUrl)}" alt="${escapeHtml(game.title)} game cover" loading="lazy" />
+            ${badge ? `<span class="tile-badge">${badge}</span>` : ''}
+          </span>
+          <span class="tile-copy">
+            <strong>${escapeHtml(game.title)}</strong>
+            <small>${escapeHtml(tags)}</small>
+          </span>
+        </a>
+      `;
+    }
+
+    if (query && grid && title && summary) {
+      const results = games.filter((game) => matches(game, query)).slice(0, 60);
+      title.textContent = results.length ? `Search Results for "${query}"` : `No Results for "${query}"`;
+      summary.textContent = results.length
+        ? `${results.length} matching games found.`
+        : 'Try a broader subject like math, puzzle, soccer, word, science, or coding.';
+      grid.innerHTML = results.length
+        ? results.map(tile).join('')
+        : games.filter((game) => game.featured || game.trending || game.isNew).slice(0, 24).map(tile).join('');
+    }
+  </script>
+</PreviewLayout>

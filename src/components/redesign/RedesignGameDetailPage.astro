@@ -3,6 +3,8 @@ import PreviewLayout from '../../layouts/PreviewLayout.astro';
 import PreviewLogo from './PreviewLogo.astro';
 import PreviewNavIcon from './PreviewNavIcon.astro';
 import PreviewGameTile from './PreviewGameTile.astro';
+import PreviewSearchForm from './PreviewSearchForm.astro';
+import PreviewAdSlot from './PreviewAdSlot.astro';
 import type { Game } from '../../types/game';
 import '../../styles/redesign-preview.css';
 
@@ -28,7 +30,7 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
   <main id="top" class="redesign-preview">
     <header class="preview-topbar">
       <PreviewLogo href="/" />
-      <a class="preview-search" href="/search/"><PreviewNavIcon name="search" tone="action" />Search educational games</a>
+      <PreviewSearchForm />
       <div class="preview-actions">
         <a class="preview-chip" href={`/${game.category}-games/`}>{categoryName}</a>
         <a class="preview-chip" href="/favorites/">Favorites</a>
@@ -90,7 +92,7 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
               </div>
             </section>
 
-            <div class="preview-ad compact-ad">Advertisement</div>
+            <PreviewAdSlot className="compact-ad" format="horizontal" slot="3312192068" />
 
             <section class="preview-game-below">
               <article class="preview-panel preview-info-block">
@@ -111,7 +113,7 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
                   <span><strong>Age</strong>{age}</span>
                   <span><strong>Mode</strong>Browser</span>
                 </div>
-                <div class="preview-ad compact-ad">Advertisement</div>
+                <PreviewAdSlot className="compact-ad" format="rectangle" slot="1922752061" />
               </aside>
             </section>
 
@@ -126,7 +128,7 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
           </div>
 
           <aside class="preview-side-stack preview-game-right-rail">
-            <div class="preview-ad compact-ad">Advertisement</div>
+            <PreviewAdSlot className="compact-ad" format="rectangle" slot="3769513448" />
             <div class="preview-panel preview-list">
               {featured.slice(0, 5).map((item) => <PreviewGameTile game={item} size="mini" />)}
             </div>

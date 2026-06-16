@@ -3,6 +3,9 @@ import PreviewLayout from '../../layouts/PreviewLayout.astro';
 import PreviewLogo from '../../components/redesign/PreviewLogo.astro';
 import PreviewNavIcon from '../../components/redesign/PreviewNavIcon.astro';
 import PreviewGameTile from '../../components/redesign/PreviewGameTile.astro';
+import PreviewSearchForm from '../../components/redesign/PreviewSearchForm.astro';
+import PreviewLanguageMenu from '../../components/redesign/PreviewLanguageMenu.astro';
+import PreviewAdSlot from '../../components/redesign/PreviewAdSlot.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -75,14 +78,6 @@ const quietLinks = [
   ['Search', '/search/', 'search'],
   ['Help', '/help/', 'help'],
 ];
-const languages = [
-  ['EN', '/'],
-  ['中文', '/zh/'],
-  ['ES', '/es/'],
-  ['FR', '/fr/'],
-  ['DE', '/de/'],
-  ['JA', '/ja/'],
-];
 ---
 
 <PreviewLayout
@@ -94,14 +89,9 @@ const languages = [
   <main id="top" class="redesign-preview">
     <header class="preview-topbar">
       <PreviewLogo href={homeHref} />
-      <div class="preview-search">Search free educational games</div>
+      <PreviewSearchForm />
       <div class="preview-actions">
-        <details class="preview-menu">
-          <summary>Language</summary>
-          <div class="preview-menu-popover">
-            {languages.map(([label, href]) => <a href={href}>{label}</a>)}
-          </div>
-        </details>
+        <PreviewLanguageMenu />
         <a class="preview-chip" href={footballHref}>Football</a>
         <a class="preview-icon-button" href="/favorites/" aria-label="Favorites">♡</a>
       </div>
@@ -180,7 +170,7 @@ const languages = [
             </section>
 
             <section class="preview-section">
-              <div class="preview-ad">Responsive Ad Slot</div>
+              <PreviewAdSlot format="horizontal" slot="3312192068" />
             </section>
 
             <section class="preview-section">
