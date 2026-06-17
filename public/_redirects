@@ -38,4 +38,49 @@ http://www.edugamehq.com/* https://www.edugamehq.com/:splat 301!
 /favorites /favorites/ 301
 
 # Yandex verification file - direct access without redirect
-/yandex_60fb28260cdeec35.html /yandex_60fb28260cdeec35 200 
+/yandex_60fb28260cdeec35.html /yandex_60fb28260cdeec35 200
+
+# Duplicate game detail redirects
+/games/gd-arrow-sorting/ /games/arrow-sorting/ 301
+/games/gd-belote-3in1/ /games/belote-3in1/ 301
+/games/gd-bloxorz-block-puzzle-3d/ /games/bloxorz-block-puzzle-3d/ 301
+/games/gd-color-ring-sorting-match/ /games/color-ring-sorting-match/ 301
+/games/gd-combinations-daily/ /games/combinations-daily/ 301
+/games/gd-easter-mahjong-deluxe/ /games/easter-mahjong-deluxe/ 301
+/games/gd-egg-adventure-2/ /games/egg-adventure-2/ 301
+/games/gd-eggy-beats/ /games/eggy-beats/ 301
+/games/gd-emoji-frenzy/ /games/emoji-frenzy/ 301
+/games/gd-euro-football-kick-2016/ /games/euro-football-kick-2016/ 301
+/games/gd-fierce-shot/ /games/fierce-shot/ 301
+/games/gd-flowball/ /games/flowball/ 301
+/games/gd-football-3d/ /games/football-3d/ 301
+/games/gd-football-duel/ /games/football-duel/ 301
+/games/gd-football-legends-2026/ /games/football-legends-2026/ 301
+/games/gd-football-penalty-go/ /games/football-penalty-go/ 301
+/games/gd-football-rush-3d/ /games/football-rush-3d/ 301
+/games/gd-geometry-missile/ /games/geometry-missile/ 301
+/games/gd-hole-puzzle/ /games/hole-puzzle/ 301
+/games/gd-hyper-football-kick-up-party/ /games/hyper-football-kick-up-party/ 301
+/games/gd-jigsolitaire/ /games/jigsolitaire/ 301
+/games/gd-juice-merge/ /games/juice-merge/ 301
+/games/gd-lemonade-tycoon-idle/ /games/lemonade-tycoon-idle/ 301
+/games/gd-maldives-hidden-objects/ /games/maldives-hidden-objects/ 301
+/games/gd-match-dream-garden/ /games/match-dream-garden/ 301
+/games/gd-match-ten-number-puzzle/ /games/match-ten-number-puzzle/ 301
+/games/gd-mojicon-garden-jigsolitaire/ /games/mojicon-garden-jigsolitaire/ 301
+/games/gd-nonogram-daily/ /games/nonogram-daily/ 301
+/games/gd-number-match/ /games/number-match/ 301
+/games/gd-obby-football-soccer-3d/ /games/obby-football-soccer-3d/ 301
+/games/gd-pogo-masters/ /games/pogo-masters/ 301
+/games/gd-pop-the-bubble/ /games/pop-the-bubble/ 301
+/games/gd-power-puzzle/ /games/power-puzzle/ 301
+/games/gd-real-football/ /games/real-football/ 301
+/games/gd-slingshot-fortress/ /games/slingshot-fortress/ 301
+/games/gd-solitaire-quest-1/ /games/solitaire-quest-1/ 301
+/games/gd-solitaire-summer/ /games/solitaire-summer/ 301
+/games/gd-stacking-match/ /games/stacking-match/ 301
+/games/gd-tap-3d-blocks/ /games/tap-3d-blocks/ 301
+/games/gd-trivia-nation/ /games/trivia-nation/ 301
+/games/gd-world-cup-2026-soccer-game/ /games/world-cup-2026-soccer-game/ 301
+/games/gd-world-cup-soccer-caps/ /games/world-cup-soccer-caps/ 301
+/games/gd-world-soccer/ /games/world-soccer/ 301

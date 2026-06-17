@@ -4,6 +4,221 @@
       "source": "/sitemap.xml",
       "destination": "/sitemap-index.xml",
       "permanent": true
+    },
+    {
+      "source": "/games/gd-arrow-sorting/",
+      "destination": "/games/arrow-sorting/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-belote-3in1/",
+      "destination": "/games/belote-3in1/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-bloxorz-block-puzzle-3d/",
+      "destination": "/games/bloxorz-block-puzzle-3d/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-color-ring-sorting-match/",
+      "destination": "/games/color-ring-sorting-match/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-combinations-daily/",
+      "destination": "/games/combinations-daily/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-easter-mahjong-deluxe/",
+      "destination": "/games/easter-mahjong-deluxe/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-egg-adventure-2/",
+      "destination": "/games/egg-adventure-2/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-eggy-beats/",
+      "destination": "/games/eggy-beats/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-emoji-frenzy/",
+      "destination": "/games/emoji-frenzy/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-euro-football-kick-2016/",
+      "destination": "/games/euro-football-kick-2016/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-fierce-shot/",
+      "destination": "/games/fierce-shot/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-flowball/",
+      "destination": "/games/flowball/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-football-3d/",
+      "destination": "/games/football-3d/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-football-duel/",
+      "destination": "/games/football-duel/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-football-legends-2026/",
+      "destination": "/games/football-legends-2026/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-football-penalty-go/",
+      "destination": "/games/football-penalty-go/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-football-rush-3d/",
+      "destination": "/games/football-rush-3d/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-geometry-missile/",
+      "destination": "/games/geometry-missile/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-hole-puzzle/",
+      "destination": "/games/hole-puzzle/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-hyper-football-kick-up-party/",
+      "destination": "/games/hyper-football-kick-up-party/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-jigsolitaire/",
+      "destination": "/games/jigsolitaire/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-juice-merge/",
+      "destination": "/games/juice-merge/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-lemonade-tycoon-idle/",
+      "destination": "/games/lemonade-tycoon-idle/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-maldives-hidden-objects/",
+      "destination": "/games/maldives-hidden-objects/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-match-dream-garden/",
+      "destination": "/games/match-dream-garden/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-match-ten-number-puzzle/",
+      "destination": "/games/match-ten-number-puzzle/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-mojicon-garden-jigsolitaire/",
+      "destination": "/games/mojicon-garden-jigsolitaire/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-nonogram-daily/",
+      "destination": "/games/nonogram-daily/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-number-match/",
+      "destination": "/games/number-match/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-obby-football-soccer-3d/",
+      "destination": "/games/obby-football-soccer-3d/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-pogo-masters/",
+      "destination": "/games/pogo-masters/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-pop-the-bubble/",
+      "destination": "/games/pop-the-bubble/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-power-puzzle/",
+      "destination": "/games/power-puzzle/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-real-football/",
+      "destination": "/games/real-football/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-slingshot-fortress/",
+      "destination": "/games/slingshot-fortress/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-solitaire-quest-1/",
+      "destination": "/games/solitaire-quest-1/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-solitaire-summer/",
+      "destination": "/games/solitaire-summer/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-stacking-match/",
+      "destination": "/games/stacking-match/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-tap-3d-blocks/",
+      "destination": "/games/tap-3d-blocks/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-trivia-nation/",
+      "destination": "/games/trivia-nation/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-world-cup-2026-soccer-game/",
+      "destination": "/games/world-cup-2026-soccer-game/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-world-cup-soccer-caps/",
+      "destination": "/games/world-cup-soccer-caps/",
+      "permanent": true
+    },
+    {
+      "source": "/games/gd-world-soccer/",
+      "destination": "/games/world-soccer/",
+      "permanent": true
     }
   ],
   "headers": [
