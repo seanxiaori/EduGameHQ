@@ -219,6 +219,66 @@
       "source": "/games/gd-world-soccer/",
       "destination": "/games/world-soccer/",
       "permanent": true
+    },
+    {
+      "source": "/games/binary-game/",
+      "destination": "/coding-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/seven-editor/",
+      "destination": "/coding-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/calculator-zx/",
+      "destination": "/coding-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/periodic-table-quiz/",
+      "destination": "/science-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/memory-match/",
+      "destination": "/memory-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/emoji-memory/",
+      "destination": "/memory-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/pattern-memory/",
+      "destination": "/memory-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/music-maker/",
+      "destination": "/creative-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/color-picker/",
+      "destination": "/art-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/treasure-hunt/",
+      "destination": "/adventure-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/tower-builder/",
+      "destination": "/strategy-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/sudoku/",
+      "destination": "/games/sudoku-puzzle/",
+      "permanent": true
     }
   ],
   "headers": [

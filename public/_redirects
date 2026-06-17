@@ -84,3 +84,17 @@ http://www.edugamehq.com/* https://www.edugamehq.com/:splat 301!
 /games/gd-world-cup-2026-soccer-game/ /games/world-cup-2026-soccer-game/ 301
 /games/gd-world-cup-soccer-caps/ /games/world-cup-soccer-caps/ 301
 /games/gd-world-soccer/ /games/world-soccer/ 301
+
+# Removed unverified game detail redirects
+/games/binary-game/ /coding-games/ 301
+/games/seven-editor/ /coding-games/ 301
+/games/calculator-zx/ /coding-games/ 301
+/games/periodic-table-quiz/ /science-games/ 301
+/games/memory-match/ /memory-games/ 301
+/games/emoji-memory/ /memory-games/ 301
+/games/pattern-memory/ /memory-games/ 301
+/games/music-maker/ /creative-games/ 301
+/games/color-picker/ /art-games/ 301
+/games/treasure-hunt/ /adventure-games/ 301
+/games/tower-builder/ /strategy-games/ 301
+/games/sudoku/ /games/sudoku-puzzle/ 301
