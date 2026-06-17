@@ -7,6 +7,10 @@ interface Props {
 }
 
 const { title, description, robots = 'noindex, nofollow', canonical } = Astro.props;
+const metaDescription = description.replace(/\s+/g, ' ').trim();
+const safeDescription = metaDescription.length > 155
+  ? `${metaDescription.slice(0, 154).trimEnd()}…`
+  : metaDescription;
 ---
 
 <!doctype html>
@@ -16,7 +20,7 @@ const { title, description, robots = 'noindex, nofollow', canonical } = Astro.pr
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content={robots} />
     <title>{title}</title>
-    <meta name="description" content={description} />
+    <meta name="description" content={safeDescription} />
     <link rel="icon" type="image/png" href="/images/brand/edugamehq-icon-transparent.png?v=7.0" />
     <link rel="apple-touch-icon" href="/images/brand/edugamehq-icon-transparent.png?v=7.0" />
     <link rel="manifest" href="/site.webmanifest" />

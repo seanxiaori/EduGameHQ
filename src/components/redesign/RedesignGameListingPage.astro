@@ -39,6 +39,7 @@ type ListingKind =
   | 'language'
   | 'puzzle'
   | 'sports'
+  | 'football'
   | 'art'
   | 'geography'
   | 'adventure'
@@ -171,6 +172,19 @@ const configs: Record<ListingKind, ListingConfig> = {
     seoTitle: 'Free Sports Games for Kids - EduGameHQ',
     seoDescription: 'Play free sports games including soccer, basketball, tennis, and racing games.',
   },
+  football: {
+    title: 'Football Games',
+    eyebrow: 'World Cup season',
+    description: 'Soccer matches, penalty shootouts, free kicks, World Cup games, and two-player football challenges.',
+    href: '/football-games/',
+    icon: 'football',
+    category: 'sports',
+    tags: ['World Cup', 'Soccer', 'Penalty kicks', 'Free kicks'],
+    sidebarTitle: 'About Football Games',
+    sidebarCopy: 'Football games are selected from the sports catalog for soccer fans, penalty practice, tournament play, and quick match sessions.',
+    seoTitle: 'Free Football and Soccer Games - EduGameHQ',
+    seoDescription: 'Play free football games, soccer games, penalty shootouts, free kicks, and World Cup browser games online.',
+  },
   art: {
     title: 'Art Games',
     eyebrow: 'Color and creativity',
@@ -278,7 +292,7 @@ const configs: Record<ListingKind, ListingConfig> = {
 };
 
 const config = configs[kind];
-const categoryLinks = (['math', 'puzzle', 'language', 'science', 'sports', 'coding', 'arcade', 'memory'] as ListingKind[]).map((id) => configs[id]);
+const categoryLinks = (['math', 'puzzle', 'language', 'science', 'sports', 'football', 'coding', 'arcade', 'memory', 'strategy', 'geography', 'art', 'creative', 'adventure'] as ListingKind[]).map((id) => configs[id]);
 const playLinks = [
   { title: 'Home', href: '/', icon: 'home' as IconName },
   { title: 'New Games', href: '/new-games/', icon: 'new' as IconName, active: kind === 'new' },
@@ -297,7 +311,13 @@ function score(game: any) {
 }
 
 let listingGames = allGames;
-if (config.category) {
+const footballPattern = /\b(football|soccer|penalty|free kick|world cup|fifa)\b|head ball|goal finger|kickups/i;
+if (kind === 'football') {
+  listingGames = allGames.filter((game) => {
+    const searchable = [game.title, game.slug, game.description, ...(game.tags || [])].join(' ');
+    return game.category === 'sports' && footballPattern.test(searchable);
+  }).sort((a, b) => score(b) - score(a));
+} else if (config.category) {
   listingGames = allGames.filter((game) => game.category === config.category);
 } else if (kind === 'new') {
   listingGames = allGames.filter((game) => game.isNew || game.featured).sort((a, b) => {

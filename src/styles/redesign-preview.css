@@ -916,8 +916,9 @@
 }
 
 .preview-ad {
+  position: relative;
   display: grid;
-  place-items: center;
+  place-items: stretch;
   min-height: 112px;
   padding: 10px;
   border: 1px dashed #bdd0e4;
@@ -927,15 +928,28 @@
   font-weight: 900;
 }
 
-.preview-ad span {
-  grid-area: 1 / 1;
-  z-index: 1;
-}
-
 .preview-ad .adsbygoogle {
-  grid-area: 1 / 1;
   width: 100%;
   min-height: 90px;
+}
+
+.preview-ad-label {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 1;
+  padding: 3px 7px;
+  border-radius: 999px;
+  color: #7b93aa;
+  background: rgba(248, 251, 253, 0.92);
+  font-size: 0.68rem;
+  font-weight: 850;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.preview-ad .adsbygoogle[data-ad-status="filled"] + .preview-ad-label {
+  display: none;
 }
 
 .preview-category-page,

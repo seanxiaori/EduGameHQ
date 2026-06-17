@@ -23,8 +23,10 @@ const mathGames = allGames.filter((game) => game.category === 'math').slice(0, 6
 const puzzleGames = allGames.filter((game) => game.category === 'puzzle').slice(0, 6);
 const heroGames = [...football.slice(0, 2), ...featured].filter(Boolean).slice(0, 3);
 const heroSideGames = featured.slice(3, 9);
+const footballHref = '/football-games/';
 const categoryDefinitions = [
   ['sports', 'Sports Games', '/sports-games/', 'sports', 'Team challenges, timing, coordination, and quick reflex practice.'],
+  ['football', 'Football Games', footballHref, 'football', 'World Cup soccer, penalties, free kicks, and quick football matches.'],
   ['math', 'Math Games', '/math-games/', 'math', 'Numbers, logic, arithmetic, and pattern practice through play.'],
   ['puzzle', 'Puzzle Games', '/puzzle-games/', 'puzzle', 'Spatial reasoning, matching, sorting, and problem solving.'],
   ['strategy', 'Strategy Games', '/best-games/?category=strategy', 'popular', 'Planning, tradeoffs, and decision-making challenges.'],
@@ -45,7 +47,9 @@ const categorySections = categoryDefinitions
     href,
     icon,
     description,
-    games: allGames.filter((game) => game.category === id).slice(0, 6),
+    games: id === 'football'
+      ? football.slice(0, 6)
+      : allGames.filter((game) => game.category === id).slice(0, 6),
   }))
   .filter((section) => section.games.length > 0);
 const shareLinks = [
@@ -56,7 +60,6 @@ const shareLinks = [
   ['Discord', 'discord', 'https://discord.com/'],
 ];
 const homeHref = isProductionHome ? '/' : '/redesign-preview/';
-const footballHref = isProductionHome ? '/sports-games/' : '/redesign-preview/category/';
 const quickLinks = [
   ['All Games', '/best-games/'],
   ['Math', '/math-games/'],
@@ -159,8 +162,8 @@ const quietLinks = [
             <section class="preview-section">
               <div class="preview-section-head">
                 <div>
-                  <h2>Football Games</h2>
-                  <p>World Cup matches, penalty kicks, free kicks, and quick soccer challenges.</p>
+                  <h2>World Cup Football Games</h2>
+                  <p>Soccer matches, penalty kicks, free kicks, and quick tournament challenges for football season.</p>
                 </div>
                 <a class="preview-ghost-button" href={footballHref}>View all</a>
               </div>

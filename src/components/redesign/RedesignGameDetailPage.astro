@@ -24,6 +24,22 @@ const featured = allGames.filter((item) => item.slug !== game.slug && (item.feat
 const guide = game.localized?.en?.gameGuide || game.gameGuide;
 const age = game.ageRange || `${game.minAge || 6}-${game.maxAge || 18}`;
 const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
+const categoryLinks = [
+  ['Math', '/math-games/', 'math'],
+  ['Puzzle', '/puzzle-games/', 'puzzle'],
+  ['Word', '/language-games/', 'word'],
+  ['Science', '/science-games/', 'science'],
+  ['Sports', '/sports-games/', 'sports'],
+  ['Football', '/football-games/', 'football'],
+  ['Coding', '/coding-games/', 'popular'],
+  ['Arcade', '/arcade-games/', 'new'],
+  ['Memory', '/memory-games/', 'favorites'],
+  ['Strategy', '/strategy-games/', 'popular'],
+  ['Geography', '/geography-games/', 'sports'],
+  ['Art', '/art-games/', 'word'],
+  ['Creative', '/creative-games/', 'science'],
+  ['Adventure', '/adventure-games/', 'home'],
+] as const;
 ---
 
 <PreviewLayout title={`${title} - Free ${categoryName} Game | EduGameHQ`} description={description} robots="index, follow" canonical={canonical}>
@@ -50,11 +66,12 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
         </nav>
         <nav class="preview-nav-group">
           <span class="preview-nav-title">Categories</span>
-          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
-          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
-          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
-          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
-          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
+          {categoryLinks.map(([label, href, icon]) => (
+            <a class={`preview-nav-item category-link ${href === `/${game.category}-games/` ? 'active' : ''}`} href={href}>
+              <PreviewNavIcon name={icon as any} tone="category" />
+              <span class="preview-nav-label">{label}</span>
+            </a>
+          ))}
         </nav>
       </aside>
 
