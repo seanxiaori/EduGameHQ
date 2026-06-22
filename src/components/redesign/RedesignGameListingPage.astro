@@ -6,6 +6,7 @@ import PreviewGameTile from './PreviewGameTile.astro';
 import PreviewSearchForm from './PreviewSearchForm.astro';
 import PreviewLanguageMenu from './PreviewLanguageMenu.astro';
 import PreviewAdSlot from './PreviewAdSlot.astro';
+import PreviewSidebar from './PreviewSidebar.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -293,14 +294,6 @@ const configs: Record<ListingKind, ListingConfig> = {
 
 const config = configs[kind];
 const categoryLinks = (['math', 'puzzle', 'language', 'science', 'sports', 'football', 'coding', 'arcade', 'memory', 'strategy', 'geography', 'art', 'creative', 'adventure'] as ListingKind[]).map((id) => configs[id]);
-const playLinks = [
-  { title: 'Home', href: '/', icon: 'home' as IconName },
-  { title: 'New Games', href: '/new-games/', icon: 'new' as IconName, active: kind === 'new' },
-  { title: 'Popular', href: '/best-games/', icon: 'popular' as IconName, active: kind === 'popular' },
-  { title: 'Trending', href: '/trending/', icon: 'popular' as IconName, active: kind === 'trending' },
-  { title: 'Recently Played', href: '/recently-played/', icon: 'recent' as IconName },
-  { title: 'Favorites', href: '/favorites/', icon: 'favorites' as IconName },
-];
 
 function byDate(a: any, b: any) {
   return new Date(b.lastUpdated || '2000-01-01').getTime() - new Date(a.lastUpdated || '2000-01-01').getTime();
@@ -359,26 +352,7 @@ const shareLinks = [
     </header>
 
     <div class="preview-shell">
-      <aside class="preview-sidebar">
-        <nav class="preview-nav-group">
-          <span class="preview-nav-title">Play</span>
-          {playLinks.map((link) => (
-            <a class={`preview-nav-item play-link ${link.active ? 'active' : ''}`} href={link.href}>
-              <PreviewNavIcon name={link.icon} tone="category" />
-              <span class="preview-nav-label">{link.title}</span>
-            </a>
-          ))}
-        </nav>
-        <nav class="preview-nav-group">
-          <span class="preview-nav-title">Categories</span>
-          {categoryLinks.map((link) => (
-            <a class={`preview-nav-item category-link ${link.href === config.href ? 'active' : ''}`} href={link.href}>
-              <PreviewNavIcon name={link.icon} tone="category" />
-              <span class="preview-nav-label">{link.title.replace(' Games', '').replace('Word and Language', 'Word')}</span>
-            </a>
-          ))}
-        </nav>
-      </aside>
+      <PreviewSidebar activeHref={config.href} activePlay={kind === 'new' ? '/new-games/' : kind === 'popular' ? '/best-games/' : kind === 'trending' ? '/trending/' : ''} />
 
       <div class="preview-main preview-category-page">
         <section class="preview-panel preview-category-header redesign-listing-hero">
@@ -442,11 +416,11 @@ const shareLinks = [
         <section class="preview-bottom-actions" aria-label="Quick actions">
           <a class="preview-bottom-button secondary" href={`/games/${randomGame?.slug || '2048'}/`}>
             <PreviewNavIcon name="random" tone="action" />
-            <span>Random game</span>
+            <span>Random Game</span>
           </a>
           <a class="preview-bottom-button primary" href="#top">
             <PreviewNavIcon name="top" tone="action" />
-            <span>Back to top</span>
+            <span>Back to Top</span>
           </a>
         </section>
 

@@ -3,6 +3,7 @@ import PreviewLayout from '../../layouts/PreviewLayout.astro';
 import PreviewLogo from '../../components/redesign/PreviewLogo.astro';
 import PreviewNavIcon from '../../components/redesign/PreviewNavIcon.astro';
 import PreviewGameTile from '../../components/redesign/PreviewGameTile.astro';
+import PreviewSidebar from '../../components/redesign/PreviewSidebar.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -53,25 +54,7 @@ const shareLinks = [
     </header>
 
     <div class="preview-shell">
-      <aside class="preview-sidebar">
-        <nav class="preview-nav-group">
-          <span class="preview-nav-title">Play</span>
-          <a class="preview-nav-item play-link" href="/redesign-preview/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
-          <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
-          <a class="preview-nav-item play-link" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
-          <a class="preview-nav-item play-link" href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
-          <a class="preview-nav-item play-link" href="/favorites/"><PreviewNavIcon name="favorites" tone="category" /><span class="preview-nav-label">Favorites</span></a>
-        </nav>
-        <nav class="preview-nav-group">
-          <span class="preview-nav-title">Categories</span>
-          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
-          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
-          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
-          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
-          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
-          <a class="preview-nav-item category-link active" href="/redesign-preview/category/"><PreviewNavIcon name="football" tone="category" /><span class="preview-nav-label">Football</span></a>
-        </nav>
-      </aside>
+      <PreviewSidebar activeHref={`/${game.category}-games/`} />
 
       <div class="preview-main preview-game-page">
         <section class="preview-game-layout">

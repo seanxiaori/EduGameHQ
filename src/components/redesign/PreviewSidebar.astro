@@ -1,0 +1,79 @@
+---
+import PreviewNavIcon from './PreviewNavIcon.astro';
+
+type IconName =
+  | 'home'
+  | 'new'
+  | 'popular'
+  | 'recent'
+  | 'favorites'
+  | 'math'
+  | 'puzzle'
+  | 'word'
+  | 'science'
+  | 'sports'
+  | 'football';
+
+interface NavLink {
+  title: string;
+  label?: string;
+  href: string;
+  icon: IconName;
+}
+
+interface Props {
+  activeHref?: string;
+  activePlay?: string;
+}
+
+const { activeHref = '', activePlay = '' } = Astro.props;
+
+const playLinks: NavLink[] = [
+  { title: 'Home', href: '/', icon: 'home' },
+  { title: 'New Games', href: '/new-games/', icon: 'new' },
+  { title: 'Popular', href: '/best-games/', icon: 'popular' },
+  { title: 'Trending', href: '/trending/', icon: 'popular' },
+  { title: 'Recently Played', href: '/recently-played/', icon: 'recent' },
+  { title: 'Favorites', href: '/favorites/', icon: 'favorites' },
+];
+
+const categoryLinks: NavLink[] = [
+  { title: 'Math Games', label: 'Math', href: '/math-games/', icon: 'math' },
+  { title: 'Puzzle Games', label: 'Puzzle', href: '/puzzle-games/', icon: 'puzzle' },
+  { title: 'Word and Language Games', label: 'Word', href: '/language-games/', icon: 'word' },
+  { title: 'Science Games', label: 'Science', href: '/science-games/', icon: 'science' },
+  { title: 'Sports Games', label: 'Sports', href: '/sports-games/', icon: 'sports' },
+  { title: 'Football Games', label: 'Football', href: '/football-games/', icon: 'football' },
+  { title: 'Coding Games', label: 'Coding', href: '/coding-games/', icon: 'popular' },
+  { title: 'Arcade Games', label: 'Arcade', href: '/arcade-games/', icon: 'new' },
+  { title: 'Memory Games', label: 'Memory', href: '/memory-games/', icon: 'favorites' },
+  { title: 'Strategy Games', label: 'Strategy', href: '/strategy-games/', icon: 'popular' },
+  { title: 'Geography Games', label: 'Geography', href: '/geography-games/', icon: 'science' },
+  { title: 'Art Games', label: 'Art', href: '/art-games/', icon: 'word' },
+  { title: 'Creative Games', label: 'Creative', href: '/creative-games/', icon: 'science' },
+  { title: 'Adventure Games', label: 'Adventure', href: '/adventure-games/', icon: 'home' },
+];
+
+const normalizedActiveHref = activeHref.endsWith('/') ? activeHref : `${activeHref}/`;
+---
+
+<aside class="preview-sidebar">
+  <nav class="preview-nav-group">
+    <span class="preview-nav-title">Play</span>
+    {playLinks.map((link) => (
+      <a class={`preview-nav-item play-link ${activePlay === link.href || normalizedActiveHref === link.href ? 'active' : ''}`} href={link.href}>
+        <PreviewNavIcon name={link.icon} tone="category" />
+        <span class="preview-nav-label">{link.title}</span>
+      </a>
+    ))}
+  </nav>
+  <nav class="preview-nav-group">
+    <span class="preview-nav-title">Categories</span>
+    {categoryLinks.map((link) => (
+      <a class={`preview-nav-item category-link ${normalizedActiveHref === link.href ? 'active' : ''}`} href={link.href}>
+        <PreviewNavIcon name={link.icon} tone="category" />
+        <span class="preview-nav-label">{link.label || link.title}</span>
+      </a>
+    ))}
+  </nav>
+</aside>

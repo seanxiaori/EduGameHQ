@@ -6,6 +6,7 @@ import PreviewGameTile from './PreviewGameTile.astro';
 import PreviewSearchForm from './PreviewSearchForm.astro';
 import PreviewLanguageMenu from './PreviewLanguageMenu.astro';
 import PreviewAdSlot from './PreviewAdSlot.astro';
+import PreviewSidebar from './PreviewSidebar.astro';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -27,6 +28,22 @@ const compactGames = allGames.map((game) => ({
   featured: game.featured,
 }));
 const popularTerms = ['world cup', 'football', 'soccer', 'penalty', 'math', 'puzzle', 'word', 'science', 'coding', '2048'];
+const browseCategories = [
+  ['Math Games', '/math-games/'],
+  ['Puzzle Games', '/puzzle-games/'],
+  ['Word and Language Games', '/language-games/'],
+  ['Science Games', '/science-games/'],
+  ['Sports Games', '/sports-games/'],
+  ['Football Games', '/football-games/'],
+  ['Coding Games', '/coding-games/'],
+  ['Arcade Games', '/arcade-games/'],
+  ['Memory Games', '/memory-games/'],
+  ['Strategy Games', '/strategy-games/'],
+  ['Geography Games', '/geography-games/'],
+  ['Art Games', '/art-games/'],
+  ['Creative Games', '/creative-games/'],
+  ['Adventure Games', '/adventure-games/'],
+];
 ---
 
 <PreviewLayout
@@ -47,25 +64,7 @@ const popularTerms = ['world cup', 'football', 'soccer', 'penalty', 'math', 'puz
     </header>
 
     <div class="preview-shell">
-      <aside class="preview-sidebar">
-        <nav class="preview-nav-group">
-          <span class="preview-nav-title">Play</span>
-          <a class="preview-nav-item play-link" href="/"><PreviewNavIcon name="home" tone="category" /><span class="preview-nav-label">Home</span></a>
-          <a class="preview-nav-item play-link" href="/new-games/"><PreviewNavIcon name="new" tone="category" /><span class="preview-nav-label">New Games</span></a>
-          <a class="preview-nav-item play-link active" href="/best-games/"><PreviewNavIcon name="popular" tone="category" /><span class="preview-nav-label">Popular</span></a>
-          <a class="preview-nav-item play-link" href="/recently-played/"><PreviewNavIcon name="recent" tone="category" /><span class="preview-nav-label">Recently Played</span></a>
-          <a class="preview-nav-item play-link" href="/favorites/"><PreviewNavIcon name="favorites" tone="category" /><span class="preview-nav-label">Favorites</span></a>
-        </nav>
-        <nav class="preview-nav-group">
-          <span class="preview-nav-title">Categories</span>
-          <a class="preview-nav-item category-link" href="/math-games/"><PreviewNavIcon name="math" tone="category" /><span class="preview-nav-label">Math</span></a>
-          <a class="preview-nav-item category-link" href="/puzzle-games/"><PreviewNavIcon name="puzzle" tone="category" /><span class="preview-nav-label">Puzzle</span></a>
-          <a class="preview-nav-item category-link" href="/language-games/"><PreviewNavIcon name="word" tone="category" /><span class="preview-nav-label">Word</span></a>
-          <a class="preview-nav-item category-link" href="/science-games/"><PreviewNavIcon name="science" tone="category" /><span class="preview-nav-label">Science</span></a>
-          <a class="preview-nav-item category-link" href="/sports-games/"><PreviewNavIcon name="sports" tone="category" /><span class="preview-nav-label">Sports</span></a>
-          <a class="preview-nav-item category-link" href="/football-games/"><PreviewNavIcon name="football" tone="category" /><span class="preview-nav-label">Football</span></a>
-        </nav>
-      </aside>
+      <PreviewSidebar />
 
       <div class="preview-main preview-category-page">
         <section class="preview-panel preview-search-hero">
@@ -110,12 +109,7 @@ const popularTerms = ['world cup', 'football', 'soccer', 'penalty', 'math', 'puz
             <section class="preview-panel preview-info-block">
               <h2>Browse Categories</h2>
               <ul>
-                <li><a href="/math-games/">Math Games</a></li>
-                <li><a href="/puzzle-games/">Puzzle Games</a></li>
-                <li><a href="/language-games/">Word and Language Games</a></li>
-                <li><a href="/science-games/">Science Games</a></li>
-                <li><a href="/football-games/">Football Games</a></li>
-                <li><a href="/coding-games/">Coding Games</a></li>
+                {browseCategories.map(([label, href]) => <li><a href={href}>{label}</a></li>)}
               </ul>
             </section>
           </aside>
