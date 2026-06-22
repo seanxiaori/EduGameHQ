@@ -1506,9 +1506,10 @@
 }
 
 .preview-bottom-actions {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(220px, 360px));
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 26px;
   margin: 34px -20px 0;
   padding: 30px 20px 20px;
@@ -1522,6 +1523,7 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
+  width: min(100%, 360px);
   min-height: 74px;
   padding: 0 30px;
   border-radius: 999px;
@@ -2006,7 +2008,6 @@
   }
 
   .preview-bottom-actions {
-    grid-template-columns: 1fr;
     gap: 12px;
     margin-left: -14px;
     margin-right: -14px;
