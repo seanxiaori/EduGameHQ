@@ -66,10 +66,12 @@ interface ListingConfig {
 
 interface Props {
   kind: ListingKind;
+  page?: number;
 }
 
-const { kind } = Astro.props;
+const { kind, page = 1 } = Astro.props;
 const allGames = games as any[];
+const gamesPerPage = 48;
 
 const configs: Record<ListingKind, ListingConfig> = {
   new: {
@@ -325,11 +327,24 @@ if (kind === 'football') {
 }
 
 const heroGames = listingGames.slice(0, 6);
-const mainGames = listingGames.slice(0, 48);
+const totalPages = Math.max(1, Math.ceil(listingGames.length / gamesPerPage));
+const currentPage = Math.min(Math.max(1, Number(page) || 1), totalPages);
+const pageStart = (currentPage - 1) * gamesPerPage;
+const pageEnd = pageStart + gamesPerPage;
+const mainGames = listingGames.slice(pageStart, pageEnd);
 const relatedGames = allGames.filter((game) => game.category !== config.category && (game.featured || game.trending || game.isNew)).slice(0, 8);
 const randomGame = listingGames[7] || listingGames[0] || allGames[0];
 const titleCount = kind === 'new' ? 'New Games' : kind === 'popular' ? 'Popular Games' : `${listingGames.length} ${config.title}`;
-const canonical = `https://www.edugamehq.com${config.href}`;
+const pagePath = currentPage === 1 ? config.href : `${config.href}page/${currentPage}/`;
+const canonical = `https://www.edugamehq.com${pagePath}`;
+const pageTitle = currentPage === 1 ? config.seoTitle : `${config.seoTitle} - Page ${currentPage}`;
+const pageDescription = currentPage === 1 ? config.seoDescription : `${config.seoDescription} Page ${currentPage} of ${totalPages}.`;
+const paginationPages = Array.from({ length: totalPages }, (_, index) => index + 1).filter((pageNumber) => (
+  pageNumber === 1 ||
+  pageNumber === totalPages ||
+  Math.abs(pageNumber - currentPage) <= 2
+));
+const getPageHref = (pageNumber: number) => pageNumber === 1 ? config.href : `${config.href}page/${pageNumber}/`;
 const shareLinks = [
   ['Facebook', 'facebook', 'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.edugamehq.com%2F'],
   ['X', 'x', 'https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.edugamehq.com%2F&text=Free%20educational%20browser%20games'],
@@ -337,7 +352,7 @@ const shareLinks = [
 ];
 ---
 
-<PreviewLayout title={config.seoTitle} description={config.seoDescription} robots="index, follow" canonical={canonical}>
+<PreviewLayout title={pageTitle} description={pageDescription} robots="index, follow" canonical={canonical}>
   <main id="top" class="redesign-preview">
     <header class="preview-topbar">
       <PreviewLogo href="/" />
@@ -385,12 +400,34 @@ const shareLinks = [
             <div class="preview-section-head">
               <div>
                 <h2>{titleCount}</h2>
-                <p>Browse compact game cards with cleaner covers, consistent spacing, and the new EduGameHQ navigation.</p>
+                <p>Showing games {pageStart + 1}-{Math.min(pageEnd, listingGames.length)} of {listingGames.length} with cleaner covers, consistent spacing, and the new EduGameHQ navigation.</p>
               </div>
             </div>
             <div class="preview-grid">
-              {mainGames.map((game, index) => <PreviewGameTile game={game} rank={kind === 'popular' || kind === 'trending' ? index + 1 : undefined} />)}
+              {mainGames.map((game, index) => <PreviewGameTile game={game} rank={kind === 'popular' || kind === 'trending' ? pageStart + index + 1 : undefined} />)}
             </div>
+            {totalPages > 1 && (
+              <nav class="preview-pagination" aria-label={`${config.title} pages`}>
+                {currentPage > 1 && (
+                  <a class="preview-page-button" href={getPageHref(currentPage - 1)} aria-label="Previous page">Previous</a>
+                )}
+                {paginationPages.map((pageNumber, index) => (
+                  <>
+                    {index > 0 && pageNumber - paginationPages[index - 1] > 1 && <span class="preview-page-gap">...</span>}
+                    <a
+                      class={`preview-page-button ${pageNumber === currentPage ? 'active' : ''}`}
+                      href={getPageHref(pageNumber)}
+                      aria-current={pageNumber === currentPage ? 'page' : undefined}
+                    >
+                      {pageNumber}
+                    </a>
+                  </>
+                ))}
+                {currentPage < totalPages && (
+                  <a class="preview-page-button" href={getPageHref(currentPage + 1)} aria-label="Next page">Next</a>
+                )}
+              </nav>
+            )}
           </div>
           <aside class="preview-side-stack">
             <PreviewAdSlot label="Advertisement" format="rectangle" slot="1922752061" />

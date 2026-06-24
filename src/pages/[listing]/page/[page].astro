@@ -1,0 +1,87 @@
+---
+import RedesignGameListingPage from '../../../components/redesign/RedesignGameListingPage.astro';
+import games from '../../../data/games.json';
+
+type ListingKind =
+  | 'new'
+  | 'popular'
+  | 'trending'
+  | 'math'
+  | 'science'
+  | 'language'
+  | 'puzzle'
+  | 'sports'
+  | 'football'
+  | 'art'
+  | 'geography'
+  | 'adventure'
+  | 'creative'
+  | 'memory'
+  | 'arcade'
+  | 'coding'
+  | 'strategy';
+
+export function getStaticPaths() {
+  const gamesPerPage = 48;
+  const listings: Array<{ listing: string; kind: ListingKind; category?: string }> = [
+    { listing: 'new-games', kind: 'new' },
+    { listing: 'best-games', kind: 'popular' },
+    { listing: 'trending', kind: 'trending' },
+    { listing: 'math-games', kind: 'math', category: 'math' },
+    { listing: 'science-games', kind: 'science', category: 'science' },
+    { listing: 'language-games', kind: 'language', category: 'language' },
+    { listing: 'puzzle-games', kind: 'puzzle', category: 'puzzle' },
+    { listing: 'sports-games', kind: 'sports', category: 'sports' },
+    { listing: 'football-games', kind: 'football', category: 'sports' },
+    { listing: 'art-games', kind: 'art', category: 'art' },
+    { listing: 'geography-games', kind: 'geography', category: 'geography' },
+    { listing: 'adventure-games', kind: 'adventure', category: 'adventure' },
+    { listing: 'creative-games', kind: 'creative', category: 'creative' },
+    { listing: 'memory-games', kind: 'memory', category: 'memory' },
+    { listing: 'arcade-games', kind: 'arcade', category: 'arcade' },
+    { listing: 'coding-games', kind: 'coding', category: 'coding' },
+    { listing: 'strategy-games', kind: 'strategy', category: 'strategy' },
+  ];
+  const byDate = (a: any, b: any) => new Date(b.lastUpdated || '2000-01-01').getTime() - new Date(a.lastUpdated || '2000-01-01').getTime();
+  const score = (game: any) => (game.playCount || game.popularity || 0) + (game.trending ? 20000 : 0) + (game.featured ? 10000 : 0) + (game.isNew ? 5000 : 0);
+  const gamesForListing = (kind: ListingKind, category?: string) => {
+    const allGames = games as any[];
+    const footballPattern = /\b(football|soccer|penalty|free kick|world cup|fifa)\b|head ball|goal finger|kickups/i;
+    if (kind === 'football') {
+      return allGames.filter((game) => {
+        const searchable = [game.title, game.slug, game.description, ...(game.tags || [])].join(' ');
+        return game.category === 'sports' && footballPattern.test(searchable);
+      }).sort((a, b) => score(b) - score(a));
+    }
+    if (category) {
+      return allGames.filter((game) => game.category === category);
+    }
+    if (kind === 'new') {
+      return allGames.filter((game) => game.isNew || game.featured).sort((a, b) => {
+        if (a.isNew && !b.isNew) return -1;
+        if (!a.isNew && b.isNew) return 1;
+        return byDate(a, b);
+      });
+    }
+    if (kind === 'trending') {
+      return [...allGames].sort((a, b) => score(b) - score(a));
+    }
+    return [...allGames].filter((game) => game.featured || game.trending || (game.popularity || 0) > 500).sort((a, b) => score(b) - score(a));
+  };
+
+  return listings.flatMap((listing) => {
+    const totalPages = Math.ceil(gamesForListing(listing.kind, listing.category).length / gamesPerPage);
+    return Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) => {
+      const page = index + 2;
+      return {
+        params: { listing: listing.listing, page: String(page) },
+        props: { kind: listing.kind, page },
+      };
+    });
+  });
+}
+
+const { kind, page } = Astro.props;
+---
+
+<RedesignGameListingPage kind={kind} page={page} />
