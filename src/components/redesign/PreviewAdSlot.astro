@@ -4,29 +4,63 @@ interface Props {
   slot?: string;
   format?: 'auto' | 'horizontal' | 'rectangle';
   label?: string;
+  reserve?: 'compact' | 'leaderboard' | 'rectangle';
 }
 
 const {
   className = '',
   slot = '3769513448',
   format = 'auto',
-  label = 'Advertisement',
+  label = '',
+  reserve = format === 'rectangle' ? 'rectangle' : format === 'horizontal' ? 'leaderboard' : 'compact',
 } = Astro.props;
 ---
 
-<section class={`preview-ad ${className}`} aria-label={label}>
+<section class={`preview-ad ${className}`} aria-label={label || 'Sponsored'} data-ad-container data-ad-reserve={reserve}>
   <ins
     class="adsbygoogle"
     style="display:block"
     data-ad-client="ca-pub-6509438403900392"
     data-ad-slot={slot}
-    data-ad-format={format === 'rectangle' ? 'auto' : format}
+    data-ad-format={format}
     data-full-width-responsive="true"
   ></ins>
-  <span class="preview-ad-label">{label}</span>
+  {label && <span class="preview-ad-label">{label}</span>}
   <script is:inline>
-    try {
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
-    } catch {}
+    (() => {
+      const script = document.currentScript;
+      const container = script?.closest('[data-ad-container]');
+      const ad = container?.querySelector('.adsbygoogle');
+      if (!container || !ad || ad.dataset.adRequested === 'true') return;
+
+      ad.dataset.adRequested = 'true';
+      container.dataset.adState = 'requested';
+
+      const updateState = () => {
+        const status = ad.getAttribute('data-ad-status');
+        if (status === 'filled') container.dataset.adState = 'filled';
+        if (status === 'unfilled') container.dataset.adState = 'empty';
+      };
+
+      try {
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      } catch {
+        container.dataset.adState = 'empty';
+        return;
+      }
+
+      new MutationObserver(updateState).observe(ad, {
+        attributes: true,
+        attributeFilter: ['data-ad-status'],
+      });
+
+      window.setTimeout(() => {
+        if (container.dataset.adState !== 'filled') updateState();
+      }, 2500);
+
+      window.setTimeout(() => {
+        if (container.dataset.adState !== 'filled') container.dataset.adState = 'empty';
+      }, 6500);
+    })();
   </script>
 </section>

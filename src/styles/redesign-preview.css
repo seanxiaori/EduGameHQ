@@ -934,6 +934,7 @@
   color: #7590aa;
   background: #f8fbfd;
   font-weight: 900;
+  transition: min-height 0.2s ease, padding 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
 .preview-ad .adsbygoogle {
@@ -941,23 +942,57 @@
   min-height: 90px;
 }
 
+.preview-ad[data-ad-reserve="leaderboard"] {
+  min-height: 112px;
+}
+
+.preview-ad[data-ad-reserve="leaderboard"] .adsbygoogle {
+  min-height: 90px;
+}
+
+.preview-ad[data-ad-reserve="rectangle"] {
+  min-height: 280px;
+}
+
+.preview-ad[data-ad-reserve="rectangle"] .adsbygoogle {
+  min-height: 250px;
+}
+
+.preview-ad[data-ad-state="empty"] {
+  min-height: 0;
+  height: 0;
+  padding: 0;
+  border: 0;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.preview-ad[data-ad-state="empty"] .adsbygoogle,
+.preview-ad[data-ad-state="empty"] .preview-ad-label {
+  display: none !important;
+}
+
 .preview-ad-label {
   position: absolute;
   top: 8px;
   right: 10px;
   z-index: 1;
-  padding: 3px 7px;
+  padding: 2px 6px;
   border-radius: 999px;
-  color: #7b93aa;
+  color: #64748b;
   background: rgba(248, 251, 253, 0.92);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 850;
   line-height: 1;
   pointer-events: none;
 }
 
-.preview-ad .adsbygoogle[data-ad-status="filled"] + .preview-ad-label {
-  display: none;
+.preview-home-ad-top {
+  margin-top: 14px;
+}
+
+.preview-home-ad-top .preview-ad {
+  background: #ffffff;
 }
 
 .preview-category-page,
@@ -1354,6 +1389,10 @@
 
 .preview-ad.compact-ad {
   min-height: 94px;
+}
+
+.preview-ad.compact-ad[data-ad-reserve="rectangle"] {
+  min-height: 260px;
 }
 
 .preview-facts {

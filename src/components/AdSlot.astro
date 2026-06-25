@@ -4,33 +4,67 @@ interface Props {
   format?: 'auto' | 'horizontal' | 'rectangle';
   label?: string;
   placement?: 'game-below-player' | 'game-after-info' | 'content';
+  reserve?: 'compact' | 'leaderboard' | 'rectangle';
   slot?: string;
 }
 
 const {
   className = '',
   format = 'auto',
-  label = 'Advertisement',
+  label = '',
   placement = 'content',
+  reserve = format === 'rectangle' ? 'rectangle' : format === 'horizontal' ? 'leaderboard' : 'compact',
   slot = '3769513448',
 } = Astro.props;
-
-const adFormat = format === 'rectangle' ? 'auto' : format;
 ---
 
-<section class={`ad-slot ad-slot--${placement} ${className}`} aria-label={label}>
+<section class={`ad-slot ad-slot--${placement} ${className}`} aria-label={label || 'Sponsored'} data-ad-container data-ad-reserve={reserve}>
   <div class="ad-slot-inner">
-    <div class="ad-slot-label">{label}</div>
+    {label && <div class="ad-slot-label">{label}</div>}
     <ins
       class="adsbygoogle"
       style="display:block"
       data-ad-client="ca-pub-6509438403900392"
       data-ad-slot={slot}
-      data-ad-format={adFormat}
+      data-ad-format={format}
       data-full-width-responsive="true"
     ></ins>
     <script is:inline>
-      (window.adsbygoogle = window.adsbygoogle || []).push({});
+      (() => {
+        const script = document.currentScript;
+        const container = script?.closest('[data-ad-container]');
+        const ad = container?.querySelector('.adsbygoogle');
+        if (!container || !ad || ad.dataset.adRequested === 'true') return;
+
+        ad.dataset.adRequested = 'true';
+        container.dataset.adState = 'requested';
+
+        const updateState = () => {
+          const status = ad.getAttribute('data-ad-status');
+          if (status === 'filled') container.dataset.adState = 'filled';
+          if (status === 'unfilled') container.dataset.adState = 'empty';
+        };
+
+        try {
+          (window.adsbygoogle = window.adsbygoogle || []).push({});
+        } catch {
+          container.dataset.adState = 'empty';
+          return;
+        }
+
+        new MutationObserver(updateState).observe(ad, {
+          attributes: true,
+          attributeFilter: ['data-ad-status'],
+        });
+
+        window.setTimeout(() => {
+          if (container.dataset.adState !== 'filled') updateState();
+        }, 2500);
+
+        window.setTimeout(() => {
+          if (container.dataset.adState !== 'filled') container.dataset.adState = 'empty';
+        }, 6500);
+      })();
     </script>
   </div>
 </section>
@@ -41,11 +75,12 @@ const adFormat = format === 'rectangle' ? 'auto' : format;
     margin: 1.5rem 0 2rem;
     display: flex;
     justify-content: center;
+    transition: min-height 0.2s ease, margin 0.2s ease, opacity 0.2s ease;
   }
 
   .ad-slot-inner {
     width: min(100%, 760px);
-    min-height: 118px;
+    min-height: 112px;
     padding: 0.75rem;
     border: 1px solid #E5E7EB;
     border-radius: 8px;
@@ -55,20 +90,40 @@ const adFormat = format === 'rectangle' ? 'auto' : format;
 
   .ad-slot-label {
     margin-bottom: 0.5rem;
-    color: #94A3B8;
-    font-size: 0.6875rem;
+    color: #64748B;
+    font-size: 0.625rem;
     font-weight: 600;
     letter-spacing: 0.04em;
     text-align: center;
     text-transform: uppercase;
   }
 
-  .ad-slot--game-below-player {
-    margin-top: 1rem;
+  .ad-slot[data-ad-state="empty"] {
+    min-height: 0;
+    margin: 0;
+    opacity: 0;
+    overflow: hidden;
   }
 
+  .ad-slot[data-ad-state="empty"] .ad-slot-inner {
+    min-height: 0;
+    height: 0;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .ad-slot[data-ad-reserve="leaderboard"] .ad-slot-inner {
+    min-height: 112px;
+  }
+
+  .ad-slot[data-ad-reserve="rectangle"] .ad-slot-inner,
   .ad-slot--game-after-info .ad-slot-inner {
     min-height: 250px;
+  }
+
+  .ad-slot--game-below-player {
+    margin-top: 1rem;
   }
 
   @media (max-width: 767px) {
@@ -76,7 +131,8 @@ const adFormat = format === 'rectangle' ? 'auto' : format;
       margin: 1.25rem 0 1.75rem;
     }
 
-    .ad-slot-inner {
+    .ad-slot-inner,
+    .ad-slot[data-ad-reserve="leaderboard"] .ad-slot-inner {
       min-height: 104px;
       padding: 0.625rem;
       border-radius: 6px;
