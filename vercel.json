@@ -72,7 +72,12 @@
     },
     {
       "source": "/games/gd-football-duel/",
-      "destination": "/games/football-duel/",
+      "destination": "/football-games/",
+      "permanent": true
+    },
+    {
+      "source": "/games/football-duel/",
+      "destination": "/football-games/",
       "permanent": true
     },
     {

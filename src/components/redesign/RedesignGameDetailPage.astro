@@ -57,7 +57,7 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
                     title={title}
                     allowfullscreen
                     loading="lazy"
-                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-presentation"
                   ></iframe>
                 ) : (
                   <img src={image} alt={`${title} preview`} />
@@ -75,8 +75,6 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
                 </div>
               </div>
             </section>
-
-            <PreviewAdSlot className="compact-ad" format="horizontal" slot="3312192068" />
 
             <section class="preview-game-below">
               <article class="preview-panel preview-info-block">
@@ -97,7 +95,7 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
                   <span><strong>Age</strong>{age}</span>
                   <span><strong>Mode</strong>Browser</span>
                 </div>
-                <PreviewAdSlot className="compact-ad" format="rectangle" slot="1922752061" />
+                <PreviewAdSlot className="compact-ad" format="rectangle" slot="2088202749" />
               </aside>
             </section>
 
@@ -112,7 +110,6 @@ const canonical = `https://www.edugamehq.com/games/${game.slug}/`;
           </div>
 
           <aside class="preview-side-stack preview-game-right-rail">
-            <PreviewAdSlot className="compact-ad" format="rectangle" slot="3769513448" />
             <div class="preview-panel preview-list">
               {featured.slice(0, 5).map((item) => <PreviewGameTile game={item} size="mini" />)}
             </div>

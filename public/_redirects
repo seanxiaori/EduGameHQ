@@ -54,7 +54,8 @@ http://www.edugamehq.com/* https://www.edugamehq.com/:splat 301!
 /games/gd-fierce-shot/ /games/fierce-shot/ 301
 /games/gd-flowball/ /games/flowball/ 301
 /games/gd-football-3d/ /games/football-3d/ 301
-/games/gd-football-duel/ /games/football-duel/ 301
+/games/gd-football-duel/ /football-games/ 301
+/games/football-duel/ /football-games/ 301
 /games/gd-football-legends-2026/ /games/football-legends-2026/ 301
 /games/gd-football-penalty-go/ /games/football-penalty-go/ 301
 /games/gd-football-rush-3d/ /games/football-rush-3d/ 301
