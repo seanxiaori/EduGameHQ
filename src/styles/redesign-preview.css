@@ -781,6 +781,14 @@
   gap: 10px;
 }
 
+.preview-rotation-card {
+  display: contents;
+}
+
+.preview-rotation-card[hidden] {
+  display: none !important;
+}
+
 .preview-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(158px, 1fr));

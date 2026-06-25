@@ -2,6 +2,7 @@
 // src/components/sections/FeaturedGames.astro
 import GameCard from '../GameCard.astro';
 import { t } from '../../i18n/utils';
+import { isFootballGame } from '../../utils/footballGames';
 import fs from 'fs';
 import path from 'path';
 
@@ -31,7 +32,8 @@ const featuredGames = allGamesData
     const dateA = new Date(a.lastUpdated || '2000-01-01').getTime();
     const dateB = new Date(b.lastUpdated || '2000-01-01').getTime();
     return dateB - dateA;
-  });
+  })
+  .slice(0, 60);
 ---
 <section id="featured" class="featured-section">
   <div class="module-header">
@@ -44,9 +46,11 @@ const featuredGames = allGamesData
     </div>
   </div>
   
-  <div class="games-grid">
-    {featuredGames.map((game: any) => (
-      <GameCard game={game} translations={translations} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+  <div class="games-grid" data-daily-rotation data-rotation-limit="12" data-football-priority="true">
+    {featuredGames.map((game: any, index: number) => (
+      <div class="rotation-card-shell" data-rotation-card data-football={isFootballGame(game) ? 'true' : 'false'} hidden={index >= 12}>
+        <GameCard game={game} translations={translations} showPlayHistory={true} showPopularity={true} showFavorite={true} />
+      </div>
     ))}
   </div>
 </section>

@@ -1,0 +1,51 @@
+---
+// src/components/sections/FootballGames.astro
+import GameCard from '../GameCard.astro';
+import { t } from '../../i18n/utils';
+import { compareHomePriority, isFootballGame } from '../../utils/footballGames';
+import fs from 'fs';
+import path from 'path';
+
+export interface Props {
+  translations: Record<string, any>;
+}
+
+const { translations } = Astro.props;
+
+const gamesDataPath = path.join(process.cwd(), 'src/data/games.json');
+let allGamesData: any[] = [];
+
+try {
+  const fileContent = fs.readFileSync(gamesDataPath, 'utf-8');
+  allGamesData = JSON.parse(fileContent);
+} catch (error) {
+  console.error('❌ 无法读取游戏数据文件:', error);
+}
+
+const footballGames = allGamesData
+  .filter(isFootballGame)
+  .sort(compareHomePriority)
+  .slice(0, 48);
+---
+
+{footballGames.length > 0 && (
+  <section id="football-games" class="football-games-section">
+    <div class="module-header">
+      <div class="module-icon football">
+        <i class="fas fa-futbol"></i>
+      </div>
+      <div class="module-text">
+        <h2 class="module-title">{t(translations, 'home.football_games.title', 'Football Games')}</h2>
+        <p class="module-description">{t(translations, 'home.football_games.description', 'World Cup soccer, penalty kicks, free kicks, and head-to-head football challenges')}</p>
+      </div>
+    </div>
+
+    <div class="games-grid" data-daily-rotation data-rotation-limit="12" data-football-priority="true">
+      {footballGames.map((game: any, index: number) => (
+        <div class="rotation-card-shell" data-rotation-card data-football="true" hidden={index >= 12}>
+          <GameCard game={game} translations={translations} showPlayHistory={true} showFavorite={true} />
+        </div>
+      ))}
+    </div>
+  </section>
+)}

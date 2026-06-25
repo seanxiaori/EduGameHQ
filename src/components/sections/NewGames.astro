@@ -2,6 +2,7 @@
 // src/components/sections/NewGames.astro
 import GameCard from '../GameCard.astro';
 import { t } from '../../i18n/utils';
+import { isFootballGame } from '../../utils/footballGames';
 import fs from 'fs';
 import path from 'path';
 
@@ -21,7 +22,6 @@ try {
   console.error('❌ 无法读取游戏数据文件:', error);
 }
 
-// 获取最新游戏（按lastUpdated排序，取前12个）
 const newGames = allGamesData
   .filter((game: any) => game.isNew)
   .sort((a: any, b: any) => {
@@ -29,7 +29,7 @@ const newGames = allGamesData
     const dateB = new Date(b.lastUpdated || '2000-01-01').getTime();
     return dateB - dateA;
   })
-  .slice(0, 12);
+  .slice(0, 60);
 ---
 <section id="new-games" class="new-games-section">
   <div class="module-header">
@@ -42,9 +42,11 @@ const newGames = allGamesData
     </div>
   </div>
 
-  <div class="games-grid">
-    {newGames.map((game: any) => (
-      <GameCard game={game} translations={translations} showPlayHistory={true} showFavorite={true} />
+  <div class="games-grid" data-daily-rotation data-rotation-limit="12" data-football-priority="true">
+    {newGames.map((game: any, index: number) => (
+      <div class="rotation-card-shell" data-rotation-card data-football={isFootballGame(game) ? 'true' : 'false'} hidden={index >= 12}>
+        <GameCard game={game} translations={translations} showPlayHistory={true} showFavorite={true} />
+      </div>
     ))}
   </div>
 </section>

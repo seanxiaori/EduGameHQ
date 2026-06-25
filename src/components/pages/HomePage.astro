@@ -3,6 +3,7 @@
 import HeroSection from '../sections/HeroSection.astro';
 import FeaturedGames from '../sections/FeaturedGames.astro';
 import NewGames from '../sections/NewGames.astro';
+import FootballGames from '../sections/FootballGames.astro';
 import GameCategories from '../sections/GameCategories.astro';
 import HowItWorks from '../sections/HowItWorks.astro';
 import WhyChooseUs from '../sections/WhyChooseUs.astro';
@@ -22,6 +23,7 @@ const { translations } = Astro.props;
   <div class="content-wrapper">
     <HeroSection translations={translations} />
     <GameCategories translations={translations} />
+    <FootballGames translations={translations} />
     <NewGames translations={translations} />
     <FeaturedGames translations={translations} />
     <HowItWorks translations={translations} />
@@ -30,3 +32,68 @@ const { translations } = Astro.props;
     <CtaSection translations={translations} />
   </div>
 </div>
+
+<script is:inline>
+  (() => {
+    const today = new Date();
+    const daySeed = Math.floor(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000);
+    const isWorldCupWindow = today.getFullYear() === 2026 && (today.getMonth() === 5 || today.getMonth() === 6);
+
+    const hashText = (text) => {
+      let hash = 2166136261;
+      for (let index = 0; index < text.length; index += 1) {
+        hash ^= text.charCodeAt(index);
+        hash = Math.imul(hash, 16777619);
+      }
+      return hash >>> 0;
+    };
+
+    const shuffle = (items, seed) => {
+      const result = [...items];
+      let state = seed || 1;
+
+      for (let index = result.length - 1; index > 0; index -= 1) {
+        state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+        const swapIndex = state % (index + 1);
+        [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+      }
+
+      return result;
+    };
+
+    document.querySelectorAll('[data-daily-rotation]').forEach((grid, gridIndex) => {
+      const limit = Number(grid.dataset.rotationLimit || 12);
+      const cards = Array.from(grid.querySelectorAll('[data-rotation-card]'));
+      if (cards.length <= limit) {
+        cards.forEach((card) => card.hidden = false);
+        return;
+      }
+
+      const seed = daySeed + hashText(`${grid.id || grid.closest('section')?.id || gridIndex}`);
+      const footballCards = cards.filter((card) => card.dataset.football === 'true');
+      const otherCards = cards.filter((card) => card.dataset.football !== 'true');
+      const shouldPrioritizeFootball = grid.dataset.footballPriority === 'true' && isWorldCupWindow;
+
+      let selected;
+      if (shouldPrioritizeFootball && footballCards.length > 0) {
+        const footballTarget = Math.min(Math.ceil(limit * 0.75), footballCards.length);
+        selected = [
+          ...shuffle(footballCards, seed + 11).slice(0, footballTarget),
+          ...shuffle(otherCards, seed + 29).slice(0, limit - footballTarget)
+        ];
+
+        if (selected.length < limit) {
+          const selectedSet = new Set(selected);
+          const remaining = shuffle(cards.filter((card) => !selectedSet.has(card)), seed + 47);
+          selected.push(...remaining.slice(0, limit - selected.length));
+        }
+      } else {
+        selected = shuffle(cards, seed).slice(0, limit);
+      }
+
+      const selectedSet = new Set(selected);
+      cards.forEach((card) => card.hidden = !selectedSet.has(card));
+      selected.forEach((card) => grid.appendChild(card));
+    });
+  })();
+</script>

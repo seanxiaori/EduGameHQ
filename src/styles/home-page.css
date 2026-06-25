@@ -203,6 +203,10 @@
   background: linear-gradient(135deg, #F59E0B, #D97706);
 }
 
+.module-icon.football {
+  background: linear-gradient(135deg, #16A34A, #2563EB);
+}
+
 .module-icon.benefits {
   background: linear-gradient(135deg, #EC4899, #DB2777);
 }
@@ -389,6 +393,14 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
+}
+
+.rotation-card-shell {
+  display: contents;
+}
+
+.rotation-card-shell[hidden] {
+  display: none !important;
 }
 
 /* 为什么选择我们部分样式 - 新增 */
@@ -753,6 +765,7 @@
 .module-icon.categories { background: linear-gradient(135deg, #818CF8, #4F46E5); }
 .module-icon.featured { background: linear-gradient(135deg, #FBBF24, #D97706); }
 .module-icon.new { background: linear-gradient(135deg, #10B981, #059669); }
+.module-icon.football { background: linear-gradient(135deg, #22C55E, #2563EB); }
 .module-icon.benefits { background: linear-gradient(135deg, #F472B6, #DB2777); }
 
 .module-title {

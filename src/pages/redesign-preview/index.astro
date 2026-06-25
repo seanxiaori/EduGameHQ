@@ -7,6 +7,7 @@ import PreviewSearchForm from '../../components/redesign/PreviewSearchForm.astro
 import PreviewLanguageMenu from '../../components/redesign/PreviewLanguageMenu.astro';
 import PreviewAdSlot from '../../components/redesign/PreviewAdSlot.astro';
 import PreviewSidebar from '../../components/redesign/PreviewSidebar.astro';
+import { compareHomePriority, isFootballGame } from '../../utils/footballGames';
 import games from '../../data/games.json';
 import '../../styles/redesign-preview.css';
 
@@ -16,14 +17,51 @@ interface Props {
 
 const { isProductionHome = false } = Astro.props;
 const allGames = games as any[];
-const footballPattern = /\b(football|soccer|penalty|free kick|world cup|fifa)\b|head ball|goal finger|kickups/i;
-const featured = allGames.filter((game) => game.featured || game.trending || game.isNew).slice(0, 24);
-const football = allGames.filter((game) => game.category === 'sports' && footballPattern.test([game.title, game.slug, ...(game.tags || [])].join(' '))).slice(0, 12);
-const newGames = allGames.filter((game) => game.isNew).slice(0, 12);
-const mathGames = allGames.filter((game) => game.category === 'math').slice(0, 6);
-const puzzleGames = allGames.filter((game) => game.category === 'puzzle').slice(0, 6);
-const heroGames = [...football.slice(0, 2), ...featured].filter(Boolean).slice(0, 3);
-const heroSideGames = featured.slice(3, 9);
+const buildDate = new Date();
+const daySeed = Math.floor(Date.UTC(buildDate.getUTCFullYear(), buildDate.getUTCMonth(), buildDate.getUTCDate()) / 86400000);
+const isWorldCupWindow = buildDate.getUTCFullYear() === 2026 && (buildDate.getUTCMonth() === 5 || buildDate.getUTCMonth() === 6);
+const hashText = (text: string) => {
+  let hash = 2166136261;
+  for (let index = 0; index < text.length; index += 1) {
+    hash ^= text.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+};
+const shuffleWithSeed = <T,>(items: T[], seed: number) => {
+  const result = [...items];
+  let state = seed || 1;
+  for (let index = result.length - 1; index > 0; index -= 1) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    const swapIndex = state % (index + 1);
+    [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+  }
+  return result;
+};
+const orderDaily = (pool: any[], salt: string, prioritizeFootball = false) => {
+  const seed = daySeed + hashText(salt);
+  const cleanPool = [...pool].sort(compareHomePriority);
+
+  if (!prioritizeFootball || !isWorldCupWindow) {
+    return shuffleWithSeed(cleanPool, seed);
+  }
+
+  return [
+    ...shuffleWithSeed(cleanPool.filter(isFootballGame), seed + 11),
+    ...shuffleWithSeed(cleanPool.filter((game) => !isFootballGame(game)), seed + 29),
+  ];
+};
+const featuredPool = allGames.filter((game) => game.featured || game.trending || game.isNew);
+const footballPool = allGames.filter(isFootballGame);
+const newGamesPool = allGames.filter((game) => game.isNew);
+const featured = orderDaily(featuredPool, 'home-featured', true).slice(0, 60);
+const football = orderDaily(footballPool, 'home-football').slice(0, 60);
+const newGames = orderDaily(newGamesPool, 'home-new', true).slice(0, 60);
+const mathGames = orderDaily(allGames.filter((game) => game.category === 'math'), 'home-math').slice(0, 12);
+const puzzleGames = orderDaily(allGames.filter((game) => game.category === 'puzzle'), 'home-puzzle').slice(0, 12);
+const heroGames = orderDaily([...football.slice(0, 24), ...featured], 'home-hero', true).slice(0, 3);
+const heroSideGames = orderDaily(featured, 'home-hero-side', true).slice(0, 6);
+const randomGame = orderDaily(featuredPool.length ? featuredPool : allGames, 'home-random', true)[0] || allGames[0];
 const footballHref = '/football-games/';
 const categoryDefinitions = [
   ['sports', 'Sports Games', '/sports-games/', 'sports', 'Team challenges, timing, coordination, and quick reflex practice.'],
@@ -49,8 +87,8 @@ const categorySections = categoryDefinitions
     icon,
     description,
     games: id === 'football'
-      ? football.slice(0, 6)
-      : allGames.filter((game) => game.category === id).slice(0, 6),
+      ? football.slice(0, 24)
+      : orderDaily(allGames.filter((game) => game.category === id), `home-category-${id}`, true).slice(0, 24),
   }))
   .filter((section) => section.games.length > 0);
 const shareLinks = [
@@ -68,7 +106,7 @@ const quickLinks = [
   ['Science', '/science-games/'],
   ['Sports', '/sports-games/'],
   ['Football', footballHref],
-  ['Random Game', `/games/${featured[9]?.slug || featured[0]?.slug || '2048'}/`],
+  ['Random Game', `/games/${randomGame?.slug || '2048'}/`],
 ];
 const quietLinks = [
   ['About', '/about/', 'about'],
@@ -150,8 +188,12 @@ const quietLinks = [
                 </div>
                 <a class="preview-ghost-button" href={footballHref}>View all</a>
               </div>
-              <div class="preview-row">
-                {football.slice(0, 6).map((game) => <PreviewGameTile game={game} />)}
+              <div class="preview-row" data-preview-daily-rotation data-rotation-limit="6" data-football-priority="true">
+                {football.map((game, index) => (
+                  <span class="preview-rotation-card" data-preview-rotation-card data-football="true" hidden={index >= 6}>
+                    <PreviewGameTile game={game} />
+                  </span>
+                ))}
               </div>
             </section>
 
@@ -166,8 +208,12 @@ const quietLinks = [
                   <p>Fast picks for students, parents, teachers, and casual learners.</p>
                 </div>
               </div>
-              <div class="preview-row">
-                {featured.slice(1, 7).map((game) => <PreviewGameTile game={game} />)}
+              <div class="preview-row" data-preview-daily-rotation data-rotation-limit="6" data-football-priority="true">
+                {featured.map((game, index) => (
+                  <span class="preview-rotation-card" data-preview-rotation-card data-football={isFootballGame(game) ? 'true' : 'false'} hidden={index >= 6}>
+                    <PreviewGameTile game={game} />
+                  </span>
+                ))}
               </div>
             </section>
 
@@ -178,8 +224,12 @@ const quietLinks = [
                   <p>Fresh browser games with local covers and catalog metadata.</p>
                 </div>
               </div>
-              <div class="preview-row">
-                {newGames.slice(0, 6).map((game) => <PreviewGameTile game={game} />)}
+              <div class="preview-row" data-preview-daily-rotation data-rotation-limit="6" data-football-priority="true">
+                {newGames.map((game, index) => (
+                  <span class="preview-rotation-card" data-preview-rotation-card data-football={isFootballGame(game) ? 'true' : 'false'} hidden={index >= 6}>
+                    <PreviewGameTile game={game} />
+                  </span>
+                ))}
               </div>
             </section>
 
@@ -217,8 +267,12 @@ const quietLinks = [
                       <p>{section.description}</p>
                       <a href={section.href}>View all</a>
                     </div>
-                    <div class="preview-row">
-                      {section.games.map((game) => <PreviewGameTile game={game} />)}
+                    <div class="preview-row" data-preview-daily-rotation data-rotation-limit="6" data-football-priority={section.id === 'sports' ? 'true' : 'false'}>
+                      {section.games.map((game, index) => (
+                        <span class="preview-rotation-card" data-preview-rotation-card data-football={isFootballGame(game) ? 'true' : 'false'} hidden={index >= 6}>
+                          <PreviewGameTile game={game} />
+                        </span>
+                      ))}
                     </div>
                   </section>
                 ))}
@@ -226,7 +280,7 @@ const quietLinks = [
             </section>
 
             <section class="preview-bottom-actions" aria-label="Quick actions">
-              <a class="preview-bottom-button secondary" href={`/games/${featured[9]?.slug || featured[0]?.slug || '2048'}/`}>
+              <a class="preview-bottom-button secondary" href={`/games/${randomGame?.slug || '2048'}/`}>
                 <PreviewNavIcon name="random" tone="action" />
                 <span>Random Game</span>
               </a>
@@ -265,5 +319,66 @@ const quietLinks = [
         </div>
       </div>
     </div>
-  </main>
+  <script is:inline>
+    (() => {
+      const today = new Date();
+      const daySeed = Math.floor(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000);
+      const isWorldCupWindow = today.getFullYear() === 2026 && (today.getMonth() === 5 || today.getMonth() === 6);
+
+      const hashText = (text) => {
+        let hash = 2166136261;
+        for (let index = 0; index < text.length; index += 1) {
+          hash ^= text.charCodeAt(index);
+          hash = Math.imul(hash, 16777619);
+        }
+        return hash >>> 0;
+      };
+
+      const shuffle = (items, seed) => {
+        const result = [...items];
+        let state = seed || 1;
+        for (let index = result.length - 1; index > 0; index -= 1) {
+          state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+          const swapIndex = state % (index + 1);
+          [result[index], result[swapIndex]] = [result[swapIndex], result[index]];
+        }
+        return result;
+      };
+
+      document.querySelectorAll('[data-preview-daily-rotation]').forEach((row, rowIndex) => {
+        const limit = Number(row.dataset.rotationLimit || 6);
+        const cards = Array.from(row.querySelectorAll('[data-preview-rotation-card]'));
+        if (cards.length <= limit) {
+          cards.forEach((card) => card.hidden = false);
+          return;
+        }
+
+        const sectionLabel = row.closest('section')?.querySelector('h2,h3')?.textContent || rowIndex;
+        const seed = daySeed + hashText(`${sectionLabel}`);
+        const footballCards = cards.filter((card) => card.dataset.football === 'true');
+        const otherCards = cards.filter((card) => card.dataset.football !== 'true');
+        const shouldPrioritizeFootball = row.dataset.footballPriority === 'true' && isWorldCupWindow;
+
+        let selected;
+        if (shouldPrioritizeFootball && footballCards.length > 0) {
+          const footballTarget = Math.min(Math.ceil(limit * 0.75), footballCards.length);
+          selected = [
+            ...shuffle(footballCards, seed + 11).slice(0, footballTarget),
+            ...shuffle(otherCards, seed + 29).slice(0, limit - footballTarget),
+          ];
+
+          if (selected.length < limit) {
+            const selectedSet = new Set(selected);
+            selected.push(...shuffle(cards.filter((card) => !selectedSet.has(card)), seed + 47).slice(0, limit - selected.length));
+          }
+        } else {
+          selected = shuffle(cards, seed).slice(0, limit);
+        }
+
+        const selectedSet = new Set(selected);
+        cards.forEach((card) => card.hidden = !selectedSet.has(card));
+        selected.forEach((card) => row.appendChild(card));
+      });
+    })();
+  </script>
 </PreviewLayout>
