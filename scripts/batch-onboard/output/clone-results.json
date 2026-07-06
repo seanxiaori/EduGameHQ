@@ -1,0 +1,29 @@
+{
+  "success": [],
+  "failed": [
+    {
+      "name": "athena-crisis",
+      "stars": 1915,
+      "sourceUrl": "https://github.com/nkzw-tech/athena-crisis",
+      "homepage": "https://athenacrisis.com/open-source",
+      "description": "Athena Crisis is a modern-retro turn-based tactical strategy game. Athena Crisis is open core technology.",
+      "reason": "No deployable files"
+    },
+    {
+      "name": "AncientBeast",
+      "stars": 1841,
+      "sourceUrl": "https://github.com/FreezingMoon/AncientBeast",
+      "homepage": "https://AncientBeast.com",
+      "description": "The Turn Based Strategy Game/eSport. Master your beasts! ���",
+      "reason": "spawnSync /bin/sh ETIMEDOUT"
+    },
+    {
+      "name": "TOSIOS",
+      "stars": 428,
+      "sourceUrl": "https://github.com/halftheopposite/TOSIOS",
+      "homepage": "https://tosios.online",
+      "description": "The Open-Source IO Shooter is an open-source multiplayer game in the browser",
+      "reason": "No deployable files"
+    }
+  ]
+}

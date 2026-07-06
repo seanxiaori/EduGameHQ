@@ -1,0 +1,50 @@
+[
+  {
+    "slug": "canvas-tetris",
+    "title": "Canvas Tetris",
+    "description": "A 2D tetris game in HTML5 canvas",
+    "iframeUrl": "https://games.edugamehq.com/games/canvas-tetris/",
+    "sourceUrl": "https://github.com/dionyziz/canvas-tetris",
+    "category": "arcade",
+    "tags": [
+      "html5",
+      "canvas",
+      "classic"
+    ],
+    "stars": 455,
+    "localPath": "../../temp-games/canvas-tetris",
+    "entryPoint": "index.html"
+  },
+  {
+    "slug": "gamedev-canvas-workshop",
+    "title": "Gamedev Canvas Workshop",
+    "description": "Learn how to build 2D HTML5 Breakout game with pure JavaScript",
+    "iframeUrl": "https://games.edugamehq.com/games/gamedev-canvas-workshop/",
+    "sourceUrl": "https://github.com/end3r/Gamedev-Canvas-workshop",
+    "category": "arcade",
+    "tags": [
+      "html5",
+      "canvas",
+      "classic"
+    ],
+    "stars": 436,
+    "localPath": "../../temp-games/Gamedev-Canvas-workshop",
+    "entryPoint": "index.html"
+  },
+  {
+    "slug": "game-of-life",
+    "title": "Game Of Life",
+    "description": "Conway's Game of Life in Javascript and canvas",
+    "iframeUrl": "https://games.edugamehq.com/games/game-of-life/",
+    "sourceUrl": "https://github.com/pmav/game-of-life",
+    "category": "arcade",
+    "tags": [
+      "html5",
+      "canvas",
+      "classic"
+    ],
+    "stars": 355,
+    "localPath": "../../temp-games/game-of-life",
+    "entryPoint": "index.html"
+  }
+]

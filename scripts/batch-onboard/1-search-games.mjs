@@ -7,13 +7,12 @@ const config = {
   maxResults: 100
 };
 
-// 更广泛的搜索关键词
+// 搜索高质量PC游戏
 const searchQueries = [
-  'html5 game',
-  'javascript game',
-  'browser game',
-  'canvas game',
-  'web game'
+  'html5 rpg game stars:>100',
+  'javascript strategy game stars:>100',
+  'webgl 3d game stars:>100',
+  'multiplayer browser game stars:>100'
 ];
 
 // 排除关键词

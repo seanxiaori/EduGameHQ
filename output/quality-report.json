@@ -1,0 +1,33 @@
+{
+  "excellent": [],
+  "good": [
+    {
+      "name": "sandspiel",
+      "stars": 3106,
+      "sourceUrl": "https://github.com/MaxBittker/sandspiel",
+      "homepage": "https://sandspiel.club",
+      "description": "Creative cellular automata browser game ",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "qualityScore": 70,
+      "rating": "good"
+    },
+    {
+      "name": "OpenFrontIO",
+      "stars": 1746,
+      "sourceUrl": "https://github.com/openfrontio/OpenFrontIO",
+      "homepage": "https://openfront.io/",
+      "description": "Online browser-based RTS game",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "qualityScore": 70,
+      "rating": "good"
+    }
+  ],
+  "acceptable": [],
+  "poor": []
+}

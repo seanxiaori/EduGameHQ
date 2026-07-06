@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Math Duck",
+    "slug": "math-duck",
+    "embedUrl": "https://www.crazygames.com/embed/math-duck",
+    "category": "math",
+    "description": "Practice math skills while helping a duck collect coins"
+  },
+  {
+    "name": "Quick Math",
+    "slug": "quick-math",
+    "embedUrl": "https://www.crazygames.com/embed/quick-math",
+    "category": "math",
+    "description": "Fast-paced math challenge game"
+  },
+  {
+    "name": "Geography Quiz",
+    "slug": "geography-quiz",
+    "embedUrl": "https://www.crazygames.com/embed/geography-quiz",
+    "category": "geography",
+    "description": "Test your geography knowledge"
+  },
+  {
+    "name": "Word Search",
+    "slug": "word-search",
+    "embedUrl": "https://www.crazygames.com/embed/word-search",
+    "category": "word",
+    "description": "Find hidden words in the grid"
+  },
+  {
+    "name": "Typing Speed Test",
+    "slug": "typing-speed-test",
+    "embedUrl": "https://www.crazygames.com/embed/typing-speed-test",
+    "category": "typing",
+    "description": "Improve your typing speed"
+  }
+]

@@ -3,7 +3,7 @@ import fs from 'fs';
 import levenshtein from 'fast-levenshtein';
 
 // 读取现有游戏
-const existingGames = JSON.parse(fs.readFileSync('src/data/games.json', 'utf-8'));
+const existingGames = JSON.parse(fs.readFileSync('../../src/data/games.json', 'utf-8'));
 
 // 读取候选游戏
 const candidates = JSON.parse(fs.readFileSync('output/search-results.json', 'utf-8'));

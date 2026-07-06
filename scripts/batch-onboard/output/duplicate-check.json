@@ -1,0 +1,110 @@
+{
+  "duplicates": [],
+  "unique": [
+    {
+      "name": "3d-game-shaders-for-beginners",
+      "stars": 19500,
+      "sourceUrl": "https://github.com/lettier/3d-game-shaders-for-beginners",
+      "homepage": "https://lettier.github.io/3d-game-shaders-for-beginners/index.html",
+      "description": "🎮 A step-by-step guide to implementing SSAO, depth of field, lighting, normal mapping, and more for your 3D game."
+    },
+    {
+      "name": "magnum",
+      "stars": 5137,
+      "sourceUrl": "https://github.com/mosra/magnum",
+      "homepage": "https://magnum.graphics/",
+      "description": "Lightweight and modular C++11 graphics middleware for games and data visualization"
+    },
+    {
+      "name": "warzone2100",
+      "stars": 3726,
+      "sourceUrl": "https://github.com/Warzone2100/warzone2100",
+      "homepage": "https://wz2100.net",
+      "description": "Command the forces of The Project in a battle to rebuild the world after mankind has been nearly destroyed by nuclear missiles. A 100% free and open source real-time strategy game for Windows, macOS, Linux, BSD+"
+    },
+    {
+      "name": "athena-crisis",
+      "stars": 1915,
+      "sourceUrl": "https://github.com/nkzw-tech/athena-crisis",
+      "homepage": "https://athenacrisis.com/open-source",
+      "description": "Athena Crisis is a modern-retro turn-based tactical strategy game. Athena Crisis is open core technology."
+    },
+    {
+      "name": "AncientBeast",
+      "stars": 1841,
+      "sourceUrl": "https://github.com/FreezingMoon/AncientBeast",
+      "homepage": "https://AncientBeast.com",
+      "description": "The Turn Based Strategy Game/eSport. Master your beasts! ���"
+    },
+    {
+      "name": "Cobalt-Calibur-3",
+      "stars": 471,
+      "sourceUrl": "https://github.com/tlhunter/Cobalt-Calibur-3",
+      "homepage": "http://cobaltcalibur.net",
+      "description": "DEFUNCT: HTML5 and Node.js multiplayer browser game from 2013"
+    },
+    {
+      "name": "TOSIOS",
+      "stars": 428,
+      "sourceUrl": "https://github.com/halftheopposite/TOSIOS",
+      "homepage": "https://tosios.online",
+      "description": "The Open-Source IO Shooter is an open-source multiplayer game in the browser"
+    },
+    {
+      "name": "Kyber",
+      "stars": 322,
+      "sourceUrl": "https://github.com/ArmchairDevelopers/Kyber",
+      "homepage": "https://kyber.gg",
+      "description": "A unified game launcher for STAR WARS Battlefront II (EA) that adds community-hosted multiplayer with full mod support, a server browser, private games, and more."
+    },
+    {
+      "name": "openpanzer",
+      "stars": 180,
+      "sourceUrl": "https://github.com/nicupavel/openpanzer",
+      "homepage": "http://panzermarshal.com",
+      "description": "Javascript/HTML5 rewrite of Panzer General 2 game"
+    },
+    {
+      "name": "leek-wars",
+      "stars": 180,
+      "sourceUrl": "https://github.com/leek-wars/leek-wars",
+      "homepage": "https://leekwars.com",
+      "description": "Leek Wars, the multiplayer web browser AI programming game in which you train leeks"
+    },
+    {
+      "name": "ArchaicQuest-II",
+      "stars": 148,
+      "sourceUrl": "https://github.com/ArchaicQuest/ArchaicQuest-II",
+      "homepage": "https://www.archaicquest.com",
+      "description": "ArchaicQuest II :dragon: is a multiplayer text based RPG known as a Multi User Dungeon (MUD) that is playable from your browser."
+    },
+    {
+      "name": "Pillage-First-Ask-Questions-Later",
+      "stars": 130,
+      "sourceUrl": "https://github.com/jurerotar/Pillage-First-Ask-Questions-Later",
+      "homepage": "https://pillagefirst.com",
+      "description": "An open-source, single-player, Travian alternative browser strategy game, inspired by Travian T4 and Travian Kingdoms"
+    },
+    {
+      "name": "CommandAndConstruct",
+      "stars": 88,
+      "sourceUrl": "https://github.com/AshleyScirra/CommandAndConstruct",
+      "homepage": "https://www.construct.net/en/blogs/ashleys-blog-2",
+      "description": "An open-development multiplayer real-time strategy (RTS) game project made in Construct."
+    }
+  ],
+  "needsReview": [
+    {
+      "candidate": "koil",
+      "reason": "Title similar (distance 1)",
+      "existing": "coil",
+      "candidateData": {
+        "name": "koil",
+        "stars": 380,
+        "sourceUrl": "https://github.com/tsoding/koil",
+        "homepage": "https://tsoding.github.io/koil",
+        "description": "Online Multiplayer Browser Game with Old-School Raycasting Graphics."
+      }
+    }
+  ]
+}

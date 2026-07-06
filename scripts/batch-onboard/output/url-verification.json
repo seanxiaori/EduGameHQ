@@ -1,0 +1,183 @@
+{
+  "passed": [],
+  "failed": [
+    {
+      "name": "habitica",
+      "stars": 13759,
+      "sourceUrl": "https://github.com/HabitRPG/habitica",
+      "homepage": "https://habitica.com",
+      "description": "A habit tracker app which treats your goals like a Role Playing Game.",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true,
+        "iframeBlocked": true
+      }
+    },
+    {
+      "name": "nakama",
+      "stars": 12361,
+      "sourceUrl": "https://github.com/heroiclabs/nakama",
+      "homepage": "https://heroiclabs.com",
+      "description": "Scalable open-source game backend server: multiplayer, matchmaking, leaderboards, chat, and social features for games.",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "warriorjs",
+      "stars": 9509,
+      "sourceUrl": "https://github.com/olistic/warriorjs",
+      "homepage": "https://warriorjs.com",
+      "description": "🏰 An exciting game of programming and Artificial Intelligence",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "Hilo",
+      "stars": 5951,
+      "sourceUrl": "https://github.com/hiloteam/Hilo",
+      "homepage": "https://hiloteam.github.io/",
+      "description": "A Cross-end HTML5 Game development solution",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "workadventure",
+      "stars": 5335,
+      "sourceUrl": "https://github.com/workadventure/workadventure",
+      "homepage": "https://workadventu.re",
+      "description": "A collaborative web application (virtual office) presented as a 16-bit RPG video game",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "noclip.website",
+      "stars": 4064,
+      "sourceUrl": "https://github.com/magcius/noclip.website",
+      "homepage": "https://noclip.website/",
+      "description": "A digital museum of video game levels",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "sandspiel",
+      "stars": 3111,
+      "sourceUrl": "https://github.com/MaxBittker/sandspiel",
+      "homepage": "https://sandspiel.club",
+      "description": "Creative cellular automata browser game ",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "phoenix",
+      "stars": 2882,
+      "sourceUrl": "https://github.com/phcode-dev/phoenix",
+      "homepage": "https://phcode.io",
+      "description": "The text editor designed to make coding as simple and fun as playing a video game",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "biomes-game",
+      "stars": 2646,
+      "sourceUrl": "https://github.com/ill-inc/biomes-game",
+      "homepage": "https://www.biomes.gg",
+      "description": "Biomes is an open source sandbox MMORPG built for the web using web technologies such as Next.js, Typescript, React and WebAssembly.",
+      "urlCheck": {
+        "status": 301,
+        "accessible": false
+      }
+    },
+    {
+      "name": "canvas-test",
+      "stars": 1963,
+      "sourceUrl": "https://github.com/whxaxes/canvas-test",
+      "homepage": "http://whxaxes.github.io/canvas-test/menu.html",
+      "description": "🎮  happy canvas",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "OpenFrontIO",
+      "stars": 1823,
+      "sourceUrl": "https://github.com/openfrontio/OpenFrontIO",
+      "homepage": "https://openfront.io/",
+      "description": "Online browser-based RTS game",
+      "urlCheck": {
+        "status": 403,
+        "accessible": false,
+        "iframeBlocked": true
+      }
+    },
+    {
+      "name": "vimmaster",
+      "stars": 1666,
+      "sourceUrl": "https://github.com/renzorlive/vimmaster",
+      "homepage": "https://vim-master.com",
+      "description": "VIM Master: in-browser game that teaches core Vim motions and editing commands through short, focused levels. ",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "better-xcloud",
+      "stars": 1583,
+      "sourceUrl": "https://github.com/redphx/better-xcloud",
+      "homepage": "https://better-xcloud.github.io",
+      "description": "Userscript to improve Xbox Cloud Gaming (xCloud) and Remote Play experiences on web browsers",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    },
+    {
+      "name": "mk.js",
+      "stars": 1548,
+      "sourceUrl": "https://github.com/mgechev/mk.js",
+      "homepage": "http://mk.mgechev.com/",
+      "description": "Canvas implementation of basic fighting game which allows multiplayer over the network.",
+      "urlCheck": {
+        "status": 301,
+        "accessible": false
+      }
+    },
+    {
+      "name": "one-html-page-challenge",
+      "stars": 1323,
+      "sourceUrl": "https://github.com/Metroxe/one-html-page-challenge",
+      "homepage": "https://onehtmlpagechallenge.com",
+      "description": "Can you create something cool without modern tools?",
+      "urlCheck": {
+        "status": 200,
+        "accessible": true
+      },
+      "reason": "Not a game"
+    }
+  ]
+}

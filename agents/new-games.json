@@ -1,0 +1,14 @@
+[
+  {
+    "name": "pixijs",
+    "url": "https://github.com/pixijs/pixijs",
+    "homepage": "http://pixijs.com",
+    "stars": 46810
+  },
+  {
+    "name": "libgdx",
+    "url": "https://github.com/libgdx/libgdx",
+    "homepage": "http://www.libgdx.com/",
+    "stars": 24945
+  }
+]
